@@ -9,8 +9,10 @@
 - Lifecycle stage: `Discovery`
 - S01: `COMPLETE`
 - S01_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S02`
-- Current milestone: S02-01 最小 Agent Skill 骨架与执行闭环（已完成，待 S02 Stage review）
+- S02: `COMPLETE`
+- S02_STAGE_ACCEPTANCE: `PASS`
+- Current Stage: `READY_FOR_NEXT_STAGE`
+- Current milestone: S02 最小 Agent Skill 执行闭环已由 Main Hub 验收并合入 `main`
 - Production/published version: none
 - Last verified: 2026-09-22
 
@@ -39,11 +41,11 @@
 
 ## Active work
 
-- S02-01 已完成实现与验证；当前等待 S02 Stage review。S01 已由 Main Hub 标记为 `COMPLETE` / `S01_STAGE_ACCEPTANCE = PASS`，Codex 不自行宣布 Stage 完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；当前无正在执行的 Stage 任务，等待 Main Hub 定义下一 Stage。
 
 ## Next likely tasks
 
-1. 返回 S02 Stage chat 审查 S02-01 的 Skill contract 与 execution-chain 证据。
+1. 由 Main Hub 定义下一 Stage 的能力目标与首个任务；不再为单一微任务单独建立 Stage。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material
