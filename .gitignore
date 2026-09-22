@@ -22,6 +22,7 @@ env/
 htmlcov/
 
 # CareerSim runtime and generated state
+.career_sim_runner/
 .runtime/
 runtime/
 logs/
