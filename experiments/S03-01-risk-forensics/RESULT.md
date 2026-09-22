@@ -163,8 +163,8 @@ score report 的 `risk_control.raw_value=10`、`normalized_score=0` 是最终聚
 - Same-session identity: `PASS`，new_game 1 次，observe/action 仅使用 game session `5b37...`。
 - Terminal classification: `PASS`，`play_exit_code=0`、77 action results 无 `success=False`，属于游戏淘汰而非技术失败。
 - `uv lock --check`: `PASS`；本任务未改变 lock。
-- `git diff --check`: 待提交前执行。
-- Secret / credential sanity check: 待提交前执行；本任务未读取或写入 API key。
+- `git diff --check`: `PASS`；最终交付前已执行。
+- Secret / credential sanity check: `PASS`；未发现凭据值，且本任务未读取或写入 API key。
 - New game/provider call in S03-01: `NO`。
 
 ## Next Recommended Action｜下一建议动作

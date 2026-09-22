@@ -1,0 +1,87 @@
+{
+  "experiment_id": "S03-02-risk-review-correctness",
+  "run_id": "S03-02-risk-review-correctness-20260922T142849Z",
+  "classification": "TECHNICAL_FAILURE",
+  "decision": "BLOCKED_TECHNICAL",
+  "fresh": true,
+  "smoke_count": 1,
+  "second_run": false,
+  "timeout_s": 120,
+  "started_utc": "2026-09-22T14:28:49.8250409Z",
+  "ended_utc": "2026-09-22T14:30:53.3719713Z",
+  "wall_runtime_s": 123.5469304,
+  "runner": {
+    "sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "submission": "local-s03-02-risk-review-smoke",
+    "drive_session_id": "career-sim-runner-ef6cb4747b69",
+    "game_session_id": null,
+    "play_exit_code": 1,
+    "termination_reason": null,
+    "month_reached": null,
+    "score_usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "cache_usage": null,
+      "reported_cost": 0
+    }
+  },
+  "skill_identity": {
+    "participant_skills": ["career-action-trace", "risk-review"],
+    "risk_review_canonical_sha256": "F40AA671FDAAB7DBB8ADDB6CD1D78DAA2C5F3B6F0341D65EDDC95EC4F6D4EE89",
+    "career_action_trace_canonical_sha256": "5246D7F00CA7FD087C874700B9B724A29992499BCF1AA66BAB66D8CE37810124",
+    "canonical_staging_runtime_hashes_equal": true,
+    "install": "PASS",
+    "discover": "PASS",
+    "reload_agent_config": "PASS",
+    "skill_tool_results": [
+      {"event_seq": 10, "skill_name": "career-action-trace", "success": true},
+      {"event_seq": 12, "skill_name": "risk-review", "success": true}
+    ]
+  },
+  "trigger_application": {
+    "valid_career_sim_warning_observed": false,
+    "risk_review_output": null,
+    "risk_marker_observed": false,
+    "career_sim_tool_calls": 0,
+    "career_sim_action_submitter_calls": 0,
+    "malformed_or_duplicate_career_sim_action_calls": 0,
+    "observation_window_valid": false,
+    "reason": "Runtime used a mismatched generic tool path and never created a CareerSim game session."
+  },
+  "provider_usage": {
+    "completed_records": 17,
+    "model": "deepseek-flash",
+    "input_tokens": 1227343,
+    "output_tokens": 6569,
+    "total_tokens": 1233912,
+    "cache_usage": 1141120,
+    "by_model": {
+      "deepseek-flash": {
+        "input_tokens": 1227343,
+        "output_tokens": 6569,
+        "total_tokens": 1233912,
+        "cache_usage": 1141120,
+        "reported_cost": 0
+      }
+    },
+    "reported_cost": 0
+  },
+  "artifacts": {
+    "events": {
+      "path": "D:/CS/CareerSim-s03-02-risk-review/.career_sim_runner/career_emu/outputs/local-s03-02-risk-review-smoke/20260922T142853Z/events-20260922T142853Z.jsonl",
+      "bytes": 379461,
+      "sha256": "F717053CC5DDD48FB95BCF9ADB413CD015C4A398B22D16FAC4A3CE5C32B9991E"
+    },
+    "transcript": {
+      "path": "D:/CS/CareerSim-s03-02-risk-review/.career_sim_runner/career_emu/outputs/local-s03-02-risk-review-smoke/20260922T142853Z/transcript-20260922T142853Z.log",
+      "bytes": 17466,
+      "sha256": "9D4395A3DE800C8A99053346D2FA0CFDEFF3EF13D1FFFF20114C7015E92343CD"
+    },
+    "score_report": {
+      "path": "D:/CS/CareerSim-s03-02-risk-review/.career_sim_runner/career_emu/outputs/local-s03-02-risk-review-smoke/20260922T142853Z/score_report.json",
+      "bytes": 1036,
+      "sha256": "05453A09137172179C508D0F0C142F41FCA25639F66340F8831B02C7FA939FC1"
+    }
+  }
+}
