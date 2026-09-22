@@ -1,0 +1,45 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python and local environments
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+.uv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# CareerSim runtime and generated state
+.runtime/
+runtime/
+logs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+cache/
+artifacts/
+outputs/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Local tooling and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
