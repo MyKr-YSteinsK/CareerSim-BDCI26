@@ -15,8 +15,9 @@
 - S03: `IN_PROGRESS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
 - S03-02: `BLOCKED_TECHNICAL`
+- S03-03: `COMPLETE_FRAMEWORK_OR_RUNNER_DEBUG_NEEDED`
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-02 已完成最小 Risk Review Skill 的实现、静态验证、安装/发现/加载验证；唯一 bounded smoke 未进入 CareerSim 游戏工具链，已在技术边界停止，等待 S03 Stage review
+- Current milestone: S03-03 已完成离线运行时工具路由取证，确认 S03-02 的 `career-emulator` Stdio MCP 注册失败；等待 S03 Stage review 决定框架/Runner 排障与恢复边界
 - Production/published version: none
 - Last verified: 2026-09-22
 
@@ -45,15 +46,16 @@
 - S02-01 bounded smoke 证明了 Skill 实际读取与 action trace marker 应用；不证明分数提升、策略收益或 Hidden Test 泛化。
 - S03-01 只证明基线存在可观察的公开风险预警—埋雷反馈—信任危机终止链；不证明任何单个动作造成终止，也不证明 Risk Control 收益。
 - S03-02 唯一 bounded smoke 中 `skill_tool` 成功读取两个 Skill，但运行时调用了不匹配的通用工具路径，未产生 CareerSim `new_game`/`observe`/`take_action`，因此没有 warning、Risk output、marker、action 或收益证据；不得重跑本任务 smoke。
+- S03-03 已从既有 S02/S03-02 raw evidence 与 timestamped runtime logs 确认：S02 MCP 注册成功，S03-02 MCP Stdio 注册在 `WinError 2` 下失败；具体缺失的 spawn target 尚未确定，未执行新 smoke。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01 已通过 Stage review；S03-02 在技术失败边界停止，S03 尚未完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01 已通过 Stage review；S03-02 保持技术失败记录，S03-03 已完成取证但 S03 尚未完成。
 
 ## Next likely tasks
 
-1. 返回 S03 Stage review，审阅 S03-02 `BLOCKED_TECHNICAL` 并决定后续是否授权新的受控动作；本任务不自行重跑 smoke 或开始下一任务。
+1. 返回 S03 Stage review，审阅 S03-03 `FRAMEWORK_OR_RUNNER_DEBUG_NEEDED` 并决定是否授权框架/Runner 排障及一次 recovery smoke；本任务不自行启动。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material
@@ -65,6 +67,7 @@
 - S02-01 仅运行 1 次 fresh bounded smoke；未开发 Memory / Planning / Team / Swarm，也未增加第二 action submitter。
 - S03-01 为离线一次性取证；未启动新的 CareerSim、未调用 provider、未创建 `experiment-manager`，未实现 Risk / Memory / Planning / Team / Swarm。
 - S03-02 仅运行 1 次 fresh bounded smoke（hard cap `120 s`）；技术失败后未重跑，未创建 `experiment-manager`，未运行对照 screening；Risk benefit 仍 `NOT_PROVEN`。
+- S03-03 仅做离线 evidence/log forensics；未启动 `career_emu`、未调用 provider/model、未运行 `new_game` 或 recovery smoke；`experiment-manager=NEAR_TRIGGER`、`framework-debugger=TRIGGERED`，均未创建。
 - 后续任务按 `AGENTS.md` 的主分支、证据、共享 runtime 串行和 Skill 时机规则执行。
 
 ## Update rule
