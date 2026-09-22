@@ -11,8 +11,10 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `READY_FOR_NEXT_STAGE`
-- Current milestone: S02 最小 Agent Skill 执行闭环已由 Main Hub 验收并合入 `main`
+- Current Stage: `S03`
+- S03: `IN_PROGRESS`
+- S03-01: `COMPLETE_PENDING_STAGE_REVIEW`
+- Current milestone: S03-01 已完成 S01 baseline failure forensics 与最小风险假设，等待 S03 Stage review
 - Production/published version: none
 - Last verified: 2026-09-22
 
@@ -31,21 +33,23 @@
 - 官方上游仓库、候选 repo SHA、包版本和运行合同见 [OFFICIAL_SOURCE_LOCK.md](OFFICIAL_SOURCE_LOCK.md)。
 - 本地 Runner 使用 `career_emu` named instance、career-emulator MCP 和 Dev 数据；重启后 preflight 已复验。
 - Single Agent + Multiple Skills 是当前起步路线；当前仅有一个 project-owned 最小 trace Skill，尚无策略 Skill 或策略收益证据。
+- S03-01 已基于冻结 S01 单局证据形成一个公开警告驱动的最小 Risk Hypothesis；尚未实现 Risk Skill 或运行对照实验。
 
 ## Known limitations / risks
 
 - provider endpoint 已按用户配置使用 DeepSeek 官方 API；请求/usage model 为 `deepseek-flash`，底层 serving version 映射仍为 `PARTIALLY_VERIFIED`。
 - 已有 1 个有效 Dev baseline，但为 no-op harness 且在第 19 个月提前结束；分数不构成策略收益或隐藏 Test 泛化证据。
 - S02-01 bounded smoke 证明了 Skill 实际读取与 action trace marker 应用；不证明分数提升、策略收益或 Hidden Test 泛化。
+- S03-01 只证明基线存在可观察的公开风险预警—埋雷反馈—信任危机终止链；不证明任何单个动作造成终止，也不证明 Risk Control 收益。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；当前无正在执行的 Stage 任务，等待 Main Hub 定义下一 Stage。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01 已完成但等待 S03 Stage review，S03 尚未完成。
 
 ## Next likely tasks
 
-1. 由 Main Hub 定义下一 Stage 的能力目标与首个任务；不再为单一微任务单独建立 Stage。
+1. 返回 S03 Stage review，决定是否允许进入 S03-02 Risk implementation；Codex 不自行开始实现。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material
@@ -55,6 +59,7 @@
 - S01-02 使用官方 SHA 对应的 `pyproject.toml`/`uv.lock`，以 `uv sync --locked --no-install-project` 安装；未修改冻结 lock。
 - S01-03 仅运行 1 局 fresh baseline；score report、transcript、events 和重启验证路径已记录在实验证据中，未提交 `.env` 或 instance env。
 - S02-01 仅运行 1 次 fresh bounded smoke；未开发 Memory / Planning / Risk / Team / Swarm，也未增加第二 action submitter。
+- S03-01 为离线一次性取证；未启动新的 CareerSim、未调用 provider、未创建 `experiment-manager`，未实现 Risk / Memory / Planning / Team / Swarm。
 - 后续任务按 `AGENTS.md` 的主分支、证据、共享 runtime 串行和 Skill 时机规则执行。
 
 ## Update rule
