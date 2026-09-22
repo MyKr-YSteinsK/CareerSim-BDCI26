@@ -79,6 +79,7 @@
 - Runner `total_cost=0` and provider `total_cost=0.000000` are reported runtime values, not proof of real billing.
 - The smoke timed out before game termination and yielded no score; one smoke cannot prove strategy benefit or Hidden Test generalization.
 - JiuwenSwarm emitted one malformed same-agent tool name (`mcp-career-emulator_take_action`); it was rejected and did not create a second submitter. This is recorded as a runtime observation, not repaired in frozen Runner/dependencies.
+- Before the smoke, service startup logs recorded a framework prewarm/image-modality `llm_call_start`; the pre-smoke window had no completed usage record, so any incidental startup usage cannot be quantified. It was not a deliberate benchmark or chat test; no additional model call was made after the bounded smoke.
 - `OFFICIAL_SOURCE_LOCK.md` retains its historical statement that execution success must not be inferred from the lock alone; no conflicting version was introduced.
 - Runtime logs, database, instance env and the worktree-local `.env` remain local/ignored and are not committed.
 
