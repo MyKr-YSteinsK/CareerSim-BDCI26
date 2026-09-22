@@ -6,7 +6,7 @@
 
 - Repository / package: CareerSim BDCI26 development repository
 - Primary branch: `main`
-- Primary runtime/platform: Windows / PowerShell；官方运行环境尚未验证
+- Primary runtime/platform: Windows / PowerShell + CPython 3.12.13；官方冻结环境、Runner 与最小 baseline 技术闭环已验证
 - Key project-state files:
   - `docs/project/CURRENT_STATE.md`
   - `docs/project/OFFICIAL_SOURCE_LOCK.md`
@@ -36,7 +36,7 @@
 
 ## 5. Project-specific invariants
 
-- S01 先完成官方环境、Runner 和最小 baseline 闭环，再开始正式 Agent Skill 设计与实现；优先从最小 Skill Contract 开始。
+- S01 官方环境、Runner 和最小 baseline 技术闭环已完成；当前从最小 Agent Skill Contract 开始正式 Skill 骨架与执行闭环。
 - 起步路线是 Single Agent + Multiple Skills。Memory / Planning / Risk / Swarm 仍是设计或实验方向，不得在 baseline 未建立前提前建设复杂系统。
 - Main Hub 维护全局状态和阶段推进；Stage 负责一个有边界的任务；Codex 负责仓库实现与证据回传。Codex 不自行宣布 Stage 完成。
 - 重要实验记录 `Experiment ID`、假设、修改、基线、版本、运行次数、结果、失败分类和决策；单次运行不能单独决定主路线。
@@ -46,7 +46,7 @@
 ## 6. Skill routing
 
 - 普通仓库开发使用 `frugal-dev-runner`。
-- 比赛 Agent Skills：S01 完成官方环境、Runner、最小 baseline 闭环后再设计；先做最小 contract，不先做复杂 Memory / Planning / Risk / Swarm。
+- 比赛 Agent Skills：当前从最小 Skill Contract 开始；不先建设复杂 Memory / Planning / Risk / Swarm。
 - `experiment-manager`：只有实验开始反复执行、手工记录重复时建立。
 - `framework-debugger`：只有 JiuwenSwarm、emulator 或 runtime 排障出现重复模式时建立。
 - `submission-auditor`：接近首次正式比赛提交时建立。
