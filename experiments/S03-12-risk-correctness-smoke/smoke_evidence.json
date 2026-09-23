@@ -1,0 +1,127 @@
+{
+  "task_id": "S03-12",
+  "status": "BLOCKED_TECHNICAL",
+  "decision": "BLOCKED_TECHNICAL",
+  "identity": {
+    "branch": "codex/s03-12-risk-correctness-smoke",
+    "parent_sha": "c53887a99d9798aaa6676c7f383462717725bb51",
+    "origin_main_sha": "73a69668812f28076abcebd0a90e1cf71b20f64c",
+    "parent_ancestor": true,
+    "origin_main_ancestor": true,
+    "plan_contract_blob_sha": "1a7a7b67735ee99d3cd9f2521913da884df8538a",
+    "frozen_runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "efficiency": {
+    "bounded_correction_limit": 2,
+    "bounded_corrections_used": "at least 5",
+    "items": [
+      "Read-only config inspection corrected from an assumed models list to models.defaults[0].",
+      "Root-level ignore check was first run from the nested worktree and rerun from the repository root.",
+      "Read-only session inventory corrected to the instance path established by repository evidence.",
+      "PowerShell evidence script parse error corrected before execution; no runtime effect.",
+      "Instance config/log paths corrected from root-level assumptions to repository-recorded nested paths."
+    ],
+    "later_snapshot_comparison_script": "parse error; not repaired; no runtime effect",
+    "runner_play_started": false
+  },
+  "preflight": {
+    "process_path_prefix_temporary_and_restored": true,
+    "user_system_path_changed": false,
+    "instance_config_sha256": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "instance_env_sha256": "99842010A7B39B038AFE05009B75BC259BFEA34CFF40D93C9D41325167E8B8CD",
+    "target_db_path": "D:\\CS\\CareerSim-s03-02-risk-review\\.career_sim_runner\\career_emu\\career_emulator.sqlite3",
+    "target_db_created": false,
+    "staging_path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-12-risk-correctness-smoke\\staging\\solution",
+    "staged_skills": ["career-action-trace", "risk-review"],
+    "staging_static_validation": "PASS",
+    "s03_09_preinstall_snapshot": "PASS; 9/9 matched in pre-service check",
+    "forensic_hold": "ACTIVE / UNCHANGED; 5/5 matched in pre-service check",
+    "incremental_session_archive": {
+      "source_file_count": 3,
+      "all_source_bytes_and_sha256_matched_before_play": true,
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-12-risk-correctness-smoke\\pre-install-incremental\\agent\\sessions"
+    }
+  },
+  "provider": {
+    "freshness": {
+      "attempts": 1,
+      "completed": 1,
+      "model": "deepseek-flash",
+      "input_tokens": 33,
+      "output_tokens": 4,
+      "total_tokens": 37,
+      "cache_tokens": 0,
+      "reported_cost": null
+    },
+    "startup_prewarm": {
+      "completed_usage_records": 1,
+      "model": "deepseek-flash",
+      "input_tokens": 200,
+      "output_tokens": 1,
+      "total_tokens": 201,
+      "cache_tokens": 0,
+      "reported_cost": null
+    },
+    "gameplay": {"calls": 0, "tokens": 0},
+    "total_completed_usage_records": 2,
+    "total_input_tokens": 233,
+    "total_output_tokens": 5,
+    "total_tokens": 238,
+    "total_cache_tokens": 0,
+    "total_reported_cost": null
+  },
+  "service": {
+    "starts": 1,
+    "stops": 1,
+    "launcher_pid": 35080,
+    "service_pid": 24044,
+    "start_utc": "2026-09-23T11:38:47.7842482Z",
+    "stop_local": "2026-09-23 19:49:40 +08:00",
+    "final_state": "stopped",
+    "final_port_listener_count": 0,
+    "agent_chat_count": 0,
+    "career_sim_tool_calls": 0,
+    "mcp_registration": "PASS",
+    "mcp_registration_local_times": ["2026-09-23 19:39:07 +08:00", "2026-09-23 19:40:02 +08:00"],
+    "required_tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"],
+    "winerror2_in_service_window": 0,
+    "historical_winerror2_matches_in_full_jiuwen_log": 4
+  },
+  "play": {
+    "runner_play_count": 0,
+    "standalone_install_count": 0,
+    "fresh_game_count": 0,
+    "drive_session_count": 0,
+    "game_session_count": 0,
+    "new_game_calls": 0,
+    "observe_calls": 0,
+    "take_action_calls": 0,
+    "active_install": "NOT_REACHED",
+    "termination": "NOT_REACHED"
+  },
+  "risk": {
+    "trigger": "NOT_REACHED",
+    "risk_review_runtime_use": false,
+    "risk_state": "NOT_REACHED",
+    "public_trigger_evidence": "NOT_REACHED",
+    "candidate_comparison": "NOT_REACHED",
+    "s03_marker": "NOT_REACHED",
+    "s02_marker": "NOT_REACHED",
+    "risk_effectiveness": "NOT_PROVEN",
+    "controlled_screening": "NOT_STARTED"
+  },
+  "action_integrity": {
+    "successful_submitter": null,
+    "canonical_actions": 0,
+    "rejected_aliases": 0,
+    "duplicates": 0
+  },
+  "post_stop_log_snapshots": [
+    {"path": "post-stop-shared-logs/agent_server.log", "bytes": 680797, "sha256": "694DFD14EFF0CD41CC704FBBF1503C91651217E8AC7FD842DD084F3C222F2456"},
+    {"path": "post-stop-shared-logs/runner.log", "bytes": 1255932, "sha256": "F56A9E9F4AF8FC4E78F1A34BB570C766FDFD3E978E799A9B0E797068F3B88B2F"},
+    {"path": "post-stop-shared-logs/jiuwen.log", "bytes": 1203328, "sha256": "DA87F3F16E27E386D9F2FCF170AF17502E2A23BE756B1734CC52E8B7E7A35986"},
+    {"path": "post-stop-shared-logs/server.log", "bytes": 51041, "sha256": "DC5A5DAB545705717B8663F3B77A1A2148C4AE851B75ECFE3C7EF159C0DA7750"},
+    {"path": "post-stop-shared-logs/llm.log", "bytes": 2819729, "sha256": "25F7CB10888A726EBBDF0ECA05A99C117BDDE16551BD7DB3198974498ECD07BF"}
+  ],
+  "decision_reason": "Pre-game bounded technical correction limit was exceeded before the only authorized Runner play; gameplay was intentionally not started."
+}
