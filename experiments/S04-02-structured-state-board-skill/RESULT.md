@@ -73,5 +73,5 @@ Only recommend `S04-03` bounded runtime correctness smoke under a separate Plan,
 - **Model Used:** `UNKNOWN`
 - **Reasoning Effort:** `UNKNOWN`
 - **Started At:** `UNKNOWN`
-- **Finished At:** pending
+- **Finished At:** `UNKNOWN` (no reliable task-boundary timestamp available)
 - **Actual Wall-clock:** `UNKNOWN`
