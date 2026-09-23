@@ -40,7 +40,7 @@
 - 冻结官方 Runner `f61c738c72e51b77298cc1c14c7c6ebf4b6c527d` 已纳入仓库，并完成 source manifest 核对。
 - `baselines/s01-minimal` no-op harness 已通过 submission/preflight validation；完成 1 局 fresh Dev baseline，证据见 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)。
 - `skills/career-action-trace/SKILL.md` 已完成最小 Skill contract、安装/发现/加载与 bounded smoke 应用闭环，证据见 [S02-01 RESULT](../../experiments/S02-01-minimal-skill/RESULT.md)。
-- `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、runtime load 均通过，但 smoke 未建立游戏会话，Risk trigger/application 仍未验证，证据见 [S03-02 RESULT](../../experiments/S03-02-risk-review/RESULT.md)。
+- `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、runtime load 均通过。S03-02 smoke 当时未建立游戏会话；S03-14 已在一次 qualifying public trigger 上通过 Risk runtime correctness 验证，Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
 
 ## Current technical shape
 
@@ -48,7 +48,7 @@
 - 官方上游仓库、候选 repo SHA、包版本和运行合同见 [OFFICIAL_SOURCE_LOCK.md](OFFICIAL_SOURCE_LOCK.md)。
 - 本地 Runner 使用 `career_emu` named instance、career-emulator MCP 和 Dev 数据；重启后 preflight 已复验。
 - Single Agent + Multiple Skills 是当前起步路线；当前有 project-owned `career-action-trace` 与最小 `risk-review` Skill，尚无策略收益证据。
-- S03-01 已基于冻结 S01 单局证据形成一个公开警告驱动的最小 Risk Hypothesis；S03-02 已实现 Risk Skill，但 trigger/application 因 smoke 技术失败仍未验证。
+- S03-01 已基于冻结 S01 单局证据形成一个公开警告驱动的最小 Risk Hypothesis；S03-02 已实现 Risk Skill，其 smoke 因技术失败未验证 trigger/application；S03-14 已在一次 qualifying public trigger 上通过 Risk runtime correctness 验证，Risk effectiveness 仍 `NOT_PROVEN`。
 
 ## Known limitations / risks
 
