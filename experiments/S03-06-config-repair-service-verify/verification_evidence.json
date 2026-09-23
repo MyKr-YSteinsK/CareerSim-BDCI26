@@ -1,0 +1,98 @@
+{
+  "task_id": "S03-06",
+  "status": "COMPLETE",
+  "branch": "codex/s03-06-config-repair-service-verify",
+  "s03_parent_sha": "debbbc65c6912050565b2eff208c119c14c4988c",
+  "plan_contract_main_sha": "9052d68e2a6fa0af60faaad66014a1ba6cf455a1",
+  "governance_merge_sha": "5c0b3b6a8ee0d1f4a041fea6ad19da65e6ad87b3",
+  "ancestry": {"s03_parent": "PASS", "plan_contract_main": "PASS"},
+  "forensic_hold": {
+    "id": "FORENSIC_HOLD:S03-MCP-REGISTRATION",
+    "status": "ACTIVE",
+    "canonical_snapshot_dir": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\",
+    "files_checked": 5,
+    "bytes_and_sha256_match_s03_05_manifest": true
+  },
+  "config": {
+    "path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\config\\config.yaml",
+    "before_sha256": "34D2EED681D5C5DDB3919A805258B4F6A19A5C4F487FB2214B480BB1E899D66A",
+    "candidate_sha256": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "after_sha256": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "after_service_stop_sha256": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "before_bytes": 50088,
+    "after_bytes": 50121,
+    "repair_methods_attempted": 1,
+    "changed_semantic_paths": ["/mcp/servers/0/command"],
+    "command_before": "career-emulator-mcp",
+    "command_after": "D:\\CS\\CareerSim\\.venv\\Scripts\\career-emulator-mcp.exe",
+    "semantic_command_only": true,
+    "text_diff": "only line 1075 changed; that line CRLF to LF",
+    "newline_before": {"crlf": 1266, "bare_lf": 0},
+    "newline_after": {"crlf": 1265, "bare_lf": 1},
+    "candidate_evidence_dir": "D:\\CS\\CareerSim\\.local\\runtime\\s03-06-config-repair-service-verify\\",
+    "rollback": false,
+    "classification": "runtime-persistent but setup-overwritable"
+  },
+  "direct_mcp_preflight": {
+    "initialize": "PASS",
+    "list_tools": "PASS",
+    "exposed_tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"],
+    "tool_calls": 0
+  },
+  "service_lifecycle": {
+    "pre_state": "stopped; no PID; configured ports free",
+    "command": "jiuwenswarm-start.exe app --name career_emu",
+    "start_count": 1,
+    "restart_retry_count": 0,
+    "started_at": "2026-09-23T15:56:17.526691+08:00",
+    "instance_pid": 9236,
+    "stop_count": 1,
+    "stopped_at": "2026-09-23T15:59:33.863+08:00",
+    "final_state": "stopped; no PID; configured ports free; child processes exited"
+  },
+  "service_registration": {
+    "status": "PASS",
+    "source": "new runner.log add_resource_server events from real AgentServer startup",
+    "timestamps": ["2026-09-23T15:57:14.299189+08:00", "2026-09-23T15:58:07.753941+08:00"],
+    "server_name": "career-emulator",
+    "exposed_tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"],
+    "new_winerror_2_count": 0,
+    "tool_invocation_events": 0,
+    "agent_chat_count": 0,
+    "new_game_count": 0,
+    "take_action_count": 0,
+    "gameplay_count": 0
+  },
+  "provider_prewarm": {
+    "incidental_call": true,
+    "completed_usage_records": [
+      {
+        "timestamp": "2026-09-23T15:57:14.014780+08:00",
+        "model": "deepseek-flash",
+        "input_tokens": 200,
+        "output_tokens": 1,
+        "total_tokens": 201,
+        "cached_tokens": 0,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 200,
+        "reported_cost": null
+      }
+    ],
+    "reported_cost_reason": "not present in new runner/jiuwen/llm/server/startup logs",
+    "active_agent_chat_count": 0
+  },
+  "local_log_window": {
+    "evidence_path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-06-config-repair-service-verify\\service-window-analysis.json",
+    "runner_new_bytes": 113064,
+    "runner_new_sha256": "7BF073924677E2A01E057BD74F9B012D721A6C17AEFE39BFC6767EFADDC821AB",
+    "llm_new_bytes": 4190,
+    "llm_new_sha256": "002E80E34CEC164B90CEECA45E4E17FDD6EFA2AA18CB14FF2F44256121494FEF"
+  },
+  "project_preflight_guard_needed": "YES_AS_PROCEDURE",
+  "s03_07_readiness": "READY_FOR_ONE_RISK_RECOVERY_SMOKE",
+  "strategy_boundary": {
+    "risk_hypothesis": "ACTIVE",
+    "risk_effectiveness": "NOT_PROVEN",
+    "controlled_screening": "NOT_STARTED"
+  }
+}
