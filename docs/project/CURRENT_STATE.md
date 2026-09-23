@@ -22,8 +22,9 @@
 - S03-07: `BLOCKED_TECHNICAL`
 - S03-08: `BLOCKED_TECHNICAL` (branch evidence pending S03 Stage Review)
 - S03-09: `BLOCKED_TECHNICAL` (branch evidence pending S03 Stage Review)
+- S03-10: `BLOCKED_TECHNICAL` (branch evidence pending S03 Stage Review)
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-09 分支已完成两项 Skill 的本机 staging 与安装前快照；direct MCP 预检客户端在结果留存时出错，当前五工具集合未获验证，故未执行 install、service startup 或 Runner play。S03-08 的 worktree-local active-install 缺口尚未恢复；证据待 S03 Stage Review。
+- Current milestone: S03-10 标准 `play --submission` 已建立当前 worktree 的 active-install、加载两项 participant Skills，并在真实 AgentServer 验证 MCP 五工具注册；唯一一次 bounded play 因 gameplay provider 连接错误未进入 `new_game`，Risk correctness 仍未验证，证据待 S03 Stage Review。
 - Production/published version: none
 - Last verified: 2026-09-23
 
@@ -58,15 +59,16 @@
 - S03-07 服务级 MCP 与 direct 五工具预检通过；唯一 play 在 Runner 调用 `jiuwenswarm-start --list` 时失败，未创建 drive/game session、events、transcript 或 score report。没有 retry；共享服务已停止。启动期有一条 `deepseek-flash` prewarm usage（200 input / 1 output / 201 total tokens）；startup stderr 另有 10 条非致命 `UnicodeEncodeError`，策略效果仍 `NOT_PROVEN`。
 - S03-08 分支将 `.venv\Scripts` 仅前置到 Runner invocation 的进程 PATH；Runner 可解析 `jiuwenswarm-start`，真实 AgentServer 注册两次均成功并暴露五工具。唯一 Runner invocation 随后因 worktree-local active-install record 缺失，在 drive/game 前退出；没有安装、重试、CareerSim tool 或 gameplay。服务 clean stop；startup incidental prewarm 为 `deepseek-flash` 200 input / 1 output / 201 total tokens，cost 未报告。结果为 `BLOCKED_TECHNICAL`，待 S03 Stage Review；Risk effectiveness 仍 `NOT_PROVEN`。
 - S03-09 两次 direct preflight 客户端执行中，首次在 spawn 前因 stderr 接收器缺少 `fileno` 失败；第二次完成协议调用后在读取 stderr 时发生 `UnicodeDecodeError`，未保存五工具列表。门禁未通过后停止；install/service/play/game 均为 0，shared logs 与配置未变，Risk correctness 仍未验证。
+- S03-10 一次 clean service startup 中当前 AgentServer 三次注册 `career-emulator` 并暴露五工具，标准 play 建立了 active-install 与两项 Skills registry；唯一 play 窗口出现 16 条 `APIConnectionError`，score report `play_exit_code=1`，没有游戏 session、DB、transcript 或 CareerSim action。Runner usage 为 0，provider completed usage/cost 未获可靠记录；服务已停止，未重试，Risk correctness 仍未验证。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07、S03-08 保留技术失败记录；S03-06 服务级预检通过；S03-09 分支结果为技术阻塞、待 S03 Stage Review，S03 尚未完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07～10 保留技术失败记录；S03-06 服务级预检通过；S03-10 分支证据待 S03 Stage Review，S03 尚未完成。
 
 ## Next likely tasks
 
-1. 返回 S03 Stage Review，审阅 S03-09 direct MCP 预检的结果留存失败及尚未执行的 install/play；不得在本任务重试。
+1. 返回 S03 Stage Review，审阅 S03-10 标准 install 与服务级 MCP 注册已通过、但唯一 play 在游戏前遭遇 provider 连接失败的证据；不得在本任务重试。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material
