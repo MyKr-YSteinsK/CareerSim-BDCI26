@@ -26,8 +26,9 @@
 - S03-11: `COMPLETE_PENDING_STAGE_REVIEW` (provider preflight only; no game)
 - S03-12: `BLOCKED_TECHNICAL` (pre-game correction limit exceeded; Runner play/game not started; service stopped)
 - S03-13: `BLOCKED_TECHNICAL` (pre-play tooling STOP; service/play/game not started)
+- S03-14: `COMPLETE_PENDING_STAGE_REVIEW` (Risk runtime correctness PASS on one qualifying public trigger; the single play later reached its 180-second bound in month 9 without a final score)
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-11 将 S03-10 游戏前的 provider 异常定位到 TLS-start 连接层；S03-12/13 均未建立有效 game window，Risk correctness 仍未验证，S03-13 在最小 pre-play tooling gate 的 STOP 条件处结束，待 S03 Stage Review。
+- Current milestone: S03-11 将 S03-10 游戏前的 provider 异常定位到 TLS-start 连接层；S03-14 首次建立有效 game window，并在 qualifying public trigger 上通过 Risk runtime correctness 检查。该局后续到第 9 月时达到 180 秒运行上限且无 final score；Risk effectiveness 仍 `NOT_PROVEN`，controlled screening 仍未开始，待 S03 Stage Review。
 - Production/published version: none
 - Last verified: 2026-09-23
 
@@ -65,16 +66,17 @@
 - S03-10 一次 clean service startup 中当前 AgentServer 三次注册 `career-emulator` 并暴露五工具，标准 play 建立了 active-install 与两项 Skills registry；唯一 play 窗口出现 16 条 `APIConnectionError`，score report `play_exit_code=1`，没有游戏 session、DB、transcript 或 CareerSim action。Runner usage 为 0，provider completed usage/cost 未获可靠记录；服务已停止，未重试，Risk correctness 仍未验证。
 - S03-11 原始 traceback 将 S03-10 错误定位为 `httpcore` 的 `start_tls` 阶段连接失败、在 HTTP/provider 响应前；更底层 peer/TLS 原因与历史代理状态未知，不能归咎于特定代理或上游。当前 endpoint/model/config 未确认漂移；DNS/TCP/TLS/无凭据 HTTP 分层探测可达，同一 JiuwenSwarm provider adapter 的 `invoke` 与历史对应的 `stream` 各完成 1 次小请求（合计 66 input / 8 output / 74 total tokens，cache 0，reported cost 不可得）。无服务、Agent chat、CareerSim 工具或游戏；该预检不证明后续游戏或 Risk 策略正确性。
 - S03-13 复用 S03-12 provider freshness 与 MCP 注册先前 PASS；本任务确认 provider config/env identity 未漂移，但重复本地 PowerShell 聚合表达式解析问题达到 Plan STOP 条件，未启动 service/play、未请求 provider，也未建立游戏。Risk correctness 仍未验证。
+- S03-14 复用 S03-12 provider freshness，确认与 S03-13 的 provider/MCP identity 一致；一次 clean service startup 注册五个 CareerSim tools。唯一 Runner play 建立 1 个 game，完成 36 次 observe 与 35 次成功 take_action；公开违纪风险触发后，risk-review 经 Skill runtime 加载并在 action note 中输出唯一 ALLOW marker，S02 marker 与单 Agent action integrity 保持。Runner 后续在第 9 月达到 180 秒上限、play_exit_code=1、无 final score；startup incidental usage 为 200 input / 1 output / 201 total tokens，play usage/cost 不可得。Risk effectiveness 仍 `NOT_PROVEN`，待 S03 Stage Review。
 - S03-12 provider freshness gate 完成 1 次（37 tokens）；唯一 clean service start 中 AgentServer 注册 CareerSim MCP 五工具通过，并有 1 条 incidental startup prewarm usage（201 tokens）。服务已停止；pre-game correction guard 超限，Runner play、install、gameplay 和工具调用均为 0。Risk correctness 未验证，Risk effectiveness 仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07～10、S03-12/13 保留技术失败/未完成记录；S03-06 服务级预检通过；S03-11 provider preflight 通过；S03-11～13 结果待 S03 Stage Review，S03 尚未完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07～10、S03-12/13 保留技术失败/未完成记录；S03-06 服务级预检通过；S03-11 provider preflight 通过；S03-11～14 结果待 S03 Stage Review，S03 尚未完成。
 
 ## Next likely tasks
 
-1. 返回 S03 Stage Review，审阅 S03-12/13 的阻断证据；不得将复用的 provider/MCP 先前 PASS 视为本次 Risk correctness smoke。
+1. 返回 S03 Stage Review，审阅 S03-12/13 的阻断证据与 S03-14 的 runtime correctness 证据；不得将本次 correctness PASS 或先前 provider/MCP PASS 解释为 Risk 策略收益。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material

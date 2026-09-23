@@ -1,0 +1,137 @@
+{
+  "task_id": "S03-14",
+  "identity": {
+    "branch": "codex/s03-14-risk-correctness-live-smoke",
+    "parent_sha": "82eb85da15de0a6304a898f61ba6731dc0b93557",
+    "merged_origin_main_sha": "984676f7c423b534b5c419b56b67244231e88b12",
+    "pre_delivery_merge_commit": "6180699a488e1c86ae9727b716480644529bad30",
+    "origin_main_is_ancestor": true,
+    "s03_parent_is_ancestor": true
+  },
+  "forensic_hold": {
+    "name": "FORENSIC_HOLD:S03-MCP-REGISTRATION",
+    "status": "ACTIVE / UNCHANGED",
+    "modified_by_task": false
+  },
+  "hard_gates": {
+    "runtime_prestate": {
+      "service": "stopped",
+      "target_listeners": 0,
+      "unknown_active_game": false,
+      "worktree_venv_exists": false,
+      "mcp_config_sha256_matches_s03_13": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+      "instance_env_sha256_matches_s03_13": "99842010A7B39B038AFE05009B75BC259BFEA34CFF40D93C9D41325167E8B8CD"
+    },
+    "staging": {
+      "static_validation": "PASS",
+      "validation_runs": 1,
+      "mode": "agent",
+      "skills": ["career-action-trace", "risk-review"],
+      "manifest_sha256": "2CDCB89C7E0853BD74D09509539315546A55B8E9D62E853AA00CA4DDBC8B7ECF",
+      "career_action_trace_sha256": "5246D7F00CA7FD087C874700B9B724A29992499BCF1AA66BAB66D8CE37810124",
+      "risk_review_sha256": "CDCA984D990BCE77AF40CABC4CEAB84263CCCC11AF0DCB75B1765314A3176FD5"
+    },
+    "provider_freshness": {
+      "decision": "REUSED",
+      "source": "S03-12 PASS; S03-13 identity check unchanged",
+      "new_freshness_requests": 0
+    },
+    "service": {
+      "start_count": 1,
+      "launcher_pid": 31240,
+      "instance_pid": 26036,
+      "started_at": "2026-09-23T21:02:46.077336+08:00",
+      "registration": "PASS",
+      "registration_observed_at": "2026-09-23T21:03:03+08:00",
+      "winerror_2": false,
+      "exposed_tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"],
+      "stop_count": 1,
+      "stop_cli_pid": 33884,
+      "stop_cli_exit_code": 0,
+      "stopped_at": "2026-09-23T21:08:30.316+08:00",
+      "final_state": "stopped",
+      "final_target_listeners": 0
+    }
+  },
+  "live_run": {
+    "runner_play_count": 1,
+    "standalone_install_count": 0,
+    "runner_managed_install_active_install_reload": true,
+    "active_install_prestate": false,
+    "active_install_record_exists": true,
+    "active_install_sha256": "77FC1469490524D052742F7E15B24B3ECA22269DAF71468517C36DE0FA040473",
+    "gameplay_retry_count": 0,
+    "fresh_game_count": 1,
+    "runner_process_id": 33540,
+    "runner_started_at": "2026-09-23T21:04:41.9726431+08:00",
+    "score_report_created_at": "2026-09-23T21:07:44+08:00",
+    "wrapper_reported_process_end_time": null,
+    "drive_session_id": "career-sim-runner-8ce7ae2200d3",
+    "game_session_id": "4e36f0a1dec4451a8c673998c22f30e4",
+    "new_game_calls": 1,
+    "observe_calls": 36,
+    "take_action_calls": 35,
+    "successful_take_action_results": 35,
+    "latest_observed_month": 9,
+    "timeout_s": 180,
+    "play_exit_code": 1,
+    "termination_reason": null,
+    "full_game_completed": false,
+    "final_score_available": false
+  },
+  "risk_correctness": {
+    "qualifying_public_trigger": true,
+    "trigger_example": "current public screenshot-spread misconduct warning with a legal mitigation choice",
+    "risk_review_skill_runtime_load": "PASS",
+    "verified_trigger_state": "ALLOW",
+    "verified_trigger_action_result": "success",
+    "verified_trigger_note_has_exactly_one_s03_marker": true,
+    "verified_trigger_note_preserves_s02_marker": true,
+    "risk_marked_action_notes": 8,
+    "risk_state_counts": {"ALLOW": 6, "WARN": 2, "RECONSIDER": 0, "UNKNOWN": 0},
+    "all_risk_marked_notes_have_exactly_one_s03_marker": true,
+    "all_35_action_notes_have_s02_marker": true,
+    "successful_submitters": 1,
+    "risk_skill_submitted_actions": 0,
+    "duplicate_successful_action_submissions": 0
+  },
+  "provider_usage": {
+    "incidental_service_start_usage_records": 1,
+    "incidental_usage": {
+      "timestamp": "2026-09-23T21:03:02+08:00",
+      "model": "deepseek-flash",
+      "input_tokens": 200,
+      "output_tokens": 1,
+      "total_tokens": 201,
+      "cached_tokens": 0,
+      "cache_hit_tokens": 0,
+      "cache_miss_tokens": 200,
+      "reported_cost": "UNAVAILABLE"
+    },
+    "gameplay_usage": {
+      "agent_activity_observed": true,
+      "runner_reported_input_output_total": [0, 0, 0],
+      "runner_reported_cost": 0.0,
+      "usage_totals_reliable": false,
+      "input_output_total_cache_by_model_cost": "UNAVAILABLE"
+    },
+    "provider_errors_observed": "none in inspected evidence"
+  },
+  "decision": "RISK_RUNTIME_CORRECTNESS_PASS",
+  "strategy_boundary": {
+    "risk_effectiveness": "NOT_PROVEN",
+    "controlled_screening": "NOT_STARTED"
+  },
+  "raw_artifacts": [
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/runner-play.stdout.log", "bytes": 1241, "sha256": "0905322F89277C007B79337EEE5E6932D4F3B53D8F3ACC193951D23ABFCC7B87"},
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/runner-play.stderr.log", "bytes": 270, "sha256": "3E5CFDD5044F32C5D97177DB55AD6989173055126E8D097F4CD6800B89F4C774"},
+    {"path": "D:/CS/CareerSim/.local/worktrees/s03-14-risk-correctness-live-smoke/.career_sim_runner/career_emu/outputs/local-s03-14-risk-correctness-live-smoke/20260923T130444Z/score_report.json", "bytes": 1254, "sha256": "123ACEF655EE5C30CEA8C309C5CE3C4E7C99705D9649E7A0880A2FDE8B3B4F17"},
+    {"path": "D:/CS/CareerSim/.local/worktrees/s03-14-risk-correctness-live-smoke/.career_sim_runner/career_emu/outputs/local-s03-14-risk-correctness-live-smoke/20260923T130444Z/events-20260923T130444Z.jsonl", "bytes": 365106, "sha256": "C12C77BDC5738BBF3A0913AA3CAD9786DFAF7CB9D3156D736C1621AF0E5FCD2B"},
+    {"path": "D:/CS/CareerSim/.local/worktrees/s03-14-risk-correctness-live-smoke/.career_sim_runner/career_emu/outputs/local-s03-14-risk-correctness-live-smoke/20260923T130444Z/transcript-20260923T130444Z.log", "bytes": 64540, "sha256": "2E3A5C95A83014047C2822BE0A04E16200A69F681DD372CBC1281B734F7FFD0C"},
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/service-start.stdout.log", "bytes": 416644, "sha256": "EB3A2B1389166F736546C7409E99384D0F38B043F9741E365051C75E5B3378D5"},
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/service-start.stderr.log", "bytes": 235660, "sha256": "D868E3554ECAABACEFFA003C14A5DCF6D9BEB680B1C4D87FFF476B012D015BE9"},
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/service-stop.stdout.log", "bytes": 113, "sha256": "565528A6FD7D6B7D1D29F6D344367ACEC765BD054ED881A6C6374CF400C1618F"},
+    {"path": "D:/CS/CareerSim/.local/runtime/s03-14-risk-correctness-live-smoke/service-stop.stderr.log", "bytes": 382, "sha256": "CA4588F73343E13D35A77FE66CF7F63327B3EC123AE2078A6715530383F46E05"},
+    {"path": "C:/Users/Yukis/.jiuwenswarm-instances/career_emu/logs/logs/llm.log", "bytes": 2864027, "sha256": "568F2A31BDF97959D852227DE5E725BF938545107E5CDC2DAA86BCD3DEE81A2B"}
+  ]
+}
