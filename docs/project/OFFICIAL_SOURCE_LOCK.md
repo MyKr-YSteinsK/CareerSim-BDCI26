@@ -2,7 +2,7 @@
 
 状态：当前官方事实与运行合同入口。更新日期：2026-09-22（北京时间）。
 
-本文件取代 v1.0。区分官方声明、源码/元数据事实、项目执行约定和实际运行证据；出现冲突时重新核验来源，不以文档版本号代替官方证据。**当前没有已验证的本地运行环境或有效基线。**
+本文件取代 v1.0。区分官方声明、源码/元数据事实、项目执行约定和实际运行证据；出现冲突时重新核验来源，不以文档版本号代替官方证据。S01 本地环境与最小 baseline 技术闭环已有执行证据，见 [ENVIRONMENT](ENVIRONMENT.md) 与 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)；当前验收状态见 [CURRENT_STATE](CURRENT_STATE.md)，不由 Source Lock 代管。
 
 ## 1. Competition Identity and Repository
 
@@ -25,13 +25,13 @@
 | 官方项目声明 | 指定 SHA 的 pyproject 和 uv.lock 顶层为 `>=3.11,<4`。 | 所有 Python 3.x 都能安装完整依赖。 |
 | 已核验直接依赖约束交集 | 模拟器 1.0.1 为 `>=3.11,<4`；JiuwenSwarm 0.2.4b3 为 `>=3.11,<3.14`；因此必须满足 `>=3.11,<3.14`。 | 所有传递依赖、OS、架构均兼容，或 lock 可无条件解析。 |
 | S01 计划环境 | Windows / PowerShell，优先选 Python 3.12；具体补丁版本、系统 build/架构及 uv 版本在执行时记录。此为项目选择。 | 已完成安装、模型调用或对局。 |
-| 实际验证环境 | **NOT_VERIFIED**。由 S01 的 environment record 填入实际值和证据。 | 用计划值填写 PASS。 |
+| 实际验证环境 | 锁定时为 **NOT_VERIFIED**；后续实际值与验证范围见 [ENVIRONMENT](ENVIRONMENT.md)。 | 用计划值填写 PASS，或推广到所有平台/运行配置。 |
 
 依赖元数据核验日期：2026-09-22。[JiuwenSwarm 0.2.4b3](https://pypi.org/pypi/jiuwenswarm/0.2.4b3/json)、[career-emulator 1.0.1](https://pypi.org/pypi/career-emulator/1.0.1/json)。若冻结 lock 与包元数据或安装结果冲突，记录错误并停止受影响步骤；不得静默改 lock、换版本后仍沿用原基线身份。
 
 ## 3. Reproducible Environment Lock
 
-以下是 S01 必须落盘的实际运行记录字段，不是已经具备的测量结果：
+以下保留 S01 执行前的记录要求；表中“当前/待验证/未加载”为锁定时状态，不代表最新执行状态。后续实测见 ENVIRONMENT 与各实验 RESULT，字段要求继续适用。
 
 | 字段 | 当前状态 / 填写要求 |
 | --- | --- |
@@ -53,6 +53,8 @@
 5. 依赖、题库、模型映射或提交内容变化即形成新配置，重新建立可比较基线；官方环境变更需要记录证据与影响，不永久拒绝更新。
 
 ## 4. Model Identity
+
+以下本地配置/映射状态为锁定时快照；后续配置与请求/usage 标识见 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)。底层 serving version 仍为 `PARTIALLY_VERIFIED`，不以请求成功推断完全映射。
 
 | 层级 | 证据及当前边界 |
 | --- | --- |
@@ -102,12 +104,13 @@ solution/
 
 公开事实：48 个月模拟，月度事件，季度 Energy 分配与主行动，半年绩效反馈，多维结局；部分参数与风险触发条件不公开。[公开手册](https://career-emulator.readthedocs.io/handbook.html)、[失败与结局](https://career-emulator.readthedocs.io/failure-and-ending.html)，核验日期：2026-09-22。不得编造隐藏阈值。
 
-保留未知：隐藏 Test 分布、完整云端限额/超时与评分细则、本机实际兼容性、Multi Agent/Memory 收益、最优 Skill 拆分。公开实验只能评估可观测行为及泛化迹象，不能确认完整隐藏分布。尚无证据的内容标记 Unknown / Hypothesis。
+保留未知：隐藏 Test 分布、完整云端限额/超时与评分细则、已记录验证范围之外的兼容性、Multi Agent/Memory 收益、最优 Skill 拆分。公开实验只能评估可观测行为及泛化迹象，不能确认完整隐藏分布。尚无证据的内容标记 Unknown / Hypothesis。
 
 ## 7. Change Record
 
 | 版本 / 日期 | 原因与证据 | 影响范围 |
 | --- | --- | --- |
 | v1.1 / 2026-09-22 | H-01：依赖元数据约束小于 repo 声明；H-02：Makefile 的隐式更新；H-03：官方赛程/交付/评审合同；M-01：模型、模式、来源适用边界。各节附证据。 | S01 环境选择、版本/数据记录、提交验收、事实摘要及后续实验可比性。架构路线不变。 |
+| v1.1 语境修正 / 2026-09-22 | 依据已合入的 ENVIRONMENT、S01-03 RESULT 和 CURRENT_STATE，修正全局“未验证”陈述，限定历史快照语境。 | 仅修复事实归属；官方来源、冻结 SHA、包版本、运行/提交合同不变；未重新外部取证。 |
 
 后续变更继续记录原因、新证据和影响范围。实际环境或模型映射尚未验证时，不得把此文档改写成执行成功证明。

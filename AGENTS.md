@@ -1,89 +1,47 @@
 # AGENTS.md
 
-> 只保存 CareerSim 仓库独有的长期工程边界；通用执行流程由适用的 Codex Skill 提供。
+> CareerSim 长期边界；通用流程由 `frugal-dev-runner` / Task 管理。
 
-## 1. Project identity
+## 1. 身份与事实归属
 
-- Repository / package: CareerSim BDCI26 development repository
-- Primary branch: `main`
-- Primary runtime/platform: Windows / PowerShell + CPython 3.12.13；官方冻结环境、Runner 与最小 baseline 技术闭环已验证
-- Key project-state files:
-  - `docs/project/CURRENT_STATE.md`
-  - `docs/project/OFFICIAL_SOURCE_LOCK.md`
-  - `docs/project/ARCHITECTURE_DECISIONS.md`
+- `MyKr-YSteinsK/CareerSim-BDCI26`；`main`；Windows / PowerShell。`docs/project/`：`CURRENT_STATE.md` 管状态，`ARCHITECTURE_DECISIONS.md` 管架构，`OFFICIAL_SOURCE_LOCK.md` 管官方事实、冻结身份和运行/提交合同；实测见 `ENVIRONMENT.md` / 实验 RESULT。
+- 分支增量标记 `IN_FLIGHT_EVIDENCE`，不冒充 `MERGED_FACT`；历史按当时语境解读。官方身份变更须新证据/可比较配置，不覆盖旧结果。
+- 凭据、`.env`、cache、日志、DB、会话和本机生成状态不得提交；仅提交去敏的必要证据。不得静默改 frozen Runner、依赖或 `uv.lock`。
 
-## 2. Protected / generated / private boundaries
+## 2. 本机 Workspace
 
-- `docs/project/OFFICIAL_SOURCE_LOCK.md` 是官方事实与运行合同的证据入口；没有新证据不得静默改写版本、来源或运行边界。
-- `.env`、密钥、token、凭据、runtime cache、日志、数据库和本机生成状态属于私有或生成内容，不得提交。
-- 官方上游仓库是来源依据；本仓库的代码、配置和实验结果必须保留可追溯的版本与结果记录。
-- 共享 `career_emu` 未验证隔离前，对局串行；不得并行运行可能互相污染的会话，也不得依赖跨局残留记忆。
-- 安装依赖、启动官方 Runner、远程模型调用、比赛提交等 live / external 操作必须属于明确任务范围，并保存必要证据。
+- 固定 `D:\CS\CareerSim\.local\`：`worktrees/<task>` 放 checkout，`runtime/<task-or-run>` 放可控输出/留存证据，`upstream/<identity>` 放官方参考，`scratch/<task>` 放可再生派生物；整体 gitignored。
+- 禁止新建 `D:\CS\CareerSim-*` 临时目录；旧路径不自动迁删。迁移另立任务，记路径映射/hash 并修复引用。
+- 例外：checkout 内 `.career_sim_runner/`、根 `.venv`、用户目录 `.jiuwenswarm-instances/career_emu` 保持既定路径/ignore；RESULT 记录位置，不为归置改冻结 runtime。唯一取证来源不得放 scratch。
 
-## 3. Repository command semantics
+## 3. Worktree / stacked task
 
-- 当前尚未建立项目专用 test、typecheck、lint、build 或 release 命令；不得把仓库初始化检查冒充运行验证。
-- 官方环境命令、依赖状态、模型映射和 baseline 结果必须记录实际版本、参数、时间与产物路径。
-- Git 基本检查：`git status --short --branch`、`git diff --check`；新增验证命令需说明其实际覆盖的失败模式。
+- 实质改动用 `codex/<task>` + `.local/worktrees/<task>`；一 branch 一 worktree。独立任务基于 fetch 后最新 `origin/main`；依赖未合入代码/证据/状态的任务基于父任务已验证 HEAD，不从 main 复制或拼接临时状态。
+- Task/RESULT 记录 Base SHA（起点）、Parent branch/SHA（独立为 none）、依赖/验证边界；技术失败证据不等于实现通过。
+- 父先合、子后合。父合入后子核对 ancestry/剩余 diff，必要时 merge main 复验；squash 等祖先不等价由 Main 决定整合，不重写已推送历史。父被拒绝/重做时依赖子停工并重定基线。
+- 不设数字链长；每层说明依赖。跨 Stage、父方向未定或整链难以评审时，先返 Main 决定合入/截断。
+- 执行/review/复现/取证期间为 active。COMPLETE 不等于可删；未合入/待审、唯一 raw、未决取证、依赖路径的 child 或 Main 留存要求，须记原因、责任 Task、解除条件/下次 review 点，不以“以后有用”保留。
+- 清理获授权、review 有结论、改动已交付且 raw/引用/child 路径依赖解除后，才 `git worktree remove`；保留必要 commit，不强删。runtime 不随 worktree 删除；child 仅依赖 commit 不阻止移除父目录。`git worktree prune` 只清已确认 stale metadata，先 dry-run，不例行执行。
 
-## 4. Version / delivery / release model
+## 4. Runtime Evidence Lifecycle
 
-- `main` 是主分支；后续有实质改动时使用独立分支或 worktree，不强推、不重写已推送历史。
-- 初始仓库提交消息固定为 `chore: initialize CareerSim development repository`。
-- `origin` 指向私有 GitHub 仓库；只有在本地验证通过且任务授权范围内才 push。
-- 官方 repo SHA、包版本和模型别名以 Source Lock 为候选身份；发生变化时建立新的可比较配置，不覆盖旧证据。
-- 当前没有产品发布版本、部署端点或正式 release 流程。
+- Canonical：去敏 RESULT/manifest/compact evidence；记 Experiment/Run/session、版本/config、假设/修改/基线、次数/时间、score/token/runtime、失败/决策、路径/bytes/hash；未知标明，缺失 usage 不记零。
+- Raw：transcript/events、服务日志、DB/session、provider usage、临时配置留本地。失败未决、结论依赖 raw、摘要不能独立解释或唯一复验来源须留存；hash 不替代源文件。
+- `FORENSIC_HOLD` 在 RESULT/manifest 记原因、最小文件/时间窗/路径/hash、责任 Task/解除者、解除条件/复查点；安装/清理可能覆盖时先授权保全快照，不以事后状态冒充历史。
+- Evidence Closure：责任 Task 提供独立可审结论/compact 证据，核实必要来源可恢复或无需复析，复现/child 等依赖已解除；Main/Stage 接受并记 hold 解除。之后仅授权清理可删指定 raw，记范围/复验限制；hash 或 COMPLETE 不自动关闭。
 
-## 5. Project-specific invariants
+## 5. Task 权限 / shared runtime / retry
 
-- S01 官方环境、Runner 和最小 baseline 技术闭环已完成；当前从最小 Agent Skill Contract 开始正式 Skill 骨架与执行闭环。
-- 起步路线是 Single Agent + Multiple Skills。Memory / Planning / Risk / Swarm 仍是设计或实验方向，不得在 baseline 未建立前提前建设复杂系统。
-- Main Hub 维护全局状态和阶段推进；Stage 负责一个有边界的任务；Codex 负责仓库实现与证据回传。Codex 不自行宣布 Stage 完成。
-- 重要实验记录 `Experiment ID`、假设、修改、基线、版本、运行次数、结果、失败分类和决策；单次运行不能单独决定主路线。
-- 事实、推断、假设和待验证事项必须分开表达；不得把未知阈值、模型映射或未运行结果写成事实。
-- 不为未来可能使用的功能提前引入复杂框架、共享状态系统或大量治理文件。
+- `READ_ONLY`：读 repo/Git/必要去敏证据、离线分析；不改 repo/runtime、不调用 provider。
+- `REPOSITORY_WRITE`：范围内 patch、offline/static 验证、授权 commit/push；不隐含 `LIVE_RUN`，validate 不保证无副作用。
+- `LIVE_RUN` 须 Task 明列依赖/Skill/submission 安装、服务/MCP、provider、game、smoke/benchmark、比赛提交的允许动作、次数/成本及停止条件；未列不授权，服务启动可能调用模型。
+- `career_emu` 未证隔离前，安装/reload/对局/共享 DB/config 写入均串行；先确认独占窗口。worktree 不等于隔离，不依赖跨局残留。
+- 无副作用确定性读取可有限 retry。`new_game`、`take_action`、install、provider/submission、共享写入或 MCP 调用遇超时/断连/partial/unknown outcome：先查状态/日志，在授权内 observe 核对；仍不明则停并留证，不盲重发。
+- live 授权不等于无限 retry；bounded smoke 达上限或触发 TECHNICAL_FAILURE 停止条件即返回 review，不为取得成功重跑。
 
-## 6. Skill routing
+## 6. 架构与返回 Review
 
-- 普通仓库开发使用 `frugal-dev-runner`。
-- 比赛 Agent Skills：当前从最小 Skill Contract 开始；不先建设复杂 Memory / Planning / Risk / Swarm。
-- `experiment-manager`：只有实验开始反复执行、手工记录重复时建立。
-- `framework-debugger`：只有 JiuwenSwarm、emulator 或 runtime 排障出现重复模式时建立。
-- `submission-auditor`：接近首次正式比赛提交时建立。
-- 不因“以后可能有用”提前创建辅助 Skill。
-
-## 7. Repository-specific stop conditions
-
-- Source Lock 与实际官方仓库、依赖或运行结果冲突时，先记录冲突和证据，不静默换版本或声称兼容。
-- 缺少必要凭据、权限、外部服务或用户产品决策时停止在可验证边界，并明确未完成部分。
-- 任何扩大到环境安装、比赛运行、提交、并行 runtime 或架构重构的动作，都需要新的明确任务范围。
-
-## TASK_RESULT presentation contract
-
-Codex 最终回传必须使用清晰的 Markdown，不得输出未格式化的字段堆叠。
-
-格式要求：
-
-- 第一行使用二级标题：`## TASK_RESULT`
-- 主要状态字段使用 Markdown 列表，字段名加粗：
-  - `- **Status:** ...`
-  - `- **Branch:** ...`
-  - `- **Commit:** ...`
-- `Evidence`、`Verification`、`Changed Files`、`Problems`、`Next Recommended Action`
-  等较大部分使用三级标题。
-- 命令、路径、SHA、版本号和状态常量使用反引号。
-- 多项结果使用列表或表格，不压成连续纯文本。
-- 保持内容简洁，不为了排版增加重复说明。
-- TASK_RESULT 的字段语义不得因排版而改变。
-- 如果具体 Task 已规定更严格的 `TASK_RESULT` schema，以具体 Task 为准。
-- 双语显示，写好中文，比如TASK_RESULT|任务结果
-
-## Progress / ETA reporting contract
-
-仅对预计超过数分钟、多阶段、安装、构建、测试或实验任务启用；短小任务不为了形式制造进度播报。
-
-- 开始执行前给出简短阶段计划，列出主要 Phase、预计耗时、ETA 区间和置信度。
-- 主要 Phase 完成、进入耗时步骤、计划明显偏离、出现 blocker / retry / 新风险，或长时间没有阶段变化时，简短汇报已完成、当前、下一步、ETA 和 blocker。
-- ETA 是估计而非保证；优先使用范围，如 `5–10 min`，无法可靠估计时写 `Unknown`。
-- 下载、安装、远程 API 和长实验不得伪造精确剩余时间；不根据 token、工具调用次数、输出行数伪造完成百分比，也不把工作量不同的 Phase 强行按等比例表达。
-- 汇报保持简洁，服务于判断已完成什么、正在做什么、还剩什么、最长步骤和是否阻塞。
+- Single Agent + Multiple Skills；唯一提交者用当前 session/新鲜观察，回执后更新状态。设计/安装/加载/应用/收益分开举证；单局不决定路线，不编造隐藏阈值。架构变化依 ADR：Hypothesis → Experiment → Decision。
+- Main Hub 管全局/验收，Stage 管任务，Codex 实现回传。验收/路线改变、假设推翻、超范围 blocker、runtime 异常、额外 live/retry 预算、Source Lock/依赖漂移、parent 失效、需改 frozen Runner 或建辅助 Skill 时返 Main/Stage；不自行扩 scope 或宣布 Stage COMPLETE。
+- 辅助 Skill 触发：重复记账→`experiment-manager`，重复框架排障→`framework-debugger`，首次提交前→`submission-auditor`；触发不等于授权，不提前建 Memory/Planning/Swarm 或治理框架。
+- TASK_RESULT：基线/父链、交付身份、验证边界、证据路径/hold、live 次数/失败/未知、review 决策；区分 FACT / INFERENCE / RECOMMENDATION。格式/ETA 归 Task/通用 Skill。
