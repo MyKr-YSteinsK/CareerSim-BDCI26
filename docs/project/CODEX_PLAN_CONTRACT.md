@@ -71,85 +71,36 @@ Plan 不得：
 
 **Codex autonomy applies to implementation decisions, not scope expansion.** Plan 应在证据支持的范围内提供细节：冻结目标和边界、推荐有依据的实现方向、将未决事项明确委托调查。
 
-## Codex 模型路由
+## Plan Artifact Boundary
 
-每份最终交给 Codex 的 Plan 都必须比较以下四档：
+最终直接交给 Codex 的 Plan artifact 只应包含完成任务所需的工程信息。Planner-side 的执行模型选择、模型比较、额度分析、模型耗时比较及选择模型的理由属于 Planner 对用户的建议，不得写入 Codex Plan artifact。Codex execution model selection and quota/time comparison are Planner-side user guidance and are intentionally outside this repository contract and outside the Codex Plan artifact；相关 Planner 规则由 ChatGPT Project Instructions 管理，本合同不定义模型清单、额度、耗时或模型选择方式。
 
-- `GPT-6 Luna Max`
-- `GPT-6 Sol High`
-- `GPT-6 Astra Medium`
-- `GPT-6 Astra XHigh`
+Plan 仍须保留必要的 `Decision: DELEGATED_TO_CODEX`，明确由 Codex 调查的技术问题、判断边界、Decision Criteria 与 Required Verification。
 
-默认不推荐 `Sol Max` 或 `Astra Max`。模型选择至少考虑 Plan clarity、delegated decision 的数量与重要性、investigation / debugging 深度、module span、context size、hidden constraints、regression risk、test / experiment duration 与返工成本。**不得仅因文件数量多就升级模型。**
+## TASK_RESULT 执行指标
 
-默认路由倾向：
+Codex 的 `TASK_RESULT` 应尽量包含以下执行指标，供 Planner 后续校准时间预测；这些指标是执行记录，不替代任务验收。
 
-- **Luna Max**：Plan 清晰、主要是执行、重要 delegated decision 很少，或优先节省额度时，作为默认推荐。
-- **Sol High**：正式开发的常规档；Plan 明确，且需要正常的 repository investigation、debugging 和 engineering judgment。
-- **Astra Medium**：存在重要自主判断，且任务重要性、时间压力、返工成本或提高一次成功率的价值足以支持更高推理投入。
-- **Astra XHigh**：关键 root cause 未知、架构关系未知、多模块关系复杂，或需要深度 investigation 与大量自主决策。
+### EXECUTION_METRICS｜执行指标
 
-## Wall-clock 时间估算
+- Model Used: `<value / UNKNOWN>`
+- Reasoning Effort: `<value / UNKNOWN>`
+- Started At: `<timestamp / UNKNOWN>`
+- Finished At: `<timestamp / UNKNOWN>`
+- Actual Wall-clock: `<duration / UNKNOWN>`
 
-对四档模型分别给出完整 wall-clock 区间，范围从：
+填写规则：
 
-`Plan handoff → investigation → implementation → tests / verification → necessary fixes → Git checks → TASK_RESULT`
-
-估算必须计入适用的不可压缩时间，包括下载、build、test、experiment、provider、CareerSim 与其他 runtime。用区间表达，例如 `20–35 min`，并注明时间估算可信度和主要不确定来源。
-
-可按以下关系估算：
-
-`Total Time ≈ model reasoning / operation time + incompressible build/test/experiment/runtime time`
-
-不得假定更强推理模型总是更快。它可能减少错误路径与返工，也可能增加单次推理时间。
-
-## Relative quota pressure
-
-在没有更新且可靠的官方 Codex usage 数据前，使用以下临时相对 compute / quota pressure proxy：
-
-| Model | Relative quota pressure |
-| --- | ---: |
-| GPT-6 Luna Max | `≈1×` |
-| GPT-6 Sol High | `≈4–7×` |
-| GPT-6 Astra Medium | `≈15–25×` |
-| GPT-6 Astra XHigh | `≈25–40×` |
-
-这些数值表示相对计算 / 额度压力，**不是实际收费倍率**。未来获得新的可靠官方 usage 信息后，普通 Plan 或 Task 不得静默修改本合同；是否更新由 Main Hub / governance review 决定。
-
-## Required Final Plan Appendix
-
-每份最终 Codex Plan 都必须在正文后附以下二级标题，并在其下填写比较表与要求字段：
-
-`## Codex Execution Recommendation｜Codex 执行建议`
-
-比较表必须列全四档模型，并按当前 Plan 填入具体估时、返工风险与适合度：
-
-| 模型 | 预计总耗时 | 相对额度压力 | 返工风险 | 适合度 |
-| --- | --- | --- | --- | --- |
-| GPT-6 Luna Max | 区间 | `≈1×` | 低 / 中 / 高，并简述依据 | 简述 |
-| GPT-6 Sol High | 区间 | `≈4–7×` | 低 / 中 / 高，并简述依据 | 简述 |
-| GPT-6 Astra Medium | 区间 | `≈15–25×` | 低 / 中 / 高，并简述依据 | 简述 |
-| GPT-6 Astra XHigh | 区间 | `≈25–40×` | 低 / 中 / 高，并简述依据 | 简述 |
-
-表后必须给出：
-
-- **默认推荐：** 选择一档并简述原因；
-- **如果最赶时间：** 选择一档，或说明并列推荐的理由；
-- **如果最缺额度：** 选择一档；
-- **如果最重视一次成功率：** 在该权衡有意义时给出选择。
-
-还必须注明：
-
-- **本 Plan 的 Codex 自主决策程度：** 低 / 中 / 高；
-- 自主决策程度为中或高时，列出最重要的 `DELEGATED_TO_CODEX` 决策；
-- **时间估计可信度：** 高 / 中 / 低，并简述主要不确定来源。
-
-估时和路由推荐必须对应本 Plan 的证据、风险与 runtime，不得只套用通用排名。
+1. 只填写能从当前任务上下文或可靠执行记录中确认的真实值。
+2. 无法可靠读取 `Model Used` 或 `Reasoning Effort` 时填写 `UNKNOWN`，不得推测。
+3. `Started At`、`Finished At` 与 `Actual Wall-clock` 应尽量依据任务执行时的真实时间记录，不应事后估算补写。
+4. 指标缺失或部分为 `UNKNOWN` 不影响任务本身验收。
+5. 这些指标仅供 Planner 后续校准，不参与功能正确性判定。
 
 ## Stage 继承与指令一致性
 
-所有未来新 Stage 的启动 Prompt 都必须继承本合同，无需全文重复，但须明确包含类似以下规则：
+所有未来新 Stage 的启动 Prompt 都必须继承本 Codex-facing Plan Authoring Contract，无需全文重复，但须明确包含类似以下规则：
 
 > 本 Stage 的所有 Codex Plan 遵循 Project Codex Plan Authoring Contract：`docs/project/CODEX_PLAN_CONTRACT.md`。
 
-如果 Project Instructions 也包含同一合同，仓库文件是工程可审计版本，Project Instructions 是 Planner 对话侧约束；两者必须保持一致，不得有意设置冲突规则。
+Stage 继承的内容包括 Plan 决策分级、证据纪律、Scope、验证与停止条件；Planner-side 的模型、额度和时间建议由 Project Instructions 管理，不属于仓库合同。

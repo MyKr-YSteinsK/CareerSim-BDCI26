@@ -43,6 +43,6 @@
 
 - Single Agent + Multiple Skills；唯一提交者用当前 session/新鲜观察，回执后更新状态。设计/安装/加载/应用/收益分开举证；单局不决定路线，不编造隐藏阈值。架构变化依 ADR：Hypothesis → Experiment → Decision。
 - Main Hub 管全局/验收，Stage 管任务，Codex 实现回传。验收/路线改变、假设推翻、超范围 blocker、runtime 异常、额外 live/retry 预算、Source Lock/依赖漂移、parent 失效、需改 frozen Runner 或建辅助 Skill 时返 Main/Stage；不自行扩 scope 或宣布 Stage COMPLETE。
-- Codex Task Plan 的编写、FROZEN / RECOMMENDED / DELEGATED_TO_CODEX 决策分级及模型路由遵循 `docs/project/CODEX_PLAN_CONTRACT.md`；Task 可收紧要求，不得放宽其中的 FROZEN / governance 边界。
+- Codex Task Plan artifact 的 FROZEN / RECOMMENDED / DELEGATED_TO_CODEX 决策分级及工程执行边界遵循 `docs/project/CODEX_PLAN_CONTRACT.md`；Task 可收紧要求，不得放宽其中的 FROZEN / governance 边界。
 - 辅助 Skill 触发：重复记账→`experiment-manager`，重复框架排障→`framework-debugger`，首次提交前→`submission-auditor`；触发不等于授权，不提前建 Memory/Planning/Swarm 或治理框架。
 - TASK_RESULT：基线/父链、交付身份、验证边界、证据路径/hold、live 次数/失败/未知、review 决策；区分 FACT / INFERENCE / RECOMMENDATION。格式/ETA 归 Task/通用 Skill。
