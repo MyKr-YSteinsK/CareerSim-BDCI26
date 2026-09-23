@@ -211,8 +211,8 @@
     "model_used": "UNKNOWN",
     "reasoning_effort": "UNKNOWN",
     "started_at": "2026-09-23T09:16:13Z",
-    "finished_at": "2026-09-23T10:02:11Z",
-    "actual_wall_clock": "45m 58s (recorded after branch push and remote verification)"
+    "finished_at": "2026-09-23T10:03:25Z",
+    "actual_wall_clock": "47m 12s (at final remote SHA and clean-worktree verification)"
   },
   "next_recommended_action": "S03 Stage Review"
 }
