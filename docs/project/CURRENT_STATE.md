@@ -11,8 +11,9 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S03`
-- S03: `IN_PROGRESS`
+- Current Stage: `S03 accepted; awaiting next formal Stage or independent task assignment`
+- S03: `COMPLETE`
+- S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
 - S03-02: `BLOCKED_TECHNICAL`
 - S03-03: `COMPLETE_FRAMEWORK_OR_RUNNER_DEBUG_NEEDED`
@@ -26,11 +27,16 @@
 - S03-11: `COMPLETE_PENDING_STAGE_REVIEW` (provider preflight only; no game)
 - S03-12: `BLOCKED_TECHNICAL` (pre-game correction limit exceeded; Runner play/game not started; service stopped)
 - S03-13: `BLOCKED_TECHNICAL` (pre-play tooling STOP; service/play/game not started)
-- S03-14: `COMPLETE_PENDING_STAGE_REVIEW` (Risk runtime correctness PASS on one qualifying public trigger; the single play later reached its 180-second bound in month 9 without a final score)
-- S03_CLOSEOUT_CANDIDATE: `READY_FOR_MAIN_REVIEW` ([closeout evidence](../../experiments/S03-CLOSEOUT/RESULT.md))
-- FORENSIC_HOLD:S03-MCP-REGISTRATION: `ACTIVE` (closure assessment `FORENSIC_HOLD_READY_TO_CLOSE`; formal release pending Main / S03 Stage Review; raw evidence retained)
+- S03-14: `COMPLETE_ACCEPTED_BY_MAIN` (one observed Risk runtime-correctness path accepted as Stage evidence; no final score or performance claim)
+- S03_CLOSEOUT_CANDIDATE: `ACCEPTED_BY_MAIN` ([closeout evidence](../../experiments/S03-CLOSEOUT/RESULT.md))
+- FORENSIC_HOLD:S03-MCP-REGISTRATION: `RELEASED_BY_MAIN`
+- RAW_FORENSIC_EVIDENCE: `RETAINED`
+- RAW_EVIDENCE_CLEANUP: `NOT_AUTHORIZED`
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-14 在一次 qualifying public trigger 上通过 Risk runtime correctness 检查（`IN_FLIGHT_EVIDENCE`）；该局后续到第 9 月时达到 180 秒运行上限且无 final score。S03-15 已形成 closeout candidate 待 Main review；S03 保持 `IN_PROGRESS`，FORENSIC_HOLD 正式解除待 Main / S03 Stage Review。Risk effectiveness 仍 `NOT_PROVEN`，controlled screening 仍未开始。
+- CONTROLLED_SCREENING: `NOT_STARTED`
+- MEMORY: `NOT_IMPLEMENTED`
+- PLANNING: `NOT_IMPLEMENTED`
+- Current milestone: Main 已接受 S03 Stage（`S03_STAGE_ACCEPTANCE = PASS`）。S03-14 correctness evidence 限于一次观察到的 runtime path；该局第 9 月达到 180 秒运行上限且无 final score，不构成 Risk performance / effectiveness 证据。FORENSIC_HOLD 已由 Main 解除，但 raw evidence 保留且 cleanup 未授权。
 - Production/published version: none
 - Last verified: 2026-09-23
 
@@ -42,14 +48,14 @@
 - 冻结官方 Runner `f61c738c72e51b77298cc1c14c7c6ebf4b6c527d` 已纳入仓库，并完成 source manifest 核对。
 - `baselines/s01-minimal` no-op harness 已通过 submission/preflight validation；完成 1 局 fresh Dev baseline，证据见 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)。
 - `skills/career-action-trace/SKILL.md` 已完成最小 Skill contract、安装/发现/加载与 bounded smoke 应用闭环，证据见 [S02-01 RESULT](../../experiments/S02-01-minimal-skill/RESULT.md)。
-- `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、runtime load 均通过。S03-02 smoke 当时未建立游戏会话；S03-14 已在一次 qualifying public trigger 上通过 Risk runtime correctness 验证，并观察到唯一 successful action submitter 为 Single Agent（`IN_FLIGHT_EVIDENCE`）。Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
+- `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、load 均有证据。S03-02 smoke 当时未建立游戏会话；Main 已接受 S03-14 一次 qualifying public trigger 上的 runtime correctness 证据，并确认该次运行的唯一 successful action submitter 为 Single Agent。Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
 
 ## Current technical shape
 
 - Windows / PowerShell 开发目标；项目根目录使用被 `.gitignore` 排除的 `.venv`，依赖由官方 `pyproject.toml`/`uv.lock` 管理。
 - 官方上游仓库、候选 repo SHA、包版本和运行合同见 [OFFICIAL_SOURCE_LOCK.md](OFFICIAL_SOURCE_LOCK.md)。
 - 本地 Runner 使用 `career_emu` named instance、career-emulator MCP 和 Dev 数据；重启后 preflight 已复验。
-- Single Agent + Multiple Skills 是当前起步路线；当前有 project-owned `career-action-trace` 与最小 `risk-review` Skill。S03-14 单次运行观察到 Risk Skill 未提交动作、Single Agent 为唯一 successful submitter（`IN_FLIGHT_EVIDENCE`）；尚无策略收益或 controlled-screening 证据，Memory / Planning 仍未实现。
+- Single Agent + Multiple Skills 是当前起步路线；当前有 project-owned `career-action-trace` 与最小 `risk-review` Skill。Main 接受的 S03-14 evidence 仅覆盖一次 observed path：Risk Skill 未提交动作，Single Agent 为唯一 successful submitter；尚无策略收益或 controlled-screening 证据，Memory / Planning 未实现。
 
 ## Known limitations / risks
 
@@ -67,18 +73,18 @@
 - S03-10 一次 clean service startup 中当前 AgentServer 三次注册 `career-emulator` 并暴露五工具，标准 play 建立了 active-install 与两项 Skills registry；唯一 play 窗口出现 16 条 `APIConnectionError`，score report `play_exit_code=1`，没有游戏 session、DB、transcript 或 CareerSim action。Runner usage 为 0，provider completed usage/cost 未获可靠记录；服务已停止，未重试，Risk correctness 仍未验证。
 - S03-11 原始 traceback 将 S03-10 错误定位为 `httpcore` 的 `start_tls` 阶段连接失败、在 HTTP/provider 响应前；更底层 peer/TLS 原因与历史代理状态未知，不能归咎于特定代理或上游。当前 endpoint/model/config 未确认漂移；DNS/TCP/TLS/无凭据 HTTP 分层探测可达，同一 JiuwenSwarm provider adapter 的 `invoke` 与历史对应的 `stream` 各完成 1 次小请求（合计 66 input / 8 output / 74 total tokens，cache 0，reported cost 不可得）。无服务、Agent chat、CareerSim 工具或游戏；该预检不证明后续游戏或 Risk 策略正确性。
 - S03-13 复用 S03-12 provider freshness 与 MCP 注册先前 PASS；本任务确认 provider config/env identity 未漂移，但重复本地 PowerShell 聚合表达式解析问题达到 Plan STOP 条件，未启动 service/play、未请求 provider，也未建立游戏。Risk correctness 仍未验证。
-- S03-14 复用 S03-12 provider freshness，确认与 S03-13 的 provider/MCP identity 一致；一次 clean service startup 注册五个 CareerSim tools。唯一 Runner play 建立 1 个 game，完成 36 次 observe 与 35 次成功 take_action；公开违纪风险触发后，risk-review 经 Skill runtime 加载并在 action note 中输出唯一 ALLOW marker，S02 marker 与单 Agent action integrity 保持。Runner 后续在第 9 月达到 180 秒上限、play_exit_code=1、无 final score；startup incidental usage 为 200 input / 1 output / 201 total tokens，play usage/cost 不可得。Risk effectiveness 仍 `NOT_PROVEN`，待 S03 Stage Review。
+- S03-14 复用 S03-12 provider freshness，确认与 S03-13 的 provider/MCP identity 一致；一次 clean service startup 注册五个 CareerSim tools。唯一 Runner play 建立 1 个 game，完成 36 次 observe 与 35 次成功 take_action；公开违纪风险触发后，risk-review 经 Skill runtime 加载并在 action note 中输出唯一 ALLOW marker，S02 marker 与单 Agent action integrity 保持。Main 接受该次 runtime correctness 作为 Stage evidence；Runner 在第 9 月达到 180 秒上限、play_exit_code=1、无 final score，因此 Risk effectiveness 仍 `NOT_PROVEN`，无 performance / generalization 结论。
 - S03-12 provider freshness gate 完成 1 次（37 tokens）；唯一 clean service start 中 AgentServer 注册 CareerSim MCP 五工具通过，并有 1 条 incidental startup prewarm usage（201 tokens）。服务已停止；pre-game correction guard 超限，Runner play、install、gameplay 和工具调用均为 0。Risk correctness 未验证，Risk effectiveness 仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07～10、S03-12/13 保留技术失败/未完成记录；S03-06 服务级预检通过；S03-11 provider preflight 通过；S03-11～14 结果及 S03-15 closeout candidate 待 Main / S03 Stage Review。S03 保持 `IN_PROGRESS`。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03 Stage 已由 Main Hub 正式验收为 `COMPLETE` / `S03_STAGE_ACCEPTANCE = PASS`。S03 历史技术失败记录保留；FORENSIC_HOLD 已解除，但 raw forensic evidence retained、cleanup 未授权。当前无 S03 active work。
 
 ## Next likely tasks
 
-1. Main / S03 Stage Review 审阅 closeout candidate、S03-12/13 阻断证据、S03-14 runtime correctness 证据及 FORENSIC_HOLD 解除建议；未接受前 S03 保持 `IN_PROGRESS`。
-2. 若 Main 接受 S03 closeout，后续另行授权完整 score end-to-end checkpoint；不得将 correctness PASS 或既有 provider/MCP PASS 解释为 Risk 策略收益。继续保持 serving version `PARTIALLY_VERIFIED`、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
+1. `SCORE-01｜当前 submission 完整跑分闭环`：仅做 full end-to-end score checkpoint；须由独立任务授权。单局分数仍不得解释为 Risk effectiveness 证据。
+2. 继续保持 serving version `PARTIALLY_VERIFIED`、Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED` 与 shared runtime 串行约束；Memory / Planning 仍未实现。
 
 ## Workflow / delivery facts that are currently material
 

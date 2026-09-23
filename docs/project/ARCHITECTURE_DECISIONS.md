@@ -58,7 +58,7 @@ Decision
 
 ## AD-005 — Skill Contract（设计合同与已验证能力边界）
 
-Memory 与 Planning 仍是**候选设计方向，尚未实现**。Risk Control 已有最小 `risk-review` Skill 实现；S03-14 在一次 qualifying public trigger 上验证了 runtime load、Risk marker 与 action correctness（`IN_FLIGHT_EVIDENCE`，待 S03/Main review）。这不证明 strategy effectiveness、score benefit 或泛化。以下合同用于界定职责，不要求拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
+Memory 与 Planning 仍是**候选设计方向，尚未实现**。Risk Control 已有最小 `risk-review` Skill 实现；Main 接受 S03-14 在一次 qualifying public trigger 上验证的 runtime load、Risk marker 与 action correctness，作为 S03 Stage evidence。该证据限于一次 observed runtime path，不证明 strategy effectiveness、score benefit 或泛化。以下合同用于界定职责，不要求拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
 
 AD-001 中“成本低、可验证”是选择起步路线的理由，不是本项目实测优势。S01 使用官方示例验证闭环，不证明 Memory / Planning 已实现，也不证明 Risk Control 的策略收益。
 
@@ -130,4 +130,4 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 - 开发期经验只有经过评估、标识来源与版本、明确归入提交包后才作为可交付知识。因果未定的失败保留“未定”，不自动归因为计划/执行/随机中的某一类。
 - 规划、风险提示和状态整理的顺序可由同一个 Agent 按需组合。只在取得实验依据后决定是否拆分、更换存储或引入角色协同；不为当前设计合同创建复杂持久化或并行系统。
 
-验收边界：S03-14 对一次 qualifying public trigger 的 Risk runtime load / marker / action correctness 提供 `IN_FLIGHT_EVIDENCE`；不证明策略表现、score benefit 或泛化。Memory / Planning 的实现、状态更新与失败恢复仍未验证。保留 AD-003 的 Swarm 实验准入方向和 AD-004 的 Hypothesis → Experiment → Decision 流程。
+验收边界：Main 接受的 S03-14 证据仅覆盖一次 qualifying public trigger 的 Risk runtime load / marker / action correctness；不证明策略表现、score benefit 或泛化。Memory / Planning 的实现、状态更新与失败恢复仍未验证。Single Agent 唯一 action submitter 的边界不变。保留 AD-003 的 Swarm 实验准入方向和 AD-004 的 Hypothesis → Experiment → Decision 流程。
