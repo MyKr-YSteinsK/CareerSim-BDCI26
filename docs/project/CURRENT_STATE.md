@@ -20,8 +20,9 @@
 - S03-05: `BLOCKED_TECHNICAL`
 - S03-06: `COMPLETE_PENDING_STAGE_REVIEW`
 - S03-07: `BLOCKED_TECHNICAL`
+- S03-08: `BLOCKED_TECHNICAL` (branch evidence pending S03 Stage Review)
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-07 唯一 Runner play 尝试在连接 AgentServer 前因 Runner 进程无法解析裸命令 `jiuwenswarm-start` 而以 `[WinError 2]` 退出；没有进入 game，未重试。S03-06 的绝对 MCP 命令和服务级注册仍通过
+- Current milestone: S03-08 分支的一次 Runner 尝试已验证 process-local PATH 解析和真实 MCP 注册，但在 drive/game 前因新 worktree 缺少 Runner-local active-install record 而退出；没有进入 game，未重试。该分支证据待 S03 Stage Review；服务已停止，S03-07 未重跑。
 - Production/published version: none
 - Last verified: 2026-09-23
 
@@ -54,15 +55,16 @@
 - S03-05 的 5 份共享日志已在 `.local/runtime/forensic-hold/S03-MCP-REGISTRATION/pre-s03-05/` 原样保全且 hash 匹配。配置补丁后严格文本比较不符，仅 command 字段变化未获验证；配置已按原 SHA 恢复。真实 AgentServer 注册仍未验证，`FORENSIC_HOLD` 继续 ACTIVE。
 - S03-06 复核 5 份取证快照完整；目标 command 补丁导致该行 CRLF→LF，但 YAML parsed semantic diff 仅 `/mcp/servers/0/command`。修复后一次 clean service startup 中真实 AgentServer 两次报告 MCP 注册成功并暴露五个 CareerSim tools，随后优雅停止；`FORENSIC_HOLD` 仍 ACTIVE。该修复会被 Runner setup 覆写，不能视为永久 Runner fix。
 - S03-07 服务级 MCP 与 direct 五工具预检通过；唯一 play 在 Runner 调用 `jiuwenswarm-start --list` 时失败，未创建 drive/game session、events、transcript 或 score report。没有 retry；共享服务已停止。启动期有一条 `deepseek-flash` prewarm usage（200 input / 1 output / 201 total tokens）；startup stderr 另有 10 条非致命 `UnicodeEncodeError`，策略效果仍 `NOT_PROVEN`。
+- S03-08 分支将 `.venv\Scripts` 仅前置到 Runner invocation 的进程 PATH；Runner 可解析 `jiuwenswarm-start`，真实 AgentServer 注册两次均成功并暴露五工具。唯一 Runner invocation 随后因 worktree-local active-install record 缺失，在 drive/game 前退出；没有安装、重试、CareerSim tool 或 gameplay。服务 clean stop；startup incidental prewarm 为 `deepseek-flash` 200 input / 1 output / 201 total tokens，cost 未报告。结果为 `BLOCKED_TECHNICAL`，待 S03 Stage Review；Risk effectiveness 仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07 保留技术失败记录；S03-06 服务级预检通过，S03-07 等待 S03 Stage Review，S03 尚未完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07 保留技术失败记录；S03-06 服务级预检通过；S03-08 分支结果为技术阻塞、待 S03 Stage Review，S03 尚未完成。
 
 ## Next likely tasks
 
-1. 返回 S03 Stage review，审阅 S03-07 在 Runner 启动前的 `jiuwenswarm-start` 命令解析失败、已通过的 MCP 注册与一次 startup prewarm usage；决定后续处理。S03-07 不重跑。
+1. 返回 S03 Stage Review，审阅 S03-08 的本地 active-install record 缺失、已通过的 process-local PATH 与 MCP 注册，以及一次 startup prewarm usage；不得重跑该 smoke。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material

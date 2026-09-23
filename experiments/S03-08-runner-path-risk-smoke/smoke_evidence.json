@@ -1,0 +1,218 @@
+{
+  "task_id": "S03-08",
+  "status": "BLOCKED_TECHNICAL",
+  "decision": "BLOCKED_TECHNICAL",
+  "attempt_id": "S03-08-attempt-20260923T173712+08:00",
+  "identity": {
+    "branch": "codex/s03-08-runner-path-risk-smoke",
+    "parent_sha": "723be420cbd394b70c072598ae98da3c14ee41fa",
+    "origin_main_sha": "73a69668812f28076abcebd0a90e1cf71b20f64c",
+    "plan_contract_blob_sha": "1a7a7b67735ee99d3cd9f2521913da884df8538a",
+    "merge_commit": "4967e1e7733d31f063a8f5539248114451c9f283",
+    "parent_ancestor": true,
+    "origin_main_ancestor": true,
+    "frozen_runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "forensic_hold": {
+    "id": "FORENSIC_HOLD:S03-MCP-REGISTRATION",
+    "status": "ACTIVE / UNCHANGED",
+    "snapshot_root": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05",
+    "snapshot_file_count": 5,
+    "hashes_match_s03_04_manifest": true,
+    "files": [
+      {"name": "runner.log", "bytes": 650760, "sha256": "9CC66E0E9A704BBB3E2C8888AFD3D2BD713EDEFE01715E694FA5882C7A8644A5"},
+      {"name": "jiuwen.log", "bytes": 759215, "sha256": "C0FDB90400162502F7436126E939E1FF59BE3F3ADC02FCBAD3BCB9E44666AB06"},
+      {"name": "agent_server.log", "bytes": 508934, "sha256": "447AF83684C86F81BBAF3A45C46EF4BC9336A12CACC01265EE485E55DED24AF4"},
+      {"name": "full.log", "bytes": 584121, "sha256": "5793C28CF5D10043B95733FB8AADDBC623409D1809776820550227E5F6C0EC9B"},
+      {"name": "server.log", "bytes": 17151, "sha256": "8478E11348413A871ABCBE4C313D60D088FBAC796FA4F5F604B3F559F7EFD413"}
+    ],
+    "status_after_task": "ACTIVE / UNCHANGED"
+  },
+  "preflight": {
+    "instance": "career_emu",
+    "initial_service_state": "stopped; no matching process; configured ports free",
+    "mcp_config_path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\config\\config.yaml",
+    "mcp_config_sha256_before_after": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "mcp_command": "D:\\CS\\CareerSim\\.venv\\Scripts\\career-emulator-mcp.exe",
+    "direct_initialize": "PASS",
+    "direct_list_tools": "PASS",
+    "exposed_tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"],
+    "direct_tool_calls": 0,
+    "shared_project_skill_registry": {
+      "status": "PASS",
+      "enabled_project_skills": ["career-action-trace", "risk-review"],
+      "registry_sha256": "2B2CF7959580DFFF6755DC58616858411DB5F4F99B714B744BA979F95EE9BD60",
+      "canonical_content_matches_after_newline_normalization": true,
+      "career_action_trace_sha256": "C18EB9A56F45A2FA0EA04B2FB7917F428B9F738921E2CF83F62E81C336FB7151",
+      "risk_review_sha256": "F40AA671FDAAB7DBB8ADDB6CD1D78DAA2C5F3B6F0341D65EDDC95EC4F6D4EE89"
+    },
+    "worktree_local_active_install_record": "MISSING; discovered by the sole Runner invocation",
+    "worktree_env_file_present": false
+  },
+  "runner_path_repair": {
+    "method": "Temporarily prepend D:\\CS\\CareerSim\\.venv\\Scripts to the Runner process PATH while preserving inherited PATH as suffix",
+    "scope": "temporary process environment; restored after spawn",
+    "resolution_before": "NOT_FOUND",
+    "resolution_after": "D:\\CS\\CareerSim\\.venv\\Scripts\\jiuwenswarm-start.EXE",
+    "expected_path_case_insensitive_match": true,
+    "list_exit_code": 0,
+    "career_emu_entry_present": true,
+    "inherited_path_preserved": true,
+    "user_path_changed": false,
+    "system_path_changed": false,
+    "frozen_runner_changed": false
+  },
+  "service_lifecycle": {
+    "start_count": 1,
+    "restart_retry_count": 0,
+    "launcher_pid": 16684,
+    "started_at": "2026-09-23T17:33:14.9581205+08:00",
+    "mcp_registrations": [
+      {
+        "timestamp": "2026-09-23T17:33:37.379562+08:00",
+        "status": "success",
+        "tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"]
+      },
+      {
+        "timestamp": "2026-09-23T17:34:31.538837+08:00",
+        "status": "success",
+        "tools": ["new_game", "observe", "take_action", "check_latest_logs", "show_employee_handbook"]
+      }
+    ],
+    "new_winerror2_count": 0,
+    "career_sim_tool_calls": 0,
+    "stop_count": 1,
+    "stopped_at": "2026-09-23T17:40:34.3514563+08:00",
+    "stop_exit_code": 0,
+    "final_state": "stopped; no matching process; configured listeners = 0"
+  },
+  "smoke": {
+    "runner_invocation_count": 1,
+    "command": "python -m career_sim_runner play --db <instance-configured DB path> --timeout-s 180 --quiet",
+    "python_path": "D:\\CS\\CareerSim\\.venv\\Scripts\\python.exe",
+    "python_version": "3.12.13",
+    "started_at": "2026-09-23T17:37:12.1906323+08:00",
+    "timeout_s": 180,
+    "continue_existing_game": false,
+    "retry_count": 0,
+    "process_exit_code": null,
+    "exact_wall_runtime_seconds": null,
+    "technical_error": {
+      "type": "RuntimeError",
+      "message": "No active install found. Pass --submission or run install first.",
+      "stage": "headless_play_main before validate_environment / drive",
+      "cause": "new task worktree lacks Runner-local active_install.json"
+    },
+    "stdout_bytes": 0,
+    "stderr_bytes": 1582,
+    "stderr_sha256": "567784A545A7F78013CB05BD01F59836BD3AF9FF2D8990323E54D9F8B604A9F6",
+    "drive_session_started": false,
+    "local_last_drive_session_marker_written": true,
+    "marker_path": "D:\\CS\\CareerSim\\.local\\worktrees\\s03-08-runner-path-risk-smoke\\.career_sim_runner\\career_emu\\last_drive_session.txt",
+    "marker_bytes": 32,
+    "marker_sha256": "F052ED0CEC26190426E6C3352E373FDCF732DC09A521C2672B067257ED0B3E0A",
+    "marker_semantics": "Runner-local preallocated conversation ID only; no AgentServer drive/chat or game session began",
+    "fresh_game_count": 0,
+    "game_session_id": null,
+    "configured_database_created": false,
+    "gameplay_window": "NOT_STARTED",
+    "new_game_calls": 0,
+    "observe_calls": 0,
+    "take_action_calls": 0
+  },
+  "risk_application": {
+    "valid_game_window": false,
+    "qualifying_trigger": "NOT_APPLICABLE",
+    "risk_review_skill_load": "NOT_REACHED",
+    "risk_state": "NOT_REACHED",
+    "public_evidence": "NOT_REACHED",
+    "original_candidate": null,
+    "final_candidate": null,
+    "s03_risk_marker": "NOT_OBSERVED",
+    "s02_skill_marker": "NOT_OBSERVED"
+  },
+  "action_integrity": {
+    "successful_submitter_count": 0,
+    "canonical_take_action_calls": 0,
+    "rejected_alias_calls": 0,
+    "duplicate_successful_actions": 0
+  },
+  "provider_usage": {
+    "startup_prewarm_records": [
+      {
+        "timestamp": "2026-09-23T17:33:35.856317+08:00",
+        "model": "deepseek-flash",
+        "input_tokens": 200,
+        "output_tokens": 1,
+        "total_tokens": 201,
+        "cached_tokens": 0,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 200,
+        "reported_cost": null
+      }
+    ],
+    "gameplay_completed_records": 0,
+    "gameplay_usage": null,
+    "available_total_usage": {"input_tokens": 200, "output_tokens": 1, "total_tokens": 201},
+    "cost_available": false,
+    "agent_chat_count": 0
+  },
+  "raw_evidence_root": "D:\\CS\\CareerSim\\.local\\runtime\\s03-08-runner-path-risk-smoke",
+  "raw_artifacts": [
+    {"file": "direct-preflight.json", "bytes": 482, "sha256": "53CA4858EAD51492917EF396F0E54A42DAFCB95000524095198C1DC34147EE40"},
+    {"file": "gameplay-analysis.json", "bytes": 3518, "sha256": "C74DA0A6060FC356249DEF74D7B0DDF903764FD66B2C957CBE3B38F89912BCCB"},
+    {"file": "gameplay-jiuwen.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "gameplay-llm.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "gameplay-log-baseline.json", "bytes": 1734, "sha256": "E4B83595288E6A89014B819A5882EF19009C448E3AD8775A1D30E653E0B08102"},
+    {"file": "gameplay-runner.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "gameplay-server.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "gameplay-sys_operation.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "post-stop-analysis.json", "bytes": 3304, "sha256": "8476F09722AB53CCA7A0D034665DF8A910E9A08AD9A3258FDB13E5AB0F9CAF6F"},
+    {"file": "post-stop-jiuwen.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "post-stop-llm.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "post-stop-runner.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "post-stop-server.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "post-stop-sys_operation.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "runner-invocation.json", "bytes": 857, "sha256": "0CD75414B4FEE91BCEDC1EFAB4A43BD039D084CB823A652733E5B462DEF6AAF4"},
+    {"file": "runner-path-preflight.json", "bytes": 621, "sha256": "3A3C138CE3E82F814C189C0F163029F9BA01C9796FE9FB50C6476D7355FCAB59"},
+    {"file": "runner-play.stderr.log", "bytes": 1582, "sha256": "567784A545A7F78013CB05BD01F59836BD3AF9FF2D8990323E54D9F8B604A9F6"},
+    {"file": "runner-play.stdout.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
+    {"file": "service-lifecycle.json", "bytes": 645, "sha256": "5C34A4D120629CC9361767A1DEEE4C82BB7A756824BBCD11D90B8A8087497442"},
+    {"file": "service-start.stderr.log", "bytes": 53961, "sha256": "A84CB4415CFE64B064A8B10B3F8C7D3314ABBB789A7491BCFED12875823FDCF7"},
+    {"file": "service-start.stdout.log", "bytes": 171815, "sha256": "65C524FC05845A66ADD2DAB7D865A4E6F6F0B4893389E8CCD0EE3F24567866A6"},
+    {"file": "service-stop.json", "bytes": 662, "sha256": "A85F49B233EA1D4207622E85668E4C8ECFA375124C61FD7E331C8028C31851F4"},
+    {"file": "service-stop.stderr.log", "bytes": 382, "sha256": "3F0E27ED09B53B2B44413C88B7C9FD5FE853BBE7C2AD10788646CDCAF94F319B"},
+    {"file": "service-stop.stdout.log", "bytes": 113, "sha256": "3A64F0739C883558C7425C105413E46276F4EEDEE89EA33AA36D4EC0F2C408AD"},
+    {"file": "shared-log-baseline.json", "bytes": 2011, "sha256": "8066F504D2124FAB77005ADEE50353EBB494BBBA2F6CD794B39EE88EDF26DDE0"},
+    {"file": "startup-analysis.json", "bytes": 3333, "sha256": "406FFFA80DE4677BD46AE4BD2D236306B21E51E449DB5846A8507D54742E4450"},
+    {"file": "startup-jiuwen.log", "bytes": 50380, "sha256": "15533A08A9744EEA2EF0C8E246152D592484D857F32D7B78A4AB326FCB2F9FEE"},
+    {"file": "startup-llm.log", "bytes": 4190, "sha256": "1CDFAA8B95C3DA2129A54815C61137E4F7D8CB454573149518CE3A50750DAADB"},
+    {"file": "startup-runner.log", "bytes": 113069, "sha256": "A5D1ACCB8F0C3A573B3FA28AA895A6B59CFE958C26802F4220CAE5324EF631E2"},
+    {"file": "startup-server.log", "bytes": 2421, "sha256": "D01BAA70AA438F817CBDAF464F9742B43F8E30FEB4E47D17940D593A183708AF"},
+    {"file": "startup-sys_operation.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"}
+  ],
+  "verification": {
+    "parent_ancestry": "PASS",
+    "origin_main_ancestry": "PASS",
+    "forensic_snapshot_hashes": "PASS (5/5)",
+    "uv_lock_check": "PASS",
+    "frozen_runner_uv_lock_both_skills_unchanged": true,
+    "direct_mcp_preflight": "PASS",
+    "service_mcp_registration": "PASS",
+    "runner_path_resolution": "PASS",
+    "runner_local_active_install_gate": "FAIL; missing record; invocation stopped before game",
+    "user_system_path_unchanged": true,
+    "final_matching_processes": 0,
+    "final_configured_listeners": 0,
+    "risk_smoke_correctness": "NOT_REACHED",
+    "strategy_boundary": {"risk_effectiveness": "NOT_PROVEN", "controlled_screening": "NOT_STARTED"}
+  },
+  "execution_metrics": {
+    "model_used": "UNKNOWN",
+    "reasoning_effort": "UNKNOWN",
+    "started_at": "2026-09-23T09:16:13Z",
+    "finished_at": "2026-09-23T10:01:00Z",
+    "actual_wall_clock": "44m 47s (through final content and verification)"
+  },
+  "next_recommended_action": "S03 Stage Review"
+}
