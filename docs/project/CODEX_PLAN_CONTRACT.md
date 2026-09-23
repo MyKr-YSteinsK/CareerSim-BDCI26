@@ -77,6 +77,26 @@ Plan 不得：
 
 Plan 仍须保留必要的 `Decision: DELEGATED_TO_CODEX`，明确由 Codex 调查的技术问题、判断边界、Decision Criteria 与 Required Verification。
 
+## TASK_RESULT 执行指标
+
+Codex 的 `TASK_RESULT` 应尽量包含以下执行指标，供 Planner 后续校准时间预测；这些指标是执行记录，不替代任务验收。
+
+### EXECUTION_METRICS｜执行指标
+
+- Model Used: `<value / UNKNOWN>`
+- Reasoning Effort: `<value / UNKNOWN>`
+- Started At: `<timestamp / UNKNOWN>`
+- Finished At: `<timestamp / UNKNOWN>`
+- Actual Wall-clock: `<duration / UNKNOWN>`
+
+填写规则：
+
+1. 只填写能从当前任务上下文或可靠执行记录中确认的真实值。
+2. 无法可靠读取 `Model Used` 或 `Reasoning Effort` 时填写 `UNKNOWN`，不得推测。
+3. `Started At`、`Finished At` 与 `Actual Wall-clock` 应尽量依据任务执行时的真实时间记录，不应事后估算补写。
+4. 指标缺失或部分为 `UNKNOWN` 不影响任务本身验收。
+5. 这些指标仅供 Planner 后续校准，不参与功能正确性判定。
+
 ## Stage 继承与指令一致性
 
 所有未来新 Stage 的启动 Prompt 都必须继承本 Codex-facing Plan Authoring Contract，无需全文重复，但须明确包含类似以下规则：
