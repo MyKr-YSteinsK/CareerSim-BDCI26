@@ -56,11 +56,11 @@ Decision
 
 ------------------------------------------------------------------------
 
-## AD-005 — Skill Contract（设计合同，尚未实现）
+## AD-005 — Skill Contract（设计合同与已验证能力边界）
 
-Risk Control、Memory、Planning 当前均为**设计能力方向**，不是已经实现或验证有效的工程能力。以下名称用于界定职责，不要求现在拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
+Memory 与 Planning 仍是**候选设计方向，尚未实现**。Risk Control 已有最小 `risk-review` Skill 实现；S03-14 在一次 qualifying public trigger 上验证了 runtime load、Risk marker 与 action correctness（`IN_FLIGHT_EVIDENCE`，待 S03/Main review）。这不证明 strategy effectiveness、score benefit 或泛化。以下合同用于界定职责，不要求拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
 
-AD-001 中“成本低、可验证”是选择起步路线的理由，不是本项目实测优势。S01 使用官方示例验证闭环，不证明以下能力已被实现。
+AD-001 中“成本低、可验证”是选择起步路线的理由，不是本项目实测优势。S01 使用官方示例验证闭环，不证明 Memory / Planning 已实现，也不证明 Risk Control 的策略收益。
 
 ### Memory / Structured State Board
 
@@ -104,7 +104,7 @@ Failure Fallback: 退回当前合法选项与短期目标，明确计划不可�
 
 ### Risk Control / Risk Gate
 
-Skill Name: `risk-review`（候选能力名，未创建文件）
+Skill Name: `risk-review`（已创建：[`skills/risk-review/SKILL.md`](../../skills/risk-review/SKILL.md)；一次 runtime correctness 证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)）
 
 Purpose: 检查候选行动的合法性、资源约束及公开失败方向，暴露风险与收益的取舍。
 
@@ -118,7 +118,7 @@ State Read: 同 session 最新观察、规划建议、公开规则及标注为�
 
 State Write: 本局决策记录中的风险意见；不修改环境状态、不把推测的失败阈值保存为事实。
 
-Can Submit Action: No。当前是建议性约束；尚无代码级强制拦截实现。
+Can Submit Action: No。Skill 只提供风险建议，不调用 `take_action`；S03-14 单次运行中唯一 successful action submitter 是 Single Agent（35 次成功提交，`risk-review` 提交数为 0）。这是该次 runtime path 的 correctness 证据，不是普遍强制执行或策略收益证明。
 
 Failure Fallback: 状态过期或选项不明时请求重新观察；分析不可得时明确返回 Unknown。仅在合法且依据充分时建议保守替代，不为凑出动作虚构规则。
 
@@ -130,4 +130,4 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 - 开发期经验只有经过评估、标识来源与版本、明确归入提交包后才作为可交付知识。因果未定的失败保留“未定”，不自动归因为计划/执行/随机中的某一类。
 - 规划、风险提示和状态整理的顺序可由同一个 Agent 按需组合。只在取得实验依据后决定是否拆分、更换存储或引入角色协同；不为当前设计合同创建复杂持久化或并行系统。
 
-验收边界：本轮只验证合同字段齐全、职责不冲突；实际 Skill 触发、状态更新、失败恢复及收益均未验证。保留 AD-003 的 Swarm 实验准入方向和 AD-004 的 Hypothesis → Experiment → Decision 流程。
+验收边界：S03-14 对一次 qualifying public trigger 的 Risk runtime load / marker / action correctness 提供 `IN_FLIGHT_EVIDENCE`；不证明策略表现、score benefit 或泛化。Memory / Planning 的实现、状态更新与失败恢复仍未验证。保留 AD-003 的 Swarm 实验准入方向和 AD-004 的 Hypothesis → Experiment → Decision 流程。
