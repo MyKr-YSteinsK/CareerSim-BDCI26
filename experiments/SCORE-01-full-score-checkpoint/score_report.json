@@ -1,0 +1,86 @@
+{
+  "submission_name": "local-score-01-full-score-checkpoint",
+  "submission_dir": "D:\\CS\\CareerSim\\.local\\runtime\\score-01-full-score-checkpoint\\submission",
+  "skill_name": "submission-skills",
+  "drive_session_id": "career-sim-runner-ca53f36571f6",
+  "session_id": "8ffa91ac75e143cfb68b015feb4f40e4",
+  "play_exit_code": 0,
+  "termination_reason": null,
+  "token_usage": {
+    "input_tokens": 19919228,
+    "output_tokens": 77319,
+    "total_tokens": 19996547,
+    "total_cost": 0.0,
+    "by_model": {
+      "deepseek-flash": {
+        "input_tokens": 19919228,
+        "output_tokens": 77319,
+        "total_tokens": 19996547,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "ending_score": {
+    "competition_partial_score": 23.14,
+    "completed": false,
+    "dimensions": [
+      {
+        "label": "职级成就",
+        "name": "level",
+        "normalized_score": 20.0,
+        "raw_value": 2.0,
+        "weight": 0.3,
+        "weighted_score": 6.0
+      },
+      {
+        "label": "累计财富",
+        "name": "wealth",
+        "normalized_score": 14.25,
+        "raw_value": 11.4,
+        "weight": 0.2,
+        "weighted_score": 2.85
+      },
+      {
+        "label": "身心健康",
+        "name": "resilience",
+        "normalized_score": 85.0,
+        "raw_value": 17.0,
+        "weight": 0.15,
+        "weighted_score": 12.75
+      },
+      {
+        "label": "专业能力",
+        "name": "skill",
+        "normalized_score": 7.5,
+        "raw_value": 9.0,
+        "weight": 0.15,
+        "weighted_score": 1.12
+      },
+      {
+        "label": "风险控制",
+        "name": "risk_control",
+        "normalized_score": 100.0,
+        "raw_value": 0.0,
+        "weight": 0.1,
+        "weighted_score": 10.0
+      },
+      {
+        "label": "同事关系",
+        "name": "network",
+        "normalized_score": 3.33,
+        "raw_value": 2.0,
+        "weight": 0.1,
+        "weighted_score": 0.33
+      }
+    ],
+    "grade": "D",
+    "grade_meaning": "半途折戟 —— 简历上多了段不想细聊的经历，面试官问起只能说「方向不太合适」",
+    "outcome": "eliminated",
+    "quantitative_score": 33.06,
+    "survival_months": 24
+  },
+  "output_dir": "D:\\CS\\CareerSim\\.local\\worktrees\\score-01-full-score-checkpoint\\.career_sim_runner\\career_emu\\outputs\\local-score-01-full-score-checkpoint\\20260923T144458Z",
+  "events_log": "D:\\CS\\CareerSim\\.local\\worktrees\\score-01-full-score-checkpoint\\.career_sim_runner\\career_emu\\outputs\\local-score-01-full-score-checkpoint\\20260923T144458Z\\events-20260923T144458Z.jsonl",
+  "transcript_log": "D:\\CS\\CareerSim\\.local\\worktrees\\score-01-full-score-checkpoint\\.career_sim_runner\\career_emu\\outputs\\local-score-01-full-score-checkpoint\\20260923T144458Z\\transcript-20260923T144458Z.log",
+  "scored_at": "2026-09-23T14:54:27.619032+00:00"
+}
