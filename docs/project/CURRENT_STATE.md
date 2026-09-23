@@ -19,8 +19,9 @@
 - S03-04: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
 - S03-05: `BLOCKED_TECHNICAL`
 - S03-06: `COMPLETE_PENDING_STAGE_REVIEW`
+- S03-07: `BLOCKED_TECHNICAL`
 - RISK_BENEFIT: `NOT_PROVEN`
-- Current milestone: S03-06 已将 instance MCP command 修复为绝对 launcher，真实 AgentServer 注册和五工具暴露通过；仅达到 `READY_FOR_ONE_RISK_RECOVERY_SMOKE`，尚未运行 recovery smoke
+- Current milestone: S03-07 唯一 Runner play 尝试在连接 AgentServer 前因 Runner 进程无法解析裸命令 `jiuwenswarm-start` 而以 `[WinError 2]` 退出；没有进入 game，未重试。S03-06 的绝对 MCP 命令和服务级注册仍通过
 - Production/published version: none
 - Last verified: 2026-09-23
 
@@ -52,15 +53,16 @@
 - S03-03 已从既有 S02/S03-02 raw evidence 与 timestamped runtime logs 确认 S02 MCP 注册成功、S03-02 MCP Stdio 注册在 `WinError 2` 下失败。S03-04 复现了裸命令在 AgentServer PATH 不含 Scripts 时产生相同错误；绝对 launcher 路径完成 MCP initialize 与五工具 listing。历史 AgentServer PATH 未留存，归因是 `HIGH_CONFIDENCE`；未启动 service、未调用 provider、未运行 recovery smoke，FORENSIC_HOLD 仍 ACTIVE。
 - S03-05 的 5 份共享日志已在 `.local/runtime/forensic-hold/S03-MCP-REGISTRATION/pre-s03-05/` 原样保全且 hash 匹配。配置补丁后严格文本比较不符，仅 command 字段变化未获验证；配置已按原 SHA 恢复。真实 AgentServer 注册仍未验证，`FORENSIC_HOLD` 继续 ACTIVE。
 - S03-06 复核 5 份取证快照完整；目标 command 补丁导致该行 CRLF→LF，但 YAML parsed semantic diff 仅 `/mcp/servers/0/command`。修复后一次 clean service startup 中真实 AgentServer 两次报告 MCP 注册成功并暴露五个 CareerSim tools，随后优雅停止；`FORENSIC_HOLD` 仍 ACTIVE。该修复会被 Runner setup 覆写，不能视为永久 Runner fix。
+- S03-07 服务级 MCP 与 direct 五工具预检通过；唯一 play 在 Runner 调用 `jiuwenswarm-start --list` 时失败，未创建 drive/game session、events、transcript 或 score report。没有 retry；共享服务已停止。启动期有一条 `deepseek-flash` prewarm usage（200 input / 1 output / 201 total tokens），策略效果仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05 保留技术失败记录；S03-06 仅完成服务级预检，等待 S03 Stage Review，S03 尚未完成。
+- S02 已由 Main Hub 正式验收为 `COMPLETE` / `S02_STAGE_ACCEPTANCE = PASS`；S03-01、S03-04 已通过 Stage review；S03-02、S03-05、S03-07 保留技术失败记录；S03-06 服务级预检通过，S03-07 等待 S03 Stage Review，S03 尚未完成。
 
 ## Next likely tasks
 
-1. 返回 S03 Stage review，审阅 S03-06 command-only 语义修复与真实 AgentServer 五工具注册证据，决定是否授权下一任务唯一一次 Risk recovery smoke；本任务不执行。
+1. 返回 S03 Stage review，审阅 S03-07 在 Runner 启动前的 `jiuwenswarm-start` 命令解析失败、已通过的 MCP 注册与一次 startup prewarm usage；决定后续处理。S03-07 不重跑。
 2. 继续保持 serving version `PARTIALLY_VERIFIED`、baseline 单局无策略结论、Risk benefit `NOT_PROVEN` 与 shared runtime 串行约束。
 
 ## Workflow / delivery facts that are currently material
@@ -76,6 +78,7 @@
 - S03-04 仅运行 3 个 direct no-model MCP Stdio spawn 变体（各 1 次、无 retry）；裸命令复现 `WinError 2`，绝对路径 handshake 返回 5 tools。未启动 JiuwenSwarm service、未调用 provider/model 或 CareerSim tool；`FORENSIC_HOLD:S03-MCP-REGISTRATION` 保持 ACTIVE。
 - S03-05 在 shared log snapshot 后尝试一次 instance config command 补丁；严格差异校验失败即恢复原 hash。服务启动、provider/model、Agent chat、CareerSim tool、gameplay 次数均为 0；canonical hold snapshot 留在 `.local/runtime/forensic-hold/`。
 - S03-06 保留 pre-edit/candidate 与语义/字节差异证据后完成 instance command 修复；一次 service startup 与一次 stop，真实 MCP 注册通过。Startup 自动发生一条 `deepseek-flash` 完成响应（200 input / 1 output / 201 total tokens，cache hit 0，cost 未报告）；无 Agent chat、CareerSim tool 或 gameplay，Risk benefit 仍 `NOT_PROVEN`。
+- S03-07 仅进行 1 次 Runner play 尝试（180 s 上限，0 retry）；裸 `jiuwenswarm-start` 不在 Runner 进程 PATH，导致 `[WinError 2]` 在 AgentServer 连接前退出；fresh game count = 0。service start/stop 各 1；startup prewarm usage 201 tokens，play 无 provider request。安装前已将 Runner install 会清理的旧 JiuwenSwarm session、Skills registry 和 `MEMORY.md` 复制到本机 ignored runtime archive；未提交 raw artifacts 或 credentials。
 - 后续任务按 `AGENTS.md` 的主分支、证据、共享 runtime 串行和 Skill 时机规则执行。
 
 ## Update rule
