@@ -13,6 +13,7 @@
 - 固定 `D:\CS\CareerSim\.local\`：`worktrees/<task>` 放 checkout，`runtime/<task-or-run>` 放可控输出/留存证据，`upstream/<identity>` 放官方参考，`scratch/<task>` 放可再生派生物；整体 gitignored。
 - 禁止新建 `D:\CS\CareerSim-*` 临时目录；旧路径不自动迁删。迁移另立任务，记路径映射/hash 并修复引用。
 - 例外：checkout 内 `.career_sim_runner/`、根 `.venv`、用户目录 `.jiuwenswarm-instances/career_emu` 保持既定路径/ignore；RESULT 记录位置，不为归置改冻结 runtime。唯一取证来源不得放 scratch。
+- CareerSim worktree 的 Python static/offline checks 默认使用项目根解释器 `D:\CS\CareerSim\.venv\Scripts\python.exe`。如使用 `uv run`，先激活该根环境并显式使用 `uv run --no-sync --active`；禁止裸 `uv run` 或隐式在 task worktree 创建/同步 `.venv`。误生成且 ignored 的 worktree `.venv` 若确认未影响 tracked files 或 dependency/runtime identity，记录为 local residue，不因清理失败单独阻断 live run；发现污染则停止复核。
 
 ## 3. Worktree / stacked task
 
@@ -35,6 +36,9 @@
 - `READ_ONLY`：读 repo/Git/必要去敏证据、离线分析；不改 repo/runtime、不调用 provider。
 - `REPOSITORY_WRITE`：范围内 patch、offline/static 验证、授权 commit/push；不隐含 `LIVE_RUN`，validate 不保证无副作用。
 - `LIVE_RUN` 须 Task 明列依赖/Skill/submission 安装、服务/MCP、provider、game、smoke/benchmark、比赛提交的允许动作、次数/成本及停止条件；未列不授权，服务启动可能调用模型。
+- Windows 下 PowerShell 优先用于简单 Git / process / service control；YAML、JSON、hash、多条件结构化判断或多返回码汇总优先用 Python 或拆成原子命令。避免在复杂 inline expression 中混合 command execution、`$LASTEXITCODE`、对象构造和控制流；无副作用的本地 parser/script failure 按 Tooling Error 处理。
+- CareerSim live task 的 preflight 只将直接影响 live correctness / safety 或任务明确要求的必要 dependency/interface 的 Hard Gates 设为阻断条件；identity 未漂移的稳定 PASS 应复用。既定 Hard Gates 通过后，只有新 material evidence 才能增加 blocking diagnostic gate。
+- snapshot rehash、历史日志复查、ignore 检查和报告格式不得默认升级为 gameplay blocker；但 Plan / `FORENSIC_HOLD` 明确要求的唯一证据保全与核验仍须完成。效率规则不得削弱 `FORENSIC_HOLD`、secret protection、shared runtime 串行、bounded live retry 或 Unknown Side Effect 的 STOP 边界。
 - `career_emu` 未证隔离前，安装/reload/对局/共享 DB/config 写入均串行；先确认独占窗口。worktree 不等于隔离，不依赖跨局残留。
 - 无副作用确定性读取可有限 retry。`new_game`、`take_action`、install、provider/submission、共享写入或 MCP 调用遇超时/断连/partial/unknown outcome：先查状态/日志，在授权内 observe 核对；仍不明则停并留证，不盲重发。
 - live 授权不等于无限 retry；bounded smoke 达上限或触发 TECHNICAL_FAILURE 停止条件即返回 review，不为取得成功重跑。
