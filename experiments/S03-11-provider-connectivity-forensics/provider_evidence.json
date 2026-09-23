@@ -1,0 +1,140 @@
+{
+  "task_id": "S03-11",
+  "status": "COMPLETE",
+  "decision": "PROVIDER_PREFLIGHT_PASS",
+  "identity": {
+    "branch": "codex/s03-11-provider-connectivity-forensics",
+    "parent_sha": "3c4a2f04df79158e88c56ec6bf7f76be63e0a064",
+    "origin_main_sha": "73a69668812f28076abcebd0a90e1cf71b20f64c",
+    "plan_contract_blob_sha": "1a7a7b67735ee99d3cd9f2521913da884df8538a",
+    "parent_and_main_ancestry": "PASS"
+  },
+  "historical_s03_10": {
+    "source": "experiments/S03-10-standard-play-risk-smoke/smoke_evidence.json",
+    "play_window_started_at_utc": "2026-09-23T10:39:53.8495534Z",
+    "llm_call_start_count": 17,
+    "llm_call_start_first_local": "2026-09-23T18:39:59.327218+08:00",
+    "llm_call_start_last_local": "2026-09-23T18:42:54.403342+08:00",
+    "llm_call_error_count": 16,
+    "llm_call_error_first_local": "2026-09-23T18:40:09.769379+08:00",
+    "llm_call_error_last_local": "2026-09-23T18:42:53.591315+08:00",
+    "llm_call_end_count": 0,
+    "model": "deepseek-flash",
+    "logged_error": "APIConnectionError: Connection error.",
+    "redacted_exception_chain": [
+      "httpcore._async.connection._connect: stream.start_tls(**kwargs)",
+      "httpcore.ConnectError",
+      "httpx.ConnectError",
+      "openai.APIConnectionError"
+    ],
+    "classification": "TLS-start-stage transport connection failure, before an HTTP/provider response",
+    "exact_low_level_peer_or_tls_reason": "UNKNOWN: traceback does not retain a more specific inner error",
+    "configured_target_host": "api.deepseek.com",
+    "configured_endpoint": "https://api.deepseek.com",
+    "historical_proxy_state": "UNKNOWN: not captured in S03-10 evidence",
+    "completed_usage_observed": 0,
+    "no_game_or_careersim_tool_call": true,
+    "raw_artifacts": [
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-10-standard-play-risk-smoke\\service-start.stderr.log",
+        "bytes": 2485424,
+        "sha256": "A14E8E2086C50348E2AF3342C74DC3A61222E70ED4D81C4B1981212132E6539D"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-10-standard-play-risk-smoke\\post-stop-shared-logs\\llm.log",
+        "bytes": 2815539,
+        "sha256": "36A241A665820183C9C5AD35F5BCE778A7C8568CB5C1BB29EBB7379178503C3B"
+      }
+    ]
+  },
+  "current_environment": {
+    "instance_env_path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\config\\.env",
+    "instance_env_sha256": "99842010A7B39B038AFE05009B75BC259BFEA34CFF40D93C9D41325167E8B8CD",
+    "instance_config_path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\config\\config.yaml",
+    "instance_config_sha256": "05928EFAED4508D2C1A70C6B32B704CADB3B1CD40026A5CDA0D91EDD4878DEFE",
+    "endpoint": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "provider": "OpenAI",
+    "verify_ssl": true,
+    "instance_api_key_present": true,
+    "windows_user_deepseek_api_key_present": true,
+    "process_deepseek_api_key_present": true,
+    "instance_user_process_key_equal": true,
+    "explicit_process_user_machine_http_proxy_env": "ABSENT",
+    "explicit_process_user_machine_https_proxy_env": "ABSENT",
+    "explicit_process_user_machine_all_proxy_env": "ABSENT",
+    "explicit_process_user_machine_no_proxy_env": "ABSENT",
+    "ssl_cert_file_ssl_cert_dir_requests_ca_bundle_env": "ABSENT",
+    "winhttp_proxy": "DIRECT",
+    "wininet_proxy": "127.0.0.1:7897 (ProxyEnable=1)",
+    "httpx_effective_proxy": "http://127.0.0.1:7897",
+    "proxy_process": "verge-mihomo listening on 127.0.0.1:7897 at probe time",
+    "confirmed_endpoint_model_config_drift": false,
+    "historical_runtime_proxy_or_key_drift": "UNKNOWN",
+    "secret_value_or_fingerprint_recorded": false
+  },
+  "layered_probes": {
+    "group_counts": {"dns": 1, "tcp": 1, "tls": 1, "http": 1},
+    "dns": {"result": "PASS", "host": "api.deepseek.com", "resolved_a": "198.18.0.74", "ttl_seconds": 1, "note": "198.18.0.0/15 is a benchmark/fake-IP range; local proxy/TUN synthesis is plausible, not proven"},
+    "tcp": {"result": "PASS", "provider_resolved_address_port": "198.18.0.74:443", "local_proxy_address_port": "127.0.0.1:7897"},
+    "tls": {"result": "PASS", "sni": "api.deepseek.com", "verification": "JiuwenSwarm strict SSL context", "version": "TLSv1.3", "cipher": "TLS_AES_256_GCM_SHA384"},
+    "http": {"result": "PASS_TRANSPORT_ONLY", "method": "GET", "host": "api.deepseek.com", "status": 401, "credential_sent": false, "client": "httpx with JiuwenSwarm strict SSL context and effective environment proxy"}
+  },
+  "provider_verification": {
+    "request_attempt_count": 2,
+    "completed_request_count": 2,
+    "sdk_max_retries_per_request": 0,
+    "credential_source": "current instance env API_KEY, equality checked against process DEEPSEEK_API_KEY without output",
+    "output_token_cap_per_request": 4,
+    "requests": [
+      {
+        "adapter": "OpenAIModelClient.invoke",
+        "started_at_utc": "2026-09-23T11:08:55.377230Z",
+        "finished_at_utc": "2026-09-23T11:08:58.768538Z",
+        "result": "COMPLETED",
+        "model": "deepseek-flash",
+        "returned_model": "deepseek-flash",
+        "finish_reason": "length",
+        "input_tokens": 33,
+        "output_tokens": 4,
+        "total_tokens": 37,
+        "cache_tokens": 0,
+        "reasoning_tokens": 4,
+        "reported_cost": null
+      },
+      {
+        "adapter": "OpenAIModelClient.stream",
+        "started_at_utc": "2026-09-23T11:10:10.476961Z",
+        "finished_at_utc": "2026-09-23T11:10:13.513556Z",
+        "result": "COMPLETED",
+        "model": "deepseek-flash",
+        "returned_model": "UNKNOWN: adapter stream chunks did not expose model in recorded summary",
+        "finish_reason": "length",
+        "chunk_count": 6,
+        "input_tokens": 33,
+        "output_tokens": 4,
+        "total_tokens": 37,
+        "cache_tokens": 0,
+        "reasoning_tokens": 4,
+        "reported_cost": null
+      }
+    ],
+    "available_total_usage": {"input_tokens": 66, "output_tokens": 8, "total_tokens": 74, "cache_tokens": 0, "reasoning_tokens": 8},
+    "reported_total_cost": null,
+    "cost_note": "Framework UsageMetadata defaults cost to 0.0 when the provider did not report one; this is unavailable, not confirmed zero"
+  },
+  "runtime_boundary": {
+    "service_start_count": 0,
+    "service_stop_count": 0,
+    "agent_chat_count": 0,
+    "runner_play_count": 0,
+    "gameplay_count": 0,
+    "careersim_tool_call_count": 0,
+    "matching_service_processes_after": 0,
+    "provider_model_config_modified": false,
+    "forensic_hold": "ACTIVE / UNCHANGED; canonical snapshots 5/5 hash matched"
+  },
+  "readiness": "READY_FOR_ONE_RISK_CORRECTNESS_SMOKE",
+  "strategy_boundary": {"risk_hypothesis": "ACTIVE", "risk_effectiveness": "NOT_PROVEN", "controlled_screening": "NOT_STARTED"},
+  "next_recommended_action": "S03 Stage Review"
+}
