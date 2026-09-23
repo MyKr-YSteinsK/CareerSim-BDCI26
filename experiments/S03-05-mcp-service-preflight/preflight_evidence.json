@@ -1,0 +1,83 @@
+{
+  "task_id": "S03-05",
+  "status": "BLOCKED_TECHNICAL",
+  "branch": "codex/s03-05-mcp-service-preflight",
+  "parent_branch": "codex/s03-04-mcp-registration-debug",
+  "parent_sha": "510e9424b22484e2a1da4baccefcd4eaee5348ca",
+  "governance_ancestor_sha": "69a394ee226da80282b06e1034b10b1bf70d5090",
+  "frozen_runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "forensic_hold": {
+    "id": "FORENSIC_HOLD:S03-MCP-REGISTRATION",
+    "status": "ACTIVE / UNCHANGED",
+    "canonical_snapshot_root": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05",
+    "source_manifest": "experiments/S03-04-mcp-registration-debug/debug_evidence.json",
+    "snapshot_count": 5,
+    "all_snapshot_hashes_match_s03_04": true,
+    "live_sources_still_match_after_rollback": true,
+    "files": [
+      {"name": "runner.log", "bytes": 650760, "sha256": "9CC66E0E9A704BBB3E2C8888AFD3D2BD713EDEFE01715E694FA5882C7A8644A5", "snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\runner.log"},
+      {"name": "jiuwen.log", "bytes": 759215, "sha256": "C0FDB90400162502F7436126E939E1FF59BE3F3ADC02FCBAD3BCB9E44666AB06", "snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\jiuwen.log"},
+      {"name": "agent_server.log", "bytes": 508934, "sha256": "447AF83684C86F81BBAF3A45C46EF4BC9336A12CACC01265EE485E55DED24AF4", "snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\agent_server.log"},
+      {"name": "full.log", "bytes": 584121, "sha256": "5793C28CF5D10043B95733FB8AADDBC623409D1809776820550227E5F6C0EC9B", "snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\full.log"},
+      {"name": "server.log", "bytes": 17151, "sha256": "8478E11348413A871ABCBE4C313D60D088FBAC796FA4F5F604B3F559F7EFD413", "snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\forensic-hold\\S03-MCP-REGISTRATION\\pre-s03-05\\server.log"}
+    ]
+  },
+  "instance_config": {
+    "path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\config\\config.yaml",
+    "pre_repair_snapshot_path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-05-mcp-service-preflight\\config.pre-repair.yaml",
+    "pre_repair_bytes": 50088,
+    "pre_repair_sha256": "34D2EED681D5C5DDB3919A805258B4F6A19A5C4F487FB2214B480BB1E899D66A",
+    "before_command": "career-emulator-mcp",
+    "attempted_command": "D:\\CS\\CareerSim\\.venv\\Scripts\\career-emulator-mcp.exe",
+    "candidate_after_sha256": null,
+    "strict_command_only_text_diff": "FAIL",
+    "extra_diff_bytes": "NOT_CAPTURED_BEFORE_RESTORE",
+    "restored": true,
+    "final_command": "career-emulator-mcp",
+    "final_sha256": "34D2EED681D5C5DDB3919A805258B4F6A19A5C4F487FB2214B480BB1E899D66A",
+    "repair_in_effect": false,
+    "intended_repair_classification": "runtime-persistent but setup-overwritable repair"
+  },
+  "service_lifecycle": {
+    "pre_state": "stopped",
+    "pre_pid": null,
+    "configured_ports": [19092, 20000, 20001, 6173],
+    "pre_port_listeners": 0,
+    "active_career_process_candidates": 0,
+    "clean_start_count": 0,
+    "stop_count": 0,
+    "restart_retry_count": 0,
+    "final_state": "stopped",
+    "final_pid": null,
+    "final_port_listeners": 0
+  },
+  "provider_prewarm": {
+    "incidental_provider_call": false,
+    "model": null,
+    "completed_usage_records": [],
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "cache_usage": null,
+    "reported_cost": null,
+    "agent_chat_count": 0
+  },
+  "mcp_registration": {
+    "service_level_result": "NOT_RUN",
+    "registration_timestamp": null,
+    "new_winerror2_observed": false,
+    "exposed_tool_names": [],
+    "career_sim_tool_call_count": 0,
+    "new_game_count": 0,
+    "take_action_count": 0,
+    "gameplay_count": 0
+  },
+  "project_preflight_guard_needed": "YES_AS_PROCEDURE",
+  "s03_06_readiness": "NOT_READY",
+  "recovery_decision": "NOT_READY",
+  "strategy_boundary": {
+    "risk_hypothesis": "ACTIVE",
+    "risk_effectiveness": "NOT_PROVEN",
+    "controlled_screening": "NOT_STARTED"
+  }
+}
