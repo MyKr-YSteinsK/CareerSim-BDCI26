@@ -68,6 +68,12 @@ Runner 在 `career_sim_runner.cli.main` 第 174 行解析 WebSocket URL 时，`s
 
 Raw logs、stderr、startup windows、pre-install archive 均保存在被忽略的本机目录 `D:\CS\CareerSim\.local\runtime\s03-07-risk-recovery-smoke\`。提交的 [smoke_evidence.json](smoke_evidence.json) 记录 startup log window 与失败 stderr 的 path、bytes、SHA256。由于 `drive` 未开始，没有 events、transcript、score report 或 game DB artifact；S03-06 的 FORENSIC_HOLD 原件没有修改。
 
+## Problems / Unknowns｜问题与未知
+
+- Runner 进程 PATH 未包含 `jiuwenswarm-start`；绝对 launcher 存在，但本任务按零 retry 边界停止，没有临时修改 PATH 后再次运行。
+- Service startup 的重定向 stderr 有 10 条 `UnicodeEncodeError` traceback，未见 fatal/critical 标记；AgentServer 两次 MCP 注册成功并持续运行至显式 graceful stop。该日志编码现象没有在本任务内修复。
+- Provider cost 未报告；没有 gameplay/provider usage，也没有 game window 可用于 Risk trigger 判断。
+
 ## Strategy Boundary / Verification｜策略边界与验证
 
 - Risk effectiveness = `NOT_PROVEN`

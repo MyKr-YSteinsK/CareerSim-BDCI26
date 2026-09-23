@@ -50,7 +50,9 @@
     "started_at": "2026-09-23T16:25:01.853092+08:00",
     "stop_count": 1,
     "stopped_at": "2026-09-23T16:28:45.468+08:00",
-    "final_state": "stopped; no PID; configured ports free"
+    "final_state": "stopped; no PID; configured ports free",
+    "startup_stderr_unicode_encode_error_count": 10,
+    "startup_fatal_or_critical_markers": 0
   },
   "service_mcp_registration": {
     "status": "PASS",
@@ -111,6 +113,7 @@
     "reported_cost_available": false
   },
   "raw_evidence": [
+    {"path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-07-risk-recovery-smoke\\service-start.stderr.log", "bytes": 47701, "sha256": "8DCE44BADE2C8C69D3E6CE9E709085B786F14ABF547AF88F665D30FC4390A4A3"},
     {"path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-07-risk-recovery-smoke\\play.stderr.log", "bytes": 1496, "sha256": "7DDC3EF04F1148FABD5A738B258A2566A9F309D591138EF80B19508FBBB285B2"},
     {"path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-07-risk-recovery-smoke\\play.stdout.log", "bytes": 0, "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"},
     {"path": "D:\\CS\\CareerSim\\.local\\runtime\\s03-07-risk-recovery-smoke\\startup-analysis.json", "bytes": 2901, "sha256": "6C77F4564B6ECE7512B2E38F02898047688388FD75FB62B05109B1AF4C6FAD41"},

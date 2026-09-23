@@ -53,7 +53,7 @@
 - S03-03 已从既有 S02/S03-02 raw evidence 与 timestamped runtime logs 确认 S02 MCP 注册成功、S03-02 MCP Stdio 注册在 `WinError 2` 下失败。S03-04 复现了裸命令在 AgentServer PATH 不含 Scripts 时产生相同错误；绝对 launcher 路径完成 MCP initialize 与五工具 listing。历史 AgentServer PATH 未留存，归因是 `HIGH_CONFIDENCE`；未启动 service、未调用 provider、未运行 recovery smoke，FORENSIC_HOLD 仍 ACTIVE。
 - S03-05 的 5 份共享日志已在 `.local/runtime/forensic-hold/S03-MCP-REGISTRATION/pre-s03-05/` 原样保全且 hash 匹配。配置补丁后严格文本比较不符，仅 command 字段变化未获验证；配置已按原 SHA 恢复。真实 AgentServer 注册仍未验证，`FORENSIC_HOLD` 继续 ACTIVE。
 - S03-06 复核 5 份取证快照完整；目标 command 补丁导致该行 CRLF→LF，但 YAML parsed semantic diff 仅 `/mcp/servers/0/command`。修复后一次 clean service startup 中真实 AgentServer 两次报告 MCP 注册成功并暴露五个 CareerSim tools，随后优雅停止；`FORENSIC_HOLD` 仍 ACTIVE。该修复会被 Runner setup 覆写，不能视为永久 Runner fix。
-- S03-07 服务级 MCP 与 direct 五工具预检通过；唯一 play 在 Runner 调用 `jiuwenswarm-start --list` 时失败，未创建 drive/game session、events、transcript 或 score report。没有 retry；共享服务已停止。启动期有一条 `deepseek-flash` prewarm usage（200 input / 1 output / 201 total tokens），策略效果仍 `NOT_PROVEN`。
+- S03-07 服务级 MCP 与 direct 五工具预检通过；唯一 play 在 Runner 调用 `jiuwenswarm-start --list` 时失败，未创建 drive/game session、events、transcript 或 score report。没有 retry；共享服务已停止。启动期有一条 `deepseek-flash` prewarm usage（200 input / 1 output / 201 total tokens）；startup stderr 另有 10 条非致命 `UnicodeEncodeError`，策略效果仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
