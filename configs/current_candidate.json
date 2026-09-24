@@ -1,0 +1,55 @@
+{
+  "candidate_id": "candidate-v3c-zh-aligned-policy",
+  "status": "COMPLETE_ACCEPTED_BY_MAIN",
+  "decision": "ZH_LANGUAGE_REFACTOR_ACCEPTED",
+  "strategy_delta": "NONE",
+  "parent_candidate_id": "candidate-v3b-final-policy",
+  "accepted_source": {
+    "branch": "codex/s06-04-zh-language-refactor",
+    "source_head": "c4dbe0ebc4e27aafc22c94050c69547113cdc8eb",
+    "implementation_commit": "230c8ec833b7cd064c116b143a7ce8abd89b5dea",
+    "base_main_sha": "201fe14daf89919f984aa5a9e3ffbc2818f5ab3f"
+  },
+  "runtime_manifest": {
+    "path": "configs/runtime_manifest.json",
+    "sha256": "5ac8e7e0c09c44e48a5bb12f93a662f77e7fc05b3141819aae0bf8b5040c4085",
+    "instruction_sha256": "502af7085d851c73ef7b7d0b74f7e3615e99333a46d2423f50014dd1014f6c9d"
+  },
+  "skills": [
+    {
+      "name": "career-action-trace",
+      "path": "skills/career-action-trace/SKILL.md",
+      "git_blob": "ce609105f7cb5bb479bb1db70ebd1200258dd518"
+    },
+    {
+      "name": "risk-review",
+      "path": "skills/risk-review/SKILL.md",
+      "git_blob": "de6482ec5c1014f7f9f668c96f4d810766bba115"
+    },
+    {
+      "name": "structured-state-board",
+      "path": "skills/structured-state-board/SKILL.md",
+      "git_blob": "bcf22a894361d4fad0a8028a47e1a2fec098effe"
+    },
+    {
+      "name": "rolling-planning",
+      "path": "skills/rolling-planning/SKILL.md",
+      "git_blob": "093ab9c565990fe2f3d0220794d5c783f12ef995"
+    }
+  ],
+  "architecture": {
+    "action_submitter": "Single Agent",
+    "skill_count": 4,
+    "memory": "NOT_IMPLEMENTED",
+    "fifth_skill": "DEFERRED",
+    "team_swarm": "DEFERRED"
+  },
+  "environment_contract": "docs/project/OFFICIAL_SOURCE_LOCK.md",
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "validation": {
+    "gameplay_validated": false,
+    "provider_validated": false,
+    "stable_80_plus_proven": false,
+    "next_game_authorized": false
+  }
+}

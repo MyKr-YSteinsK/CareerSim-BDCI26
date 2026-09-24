@@ -95,6 +95,16 @@ Plan 不得：
 
 可靠的既有 PASS 可在关键 identity inputs 未漂移时复用；新 worktree 本身不使全部 runtime evidence 自动失效。重验需求应由相关身份决定，包括 Runner / dependency、provider / model / config、MCP config、Skill / submission、shared runtime state、DB / config path 与 Task 时间敏感性。不得为“更放心”重复执行既有稳定证据已覆盖、且与本 Task acceptance 无直接关系的 probe；Plan 明确要求 fresh evidence 时除外。
 
+## Repository workflow, verification tiers, and artifact budget
+
+- Default workflow is serialized work in the repository root on main, followed by targeted verification, one meaningful commit, and push. A branch requires a task-specific Main/Planner reason; a worktree requires separate justification and authorization, and is not implied by a branch.
+- Tier 0 (documentation, copy, formatting, language-only): relevant parse/format check, git diff --check, commit/push.
+- Tier 1 (ordinary Skill/code change): one targeted test, one relevant contract/behavior check, and git diff --check. Reuse stable PASS evidence when its identity inputs have not changed.
+- Tier 2 (live runtime/benchmark): gate only on checks that directly affect live correctness and safety; reuse stable, non-drifted evidence and do not add blocking diagnostics without material evidence.
+- Tier 3 (official submission or destructive migration): perform the necessary fuller hygiene and contract checks, still within the frozen task scope.
+- Ordinary Plans SHOULD keep Hard Acceptance Criteria at or below 8. Exceeding this requires a stated reason tied to live runtime, destructive migration, official submission, secret/security, or major framework migration; do not split one semantic requirement into many assertions.
+- Ordinary tasks SHOULD NOT create per-task experiment directories, large matrices, candidate manifests, RESULT files, or committed one-off verifiers by default. The default evidence is Git diff, targeted verification, and TASK_RESULT. Retain durable artifacts only for important gameplay/benchmark results, reviewable runtime failures, architecture experiments, or official submission freezes. Delete one-off verifiers after use; do not commit them.
+
 ## Plan Artifact Boundary
 
 最终直接交给 Codex 的 Plan artifact 只应包含完成任务所需的工程信息。Planner-side 的执行模型选择、模型比较、额度分析、模型耗时比较及选择模型的理由属于 Planner 对用户的建议，不得写入 Codex Plan artifact。Codex execution model selection and quota/time comparison are Planner-side user guidance and are intentionally outside this repository contract and outside the Codex Plan artifact；相关 Planner 规则由 ChatGPT Project Instructions 管理，本合同不定义模型清单、额度、耗时或模型选择方式。

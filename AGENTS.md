@@ -4,25 +4,24 @@
 
 ## 1. 身份与事实归属
 
-- `MyKr-YSteinsK/CareerSim-BDCI26`；`main`；Windows / PowerShell。`docs/project/`：`CURRENT_STATE.md` 管状态，`ARCHITECTURE_DECISIONS.md` 管架构，`OFFICIAL_SOURCE_LOCK.md` 管官方事实、冻结身份和运行/提交合同；实测见 `ENVIRONMENT.md` / 实验 RESULT。
+- `MyKr-YSteinsK/CareerSim-BDCI26`；`main`；Windows / PowerShell。`docs/project/`：`CURRENT_STATE.md` 管状态，`ARCHITECTURE_DECISIONS.md` 管架构，`OFFICIAL_SOURCE_LOCK.md` 管官方事实、冻结身份和运行/提交合同；环境与关键对局事实见 `ENVIRONMENT.md` / `RUN_HISTORY.md`。
 - 分支增量标记 `IN_FLIGHT_EVIDENCE`，不冒充 `MERGED_FACT`；历史按当时语境解读。官方身份变更须新证据/可比较配置，不覆盖旧结果。
 - 凭据、`.env`、cache、日志、DB、会话和本机生成状态不得提交；仅提交去敏的必要证据。不得静默改 frozen Runner、依赖或 `uv.lock`。
 
 ## 2. 本机 Workspace
 
-- 固定 `D:\CS\CareerSim\.local\`：`worktrees/<task>` 放 checkout，`runtime/<task-or-run>` 放可控输出/留存证据，`upstream/<identity>` 放官方参考，`scratch/<task>` 放可再生派生物；整体 gitignored。
-- 禁止新建 `D:\CS\CareerSim-*` 临时目录；旧路径不自动迁删。迁移另立任务，记路径映射/hash 并修复引用。
+- 固定 `D:\CS\CareerSim\.local\`：仅在获准隔离任务需要时使用 `worktrees/<task>`；`runtime/<task-or-run>` 留存获准且仍有价值的本机输出，`upstream/<identity>` 与 `scratch/<task>` 仅用于可重建副本/派生物；整体 gitignored。
+- 禁止新建 `D:\CS\CareerSim-*` 临时目录；已有旧路径仅在明确授权的清理/迁移任务中处理。
 - 例外：checkout 内 `.career_sim_runner/`、根 `.venv`、用户目录 `.jiuwenswarm-instances/career_emu` 保持既定路径/ignore；RESULT 记录位置，不为归置改冻结 runtime。唯一取证来源不得放 scratch。
 - CareerSim worktree 的 Python static/offline checks 默认使用项目根解释器 `D:\CS\CareerSim\.venv\Scripts\python.exe`。如使用 `uv run`，先激活该根环境并显式使用 `uv run --no-sync --active`；禁止裸 `uv run` 或隐式在 task worktree 创建/同步 `.venv`。误生成且 ignored 的 worktree `.venv` 若确认未影响 tracked files 或 dependency/runtime identity，记录为 local residue，不因清理失败单独阻断 live run；发现污染则停止复核。
 
-## 3. Worktree / stacked task
+## 3. Git workflow
 
-- 实质改动用 `codex/<task>` + `.local/worktrees/<task>`；一 branch 一 worktree。独立任务基于 fetch 后最新 `origin/main`；依赖未合入代码/证据/状态的任务基于父任务已验证 HEAD，不从 main 复制或拼接临时状态。
-- Task/RESULT 记录 Base SHA（起点）、Parent branch/SHA（独立为 none）、依赖/验证边界；技术失败证据不等于实现通过。
-- 父先合、子后合。父合入后子核对 ancestry/剩余 diff，必要时 merge main 复验；squash 等祖先不等价由 Main 决定整合，不重写已推送历史。父被拒绝/重做时依赖子停工并重定基线。
-- 不设数字链长；每层说明依赖。跨 Stage、父方向未定或整链难以评审时，先返 Main 决定合入/截断。
-- 执行/review/复现/取证期间为 active。COMPLETE 不等于可删；未合入/待审、唯一 raw、未决取证、依赖路径的 child 或 Main 留存要求，须记原因、责任 Task、解除条件/下次 review 点，不以“以后有用”保留。
-- 清理获授权、review 有结论、改动已交付且 raw/引用/child 路径依赖解除后，才 `git worktree remove`；保留必要 commit，不强删。runtime 不随 worktree 删除；child 仅依赖 commit 不阻止移除父目录。`git worktree prune` 只清已确认 stale metadata，先 dry-run，不例行执行。
+- 默认在 `D:\CS\CareerSim` 的 `main` 串行开发、做 targeted verification、形成一个有意义的 commit 并 push；不默认创建 branch 或 worktree。
+- 只有 Main/Planner 对具体任务明确说明隔离理由时才开 branch；worktree 需要独立理由与明确授权，branch 不自动意味着 worktree。
+- 若任务获准使用 branch：独立任务以 fetch 后最新 `origin/main` 为基线；依赖未合入父任务的任务以已验证 parent HEAD 为基线。父先合、子后合；核对 ancestry，不重写已推送历史。
+- TASK_RESULT 按任务合同记录基线/父链、交付身份、验证边界和真实问题；技术失败证据不等于实现通过。
+- worktree 仅在获准的并行/隔离任务中 active。交付、review、raw 引用及 child/Main 依赖解除后，按精确路径清理；不强删脏状态，不例行 prune。
 
 ## 4. Runtime Evidence Lifecycle
 
@@ -43,7 +42,16 @@
 - 无副作用确定性读取可有限 retry。`new_game`、`take_action`、install、provider/submission、共享写入或 MCP 调用遇超时/断连/partial/unknown outcome：先查状态/日志，在授权内 observe 核对；仍不明则停并留证，不盲重发。
 - live 授权不等于无限 retry；bounded smoke 达上限或触发 TECHNICAL_FAILURE 停止条件即返回 review，不为取得成功重跑。
 
-## 6. 架构与返回 Review
+## 6. Verification 与任务资产
+
+- Tier 0（文档/copy/格式/语言）：相关 parse/format、`git diff --check`、commit/push。
+- Tier 1（普通 Skill/code）：一个 targeted test、一个相关 contract/behavior check、`git diff --check`；无身份漂移时复用稳定 PASS。
+- Tier 2（live/benchmark）：仅核验直接影响正确性与安全的 Hard Gates；复用未漂移的稳定证据，不无限追加门禁。
+- Tier 3（官方提交/破坏性迁移）：执行必要的完整 hygiene 与官方合同核对，范围仍受 Plan 限定。
+- 普通 Plan 的 Hard Acceptance Criteria 默认不超过 8 项；例外仅限 live、破坏性迁移、官方提交、secret/security 或重大框架迁移，并说明理由。
+- 普通任务默认不新建 `experiments/<task>`、矩阵、逐任务 candidate manifest/RESULT 或一次性 verifier；默认交付为 Git diff、targeted test 与 TASK_RESULT。仅保留重要 gameplay/benchmark、可复盘 runtime failure、架构实验或官方冻结证据；一次性 verifier 用后删除，不提交。
+
+## 7. 架构与返回 Review
 
 - Single Agent + Multiple Skills；唯一提交者用当前 session/新鲜观察，回执后更新状态。设计/安装/加载/应用/收益分开举证；单局不决定路线，不编造隐藏阈值。架构变化依 ADR：Hypothesis → Experiment → Decision。
 - Main Hub 管全局/验收，Stage 管任务，Codex 实现回传。验收/路线改变、假设推翻、超范围 blocker、runtime 异常、额外 live/retry 预算、Source Lock/依赖漂移、parent 失效、需改 frozen Runner 或建辅助 Skill 时返 Main/Stage；不自行扩 scope 或宣布 Stage COMPLETE。

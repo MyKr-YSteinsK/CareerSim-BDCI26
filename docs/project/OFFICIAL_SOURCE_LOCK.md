@@ -2,7 +2,7 @@
 
 状态：当前官方事实与运行合同入口。更新日期：2026-09-22（北京时间）。
 
-本文件取代 v1.0。区分官方声明、源码/元数据事实、项目执行约定和实际运行证据；出现冲突时重新核验来源，不以文档版本号代替官方证据。S01 本地环境与最小 baseline 技术闭环已有执行证据，见 [ENVIRONMENT](ENVIRONMENT.md) 与 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)；当前验收状态见 [CURRENT_STATE](CURRENT_STATE.md)，不由 Source Lock 代管。
+本文件取代 v1.0。区分官方声明、源码/元数据事实、项目执行约定和实际运行证据；出现冲突时重新核验来源，不以文档版本号代替官方证据。S01 本地环境与最小 baseline 技术闭环已有执行证据，见 [ENVIRONMENT](ENVIRONMENT.md) 与 [S01-03 run record](RUN_HISTORY.md#s01-03-baseline)；当前验收状态见 [CURRENT_STATE](CURRENT_STATE.md)，不由 Source Lock 代管。
 
 ## 1. Competition Identity and Repository
 
@@ -54,7 +54,7 @@
 
 ## 4. Model Identity
 
-以下本地配置/映射状态为锁定时快照；后续配置与请求/usage 标识见 [S01-03 RESULT](../../experiments/S01-03-baseline/RESULT.md)。底层 serving version 仍为 `PARTIALLY_VERIFIED`，不以请求成功推断完全映射。
+以下本地配置/映射状态为锁定时快照；后续配置与请求/usage 标识见 [S01-03 run record](RUN_HISTORY.md#s01-03-baseline)。底层 serving version 仍为 `PARTIALLY_VERIFIED`，不以请求成功推断完全映射。
 
 | 层级 | 证据及当前边界 |
 | --- | --- |
