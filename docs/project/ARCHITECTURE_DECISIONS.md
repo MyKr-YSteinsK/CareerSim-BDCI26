@@ -58,13 +58,13 @@ Decision
 
 ## AD-005 — Skill Contract（设计合同与已验证能力边界）
 
-Memory 与 Planning 仍是**候选设计方向，尚未实现**。Risk Control 已有最小 `risk-review` Skill 实现；Main 接受 S03-14 在一次 qualifying public trigger 上验证的 runtime load、Risk marker 与 action correctness，作为 S03 Stage evidence。该证据限于一次 observed runtime path，不证明 strategy effectiveness、score benefit 或泛化。以下合同用于界定职责，不要求拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
+General Memory 仍是**候选设计方向，尚未实现**。`structured-state-board` 与 `rolling-planning` 已实现并进入 Candidate v1 的真实运行；Main 接受 S04 中的 partial State Board runtime evidence 和 Planning checkpoints 作为 Stage evidence，但不证明任一 Skill 的独立 score benefit。Risk Control 已有最小 `risk-review` Skill 实现；Main 接受 S03-14 在一次 qualifying public trigger 上验证的 runtime load、Risk marker 与 action correctness，作为 S03 Stage evidence。该证据限于一次 observed runtime path，不证明 strategy effectiveness、score benefit 或泛化。以下合同界定职责，不要求拆成三个 Skill 文件，也不创建新的调度框架；具体拆分由实现和后续实验决定。
 
 AD-001 中“成本低、可验证”是选择起步路线的理由，不是本项目实测优势。S01 使用官方示例验证闭环，不证明 Memory / Planning 已实现，也不证明 Risk Control 的策略收益。
 
-### Memory / Structured State Board
+### Structured State Board
 
-Skill Name: `structured-state-board`（候选能力名，未创建文件）
+Skill Name: `structured-state-board`（已实现：[`skills/structured-state-board/SKILL.md`](../../skills/structured-state-board/SKILL.md)；S04 Main acceptance 记录其 partial runtime use）
 
 Purpose: 将公开观察与必要事件线索整理为当前局状态，保留时间、来源和不确定性。
 
@@ -84,7 +84,7 @@ Failure Fallback: 丢弃不匹配 session 或过期的摘要，重新读取官�
 
 ### Planning / Rolling Planning
 
-Skill Name: `rolling-planning`（候选能力名，未创建文件）
+Skill Name: `rolling-planning`（已实现：[`skills/rolling-planning/SKILL.md`](../../skills/rolling-planning/SKILL.md)；S04 两次 Candidate run 均有 runtime checkpoint evidence）
 
 Purpose: 根据当前状态提出近期行动建议、中期目标及修正理由。
 
@@ -130,4 +130,12 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 - 开发期经验只有经过评估、标识来源与版本、明确归入提交包后才作为可交付知识。因果未定的失败保留“未定”，不自动归因为计划/执行/随机中的某一类。
 - 规划、风险提示和状态整理的顺序可由同一个 Agent 按需组合。只在取得实验依据后决定是否拆分、更换存储或引入角色协同；不为当前设计合同创建复杂持久化或并行系统。
 
-验收边界：Main 接受的 S03-14 证据仅覆盖一次 qualifying public trigger 的 Risk runtime load / marker / action correctness；不证明策略表现、score benefit 或泛化。Memory / Planning 的实现、状态更新与失败恢复仍未验证。Single Agent 唯一 action submitter 的边界不变。保留 AD-003 的 Swarm 实验准入方向和 AD-004 的 Hypothesis → Experiment → Decision 流程。
+验收边界：S03-14 的 Risk 证据仅覆盖一次 qualifying public trigger 的 runtime load / marker / action correctness；不证明策略表现、score benefit 或泛化。S04 Main acceptance 为 `PASS_WITH_KNOWN_LIMITATION`：State Board runtime 为 `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`，其 score benefit `NOT_PROVEN`；Rolling Planning 已实现并进入两次 Candidate run，独立 score benefit 同样 `NOT_PROVEN`。Single Agent 仍是唯一 action submitter。Team / Swarm 保持 `DEFERRED`，沿用 AD-003 的证据准入和 AD-004 的 Hypothesis → Experiment → Decision 流程。
+
+## S04 Main acceptance｜Game Gate 与 Candidate v2 假设
+
+- Main 接受 S04 为 `COMPLETE`，Stage acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。Candidate v1 两次成绩为 `76.04 / 53.23 / 48m / A` 与 `35.31 / 24.72 / 25m / D`，故记录 `CANDIDATE_V1 = HIGH_VARIANCE`；不据此声称稳定高分、因果收益或 hidden-test generalization。
+- `GAME_GATE = ADOPTED`：full game 是昂贵 benchmark，不是普通 correctness test；新一局必须有单独明确授权。当前 `NEXT_GAME = NOT_AUTHORIZED`。
+- 下一研究假设为 `H_MATERIAL_OUTCOME_REPRIORITIZATION`：Candidate 部分早期成长信号已观察到，但中期成长及严重公开后果下的动作排序不稳定；下一候选先离线审查一个有公开轨迹支持的决策机制，同时保护正常成长机会。Astra-01 提供 red-team / hypothesis 线索，不自动成为工程事实。
+- Candidate v2 的首个最小候选仅为假设：只改 `rolling-planning`，加入 bounded `material-outcome checkpoint`，在 severe public consequence 后重新比较当前目标与合法替代路径。不得默认“道德/原则上正当”或“刚晋升/担当”即安全，也不得默认转岗/降低暴露即失败或必然降职。此处没有实施或验证该改动。
+- 本假设不同时修改 `risk-review` 或 State Board，不加入 `active_public_risks`，不绑定 Energy component-wise comparison，不新增第五个 Skill，也不启动 Team / Swarm。Energy comparison 保留为独立 Hypothesis。

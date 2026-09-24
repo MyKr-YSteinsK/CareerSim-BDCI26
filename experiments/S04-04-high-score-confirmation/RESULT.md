@@ -62,10 +62,10 @@ Candidate n=2 mean/min/max: quantitative `55.675 / 35.31 / 76.04`; partial `38.9
 
 ### Behavioral Consistency
 
-- Candidate #1 chose `申请关键项目` in all 16 quarterly main actions; Candidate #2 chose it in 7 of 8 reached quarters and chose `低调避险` once at Month 12. The first seven quarters matched.
+- Candidate #1 chose `申请关键项目` in all 16 quarterly main actions. Candidate #2 chose `低调避险` at Month 12 and `申请关键项目` in the other six of its first seven quarters, so Candidate #1 vs #2 match `6/7`; Candidate #2 chose `申请关键项目` in 7 of 8 quarters reached overall.
 - Across the first seven quarters, energy selections were Candidate #1 vs #2: preparation `10 vs 5`, health `7 vs 7`, network `4 vs 5`, historic cleanup `0 vs 2`.
 - Both Candidate runs had three observed `rolling-planning` checkpoints. This does not establish planning as the cause of score or survival differences.
-- Promotions: Candidate #1 at Months `6,12,18,36,48`; Candidate #2 at `6,12,24`, then terminal at Month 25. Health/network/output and opportunity trajectories diverged; relative agent-vs-environment contribution is `UNKNOWN`.
+- First L4: Candidate #1 at Month `18` (Month 12 was L3); Candidate #2 at Month `24` (Month 12 was L3). Promotions: Candidate #1 at Months `6,12,18,36,48`; Candidate #2 at `6,12,24`, then terminal at Month 25. Health/network/output and opportunity trajectories diverged; relative agent-vs-environment contribution is `UNKNOWN`.
 - Risk-control effectiveness remains `NOT_PROVEN`; Run #2 ended after a trust-crisis event and scored zero normalized points in that dimension.
 
 ### Structured State Board

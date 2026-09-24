@@ -93,8 +93,18 @@
     "interpretation": "One A/48-month result and one D/25-month elimination indicate high observed variance. Both candidate runs exceeded SCORE-01 on total score and survival, but Run #2's margin was small and its risk_control normalized score was 0. n=2 does not establish stability or causality."
   },
   "behavioral_consistency": {
-    "first_seven_quarterly_main_actions": "All three runs selected 申请关键项目 for the first seven quarters. Candidate Run #2 selected 低调避险 at Month 12 and returned to 申请关键项目 afterward.",
-    "candidate_run1_vs_run2": "Run #1 selected 申请关键项目 in all 16 quarters; Run #2 selected it in 7 of 8 reached quarters. Resource allocation also differed: first-seven-quarter prep 10 vs 5, health 7 vs 7, network 4 vs 5, historic cleanup 0 vs 2.",
+    "first_seven_quarterly_main_actions": {
+      "months": [3, 6, 9, 12, 15, 18, 21],
+      "candidate_run1": ["申请关键项目", "申请关键项目", "申请关键项目", "申请关键项目", "申请关键项目", "申请关键项目", "申请关键项目"],
+      "candidate_run2": ["申请关键项目", "申请关键项目", "申请关键项目", "低调避险", "申请关键项目", "申请关键项目", "申请关键项目"],
+      "candidate_run1_vs_candidate_run2": "6/7; mismatch at Month 12 (Run #2 selected 低调避险)"
+    },
+    "candidate_run1_vs_run2": "Run #1 selected 申请关键项目 in all 16 quarters; Run #2 selected it in 7 of 8 reached quarters. Their first-seven-quarter actions match 6/7 because Run #2 selected 低调避险 at Month 12. Resource allocation also differed: first-seven-quarter prep 10 vs 5, health 7 vs 7, network 4 vs 5, historic cleanup 0 vs 2.",
+    "first_l4_reached": {
+      "candidate_run1_month": 18,
+      "candidate_run2_month": 24,
+      "evidence": "Run #1 monthly public states show Month 12=L3 and Month 18=L4; Run #2 promotion timing shows L3→L4 at Month 24 and its Month 12 milestone is L3."
+    },
     "planning": "Both Candidate runs yielded three observed planning checkpoints; this does not isolate planning as a cause of score differences.",
     "risk_behavior": "Run #2 had a risk-control normalized score of 0 and ended after a second trust-crisis blowup; risk-review effectiveness remains NOT_PROVEN.",
     "environment_and_trajectory": "The two candidate trajectories differed in duration, promotion timing, state growth, resource allocation, and terminal events. Relative causal contributions of agent choices and event/opportunity path are UNKNOWN."
