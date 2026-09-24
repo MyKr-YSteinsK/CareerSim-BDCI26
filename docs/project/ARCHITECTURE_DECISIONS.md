@@ -158,3 +158,9 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 - `candidate-v3b-final-policy` 是 S06-01 静态候选的离线 successor：普通选择按 Material Risk、Primary Gap、次级公开收益与 Soft Cost 定性排序；Risk Budget 为 `AVAILABLE` 且公开 Gap upside 明显更强时明确倾向高收益合法路径；局部正反馈不单独构成 `ADVANCING`。
 - 每季度 fresh-state Planning checkpoint 与完整 Skill reread 解耦；全文重读仅由初始详细规划、反馈/严重后果、continuation/context loss、checkpoint 语义不明或无法还原 procedure 等条件触发。Board 的 context-loss effect recovery 限于当前 game session、fresh observe 后最多 5 条近期 public log、最多 2 条可直接比较的 action/effect；Board 不推导进度、不推荐动作。
 - 仍为 Single Agent + 四个 Skills，Trace 冻结，Risk 的 Material Risk / Soft Cost 合同不变；Memory、第五 Skill、Team / Swarm 均未实现/批准。该候选仅为静态合同，gameplay effectiveness 与 stable 80+ 仍 `NOT_PROVEN`；`NEXT_GAME` 继续 `NOT_AUTHORIZED`。本轮完成后进入 final offline stop rule，后续策略扩展须先经 Main review。
+
+## S06-04 Chinese-primary language refactor boundary
+
+- `candidate-v3c-zh-aligned-policy` 是已接受 v3b 策略的语言重构 successor：四个 Skill 与 runtime instruction 采用中文主体 + English structured control tokens；strategy delta = NONE。
+- 该选择是为贴合 CareerSim 中文工作语境、改善可读性与维护一致性的工程决策；`gameplay A/B 未证明分数收益`，也未证明中文或特定模型提高分数。
+- 架构仍为 Single Agent + 原四个 Skills；无 Memory、第五 Skill、Team/Swarm 或第二 action submitter。gameplay effectiveness 与 stable 80+ 仍 `NOT_PROVEN`，下一局仍需独立 Main Game Gate 授权。
