@@ -102,5 +102,5 @@ S04 Stage Review only. Do not run another game from this task.
 - Model Used: `UNKNOWN` (the execution environment did not expose a reliable selected model variant; no inference from preference)
 - Reasoning Effort: `UNKNOWN`
 - Started At: `UNKNOWN` (whole-task start was not captured reliably)
-- Finished At: `UNKNOWN` (fill from finalization clock before commit)
+- Finished At: `2026-09-24 04:35:23 UTC` (finalization timestamp captured after branch push)
 - Actual Wall-clock: `UNKNOWN` (start boundary unavailable; Run #2 itself was `677.85 s`)
