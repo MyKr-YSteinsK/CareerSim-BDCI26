@@ -7,9 +7,10 @@
 - Branch: `codex/s06-01-adaptive-controller-static`
 - Base: `main@0a2ccaa03c3865bc88e533108bb52ccc7c5f7ff2`
 - Parent candidate: `candidate-v2-final-offline` (the exact four parent blobs are recorded in `candidate_manifest.json`).
-- Commit: implementation/evidence commit is the commit containing this RESULT; exact SHA is reported in the handoff TASK_RESULT to avoid a self-referential file edit.
-- Remote State: branch push and remote SHA equality are recorded in the handoff TASK_RESULT.
-- Working Tree: clean after delivery (verify at task closeout).
+- Candidate implementation commit: `3921c4893e6824f71ebb621fc0a4739ec4be6164`.
+- Final branch HEAD: this RESULT's delivery-metadata commit; exact SHA and remote equality are reported in the handoff TASK_RESULT.
+- Remote State: final branch push and remote SHA equality are verified at task closeout and recorded in the handoff TASK_RESULT.
+- Working Tree: clean after final delivery verification.
 
 ## Evidence → Decision → Implementation
 
@@ -42,7 +43,7 @@
 - Reproducible pure static command: `D:\CS\CareerSim\.venv\Scripts\python.exe experiments/S06-01-adaptive-controller-static/verify_static_contract.py`.
 - Static verifier: `PASS` using the project-root `.venv` Python; JSON/frontmatter parsing, Runner manifest field validation, all Skill blob identities, runtime manifest/instruction SHA, context accounting, required controller cues, local links, and path/credential hygiene checks passed.
 - `git diff --cached --check`: `PASS`. Staged paths are exactly the two permitted state/ADR files, three editable Skills, and six artifacts in this task directory. Runner, `pyproject.toml`, `uv.lock`, Source Lock, Trace, S03, and other Skills are unchanged. No tracked `.env` is present in the candidate change set.
-- No Runner `validate`, install, or runtime-initializing command was run. Final post-commit changed-path scan, clean-tree and remote-branch identity are recorded after delivery.
+- No Runner `validate`, install, or runtime-initializing command was run. Post-commit changed-path scan, clean-tree and remote-branch identity are recorded in the final task handoff.
 - Static checks establish only written-contract correctness. They do not test runtime reread, strategy decisions, game outcomes, or score benefit.
 
 ## Live Operation Proof
@@ -85,11 +86,3 @@
 ## Next Recommendation
 
 `RETURN_TO_MAIN_FOR_S06-01_REVIEW_AND_GAME_GATE_DECISION`
-
-## EXECUTION_METRICS
-
-- Model Used: `UNKNOWN` (exact active variant is not reliably exposed to this task)
-- Reasoning Effort: `UNKNOWN`
-- Started At: `2026-09-24 11:21:31 UTC`
-- Finished At: pending final handoff timestamp
-- Actual Wall-clock: pending final handoff timestamp

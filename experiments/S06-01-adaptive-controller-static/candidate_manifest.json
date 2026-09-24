@@ -5,6 +5,8 @@
   "target_is_proven": false,
   "base_main_sha": "0a2ccaa03c3865bc88e533108bb52ccc7c5f7ff2",
   "branch": "codex/s06-01-adaptive-controller-static",
+  "candidate_implementation_commit": "3921c4893e6824f71ebb621fc0a4739ec4be6164",
+  "candidate_implementation_commit_semantics": "This commit contains the Skill delta, canonical runtime instruction, static evidence and state reconciliation. Any later commit is delivery-metadata-only and does not change candidate runtime or Skill identity.",
   "final_skills": [
     "career-action-trace",
     "risk-review",

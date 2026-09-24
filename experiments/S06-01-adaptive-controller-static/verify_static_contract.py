@@ -81,6 +81,10 @@ def main() -> None:
     require(candidate["candidate_id"] == "candidate-v3-adaptive-controller-static", "candidate id mismatch")
     require(candidate["base_main_sha"] == BASE, "candidate base mismatch")
     require(candidate["parent_candidate_id"] == "candidate-v2-final-offline", "parent candidate mismatch")
+    require(
+        git("merge-base", "--is-ancestor", candidate["candidate_implementation_commit"], "HEAD") == "",
+        "candidate implementation commit is not in current ancestry",
+    )
     require(candidate["target"] == "STABLE_QUANTITATIVE_80_PLUS" and candidate["target_is_proven"] is False, "target boundary mismatch")
     require(candidate["final_skills"] == list(SKILLS), "manifest Skill set mismatch")
     require(runtime["team"].strip() and runtime["name"].strip(), "manifest team/name is empty")

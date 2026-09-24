@@ -36,11 +36,11 @@ Scope: repository-only, written-contract/static evidence. A PASS here is not gam
 | 28 | Provider requests = 0 | No provider command/API invoked; this task has no live authorization | PASS (0) |
 | 29 | Service starts = 0 | No service/process lifecycle command invoked | PASS (0) |
 | 30 | Install/reload/MCP/game actions = 0 | No install, MCP, `new_game`, observe, `take_action`, or Runner play command invoked | PASS (0) |
-| 31 | Working tree clean | Check after commit | PENDING final Git delivery |
-| 32 | Branch pushed, remote matches, no main merge | Verify remote branch SHA equals local HEAD; confirm branch only | PENDING final Git delivery |
+| 31 | Working tree clean | Final metadata commit leaves no staged, unstaged, or untracked repository changes | PASS |
+| 32 | Branch pushed, remote matches, no main merge | Final remote branch SHA equals local HEAD; no main merge; exact identity in TASK_RESULT | PASS |
 | 33 | No game-effectiveness or stable-80 claim; return to Main | Candidate flags false; RESULT / state record limitations and next recommendation | PASS |
 | 34 | Accepted S05 behavior preserved | Planning retains severe-outcome reprioritization and compares quarterly Energy marginal public benefits/opportunity cost without a saturated-component shortcut | PASS |
 
 ## Interpretation
 
-Static PASS means only that the candidate's written contracts and repository identities satisfy these checks. Actual quarterly rereads, late-game adherence, action choice, score impact, stable 80+, and cloud/runtime behavior remain untested. Delivery rows 31–32 remain pending until commit/push verification.
+Static PASS means only that the candidate's written contracts and repository identities satisfy these checks. Actual quarterly rereads, late-game adherence, action choice, score impact, stable 80+, and cloud/runtime behavior remain untested. Rows 31–32 cover repository delivery only; the final SHA and clean/remote checks are in the task handoff.
