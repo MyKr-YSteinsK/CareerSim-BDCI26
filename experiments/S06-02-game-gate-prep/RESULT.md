@@ -79,7 +79,7 @@ No next game is authorized by this task. `NEXT_GAME=NOT_AUTHORIZED`.
 
 ## EXECUTION_ISSUES
 
-- Avoidable Execution Issues: `10` local-only command, patch-context, and diagnostic-harness mistakes; all were corrected without repository/runtime damage.
-- Categories: `tool_orchestration (1), patch_context (2), path_assumption (1), diagnostic_shell_or_quoting (5), unsupported_git_worktree_config (1)`.
+- Avoidable Execution Issues: `11` local-only command, patch-context, and diagnostic-harness mistakes; all were corrected without repository/runtime damage.
+- Categories: `tool_orchestration (1), patch_context (2), path_assumption (2), diagnostic_shell_or_quoting (5), unsupported_git_worktree_config (1)`.
 - Consumed Live Budget: `NO`.
 - Prevention Candidate: keep structured command arguments scalar, validate exact file/path anchors before patching, and avoid nested shell/Python quoting or unsupported per-worktree Git config flags.
