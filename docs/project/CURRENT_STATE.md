@@ -8,7 +8,7 @@
 - Branch: main
 - Current Stage: S06-Lab
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
-- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05: COMPLETE_ENGINEERING_CLOSEOUT（仅仓库收口，无 live ops）；S06 未宣布完成
+- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口与 S06-06 当前候选静态复核已完成；S06 未宣布完成
 - Last verified: 2026-09-24
 
 ## Current candidate
@@ -39,6 +39,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
-- S06-05 performs no gameplay, provider request, service start, install/reload, or MCP call.
-- No S06-06 or later benchmark/optimization is implemented by this closeout.
+- S06-06: CURRENT_V3C_STATIC_REVIEW_PASS；候选策略内容未修改，可交 Main 决定 Game Gate；本复核没有执行 live 操作，也不授权下一局。
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
