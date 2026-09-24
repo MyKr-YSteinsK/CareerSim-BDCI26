@@ -7,31 +7,29 @@ description: Use at a new game's first observation, quarterly resource and main-
 
 ## Purpose
 
-Translate fresh public CareerSim state into one short-horizon priority and one medium-horizon objective. This Skill adds a bounded planning checkpoint to the existing Single Agent loop; it is not a new agent, action policy, persistent memory system, or score predictor.
+Set one public-evidence-based short priority and medium objective. This checkpoint is not an agent, action policy, memory system or score predictor.
 
 ## When to use
 
 - After the first valid observation of a new game session, establish the initial priority.
 - Before quarterly Energy allocation and the quarterly main action, compare the current public state and legal choices with the active priority.
-- After a semiannual performance result or another material public outcome that changes the plan.
-- When a previously repeated strategic action has not produced an observed improvement in its intended public state.
+- After semiannual feedback, a plan-changing public warning/outcome, or repeated action without observed intended progress.
 
-Do not invoke this Skill for every monthly story choice. Use it only at these strategic checkpoints or when a material outcome invalidates the active plan.
+Do not invoke for every monthly story choice. Ordinary HR praise, no new warning, action acceptance, or submitted mitigation alone neither resolves an existing risk nor triggers material-outcome reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
 
 ## Input and evidence rules
 
-Use only the current game's confirmed session ID, the latest public `observe`, the same-session `structured-state-board` when available, confirmed action results, and public handbook rules already available to the Agent. Treat the latest `observe` as authoritative. Keep observed facts, inferences, and unknowns separate.
+Use only the confirmed current game session, latest authoritative public `observe`, same-session board if available, confirmed action results, and available public handbook rules. Separate observed facts, inferences, and unknowns.
 
-Do not use another run's transcript, score report, raw database, hidden counters, inferred thresholds, or unpublished evaluator weights. Do not assume an action caused an outcome merely because it preceded that outcome.
+Never use another run, post-outcome facts not yet visible, raw database, hidden counters/thresholds, or evaluator weights. Sequence alone does not prove causation.
 
 ## Planning procedure
 
-1. Check that the state and board belong to the current game session; if not, discard stale context and continue with the normal loop's fresh public observation.
-2. Identify the most decision-relevant public constraint or gap, considering visible performance feedback, level progression, Skill, Network, Output, Wealth, Health, Dignity, Energy, and active public risks. Use only public facts and do not assume a fixed priority order.
-3. Keep one objective through the next quarterly or semiannual review, whichever is the relevant horizon. Prefer an observable objective such as producing a clear deliverable, developing a needed capability, strengthening a relevant relationship, or protecting a threatened resource. Do not promise a promotion, score, or event outcome.
-4. At a quarterly choice, compare only currently legal options. Briefly state how the leading option supports the objective and what it trades off; retain the Single Agent's final judgment, especially when immediate survival and growth conflict.
-5. After material feedback, compare the plan with the newly observed result and revise if the evidence warrants it. If a repeated action has not produced the intended observed progress, reconsider the alternatives rather than repeating it by default; repetition may still be chosen when its current evidence supports it.
-6. Keep the plan concise and replace the prior checkpoint instead of accumulating history.
+1. Reject stale or mismatched session/board context; the normal loop obtains fresh public observation.
+2. Identify the decision-relevant public gap across performance, level, resources and visible risks without a fixed priority order. Set one observable objective through the next quarterly or semiannual review; never promise promotion, score, or event outcomes.
+3. At quarterly choices, compare legal options' objective support and trade-offs; one saturated benefit does not nullify a composite option. Repeated action without observed progress warrants reconsideration, not automatic rejection.
+4. After a severe public warning/consequence that materially undermines the objective, persistent retaliation/escalation, or public feedback showing major survival/trust cost, do not carry forward the old `Priority`. Compare currently legal paths: continue growth/principle, reduce exposure/de-escalate, and transfer/exit/mitigation if available. For each, weigh known public benefit, known public loss, escalation exposure, opportunity cost, and `UNKNOWN`; mark unavailable paths rather than invent actions. Rebuild the objective. Principle, duty or recent promotion is not proof of safety; transfer, reduced exposure or conservatism is neither automatic failure/demotion nor the fixed answer.
+5. Otherwise revise on material feedback only when public evidence warrants it. Replace the prior checkpoint rather than accumulating history. This is goal reprioritization, not `risk-review`'s pre-action warning check; the same Agent makes the final choice.
 
 ## Output
 
@@ -40,15 +38,15 @@ Return a compact checkpoint, normally no more than five short lines:
 - `Horizon`: next quarter or next semiannual review.
 - `Observed gap`: the relevant public fact(s), or `unknown`.
 - `Priority`: one revisable objective.
-- `Choice trade-off`: at most two currently legal candidates when a quarterly choice is available.
+- `Path trade-off`: at a material-outcome checkpoint, compactly compare the legal paths and five factors above; otherwise at most two legal quarterly candidates.
 - `Review trigger`: the next feedback or public state change that should prompt revision.
 
-For a non-quarterly material feedback event, omit `Choice trade-off` if no relevant strategic choice is currently legal.
+If no relevant choice is currently legal, mark it unavailable and wait for a legal decision point; do not invent one.
 
 ## Action authority and fallback
 
 - **Can Submit Action: No.**
-- This Skill does not call `new_game`, `observe`, or `take_action`, and does not alter legal choices or action notes.
-- The existing Single Agent remains the only action submitter and may accept, adapt, or reject the planning recommendation.
+- Do not call `new_game`, `observe`, or `take_action`, or alter legal choices or action notes.
+- The Single Agent alone submits actions and may adapt or reject this recommendation.
 - If the session, state, or choices are stale or ambiguous, report the uncertainty and return to the normal loop for fresh public state. Never guess a game ID or block the normal decision process.
 - Keep the checkpoint within the current drive conversation, scoped to this game session. Do not write files, global Memory, Skill state, Runner output, or emulator data; do not carry it into another game.
