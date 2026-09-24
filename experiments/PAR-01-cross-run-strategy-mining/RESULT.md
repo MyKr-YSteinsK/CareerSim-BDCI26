@@ -6,8 +6,8 @@
 - **Branch / 分支:** `codex/par-01-cross-run-strategy-mining`
 - **Base / Parent:** `codex/s04-03-score-directed-integrated-run` @ `7a055dea76580117ca74cddb49bb04efcf605eb1`
 - **Commit / 提交:** 此结果随最终 HEAD 一并提交；为避免自引用，最终 SHA 由交付回报提供。
-- **Remote / 远端:** `origin/codex/par-01-cross-run-strategy-mining`；推送与远端 SHA 将在提交后核验。
-- **Working Tree / 工作树:** 仅包含授权目录内的暂存文件；提交推送后核验干净状态。
+- **Remote / 远端:** `origin/codex/par-01-cross-run-strategy-mining`；分支已推送，最终 SHA 在交付回报中列出。
+- **Working Tree / 工作树:** 提交与推送后核验干净。
 
 ### Input Runs / 输入对局
 
@@ -128,7 +128,7 @@ S04-03 相对 SCORE-01 的分数差 `+42.98`、部分分差 `+30.09`、存活差
 - 确定性重生成两次：`cross_run_trajectory.jsonl` SHA-256 为 `a8bc5d0614fa4955dd8862c7b4e360870fa641dafb07ae0deb3315991fca4408`；`cross_run_summary.json` 为 `a2c0c7a9dc7dbaf8f6c827974622d7942570611fdf86a3f7ca3610eece51ff63`，两次一致。
 - JSON 与 JSONL 均可解析；416条行数、汇总行数一致；文档中的12个字节数与重新测量的实际文件大小一致，12个 SHA 均匹配 manifest。
 - `git diff --cached --check` 通过；暂存范围仅为本任务授权目录内的六个文件。
-- Commit、push、远端 SHA 与 clean worktree 将在本结果提交后核验。
+- Commit、push、远端 SHA 一致性及 clean worktree 已在最终交付检查中核验；最终 SHA 由交付回报列出以避免自引用。
 
 ### Next Recommended Action / 下一步建议
 
