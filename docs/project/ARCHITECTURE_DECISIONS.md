@@ -151,3 +151,9 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 - Main 已接受 S06-01 的 `candidate-v3-adaptive-controller-static` 为静态 hypothesis candidate：保持 Single Agent + 四个 Skills，通过 repo-owned always-visible trigger/control cue、Adaptive Planning（单一 Primary Gap、fresh observed-effect progress、两相邻可比 checkpoint stall comparison、公开 horizon）、Board 的 bounded recent effects 和 Risk 的 Material Risk / Soft Cost 区分改善可观察性与决策闭环。该接受仅覆盖静态实现与回归合同，不代表 gameplay effectiveness 已验证。
 - `structured-state-board` 仅维护当前 game session 的公开事实及最多两条可归因 recent effect；`rolling-planning` 负责战略目标、进展与 Risk Budget；`risk-review` 仅评估触发时的当前候选和 Material Risk。Trace 保持冻结，四 Skill 职责不增加 action authority。
 - 架构仍为 Single Agent + Multiple Skills。Memory 未实现、第五 Skill 未引入、Team / Swarm deferred；不得从这项静态候选推导架构升级、分数改善或下一局授权。任何后续 gameplay 需要独立 Main Game Gate。
+
+## S06-03 最终离线策略边界
+
+- `candidate-v3b-final-policy` 是 S06-01 静态候选的离线 successor：普通选择按 Material Risk、Primary Gap、次级公开收益与 Soft Cost 定性排序；Risk Budget 为 `AVAILABLE` 且公开 Gap upside 明显更强时明确倾向高收益合法路径；局部正反馈不单独构成 `ADVANCING`。
+- 每季度 fresh-state Planning checkpoint 与完整 Skill reread 解耦；全文重读仅由初始详细规划、反馈/严重后果、continuation/context loss、checkpoint 语义不明或无法还原 procedure 等条件触发。Board 的 context-loss effect recovery 限于当前 game session、fresh observe 后最多 5 条近期 public log、最多 2 条可直接比较的 action/effect；Board 不推导进度、不推荐动作。
+- 仍为 Single Agent + 四个 Skills，Trace 冻结，Risk 的 Material Risk / Soft Cost 合同不变；Memory、第五 Skill、Team / Swarm 均未实现/批准。该候选仅为静态合同，gameplay effectiveness 与 stable 80+ 仍 `NOT_PROVEN`；`NEXT_GAME` 继续 `NOT_AUTHORIZED`。本轮完成后进入 final offline stop rule，后续策略扩展须先经 Main review。
