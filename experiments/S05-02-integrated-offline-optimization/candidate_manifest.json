@@ -2,7 +2,7 @@
   "candidate_id": "candidate-v2c-integrated-planning",
   "base_main_sha": "7fc741cadc950608ff190ff10d7a001584e99dcc",
   "parent": null,
-  "task_commit": "PENDING_CANDIDATE_FREEZE_COMMIT",
+  "task_commit": "667696a22ee4c2d1b4e5d7596239d4b0e0939a0f",
   "task_commit_semantics": "Will identify the commit containing Skill, evidence, regression matrix, benchmark matrix and state reconciliation; a later manifest-only commit may carry this finalized value.",
   "candidate_freeze_status": "OFFLINE_PENDING_S05_STAGE_REVIEW",
   "skill_blobs": {
