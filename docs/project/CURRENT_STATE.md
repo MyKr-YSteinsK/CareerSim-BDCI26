@@ -11,7 +11,7 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S06-Lab; S06-03 v3b final offline candidate ready for Main review; no Game Gate authorization`
+- Current Stage: `S06-Lab; S06-03 final offline policy accepted; S06-04 Chinese-language refactor in progress; no Game Gate authorization`
 - S03: `COMPLETE`
 - S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
@@ -39,7 +39,8 @@
 - S06: `IN_PROGRESS`
 - S06-01: `COMPLETE_ACCEPTED_BY_MAIN` (`ADAPTIVE_CONTROLLER_STATIC_ACCEPTED`; static candidate only)
 - S06-02: `COMPLETE_ACCEPTED_BY_MAIN` (`V3_GAME_GATE_PREP_ACCEPTED`; no live run)
-- S06-03: `FINAL_OFFLINE_POLICY_READY_FOR_MAIN_REVIEW` (static candidate only; no gameplay/provider authorization)
+- S06-03: `COMPLETE_ACCEPTED_BY_MAIN` (`FINAL_OFFLINE_POLICY_ACCEPTED`; offline/static only)
+- S06-04: `IN_PROGRESS` (Chinese-primary language refactor of accepted policy; no gameplay/provider authorization)
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -52,14 +53,14 @@
 - MULTI_AGENT / TEAM / SWARM: `DEFERRED`
 - CANDIDATE_V2_HYPOTHESIS: `H_MATERIAL_OUTCOME_REPRIORITIZATION` (`OFFLINE_IMPLEMENTED`; gameplay effectiveness `NOT_PROVEN`)
 - S05_FINAL_CANDIDATE: `candidate-v2-final-offline` (offline frozen; gameplay effectiveness `NOT_PROVEN`)
-- S06_CANDIDATE: `candidate-v3b-final-policy` (offline static candidate ready for Main review; gameplay effectiveness `NOT_PROVEN`)
+- S06_CANDIDATE: `candidate-v3b-final-policy` (Main-accepted offline policy; gameplay effectiveness `NOT_PROVEN`)
 - TARGET: `STABLE_QUANTITATIVE_80_PLUS` (goal, not achieved fact)
 - NEXT_GAME: `NOT_AUTHORIZED` (separate Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: S05 的 `candidate-v2-final-offline` 已由 Main 接受，S05 acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。S06 Run #1 的 Main-reviewed 单局结果为 quantitative 53.83、competition partial 37.68、48 months、grade C；它只提供长程策略控制缺陷线索，不证明因果或稳定表现。Main 已接受 S06-01 静态候选和 S06-02 v3 Game Gate prep；S06-03 已冻结 `candidate-v3b-final-policy` 为离线静态候选，三者均未验证 gameplay effectiveness，stable 80+ 仍 `NOT_PROVEN`。任何下一局仍须独立 Main Game Gate 授权。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred。S03 forensic hold 已解除，raw retained、cleanup 未授权。
+- Current milestone: S05 的 `candidate-v2-final-offline` 已由 Main 接受，S05 acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。S06 Run #1 的 Main-reviewed 单局结果为 quantitative 53.83、competition partial 37.68、48 months、grade C；它只提供长程策略控制缺陷线索，不证明因果或稳定表现。Main 已接受 S06-01 静态候选、S06-02 v3 Game Gate prep，并接受 S06-03 的 `candidate-v3b-final-policy` 作为最终离线策略候选；这些静态/准备工作均未验证 gameplay effectiveness，stable 80+ 仍 `NOT_PROVEN`。S06-04 正对已接受策略做中文主体语言重构，不增加策略机制；任何下一局仍须独立 Main Game Gate 授权。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred。S03 forensic hold 已解除，raw retained、cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (S06-03 v3b static candidate frozen; no gameplay/provider validation)
+- Last verified: 2026-09-24 (S06-03 accepted by Main; S06-04 language refactor in progress; no gameplay/provider validation)
 
 ## Major capabilities
 
@@ -103,11 +104,11 @@
 
 ## Active work
 
-- S05 的 S05-02/S05-03 离线成果及 `candidate-v2-final-offline` 已被 Main 接受并合入。S06-01 的 `candidate-v3-adaptive-controller-static` 已获 Main 静态接受并合入；S06-02 的 v3 Game Gate prep 已获 Main 接受，但 `NEXT_GAME` 仍为 `NOT_AUTHORIZED`。S06-03 已完成 bounded offline policy tightening 并冻结 v3b 静态候选，等待 Main review；这不验证策略收益或 gameplay。S06 Run #1 不证明因果或稳定表现。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
+- S05 的 S05-02/S05-03 离线成果及 `candidate-v2-final-offline` 已被 Main 接受并合入。S06-01 的 `candidate-v3-adaptive-controller-static`、S06-02 的 v3 Game Gate prep、S06-03 的 `candidate-v3b-final-policy` 均已获 Main 接受；均未验证 gameplay effectiveness，`NEXT_GAME` 仍为 `NOT_AUTHORIZED`。S06-04 正在进行策略语义不变的中文主体语言重构。S06 Run #1 不证明因果或稳定表现。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. Main 审查 S06-03 的 `candidate-v3b-final-policy`，并另行决定是否授权下一次 Game Gate。S06 Run #1 与静态候选均不证明策略收益或 stable 80+。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；S06 仍 `IN_PROGRESS`。
+1. Main 审查 S06-04 的 `candidate-v3c-zh-aligned-policy`；之后另行决定是否授权下一次 Game Gate。S06 Run #1 与静态候选均不证明策略收益或 stable 80+。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；S06 仍 `IN_PROGRESS`。
 
 ## Workflow / delivery facts that are currently material
 

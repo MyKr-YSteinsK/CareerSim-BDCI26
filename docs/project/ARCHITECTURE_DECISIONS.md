@@ -154,6 +154,7 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 
 ## S06-03 最终离线策略边界
 
+- Main 接受 S06-03 为 `COMPLETE_ACCEPTED_BY_MAIN`，决策为 `FINAL_OFFLINE_POLICY_ACCEPTED`，候选为 `candidate-v3b-final-policy`。接受范围仅限离线策略合同与静态证据；不代表 gameplay effectiveness、stable 80+ 或下一局授权。
 - `candidate-v3b-final-policy` 是 S06-01 静态候选的离线 successor：普通选择按 Material Risk、Primary Gap、次级公开收益与 Soft Cost 定性排序；Risk Budget 为 `AVAILABLE` 且公开 Gap upside 明显更强时明确倾向高收益合法路径；局部正反馈不单独构成 `ADVANCING`。
 - 每季度 fresh-state Planning checkpoint 与完整 Skill reread 解耦；全文重读仅由初始详细规划、反馈/严重后果、continuation/context loss、checkpoint 语义不明或无法还原 procedure 等条件触发。Board 的 context-loss effect recovery 限于当前 game session、fresh observe 后最多 5 条近期 public log、最多 2 条可直接比较的 action/effect；Board 不推导进度、不推荐动作。
 - 仍为 Single Agent + 四个 Skills，Trace 冻结，Risk 的 Material Risk / Soft Cost 合同不变；Memory、第五 Skill、Team / Swarm 均未实现/批准。该候选仅为静态合同，gameplay effectiveness 与 stable 80+ 仍 `NOT_PROVEN`；`NEXT_GAME` 继续 `NOT_AUTHORIZED`。本轮完成后进入 final offline stop rule，后续策略扩展须先经 Main review。
