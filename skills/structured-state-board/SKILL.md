@@ -1,98 +1,92 @@
 ---
 name: structured-state-board
-description: Use within one CareerSim game session to keep a compact observed/inferred/unknown working board from fresh public observations and confirmed action results; never submit actions.
+description: 在单局 CareerSim 中依据新鲜公开观察和已确认的动作回执维护 observed/inferred/unknown 工作状态，帮助同一个 Agent 恢复决策上下文；不得提交动作。
 ---
 
-# Structured State Board
+# Structured State Board｜结构化状态板
 
-## Purpose
+## 职责
 
-Keep one compact working board for the current CareerSim game so the same Agent can recover decision context during a long playthrough. This Skill organizes information already available to the Agent. It is not global memory, cross-game learning, a planner, a risk policy, a hidden-state estimator, or another action submitter.
+为当前 CareerSim 单局维护一份精简工作状态，使同一个 Agent 能在长流程中恢复决策上下文。本 Skill 只整理 Agent 已有信息；它不是全局 Memory、跨局学习、Planner、风险策略、隐藏状态估计器或另一个动作提交者。
 
-## Trigger
+## 触发条件
 
-Refresh the board:
+在以下情况刷新状态板：
 
-- after a successful `new_game` and the first valid `observe`;
-- when a fresh `observe` changes a material public state, event, warning, or legal choice;
-- after a confirmed action result, using the next fresh `observe` to refresh current state;
-- when continuing after context loss; or
-- whenever the board is missing, stale, ambiguous, or for another game session.
+- `new_game` 成功且首次 `observe` 有效之后；
+- 新鲜 `observe` 显示公开状态、事件、警告或合法选项发生重要变化时；
+- 动作回执已确认后，并使用下一次新鲜 `observe` 更新当前状态；
+- continuation/context loss 后；
+- 状态板缺失、过期、含糊或属于其他游戏 session 时。
 
-Do not update for every token or log line. Keep only the current board and context needed for the current decision; do not accumulate an unlimited history.
+不要按每个 token 或日志行更新。只保留当前决策所需的状态和上下文，不积累无限历史。
 
-## Input
+## 输入
 
-Use only the current game's public information already obtained by the normal Agent loop:
+只使用正常 Agent 循环已取得的当前局公开信息：
 
-- the CareerSim **game** `session_id` returned by `new_game` or confirmed by `observe`;
-- the latest `observe` public `current_state`, current event/visible feedback, and legal choices;
-- a confirmed `take_action` result; and
-- no more than the five most recent public log entries for this same game session, only when needed after context loss to recover at most two relevant strategic action/effect pairs.
+- `new_game` 返回或由 `observe` 确认的 CareerSim 游戏 `session_id`；
+- 最新 `observe` 的公开 `current_state`、当前事件/可见反馈与合法选项；
+- 已确认的 `take_action` 回执；
+- 仅在 context loss 后确有需要时，查看同一游戏 session 最近最多五条公开日志，以恢复最多两组相关的战略动作/效果。
 
-The JiuwenSwarm drive/conversation ID is not the game session key. Do not read hidden counters, guessed thresholds, secret/post-game fields, raw emulator databases, local forensic artifacts, or another game's board. A prediction or unconfirmed model guess is never an observed fact.
+JiuwenSwarm drive/conversation ID 不是游戏 session 标识。不得读取隐藏计数器、猜测阈值、秘密/局后字段、模拟器原始数据库、本机取证材料或其他游戏的状态板。预测或未确认的模型判断不能标为 observed。
 
-## Board format
+## 状态板格式
 
-Emit one concise replacement board in the current drive conversation. Include only fields relevant to the next decision:
+在当前 drive conversation 中输出一份简短的完整替换状态板，只包含下一次决策相关字段：
 
 ```text
-game_session_id: <confirmed CareerSim game session ID>
-game_time_or_phase: <publicly observed value, or unknown>
+game_session_id: <已确认的 CareerSim 游戏 session ID>
+game_time_or_phase: <公开观察值；否则 unknown>
 observed:
-  - <public fact or confirmed action result> [source: latest observe / action result; time: <visible game time>]
+  - <公开事实或已确认回执> [source: latest observe / action result; time: <可见游戏时间>]
 inferred:
-  - <limited inference> [based on: <observed item>; confidence: <brief qualifier>]
+  - <有限推断> [based on: <observed 项>; confidence: <简短限定>]
 unknown:
-  - <decision-relevant fact that current public evidence cannot establish>
-recent_effects: # at most two entries for this session; use [] when none
-  - action: <confirmed public legal action>
-    target_or_relevant_field: <public field/objective>
-    before_after: <confirmed comparable delta or UNKNOWN>
-    source: <confirmed result / immediate fresh observe / bounded same-session public log>
-source_or_freshness: <latest authoritative observe and visible game time; note any bounded log used>
+  - <当前公开证据无法确认且影响决策的事实>
+recent_effects: # 本局最多两条；无记录时使用 []
+  - action: <已确认的公开合法动作>
+    target_or_relevant_field: <公开字段/目标>
+    before_after: <已确认且可比较的变化，或 UNKNOWN>
+    source: <已确认回执 / 紧邻的 fresh observe / 有界同局公开日志>
+source_or_freshness: <最新权威 observe 与可见游戏时间；注明是否使用有界日志>
 ```
 
-Keep `observed`, `inferred`, and `unknown` separate. A public warning may be recorded as observed; its severity, cause, likely consequence, or recommended response remains an inference or belongs to `risk-review`. Omit empty details or write `none`; never fill a field just to make the board look complete.
+将 `observed`、`inferred`、`unknown` 分开。公开警告可记为 observed；其严重程度、原因、可能后果或建议应标为推断，或交由 `risk-review`。空项可省略或写 `none`，不得为填满格式而补造内容。
 
-## Update and session rules
+## 更新与 session 规则
 
-- A fresh authoritative `observe` takes precedence over an older board. A confirmed action result records only what the result confirms; a predicted effect stays inferred or unknown until observed.
-- After continuation/context loss, first confirm the CareerSim `game_session_id` and obtain a fresh public `observe` through the normal Agent loop. Only if needed, inspect at most the five most recent public log entries for that same session, solely to recover up to two recent strategic action/effect pairs. Recover a pair only when the public evidence directly confirms the action and comparable before/after values; otherwise write `UNKNOWN` or omit it. Do not replay broader history or use logs for event-answer lookup.
-- Keep at most two `recent_effects` for this game session. Record an effect only when the action is confirmed and the before/after public field is directly comparable using an immediate fresh `observe`, confirmed result, or the bounded same-session public logs allowed for context recovery. If an intervening event/action or another plausible public cause can explain the delta, record `UNKNOWN` or omit it; do not claim causation from sequence alone.
-- `recent_effects` is an observed-fact surface, not an assessment: do not label effects good/bad, recommend actions, or own the `Primary Gap`. `rolling-planning` uses reliable comparable effects to assess progress; stale or ambiguous effects are `UNKNOWN`.
-- Never let an inference overwrite or silently promote an observed item. Keep its basis explicit; remove or downgrade an inference when fresh evidence no longer supports it.
-- Check `game_session_id` before reusing any board. On mismatch, discard the old board and start a clean one for the confirmed current game.
-- A new game session always starts a clean board, even if the JiuwenSwarm conversation continues.
-- If the game session ID is missing, evidence is stale/ambiguous, or the board is absent after context loss, mark unsupported details `unknown`. The same Agent obtains a fresh `observe` in its normal loop and rebuilds the board; only then may it use the bounded recovery above. Do not guess the session ID or carry the old board forward.
-- Keep the board bounded to the current game snapshot and only the few prior public facts needed for the current decision. Do not create a running transcript or unlimited history.
+- 新鲜、权威的 `observe` 优先于旧状态板。已确认回执只能记录它明确确认的事实；预测效果在观察前仍是 inferred 或 unknown。
+- continuation/context loss 后，先确认 CareerSim `game_session_id` 并由正常 Agent 循环取得新鲜公开 `observe`。只有确有需要时，才检查同一 session 最近最多五条公开日志，且只为恢复最多两组近期战略动作/效果。只有公开证据直接确认动作及可比的前后值时才记录；否则写 `UNKNOWN` 或省略。不得回放更长历史或用日志查找事件答案。
+- 本局 `recent_effects` 最多两条。只有动作已确认，且前后公开字段能用紧邻的 fresh `observe`、已确认回执或 context recovery 允许的同局日志直接比较时才记录效果。若有中间事件/动作或其他合理公开原因可能解释变化，写 `UNKNOWN` 或省略；不得仅凭先后顺序声称因果。
+- `recent_effects` 只记录可观察事实，不作评价：不得标记好坏、推荐动作或拥有 `Primary Gap`。`rolling-planning` 可用可靠且可比的效果评估进展；过期或含糊的效果为 `UNKNOWN`。
+- 推断不得覆盖或静默升级为 observed；必须保留推断依据。新证据不再支持时，删除或降级该推断。
+- 复用状态板前先确认 `game_session_id`。session 不匹配时丢弃旧板，为当前已确认的游戏重建干净状态。
+- 即使 JiuwenSwarm conversation 延续，新游戏 session 也必须从干净状态板开始。
+- session ID 缺失、证据过期/含糊，或 context loss 后状态板缺失时，将无依据的细节标为 `unknown`。由同一个 Agent 在正常流程中取得新鲜 `observe` 并重建；之后才可进行有界恢复。不得猜 session ID 或沿用旧板。
+- 状态板只保留当前游戏快照及本次决策确需的少量公开旧事实。不得变成连续 transcript 或无限历史。
 
-## Normal decision loop and authority
+## 正常流程与权限
 
-This Skill only returns the board. It does not call `new_game`, `observe`, `take_action`, or advance a month/phase. If fresh state is needed, the same Agent gets it through the normal game loop.
+本 Skill 只返回状态板；不调用 `new_game`、`observe`、`take_action`，也不推进月份/阶段。需要新鲜状态时，由同一个 Agent 按正常游戏循环获取。
 
 ```text
-observe
-→ structured-state-board refresh
-→ normal candidate selection
-→ risk-review when triggered
-→ same Agent final decision
-→ take_action
-→ next fresh observe
-→ board refresh
+observe → structured-state-board 刷新 → 正常候选选择 → 触发时 risk-review
+→ 同一个 Agent 最终决定 → take_action → 下一次 fresh observe → 刷新状态板
 ```
 
-- **Can Submit Action: No.**
-- The normal Single Agent remains the only `take_action` submitter and chooses the final legal action.
-- Do not create another Agent, Team, Swarm, planner, or action submitter.
-- `career-action-trace` retains its existing trace-marker behavior; this Skill adds no action marker and does not alter the chosen option or action notes.
+- **Can Submit Action: No（不得提交动作）。**
+- 正常 Single Agent 仍是唯一 `take_action` 提交者，并决定最终合法动作。
+- 不创建另一个 Agent、Team、Swarm、Planner 或动作提交者。
+- `career-action-trace` 保持原有轨迹标记职责；本 Skill 不加动作标记，不改选项或 `notes`。
 
-## Persistence boundary
+## 持久化边界
 
-The board is bounded working context in the same JiuwenSwarm drive conversation. It is not durable storage. Do not write `MEMORY.md`, `projects/<drive ID>`, Skill files, Runner outputs, or the emulator database. Do not assume context compression preserves the board. After context loss, use the confirmed game session ID and fresh public `observe` to rebuild it. Never inherit a board across game sessions or claim cloud file persistence.
+状态板只是在同一 JiuwenSwarm drive conversation 中使用的有界工作上下文，不是持久化存储。不得写入 `MEMORY.md`、`projects/<drive ID>`、Skill 文件、Runner 输出或模拟器数据库。不得假定 context compression 会保留状态板；context loss 后须用已确认 session ID 和新鲜公开 `observe` 重建。不得跨游戏 session 继承，也不得声称云端文件持久化。
 
-## Compatibility and fallback
+## 兼容与回退
 
-- Risk meaning, severity, and action trade-offs stay with `risk-review`. This board may preserve the visible warning as observed and keep its interpretation separate as inferred.
-- If evidence cannot support a board item, move it to `unknown` or omit it. If the game session cannot be confirmed, do not reuse a previous board.
-- Missing, stale, mismatched, or ambiguous board state never authorizes a guessed action. The same Agent returns to its normal loop, refreshes public state, and makes the decision; bounded log recovery is only to restore facts for Planning's recent-effect/progress assessment, not to label progress or recommend an action. The board itself never blocks or submits an action.
+- 风险含义、严重程度和动作取舍仍由 `risk-review` 负责。状态板可把可见警告记为 observed，并将解释另列为 inferred。
+- 证据不足以支持的项目应移入 `unknown` 或省略；游戏 session 未确认时不得复用旧板。
+- 状态板缺失、过期、不匹配或含糊，不授权猜测动作。同一个 Agent 回到正常流程刷新公开状态并作决定。有界日志恢复只为找回 Planning 所需的近期效果事实，不负责判断进展或推荐动作；状态板自身不得阻断或提交动作。

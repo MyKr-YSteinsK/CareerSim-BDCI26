@@ -1,59 +1,68 @@
 ---
 name: rolling-planning
-description: Use at every quarterly first Energy decision to refresh or create a fresh public-evidence Planning checkpoint; reread this Skill for initial detailed setup, material feedback/consequences, continuation/context loss, stale or ambiguous checkpoints, or when its procedure cannot be reconstructed; compare repeated actions with observed effects, apply a bounded risk budget and 48-month horizon, and never submit actions.
+description: 每季度首次 `Energy` 决策前，依据新鲜公开证据更新或建立 `Planning checkpoint`；仅在初始详细规划、重大反馈/后果、上下文恢复或 checkpoint 不可靠时重读本 Skill。比较重复动作的 `observed effect`，使用有界 `Risk Budget` 与公开 48 个月 horizon；只提出建议，不提交动作。
 ---
 
-# Rolling Planning
+# Rolling Planning｜滚动规划
 
-## Purpose
+## 职责
 
-Set a short priority and medium objective from fresh public evidence; not an agent, action policy, memory system or score predictor.
+依据新鲜公开证据确定短期优先项和中期目标；本 Skill 不是 Agent、动作政策、Memory 系统或分数预测器。
 
-## When to use
+## 使用时机
 
-- After a new game's first valid observation, read this Skill for detailed initial planning and set the initial priority.
-- At each quarter's first Energy decision, use fresh public state to refresh or create that quarter's checkpoint before choosing Energy. A new quarter alone does not require a full Skill reread.
-- Reuse that checkpoint for the same-quarter main action unless material feedback or a material public-state change occurs.
-- Re-read this Skill and rebuild from fresh public observation after semiannual feedback, a severe public warning/consequence, continuation/context loss, stale or ambiguous checkpoint semantics, or when the detailed procedure cannot be reliably reconstructed.
+- 新局首次有效观察后，读取本 Skill 完成详细初始规划并设定初始优先项。
+- 每季度第一次 Energy 决策前，使用新鲜公开状态刷新或建立该季度 checkpoint。仅进入新季度不要求全文重读本 Skill。
+- 同季度主行动复用该 checkpoint，除非有重要反馈或重要公开状态变化。
+- 半年反馈、严重公开警告/后果、continuation/context loss、checkpoint 语义过期或含糊、或无法可靠还原详细流程时，重读本 Skill 并基于新鲜公开观察重建。
 
-Do not invoke for every monthly story. HR praise, no new warning, accepted action or submitted mitigation alone does not resolve risk or trigger material reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
+不要为每个月的普通故事事件调用本 Skill。HR 表扬、没有新警告、动作已被接受或已提交的缓解措施，本身都不代表风险已解除，也不触发重大目标重排。没有重大风险时，正常成长选择不需要额外 Risk review 或默认保守处理。
 
-## Input and evidence rules
+## 输入与证据规则
 
-Use only the confirmed current game session, latest authoritative public `observe`, same-session board if available, confirmed action results, and available public handbook rules. Separate observed facts, inferences, and unknowns.
+只使用已确认的当前游戏 session、最新权威公开 `observe`、同局状态板（如有）、已确认动作回执和可用的公开 Handbook 规则。区分 observed、inferred 与 unknown。
 
-Never use another run, post-outcome facts not yet visible, raw database, hidden counters/thresholds, or evaluator weights. Sequence alone does not prove causation.
+不得使用其他局、当时尚不可见的局后事实、原始数据库、隐藏计数/阈值或 evaluator weights。动作先后顺序本身不能证明因果。
 
-## Planning procedure
+## 规划流程
 
-1. At each quarter's first Energy decision, refresh or create a checkpoint from fresh public `observe` before choosing Energy; a new quarter or missing current-quarter checkpoint alone does not require rereading this Skill. Reuse it for the same-quarter main action unless material feedback/state changes. Apply the conditional reread triggers listed above.
-2. Use only the confirmed game session and fresh Board/observe. After continuation/context loss, confirm the game session and rebuild from fresh public state; an unverifiable prior objective has `UNKNOWN` progress. Never inherit it from Memory or guesswork.
-3. Maintain exactly one `Primary Gap`: a public career/resource gap or evidenced progression stall. No balanced-growth default or fixed priority. Set one observable objective to the next quarterly/semiannual review; promise no promotion, score, or event outcome. At quarterly Energy, compare legal options' marginal public benefit for this gap against Energy/opportunity cost; saturation of one component neither discredits nor proves a composite option best.
-4. At strategic checkpoints label prior-objective progress `ADVANCING`, `STALLED`, or `UNKNOWN` from comparable fresh public evidence. `ADVANCING` requires observable improvement in the Primary Gap itself or direct public performance/progression evidence explicitly related to it. Praise, collaboration bonuses, ordinary positive feedback, relationship gains, or a one-off successful event are supporting signals only and cannot alone establish `ADVANCING`; without direct comparable Gap evidence use `UNKNOWN`, unless step 5 establishes `STALLED`. For repeated actions, treat advertised effects as hypotheses and prefer reliable same-session observed effects; ambiguous attribution, intervening causes, or no comparison means `UNKNOWN`.
-5. Mark `STALLED` only after the same action for the same gap has no observed progress at two adjacent comparable checkpoints. Then compare a different-type legal alternative and its public benefit/opportunity cost. One miss never forces a switch; comparison is required, selection is not. The old action may continue for a changed gap or reliable benefit to that gap, with an explicit reason.
-6. `Risk Budget`: `TIGHT` for fresh material health/trust/compliance/retaliation/survival risk; `AVAILABLE` only with no fresh material warning and visible relevant safety margin; otherwise `UNKNOWN`. Safety is a constraint, not the default objective. Ordinary soft costs (small Health/Dignity loss, time, friction, pressure) are opportunity costs, not automatic vetoes of high-upside growth. Compare public benefits, risks, and costs; invent no thresholds.
-7. For ordinary choices, compare legal candidates in this order: material-risk gate; contribution to the current `Primary Gap`; useful secondary public benefits; `Soft Cost` / opportunity cost; unresolved `UNKNOWN`. Do not default to the most mature, safest, or least-offensive option, and do not assign fixed weights or a numeric score. When `Risk Budget = AVAILABLE`, no fresh material risk exists, one legal path has clearly stronger public-evidence-based upside for the `Primary Gap`, and its extra cost is mainly `Soft Cost`, prefer that higher-upside path. If Gap upside is similar or `UNKNOWN`, a lower-cost/lower-exposure path may win. A `TIGHT` budget permits material risk to outweigh growth upside; current-candidate risk review remains with `risk-review`.
-8. Use only the public current month and 48-month horizon. As time shortens, prioritize legal paths with observable progress toward a stalled gap over remote/uncertain payoff. Infer no promotion month or hidden threshold.
-9. For ordinary non-strategic story choices, compare at most the two strongest legal candidates once; without fresh evidence, reopen only on new public evidence or `risk-review=RECONSIDER`.
-10. Severe warning/consequence, persistent retaliation/escalation, or major survival/trust cost that undermines the objective reopens `Primary Gap`. Compare legal continuation, de-escalation, transfer/exit/mitigation by public benefit/loss, exposure, cost, and `UNKNOWN`; mark unavailable choices. Principle, duty, or recent promotion is no proof of safety; conservative/reduced-exposure choices are no fixed answer. The same Agent decides.
+1. 每季度第一次 Energy 决策前，先从新鲜公开 `observe` 刷新或建立 checkpoint，再选择 Energy。单是进入新季度或缺少当季 checkpoint，不要求重读本 Skill。同季度主行动复用该 checkpoint，除非反馈/状态有重大变化；按上文条件决定是否重读。
+2. 只使用已确认的当前游戏 session 和新鲜状态板/`observe`。continuation/context loss 后先确认游戏 session，再依据新鲜公开状态重建；无法验证的旧目标进展记为 `UNKNOWN`。不得从 Memory 或猜测中继承。
+3. 始终只维护一个 `Primary Gap`：公开的职业/资源差距，或有证据支持的晋升停滞。不得默认均衡发展或套固定优先级。设定一个可观察目标，供下一季度/半年度复核；不得承诺晋升、分数或事件结果。季度 Energy 决策时，比较合法选项对该 Gap 的边际公开收益与 Energy/机会成本。某一维度饱和既不能证明也不能否定组合选项的价值。
+4. 在战略 checkpoint 上，根据可比的新鲜公开证据，将上一目标进展标为 `ADVANCING`、`STALLED` 或 `UNKNOWN`。只有 `Primary Gap` 本身可观察改善，或有与该 Gap 明确相关的直接公开绩效/晋升进展证据，才是 `ADVANCING`。表扬、协作 bonus、普通正面反馈、关系改善或单次成功事件只能作为辅助信号，不能单独确立 `ADVANCING`。缺少直接且可比的 Gap 证据时记为 `UNKNOWN`，除非第 5 条已满足 `STALLED`。分析重复动作时，将菜单 advertised effect 视为假设；优先采用可靠的同局 observed effect。归因含糊、存在中间原因或缺少比较时记为 `UNKNOWN`。
+5. 只有同一 action 针对同一 Gap，在两个相邻且可比的 checkpoint 均未观察到进展，才标记 `STALLED`。随后必须比较至少一个不同类型的合法 alternative 及其公开收益/机会成本。一次未见进展不强制切换；必须比较，但不强制选择 alternative。若 Gap 已变化，或旧 action 对新 Gap 仍有可靠收益，可以继续，并明确说明理由。
+6. `Risk Budget`：出现新鲜的重大 Health/信任/合规/报复/生存风险时为 `TIGHT`；没有新鲜重大警告且公开状态显示相关安全余量时才可为 `AVAILABLE`；否则为 `UNKNOWN`。安全是约束，不是默认目标。普通软成本（少量 Health/Dignity 损失、时间、摩擦、压力）是机会成本，不能自动否决高收益成长路径。比较公开收益、风险与成本，不编造阈值。
+7. 普通选择严格按以下定性顺序比较合法选项：`Material Risk` gate → 对当前 `Primary Gap` 的贡献 → 有用的次级公开收益 → `Soft Cost` / 机会成本 → 尚未消除的 `UNKNOWN`。不得默认选择最成熟、最安全或最不得罪人的方案，也不得设置固定权重或数值评分。当 `Risk Budget = AVAILABLE`、没有新鲜 `Material Risk`、某条合法路径对 `Primary Gap` 有明显更强的公开证据收益，且额外代价主要是 `Soft Cost` 时，优先该高收益路径。Gap 收益相近或为 `UNKNOWN` 时，可选择成本/暴露更低的路径。`TIGHT` 时重大风险可以压过成长收益；当前候选的风险审查仍由 `risk-review` 负责。
+8. 只使用公开的当前月份与 48-month horizon。随着剩余时间缩短，若 Gap 仍停滞，应优先考虑能产生可观察进展的合法路径，而不是只有遥远/不确定回报的路径。不得推断具体晋升月份或隐藏阈值。
+9. 对普通、非战略故事选择，最多比较两个最强合法候选一次；没有新鲜证据时，只有出现新的公开证据或 `risk-review=RECONSIDER` 才重新开启比较。
+10. 严重警告/后果、持续报复/升级，或重大生存/信任成本威胁目标时，重新审查 `Primary Gap`。按公开收益/损失、暴露、成本与 `UNKNOWN` 比较合法的继续、降级冲突、调动/退出/缓解路径，并注明不可用选项。原则、职责或近期晋升都不能证明安全；保守或降低暴露的选项也不是固定答案。最终由同一个 Agent 决定。
 
-## Output
+## 输出
 
-Return a compact checkpoint of no more than six short lines:
+输出不超过六条简短 checkpoint：
 
-- `Horizon`: public current month / 48-month horizon and next review point.
-- `Primary Gap`: exactly one revisable, public-evidence-based objective.
-- `Progress`: `ADVANCING`, `STALLED`, or `UNKNOWN`, with comparable evidence basis.
-- `Recent Effect`: reliable same-session observed effect, or `UNKNOWN`.
-- `Risk Budget`: `TIGHT`, `AVAILABLE`, or `UNKNOWN`.
-- `Path Trade-off`: at most two legal paths; include marginal benefit and opportunity cost when relevant.
+```text
+Horizon:
+Primary Gap:
+Progress:
+Recent Effect:
+Risk Budget:
+Path Trade-off:
+```
 
-If no relevant choice is currently legal, mark it unavailable and wait for a legal decision point; do not invent one.
+- `Horizon`: 公开当前月份 / 48-month horizon 及下一复核点。
+- `Primary Gap`: 恰好一个可调整、基于公开证据的目标。
+- `Progress`: `ADVANCING`、`STALLED` 或 `UNKNOWN`，并说明可比证据依据。
+- `Recent Effect`: 可靠的同局 observed effect；否则 `UNKNOWN`。
+- `Risk Budget`: `TIGHT`、`AVAILABLE` 或 `UNKNOWN`。
+- `Path Trade-off`: 最多两个合法路径；相关时列出边际收益与机会成本。
 
-## Action authority and fallback
+若当前没有相关合法选项，注明不可用并等待正常决策点，不得虚构选项。
 
-- **Can Submit Action: No.**
-- Do not call `new_game`, `observe`, or `take_action`, or alter legal choices or action notes.
-- The Single Agent alone submits actions and may adapt or reject this recommendation.
-- If the session, state, or choices are stale or ambiguous, report the uncertainty and return to the normal loop for fresh public state. Never guess a game ID or block the normal decision process.
-- Keep the checkpoint within the current drive conversation, scoped to this game session. Do not write files, global Memory, Skill state, Runner output, or emulator data; do not carry it into another game.
+## 动作权限与回退
+
+- **Can Submit Action: No（不得提交动作）。**
+- 不调用 `new_game`、`observe` 或 `take_action`，也不修改合法选项或动作记录。
+- 只有 Single Agent 提交动作；它可以调整或拒绝本建议。
+- session、状态或选项过期/含糊时，报告不确定性并回到正常流程获取新鲜公开状态。不得猜游戏 ID，也不得阻断正常决策。
+- checkpoint 只保留在当前 drive conversation，并限定于当前游戏 session。不得写入文件、全局 Memory、Skill 状态、Runner 输出或模拟器数据，也不得带入另一局。

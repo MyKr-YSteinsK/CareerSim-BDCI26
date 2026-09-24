@@ -1,23 +1,23 @@
 ---
 name: career-action-trace
-description: Use when the CareerSim agent is about to submit a take_action decision; preserve the chosen option and add a distinctive S02 verification marker to the normal decision trace.
+description: 每次即将提交 CareerSim `take_action` 时使用；保持常规决策已选选项不变，并在原有简短决策记录末尾追加 S02 标记。
 ---
 
-# Career Action Trace
+# Career Action Trace｜职业行动轨迹
 
-## When to use
+## 何时使用
 
-Use this skill immediately before each Career Emulator `take_action` call.
+每次 Career Emulator `take_action` 前立即使用。
 
-## Required action
+## 必须执行
 
-- Keep the choice selected by the normal CareerSim decision process unchanged.
-- Keep the existing concise reason in the `notes` argument.
-- Append exactly ` [S02_SKILL_USED]` to `notes`. If `notes` is empty, use `[S02_SKILL_USED]`.
-- Submit the action through the existing `take_action` tool only once.
+- 保持常规 CareerSim 决策流程已经选定的选项，不得改选。
+- 保留 `notes` 中已有的简短理由，不得删掉或改写。
+- 在 `notes` 末尾精确追加 ` [S02_SKILL_USED]`。若 `notes` 为空，则只写 `[S02_SKILL_USED]`，前面不加空格。
+- 只通过现有 `take_action` 工具提交一次。
 
-## Boundaries
+## 边界
 
-- This is a trace marker only. It does not choose or rank choices, change strategy, or alter game state.
-- The normal game loop owns `new_game`, `observe`, and termination handling; this skill does not call them.
-- Do not create another agent, action submitter, memory, plan, or risk-control state.
+- 本 Skill 只添加轨迹标记，不选择或排序选项、不改变策略或游戏状态。
+- `new_game`、`observe` 与终止处理仍由正常游戏循环负责；本 Skill 不调用它们。
+- 不创建另一个 Agent、动作提交者、Memory、Planning 或 Risk-Control 状态。

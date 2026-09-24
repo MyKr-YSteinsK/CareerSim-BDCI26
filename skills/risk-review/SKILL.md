@@ -1,105 +1,108 @@
 ---
 name: risk-review
-description: Use before a CareerSim take_action decision when the latest public observe or feedback contains a risk, landmine, hidden-issue, trust-crisis, or clear performance warning, or when a currently legal choice explicitly offers risk mitigation; return ALLOW, WARN, RECONSIDER, or UNKNOWN without submitting an action.
+description: 当最新公开观察或反馈出现风险、埋雷、隐藏问题、信任危机或明确绩效警告，或合法选项提供相关风险缓解时，审查当前候选并返回 ALLOW、WARN、RECONSIDER 或 UNKNOWN；不得提交动作。
 ---
 
-# Risk Review
+# Risk Review｜风险审查
 
-## Purpose
+## 职责
 
-Before the same Single Agent submits a CareerSim action, review only the latest public evidence:
+在同一个 Single Agent 提交 CareerSim 动作前，只根据最新公开证据：
 
-1. identify whether the current observe or visible feedback contains a clear risk warning;
-2. check whether the current legal choices contain a directly relevant mitigation option;
-3. check whether the candidate action ignores that public risk; and
-4. state the risk and opportunity-cost trade-off without treating the most conservative action as automatically best.
+1. 判断当前观察或可见反馈是否明确提示风险；
+2. 检查当前合法选项中是否有直接相关的缓解措施；
+3. 判断当前候选是否忽略该公开风险；
+4. 简要说明风险与机会成本，不把最保守方案自动视为最优。
 
-This is an event-driven, warning-driven review. Do not run it as an always-on replacement for normal decision making.
+本 Skill 按事件和警告触发，不是常驻审查，也不替代正常决策。
 
-## Trigger
+## 触发条件
 
-Run this Skill only when the current public context contains one or more of:
+仅当当前公开上下文至少包含以下一项时使用：
 
-- an explicit risk warning;
-- a landmine or hidden-issue warning;
-- a trust or trust-crisis warning;
-- a clear performance-risk warning; or
-- a currently legal choice that visibly offers risk mitigation while the latest public context contains a related warning.
+- 明确风险警告；
+- 埋雷或隐藏问题警告；
+- 信任或信任危机警告；
+- 明确绩效风险警告；
+- 当前公开上下文已有相关警告，且当前合法选项明确提供对应风险缓解。
 
-Use meaning from the current public text, not a guessed keyword count. Never use hidden counters, hidden thresholds, random probabilities, post-game score fields, or an inferred risk value.
+按当前公开文本的含义判断，不猜关键词数量。不得使用隐藏计数器、隐藏阈值、随机概率、局后分数或推测出的风险数值。
 
-## Material Risk and Soft Cost
+## Material Risk 与 Soft Cost
 
-Material Risk is an explicit severe Health, trust/crisis, confidentiality/compliance, retaliation/escalation, termination/survival, or other major public consequence. Soft Cost is small Health/Dignity loss, time, ordinary friction/pressure, or uncertainty.
+- `Material Risk`（重大风险）：公开证据明确显示严重 Health 后果、信任/危机、保密/合规、报复/升级、解雇/生存威胁或其他重大后果。
+- `Soft Cost`（软成本）：少量 Health/Dignity 损失、时间、一般摩擦/压力或不确定性。
 
-Soft Cost alone is opportunity cost—not a `RECONSIDER` trigger or automatic veto of high-upside growth. If both occur, assess full evidence without discounting Material Risk. `rolling-planning` owns strategic `Risk Budget`; this Skill reviews only the current candidate.
+Soft Cost 单独只是机会成本，不能触发 `RECONSIDER`，也不能自动否决高收益成长路径。两者并存时必须完整审查公开证据，不得弱化 `Material Risk`。战略层 `Risk Budget` 由 `rolling-planning` 负责；本 Skill 只审查当前候选。
 
-## Input
+## 输入
 
-Use only information legally visible at the current decision point:
+只使用决策时合法可见的信息：
 
-- the latest `observe` result already available to the Agent;
-- the current public state;
-- the current event and its visible feedback;
-- the current legal choices; and
-- public Handbook rules already available to the Agent.
+- Agent 已取得的最新 `observe` 结果；
+- 当前公开状态；
+- 当前事件及可见反馈；
+- 当前合法选项；
+- Agent 已掌握的公开 Handbook 规则。
 
-Do not require or create a separate Memory system. Do not use stale information from another session.
+不得要求或创建独立 Memory 系统，也不得使用其他 session 的过期信息。
 
-## Output
+## 输出状态
 
-Return exactly one lightweight state: `ALLOW`, `WARN`, `RECONSIDER`, or `UNKNOWN`, with a short evidence-based explanation.
+只返回一个轻量状态：`ALLOW`、`WARN`、`RECONSIDER` 或 `UNKNOWN`，并附简短、基于证据的说明。
 
 ### `ALLOW`
 
-There is not enough current public material-risk evidence to require changing the candidate action. Soft Cost alone does not require a risk-driven candidate change.
+当前公开证据不足以要求改变候选动作。只有 Soft Cost 时，不要求因风险原因改选。
 
 ### `WARN`
 
-Public risk evidence exists, but no clear low-ambiguity mitigation choice is currently legal, or the evidence is insufficient to recommend switching. Warn only; do not force a different action.
+存在公开风险证据，但当前没有明确且低歧义的合法缓解选项，或证据不足以建议改选。只提醒，不强迫改变动作。
 
 ### `RECONSIDER`
 
-Use only when all three conditions hold:
+只有以下三项同时成立时才使用：
 
-1. current public evidence clearly identifies a relevant material risk;
-2. a directly relevant mitigation action is present in the current legal choices; and
-3. the current candidate does not address that risk.
+1. 当前公开证据明确指出相关 `Material Risk`；
+2. 当前合法选项中存在直接相关的缓解动作；
+3. 当前候选没有处理该风险。
 
-Ask the Agent to compare the original candidate with the legal mitigation choice once more. `RECONSIDER` is not an instruction to choose the most conservative action.
+请同一个 Agent 再比较一次原候选与该合法缓解选项。`RECONSIDER` 不等于要求选择最保守动作。
 
 ### `UNKNOWN`
 
-Use when the session, state, choices, or public evidence is missing, stale, ambiguous, or insufficient. Return to the normal decision process without blocking or inventing a rule.
+session、状态、选项或公开证据缺失、过期、含糊或不足时使用。返回正常决策流程，不阻断决策，也不编造规则。
 
-## Special rule: `处理历史埋雷`
+## 特殊规则：`处理历史埋雷`
 
-Mention `处理历史埋雷` only when that exact action is present in the current legal choices and the current public context contains a related risk, landmine, or trust warning. Treat its true effect as unknown.
+只有当当前合法选项中确实出现 `处理历史埋雷`，且当前公开上下文含有相关风险、埋雷或信任警告时，才提及该动作；其实际效果仍为未知。
 
-Never invent the action when it is absent, claim that one use removes risk, impose a warning-count threshold, or select it unconditionally each quarter.
+选项缺席时不得虚构该动作；不得声称使用一次即可消除风险，不得设警告次数阈值，也不得每季度无条件选择。
 
-## Action authority
+## 动作权限
 
-- **Can Change Candidate Action:** Yes, only by asking the same Agent to compare current legal alternatives.
-- **Can Submit Action:** No.
+- **Can Change Candidate Action:** Yes；只能请求同一个 Agent 比较当前合法替代项。
+- **Can Submit Action:** No（不得提交动作）。
 
-This Skill must not call `observe`, `take_action`, or `new_game`. The normal loop remains:
+本 Skill 不调用 `observe`、`take_action` 或 `new_game`。正常流程保持：
 
-`observe → normal candidate selection → risk-review when triggered → same Agent final decision → take_action`
+```text
+observe → 正常候选选择 → 触发时运行 risk-review → 同一个 Agent 最终决定 → take_action
+```
 
-There must remain exactly one action submitter. Do not create another Agent, action submitter, Team, Swarm, Memory, Planning system, database, or persistent risk state.
+始终只有一个动作提交者。不创建另一个 Agent、Team、Swarm、Memory、Planning 系统、数据库或持久化风险状态。
 
-## Failure fallback
+## 失败回退
 
-If the review cannot establish a fresh public basis, return `UNKNOWN`, do not intercept the action, and let the normal Agent decision proceed.
+若无法建立新鲜公开依据，返回 `UNKNOWN`，不拦截动作，让正常 Agent 决策继续。
 
-## Traceability marker
+## 轨迹标记
 
-When this Skill actually runs, preserve the Agent's original concise reason and append exactly one matching marker to the final `take_action` `notes`:
+只有本 Skill 实际运行时，才在最终 `take_action` 的 `notes` 中保留 Agent 原有简短理由，并精确追加一个与输出状态匹配的标记：
 
 - ` [S03_RISK:ALLOW]`
 - ` [S03_RISK:WARN]`
 - ` [S03_RISK:RECONSIDER]`
 - ` [S03_RISK:UNKNOWN]`
 
-Keep any existing `[S02_SKILL_USED]` marker unchanged. The marker is execution evidence only; it is not an environment fact or a risk counter. This Skill still does not submit the action.
+已有 `[S02_SKILL_USED]` 必须保持原样。标记仅是执行证据，不是环境事实或风险计数；本 Skill 仍不提交动作。
