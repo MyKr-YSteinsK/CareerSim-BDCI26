@@ -5,8 +5,8 @@
   "parent_head": "9413b7678885acb8cd8fb28dc1c92b85714574b7",
   "parent_candidate_implementation_commit": "667696a22ee4c2d1b4e5d7596239d4b0e0939a0f",
   "main_anchor": "7fc741cadc950608ff190ff10d7a001584e99dcc",
-  "candidate_implementation_commit": null,
-  "candidate_implementation_commit_semantics": "Finalized by a second manifest-identity-only commit after the implementation/evidence commit.",
+  "candidate_implementation_commit": "c5be54ae363302967a394a159aaaa649d8910cd7",
+  "candidate_implementation_commit_semantics": "This commit contains the Skill delta, evidence, regression and state reconciliation; a second manifest-identity-only commit records its SHA.",
   "final_skills": ["career-action-trace", "risk-review", "structured-state-board", "rolling-planning"],
   "skill_blobs": {
     "career-action-trace": "5a1e3ceca8ffc2132303e43bc9f1c1dd630847a8",
