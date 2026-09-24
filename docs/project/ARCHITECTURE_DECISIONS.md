@@ -148,6 +148,6 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 ## S06 hypothesis and static implementation boundary
 
 - Main-reviewed S06 Run #1（quantitative `53.83`、competition partial `37.68`、48 months、grade `C`）是单局观察，只支持进一步调查长程策略控制缺陷，不证明任一动作或机制导致该分数，也不证明 stable 80+。
-- S06-01 的 `candidate-v3-adaptive-controller-static` 是待 Main 审查的静态 hypothesis candidate：保持 Single Agent + 四个 Skills，通过 repo-owned always-visible trigger/control cue、Adaptive Planning（单一 Primary Gap、fresh observed-effect progress、两相邻可比 checkpoint stall comparison、公开 horizon）、Board 的 bounded recent effects 和 Risk 的 Material Risk / Soft Cost 区分改善可观察性与决策闭环。它不代表 gameplay effectiveness 已验证。
+- Main 已接受 S06-01 的 `candidate-v3-adaptive-controller-static` 为静态 hypothesis candidate：保持 Single Agent + 四个 Skills，通过 repo-owned always-visible trigger/control cue、Adaptive Planning（单一 Primary Gap、fresh observed-effect progress、两相邻可比 checkpoint stall comparison、公开 horizon）、Board 的 bounded recent effects 和 Risk 的 Material Risk / Soft Cost 区分改善可观察性与决策闭环。该接受仅覆盖静态实现与回归合同，不代表 gameplay effectiveness 已验证。
 - `structured-state-board` 仅维护当前 game session 的公开事实及最多两条可归因 recent effect；`rolling-planning` 负责战略目标、进展与 Risk Budget；`risk-review` 仅评估触发时的当前候选和 Material Risk。Trace 保持冻结，四 Skill 职责不增加 action authority。
 - 架构仍为 Single Agent + Multiple Skills。Memory 未实现、第五 Skill 未引入、Team / Swarm deferred；不得从这项静态候选推导架构升级、分数改善或下一局授权。任何后续 gameplay 需要独立 Main Game Gate。
