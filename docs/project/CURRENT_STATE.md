@@ -32,7 +32,8 @@
 - S04: `COMPLETE`
 - S04_STAGE_ACCEPTANCE: `PASS_WITH_KNOWN_LIMITATION`
 - S05-01: `MAIN_ACCEPTED_MERGED` (`CANDIDATE_V2C_OFFLINE_IMPLEMENTATION_ACCEPTED`)
-- S05-02: `IN_FLIGHT_EVIDENCE` (integrated offline candidate awaits S05 Stage Review)
+- S05-02: `MAIN_ACCEPTED_OFFLINE` (`INTEGRATED_CANDIDATE_OFFLINE_ACCEPTED`; parent branch not yet merged)
+- S05-03: `IN_FLIGHT_EVIDENCE` (final reserve audit and Candidate pending S05 Stage Review)
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -45,12 +46,12 @@
 - MULTI_AGENT / TEAM / SWARM: `DEFERRED`
 - CANDIDATE_V2_HYPOTHESIS: `H_MATERIAL_OUTCOME_REPRIORITIZATION` (`OFFLINE_IMPLEMENTED`; gameplay effectiveness `NOT_PROVEN`)
 - TARGET: `STABLE_QUANTITATIVE_80_PLUS` (goal, not achieved fact)
-- NEXT_GAME: `DEFERRED_FOR_ADDITIONAL_OFFLINE_OPTIMIZATION` (new Main Game Gate required)
+- NEXT_GAME: `DEFERRED_FOR_FINAL_OPTIMIZATION_RESERVE_AUDIT` (new Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: Main 已接受 S03、S04，并接受/合入 S05-01 的 Planning-only v2-C 离线实现。Candidate v1 两局为 `76.04 / 53.23 / 48m / A` 与 `35.31 / 24.72 / 25m / D`，判定 `HIGH_VARIANCE`；Risk、Board、Planning 的独立 score benefit 均未证明。S05-02 独立分支已形成 integrated offline candidate 与预注册 benchmark 观察矩阵，仅纳入 Planning 的公开分量边际比较和目标进展复核；收入专门规则、Risk 改写及跨 Skill 大幅压缩暂缓，全部待 Stage Review，不证明稳定 80+ 或 gameplay effectiveness。下一局须新 Main Game Gate。S03 forensic hold 已解除，raw 仍保留且 cleanup 未授权。
+- Current milestone: Main 已接受 S03、S04、已合入 S05-01，并已通过 S05-02 Stage Review、接受未合入父分支的 `candidate-v2c-integrated-planning` 离线候选。Candidate v1 两局 `76.04/48m/A` 与 `35.31/25m/D` 显示高方差；Risk/Board/Planning 独立收益未证明。S05-03 子分支完成最终 offline reserve audit 后，仅在 Planning 增加同局、fresh observe 的上下文恢复提示，冻结 `candidate-v2-final-offline` 供 Stage Review；没有 Memory、第五 Skill 或 Team/Swarm。稳定 80+ 与 gameplay effectiveness 均未证明，下一局须新 Main Game Gate。S03 forensic hold 已解除，raw retained、cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (`origin/main@7fc741cadc950608ff190ff10d7a001584e99dcc`; S05-02 branch additions remain `IN_FLIGHT_EVIDENCE`)
+- Last verified: 2026-09-24 (`origin/main@7fc741cadc950608ff190ff10d7a001584e99dcc`; S05-02 accepted offline but not merged; S05-03 child in-flight)
 
 ## Major capabilities
 
@@ -94,12 +95,12 @@
 
 ## Active work
 
-- S02、S03、S04 均已由 Main 接受；S04 closeout 与 S05-01 已合入 `main`。S05-Lab 正在进行；S05-02 integrated offline candidate 已在本分支形成，仍属 `IN_FLIGHT_EVIDENCE`，待 S05 Stage Review。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
+- S02、S03、S04 均已由 Main 接受；S04 closeout 与 S05-01 已合入 `main`。S05-02 integrated Candidate 已被 Main 离线接受但父分支未合入；S05-03 stacked reserve audit 与 final Candidate 为本子分支 `IN_FLIGHT_EVIDENCE`，待 S05 Stage Review。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. S05 Stage Review：审查 S05-02 integrated offline candidate freeze 与 benchmark 观察矩阵，不自行宣布 S05 完成。
-2. 保持 `NEXT_GAME = DEFERRED_FOR_ADDITIONAL_OFFLINE_OPTIMIZATION`，直到 Main 另行批准 Game Gate；Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
+1. S05 Stage Review：审查 S05-03 final Candidate、剩余空间证据和下一局观测矩阵；父先合、子后合，不自行宣布 S05 完成。
+2. 保持 `NEXT_GAME = DEFERRED_FOR_FINAL_OPTIMIZATION_RESERVE_AUDIT`，直到 Main 另行批准 Game Gate；Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
 
 ## Workflow / delivery facts that are currently material
 

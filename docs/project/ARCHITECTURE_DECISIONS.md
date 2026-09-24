@@ -143,4 +143,4 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 ## S05 implementation boundary
 
 - 上节是 S04 Main 验收时的候选语境。S05-01 后已由 Main 接受并合入：仅 `rolling-planning` 离线实现 bounded material-outcome Priority 重排；未运行 v2-C gameplay，策略收益仍 `NOT_PROVEN`。
-- S05-02 的 integrated offline Planning 增量属于待 S05 Stage Review 的分支证据，不是已合入架构事实。Single Agent 唯一动作提交者、Board / Planning / Risk / Trace 职责和独立 Main Game Gate 均不变；不建立新 Skill、持久状态或 Team / Swarm。
+- S05-02 的 integrated offline Planning 增量已通过 Main/Stage 离线 review，但父分支尚未合入 main；S05-03 最终 reserve audit 与恢复提示仍属待审子分支证据，不是 gameplay 收益事实。Single Agent 唯一动作提交者、Board / Planning / Risk / Trace 职责和独立 Main Game Gate 均不变；不建立新 Skill、持久状态或 Team / Swarm。

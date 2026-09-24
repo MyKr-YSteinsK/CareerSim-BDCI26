@@ -1,6 +1,6 @@
 ---
 name: rolling-planning
-description: Use at a new game's first observation, quarterly resource and main-action decisions, and material performance/state feedback to maintain one compact, revisable public-evidence-based career priority; never submit actions.
+description: Use at a new game's first observation, quarterly resource and main-action decisions, material performance/state feedback, or after continuation/context loss to re-read and rebuild a compact public-evidence-based career priority; never submit actions.
 ---
 
 # Rolling Planning
@@ -14,6 +14,7 @@ Set a short priority and medium objective from fresh public evidence; not an age
 - After a new game's first valid observation, set the initial priority.
 - Before quarterly Energy and main action, compare fresh public state and legal choices to the active priority.
 - After semiannual feedback, a plan-changing public warning/outcome, or repeated action without intended observed progress.
+- After continuation/context loss or a missing checkpoint, re-read this Skill and rebuild at the next fresh public observation.
 
 Do not invoke for every monthly story. HR praise, no new warning, accepted action or submitted mitigation alone does not resolve risk or trigger material reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
 
@@ -25,7 +26,7 @@ Never use another run, post-outcome facts not yet visible, raw database, hidden 
 
 ## Planning procedure
 
-1. Reject stale or mismatched session/board context; the normal loop obtains fresh public observation.
+1. Reject stale or mismatched session/board context; the normal loop obtains fresh public observation. After context loss, rebuild for the confirmed game session; if the prior objective cannot be verified from bounded same-session evidence, label its progress `unknown` rather than reusing it.
 2. Identify the decision-relevant public gap across performance, level, resources and visible risks without a fixed priority order. Set one observable objective through the next quarterly or semiannual review; never promise promotion, score, or event outcomes.
 3. At each quarterly Energy choice, compare legal options' marginal public benefits for the current gap against Energy/opportunity cost; one saturated component neither nullifies a composite option nor makes it best. At strategic review, label fresh public progress toward the prior objective `advancing/stalled/unknown`. If repeated action is stalled, compare a legal alternative and its cost; if advancing, repetition remains viable.
 4. On a severe public warning/consequence undermining the objective, persistent retaliation/escalation, or major public survival/trust cost, reopen `Priority`. Compare currently legal continuation, lower exposure/de-escalation, and available transfer/exit/mitigation by known public benefit/loss, escalation exposure, opportunity cost and `UNKNOWN`; mark unavailable paths. Rebuild the objective. Principle, duty or recent promotion proves no safety; transfer/reduced exposure/conservatism is neither automatic failure/demotion nor a fixed answer.
