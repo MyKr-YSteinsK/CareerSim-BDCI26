@@ -1,0 +1,185 @@
+{
+  "task_id": "S04-04",
+  "branch": "codex/s04-04-high-score-confirmation",
+  "parent_sha": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+  "candidate_manifest": "experiments/S04-04-high-score-confirmation/candidate_manifest.json",
+  "candidate_freeze": {
+    "status": "FROZEN_BEFORE_RUN_2",
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "uv_lock_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+    "skill_hashes_match_parent": true,
+    "runner_dependencies_skills_unchanged": true,
+    "provider": "DeepSeek official API",
+    "request_model": "deepseek-flash",
+    "mcp_config_sha256": "05928efaed4508d2c1a70c6b32b704cadb3b1cd40026a5cda0d91edd4878defe",
+    "staging_path": "D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/submission",
+    "staged_file_count": 5,
+    "staging_contains_only_manifest_and_four_skills": true,
+    "credentials_or_instance_env_staged": false
+  },
+  "service_lifecycle": {
+    "pre_state": {
+      "instance": "career_emu",
+      "status": "stopped",
+      "relevant_processes": 0,
+      "listeners": {"19092": 0, "20000": 0, "20001": 0, "6173": 0}
+    },
+    "start_count": 1,
+    "start_command": "jiuwenswarm-start app --name career_emu",
+    "start_at_utc": "2026-09-24T03:43:23.4254089Z",
+    "service_reported_running": true,
+    "reported_pid": 33128,
+    "stop_count": 1,
+    "stop_command": "jiuwenswarm-start.exe --stop career_emu",
+    "stop_at_utc": "2026-09-24T04:23:11.0917925Z",
+    "stop_finished_at_utc": "2026-09-24T04:23:12.5302713Z",
+    "stop_exit_code": 0,
+    "start_foreground_wrapper_exit_code_after_intentional_stop": 1,
+    "wrapper_exit_note": "The foreground launcher exited after the authorized stop; service had already been observed running and MCP registration evidence captured. This did not trigger a restart.",
+    "final_state": {
+      "status": "stopped",
+      "relevant_processes": 0,
+      "listeners": {"19092": 0, "20000": 0, "20001": 0, "6173": 0}
+    },
+    "restart_retry_count": 0,
+    "service_start_log": {
+      "path": "D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/service-start.log",
+      "bytes": 2197413,
+      "sha256": "8e6b0685f5832adfbcda018f976ab84173cf3af482508233d74867729d4c9541"
+    },
+    "service_stop_log": {
+      "path": "D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/service-stop.log",
+      "bytes": 495,
+      "sha256": "6ce1e4880efc54c111ec700e03c927ec667333c22752ab0abd2605be6e7e2e30"
+    },
+    "logs_are_local_ignored_artifacts": true
+  },
+  "service_level_mcp_registration": {
+    "result": "PASS",
+    "evidence_source": [
+      "C:/Users/Yukis/.jiuwenswarm-instances/career_emu/agent/.logs/agent_server.log",
+      "C:/Users/Yukis/.jiuwenswarm-instances/career_emu/agent/.logs/full.log",
+      "C:/Users/Yukis/.jiuwenswarm-instances/career_emu/logs/logs/jiuwen.log"
+    ],
+    "positive_registration_markers_local_time": [
+      "2026-09-24 11:44:03.451",
+      "2026-09-24 11:44:06",
+      "2026-09-24 11:44:59.081",
+      "2026-09-24 11:44:59"
+    ],
+    "required_tools_exposed": [
+      "new_game",
+      "observe",
+      "take_action",
+      "check_latest_logs",
+      "show_employee_handbook"
+    ],
+    "winerror_2_observed": false,
+    "preflight_tool_invocations": 0,
+    "standalone_agent_chat_count": 0,
+    "agent_mode": "single Agent; no Team/Swarm"
+  },
+  "run2": {
+    "runner_command": "uv run --no-sync --active python -m career_sim_runner play --submission D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/submission --db D:/CS/CareerSim-s03-02-risk-review/.career_sim_runner/career_emu/career_emulator.sqlite3 --timeout-s 7200 -q",
+    "runner_play_count": 1,
+    "fresh_new_game_count": 1,
+    "continue_count": 0,
+    "gameplay_retry_count": 0,
+    "additional_game_count": 0,
+    "exit_code": 0,
+    "started_at_utc": "2026-09-24T03:51:25.4604209Z",
+    "finished_at_utc": "2026-09-24T04:02:43.3077120Z",
+    "duration_seconds": 677.85,
+    "drive_session_id": "career-sim-runner-874e21eb1240",
+    "game_session_id": "7df157117cf14917bdc42d83fb7ac7d2",
+    "result": {
+      "quantitative_score": 35.31,
+      "competition_partial_score": 24.72,
+      "survival_months": 25,
+      "grade": "D",
+      "completed": false,
+      "terminal_outcome": "eliminated"
+    },
+    "tool_counts": {
+      "new_game": 1,
+      "observe": 101,
+      "successful_take_action": 103,
+      "failed_unregistered_alias_call": 1,
+      "skill_load": 4,
+      "show_employee_handbook": 1,
+      "skill_direct_action_submissions": 0,
+      "duplicate_side_effects": 0
+    },
+    "execution_issue": "At Month 6, one hyphenated, unregistered take_action tool alias returned 'Ability not found in resource_mgr' before CareerSim execution. The same session/choice then succeeded through the registered underscore tool about 1.3 seconds later. No duplicate side effect and no Runner/game retry.",
+    "runner_console_log": {
+      "path": "D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/runner-play.log",
+      "bytes": 2235,
+      "sha256": "b659ed9857d7fd96eb7ba3c6e0971f4365c5a09bd2a44ccd41118ce8c4d95576"
+    },
+    "raw_artifacts_local_only": true,
+    "score_report": {
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-04-high-score-confirmation/.career_sim_runner/career_emu/outputs/local-s04-04-high-score-confirmation/20260924T035128Z/score_report.json",
+      "bytes": 2953,
+      "sha256": "cfe7f11e18fd62d6d345e6b8498d9fcb04baf421a016e00e5bf46f263909531c"
+    },
+    "events": {
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-04-high-score-confirmation/.career_sim_runner/career_emu/outputs/local-s04-04-high-score-confirmation/20260924T035128Z/events-20260924T035128Z.jsonl",
+      "bytes": 1019202,
+      "sha256": "9a266a84937b40899b6f2fdcbbb8fdefd74c825e57dd1ea484e52c6e4b9e22b6"
+    },
+    "transcript": {
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-04-high-score-confirmation/.career_sim_runner/career_emu/outputs/local-s04-04-high-score-confirmation/20260924T035128Z/transcript-20260924T035128Z.log",
+      "bytes": 312900,
+      "sha256": "9f3082d4decb46f8e64c6ff6df736900cf8d4810ff528d37ee3f0451581a66b0"
+    },
+    "raw_logs_not_committed": true
+  },
+  "provider_usage": {
+    "provider": "DeepSeek official API",
+    "model": "deepseek-flash",
+    "incidental_startup_prewarm": {
+      "occurred": true,
+      "timestamp_local": "2026-09-24 11:44:04",
+      "input_tokens": 200,
+      "output_tokens": 1,
+      "total_tokens": 201,
+      "cached_tokens": 0,
+      "cache_miss_tokens": 200,
+      "reported_cost": "UNAVAILABLE"
+    },
+    "run2_runner_reported": {
+      "input_tokens": 17867199,
+      "output_tokens": 104076,
+      "total_tokens": 17971275,
+      "cached_tokens": 17621248,
+      "cache_miss_tokens": 245951,
+      "cache_hit_rate_percent": 98.62,
+      "runner_reported_total_cost": 0.0,
+      "cost_interpretation": "Runner/provider reported 0.0; actual billed cost is UNAVAILABLE and must not be inferred from this field.",
+      "by_model": {
+        "deepseek-flash": {
+          "input_tokens": 17867199,
+          "output_tokens": 104076,
+          "total_tokens": 17971275,
+          "runner_reported_total_cost": 0.0
+        }
+      }
+    },
+    "combined_startup_plus_run2": {
+      "input_tokens": 17867399,
+      "output_tokens": 104077,
+      "total_tokens": 17971476,
+      "cached_tokens": 17621248,
+      "cache_miss_tokens": 246151,
+      "actual_billed_cost": "UNAVAILABLE"
+    },
+    "additional_provider_probes": 0,
+    "standalone_agent_chat_count": 0
+  },
+  "decisions": {
+    "candidate": "CANDIDATE_V1_HIGH_VARIANCE",
+    "state_board": "STATE_BOARD_USE_PARTIAL",
+    "risk_effectiveness": "NOT_PROVEN",
+    "controlled_screening": "NOT_STARTED"
+  }
+}

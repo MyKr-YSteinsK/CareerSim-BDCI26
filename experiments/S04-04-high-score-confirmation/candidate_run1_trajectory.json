@@ -1,0 +1,1194 @@
+{
+  "task_id": "S04-04",
+  "candidate": "candidate-v1-four-skill",
+  "source_run": "S04-03 Candidate Run #1",
+  "source_commit": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+  "source_artifacts": [
+    {
+      "kind": "events",
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-03-score-directed-integrated-run/.career_sim_runner/career_emu/outputs/local-s04-03-score-directed-integrated-run/20260923T160734Z/events-20260923T160734Z.jsonl",
+      "bytes": 2027675,
+      "sha256": "a964db295f0135f4dc41f135b3ed3d8513a196fbbb689f36d47f76c957ef7d79"
+    },
+    {
+      "kind": "transcript",
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-03-score-directed-integrated-run/.career_sim_runner/career_emu/outputs/local-s04-03-score-directed-integrated-run/20260923T160734Z/transcript-20260923T160734Z.log",
+      "bytes": 753385,
+      "sha256": "49cbfcee32dd88d1573d4e0a068de543e3993d45384dc72854bfa91aaebfec71"
+    },
+    {
+      "kind": "score_report",
+      "path": "D:/CS/CareerSim/.local/worktrees/s04-03-score-directed-integrated-run/.career_sim_runner/career_emu/outputs/local-s04-03-score-directed-integrated-run/20260923T160734Z/score_report.json",
+      "bytes": 2998,
+      "sha256": "034a8bb6f04bc961f5c733b92e311de7df4700db7eea5a4843eef4536447ccbe"
+    }
+  ],
+  "run_identity": {
+    "drive_session_id": "career-sim-runner-fbf3d7fa1cd4",
+    "game_session_id": "2224f5df228544e699b10f897d333d4b",
+    "runner_play_count": 1,
+    "fresh_new_game_count": 1,
+    "survival_months": 48,
+    "grade": "A",
+    "quantitative_score": 76.04,
+    "competition_partial_score": 53.23,
+    "completed": true
+  },
+  "monthly_public_state": [
+    {
+      "month": 1,
+      "quarter": 1,
+      "level": "L1",
+      "skill": 4,
+      "network": 4,
+      "output": 0,
+      "health": 5,
+      "wealth": 1,
+      "dignity": 7,
+      "energy": 3,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "强制排序下给好友同事打分"
+    },
+    {
+      "month": 2,
+      "quarter": 1,
+      "level": "L1",
+      "skill": 8,
+      "network": 3,
+      "output": 3,
+      "health": 5,
+      "wealth": 1,
+      "dignity": 10,
+      "energy": 3,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "周末厂内高级架构师认证机会"
+    },
+    {
+      "month": 3,
+      "quarter": 1,
+      "level": "L1",
+      "skill": 9,
+      "network": 3,
+      "output": 3,
+      "health": 6,
+      "wealth": 1,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 4,
+      "quarter": 2,
+      "level": "L1",
+      "skill": 9,
+      "network": 2,
+      "output": 3,
+      "health": 6,
+      "wealth": 1,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "备考含金量证书的长期投入"
+    },
+    {
+      "month": 5,
+      "quarter": 2,
+      "level": "L1",
+      "skill": 9,
+      "network": 3,
+      "output": 3,
+      "health": 4,
+      "wealth": 2,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "健康检查返回错误状态"
+    },
+    {
+      "month": 6,
+      "quarter": 2,
+      "level": "L2",
+      "skill": 13,
+      "network": 5,
+      "output": 6,
+      "health": 7,
+      "wealth": 2,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 7,
+      "quarter": 3,
+      "level": "L2",
+      "skill": 15,
+      "network": 6,
+      "output": 6,
+      "health": 6,
+      "wealth": 2,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "爱闲聊摸鱼同事的时间侵占"
+    },
+    {
+      "month": 8,
+      "quarter": 3,
+      "level": "L2",
+      "skill": 17,
+      "network": 7,
+      "output": 6,
+      "health": 7,
+      "wealth": 3,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "需工号登录的匿名满意度调查"
+    },
+    {
+      "month": 9,
+      "quarter": 3,
+      "level": "L2",
+      "skill": 20,
+      "network": 7,
+      "output": 6,
+      "health": 7,
+      "wealth": 3,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 10,
+      "quarter": 4,
+      "level": "L2",
+      "skill": 21,
+      "network": 7,
+      "output": 6,
+      "health": 5,
+      "wealth": 3,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "匿名反馈是否透露身份"
+    },
+    {
+      "month": 11,
+      "quarter": 4,
+      "level": "L2",
+      "skill": 21,
+      "network": 7,
+      "output": 6,
+      "health": 4,
+      "wealth": 4,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "离职前同事在竞对打听情况"
+    },
+    {
+      "month": 12,
+      "quarter": 4,
+      "level": "L3",
+      "skill": 24,
+      "network": 7,
+      "output": 7,
+      "health": 7,
+      "wealth": 4,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 13,
+      "quarter": 5,
+      "level": "L3",
+      "skill": 27,
+      "network": 8,
+      "output": 10,
+      "health": 7,
+      "wealth": 5,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "邻组同事跨组帮忙后的回礼方式"
+    },
+    {
+      "month": 14,
+      "quarter": 5,
+      "level": "L3",
+      "skill": 31,
+      "network": 13,
+      "output": 11,
+      "health": 8,
+      "wealth": 5,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "项目奖金分配你觉得不公"
+    },
+    {
+      "month": 15,
+      "quarter": 5,
+      "level": "L3",
+      "skill": 35,
+      "network": 15,
+      "output": 14,
+      "health": 10,
+      "wealth": 6,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 16,
+      "quarter": 6,
+      "level": "L3",
+      "skill": 39,
+      "network": 19,
+      "output": 16,
+      "health": 9,
+      "wealth": 6,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "得知同事涨得比你多"
+    },
+    {
+      "month": 17,
+      "quarter": 6,
+      "level": "L3",
+      "skill": 41,
+      "network": 19,
+      "output": 14,
+      "health": 10,
+      "wealth": 5,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "降本增效福利缩水要不要抱怨"
+    },
+    {
+      "month": 18,
+      "quarter": 6,
+      "level": "L4",
+      "skill": 44,
+      "network": 19,
+      "output": 16,
+      "health": 10,
+      "wealth": 6,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 19,
+      "quarter": 7,
+      "level": "L4",
+      "skill": 46,
+      "network": 22,
+      "output": 18,
+      "health": 10,
+      "wealth": 6,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "办公室绿植轮值忘记浇水"
+    },
+    {
+      "month": 20,
+      "quarter": 7,
+      "level": "L4",
+      "skill": 49,
+      "network": 23,
+      "output": 21,
+      "health": 9,
+      "wealth": 7,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "午餐技术分享是否报名主讲"
+    },
+    {
+      "month": 21,
+      "quarter": 7,
+      "level": "L4",
+      "skill": 57,
+      "network": 28,
+      "output": 19,
+      "health": 9,
+      "wealth": 8,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 22,
+      "quarter": 8,
+      "level": "L4",
+      "skill": 60,
+      "network": 32,
+      "output": 22,
+      "health": 9,
+      "wealth": 8,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "远程办公发现同事长期不在线"
+    },
+    {
+      "month": 23,
+      "quarter": 8,
+      "level": "L4",
+      "skill": 62,
+      "network": 36,
+      "output": 23,
+      "health": 9,
+      "wealth": 9,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "年终奖改分期打折发放"
+    },
+    {
+      "month": 24,
+      "quarter": 8,
+      "level": "L4",
+      "skill": 63,
+      "network": 36,
+      "output": 26,
+      "health": 8,
+      "wealth": 10,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 25,
+      "quarter": 9,
+      "level": "L4",
+      "skill": 66,
+      "network": 36,
+      "output": 26,
+      "health": 8,
+      "wealth": 11,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "新同事到岗后的 Mentor 节奏选择"
+    },
+    {
+      "month": 26,
+      "quarter": 9,
+      "level": "L4",
+      "skill": 66,
+      "network": 36,
+      "output": 25,
+      "health": 6,
+      "wealth": 12,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "空降副总第一天单独聊十分钟"
+    },
+    {
+      "month": 27,
+      "quarter": 9,
+      "level": "L4",
+      "skill": 71,
+      "network": 32,
+      "output": 21,
+      "health": 8,
+      "wealth": 12,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 28,
+      "quarter": 10,
+      "level": "L4",
+      "skill": 73,
+      "network": 32,
+      "output": 24,
+      "health": 8,
+      "wealth": 13,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "同事约你一起去找领导集体谈薪"
+    },
+    {
+      "month": 29,
+      "quarter": 10,
+      "level": "L4",
+      "skill": 76,
+      "network": 32,
+      "output": 25,
+      "health": 9,
+      "wealth": 14,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "观察升职靠关系而非能力"
+    },
+    {
+      "month": 30,
+      "quarter": 10,
+      "level": "L4",
+      "skill": 82,
+      "network": 36,
+      "output": 26,
+      "health": 10,
+      "wealth": 15,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 31,
+      "quarter": 11,
+      "level": "L4",
+      "skill": 86,
+      "network": 36,
+      "output": 26,
+      "health": 10,
+      "wealth": 16,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "客户饭局买单的分寸"
+    },
+    {
+      "month": 32,
+      "quarter": 11,
+      "level": "L4",
+      "skill": 87,
+      "network": 36,
+      "output": 26,
+      "health": 9,
+      "wealth": 17,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "Peer Review 发现好友代码重大缺陷"
+    },
+    {
+      "month": 33,
+      "quarter": 11,
+      "level": "L4",
+      "skill": 90,
+      "network": 36,
+      "output": 26,
+      "health": 9,
+      "wealth": 17,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 34,
+      "quarter": 12,
+      "level": "L4",
+      "skill": 93,
+      "network": 36,
+      "output": 26,
+      "health": 9,
+      "wealth": 18,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "资深同事侵占实习生成果署名"
+    },
+    {
+      "month": 35,
+      "quarter": 12,
+      "level": "L4",
+      "skill": 95,
+      "network": 36,
+      "output": 26,
+      "health": 10,
+      "wealth": 19,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "看到公司被匿名社区爆料"
+    },
+    {
+      "month": 36,
+      "quarter": 12,
+      "level": "L5",
+      "skill": 100,
+      "network": 36,
+      "output": 29,
+      "health": 9,
+      "wealth": 21,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 37,
+      "quarter": 13,
+      "level": "L5",
+      "skill": 103,
+      "network": 39,
+      "output": 31,
+      "health": 9,
+      "wealth": 23,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "Code Review 颗粒度与新人节奏的平衡"
+    },
+    {
+      "month": 38,
+      "quarter": 13,
+      "level": "L5",
+      "skill": 102,
+      "network": 44,
+      "output": 33,
+      "health": 10,
+      "wealth": 24,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "午饭跟同事吃还是回家吃"
+    },
+    {
+      "month": 39,
+      "quarter": 13,
+      "level": "L5",
+      "skill": 106,
+      "network": 47,
+      "output": 34,
+      "health": 10,
+      "wealth": 25,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 40,
+      "quarter": 14,
+      "level": "L5",
+      "skill": 109,
+      "network": 49,
+      "output": 36,
+      "health": 10,
+      "wealth": 26,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "重要客户来访的接待形式选择"
+    },
+    {
+      "month": 41,
+      "quarter": 14,
+      "level": "L5",
+      "skill": 112,
+      "network": 51,
+      "output": 38,
+      "health": 10,
+      "wealth": 28,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "被问五年后想做什么定位模糊"
+    },
+    {
+      "month": 42,
+      "quarter": 14,
+      "level": "L5",
+      "skill": 115,
+      "network": 54,
+      "output": 38,
+      "health": 9,
+      "wealth": 30,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 43,
+      "quarter": 15,
+      "level": "L5",
+      "skill": 119,
+      "network": 54,
+      "output": 38,
+      "health": 9,
+      "wealth": 32,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "颈椎疼但deadline在即要不要理疗"
+    },
+    {
+      "month": 44,
+      "quarter": 15,
+      "level": "L5",
+      "skill": 122,
+      "network": 54,
+      "output": 36,
+      "health": 9,
+      "wealth": 33,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "无领导小群转发领导发言截图"
+    },
+    {
+      "month": 45,
+      "quarter": 15,
+      "level": "L5",
+      "skill": 127,
+      "network": 54,
+      "output": 38,
+      "health": 9,
+      "wealth": 34,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 46,
+      "quarter": 16,
+      "level": "L5",
+      "skill": 131,
+      "network": 54,
+      "output": 38,
+      "health": 7,
+      "wealth": 35,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "公司要你全栈化深度还是广度"
+    },
+    {
+      "month": 47,
+      "quarter": 16,
+      "level": "L5",
+      "skill": 135,
+      "network": 54,
+      "output": 38,
+      "health": 7,
+      "wealth": 36,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "被新领导悄悄移出核心圈"
+    },
+    {
+      "month": 48,
+      "quarter": 16,
+      "level": "L6",
+      "skill": 138,
+      "network": 51,
+      "output": 40,
+      "health": 9,
+      "wealth": 39,
+      "dignity": 10,
+      "energy": 0,
+      "alive": true,
+      "failed": false,
+      "last_observed_event": "季度主行动选择"
+    },
+    {
+      "month": 49,
+      "quarter": 17,
+      "level": "L6",
+      "skill": 139,
+      "network": 52,
+      "output": 42,
+      "health": 9,
+      "wealth": 40,
+      "dignity": 10,
+      "energy": 0,
+      "alive": false,
+      "failed": true,
+      "last_observed_event": null
+    }
+  ],
+  "promotions": [
+    {
+      "month": 6,
+      "from": "L1",
+      "to": "L2"
+    },
+    {
+      "month": 12,
+      "from": "L2",
+      "to": "L3"
+    },
+    {
+      "month": 18,
+      "from": "L3",
+      "to": "L4"
+    },
+    {
+      "month": 36,
+      "from": "L4",
+      "to": "L5"
+    },
+    {
+      "month": 48,
+      "from": "L5",
+      "to": "L6"
+    }
+  ],
+  "quarterly_decisions": [
+    {
+      "month": 3,
+      "quarter": 1,
+      "state_before": {
+        "level": "L1",
+        "skill": 9,
+        "network": 3,
+        "output": 2,
+        "health": 4,
+        "wealth": 1,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "人脉维护",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 6,
+      "quarter": 2,
+      "state_before": {
+        "level": "L2",
+        "skill": 13,
+        "network": 5,
+        "output": 6,
+        "health": 3,
+        "wealth": 2,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "健康恢复",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 9,
+      "quarter": 3,
+      "state_before": {
+        "level": "L2",
+        "skill": 20,
+        "network": 7,
+        "output": 6,
+        "health": 5,
+        "wealth": 3,
+        "dignity": 9,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "健康恢复",
+        "人脉维护"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 12,
+      "quarter": 4,
+      "state_before": {
+        "level": "L3",
+        "skill": 24,
+        "network": 7,
+        "output": 6,
+        "health": 3,
+        "wealth": 4,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "健康恢复",
+        "健康恢复",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 15,
+      "quarter": 5,
+      "state_before": {
+        "level": "L3",
+        "skill": 35,
+        "network": 14,
+        "output": 12,
+        "health": 10,
+        "wealth": 6,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "人脉维护",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 18,
+      "quarter": 6,
+      "state_before": {
+        "level": "L4",
+        "skill": 44,
+        "network": 18,
+        "output": 14,
+        "health": 10,
+        "wealth": 6,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "人脉维护"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 21,
+      "quarter": 7,
+      "state_before": {
+        "level": "L4",
+        "skill": 57,
+        "network": 28,
+        "output": 17,
+        "health": 7,
+        "wealth": 8,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 24,
+      "quarter": 8,
+      "state_before": {
+        "level": "L4",
+        "skill": 63,
+        "network": 35,
+        "output": 25,
+        "health": 8,
+        "wealth": 10,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "人脉维护"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 27,
+      "quarter": 9,
+      "state_before": {
+        "level": "L4",
+        "skill": 71,
+        "network": 32,
+        "output": 21,
+        "health": 6,
+        "wealth": 12,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "处理历史埋雷",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 30,
+      "quarter": 10,
+      "state_before": {
+        "level": "L4",
+        "skill": 82,
+        "network": 36,
+        "output": 26,
+        "health": 8,
+        "wealth": 15,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 33,
+      "quarter": 11,
+      "state_before": {
+        "level": "L4",
+        "skill": 90,
+        "network": 36,
+        "output": 25,
+        "health": 9,
+        "wealth": 17,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 36,
+      "quarter": 12,
+      "state_before": {
+        "level": "L5",
+        "skill": 100,
+        "network": 35,
+        "output": 27,
+        "health": 9,
+        "wealth": 21,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "人脉维护"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 39,
+      "quarter": 13,
+      "state_before": {
+        "level": "L5",
+        "skill": 106,
+        "network": 47,
+        "output": 33,
+        "health": 10,
+        "wealth": 25,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "处理历史埋雷",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 42,
+      "quarter": 14,
+      "state_before": {
+        "level": "L5",
+        "skill": 115,
+        "network": 54,
+        "output": 38,
+        "health": 9,
+        "wealth": 30,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "准备汇报材料",
+        "准备汇报材料",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 45,
+      "quarter": 15,
+      "state_before": {
+        "level": "L5",
+        "skill": 127,
+        "network": 54,
+        "output": 38,
+        "health": 7,
+        "wealth": 34,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "健康恢复",
+        "准备汇报材料",
+        "准备汇报材料"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    },
+    {
+      "month": 48,
+      "quarter": 16,
+      "state_before": {
+        "level": "L6",
+        "skill": 138,
+        "network": 51,
+        "output": 40,
+        "health": 7,
+        "wealth": 39,
+        "dignity": 10,
+        "energy": 3
+      },
+      "energy_actions": [
+        "处理历史埋雷",
+        "健康恢复"
+      ],
+      "main_action": "申请关键项目",
+      "all_selected_actions_succeeded": true
+    }
+  ],
+  "planning_checkpoints": [
+    {
+      "horizon": "next quarter; initial Month 1 state",
+      "public_gap": "L1, Skill 1, Network 1, Output 0",
+      "priority": "build capability and visible output to reach the promotion window",
+      "subsequent_action": "Month 3 quarterly selection included Network maintenance, briefing preparation, and Health recovery; main action was 申请关键项目",
+      "result_observed_by_month_6": "L2, Skill 13, Network 5, Output 6, Health 7"
+    },
+    {
+      "horizon": "Q2 through Month 6 review",
+      "public_gap": "Network 3 and Output 2 lagged Skill 9; Health 4 was declining",
+      "priority": "boost Network/Output while recovering Health",
+      "tradeoff": "Network maintenance + briefing preparation + Health recovery versus Skill learning + Health recovery",
+      "selected_actions": [
+        "人脉维护",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "next_observed_checkpoint": "Month 6: L2, Skill 13, Network 5, Output 6, Health 7"
+    },
+    {
+      "horizon": "Q3 through Month 12 review",
+      "public_gap": "Health 3, public performance C, leader requested clearer Output",
+      "priority": "recover Health buffer and increase visible Output",
+      "selected_actions": [
+        "健康恢复",
+        "准备汇报材料",
+        "健康恢复"
+      ],
+      "next_observed_checkpoint": "Month 12: L3, Skill 24, Network 7, Output 7, Health 7"
+    }
+  ],
+  "structured_state_board": {
+    "runtime_load": true,
+    "initial_board_like_output": {
+      "observed": 1,
+      "inferred": 1,
+      "unknown": 1
+    },
+    "explicit_game_session_id_field": false,
+    "explicit_source_or_freshness_field": false,
+    "post_action_fresh_observe_refresh_proven": false,
+    "decision": "STATE_BOARD_USE_NOT_PROVEN"
+  },
+  "event_path_comparison_with_SCORE01": {
+    "window_months": "1-24",
+    "candidate_unique_month_event_titles": 67,
+    "score01_unique_month_event_titles": 63,
+    "exact_month_title_overlap": 6,
+    "candidate_only": 61,
+    "score01_only": 57,
+    "interpretation": "Narrative opportunities/trajectory differ substantially; cause of divergence is not identified."
+  },
+  "analysis_limits": [
+    "Public observations are last snapshots per month; quarterly choices are separately recorded with pre-action state.",
+    "Candidate Run #1 is one stochastic run; no causal attribution or generalization.",
+    "Raw files remain local/ignored; hashes and paths are inherited from S04-03 run_evidence.json."
+  ]
+}

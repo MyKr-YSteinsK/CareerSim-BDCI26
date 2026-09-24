@@ -1,0 +1,107 @@
+{
+  "task_id": "S04-04",
+  "candidate": {
+    "name": "candidate-v1-four-skill",
+    "status": "FROZEN_BEFORE_RUN_2",
+    "source_branch": "codex/s04-03-score-directed-integrated-run",
+    "source_commit": "7a055dea76580117ca74cddb49bb04efcf605eb1"
+  },
+  "skills": [
+    {
+      "name": "career-action-trace",
+      "path": "skills/career-action-trace/SKILL.md",
+      "sha256": "5246d7f00ca7fd087c874700b9b724a29992499bcf1aa66bab66d8ce37810124",
+      "parent_git_blob": "5a1e3ceca8ffc2132303e43bc9f1c1dd630847a8"
+    },
+    {
+      "name": "risk-review",
+      "path": "skills/risk-review/SKILL.md",
+      "sha256": "cdca984d990bce77af40cabc4ceab84263cccc11af0dcb75b1765314a3176fd5",
+      "parent_git_blob": "6737cd1d3f6e7a15960a8d4085eb3c2d7e64a234"
+    },
+    {
+      "name": "structured-state-board",
+      "path": "skills/structured-state-board/SKILL.md",
+      "sha256": "a72366a80470f0d5279ab5747c9413e8a9c60bffc8aff938d7ed1548806d7b82",
+      "parent_git_blob": "787559d64d23c63ba8d4f2721193576c8180ab54"
+    },
+    {
+      "name": "rolling-planning",
+      "path": "skills/rolling-planning/SKILL.md",
+      "sha256": "75f96c1ccc142e2a6568c764fd5b270f239804dd7356cc2aa695daae7e28a80b",
+      "parent_git_blob": "66b2f50d4fa546891851a7b5f44a92a6c13a3f2b"
+    }
+  ],
+  "skill_identity_note": "Run #2 staging copies the exact S04-03 source-worktree bytes. All four Git blobs equal the frozen parent; rolling-planning differed from this worktree only in Windows line endings, with normalized text identical.",
+  "runner_and_dependencies": {
+    "official_runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "python": "CPython 3.12.13 x64",
+    "uv": "0.11.16",
+    "packages": {
+      "jiuwenswarm": "0.2.4b3",
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0"
+    },
+    "pyproject_sha256_current": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+    "uv_lock_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+    "git_blob_identity_vs_score01": {
+      "pyproject_same_blob": true,
+      "uv_lock_same_blob": true,
+      "note": "SCORE-01 score_evidence.json records a pyproject SHA256 differing from the current file; the pyproject Git blob is identical at SCORE-01 and this parent, so this is a historical digest-record discrepancy, not observed content drift."
+    }
+  },
+  "provider_model": {
+    "provider": "DeepSeek official API",
+    "api_base": "https://api.deepseek.com",
+    "request_model": "deepseek-flash",
+    "serving_version": "PARTIALLY_VERIFIED",
+    "credential_value": "NOT_READ_NOT_RECORDED"
+  },
+  "runtime_identity": {
+    "instance": "career_emu",
+    "mcp_config_path": "C:/Users/Yukis/.jiuwenswarm-instances/career_emu/config/config.yaml",
+    "mcp_config_sha256": "05928efaed4508d2c1a70c6b32b704cadb3b1cd40026a5cda0d91edd4878defe",
+    "mcp_config_matches_score01_reference": true,
+    "instance_env_matches_score01_reference": true,
+    "instance_env_hash_or_contents_recorded": false,
+    "candidate_run1_exact_config_hash": "NOT_RECORDED_IN_S04-03_CANONICAL_EVIDENCE",
+    "candidate_run1_config_continuity": "S04-03 RESULT states runtime configuration was not changed; request model matches. Exact per-run config digest was not recorded.",
+    "database_path": "D:/CS/CareerSim-s03-02-risk-review/.career_sim_runner/career_emu/career_emulator.sqlite3",
+    "agent_server_port_reference": 19092
+  },
+  "candidate_run1": {
+    "drive_session_id": "career-sim-runner-fbf3d7fa1cd4",
+    "game_session_id": "2224f5df228544e699b10f897d333d4b",
+    "grade": "A",
+    "quantitative_score": 76.04,
+    "competition_partial_score": 53.23,
+    "survival_months": 48,
+    "completed": true
+  },
+  "score01_reference": {
+    "commit": "e4c88c253820ca4abc511c0ec7f73468674a0de7",
+    "drive_session_id": "career-sim-runner-ca53f36571f6",
+    "game_session_id": "8ffa91ac75e143cfb68b015feb4f40e4",
+    "grade": "D",
+    "quantitative_score": 33.06,
+    "competition_partial_score": 23.14,
+    "survival_months": 24
+  },
+  "ignored_staging_path": "D:/CS/CareerSim/.local/runtime/s04-04-high-score-confirmation/submission",
+  "runner_submission": {
+    "manifest": {
+      "team": "local-s04-04-high-score-confirmation",
+      "name": "s04-04-high-score-confirmation",
+      "mode": "agent",
+      "instruction": ""
+    },
+    "manifest_sha256": "db360a845dd490b05368d3aa1d13f1a8201f96046e6910cbb58666f0a276bee9",
+    "staged_file_count": 5,
+    "skill_source_worktree": "D:/CS/CareerSim/.local/worktrees/s04-03-score-directed-integrated-run"
+  },
+  "freeze_boundary": [
+    "Do not edit these four Skills before or during Run #2.",
+    "Do not include runtime-generated board or memory content in the Candidate.",
+    "Do not include credentials, instance .env, logs, transcript, events, or DB."
+  ]
+}

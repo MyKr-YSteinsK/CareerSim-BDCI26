@@ -1,0 +1,108 @@
+{
+  "task_id": "S04-04",
+  "candidate": "candidate-v1-four-skill",
+  "interpretation_boundary": "Two candidate runs are a screening signal, not a statistically conclusive experiment. No causal score attribution is made.",
+  "runs": [
+    {
+      "label": "SCORE-01 reference",
+      "commit": "e4c88c253820ca4abc511c0ec7f73468674a0de7",
+      "drive_session_id": "career-sim-runner-ca53f36571f6",
+      "game_session_id": "8ffa91ac75e143cfb68b015feb4f40e4",
+      "quantitative_score": 33.06,
+      "competition_partial_score": 23.14,
+      "survival_months": 24,
+      "grade": "D",
+      "completed": false,
+      "dimensions": {
+        "level": {"raw": 2, "normalized": 20},
+        "wealth": {"raw": 11.4, "normalized": 14.25},
+        "resilience": {"raw": 17, "normalized": 85},
+        "skill": {"raw": 9, "normalized": 7.5},
+        "risk_control": {"raw": 0, "normalized": 100},
+        "network": {"raw": 2, "normalized": 3.33}
+      },
+      "first_7_quarterly_main_actions": {"申请关键项目": 7},
+      "first_7_energy_action_selections": {"准备汇报材料": 10, "健康恢复": 3, "人脉维护": 6, "处理历史埋雷": 1}
+    },
+    {
+      "label": "Candidate Run #1 / S04-03",
+      "commit": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+      "drive_session_id": "career-sim-runner-fbf3d7fa1cd4",
+      "game_session_id": "2224f5df228544e699b10f897d333d4b",
+      "quantitative_score": 76.04,
+      "competition_partial_score": 53.23,
+      "survival_months": 48,
+      "grade": "A",
+      "completed": true,
+      "dimensions": {
+        "level": {"raw": 6, "normalized": 60},
+        "wealth": {"raw": 40.5, "normalized": 50.62},
+        "resilience": {"raw": 19, "normalized": 95},
+        "skill": {"raw": 139, "normalized": 100},
+        "risk_control": {"raw": 0, "normalized": 100},
+        "network": {"raw": 52, "normalized": 86.67}
+      },
+      "quarterly_main_actions": {"申请关键项目": 16},
+      "first_7_energy_action_selections": {"准备汇报材料": 10, "健康恢复": 7, "人脉维护": 4, "处理历史埋雷": 0},
+      "rolling_planning_checkpoints": 3,
+      "promotions_months": [6, 12, 18, 36, 48]
+    },
+    {
+      "label": "Candidate Run #2 / S04-04",
+      "drive_session_id": "career-sim-runner-874e21eb1240",
+      "game_session_id": "7df157117cf14917bdc42d83fb7ac7d2",
+      "quantitative_score": 35.31,
+      "competition_partial_score": 24.72,
+      "survival_months": 25,
+      "grade": "D",
+      "completed": false,
+      "dimensions": {
+        "level": {"raw": 4, "normalized": 40},
+        "wealth": {"raw": 3.9, "normalized": 4.88},
+        "resilience": {"raw": 18, "normalized": 90},
+        "skill": {"raw": 44, "normalized": 36.67},
+        "risk_control": {"raw": 10, "normalized": 0},
+        "network": {"raw": 20, "normalized": 33.33}
+      },
+      "quarterly_main_actions": {"申请关键项目": 7, "低调避险": 1},
+      "first_7_energy_action_selections": {"准备汇报材料": 5, "健康恢复": 7, "人脉维护": 5, "处理历史埋雷": 2},
+      "rolling_planning_checkpoints": 3,
+      "promotions_months": [6, 12, 24],
+      "terminal_reason": "second blowup / trust crisis end"
+    }
+  ],
+  "candidate_two_run_summary_n_2": {
+    "quantitative_score": {"mean": 55.675, "min": 35.31, "max": 76.04, "delta_mean_vs_SCORE01": 22.615},
+    "competition_partial_score": {"mean": 38.975, "min": 24.72, "max": 53.23, "delta_mean_vs_SCORE01": 15.835},
+    "survival_months": {"mean": 36.5, "min": 25, "max": 48, "delta_mean_vs_SCORE01": 12.5},
+    "run1_minus_run2_spread": {
+      "quantitative_score": 40.73,
+      "competition_partial_score": 28.51,
+      "survival_months": 23
+    }
+  },
+  "dimension_stability_and_variance": {
+    "most_stable_observed_dimension": "resilience (raw 19 vs 18; normalized 95 vs 90)",
+    "large_candidate_run_spreads": {
+      "level_raw": 2,
+      "wealth_raw": 36.6,
+      "skill_raw": 95,
+      "network_raw": 32,
+      "risk_control_normalized": 100
+    },
+    "interpretation": "One A/48-month result and one D/25-month elimination indicate high observed variance. Both candidate runs exceeded SCORE-01 on total score and survival, but Run #2's margin was small and its risk_control normalized score was 0. n=2 does not establish stability or causality."
+  },
+  "behavioral_consistency": {
+    "first_seven_quarterly_main_actions": "All three runs selected 申请关键项目 for the first seven quarters. Candidate Run #2 selected 低调避险 at Month 12 and returned to 申请关键项目 afterward.",
+    "candidate_run1_vs_run2": "Run #1 selected 申请关键项目 in all 16 quarters; Run #2 selected it in 7 of 8 reached quarters. Resource allocation also differed: first-seven-quarter prep 10 vs 5, health 7 vs 7, network 4 vs 5, historic cleanup 0 vs 2.",
+    "planning": "Both Candidate runs yielded three observed planning checkpoints; this does not isolate planning as a cause of score differences.",
+    "risk_behavior": "Run #2 had a risk-control normalized score of 0 and ended after a second trust-crisis blowup; risk-review effectiveness remains NOT_PROVEN.",
+    "environment_and_trajectory": "The two candidate trajectories differed in duration, promotion timing, state growth, resource allocation, and terminal events. Relative causal contributions of agent choices and event/opportunity path are UNKNOWN."
+  },
+  "candidate_decision": "CANDIDATE_V1_HIGH_VARIANCE",
+  "state_board_decision": "STATE_BOARD_USE_PARTIAL",
+  "risk_hypothesis": "ACTIVE",
+  "risk_effectiveness": "NOT_PROVEN",
+  "controlled_screening": "NOT_STARTED",
+  "next_step": "S04 Stage Review; do not launch another game from this task."
+}
