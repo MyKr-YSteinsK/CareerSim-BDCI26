@@ -7,15 +7,15 @@ description: Use at a new game's first observation, quarterly resource and main-
 
 ## Purpose
 
-Set one public-evidence-based short priority and medium objective. This checkpoint is not an agent, action policy, memory system or score predictor.
+Set a short priority and medium objective from fresh public evidence; not an agent, action policy, memory system or score predictor.
 
 ## When to use
 
-- After the first valid observation of a new game session, establish the initial priority.
-- Before quarterly Energy allocation and the quarterly main action, compare the current public state and legal choices with the active priority.
-- After semiannual feedback, a plan-changing public warning/outcome, or repeated action without observed intended progress.
+- After a new game's first valid observation, set the initial priority.
+- Before quarterly Energy and main action, compare fresh public state and legal choices to the active priority.
+- After semiannual feedback, a plan-changing public warning/outcome, or repeated action without intended observed progress.
 
-Do not invoke for every monthly story choice. Ordinary HR praise, no new warning, action acceptance, or submitted mitigation alone neither resolves an existing risk nor triggers material-outcome reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
+Do not invoke for every monthly story. HR praise, no new warning, accepted action or submitted mitigation alone does not resolve risk or trigger material reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
 
 ## Input and evidence rules
 
@@ -27,18 +27,18 @@ Never use another run, post-outcome facts not yet visible, raw database, hidden 
 
 1. Reject stale or mismatched session/board context; the normal loop obtains fresh public observation.
 2. Identify the decision-relevant public gap across performance, level, resources and visible risks without a fixed priority order. Set one observable objective through the next quarterly or semiannual review; never promise promotion, score, or event outcomes.
-3. At quarterly choices, compare legal options' objective support and trade-offs; one saturated benefit does not nullify a composite option. Repeated action without observed progress warrants reconsideration, not automatic rejection.
-4. After a severe public warning/consequence that materially undermines the objective, persistent retaliation/escalation, or public feedback showing major survival/trust cost, do not carry forward the old `Priority`. Compare currently legal paths: continue growth/principle, reduce exposure/de-escalate, and transfer/exit/mitigation if available. For each, weigh known public benefit, known public loss, escalation exposure, opportunity cost, and `UNKNOWN`; mark unavailable paths rather than invent actions. Rebuild the objective. Principle, duty or recent promotion is not proof of safety; transfer, reduced exposure or conservatism is neither automatic failure/demotion nor the fixed answer.
-5. Otherwise revise on material feedback only when public evidence warrants it. Replace the prior checkpoint rather than accumulating history. This is goal reprioritization, not `risk-review`'s pre-action warning check; the same Agent makes the final choice.
+3. At each quarterly Energy choice, compare legal options' marginal public benefits for the current gap against Energy/opportunity cost; one saturated component neither nullifies a composite option nor makes it best. At strategic review, label fresh public progress toward the prior objective `advancing/stalled/unknown`. If repeated action is stalled, compare a legal alternative and its cost; if advancing, repetition remains viable.
+4. On a severe public warning/consequence undermining the objective, persistent retaliation/escalation, or major public survival/trust cost, reopen `Priority`. Compare currently legal continuation, lower exposure/de-escalation, and available transfer/exit/mitigation by known public benefit/loss, escalation exposure, opportunity cost and `UNKNOWN`; mark unavailable paths. Rebuild the objective. Principle, duty or recent promotion proves no safety; transfer/reduced exposure/conservatism is neither automatic failure/demotion nor a fixed answer.
+5. Otherwise revise only when material public feedback warrants it; replace the old checkpoint. This revises goals, not `risk-review`'s pre-action candidate check; the same Agent decides.
 
 ## Output
 
 Return a compact checkpoint, normally no more than five short lines:
 
 - `Horizon`: next quarter or next semiannual review.
-- `Observed gap`: the relevant public fact(s), or `unknown`.
+- `Observed gap`: one relevant fresh Board/observe fact, not a Board copy; prior-objective progress `advancing/stalled/unknown`.
 - `Priority`: one revisable objective.
-- `Path trade-off`: at a material-outcome checkpoint, compactly compare the legal paths and five factors above; otherwise at most two legal quarterly candidates.
+- `Path trade-off`: at a material-outcome checkpoint, compare legal paths and five factors above; otherwise at most two legal quarterly candidates, including useful components and opportunity cost when relevant.
 - `Review trigger`: the next feedback or public state change that should prompt revision.
 
 If no relevant choice is currently legal, mark it unavailable and wait for a legal decision point; do not invent one.

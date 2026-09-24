@@ -135,7 +135,12 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 ## S04 Main acceptance｜Game Gate 与 Candidate v2 假设
 
 - Main 接受 S04 为 `COMPLETE`，Stage acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。Candidate v1 两次成绩为 `76.04 / 53.23 / 48m / A` 与 `35.31 / 24.72 / 25m / D`，故记录 `CANDIDATE_V1 = HIGH_VARIANCE`；不据此声称稳定高分、因果收益或 hidden-test generalization。
-- `GAME_GATE = ADOPTED`：full game 是昂贵 benchmark，不是普通 correctness test；新一局必须有单独明确授权。当前 `NEXT_GAME = NOT_AUTHORIZED`。
+- `GAME_GATE = ADOPTED`：full game 是昂贵 benchmark，不是普通 correctness test；新一局必须有单独明确授权。S04 验收当时 `NEXT_GAME = NOT_AUTHORIZED`；最新延期状态见 `CURRENT_STATE.md`。
 - 下一研究假设为 `H_MATERIAL_OUTCOME_REPRIORITIZATION`：Candidate 部分早期成长信号已观察到，但中期成长及严重公开后果下的动作排序不稳定；下一候选先离线审查一个有公开轨迹支持的决策机制，同时保护正常成长机会。Astra-01 提供 red-team / hypothesis 线索，不自动成为工程事实。
 - Candidate v2 的首个最小候选仅为假设：只改 `rolling-planning`，加入 bounded `material-outcome checkpoint`，在 severe public consequence 后重新比较当前目标与合法替代路径。不得默认“道德/原则上正当”或“刚晋升/担当”即安全，也不得默认转岗/降低暴露即失败或必然降职。此处没有实施或验证该改动。
 - 本假设不同时修改 `risk-review` 或 State Board，不加入 `active_public_risks`，不绑定 Energy component-wise comparison，不新增第五个 Skill，也不启动 Team / Swarm。Energy comparison 保留为独立 Hypothesis。
+
+## S05 implementation boundary
+
+- 上节是 S04 Main 验收时的候选语境。S05-01 后已由 Main 接受并合入：仅 `rolling-planning` 离线实现 bounded material-outcome Priority 重排；未运行 v2-C gameplay，策略收益仍 `NOT_PROVEN`。
+- S05-02 的 integrated offline Planning 增量属于待 S05 Stage Review 的分支证据，不是已合入架构事实。Single Agent 唯一动作提交者、Board / Planning / Risk / Trace 职责和独立 Main Game Gate 均不变；不建立新 Skill、持久状态或 Team / Swarm。

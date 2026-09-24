@@ -1,0 +1,18 @@
+# S05-02 integrated static regression matrix
+
+These are synthetic **decision-time public-input** contract tests. `PASS` means the written four-Skill contract entails the stated behavior on inspection; it does not verify model adherence, actual tool execution, score or causal benefit. The same current CareerSim game session and fresh legal choices are assumed unless a case says otherwise. No later outcome, terminal report, hidden counter or evaluator weight is available to the decision maker.
+
+| Case | Public-input counterexample | Required behavior and contract anchor | Result |
+|---|---|---|---|
+| R1 — ordinary growth | A legal growth opportunity, no material warning or consequence. | Planning retains normal growth trade-off; no conservative default or extra Risk invocation (`When to use`). | PASS |
+| R2 — material consequence | Public severe consequence materially undermines current growth objective; legal continuation and lower-exposure paths exist. | Do not carry old `Priority` forward; compare legal paths, benefits/losses, escalation, opportunity cost and `UNKNOWN` (`Planning procedure` 4). | PASS |
+| R3 — warning not resolved | Prior warning, then silence, ordinary praise, accepted action or submitted mitigation without explicit resolution. | None alone proves resolution or triggers material reprioritization; unresolved effect stays unknown (`When to use`, evidence rules). | PASS |
+| R4 — composite benefit | Legal option benefits Output and Dignity; Dignity is currently strong, Output has a public gap. | Consider marginal useful Output, not discard whole option; multi-benefit is not automatically best (`Planning procedure` 3). | PASS |
+| R5 — opportunity cost | Composite option has useful Output but consumes scarce Energy; another legal option addresses a more urgent public gap at lower cost. | Compare marginal benefits with Energy/opportunity cost; the other option may win, no fixed action (`Planning procedure` 3). | PASS |
+| R6 — plateau | Prior objective names observable progress; repeated path has not produced that intended public progress, and a legal alternative exists. | Label objective-specific progress `stalled`, compare the alternative and cost; do not continue merely because the action was repeated (`Planning procedure` 3, `Observed gap`). | PASS |
+| R7 — strong progress | Repeated path has fresh observed progress toward the prior objective. | Label `advancing`; repetition remains viable rather than forced switching (`Planning procedure` 3). | PASS |
+| R8 — Board/Planning separation | Board contains many session-keyed observed/inferred/unknown facts. | Planning names one relevant fresh Board/observe fact and progress, not a copied Board; Board still owns fact/freshness, neither submits (`Observed gap`, Board contract). | PASS |
+| R9 — Planning/Risk separation | A strategic objective needs revision and a current candidate also has a public warning. | Planning owns objective/path; unchanged Risk reviews warning-driven candidate-specific risk and mitigation; neither becomes an action submitter (`Planning procedure` 5, Risk contract). | PASS |
+| R10 — Trace purity | Same Agent has chosen a legal action after any applicable reviews. | Unchanged Trace preserves choice/reason and only appends its existing marker before one normal submit; no strategy or state (`career-action-trace` contract). | PASS |
+
+Revision cycles used: `1` integrated semantic cycle; a within-cycle wording compression did not follow a failing case. Blocking failures after review: `0`. Residual limit: written instructions cannot guarantee an Agent will emit a checkpoint, honor the labels, select a better action, or improve a stochastic game. Trigger absence in a future run is `NOT_OBSERVED`, not contract failure.

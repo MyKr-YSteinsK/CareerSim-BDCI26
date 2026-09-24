@@ -11,7 +11,7 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S04 accepted; S05-Lab is a candidate next Stage, not started`
+- Current Stage: `S05-Lab in progress; S04 accepted`
 - S03: `COMPLETE`
 - S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
@@ -31,6 +31,8 @@
 - S03_CLOSEOUT_CANDIDATE: `ACCEPTED_BY_MAIN` ([closeout evidence](../../experiments/S03-CLOSEOUT/RESULT.md))
 - S04: `COMPLETE`
 - S04_STAGE_ACCEPTANCE: `PASS_WITH_KNOWN_LIMITATION`
+- S05-01: `MAIN_ACCEPTED_MERGED` (`CANDIDATE_V2C_OFFLINE_IMPLEMENTATION_ACCEPTED`)
+- S05-02: `IN_FLIGHT_EVIDENCE` (integrated offline candidate awaits S05 Stage Review)
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -41,13 +43,14 @@
 - CONTROLLED_SCREENING: `NOT_STARTED`
 - GAME_GATE: `ADOPTED`
 - MULTI_AGENT / TEAM / SWARM: `DEFERRED`
-- CANDIDATE_V2_HYPOTHESIS: `H_MATERIAL_OUTCOME_REPRIORITIZATION` (`NOT_IMPLEMENTED`)
-- NEXT_GAME: `NOT_AUTHORIZED`
+- CANDIDATE_V2_HYPOTHESIS: `H_MATERIAL_OUTCOME_REPRIORITIZATION` (`OFFLINE_IMPLEMENTED`; gameplay effectiveness `NOT_PROVEN`)
+- TARGET: `STABLE_QUANTITATIVE_80_PLUS` (goal, not achieved fact)
+- NEXT_GAME: `DEFERRED_FOR_ADDITIONAL_OFFLINE_OPTIMIZATION` (new Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: Main 已接受 S03 Stage（`S03_STAGE_ACCEPTANCE = PASS`）和 S04 Stage（`S04_STAGE_ACCEPTANCE = PASS_WITH_KNOWN_LIMITATION`）。S03-14 correctness evidence 限于一次观察到的 runtime path，不构成 Risk performance / effectiveness 证据。S04 的 State Board runtime evidence 为 partial-but-sufficient；State Board、Planning 与 Risk 的独立 score benefit 均未证明。Candidate v1 两局分别为 `76.04 / 53.23 / 48m / A` 与 `35.31 / 24.72 / 25m / D`，判定 `HIGH_VARIANCE`。Candidate v2 的 `H_MATERIAL_OUTCOME_REPRIORITIZATION` 仅为待验证假设；S05-Lab 尚未开始，下一局 `NOT_AUTHORIZED`。FORENSIC_HOLD:S03-MCP-REGISTRATION 已由 Main 解除，但 raw evidence 保留且 cleanup 未授权。
+- Current milestone: Main 已接受 S03、S04，并接受/合入 S05-01 的 Planning-only v2-C 离线实现。Candidate v1 两局为 `76.04 / 53.23 / 48m / A` 与 `35.31 / 24.72 / 25m / D`，判定 `HIGH_VARIANCE`；Risk、Board、Planning 的独立 score benefit 均未证明。S05-02 独立分支已形成 integrated offline candidate 与预注册 benchmark 观察矩阵，仅纳入 Planning 的公开分量边际比较和目标进展复核；收入专门规则、Risk 改写及跨 Skill 大幅压缩暂缓，全部待 Stage Review，不证明稳定 80+ 或 gameplay effectiveness。下一局须新 Main Game Gate。S03 forensic hold 已解除，raw 仍保留且 cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (S04 acceptance facts verified on `codex/s04-main-acceptance-closeout`; branch-local changes await merge review)
+- Last verified: 2026-09-24 (`origin/main@7fc741cadc950608ff190ff10d7a001584e99dcc`; S05-02 branch additions remain `IN_FLIGHT_EVIDENCE`)
 
 ## Major capabilities
 
@@ -59,6 +62,7 @@
 - `skills/career-action-trace/SKILL.md` 已完成最小 Skill contract、安装/发现/加载与 bounded smoke 应用闭环，证据见 [S02-01 RESULT](../../experiments/S02-01-minimal-skill/RESULT.md)。
 - `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、load 均有证据。S03-02 smoke 当时未建立游戏会话；Main 已接受 S03-14 一次 qualifying public trigger 上的 runtime correctness 证据，并确认该次运行的唯一 successful action submitter 为 Single Agent。Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
 - S04 已实现 `structured-state-board` 与 `rolling-planning` 并将其纳入 Candidate v1 的两次真实运行。Board 轨迹出现当前 game session、observed/inferred/unknown 与 freshness 字段，但 post-action refresh 仍不完整；Stage 接受其 partial runtime evidence，不代表独立 score benefit。Rolling Planning 有实际 checkpoint 证据，也不证明独立收益。Main 接受记录见 [S04-CLOSEOUT RESULT](../../experiments/S04-CLOSEOUT/RESULT.md)。
+- S05-01 已被 Main 接受并合入：`rolling-planning` 增加严重公开后果后的 bounded Priority 重排；证据仅为 [离线合同与反例](../../experiments/S05-01-material-outcome-reprioritization/RESULT.md)，未运行 v2-C gameplay。
 
 ## Current technical shape
 
@@ -84,18 +88,18 @@
 - S03-11 原始 traceback 将 S03-10 错误定位为 `httpcore` 的 `start_tls` 阶段连接失败、在 HTTP/provider 响应前；更底层 peer/TLS 原因与历史代理状态未知，不能归咎于特定代理或上游。当前 endpoint/model/config 未确认漂移；DNS/TCP/TLS/无凭据 HTTP 分层探测可达，同一 JiuwenSwarm provider adapter 的 `invoke` 与历史对应的 `stream` 各完成 1 次小请求（合计 66 input / 8 output / 74 total tokens，cache 0，reported cost 不可得）。无服务、Agent chat、CareerSim 工具或游戏；该预检不证明后续游戏或 Risk 策略正确性。
 - S03-13 复用 S03-12 provider freshness 与 MCP 注册先前 PASS；本任务确认 provider config/env identity 未漂移，但重复本地 PowerShell 聚合表达式解析问题达到 Plan STOP 条件，未启动 service/play、未请求 provider，也未建立游戏。Risk correctness 仍未验证。
 - S03-14 复用 S03-12 provider freshness，确认与 S03-13 的 provider/MCP identity 一致；一次 clean service startup 注册五个 CareerSim tools。唯一 Runner play 建立 1 个 game，完成 36 次 observe 与 35 次成功 take_action；公开违纪风险触发后，risk-review 经 Skill runtime 加载并在 action note 中输出唯一 ALLOW marker，S02 marker 与单 Agent action integrity 保持。Main 接受该次 runtime correctness 作为 Stage evidence；Runner 在第 9 月达到 180 秒上限、play_exit_code=1、无 final score，因此 Risk effectiveness 仍 `NOT_PROVEN`，无 performance / generalization 结论。
-- S04 Main acceptance 接受 State Board partial runtime evidence 与 Rolling Planning 的实现/真实 Candidate load，限制于 Candidate v1 高方差和未证明的独立收益。Candidate Run #1 为 `76.04 / 53.23 / 48m / A`；Run #2 为 `35.31 / 24.72 / 25m / D`。下一研究假设为 `H_MATERIAL_OUTCOME_REPRIORITIZATION`，尚未实现；full game 依 `GAME_GATE` 作为昂贵 benchmark，下一局需单独授权。
+- S04 Main acceptance 接受 State Board partial runtime evidence 与 Rolling Planning 的实现/真实 Candidate load，限制于 Candidate v1 高方差和未证明的独立收益。Candidate Run #1 为 `76.04 / 53.23 / 48m / A`；Run #2 为 `35.31 / 24.72 / 25m / D`。S05-01 已离线实现下一假设 `H_MATERIAL_OUTCOME_REPRIORITIZATION`，但未做 gameplay；full game 仍是昂贵 benchmark，下一局需单独 Main Game Gate。
 - S03-12 provider freshness gate 完成 1 次（37 tokens）；唯一 clean service start 中 AgentServer 注册 CareerSim MCP 五工具通过，并有 1 条 incidental startup prewarm usage（201 tokens）。服务已停止；pre-game correction guard 超限，Runner play、install、gameplay 和工具调用均为 0。Risk correctness 未验证，Risk effectiveness 仍 `NOT_PROVEN`。
 - Windows 无 symlink 特权时，锁定 distribution 数据采用逐文件 hash 核对后的 copy materialization；未使用 GitHub 数据，后续对局仍须保持串行。
 
 ## Active work
 
-- S02、S03、S04 均已由 Main Hub 接受；S04 acceptance closeout 文档变更当前位于 `codex/s04-main-acceptance-closeout` 分支，尚待 Git merge review。S03 历史技术失败记录保留；FORENSIC_HOLD 已解除，但 raw forensic evidence retained、cleanup 未授权。S05-Lab 尚未开始。
+- S02、S03、S04 均已由 Main 接受；S04 closeout 与 S05-01 已合入 `main`。S05-Lab 正在进行；S05-02 integrated offline candidate 已在本分支形成，仍属 `IN_FLIGHT_EVIDENCE`，待 S05 Stage Review。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. `S05-Lab｜高方差收敛与严重后果目标重排`：仅为候选下一 Stage，尚未开始；先离线调查并按独立任务授权实施。Candidate v2 首假设为 `H_MATERIAL_OUTCOME_REPRIORITIZATION`。
-2. 保持 `NEXT_GAME = NOT_AUTHORIZED`，直到另有明确 live-run 授权；Game Gate、Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 已有 `rolling-planning` Skill，但独立 score benefit 未证明。
+1. S05 Stage Review：审查 S05-02 integrated offline candidate freeze 与 benchmark 观察矩阵，不自行宣布 S05 完成。
+2. 保持 `NEXT_GAME = DEFERRED_FOR_ADDITIONAL_OFFLINE_OPTIMIZATION`，直到 Main 另行批准 Game Gate；Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
 
 ## Workflow / delivery facts that are currently material
 
