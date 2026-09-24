@@ -9,11 +9,11 @@
 - Current Stage: S06-Lab
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口、S06-06 静态复核及 S06-07 三 Skill policy consolidation 已完成；S06 未宣布完成
-- Last verified: 2026-09-24
+- Last verified: 2026-09-25
 
 ## Current candidate
 
-- Candidate: candidate-v4-lean-runtime-policy；S06-07 静态完成，待 Main review
+- Candidate: candidate-v4-lean-runtime-policy；S06-07 静态完成；已执行一次 Main 授权的本地对局并于 M6 因 Health=0 终止，结果待 Main review
 - Parent: candidate-v3c-zh-aligned-policy；strategy delta: RUNTIME_POLICY_CONSOLIDATION
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
@@ -32,6 +32,7 @@
 - Key real-run records: [RUN_HISTORY](RUN_HISTORY.md)
 - Candidate v1 observed a high spread across two runs; this does not establish cause or stable performance.
 - S06 Run #1: 53.83 quantitative / 37.68 competition partial / 48 months / C. It is one Main-reviewed observation, not a causal result.
+- Candidate v4 first local run: 25.84 quantitative / 18.09 competition partial / 6 months / E; eliminated at M6 with Health=0. This is one terminal observation, not a 48-month completion or a causal result; the Runner score report was empty because the shared instance DB path differs from the root Runner's default, and the score was read from the exact session in the configured DB.
 - Gameplay effectiveness: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test generalization: NOT_PROVEN.
 - S06 Run #1 raw evidence on the current machine: unavailable/deferred; no raw hash is asserted.
 
@@ -39,5 +40,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
-- S06-07: candidate-v4-lean-runtime-policy is statically verified and pending Main review; no live operation was run, and the next game remains unauthorized.
+- S06-07: candidate-v4-lean-runtime-policy is statically verified; one local full-benchmark attempt has been consumed and ended at M6. No strategy changes were made; further gameplay requires a separate Main Game Gate.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
