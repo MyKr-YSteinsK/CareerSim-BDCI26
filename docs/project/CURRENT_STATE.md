@@ -11,7 +11,7 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S05-Lab in progress; S04 accepted`
+- Current Stage: `S05-Lab offline candidate ready for Main/Stage review; no Game Gate authorization`
 - S03: `COMPLETE`
 - S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
@@ -31,9 +31,10 @@
 - S03_CLOSEOUT_CANDIDATE: `ACCEPTED_BY_MAIN` ([closeout evidence](../../experiments/S03-CLOSEOUT/RESULT.md))
 - S04: `COMPLETE`
 - S04_STAGE_ACCEPTANCE: `PASS_WITH_KNOWN_LIMITATION`
+- S05: `FINAL_OFFLINE_CANDIDATE_READY_FOR_MAIN_REVIEW`
 - S05-01: `MAIN_ACCEPTED_MERGED` (`CANDIDATE_V2C_OFFLINE_IMPLEMENTATION_ACCEPTED`)
-- S05-02: `MAIN_ACCEPTED_OFFLINE` (`INTEGRATED_CANDIDATE_OFFLINE_ACCEPTED`; parent branch not yet merged)
-- S05-03: `IN_FLIGHT_EVIDENCE` (final reserve audit and Candidate pending S05 Stage Review)
+- S05-02: `MAIN_ACCEPTED_MERGED` (`INTEGRATED_CANDIDATE_OFFLINE_ACCEPTED`)
+- S05-03: `OFFLINE_COMPLETE_PENDING_STAGE_REVIEW`
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -45,13 +46,14 @@
 - GAME_GATE: `ADOPTED`
 - MULTI_AGENT / TEAM / SWARM: `DEFERRED`
 - CANDIDATE_V2_HYPOTHESIS: `H_MATERIAL_OUTCOME_REPRIORITIZATION` (`OFFLINE_IMPLEMENTED`; gameplay effectiveness `NOT_PROVEN`)
+- FINAL_CANDIDATE: `candidate-v2-final-offline` (offline frozen; gameplay effectiveness `NOT_PROVEN`)
 - TARGET: `STABLE_QUANTITATIVE_80_PLUS` (goal, not achieved fact)
-- NEXT_GAME: `DEFERRED_FOR_FINAL_OPTIMIZATION_RESERVE_AUDIT` (new Main Game Gate required)
+- NEXT_GAME: `NOT_AUTHORIZED` (separate Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: Main 已接受 S03、S04、已合入 S05-01，并已通过 S05-02 Stage Review、接受未合入父分支的 `candidate-v2c-integrated-planning` 离线候选。Candidate v1 两局 `76.04/48m/A` 与 `35.31/25m/D` 显示高方差；Risk/Board/Planning 独立收益未证明。S05-03 子分支完成最终 offline reserve audit 后，仅在 Planning 增加同局、fresh observe 的上下文恢复提示，冻结 `candidate-v2-final-offline` 供 Stage Review；没有 Memory、第五 Skill 或 Team/Swarm。稳定 80+ 与 gameplay effectiveness 均未证明，下一局须新 Main Game Gate。S03 forensic hold 已解除，raw retained、cleanup 未授权。
+- Current milestone: S05-02 integrated offline candidate 已通过 Main/Stage review；S05-03 offline reserve audit 与 `candidate-v2-final-offline` 已完成并合入，S05 Stage review 仍待 Main。最终候选仅增加 Planning 的同局、fresh-observe 上下文恢复提示；Memory、第五 Skill 与 Team/Swarm 仍未实现。S05 gameplay effectiveness 与 stable 80+ 均未证明，下一局未授权，须单独 Main Game Gate。此次收口未运行 benchmark。S03 forensic hold 已解除，raw retained、cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (`origin/main@7fc741cadc950608ff190ff10d7a001584e99dcc`; S05-02 accepted offline but not merged; S05-03 child in-flight)
+- Last verified: 2026-09-24 (final candidate manifest and four Skill blobs are consistent; no gameplay validation)
 
 ## Major capabilities
 
@@ -63,7 +65,7 @@
 - `skills/career-action-trace/SKILL.md` 已完成最小 Skill contract、安装/发现/加载与 bounded smoke 应用闭环，证据见 [S02-01 RESULT](../../experiments/S02-01-minimal-skill/RESULT.md)。
 - `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、load 均有证据。S03-02 smoke 当时未建立游戏会话；Main 已接受 S03-14 一次 qualifying public trigger 上的 runtime correctness 证据，并确认该次运行的唯一 successful action submitter 为 Single Agent。Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
 - S04 已实现 `structured-state-board` 与 `rolling-planning` 并将其纳入 Candidate v1 的两次真实运行。Board 轨迹出现当前 game session、observed/inferred/unknown 与 freshness 字段，但 post-action refresh 仍不完整；Stage 接受其 partial runtime evidence，不代表独立 score benefit。Rolling Planning 有实际 checkpoint 证据，也不证明独立收益。Main 接受记录见 [S04-CLOSEOUT RESULT](../../experiments/S04-CLOSEOUT/RESULT.md)。
-- S05-01 已被 Main 接受并合入：`rolling-planning` 增加严重公开后果后的 bounded Priority 重排；证据仅为 [离线合同与反例](../../experiments/S05-01-material-outcome-reprioritization/RESULT.md)，未运行 v2-C gameplay。
+- S05 最终离线候选 `candidate-v2-final-offline` 保留 S05-01/02 Planning 机制，并仅增加 S05-03 同局上下文恢复提示；四个 Skill 的冻结身份与限制见 [S05-03 manifest](../../experiments/S05-03-final-optimization-reserve-audit/candidate_manifest.json)。候选未经过 gameplay 验证，S05 Stage review 与独立 Game Gate 仍待 Main。
 
 ## Current technical shape
 
@@ -95,12 +97,11 @@
 
 ## Active work
 
-- S02、S03、S04 均已由 Main 接受；S04 closeout 与 S05-01 已合入 `main`。S05-02 integrated Candidate 已被 Main 离线接受但父分支未合入；S05-03 stacked reserve audit 与 final Candidate 为本子分支 `IN_FLIGHT_EVIDENCE`，待 S05 Stage Review。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
+- S02、S03、S04 均已由 Main 接受；S05-02 与 S05-03 最终离线候选已合入 `main`。S05-03 deliverable 为 offline complete，S05 Stage review 与独立 Main Game Gate 决定仍待 Main；本次未运行后续 benchmark，S06 benchmark/optimization 未实施。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. S05 Stage Review：审查 S05-03 final Candidate、剩余空间证据和下一局观测矩阵；父先合、子后合，不自行宣布 S05 完成。
-2. 保持 `NEXT_GAME = DEFERRED_FOR_FINAL_OPTIMIZATION_RESERVE_AUDIT`，直到 Main 另行批准 Game Gate；Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
+1. Main 审查 S05 final offline candidate 与 Stage 证据；任何下一局都需单独 Game Gate 授权。Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
 
 ## Workflow / delivery facts that are currently material
 
