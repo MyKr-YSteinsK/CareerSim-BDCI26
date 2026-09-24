@@ -11,7 +11,7 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S05-Lab offline candidate ready for Main/Stage review; no Game Gate authorization`
+- Current Stage: `S06-Lab; S06-01 static candidate on review branch; no Game Gate authorization`
 - S03: `COMPLETE`
 - S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
@@ -31,10 +31,13 @@
 - S03_CLOSEOUT_CANDIDATE: `ACCEPTED_BY_MAIN` ([closeout evidence](../../experiments/S03-CLOSEOUT/RESULT.md))
 - S04: `COMPLETE`
 - S04_STAGE_ACCEPTANCE: `PASS_WITH_KNOWN_LIMITATION`
-- S05: `FINAL_OFFLINE_CANDIDATE_READY_FOR_MAIN_REVIEW`
+- S05: `COMPLETE`
+- S05_STAGE_ACCEPTANCE: `PASS_WITH_KNOWN_LIMITATION`
 - S05-01: `MAIN_ACCEPTED_MERGED` (`CANDIDATE_V2C_OFFLINE_IMPLEMENTATION_ACCEPTED`)
 - S05-02: `MAIN_ACCEPTED_MERGED` (`INTEGRATED_CANDIDATE_OFFLINE_ACCEPTED`)
-- S05-03: `OFFLINE_COMPLETE_PENDING_STAGE_REVIEW`
+- S05-03: `COMPLETE_ACCEPTED_BY_MAIN`
+- S06: `IN_PROGRESS`
+- S06-01: `IN_FLIGHT_EVIDENCE` (static candidate on review branch; not yet Main-accepted)
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -51,9 +54,9 @@
 - NEXT_GAME: `NOT_AUTHORIZED` (separate Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: S05-02 integrated offline candidate 已通过 Main/Stage review；S05-03 offline reserve audit 与 `candidate-v2-final-offline` 已完成并合入，S05 Stage review 仍待 Main。最终候选仅增加 Planning 的同局、fresh-observe 上下文恢复提示；Memory、第五 Skill 与 Team/Swarm 仍未实现。S05 gameplay effectiveness 与 stable 80+ 均未证明，下一局未授权，须单独 Main Game Gate。此次收口未运行 benchmark。S03 forensic hold 已解除，raw retained、cleanup 未授权。
+- Current milestone: Main 已接受 S05，最终离线候选为 `candidate-v2-final-offline`；S05 acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。S06 Run #1 的 Main-reviewed 单局结果为 quantitative 53.83、competition partial 37.68、48 months、grade C；它暴露长程策略控制缺陷线索，但不能证明任何单一机制的分数因果或稳定表现。S06-01 的 `candidate-v3-adaptive-controller-static` 是本地静态候选，当前在 review branch；gameplay effectiveness 未证明，下一局须独立 Main Game Gate 授权。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；本任务未运行 benchmark。S03 forensic hold 已解除，raw retained、cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (final candidate manifest and four Skill blobs are consistent; no gameplay validation)
+- Last verified: 2026-09-24 (S05 Main acceptance and S06-01 branch evidence reconciled; no S06-01 gameplay validation)
 
 ## Major capabilities
 
@@ -65,7 +68,7 @@
 - `skills/career-action-trace/SKILL.md` 已完成最小 Skill contract、安装/发现/加载与 bounded smoke 应用闭环，证据见 [S02-01 RESULT](../../experiments/S02-01-minimal-skill/RESULT.md)。
 - `skills/risk-review/SKILL.md` 已完成事件驱动的最小 Risk Review contract；Runner validation、install、discover、load 均有证据。S03-02 smoke 当时未建立游戏会话；Main 已接受 S03-14 一次 qualifying public trigger 上的 runtime correctness 证据，并确认该次运行的唯一 successful action submitter 为 Single Agent。Risk effectiveness 仍 `NOT_PROVEN`，证据见 [S03-14 RESULT](../../experiments/S03-14-risk-correctness-live-smoke/RESULT.md)。
 - S04 已实现 `structured-state-board` 与 `rolling-planning` 并将其纳入 Candidate v1 的两次真实运行。Board 轨迹出现当前 game session、observed/inferred/unknown 与 freshness 字段，但 post-action refresh 仍不完整；Stage 接受其 partial runtime evidence，不代表独立 score benefit。Rolling Planning 有实际 checkpoint 证据，也不证明独立收益。Main 接受记录见 [S04-CLOSEOUT RESULT](../../experiments/S04-CLOSEOUT/RESULT.md)。
-- S05 最终离线候选 `candidate-v2-final-offline` 保留 S05-01/02 Planning 机制，并仅增加 S05-03 同局上下文恢复提示；四个 Skill 的冻结身份与限制见 [S05-03 manifest](../../experiments/S05-03-final-optimization-reserve-audit/candidate_manifest.json)。候选未经过 gameplay 验证，S05 Stage review 与独立 Game Gate 仍待 Main。
+- S05 最终离线候选 `candidate-v2-final-offline` 已由 Main 接受；四个 Skill 的冻结身份与限制见 [S05-03 manifest](../../experiments/S05-03-final-optimization-reserve-audit/candidate_manifest.json)。候选未经过 gameplay 验证。S06 Run #1 为单局 runtime evidence，不建立因果或稳定性结论；S06-01 v3 是待 Main review 的静态假设候选。Memory、第五 Skill 与 Team / Swarm 仍未实现/授权。
 
 ## Current technical shape
 
@@ -97,11 +100,11 @@
 
 ## Active work
 
-- S02、S03、S04 均已由 Main 接受；S05-02 与 S05-03 最终离线候选已合入 `main`。S05-03 deliverable 为 offline complete，S05 Stage review 与独立 Main Game Gate 决定仍待 Main；本次未运行后续 benchmark，S06 benchmark/optimization 未实施。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
+- S05 的 S05-02/S05-03 离线成果及 `candidate-v2-final-offline` 已被 Main 接受并合入。S06-01 静态候选 `candidate-v3-adaptive-controller-static` 正在独立 review branch；本分支事实不代表 main 已接受。S06 Run #1 不证明因果或稳定表现；S06-01 未运行新的 benchmark，任何后续对局都需独立 Main Game Gate。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. Main 审查 S05 final offline candidate 与 Stage 证据；任何下一局都需单独 Game Gate 授权。Risk benefit `NOT_PROVEN`、controlled screening `NOT_STARTED`、shared runtime 串行和 serving version `PARTIALLY_VERIFIED` 边界继续有效。Memory 未实现；Planning 独立 score benefit 未证明。
+1. Main 审查 S06-01 静态候选与回归证据，并单独决定是否授权 Game Gate。S06 Run #1 与 v3 静态实现均不证明策略收益或 stable 80+。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；后续 benchmark/optimization 未由本任务执行。
 
 ## Workflow / delivery facts that are currently material
 

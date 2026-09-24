@@ -143,4 +143,11 @@ Failure Fallback: 状态过期或选项不明时请求重新观察；分析不�
 ## S05 implementation boundary
 
 - 上节是 S04 Main 验收时的候选语境。S05-01 后已由 Main 接受并合入：仅 `rolling-planning` 离线实现 bounded material-outcome Priority 重排；未运行 v2-C gameplay，策略收益仍 `NOT_PROVEN`。
-- S05-02 integrated offline Planning 候选已通过 Main/Stage review 并合入；S05-03 最终 reserve audit 与 `candidate-v2-final-offline` 已完成并合入，S05 Stage review 仍待 Main。唯一新增机制是 Planning 的同局上下文恢复提示，不构成 gameplay 收益事实。Single Agent 唯一动作提交者、Board / Planning / Risk / Trace 职责和独立 Main Game Gate 均不变；Memory、第五 Skill、Team / Swarm 仍 deferred。
+- S05-02 integrated offline Planning 候选与 S05-03 最终 reserve audit、`candidate-v2-final-offline` 均已由 Main 接受并合入。唯一新增机制是 Planning 的同局上下文恢复提示，不构成 gameplay 收益事实。Single Agent 唯一动作提交者、Board / Planning / Risk / Trace 职责和独立 Main Game Gate 均不变；Memory、第五 Skill、Team / Swarm 仍 deferred。
+
+## S06 hypothesis and static implementation boundary
+
+- Main-reviewed S06 Run #1（quantitative `53.83`、competition partial `37.68`、48 months、grade `C`）是单局观察，只支持进一步调查长程策略控制缺陷，不证明任一动作或机制导致该分数，也不证明 stable 80+。
+- S06-01 的 `candidate-v3-adaptive-controller-static` 是待 Main 审查的静态 hypothesis candidate：保持 Single Agent + 四个 Skills，通过 repo-owned always-visible trigger/control cue、Adaptive Planning（单一 Primary Gap、fresh observed-effect progress、两相邻可比 checkpoint stall comparison、公开 horizon）、Board 的 bounded recent effects 和 Risk 的 Material Risk / Soft Cost 区分改善可观察性与决策闭环。它不代表 gameplay effectiveness 已验证。
+- `structured-state-board` 仅维护当前 game session 的公开事实及最多两条可归因 recent effect；`rolling-planning` 负责战略目标、进展与 Risk Budget；`risk-review` 仅评估触发时的当前候选和 Material Risk。Trace 保持冻结，四 Skill 职责不增加 action authority。
+- 架构仍为 Single Agent + Multiple Skills。Memory 未实现、第五 Skill 未引入、Team / Swarm deferred；不得从这项静态候选推导架构升级、分数改善或下一局授权。任何后续 gameplay 需要独立 Main Game Gate。

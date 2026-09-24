@@ -1,6 +1,6 @@
 ---
 name: rolling-planning
-description: Use at a new game's first observation, quarterly resource and main-action decisions, material performance/state feedback, or after continuation/context loss to re-read and rebuild a compact public-evidence-based career priority; never submit actions.
+description: Use at every quarterly first Energy decision when its checkpoint is missing, and after material feedback, severe public consequences, continuation/context loss, or stale/missing planning state to re-read this Skill and rebuild one fresh public-evidence-based Primary Gap; compare repeated actions with observed effects, apply a bounded risk budget and 48-month horizon, and never submit actions.
 ---
 
 # Rolling Planning
@@ -12,9 +12,9 @@ Set a short priority and medium objective from fresh public evidence; not an age
 ## When to use
 
 - After a new game's first valid observation, set the initial priority.
-- Before quarterly Energy and main action, compare fresh public state and legal choices to the active priority.
-- After semiannual feedback, a plan-changing public warning/outcome, or repeated action without intended observed progress.
-- After continuation/context loss or a missing checkpoint, re-read this Skill and rebuild at the next fresh public observation.
+- Before the first quarterly Energy decision, verify that a current-quarter checkpoint exists; if missing or unverifiable, re-read this Skill and create one from fresh public observation before choosing Energy.
+- Reuse that checkpoint for the same-quarter main action unless material feedback or a material public-state change occurs.
+- After semiannual feedback, a severe public warning/consequence, continuation/context loss, or any missing, stale, or mismatched checkpoint, re-read this Skill and rebuild from fresh public observation.
 
 Do not invoke for every monthly story. HR praise, no new warning, accepted action or submitted mitigation alone does not resolve risk or trigger material reprioritization. Normal growth without material risk needs no extra Risk review or conservative default.
 
@@ -26,21 +26,26 @@ Never use another run, post-outcome facts not yet visible, raw database, hidden 
 
 ## Planning procedure
 
-1. Reject stale or mismatched session/board context; the normal loop obtains fresh public observation. After context loss, rebuild for the confirmed game session; if the prior objective cannot be verified from bounded same-session evidence, label its progress `unknown` rather than reusing it.
-2. Identify the decision-relevant public gap across performance, level, resources and visible risks without a fixed priority order. Set one observable objective through the next quarterly or semiannual review; never promise promotion, score, or event outcomes.
-3. At each quarterly Energy choice, compare legal options' marginal public benefits for the current gap against Energy/opportunity cost; one saturated component neither nullifies a composite option nor makes it best. At strategic review, label fresh public progress toward the prior objective `advancing/stalled/unknown`. If repeated action is stalled, compare a legal alternative and its cost; if advancing, repetition remains viable.
-4. On a severe public warning/consequence undermining the objective, persistent retaliation/escalation, or major public survival/trust cost, reopen `Priority`. Compare currently legal continuation, lower exposure/de-escalation, and available transfer/exit/mitigation by known public benefit/loss, escalation exposure, opportunity cost and `UNKNOWN`; mark unavailable paths. Rebuild the objective. Principle, duty or recent promotion proves no safety; transfer/reduced exposure/conservatism is neither automatic failure/demotion nor a fixed answer.
-5. Otherwise revise only when material public feedback warrants it; replace the old checkpoint. This revises goals, not `risk-review`'s pre-action candidate check; the same Agent decides.
+1. At each quarter's first Energy decision, if no verifiable checkpoint exists for that quarter, re-read this Skill and build one from fresh public `observe` before choosing Energy. Reuse it for the same-quarter main action unless material feedback/state changes. Re-read and rebuild after semiannual feedback, severe warning/consequence, context loss, or a missing/stale checkpoint.
+2. Use only the confirmed game session and fresh Board/observe. After context loss, an unverifiable prior objective has `UNKNOWN` progress; never inherit it from memory or guesswork.
+3. Maintain exactly one `Primary Gap`: a public career/resource gap or evidenced progression stall. No balanced-growth default or fixed priority. Set one observable objective to the next quarterly/semiannual review; promise no promotion, score, or event outcome. At quarterly Energy, compare legal options' marginal public benefit for this gap against Energy/opportunity cost; saturation of one component neither discredits nor proves a composite option best.
+4. At strategic checkpoints label prior-objective progress `ADVANCING`, `STALLED`, or `UNKNOWN` from comparable fresh public evidence. For repeated actions, treat advertised effects as hypotheses and prefer reliable same-session observed effects; ambiguous attribution, intervening causes, or no comparison means `UNKNOWN`.
+5. Mark `STALLED` only after the same action for the same gap has no observed progress at two adjacent comparable checkpoints. Then compare a different-type legal alternative and its public benefit/opportunity cost. One miss never forces a switch; comparison is required, selection is not. The old action may continue for a changed gap or reliable benefit to that gap, with an explicit reason.
+6. `Risk Budget`: `TIGHT` for fresh material health/trust/compliance/retaliation/survival risk; `AVAILABLE` only with no fresh material warning and visible relevant safety margin; otherwise `UNKNOWN`. Safety is a constraint, not the default objective. Ordinary soft costs (small Health/Dignity loss, time, friction, pressure) are opportunity costs, not automatic vetoes of high-upside growth. Compare public benefits, risks, and costs; invent no thresholds.
+7. Use only the public current month and 48-month horizon. As time shortens, prioritize legal paths with observable progress toward a stalled gap over remote/uncertain payoff. Infer no promotion month or hidden threshold.
+8. For ordinary non-strategic story choices, compare at most the two strongest legal candidates once; without fresh evidence, reopen only on new public evidence or `risk-review=RECONSIDER`.
+9. Severe warning/consequence, persistent retaliation/escalation, or major survival/trust cost that undermines the objective reopens `Primary Gap`. Compare legal continuation, de-escalation, transfer/exit/mitigation by public benefit/loss, exposure, cost, and `UNKNOWN`; mark unavailable choices. Principle, duty, or recent promotion is no proof of safety; conservative/reduced-exposure choices are no fixed answer. The same Agent decides.
 
 ## Output
 
-Return a compact checkpoint, normally no more than five short lines:
+Return a compact checkpoint of no more than six short lines:
 
-- `Horizon`: next quarter or next semiannual review.
-- `Observed gap`: one relevant fresh Board/observe fact, not a Board copy; prior-objective progress `advancing/stalled/unknown`.
-- `Priority`: one revisable objective.
-- `Path trade-off`: at a material-outcome checkpoint, compare legal paths and five factors above; otherwise at most two legal quarterly candidates, including useful components and opportunity cost when relevant.
-- `Review trigger`: the next feedback or public state change that should prompt revision.
+- `Horizon`: public current month / 48-month horizon and next review point.
+- `Primary Gap`: exactly one revisable, public-evidence-based objective.
+- `Progress`: `ADVANCING`, `STALLED`, or `UNKNOWN`, with comparable evidence basis.
+- `Recent Effect`: reliable same-session observed effect, or `UNKNOWN`.
+- `Risk Budget`: `TIGHT`, `AVAILABLE`, or `UNKNOWN`.
+- `Path Trade-off`: at most two legal paths; include marginal benefit and opportunity cost when relevant.
 
 If no relevant choice is currently legal, mark it unavailable and wait for a legal decision point; do not invent one.
 

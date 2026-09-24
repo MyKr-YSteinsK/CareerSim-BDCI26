@@ -28,6 +28,12 @@ Run this Skill only when the current public context contains one or more of:
 
 Use meaning from the current public text, not a guessed keyword count. Never use hidden counters, hidden thresholds, random probabilities, post-game score fields, or an inferred risk value.
 
+## Material Risk and Soft Cost
+
+Material Risk is an explicit severe Health, trust/crisis, confidentiality/compliance, retaliation/escalation, termination/survival, or other major public consequence. Soft Cost is small Health/Dignity loss, time, ordinary friction/pressure, or uncertainty.
+
+Soft Cost alone is opportunity cost—not a `RECONSIDER` trigger or automatic veto of high-upside growth. If both occur, assess full evidence without discounting Material Risk. `rolling-planning` owns strategic `Risk Budget`; this Skill reviews only the current candidate.
+
 ## Input
 
 Use only information legally visible at the current decision point:
@@ -46,7 +52,7 @@ Return exactly one lightweight state: `ALLOW`, `WARN`, `RECONSIDER`, or `UNKNOWN
 
 ### `ALLOW`
 
-There is not enough current public risk evidence to require changing the candidate action.
+There is not enough current public material-risk evidence to require changing the candidate action. Soft Cost alone does not require a risk-driven candidate change.
 
 ### `WARN`
 
@@ -56,7 +62,7 @@ Public risk evidence exists, but no clear low-ambiguity mitigation choice is cur
 
 Use only when all three conditions hold:
 
-1. current public evidence clearly identifies a relevant risk;
+1. current public evidence clearly identifies a relevant material risk;
 2. a directly relevant mitigation action is present in the current legal choices; and
 3. the current candidate does not address that risk.
 

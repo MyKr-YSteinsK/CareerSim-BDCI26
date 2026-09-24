@@ -45,6 +45,11 @@ inferred:
   - <limited inference> [based on: <observed item>; confidence: <brief qualifier>]
 unknown:
   - <decision-relevant fact that current public evidence cannot establish>
+recent_effects: # at most two entries for this session; use [] when none
+  - action: <confirmed public legal action>
+    target_or_relevant_field: <public field/objective>
+    before_after: <confirmed comparable delta or UNKNOWN>
+    source: <confirmed result / immediate fresh observe>
 source_or_freshness: <latest authoritative observe and visible game time; note any bounded log used>
 ```
 
@@ -53,6 +58,8 @@ Keep `observed`, `inferred`, and `unknown` separate. A public warning may be rec
 ## Update and session rules
 
 - A fresh authoritative `observe` takes precedence over an older board. A confirmed action result records only what the result confirms; a predicted effect stays inferred or unknown until observed.
+- Keep at most two `recent_effects` for this game session. Record an effect only when the action is confirmed and the before/after public field is directly comparable using the immediate fresh `observe` or confirmed result. If an intervening event/action or another plausible public cause can explain the delta, record `UNKNOWN` or omit it; do not claim causation from sequence alone.
+- `recent_effects` is an observed-fact surface, not an assessment: do not label effects good/bad, recommend actions, or own the `Primary Gap`. `rolling-planning` uses reliable comparable effects to assess progress; stale or ambiguous effects are `UNKNOWN`.
 - Never let an inference overwrite or silently promote an observed item. Keep its basis explicit; remove or downgrade an inference when fresh evidence no longer supports it.
 - Check `game_session_id` before reusing any board. On mismatch, discard the old board and start a clean one for the confirmed current game.
 - A new game session always starts a clean board, even if the JiuwenSwarm conversation continues.
