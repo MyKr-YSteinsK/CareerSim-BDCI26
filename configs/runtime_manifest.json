@@ -1,6 +1,6 @@
 {
   "team": "local-s06-adaptive-controller",
-  "name": "candidate-v3c-zh-aligned-policy",
+  "name": "candidate-v4-lean-runtime-policy",
   "mode": "agent",
-  "instruction": "控制提示（详细规则仍以四个 Skills 为准）：新局首次有效观察后详细读取 `rolling-planning`。\n每季度首次 `Energy` 决策前，用新鲜公开状态建立或刷新 `Planning checkpoint`；同季主行动复用，除非公开状态或反馈有重大变化。半年反馈、严重公开警告/后果、继续运行时上下文丢失、checkpoint 过期/含糊或流程无法还原时，重读并重建。\n每次只设一个公开 `Primary Gap`；普通合法选项依次比较重大风险门槛、对 `Primary Gap` 的贡献、次级公开收益、`Soft Cost`/机会成本，最后标明 `UNKNOWN`。\n`Risk Budget = TIGHT / AVAILABLE / UNKNOWN`；安全是约束，不是默认目标。只有预算 `AVAILABLE`、没有新鲜 `Material Risk`、某合法路径对 `Primary Gap` 的公开收益明显更强，且新增代价主要是 `Soft Cost` 时，才优先该高收益路径。\n表扬等局部正向信号不能单独记为 `ADVANCING`。重复动作比较时优先可靠 `observed effect`，而非菜单 `advertised effect`；同一 `action` 针对同一 `Primary Gap`，在两个相邻可比 checkpoint 均无进展才标为 `STALLED`，并比较不同类型合法替代项，不强制改选。\n只使用公开当前月份和 `48-month horizon`；目标停滞且剩余时间减少时偏向可观察进展。\n普通非战略事件最多比较两个最强合法候选一次；只有新鲜公开证据或 `risk-review=RECONSIDER` 才重开。\n`Single Agent` 是唯一动作提交者，Skills 不提交动作。"
+  "instruction": "CareerSim 是公开证据驱动的 48 个月长期优化任务；“成熟、圆滑、体面、稳妥”本身不是收益。明确公开的保密、合规、信任、Health 或生存风险仍是 `Material Risk`。\n每季度首次 `Energy` 决策前，用 fresh observe 更新稀疏 Board 并维护唯一 `Primary Gap` / `Planning checkpoint`；同季主行动复用。\n重复动作以同一 session 的可靠 `observed effect` 优先于 `advertised effect`；同一 action 对同一 Gap 在两个相邻可比 checkpoint 无进展 → `STALLED`，比较不同类型合法路径。\n`Material Risk` 是约束，`Soft Cost` 是机会成本；`Risk Budget = AVAILABLE` 且某合法路径对当前 Gap 有更强公开收益时，不因普通摩擦或更稳妥叙事自动放弃。\n普通事件最多比较两个候选一次；不重复复述状态、Skill 规则或已完成比较，无新鲜证据不重开。\n上下文丢失时复用原 game session 并先 fresh observe；必要时只查同局最近五条公开日志以恢复最多两条 recent effects，再恢复 Board / Planning。\n只用当前局公开事实，不推测 hidden thresholds、evaluator weights 或固定事件答案。Single Agent 是唯一动作提交者；动作 notes 只留一句与所选动作相关的简短理由；Skills 只提供事实、战略建议或重大风险审查。"
 }

@@ -8,17 +8,17 @@
 - Branch: main
 - Current Stage: S06-Lab
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
-- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口与 S06-06 当前候选静态复核已完成；S06 未宣布完成
+- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口、S06-06 静态复核及 S06-07 三 Skill policy consolidation 已完成；S06 未宣布完成
 - Last verified: 2026-09-24
 
 ## Current candidate
 
-- Candidate: candidate-v3c-zh-aligned-policy；Main decision: ZH_LANGUAGE_REFACTOR_ACCEPTED
-- Parent: candidate-v3b-final-policy；strategy delta: NONE
+- Candidate: candidate-v4-lean-runtime-policy；S06-07 静态完成，待 Main review
+- Parent: candidate-v3c-zh-aligned-policy；strategy delta: RUNTIME_POLICY_CONSOLIDATION
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
-- Four Skills: career-action-trace, risk-review, structured-state-board, rolling-planning
-- Architecture: Single Agent is the only action submitter; four Skills remain advisory/domain-scoped
+- Three Skills: risk-review, structured-state-board, rolling-planning
+- Architecture: Single Agent is the only action submitter; three Skills remain advisory/domain-scoped
 - Memory: NOT_IMPLEMENTED；fifth Skill: DEFERRED；Team/Swarm: DEFERRED
 
 ## Environment
@@ -39,5 +39,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
-- S06-06: CURRENT_V3C_STATIC_REVIEW_PASS；候选策略内容未修改，可交 Main 决定 Game Gate；本复核没有执行 live 操作，也不授权下一局。
+- S06-07: candidate-v4-lean-runtime-policy is statically verified and pending Main review; no live operation was run, and the next game remains unauthorized.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
