@@ -11,7 +11,7 @@
 - S01_STAGE_ACCEPTANCE: `PASS`
 - S02: `COMPLETE`
 - S02_STAGE_ACCEPTANCE: `PASS`
-- Current Stage: `S06-Lab; S06-02 Game Gate prep ready for Main review; no Game Gate authorization`
+- Current Stage: `S06-Lab; S06-03 final offline policy tightening; no Game Gate authorization`
 - S03: `COMPLETE`
 - S03_STAGE_ACCEPTANCE: `PASS`
 - S03-01: `COMPLETE_ACCEPTED_BY_STAGE_REVIEW`
@@ -38,7 +38,8 @@
 - S05-03: `COMPLETE_ACCEPTED_BY_MAIN`
 - S06: `IN_PROGRESS`
 - S06-01: `COMPLETE_ACCEPTED_BY_MAIN` (`ADAPTIVE_CONTROLLER_STATIC_ACCEPTED`; static candidate only)
-- S06-02: `GAME_GATE_PREP_READY_FOR_MAIN_REVIEW` (local identity/static submission verified; no live run)
+- S06-02: `COMPLETE_ACCEPTED_BY_MAIN` (`V3_GAME_GATE_PREP_ACCEPTED`; no live run)
+- S06-03: `IN_PROGRESS` (final offline policy tightening; no gameplay/provider authorization)
 - STATE_BOARD_RUNTIME: `PARTIAL_BUT_SUFFICIENT_FOR_STAGE`
 - STATE_BOARD_SCORE_BENEFIT: `NOT_PROVEN`
 - CANDIDATE_V1: `HIGH_VARIANCE`
@@ -56,9 +57,9 @@
 - NEXT_GAME: `NOT_AUTHORIZED` (separate Main Game Gate required)
 - MEMORY: `NOT_IMPLEMENTED`
 - PLANNING: `rolling-planning IMPLEMENTED; SCORE_BENEFIT NOT_PROVEN`
-- Current milestone: S05 的 `candidate-v2-final-offline` 已由 Main 接受，S05 acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。S06 Run #1 的 Main-reviewed 单局结果为 quantitative 53.83、competition partial 37.68、48 months、grade C；它只提供长程策略控制缺陷线索，不证明因果或稳定表现。Main 已接受 S06-01 的 `candidate-v3-adaptive-controller-static` 为静态候选；gameplay effectiveness 与 stable 80+ 仍 `NOT_PROVEN`。S06-02 已完成本机非 live identity 核对与精确 submission 静态准备，等待 Main 决定是否另行授权 Game Gate；provider freshness、service live readiness 与 gameplay 均未验证。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred。S03 forensic hold 已解除，raw retained、cleanup 未授权。
+- Current milestone: S05 的 `candidate-v2-final-offline` 已由 Main 接受，S05 acceptance 为 `PASS_WITH_KNOWN_LIMITATION`。S06 Run #1 的 Main-reviewed 单局结果为 quantitative 53.83、competition partial 37.68、48 months、grade C；它只提供长程策略控制缺陷线索，不证明因果或稳定表现。Main 已接受 S06-01 的 `candidate-v3-adaptive-controller-static`，并接受 S06-02 的 v3 Game Gate prep；两者均未验证 gameplay effectiveness，stable 80+ 仍 `NOT_PROVEN`。S06-03 正进行最后一轮 bounded offline policy tightening；任何下一局仍须独立 Main Game Gate 授权。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred。S03 forensic hold 已解除，raw retained、cleanup 未授权。
 - Production/published version: none
-- Last verified: 2026-09-24 (S06-02 local identity and static submission verified; no live validation)
+- Last verified: 2026-09-24 (S06-02 Main acceptance reconciled; S06-03 offline work in progress; no gameplay validation)
 
 ## Major capabilities
 
@@ -102,11 +103,11 @@
 
 ## Active work
 
-- S05 的 S05-02/S05-03 离线成果及 `candidate-v2-final-offline` 已被 Main 接受并合入。S06-01 的 `candidate-v3-adaptive-controller-static` 已获 Main 静态接受并合入；S06-02 已完成本机非 live 身份核对与 submission 静态准备，交 Main 决定是否另行授权 Game Gate。S06 Run #1 不证明因果或稳定表现；本任务未运行对局。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
+- S05 的 S05-02/S05-03 离线成果及 `candidate-v2-final-offline` 已被 Main 接受并合入。S06-01 的 `candidate-v3-adaptive-controller-static` 已获 Main 静态接受并合入；S06-02 的 v3 Game Gate prep 已获 Main 接受，但 `NEXT_GAME` 仍为 `NOT_AUTHORIZED`。S06-03 正进行最后一轮 bounded offline policy tightening，不验证策略收益；S06 Run #1 不证明因果或稳定表现。S03 历史失败记录保留；forensic hold 已解除，raw retained、cleanup 未授权。
 
 ## Next likely tasks
 
-1. Main 审查 S06-02 runtime identity/preflight 证据，并单独决定是否授权 v3 Game Gate。S06 Run #1 与 v3 静态实现均不证明策略收益或 stable 80+。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；本任务不执行 benchmark/optimization。
+1. Main 审查 S06-03 最终离线候选，并另行决定是否授权 Game Gate。S06 Run #1 与静态候选均不证明策略收益或 stable 80+。Memory 未实现、第五 Skill 未增加、Team/Swarm 仍 deferred；本任务不执行 benchmark/gameplay。
 
 ## Workflow / delivery facts that are currently material
 
