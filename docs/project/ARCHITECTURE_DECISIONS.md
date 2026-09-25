@@ -11,10 +11,10 @@
 ## AD-002 — Evidence-driven runtime policy candidate
 
 - Original candidate `candidate-v6-auditable-control-loop` remains Main-accepted static work; its S06-24 single run was `VALID_48M_COMPLETION` (75.29 / 52.70 / A) but `RUNTIME_ADHERENCE_FAIL`.
-- Current candidate is `candidate-v6b-runtime-correctness`, parent v6; S06-25 changes only runtime/audit correctness contracts, not gameplay strategy. It is static-only and NOT_RUNTIME_VALIDATED. S06 remains IN_PROGRESS; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
+- Current candidate is `candidate-v6b-runtime-correctness`, parent v6; S06-25 changes only runtime/audit correctness contracts, not gameplay strategy. It is static-only and NOT_RUNTIME_VALIDATED. S06 Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION` and S06=`COMPLETE`; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
 - Main-accepted v6 strategy contracts remain context recovery, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, and bounded story top-2. v6b adds a canonical notes-prefix audit surface, decision-closed handoff, one-integer Energy calls, and explicit compression recovery; these are static contracts, not evidence of v6b runtime adherence or benefit.
-- Further offline policy growth is frozen pending runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
+- Further offline policy growth is frozen pending runtime correctness/adherence evidence. The proposed next stage is `S07-Lab｜Frozen Policy Batch Validation 与 80+ Policy Probing`; it starts from v6b correctness validation, then repeatability/controlled probing only after evidence gates. Any gameplay still needs a separate Main Game Gate.
 - For v6b, Skill-body recovery adherence, survival-trend judgment correctness, runtime marker truthfulness, gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
