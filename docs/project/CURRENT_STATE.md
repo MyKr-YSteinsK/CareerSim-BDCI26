@@ -13,12 +13,11 @@
 
 ## Current candidate
 
-- Candidate: candidate-v4-lean-runtime-policy；S06-07 静态完成；已执行一次 Main 授权的本地对局并于 M6 因 Health=0 终止，结果待 Main review
-- Parent: candidate-v3c-zh-aligned-policy；strategy delta: RUNTIME_POLICY_CONSOLIDATION
+- Candidate: candidate-v5-evidence-driven-phase-policy；S06-10 静态策略候选，待 Main review；parent: candidate-v4-lean-runtime-policy；strategy delta: EVIDENCE_DRIVEN_SURVIVAL_PHASE_POLICY
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Three Skills: risk-review, structured-state-board, rolling-planning
-- Architecture: Single Agent is the only action submitter; three Skills remain advisory/domain-scoped
+- Architecture: Single Agent is the only action submitter; Board supplies public facts, Planning owns strategy, Risk gates current candidates
 - Memory: NOT_IMPLEMENTED；fifth Skill: DEFERRED；Team/Swarm: DEFERRED
 
 ## Environment
@@ -33,7 +32,9 @@
 - Candidate v1 observed a high spread across two runs; this does not establish cause or stable performance.
 - S06 Run #1: 53.83 quantitative / 37.68 competition partial / 48 months / C. It is one Main-reviewed observation, not a causal result.
 - Candidate v4 first local run: 25.84 quantitative / 18.09 competition partial / 6 months / E; eliminated at M6 with Health=0. This is one terminal observation, not a 48-month completion or a causal result; the Runner score report was empty because the shared instance DB path differs from the root Runner's default, and the score was read from the exact session in the configured DB.
-- S06-08 read-only forensics (pending Main review): v4 Run #1 Health pattern = `CUMULATIVE_ATTRITION`; `H_SURVIVAL_GUARD = SUPPORTED_FOR_TARGETED_PATCH`; no strategy changed. See [forensic record](runs/v4-run1-health-forensic.md).
+- S06-08 read-only forensics (pending Main review): v4 Run #1 Health pattern = `CUMULATIVE_ATTRITION`; `H_SURVIVAL_GUARD = SUPPORTED_FOR_TARGETED_PATCH`; evidence supports a bounded public-state guard, not a numeric threshold or score benefit. See [forensic record](runs/v4-run1-health-forensic.md).
+- S06-09 public Dev strategy evidence is recorded in [STRATEGY_EVIDENCE](STRATEGY_EVIDENCE.md); it does not prove policy effectiveness or hidden-test transfer.
+- v5 Survival Guard, phase policy, review reserve and Skill cadence are static candidate contracts only; runtime adherence is NOT_PROVEN.
 - Gameplay effectiveness: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test generalization: NOT_PROVEN.
 - S06 Run #1 raw evidence on the current machine: unavailable/deferred; no raw hash is asserted.
 
@@ -41,5 +42,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
-- S06-07: candidate-v4-lean-runtime-policy is statically verified; one local full-benchmark attempt has been consumed and ended at M6. No strategy changes were made; further gameplay requires a separate Main Game Gate.
+- S06-10: candidate-v5-evidence-driven-phase-policy is statically implemented; no game, provider, service, install/reload or MCP operation was run. Further gameplay requires a separate Main Game Gate.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.

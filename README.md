@@ -1,6 +1,6 @@
 # CareerSim BDCI26
 
-CareerSim BDCI26 工程仓库。当前静态候选为 candidate-v4-lean-runtime-policy，基于 v3c 收敛为三个 runtime Skills，待 Main 审阅；尚无 gameplay 验证，stable 80+ 未证明，下一局需要独立 Main Game Gate 授权。
+CareerSim BDCI26 工程仓库。当前静态候选为 candidate-v5-evidence-driven-phase-policy，基于 v4 升级为公开状态 Survival Guard、阶段化 Planning、review 前储备检查和三 Skill 高频扫描协议，待 Main 审阅；v5 尚无 gameplay 验证，stable 80+ 未证明，下一局需要独立 Main Game Gate 授权。
 
 ## Current engineering facts
 
