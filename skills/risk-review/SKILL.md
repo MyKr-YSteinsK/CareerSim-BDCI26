@@ -42,9 +42,10 @@ Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信
 FULL_REVIEW 返回 ALLOW / WARN / RECONSIDER / UNKNOWN，并给一句公开证据理由：
 
 - ALLOW：没有要求改变当前候选的 Material Risk。
-- WARN：存在相关 concern，但没有直接合法 mitigation，或证据不足；仍允许提交并简短说明。
+- WARN：新鲜且来源清楚的公开证据支持 concern，但不要求更换候选或直接 mitigation；仍允许提交，并附一句简短理由。
 - RECONSIDER：仅当 Material Risk 明确、存在直接相关合法 alternative 且当前候选未处理该风险时使用。原候选不得直接提交，直到只比较一次该 alternative；之后可换项，也可在公开证据支持时保留原项。若候选改变，最终候选必须重新 gate。完成比较后 marker X=1；X=0 时不得提交。
-- UNKNOWN：freshness/来源/后果不清。若允许的正常流程能补足 fresh public facts，刷新一次；否则保留 UNKNOWN 并做一次 bounded legal decision，不死循环。
+- 若比较 alternative 后 Single Agent 有意保留原候选，CTRL 可记 R=RECONSIDER, X=1；比较未完成时 X=0 始终阻止提交。
+- UNKNOWN：相关证据 stale/missing、来源不清或后果不清。若正常允许的流程可补得 fresh public state，只刷新一次；否则保留 UNKNOWN 并做一次 bounded legal decision，不死循环。
 
 ## Terminal-risk constraint
 

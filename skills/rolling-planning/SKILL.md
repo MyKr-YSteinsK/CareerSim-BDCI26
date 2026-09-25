@@ -34,9 +34,10 @@ Risk Budget 只由 fresh public facts 支持：AVAILABLE 表示无当前 materia
 - 实际观察到 formal review / feedback / promotion / public no-advance result；
 - strict STALLED；
 - context recovery；
-- 可能改变 gap 或 survival constraint 的 material fresh public-state change。
 
 同时发生的触发合并为一个 checkpoint。普通 derived label 变化不得递归触发 full checkpoint。无需 FOUNDATION / PROMOTION / COMPOUNDING / FINAL_SPRINT 或 promotion-readiness enum；若 phase/mode 名称不改变当前选择，不输出。
+
+单独的 material fresh public-state change 只触发 Board refresh 与 Planning quick scan；按需更新 Risk Budget / Primary Gap，不自动打开 full checkpoint。若同时满足上述 canonical trigger，合并处理；不得因派生状态或 gap 更新递归触发 checkpoint。
 
 实际观察到 promotion、formal review/feedback 或公开 no-advance result 后：
 
