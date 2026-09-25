@@ -43,3 +43,15 @@
 - Default workflow is serialized direct development on root main, targeted verification, one meaningful commit, then push.
 - Branches require task-specific Main/Planner justification; worktrees require separate explicit justification and are not implied by a branch.
 - Verification tiers, evidence reuse, acceptance limits, and artifact policy are defined in AGENTS.md and docs/project/CODEX_PLAN_CONTRACT.md.
+
+
+## AD-007 — S07 compliance black-box boundary
+
+- S07 is `S07-Lab｜合规黑盒策略探针与稳定高分搜索`.
+- Strategy experiments may use only competition-allowed public surfaces: public handbook, fresh public `observe`, legal option text, action receipts, public logs exposed by the normal interface, and committed historical public trajectories.
+- Do not read or reconstruct simulator hidden state; do not decode simulator rule/event data for policy optimization; do not build hidden event-consequence tables; do not encode event/title→answer lookup in manifest, instruction, Skill, or supporting runtime.
+- Framework/Runner source may be inspected for submission/runtime contracts and allowed interface behavior, but simulator/game-rule internals are not admissible policy evidence.
+- S06-09 decoded simulator internals remain forensic history only: `NON_DEPLOYABLE`. They must not justify S07 policy selection unless the same principle is independently supported by allowed public evidence.
+- Generic public-state rules (for example, fresh-state recovery, visible survival-trend constraints, bounded reconsideration, observed-progress checks) remain admissible when supported independently by public evidence; exact hidden thresholds/formulas are not.
+- Team/Swarm remains deferred. S07 tests policy quality and variance before any architecture expansion.
+- `NEXT_GAME = NOT_AUTHORIZED`; S07 does not begin with a mandatory live validation run.
