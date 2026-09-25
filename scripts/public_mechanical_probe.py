@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 import math
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from typing import Any, Literal, Protocol
 
 
@@ -17,6 +17,9 @@ PublicScalar = int | float | str | bool | None
 ProgressDirection = Literal["increase", "decrease", "change"]
 DecisionStatus = Literal["ACTION", "DEFER", "UNSUPPORTED"]
 ProgressStatus = Literal["ADVANCING", "NO_PROGRESS", "UNKNOWN"]
+StructuralContext = Literal["ENERGY", "MAIN", "UNKNOWN_CONTEXT"]
+ChoiceClass = Literal["GROWTH", "RESTORATIVE", "UNKNOWN"]
+PublicRisk = Literal["MATERIAL", "NONE", "UNKNOWN"]
 
 _TOP = {"session_id", "current_state", "current_event", "choices", "events", "ending_score"}
 _STATE = {"session_id", "time", "status", "simulation_flags"}
@@ -24,6 +27,15 @@ _TIME = {"current_month", "current_quarter", "current_year"}
 _FLAGS = {"alive", "failed", "failure_reason"}
 _EVENT = {"title", "description"}
 _CHOICE = {"choice", "action", "description"}
+
+# These are public participant-facing action labels, not event/title rules.
+# Keep the sets deliberately small: an unrecognised label remains unknown.
+_ENERGY_LABELS = frozenset(
+    {"准备汇报材料", "健康恢复", "人脉维护", "高强度工作", "处理历史埋雷", "心理修复"}
+)
+_MAIN_LABELS = frozenset({"申请关键项目", "低调避险"})
+_GROWTH_LABELS = frozenset({"准备汇报材料", "人脉维护", "高强度工作", "申请关键项目"})
+_RESTORATIVE_LABELS = frozenset({"健康恢复", "处理历史埋雷", "心理修复", "低调避险"})
 
 
 def _scalar(value: Any) -> bool:
@@ -87,6 +99,9 @@ class PublicSnapshot:
     alive: bool | None = None
     failed: bool | None = None
     ignored_fields: tuple[str, ...] = ()
+    # This is an explicit annotation from a future public adapter. The probe
+    # never infers it from titles, descriptions, or keyword taxonomies.
+    material_risk: PublicRisk = "UNKNOWN"
 
     @property
     def terminal(self) -> bool | None:
@@ -165,11 +180,25 @@ def project_public_snapshot(response: Mapping[str, Any]) -> PublicSnapshot:
     )
 
 
+def with_public_material_risk(snapshot: PublicSnapshot, risk: PublicRisk) -> PublicSnapshot:
+    """Attach an explicit public warning/consequence annotation.
+
+    The adapter supplying this annotation must derive it from fresh,
+    participant-visible evidence. This module intentionally performs no
+    title/description keyword inference.
+    """
+
+    if risk not in {"MATERIAL", "NONE", "UNKNOWN"}:
+        raise ValueError(f"unsupported public risk value: {risk!r}")
+    return replace(snapshot, material_risk=risk)
+
+
 @dataclass(frozen=True)
 class ActionDecision:
     status: DecisionStatus
     choice: int | None = None
     reason: str = ""
+    structural_switch: bool = False
 
 
 @dataclass(frozen=True)
@@ -188,6 +217,9 @@ class ProbeLocalState:
     checkpoint_count: int = 0
     last_choice: int | None = None
     repeated_action_count: int = 0
+    last_stall_signal: bool = False
+    last_path: str | None = None
+    structural_switches: int = 0
 
 
 class MechanicalPolicy(Protocol):
@@ -207,6 +239,86 @@ class MinIdControl:
         if not ids:
             return ActionDecision("UNSUPPORTED", reason="no legal public integer choice")
         return ActionDecision("ACTION", choice=ids[0], reason="minimum legal public integer choice")
+
+
+def classify_structural_context(snapshot: PublicSnapshot) -> StructuralContext:
+    """Classify only by exact public choice action labels.
+
+    Event title/description and choice descriptions are intentionally ignored.
+    Mixed or unrecognised choice sets fail closed to ``UNKNOWN_CONTEXT``.
+    """
+
+    labels = {choice.action.strip() for choice in snapshot.choices if choice.action.strip()}
+    has_energy = bool(labels & _ENERGY_LABELS)
+    has_main = bool(labels & _MAIN_LABELS)
+    if has_energy and not has_main:
+        return "ENERGY"
+    if has_main and not has_energy:
+        return "MAIN"
+    return "UNKNOWN_CONTEXT"
+
+
+def classify_structural_choice(choice: PublicChoice, context: StructuralContext) -> ChoiceClass:
+    """Classify a choice using its public action label and known context."""
+
+    if context == "UNKNOWN_CONTEXT":
+        return "UNKNOWN"
+    label = choice.action.strip()
+    if label in _GROWTH_LABELS:
+        return "GROWTH"
+    if label in _RESTORATIVE_LABELS:
+        return "RESTORATIVE"
+    return "UNKNOWN"
+
+
+class SimplePublicGrowthPrior:
+    """Growth-first structural controller with an explicit public-risk override."""
+
+    name = "SIMPLE_PUBLIC_GROWTH_PRIOR"
+
+    def choose(self, snapshot: PublicSnapshot, local_state: ProbeLocalState | None = None) -> ActionDecision:
+        context = classify_structural_context(snapshot)
+        if context == "UNKNOWN_CONTEXT":
+            return MinIdControl().choose(snapshot, local_state)
+
+        restorative = [choice for choice in snapshot.choices if classify_structural_choice(choice, context) == "RESTORATIVE"]
+        if snapshot.material_risk == "MATERIAL" and restorative:
+            selected = min(restorative, key=lambda item: item.choice)
+            return ActionDecision("ACTION", selected.choice, "explicit public material risk overrides growth prior")
+
+        growth = [choice for choice in snapshot.choices if classify_structural_choice(choice, context) == "GROWTH"]
+        if growth:
+            selected = min(growth, key=lambda item: item.choice)
+            return ActionDecision("ACTION", selected.choice, "minimum public structural growth choice")
+        return MinIdControl().choose(snapshot, local_state)
+
+
+class StallAwarePublicGrowth(SimplePublicGrowthPrior):
+    """P1 plus one bounded structural alternative after a mechanical stall."""
+
+    name = "STALL_AWARE_PUBLIC_GROWTH"
+
+    def choose(self, snapshot: PublicSnapshot, local_state: ProbeLocalState | None = None) -> ActionDecision:
+        local = local_state or ProbeLocalState()
+        context = classify_structural_context(snapshot)
+        if context == "UNKNOWN_CONTEXT" or not local.last_stall_signal or local.structural_switches >= 1:
+            return super().choose(snapshot, local)
+
+        alternatives = [
+            choice
+            for choice in snapshot.choices
+            if choice.choice != local.last_choice
+            and classify_structural_choice(choice, context) != "UNKNOWN"
+        ]
+        if not alternatives:
+            return ActionDecision("DEFER", reason="stall has no compliant structural alternative")
+        selected = min(alternatives, key=lambda item: item.choice)
+        return ActionDecision(
+            "ACTION",
+            selected.choice,
+            "one bounded structural alternative after mechanical stall",
+            structural_switch=True,
+        )
 
 
 @dataclass(frozen=True)
@@ -352,6 +464,7 @@ class ProbeReport:
     checkpoints: tuple[CheckpointObservation, ...]
     chosen_actions: tuple[int, ...]
     repeated_action_count: int
+    structural_switch_count: int
     action_receipts: tuple[ActionReceipt, ...]
     unsupported_decisions: tuple[str, ...]
     milestones: tuple[PublicMilestone, ...]
@@ -364,6 +477,7 @@ class ProbeReport:
             "checkpoints": checkpoints,
             "chosen_actions": list(self.chosen_actions),
             "repeated_action_count": self.repeated_action_count,
+            "structural_switch_count": self.structural_switch_count,
             "action_receipts": [receipt.to_dict() for receipt in self.action_receipts],
             "public_deltas": [delta for item in checkpoints for delta in item["deltas"]],
             "mechanical_stall_signals": [item for item in checkpoints if item["stall_signal"] != "NONE"],
@@ -404,7 +518,14 @@ class MechanicalProbe:
         if decision.status == "ACTION" and isinstance(decision.choice, int) and not isinstance(decision.choice, bool):
             self._chosen.append(decision.choice)
             repeated = self._local_state.repeated_action_count + 1 if decision.choice == self._local_state.last_choice else 1
-            self._local_state = ProbeLocalState(self._local_state.checkpoint_count, decision.choice, repeated)
+            self._local_state = ProbeLocalState(
+                checkpoint_count=self._local_state.checkpoint_count,
+                last_choice=decision.choice,
+                repeated_action_count=repeated,
+                last_stall_signal=self._local_state.last_stall_signal,
+                last_path=self._local_state.last_path,
+                structural_switches=self._local_state.structural_switches + int(decision.structural_switch),
+            )
         elif decision.status != "ACTION":
             self._unsupported.append(decision.reason)
         return decision
@@ -412,12 +533,17 @@ class MechanicalProbe:
     def record_checkpoint(self, snapshot: PublicSnapshot, **kwargs: Any) -> CheckpointObservation:
         if self._session_id is None:
             self._session_id = snapshot.session_id
+        observation = self.tracker.record_checkpoint(snapshot, **kwargs)
+        path = kwargs.get("path")
         self._local_state = ProbeLocalState(
-            self._local_state.checkpoint_count + 1,
-            self._local_state.last_choice,
-            self._local_state.repeated_action_count,
+            checkpoint_count=self._local_state.checkpoint_count + 1,
+            last_choice=self._local_state.last_choice,
+            repeated_action_count=self._local_state.repeated_action_count,
+            last_stall_signal=observation.is_stalled,
+            last_path=path if isinstance(path, str) else self._local_state.last_path,
+            structural_switches=self._local_state.structural_switches,
         )
-        return self.tracker.record_checkpoint(snapshot, **kwargs)
+        return observation
 
     def record_action_receipt(self, success: bool, status: str = "SUCCESS") -> None:
         """Store only normalized public receipt status, never raw tool output."""
@@ -431,6 +557,7 @@ class MechanicalProbe:
             self.tracker.observations,
             tuple(self._chosen),
             self._local_state.repeated_action_count,
+            self._local_state.structural_switches,
             tuple(self._receipts),
             tuple(self._unsupported),
             self.tracker.milestones,

@@ -1,11 +1,17 @@
 import json
 
+import pytest
+
 from scripts.public_mechanical_probe import (
     MechanicalProbe,
     MechanicalTracker,
     MinIdControl,
     ProbeLocalState,
+    SimplePublicGrowthPrior,
+    StallAwarePublicGrowth,
+    classify_structural_context,
     project_public_snapshot,
+    with_public_material_risk,
 )
 
 
@@ -78,6 +84,106 @@ def test_empty_choices_defer_without_guessing():
 
     assert decision.status == "UNSUPPORTED"
     assert decision.choice is None
+
+
+def test_structural_context_uses_exact_public_action_labels_only():
+    energy = snapshot(choices=[{"choice": 3, "action": "高强度工作", "description": "ordinary"}])
+    main = snapshot(choices=[{"choice": 4, "action": "申请关键项目", "description": "ordinary"}])
+    story = snapshot(
+        choices=[{"choice": 1, "action": "ordinary option", "description": "申请关键项目"}],
+    )
+
+    assert classify_structural_context(energy) == "ENERGY"
+    assert classify_structural_context(main) == "MAIN"
+    assert classify_structural_context(story) == "UNKNOWN_CONTEXT"
+
+
+def test_p1_growth_prior_and_explicit_public_risk_override():
+    projected = snapshot(
+        choices=[
+            {"choice": 7, "action": "健康恢复"},
+            {"choice": 3, "action": "高强度工作"},
+        ]
+    )
+    policy = SimplePublicGrowthPrior()
+
+    assert policy.choose(projected).choice == 3
+    risky = with_public_material_risk(projected, "MATERIAL")
+    assert policy.choose(risky).choice == 7
+
+
+def test_unknown_context_uses_common_min_id_fallback_for_p1_and_p2():
+    projected = snapshot(choices=[{"choice": 5, "action": "story A"}, {"choice": 2, "action": "story B"}])
+
+    assert SimplePublicGrowthPrior().choose(projected).choice == 2
+    assert StallAwarePublicGrowth().choose(projected).choice == 2
+
+
+def test_p2_one_no_progress_checkpoint_does_not_switch():
+    public = snapshot(
+        status={"output": 10},
+        choices=[{"choice": 1, "action": "高强度工作"}, {"choice": 2, "action": "人脉维护"}],
+    )
+    probe = MechanicalProbe(StallAwarePublicGrowth())
+    assert probe.choose(public).choice == 1
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+    assert probe.choose(public).choice == 1
+    observation = probe.record_checkpoint(public, target="output", path="energy:growth")
+
+    assert observation.stall_signal == "NONE"
+    decision = probe.choose(public)
+    assert decision.choice == 1
+    assert decision.structural_switch is False
+
+
+def test_p2_two_comparable_stalls_trigger_one_structural_alternative():
+    public = snapshot(
+        status={"output": 10},
+        choices=[{"choice": 1, "action": "高强度工作"}, {"choice": 2, "action": "人脉维护"}],
+    )
+    probe = MechanicalProbe(StallAwarePublicGrowth())
+    assert probe.choose(public).choice == 1
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+    assert probe.tracker.observations[-1].stall_signal == "NONE"
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+
+    decision = probe.choose(public)
+    assert decision.status == "ACTION"
+    assert decision.choice == 2
+    assert decision.structural_switch is True
+    assert probe.report().to_dict()["chosen_actions"] == [1, 2]
+    assert probe.report().to_dict()["structural_switch_count"] == 1
+
+    # A second stall cannot open another rotation in this bounded policy.
+    after_switch = probe.choose(public)
+    assert after_switch.structural_switch is False
+
+
+def test_p2_stall_without_structural_alternative_defers():
+    public = snapshot(choices=[{"choice": 1, "action": "高强度工作"}], status={"output": 10})
+    probe = MechanicalProbe(StallAwarePublicGrowth())
+    assert probe.choose(public).choice == 1
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+    probe.record_checkpoint(public, target="output", path="energy:growth")
+
+    decision = probe.choose(public)
+    assert decision.status == "DEFER"
+    assert decision.choice is None
+
+
+@pytest.mark.parametrize("policy", [MinIdControl(), SimplePublicGrowthPrior(), StallAwarePublicGrowth()])
+def test_policies_only_emit_legal_integer_or_defer(policy):
+    projected = snapshot(
+        choices=[{"choice": 8, "action": "ordinary"}, {"choice": 4, "action": "ordinary"}],
+    )
+    decision = policy.choose(projected)
+
+    assert decision.status in {"ACTION", "DEFER", "UNSUPPORTED"}
+    if decision.status == "ACTION":
+        assert decision.choice in {4, 8}
+        assert isinstance(decision.choice, int)
 
 
 def test_one_no_progress_checkpoint_is_not_stalled():
