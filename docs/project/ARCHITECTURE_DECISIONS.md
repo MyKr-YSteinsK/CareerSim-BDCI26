@@ -10,12 +10,12 @@
 
 ## AD-002 — Evidence-driven runtime policy candidate
 
-- Current static candidate is candidate-v6-auditable-control-loop; Main final static acceptance = PASS and Design Freeze = ACTIVE; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
-- S06 remains IN_PROGRESS; NEXT_GAME = NOT_AUTHORIZED. Static acceptance does not establish runtime effectiveness or authorize a benchmark.
+- Original candidate `candidate-v6-auditable-control-loop` remains Main-accepted static work; its S06-24 single run was `VALID_48M_COMPLETION` (75.29 / 52.70 / A) but `RUNTIME_ADHERENCE_FAIL`.
+- Current candidate is `candidate-v6b-runtime-correctness`, parent v6; S06-25 changes only runtime/audit correctness contracts, not gameplay strategy. It is static-only and NOT_RUNTIME_VALIDATED. S06 remains IN_PROGRESS; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
-- Main-accepted v6 static contracts include context-epoch Skill loading, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, bounded story top-2, and same-turn CTRL → take_action. These remain static contracts, not evidence of runtime adherence or benefit.
+- Main-accepted v6 strategy contracts remain context recovery, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, and bounded story top-2. v6b adds a canonical notes-prefix audit surface, decision-closed handoff, one-integer Energy calls, and explicit compression recovery; these are static contracts, not evidence of v6b runtime adherence or benefit.
 - Further offline policy growth is frozen pending runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
-- Actual Skill-body read adherence, survival-trend judgment correctness, runtime marker truthfulness, gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
+- For v6b, Skill-body recovery adherence, survival-trend judgment correctness, runtime marker truthfulness, gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
 
@@ -28,8 +28,8 @@
 - Board: sparse current-session public facts and freshness; no strategy recommendation.
 - rolling-planning: sole strategic owner for one Primary Gap, progress, horizon, and path comparison.
 - risk-review: rare review of explicit current-candidate Material Risk; Soft Cost alone does not trigger reconsideration, while a small cost is not assessed in isolation when Planning's public survival trend makes its dimension binding; no survival-trend ownership or action submission.
-- v6 static cadence: Board scans fresh public facts; Planning scans every decision and coalesces defined checkpoint triggers; Risk gates an actual candidate after generation and runs FULL_REVIEW only for candidate-related material evidence. State-changing actions require fresh state before the next decision. This cadence and CTRL marker are not yet runtime-validated.
-- Action-note trace telemetry is retired; notes retain only a brief reason relevant to the selected action.
+- v6b static cadence preserves Board/Planning/Risk ownership and all v6 strategy behavior. A CurrentRoundCompressor snapshot starts a recovery epoch; the persistent instruction requires fresh observe, all-three-Skill reread, and Board/Planning rebuild. Final Risk gate closes the decision unless fresh public evidence arrives.
+- Free-text CTRL telemetry is retired. Each take_action notes field starts with exactly one canonical CTRL prefix; the Runner tool event is the auditable pairing source. Marker schema has no B/CP/checkpoint fields; checkpoint behavior remains a Planning concern. Multi-selection Energy is serialized as one integer call per action with fresh observe between calls.
 - Skills advise; they do not submit actions or create a second review loop.
 
 ## AD-005 — Game Gate and architecture changes

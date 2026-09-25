@@ -7,7 +7,7 @@ description: "每次决策必须应用；唯一战略 owner，维护公开 Prima
 
 ## 职责与快速扫描
 
-Planning 是唯一战略 owner。每次决策基于当前 session 的 fresh public facts 与 Board 事实做短 scan：survival constraint、一个 Primary Gap、Progress、remaining realizable horizon。动作改变状态后，先 fresh observe 并更新事实；不得用变更前 scan 决定下一 Energy/Main action。CONTROL marker 由 persistent kernel 生成；Planning 不复制其格式或提交动作。
+Planning 是唯一战略 owner。每次决策基于当前 session 的 fresh public facts 与 Board 事实做短 scan：survival constraint、一个 Primary Gap、Progress、remaining realizable horizon。动作改变状态后，先 fresh observe 并更新事实；不得用变更前 scan 决定下一 Energy/Main action。take_action.notes 的唯一控制前缀由 persistent instruction 生成；Planning 不复制标记格式或提交动作。
 
 只使用当前 game_session 的 fresh public evidence、Board 可核实事实与公开 Handbook。不得使用其它对局、局后信息、hidden threshold、evaluator weight 或 Dev 内部公式。
 
@@ -41,6 +41,8 @@ Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支
 
 同时发生的触发合并为一个 checkpoint。普通 derived label 变化不得递归触发 full checkpoint。无需 FOUNDATION / PROMOTION / COMPOUNDING / FINAL_SPRINT 或 promotion-readiness enum；若 phase/mode 名称不改变当前选择，不输出。
 
+压缩/恢复后以 fresh public state 重建 Planning；不得把框架生成的 state snapshot 当作策略权威。持久 instruction 负责将压缩快照识别为 recovery epoch 并重读三份 Skill。
+
 单独的 material fresh public-state change 只触发 Board refresh 与 Planning quick scan；按需更新 Risk Budget / Primary Gap，不自动打开 full checkpoint。若同时满足上述 canonical trigger，合并处理；不得因派生状态或 gap 更新递归触发 checkpoint。
 
 实际观察到 promotion、formal review/feedback 或公开 no-advance result 后：
@@ -49,9 +51,8 @@ Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支
 - 使旧 Progress comparison 失效；
 - 以 fresh evidence 建立新 baseline；
 - 重新选择 / 保留 / UNKNOWN 一个 Primary Gap；
-- marker CP 包含 R。
 
-CTRL 的 G 是 Primary Gap 极短 key 或 ?；P=A/S/? 分别表示 ADVANCING / STALLED / UNKNOWN。CP 使用 N/Q/H/R/P/C/-：N=new-session Planning baseline，Q=当季首次 Energy checkpoint，H=半年 review 前最后行动窗的 reserve checkpoint，R=实际观察到 review/feedback/promotion/no-advance 后的 reset，P=strict plateau diagnosis，C=context recovery，-=无 full checkpoint。多个 trigger 同时发生时各编码一次并串接，例如 QH、QR、CHR；不得递归输出多个 checkpoint。只有满足下述双 checkpoint 条件才可写 P=S。
+多个 full-checkpoint trigger 同时发生时合并为一次 rebuild；不得由 Agent 另行输出 checkpoint marker。只有满足下述双 checkpoint 条件才可写 STALLED。
 
 不得从 silence 推断 review 结果、延续旧 Level 的 Progress baseline，或估算 promotion probability / hidden threshold。
 
@@ -84,6 +85,8 @@ Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript�
 Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后都要 fresh observe、Board scan、Planning quick scan，再决定下一项；不得复用旧 scan。不能编码 fixed bundle、menu catalog 或固定赢家。
 
 普通非战略 story 最多比较两个最强合法候选一次。无新证据不重开，除非 Risk 返回 RECONSIDER。没有事件标题答案、action lookup 或固定 primitive ranking。
+
+DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh observe、tool result、event content 或其它公开证据，Planning 立即结束比较并交接已 gate 候选；不重开路径或重新讨论标记。只有新公开证据才重新打开。
 
 ## 权限与边界
 

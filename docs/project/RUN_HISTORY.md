@@ -78,10 +78,10 @@
 - Run identity: Plan24; candidate `candidate-v6-auditable-control-loop`; game session `7b59b85ad19b4597927cf50fc716f9ac`; drive session `career-sim-runner-15004a268a02`; started 2026-09-25 17:44:17 +08:00.
 - Outcome: quantitative `75.29`; competition partial `52.70`; survival `48` months; grade `A`; valid completed run.
 - Final weighted dimensions: Level `18.00`, Wealth `9.88`, Resilience `12.75`, Skill `15.00`, Risk Control `10.00`, Network `9.67`.
-- Runtime audit: `RUNTIME_ADHERENCE_FAIL`; the required semiannual H marker was missed, ordinary story deliberation repeatedly reopened without new evidence, and CTRL/action pairing could not be certified. All 203 actions were followed by fresh observe in the deduplicated event sequence.
-- Runner gameplay usage: 40,372,074 input / 247,309 output / 40,619,383 total tokens; 39,865,088 reported cache tokens; DeepSeek `deepseek-flash`; reported cost `0.0`, actual billed cost UNKNOWN. Two further active-window successful responses totalling 321,581 input / 6,522 output / 328,103 total were outside the Runner aggregate and have unknown source/purpose.
+- Runtime audit: `RUNTIME_ADHERENCE_FAIL`; the required semiannual H marker was missed, ordinary story deliberation repeatedly reopened without new evidence, and free-text CTRL/action pairing could not be certified. Of 203 `take_action` attempts, 202 succeeded and were followed by fresh observe; one malformed `choice=6,7,3` attempt was rejected before state mutation.
+- Runner gameplay usage: 40,372,074 input / 247,309 output / 40,619,383 total tokens; 39,865,088 reported cache tokens; DeepSeek `deepseek-flash`; reported cost `0.0`, actual billed cost UNKNOWN. Two further active-window responses, outside the Runner aggregate, are identified as `CurrentRoundCompressor` calls: 161,005/2,724/163,729 and 160,576/3,798/164,374 tokens.
 - Detailed record and raw-local hashes: [v6 Run #1 validation](runs/v6-run1-validation.md). Raw events/transcript/score remain local and were not committed.
-- Interpretation: one valid 48-month observation, not a causal result or proof of score/survival improvement, long-horizon adherence, or stable 80+. The one-game authorization is consumed; no policy patch or further game was made.
+- Interpretation: one valid 48-month observation, not a causal result or proof of score/survival improvement, long-horizon adherence, or stable 80+. Two context-compression snapshots occurred without a subsequent three-Skill reread. The one-game authorization is consumed; no patch was made during the run.
 
 ## Cross-run limits
 

@@ -1,49 +1,49 @@
 {
-  "candidate_id": "candidate-v6-auditable-control-loop",
-  "status": "COMPLETE_STATIC_MAIN_ACCEPTED",
-  "decision": "V6_FINAL_STATIC_ACCEPTED",
+  "candidate_id": "candidate-v6b-runtime-correctness",
+  "status": "STATIC_CORRECTNESS_PATCHED",
+  "decision": "V6B_STATIC_CORRECTNESS_PATCH",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
-  "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
-  "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
+  "strategy_delta": "RUNTIME_CORRECTNESS_ONLY_NO_STRATEGY_REDIRECT",
+  "parent_candidate_id": "candidate-v6-auditable-control-loop",
+  "base_main_sha": "40589e35564e6c3822851586c7192b7089183722",
   "parent_identity": {
-    "runtime_manifest_sha256": "5fccff10f90523a3947902038a30e46b8447eb1927456f8eac38b076cbc1e278",
-    "instruction_sha256": "c3126ec56e0c66655e00d8e8589996e388997ac136959064c0bcc79fcbd52da0",
+    "runtime_manifest_sha256": "bcf459da811f55b8a26a76d2ee6e93da10deb4b720cc732d19a3ce12d8fa2985",
+    "instruction_sha256": "7131bbd652452c71571f1ab99451f210e6e52601e9d66144d3d665337b4eb33c",
     "skills": [
       {
         "name": "risk-review",
-        "git_blob": "44dbb4aeeb02610f2203c89aacf14f6e7efd8377"
+        "git_blob": "a6a09a4894caaca15f4aa5005911bad3b399b464"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "32d0561aea846383e8efb0fdaaf5f1651a335782"
+        "git_blob": "138a2a9ef7626e892b36b0e8e29a934a90709228"
       },
       {
         "name": "structured-state-board",
-        "git_blob": "63d99ac6805b278a010d4fb9f753727d8083a511"
+        "git_blob": "0afafcfbd2e8d87e5a9cc9944be0cd639c3b61bd"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "bcf459da811f55b8a26a76d2ee6e93da10deb4b720cc732d19a3ce12d8fa2985",
-    "instruction_sha256": "7131bbd652452c71571f1ab99451f210e6e52601e9d66144d3d665337b4eb33c"
+    "sha256": "8cbf68fa4c6ae055db9ad74942e37a649bfa13dca73b8924175467a5ee80e351",
+    "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074"
   },
   "skills": [
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "a6a09a4894caaca15f4aa5005911bad3b399b464"
+      "git_blob": "f9cafecad85cad39d34bfd0266eaea9e88d882cc"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "138a2a9ef7626e892b36b0e8e29a934a90709228"
+      "git_blob": "78a4b578fcb71eef04bc97ec0e3471820fecfe2f"
     },
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "0afafcfbd2e8d87e5a9cc9944be0cd639c3b61bd"
+      "git_blob": "b6d371d74f3477f4f6cdeabe8482093a78cbe3e5"
     }
   ],
   "adopted_mechanisms": [
@@ -56,8 +56,13 @@
     "SEMANTIC_RISK_CUES_TRIGGER_REVIEW_ONLY",
     "OBSERVED_EFFECT_AND_TWO_CHECKPOINT_STALL_DIAGNOSIS",
     "CANDIDATE_SPECIFIC_RISK_RECONSIDERATION",
-    "THREE_SKILL_CTRL_MARKER",
+    "CANONICAL_NOTES_CTRL_PREFIX",
     "BOUNDED_STORY_TOP_TWO_COMPARISON"
+  ],
+  "runtime_contract_delta": [
+    "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+    "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+    "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -85,8 +90,8 @@
   "environment_contract": "docs/project/OFFICIAL_SOURCE_LOCK.md",
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,

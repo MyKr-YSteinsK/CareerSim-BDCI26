@@ -21,8 +21,6 @@ Board 只整理当前 CareerSim game session 可核实的公开事实、来源/f
 
 QUICK_SCAN 为 Planning 与当前决策供事实，不生成 CONTROL marker，也不复述整份快照。时间相邻不等于因果；不读取或推断 hidden state。
 
-CTRL marker 的 B=F 仅表示本次决策已用 fresh current-session public state 完成事实扫描；freshness 无法确认时用 B=?，不得伪装新鲜。
-
 ## 有界事实快照
 
 只在以下情形建立或替换 compact full snapshot：
@@ -39,7 +37,7 @@ recent_effects 最多两条，仅记录同一 session 内、来源明确且没�
 
 ## Context recovery
 
-先确认相同 game_session_id，再取 fresh public state。只有恢复事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
+若当前上下文含 framework 生成的 <state_snapshot>，视为 context-recovery epoch；snapshot 只是工作上下文，不是策略权威。先确认相同 game_session_id 并取得 fresh public state，再据此重建当前 Board。只有恢复事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
 
 不读数据库、隐藏字段、其它对局或本机取证材料；不建立文件型 / durable Memory。
 
