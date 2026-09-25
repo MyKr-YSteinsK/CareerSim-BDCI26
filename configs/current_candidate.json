@@ -1,7 +1,7 @@
 {
   "candidate_id": "candidate-v6-auditable-control-loop",
-  "status": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
-  "decision": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP_PENDING_MAIN_REVIEW",
+  "status": "COMPLETE_STATIC_MAIN_ACCEPTED",
+  "decision": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP_STATIC_ACCEPTED",
   "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
   "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
   "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
@@ -32,12 +32,12 @@
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "ca01898825438c14428364a2b2bf1756843e6371"
+      "git_blob": "0e97e1f192c1bdf40af98456fd66e9318b7bdcd9"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "1009be8df35026a5b0faaf8c76d115b62bea306e"
+      "git_blob": "eaf4abdb8fb835cdb46ddcf14ab46f379e8a151b"
     },
     {
       "name": "structured-state-board",
