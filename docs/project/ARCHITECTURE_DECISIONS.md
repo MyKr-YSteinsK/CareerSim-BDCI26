@@ -59,7 +59,7 @@
 
 ## AD-008 — S07-01 quarantine disposition
 
-- S07-01 W1 compliance provenance gate failed narrowly; S07-02 implemented the bounded cleanup. W2/W3 remain unstarted and subject to S07/Main review.
+- S07-01 W1 compliance provenance gate failed narrowly; S07-02 implemented the bounded cleanup and passed Main review. The identified quarantine is resolved. W2/W3 are unblocked but remain NOT_STARTED.
 - Main decision: `SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`.
 - Keep `candidate-v6b-runtime-correctness` as immutable parent identity; `candidate-v6c-compliance-cleanup` is the descendant static cleanup candidate.
 - The two unsupported predefined Risk cue families were removed; Risk escalation is driven by fresh participant-visible public consequence/warning evidence, not historical forensic pattern libraries.
