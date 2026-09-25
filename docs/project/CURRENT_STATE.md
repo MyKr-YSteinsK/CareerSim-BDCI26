@@ -9,7 +9,7 @@
 - Current Stage: `S07-Lab｜合规黑盒策略探针与稳定高分搜索` ACTIVE；S06 COMPLETE
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
-- S07-01: `COMPLETE / QUARANTINE_FOR_MAIN_REVIEW`; Main disposition=`SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`. S07-02 applied that narrow cleanup in descendant `candidate-v6c-compliance-cleanup`; W2/W3 have not started.
+- S07-01: `COMPLETE / QUARANTINE_FOR_MAIN_REVIEW`; Main disposition=`SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`. S07-02 Main review=`PASS`; descendant `candidate-v6c-compliance-cleanup` is accepted as the current static candidate. W1 compliance quarantine is resolved for the identified narrow clauses; W2 Cheap Probe Feasibility and W3 Mid-70 Basin Diagnosis are now UNBLOCKED but NOT_STARTED.
 - Last verified: 2026-09-26
 
 ## Current candidate
@@ -45,5 +45,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
-- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-01 Main decision: `SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`; S07-02 implemented the descendant v6c cleanup statically for Main/S07 review. No strategy redesign, Team/Swarm/Memory/fifth Skill reopening, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
+- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; current static candidate=`candidate-v6c-compliance-cleanup`. W2/W3 may proceed under AD-007 public-interface-only evidence firewall. No strategy redesign, Team/Swarm/Memory/fifth Skill reopening, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
