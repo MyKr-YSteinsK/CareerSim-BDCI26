@@ -33,6 +33,7 @@
 - Candidate v1 observed a high spread across two runs; this does not establish cause or stable performance.
 - S06 Run #1: 53.83 quantitative / 37.68 competition partial / 48 months / C. It is one Main-reviewed observation, not a causal result.
 - Candidate v4 first local run: 25.84 quantitative / 18.09 competition partial / 6 months / E; eliminated at M6 with Health=0. This is one terminal observation, not a 48-month completion or a causal result; the Runner score report was empty because the shared instance DB path differs from the root Runner's default, and the score was read from the exact session in the configured DB.
+- S06-08 read-only forensics (pending Main review): v4 Run #1 Health pattern = `CUMULATIVE_ATTRITION`; `H_SURVIVAL_GUARD = SUPPORTED_FOR_TARGETED_PATCH`; no strategy changed. See [forensic record](runs/v4-run1-health-forensic.md).
 - Gameplay effectiveness: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test generalization: NOT_PROVEN.
 - S06 Run #1 raw evidence on the current machine: unavailable/deferred; no raw hash is asserted.
 
