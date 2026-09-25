@@ -3,11 +3,11 @@
 ## Stage result summary
 
 - Stage: `S06`
-- Engineering status: `READY_FOR_MAIN_CLOSEOUT_DECISION`
+- Engineering status: `MAIN_ACCEPTED_CLOSEOUT`
 - Current candidate: `candidate-v6b-runtime-correctness`
 - Design Freeze: `ACTIVE`
 - `NEXT_GAME`: `NOT_AUTHORIZED`
-- Main acceptance recommendation: `PASS_WITH_KNOWN_RUNTIME_LIMITATION` — recommendation only; S06 remains `IN_PROGRESS` until Main decides.
+- Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; `S06 = COMPLETE`.
 
 ## Final architecture and retained contracts
 
@@ -87,9 +87,9 @@ For v6b, runtime adherence, gameplay effectiveness, provider validation, surviva
 
 ## Main decision and next-stage proposal
 
-**Recommendation to Main:** `PASS_WITH_KNOWN_RUNTIME_LIMITATION`. Rationale: S06 has a coherent frozen Single-Agent/3-Skill architecture; original v6 completed a valid 48-month A-grade run with 75.29 and exhibited several intended mechanisms in triggered cases; raw evidence identified runtime correctness defects; v6b statically repairs those contracts without strategy redesign. v6b itself remains unvalidated. Repeating an expensive single run inside S06 would duplicate work proposed for the next experimental stage.
+**Main decision:** `PASS_WITH_KNOWN_RUNTIME_LIMITATION`. S06 is accepted as COMPLETE. Rationale: S06 has a coherent frozen Single-Agent/3-Skill architecture; original v6 completed a valid 48-month A-grade run with 75.29 and exhibited several intended mechanisms in triggered cases; raw evidence identified runtime correctness defects; v6b statically repairs those contracts without strategy redesign. v6b itself remains unvalidated. Repeating an expensive single run inside S06 would duplicate work proposed for the next experimental stage.
 
-Proposed, not authorized: `BATCH_EXPLORATION_AND_POLICY_PROBING` — E1 repeated frozen-v6b runs to validate runtime adherence and estimate score/survival variance; E2 controlled one-mechanism-at-a-time ablations, including simple Growth prior + Risk override versus the fuller controller; E3 collect structured event/action trajectories and investigate recurring delayed, saturation, and risk mechanisms, preferring transferable evidence over Dev-specific lookup. All next-stage hypotheses remain hypotheses. No game is authorized by this handoff.
+Accepted next-stage direction, not yet started and with no game authorization: `BATCH_EXPLORATION_AND_POLICY_PROBING` — E1 repeated frozen-v6b runs to validate runtime adherence and estimate score/survival variance; E2 controlled one-mechanism-at-a-time ablations, including simple Growth prior + Risk override versus the fuller controller; E3 collect structured event/action trajectories and investigate recurring delayed, saturation, and risk mechanisms, preferring transferable evidence over Dev-specific lookup. All next-stage hypotheses remain hypotheses. No game is authorized by this handoff.
 
 ## Evidence references
 
