@@ -55,3 +55,16 @@
 - Generic public-state rules (for example, fresh-state recovery, visible survival-trend constraints, bounded reconsideration, observed-progress checks) remain admissible when supported independently by public evidence; exact hidden thresholds/formulas are not.
 - Team/Swarm remains deferred. S07 tests policy quality and variance before any architecture expansion.
 - `NEXT_GAME = NOT_AUTHORIZED`; S07 does not begin with a mandatory live validation run.
+
+
+## AD-008 — S07-01 quarantine disposition
+
+- S07-01 W1 compliance provenance gate failed narrowly; W2/W3 remain blocked until cleanup.
+- Main decision: `SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`.
+- Keep `candidate-v6b-runtime-correctness` as immutable parent identity; create a descendant compliance-cleanup candidate rather than silently mutating v6b history.
+- Remove or generalize the predefined Risk cue families `integrity/concealment` and `material reliability incident`; future Risk escalation must be driven by fresh participant-visible public consequence/warning evidence, not historical forensic pattern libraries.
+- Replace the ordinary-story exact `top-two` comparison cap with a generic bounded comparison rule; no magic candidate count is deployable without independent allowed evidence.
+- Do not change public survival guard, Primary Gap/Progress/STALLED, observed-effect adaptation, review/promotion reset, candidate-first Risk, bounded RECONSIDER, v6b runtime-correctness contracts, Single-Agent authority, or three-Skill ownership unless the cleanup finds a direct textual contradiction.
+- Deployable candidate metadata must not treat `STRATEGY_EVIDENCE.md` forensic internals as strategy support. Preserve the document only as quarantined forensic history.
+- This is compliance cleanup only: no provider, CareerSim service, MCP live operation, new game, gameplay, Team/Swarm, durable Memory, fifth Skill, or strategy redesign.
+- `NEXT_GAME = NOT_AUTHORIZED`.
