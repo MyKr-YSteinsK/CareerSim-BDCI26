@@ -10,26 +10,12 @@ description: "每个 take_action 前必须应用；只对已生成候选做 cand
 每次 story、Energy 或 Main take_action 前，只检查已经生成的当前合法候选及 fresh current-session public facts：
 
 - candidate 的明确公开后果；
-- 与 candidate 直接相关的 contextual high-signal cue；
 - fresh public warning / consequence；
 - Planning Risk Budget=TIGHT 时，candidate 是否直接加重相关公开生存风险。
 
-无候选相关 Material Risk 或 high-signal cue 时返回 PASS。普通不确定性或 Soft Cost、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
+仅当 fresh participant-visible evidence 明示与当前候选相关的 Material Risk / 重大警告，或候选直接加重 TIGHT 所依据的公开生存约束时进入 FULL_REVIEW；否则返回 PASS。普通不确定性或 Soft Cost、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
 
-## Contextual cue families
-
-保留 enum；cue 只触发检查，不自动等于 Material Risk，也不是答案映射：
-
-NONE / HEALTH / COMPLIANCE / TRUST / RELIABILITY / OTHER
-
-仅保留四类高 signal 情境：
-
-1. confidentiality / data authorization；
-2. integrity / concealment 且有明确 material consequence；
-3. health load / illness 且关联 fresh public state；
-4. material reliability incident。
-
-OTHER 是窄的 escape hatch。普通 delivery/scope、compensation/career、relationship boundary、org politics 属于 Planning，只有出现明确 Material consequence 才升级 Risk。generic role/project words 或单个普通负面词不构成 cue。不扩成长 keyword dictionary。
+事件类别、标题或单个普通词不是风险证据；不使用预定义故事 pattern library。普通 delivery/scope、compensation/career、relationship boundary、org politics 属于 Planning，只有当前公开重大后果或警告才升级 Risk。
 
 不得读取 story option hidden status update、hidden counters、其它 session 或 Dev answer data；不得建立 event_id/title→choice lookup。
 
@@ -37,7 +23,7 @@ OTHER 是窄的 escape hatch。普通 delivery/scope、compensation/career、rel
 
 Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信任危机、保密/合规、报复/升级、解雇或同类后果。Soft Cost 包括少量 Health/Dignity 消耗、时间、普通关系摩擦、一般压力或不确定性。一次性小额 Health/Dignity 消耗，只有在 Planning 的 fresh public survival trend 未使该维度成为当前约束时，才可孤立按 Soft Cost 处理；若 Planning 因该公开趋势恶化将 Risk Budget 设为 TIGHT，不得孤立评估下一笔小额代价。Soft Cost 单独仍不足以触发 RECONSIDER 或自动否决有公开收益的 Growth path；两者并存时仍完整审查重大后果。Planning owns the public survival trend and candidate-independent Risk Budget; Risk remains a candidate-specific gate.
 
-只用当前 session 的 fresh public facts、公开反馈、当前合法候选与 public handbook。cue 或 Risk Budget 不是 hidden-risk 估计。
+只用当前 session 的 fresh public facts、公开反馈、当前合法候选与 public handbook。Risk Budget 不是 hidden-risk 估计。
 
 FULL_REVIEW 返回 ALLOW / WARN / RECONSIDER / UNKNOWN，并给一句公开证据理由：
 
@@ -57,4 +43,4 @@ DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh
 
 - QUICK_GATE / FULL_REVIEW 只审已生成的当前候选；Risk 不拥有 Primary Gap、一般策略、phase 或持久风险状态。
 - Can Submit Action: No。Skills 不创建第二审查者；Single Agent 是唯一动作提交者。
-- Risk 不调用 observe、take_action 或 new_game；不得跨 session 复用旧 cue/判断。
+- Risk 不调用 observe、take_action 或 new_game；不得跨 session 复用旧判断。

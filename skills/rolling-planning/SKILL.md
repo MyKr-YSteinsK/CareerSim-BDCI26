@@ -84,7 +84,7 @@ Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript�
 
 Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后都要 fresh observe、Board scan、Planning quick scan，再决定下一项；不得复用旧 scan。不能编码 fixed bundle、menu catalog 或固定赢家。
 
-普通非战略 story 最多比较两个最强合法候选一次。无新证据不重开，除非 Risk 返回 RECONSIDER。没有事件标题答案、action lookup 或固定 primitive ranking。
+普通非战略 story 只对少量最相关合法候选做一次有界比较；无 fresh public evidence 不重开，除非 Risk 返回 RECONSIDER 并按其合同复核一个直接相关合法 alternative。没有事件标题答案、action lookup 或固定 primitive ranking。
 
 DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh observe、tool result、event content 或其它公开证据，Planning 立即结束比较并交接已 gate 候选；不重开路径或重新讨论标记。只有新公开证据才重新打开。
 
