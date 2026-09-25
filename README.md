@@ -1,6 +1,6 @@
 # CareerSim BDCI26
 
-CareerSim BDCI26 工程仓库。当前静态候选为 candidate-v6-auditable-control-loop，由 v5 定向升级为候选优先的可审计控制循环；S06-20 最终静态硬化完成，待 Main re-review。v6 尚无 gameplay 验证，stable 80+ 未证明，下一局需要独立 Main Game Gate 授权。
+CareerSim BDCI26 工程仓库。当前静态候选为 candidate-v6-auditable-control-loop，由 v5 定向升级为候选优先的可审计控制循环；S06-21 survival-trend guard 最终静态补回完成，待 Main final review。v6 尚无 gameplay 验证，stable 80+ 未证明，下一局需要独立 Main Game Gate 授权。
 
 ## Current engineering facts
 

@@ -1,7 +1,7 @@
 {
   "candidate_id": "candidate-v6-auditable-control-loop",
   "status": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
-  "decision": "V6_SKILL_LOADING_AND_CONTROL_KERNEL_HARDENING_PENDING_MAIN_REVIEW",
+  "decision": "V6_SURVIVAL_TREND_GUARD_RESTORATION_PENDING_MAIN_REVIEW",
   "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
   "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
   "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
@@ -32,12 +32,12 @@
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "f8e42c10902fa74d8ebeb9b1a49643c8d0f6afdb"
+      "git_blob": "a6a09a4894caaca15f4aa5005911bad3b399b464"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "d8e468ed3931d2601bc9a0c036e5f4e5f67451d0"
+      "git_blob": "138a2a9ef7626e892b36b0e8e29a934a90709228"
     },
     {
       "name": "structured-state-board",
@@ -47,6 +47,7 @@
   ],
   "adopted_mechanisms": [
     "PUBLIC_STATE_SURVIVAL_GUARD",
+    "PUBLIC_SURVIVAL_TREND_TO_RISK_BUDGET",
     "PUBLIC_GAP_AND_HORIZON_PLANNING",
     "SIX_MONTH_REVIEW_CLOCK_AND_PRE_REVIEW_RESERVE",
     "CANDIDATE_FIRST_CONTROL_ORDER",

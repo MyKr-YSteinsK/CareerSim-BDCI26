@@ -1,6 +1,6 @@
 ---
 name: rolling-planning
-description: "每次决策必须应用；唯一战略 owner，维护公开 Primary Gap 与必要 checkpoint；不提交动作。"
+description: "每次决策必须应用；唯一战略 owner，维护公开 Primary Gap、Progress、含公开 survival trend 的 Risk Budget 与必要 checkpoint；不提交动作。"
 ---
 
 # Rolling Planning｜公开证据滚动规划
@@ -21,6 +21,10 @@ Planning 是唯一战略 owner。每次决策基于当前 session 的 fresh publ
 - Horizon：公开剩余时间与仍可实现的收益窗口。
 
 Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支持：AVAILABLE 表示未观察到当前 material survival constraint 收紧预算；TIGHT 表示观察到该约束正在收紧可接受风险预算；UNKNOWN 表示证据过期、缺失或不清。Planning 不在候选生成前评估具体候选的 Material Risk；先生成候选，再由 Risk 做 candidate-specific gate。不得用数值阈值或隐藏库存定义这些语义。
+
+公开 survival trend 也是候选无关 Risk Budget 的输入。fresh public evidence shows a binding survival trend when Health is visibly low or repeatedly declining across comparable fresh observations; or when another public survival-relevant dimension (Dignity / Network / Wealth / formal feedback) shows sustained deterioration together with a credible public survival warning/consequence. Recent shock direction and a realistically reachable recovery opportunity affect how strongly to protect the buffer. Do not use numeric thresholds, hidden streak counters, fixed recovery quotas, or treat one isolated small delta as a universal trigger.
+
+当 Risk Budget=TIGHT 是由直接相关的公开 survival trend 导致时，应暂缓或拒绝会直接加重该约束的非必要 Growth，直到 fresh public evidence 显示 buffer 已有足够恢复。这不等于禁止所有 Growth；不加重该约束的 Growth 仍可比较，并由 Risk gate 具体候选。
 
 安全是约束，不是默认优化目标。Risk Budget AVAILABLE 且无 Material Risk 时，普通 Soft Cost 本身不能自动否决对当前 gap 有更强公开贡献的合法 Growth path。TIGHT 只约束与公开生存风险直接相关的候选；UNKNOWN 不得伪装成安全。
 

@@ -35,7 +35,7 @@ OTHER 是窄的 escape hatch。普通 delivery/scope、compensation/career、rel
 
 ## FULL_REVIEW｜当前候选
 
-Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信任危机、保密/合规、报复/升级、解雇或同类后果。Soft Cost 包括少量 Health/Dignity 消耗、时间、普通关系摩擦、一般压力或不确定性；单独不足以触发 RECONSIDER 或自动否决有公开收益的 Growth path。两者并存时仍完整审查重大后果。
+Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信任危机、保密/合规、报复/升级、解雇或同类后果。Soft Cost 包括少量 Health/Dignity 消耗、时间、普通关系摩擦、一般压力或不确定性。一次性小额 Health/Dignity 消耗，只有在 Planning 的 fresh public survival trend 未使该维度成为当前约束时，才可孤立按 Soft Cost 处理；若 Planning 因该公开趋势恶化将 Risk Budget 设为 TIGHT，不得孤立评估下一笔小额代价。Soft Cost 单独仍不足以触发 RECONSIDER 或自动否决有公开收益的 Growth path；两者并存时仍完整审查重大后果。Planning owns the public survival trend and candidate-independent Risk Budget; Risk remains a candidate-specific gate.
 
 只用当前 session 的 fresh public facts、公开反馈、当前合法候选与 public handbook。cue 或 Risk Budget 不是 hidden-risk 估计。
 
