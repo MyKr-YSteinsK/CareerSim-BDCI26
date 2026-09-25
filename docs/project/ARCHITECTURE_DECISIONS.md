@@ -10,11 +10,12 @@
 
 ## AD-002 — Evidence-driven runtime policy candidate
 
-- Current static candidate is candidate-v6-auditable-control-loop; S06-20 Skill-loading/control-kernel hardening was accepted with one targeted follow-up, and S06-21 survival-trend restoration is pending Main final static review; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
+- Current static candidate is candidate-v6-auditable-control-loop; Main final static acceptance = PASS and Design Freeze = ACTIVE; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
+- S06 remains IN_PROGRESS; NEXT_GAME = NOT_AUTHORIZED. Static acceptance does not establish runtime effectiveness or authorize a benchmark.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
-- v6 statically defines candidate-first Risk ordering, fresh-state refresh after state-changing actions, a review reset, strict two-checkpoint STALLED, bounded RECONSIDER enforcement, and a compact per-action CTRL marker. Planning maps a visibly low or repeatedly declining public Health trend, or sustained deterioration in another public survival dimension together with a credible public warning, to Risk Budget=TIGHT without numeric thresholds; TIGHT constrains only nonessential Growth that directly worsens that survival constraint. The trend rule is static, not evidence of runtime adherence or benefit.
-- The bounded v6 Design Freeze was reopened for S06-20; S06-20 was accepted with this one targeted follow-up, and S06-21 now awaits Main final static review. Further offline policy growth waits for runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
-- Gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
+- Main-accepted v6 static contracts include context-epoch Skill loading, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, bounded story top-2, and same-turn CTRL → take_action. These remain static contracts, not evidence of runtime adherence or benefit.
+- Further offline policy growth is frozen pending runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
+- Actual Skill-body read adherence, survival-trend judgment correctness, runtime marker truthfulness, gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
 

@@ -1,7 +1,8 @@
 {
   "candidate_id": "candidate-v6-auditable-control-loop",
-  "status": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
-  "decision": "V6_SURVIVAL_TREND_GUARD_RESTORATION_PENDING_MAIN_REVIEW",
+  "status": "COMPLETE_STATIC_MAIN_ACCEPTED",
+  "decision": "V6_FINAL_STATIC_ACCEPTED",
+  "design_freeze": "ACTIVE",
   "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
   "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
   "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
