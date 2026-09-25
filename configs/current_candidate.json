@@ -1,7 +1,7 @@
 {
   "candidate_id": "candidate-v6-auditable-control-loop",
-  "status": "COMPLETE_STATIC_MAIN_ACCEPTED",
-  "decision": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP_STATIC_ACCEPTED",
+  "status": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
+  "decision": "V6_SKILL_LOADING_AND_CONTROL_KERNEL_HARDENING_PENDING_MAIN_REVIEW",
   "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
   "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
   "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
@@ -25,24 +25,24 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "73b12174e7c1b81fc19c2c321798cc1b82f2b2fc60a98e8695748c6eab01882c",
-    "instruction_sha256": "73cbb6136242126c523f18d6db9fe810625e84dbd00bcf3b36ae17fd5fe366da"
+    "sha256": "bcf459da811f55b8a26a76d2ee6e93da10deb4b720cc732d19a3ce12d8fa2985",
+    "instruction_sha256": "7131bbd652452c71571f1ab99451f210e6e52601e9d66144d3d665337b4eb33c"
   },
   "skills": [
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "0e97e1f192c1bdf40af98456fd66e9318b7bdcd9"
+      "git_blob": "f8e42c10902fa74d8ebeb9b1a49643c8d0f6afdb"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "eaf4abdb8fb835cdb46ddcf14ab46f379e8a151b"
+      "git_blob": "d8e468ed3931d2601bc9a0c036e5f4e5f67451d0"
     },
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "eee31955016449752b9ebac2eeceff7fc20c6523"
+      "git_blob": "0afafcfbd2e8d87e5a9cc9944be0cd639c3b61bd"
     }
   ],
   "adopted_mechanisms": [

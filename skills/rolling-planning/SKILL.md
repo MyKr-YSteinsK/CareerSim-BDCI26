@@ -1,6 +1,6 @@
 ---
 name: rolling-planning
-description: "唯一战略 owner；每次决策维护一个公开 Primary Gap，并在季度、review reset、停滞或恢复时执行有界 checkpoint，不提交动作。"
+description: "每次决策必须应用；唯一战略 owner，维护公开 Primary Gap 与必要 checkpoint；不提交动作。"
 ---
 
 # Rolling Planning｜公开证据滚动规划
@@ -20,7 +20,7 @@ Planning 是唯一战略 owner。每次决策基于当前 session 的 fresh publ
 - Risk Budget = AVAILABLE / TIGHT / UNKNOWN；
 - Horizon：公开剩余时间与仍可实现的收益窗口。
 
-Risk Budget 只由 fresh public facts 支持：AVAILABLE 表示无当前 material warning 且公开状态允许正常增长；TIGHT 表示可见重大后果或直接相关的公开生存约束限制候选；UNKNOWN 表示来源不足或过期。不得用数值阈值或隐藏库存定义这些语义。
+Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支持：AVAILABLE 表示未观察到当前 material survival constraint 收紧预算；TIGHT 表示观察到该约束正在收紧可接受风险预算；UNKNOWN 表示证据过期、缺失或不清。Planning 不在候选生成前评估具体候选的 Material Risk；先生成候选，再由 Risk 做 candidate-specific gate。不得用数值阈值或隐藏库存定义这些语义。
 
 安全是约束，不是默认优化目标。Risk Budget AVAILABLE 且无 Material Risk 时，普通 Soft Cost 本身不能自动否决对当前 gap 有更强公开贡献的合法 Growth path。TIGHT 只约束与公开生存风险直接相关的候选；UNKNOWN 不得伪装成安全。
 
@@ -47,9 +47,7 @@ Risk Budget 只由 fresh public facts 支持：AVAILABLE 表示无当前 materia
 - 重新选择 / 保留 / UNKNOWN 一个 Primary Gap；
 - marker CP 包含 R。
 
-CTRL CP 字段使用 Q=quarter checkpoint、R=review reset、P=plateau diagnosis、C=context recovery；同时发生时合并记录。
-
-CTRL 的 G 是 Primary Gap 极短 key 或 ?；P=A/S/? 分别表示 ADVANCING / STALLED / UNKNOWN。只有满足下述双 checkpoint 条件才可写 P=S。
+CTRL 的 G 是 Primary Gap 极短 key 或 ?；P=A/S/? 分别表示 ADVANCING / STALLED / UNKNOWN。CP 使用 N/Q/H/R/P/C/-：N=new-session Planning baseline，Q=当季首次 Energy checkpoint，H=半年 review 前最后行动窗的 reserve checkpoint，R=实际观察到 review/feedback/promotion/no-advance 后的 reset，P=strict plateau diagnosis，C=context recovery，-=无 full checkpoint。多个 trigger 同时发生时各编码一次并串接，例如 QH、QR、CHR；不得递归输出多个 checkpoint。只有满足下述双 checkpoint 条件才可写 P=S。
 
 不得从 silence 推断 review 结果、延续旧 Level 的 Progress baseline，或估算 promotion probability / hidden threshold。
 

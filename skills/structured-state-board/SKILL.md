@@ -1,6 +1,6 @@
 ---
 name: structured-state-board
-description: "每次 fresh observe 后整理当前 game session 的公开事实、freshness 与可归因变化；不规划、不判断风险、不提交动作。"
+description: "每次 fresh observe 后必须应用；只整理当前 session 的公开事实、freshness 与可归因变化；不规划、不判风险、不提交动作。"
 ---
 
 # Structured State Board｜公开事实

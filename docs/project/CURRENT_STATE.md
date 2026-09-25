@@ -8,12 +8,12 @@
 - Branch: main
 - Current Stage: S06-Lab
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
-- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口、S06-06 静态复核及 S06-07 三 Skill policy consolidation 已完成；S06-16 完成最终控制架构审查；S06-17 控制语义获接受；S06-18 语义收口及 S06-19 候选身份修复完成，Main static acceptance = PASS，Design Freeze active；S06 未宣布完成
+- S06: IN_PROGRESS；S06-01 至 S06-04 已由 Main 接受为静态/离线工程成果；S06-05 工程收口、S06-06 静态复核及 S06-07 三 Skill policy consolidation 已完成；S06-16 完成最终控制架构审查；S06-17 控制语义获接受；S06-18/S06-19 静态收口已完成；S06-20 v6 Skill-loading 与控制核最终硬化完成，待 Main final static re-review；S06 未宣布完成
 - Last verified: 2026-09-25
 
 ## Current candidate
 
-- Candidate: candidate-v6-auditable-control-loop；Main static acceptance = PASS，Design Freeze active；parent: candidate-v5-evidence-driven-phase-policy；strategy delta: AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP
+- Candidate: candidate-v6-auditable-control-loop；S06-20 final static hardening complete，Main re-review pending；Design Freeze awaits re-acceptance；parent: candidate-v5-evidence-driven-phase-policy；strategy delta: AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Three Skills: risk-review, structured-state-board, rolling-planning
@@ -42,5 +42,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
-- S06-17/S06-18/S06-19: candidate-v6-auditable-control-loop remains a static candidate; Main static acceptance = PASS and Design Freeze is active. The semantic and identity closeout used no game, provider, service, install/reload or MCP operation. Further gameplay requires a separate Main Game Gate.
+- S06-20: candidate-v6-auditable-control-loop remains a static candidate; final hardening is pending Main re-review. This task used no game, provider, service, install/reload or MCP operation. Further gameplay requires a separate Main Game Gate.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.

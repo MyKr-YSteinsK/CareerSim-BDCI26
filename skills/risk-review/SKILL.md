@@ -1,6 +1,6 @@
 ---
 name: risk-review
-description: "每个动作前对已生成的合法候选做快速公开风险筛查；仅对候选相关重大后果完整审查，不提交动作。"
+description: "每个 take_action 前必须应用；只对已生成候选做 candidate-specific Material Risk gate；不规划、不提交动作。"
 ---
 
 # Risk Review｜候选风险门
@@ -14,7 +14,7 @@ description: "每个动作前对已生成的合法候选做快速公开风险筛
 - fresh public warning / consequence；
 - Planning Risk Budget=TIGHT 时，candidate 是否直接加重相关公开生存风险。
 
-无候选相关 Material Risk 或 high-signal cue 时返回 PASS。WATCH-like uncertainty、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
+无候选相关 Material Risk 或 high-signal cue 时返回 PASS。普通不确定性或 Soft Cost、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
 
 ## Contextual cue families
 

@@ -10,10 +10,10 @@
 
 ## AD-002 — Evidence-driven runtime policy candidate
 
-- Current static candidate is candidate-v6-auditable-control-loop; Main static acceptance = PASS after S06-19 identity repair; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
+- Current static candidate is candidate-v6-auditable-control-loop; S06-19 identity repair was statically accepted, and S06-20 final Skill-loading/control-kernel hardening is pending Main re-review; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
 - v6 statically defines candidate-first Risk ordering, fresh-state refresh after state-changing actions, a review reset, strict two-checkpoint STALLED, bounded RECONSIDER enforcement, and a compact per-action CTRL marker. It retains the public-state Survival Guard and pre-review reserve check. This is not evidence of runtime adherence or benefit.
-- v6 Design Freeze is active. Further offline policy growth waits for runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
+- The bounded v6 Design Freeze was reopened for S06-20 and now awaits Main re-acceptance. Further offline policy growth waits for runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
 - Gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
