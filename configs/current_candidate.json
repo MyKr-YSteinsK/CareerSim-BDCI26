@@ -1,57 +1,61 @@
 {
-  "candidate_id": "candidate-v5-evidence-driven-phase-policy",
+  "candidate_id": "candidate-v6-auditable-control-loop",
   "status": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
-  "decision": "EVIDENCE_DRIVEN_RUNTIME_POLICY_UPGRADE_PENDING_MAIN_REVIEW",
-  "strategy_delta": "EVIDENCE_DRIVEN_SURVIVAL_PHASE_POLICY",
-  "parent_candidate_id": "candidate-v4-lean-runtime-policy",
-  "base_main_sha": "3095308de1a375f7e8a9bcb4ad6bd91f6b2a07ee",
+  "decision": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP_PENDING_MAIN_REVIEW",
+  "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
+  "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
+  "base_main_sha": "78ad468a21f3a4c670b1fa0925d51ff4b09b9c25",
   "parent_identity": {
-    "runtime_manifest_sha256": "0da190f4b49e70572614db4317387def8033d5704cb80d6df79744c198f3e1da",
-    "instruction_sha256": "80ee0176bc1c05723e6ee84027e50c179566ead6ae5de5b8eee8de5511591552",
+    "runtime_manifest_sha256": "5fccff10f90523a3947902038a30e46b8447eb1927456f8eac38b076cbc1e278",
+    "instruction_sha256": "c3126ec56e0c66655e00d8e8589996e388997ac136959064c0bcc79fcbd52da0",
     "skills": [
       {
         "name": "risk-review",
-        "git_blob": "50ac3c515d3e75ab060bb16e5afe51e79e4db3ab"
+        "git_blob": "44dbb4aeeb02610f2203c89aacf14f6e7efd8377"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "fcd443d547920e04fcfa2dd948686136afb76d47"
+        "git_blob": "32d0561aea846383e8efb0fdaaf5f1651a335782"
       },
       {
         "name": "structured-state-board",
-        "git_blob": "06ecdc3a598ee42d1e785d6e14af8f1a669eca85"
+        "git_blob": "63d99ac6805b278a010d4fb9f753727d8083a511"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "5fccff10f90523a3947902038a30e46b8447eb1927456f8eac38b076cbc1e278",
-    "instruction_sha256": "c3126ec56e0c66655e00d8e8589996e388997ac136959064c0bcc79fcbd52da0"
+    "sha256": "73b12174e7c1b81fc19c2c321798cc1b82f2b2fc60a98e8695748c6eab01882c",
+    "instruction_sha256": "73cbb6136242126c523f18d6db9fe810625e84dbd00bcf3b36ae17fd5fe366da"
   },
   "skills": [
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "44dbb4aeeb02610f2203c89aacf14f6e7efd8377"
+      "git_blob": "ca01898825438c14428364a2b2bf1756843e6371"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "32d0561aea846383e8efb0fdaaf5f1651a335782"
+      "git_blob": "1009be8df35026a5b0faaf8c76d115b62bea306e"
     },
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "63d99ac6805b278a010d4fb9f753727d8083a511"
+      "git_blob": "eee31955016449752b9ebac2eeceff7fc20c6523"
     }
   ],
   "adopted_mechanisms": [
     "PUBLIC_STATE_SURVIVAL_GUARD",
-    "PHASE_AWARE_PLANNING",
+    "PUBLIC_GAP_AND_HORIZON_PLANNING",
     "SIX_MONTH_REVIEW_CLOCK_AND_PRE_REVIEW_RESERVE",
+    "CANDIDATE_FIRST_CONTROL_ORDER",
+    "FRESH_STATE_AFTER_STATE_CHANGING_ACTION",
     "SEMANTIC_RISK_CUES_TRIGGER_REVIEW_ONLY",
-    "THREE_SKILL_QUICK_SCAN_CADENCE",
-    "OBSERVED_EFFECT_AND_TWO_CHECKPOINT_STALL_SWITCH"
+    "OBSERVED_EFFECT_AND_TWO_CHECKPOINT_STALL_SWITCH",
+    "CANDIDATE_SPECIFIC_RISK_RECONSIDERATION",
+    "THREE_SKILL_CTRL_MARKER",
+    "BOUNDED_STORY_TOP_TWO_COMPARISON"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",

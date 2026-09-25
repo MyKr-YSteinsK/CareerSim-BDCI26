@@ -1,53 +1,58 @@
 ---
 name: risk-review
-description: 每个动作前快速检查公开生存状态与语义风险线索；仅在非安全带或 cue 出现时完整审查当前候选的重大后果，不提交动作。
+description: "每个动作前对已生成的合法候选做快速公开风险筛查；仅对候选相关重大后果完整审查，不提交动作。"
 ---
 
 # Risk Review｜候选风险门
 
-## QUICK_GATE｜每个动作前
+## QUICK_GATE｜candidate-first
 
-在每次 story、Energy 或 Main `take_action` 前，只针对当前合法候选与最新 `CONTROL_SCAN` 快查：
+每次 story、Energy 或 Main take_action 前，只检查已经生成的当前合法候选及 fresh current-session public facts：
 
-1. Survival band；
-2. 候选文本和场景的语义 cue；
-3. 明确公开 warning / consequence；
-4. 候选是否进一步消耗已知有限的生存资源，或放大已知 Material Risk。
+- candidate 的明确公开后果；
+- 与 candidate 直接相关的 contextual high-signal cue；
+- fresh public warning / consequence；
+- Planning Risk Budget=TIGHT 时，candidate 是否直接加重相关公开生存风险。
 
-返回供 `CONTROL_SCAN` 使用的一个 `Risk Cue`：`NONE / HEALTH / COMPLIANCE / TRUST / RELIABILITY / OTHER`。`Survival=SAFE` 且 cue=`NONE` 时结束 QUICK_GATE，不做 FULL_REVIEW。若 Survival 为 `WATCH / TIGHT / CRITICAL`，或 cue 非 `NONE`，完整审查当前候选。QUICK_GATE 本身不自动改选。
+无候选相关 Material Risk 或 high-signal cue 时返回 PASS。WATCH-like uncertainty、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
 
-## Semantic Trigger Library｜只触发复核
+## Contextual cue families
 
-以下是可迁移的公开语义线索，不是答案映射，也不自动等于 Material Risk：
+保留 enum；cue 只触发检查，不自动等于 Material Risk，也不是答案映射：
 
-- `HEALTH`：健康、身体、熬夜、加班、通宵、on-call / 值守、生病、传染、顶岗、硬扛、饮酒、作息、体检、就医、透支、疲惫；
-- `COMPLIANCE`：合规、保密、泄露、外传、截图、未授权、竞对、未公开、客户数据、内部资料、监管、违规、绕流程、安全漏洞；
-- `TRUST`：信任危机、隐患、甩锅、隐瞒、造假、报复、抢功、掩盖、爆雷、埋雷、问责；
-- `RELIABILITY`：事故、生产环境、故障、上线、回滚、CI、测试、漏洞、数据库迁移、安全；
-- `OTHER`：其它语义清楚且可能造成类似重大后果的公开 cue。
+NONE / HEALTH / COMPLIANCE / TRUST / RELIABILITY / OTHER
 
-泛化的“同事 / 领导 / 项目”或一个普通负面词不构成 cue。cue 只要求更仔细查看当前公开事实与候选后果；不得仅因关键词、事件标题或故事类别自动断定 Material Risk。不得读取 story option 隐藏 status update，也不得建立 `event_id/title → choice` 表。
+仅保留四类高 signal 情境：
 
-## FULL_REVIEW｜仅当前候选
+1. confidentiality / data authorization；
+2. integrity / concealment 且有明确 material consequence；
+3. health load / illness 且关联 fresh public state；
+4. material reliability incident。
 
-将公开后果区分为：
+OTHER 是窄的 escape hatch。普通 delivery/scope、compensation/career、relationship boundary、org politics 属于 Planning，只有出现明确 Material consequence 才升级 Risk。generic role/project words 或单个普通负面词不构成 cue。不扩成长 keyword dictionary。
 
-- **Material Risk**：明确重大 Health / 生存后果、信任危机、保密/合规问题、报复/升级、解雇威胁，或含义相当的公开重大后果。即使选项文字没有风险词，若 Survival=`TIGHT / CRITICAL` 且候选继续消耗有限生存资源，也必须审查。
-- **Soft Cost**：少量 Health / Dignity 消耗、时间、普通关系摩擦、一般工作压力或不确定性。Soft Cost 单独不足以触发 `RECONSIDER`，不能自动否决有明显公开收益的 Growth path；若与 Material Risk 并存，仍完整审查重大后果。
+不得读取 story option hidden status update、hidden counters、其它 session 或 Dev answer data；不得建立 event_id/title→choice lookup。
 
-只用当前 session 的 fresh public observe、明确反馈、当前合法候选及公开 Handbook。不要猜隐藏计数、threshold、概率或选项未公开效果。
+## FULL_REVIEW｜当前候选
 
-FULL_REVIEW 返回一个状态与一句证据理由：
+Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信任危机、保密/合规、报复/升级、解雇或同类后果。Soft Cost 包括少量 Health/Dignity 消耗、时间、普通关系摩擦、一般压力或不确定性；单独不足以触发 RECONSIDER 或自动否决有公开收益的 Growth path。两者并存时仍完整审查重大后果。
 
-- `ALLOW`：没有被忽略的 Material Risk；Soft Cost 本身不要求改选。
-- `WARN`：有公开风险线索，但没有直接合法缓解项，或证据不足以要求重新比较。
-- `RECONSIDER`：仅当当前公开 Material Risk 明确、存在直接相关的合法缓解项，且候选尚未处理时使用。同一个 Agent 对当前候选与缓解项重比一次；不强制选择最保守选项。
-- `UNKNOWN`：session、状态、证据或选项不新鲜/不清楚。说明未知，回到正常流程，不猜测或阻断。
+只用当前 session 的 fresh public facts、公开反馈、当前合法候选与 public handbook。cue 或 Risk Budget 不是 hidden-risk 估计。
 
-只有当前合法选项确实包含 `处理历史埋雷`，且 fresh public context 明确存在对应的埋雷/信任风险时，才考虑该选项。不得声称其效果已知、一次即可清除风险或应定期选择。
+FULL_REVIEW 返回 ALLOW / WARN / RECONSIDER / UNKNOWN，并给一句公开证据理由：
+
+- ALLOW：没有要求改变当前候选的 Material Risk。
+- WARN：存在相关 concern，但没有直接合法 mitigation，或证据不足；仍允许提交并简短说明。
+- RECONSIDER：仅当 Material Risk 明确、存在直接相关合法 alternative 且当前候选未处理该风险时使用。原候选不得直接提交，直到只比较一次该 alternative；之后可换项，也可在公开证据支持时保留原项。若候选改变，最终候选必须重新 gate。完成比较后 marker X=1；X=0 时不得提交。
+- UNKNOWN：freshness/来源/后果不清。若允许的正常流程能补足 fresh public facts，刷新一次；否则保留 UNKNOWN 并做一次 bounded legal decision，不死循环。
+
+## Terminal-risk constraint
+
+若 fresh public evidence 表明候选的已知 effect 会增加可避免的 terminal/material survival risk，且存在直接相关的合法 mitigation，不得提交明显加重该风险的非必要候选。该约束针对具体候选，不让 Risk 变成第二决策者；Single Agent 保持最终 action authority。
 
 ## 权限
 
-- QUICK_GATE / FULL_REVIEW 均只审查当前候选；Risk 不拥有 Primary Gap、一般策略或持久化风险状态。
-- Can Submit Action: No。Skills 不创建第二审查者；Single Agent 仍是唯一动作提交者。
-- 不调用 `observe`、`take_action` 或 `new_game`；不跨 session 使用旧 cue / 风险判断。
+- QUICK_GATE / FULL_REVIEW 只审已生成的当前候选；Risk 不拥有 Primary Gap、一般策略、phase 或持久风险状态。
+- Can Submit Action: No。Skills 不创建第二审查者；Single Agent 是唯一动作提交者。
+- Risk 不调用 observe、take_action 或 new_game；不得跨 session 复用旧 cue/判断。
+- 无 RECONSIDER 时 marker 的 X 使用 -。

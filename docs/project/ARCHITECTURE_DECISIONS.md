@@ -10,10 +10,10 @@
 
 ## AD-002 — Evidence-driven runtime policy candidate
 
-- Current static candidate is candidate-v5-evidence-driven-phase-policy, pending Main review; parent = candidate-v4-lean-runtime-policy; strategy delta = EVIDENCE_DRIVEN_SURVIVAL_PHASE_POLICY.
+- Current static candidate is candidate-v6-auditable-control-loop, implemented in S06-17 and pending Main review; parent = candidate-v5-evidence-driven-phase-policy; strategy delta = AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
-- v5 statically defines a public-state Survival Guard, phase-aware Planning, a pre-review reserve check, semantic risk cues, and three-Skill QUICK_SCAN cadence; this is not evidence of runtime adherence or benefit.
-- v5 enters Design Freeze after this static task. Further offline policy growth waits for runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
+- v6 statically defines candidate-first Risk ordering, fresh-state refresh after state-changing actions, a review reset, strict two-checkpoint STALLED, bounded RECONSIDER enforcement, and a compact per-action CTRL marker. It retains the public-state Survival Guard and pre-review reserve check. This is not evidence of runtime adherence or benefit.
+- v6 enters Design Freeze after this static task. Further offline policy growth waits for runtime correctness/adherence evidence; any gameplay still needs a separate Main Game Gate.
 - Gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
@@ -27,7 +27,7 @@
 - Board: sparse current-session public facts and freshness; no strategy recommendation.
 - rolling-planning: sole strategic owner for one Primary Gap, progress, horizon, and path comparison.
 - risk-review: rare review of explicit current-candidate Material Risk; Soft Cost alone does not trigger reconsideration; no action submission.
-- v5 static cadence: Board QUICK_SCAN after every fresh observe; Planning QUICK_SCAN every decision and FULL checkpoint only on defined triggers; Risk QUICK_GATE before every action and FULL_REVIEW only for non-SAFE Survival or a semantic cue. This cadence is not yet runtime-validated.
+- v6 static cadence: Board scans fresh public facts; Planning scans every decision and coalesces defined checkpoint triggers; Risk gates an actual candidate after generation and runs FULL_REVIEW only for candidate-related material evidence. State-changing actions require fresh state before the next decision. This cadence and CTRL marker are not yet runtime-validated.
 - Action-note trace telemetry is retired; notes retain only a brief reason relevant to the selected action.
 - Skills advise; they do not submit actions or create a second review loop.
 
