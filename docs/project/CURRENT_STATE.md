@@ -34,14 +34,14 @@
 - Candidate v4 first local run: 25.84 quantitative / 18.09 competition partial / 6 months / E; eliminated at M6 with Health=0. This is one terminal observation, not a 48-month completion or a causal result; the Runner score report was empty because the shared instance DB path differs from the root Runner's default, and the score was read from the exact session in the configured DB.
 - S06-08 read-only forensics (Main-accepted evidence for the targeted survival-guard line): v4 Run #1 Health pattern = `CUMULATIVE_ATTRITION`; `H_SURVIVAL_GUARD = SUPPORTED_FOR_TARGETED_PATCH`; evidence supports a bounded public-state guard, not a numeric threshold or score benefit. See [forensic record](runs/v4-run1-health-forensic.md).
 - S06-09 public Dev strategy evidence is recorded in [STRATEGY_EVIDENCE](STRATEGY_EVIDENCE.md); it does not prove policy effectiveness or hidden-test transfer.
-- v5 remains the static parent candidate. v6 candidate-first order, action refresh, review reset, strict plateau comparison, Risk enforcement and CTRL marker are static contracts only; runtime adherence and marker truthfulness are NOT_PROVEN.
-- Actual Skill-body read adherence: NOT_PROVEN；survival-trend judgment correctness: NOT_PROVEN；runtime marker truthfulness: NOT_PROVEN.
+- S06-24 v6 Run #1: 75.29 quantitative / 52.70 competition partial / 48 months / A; `VALID_48M_COMPLETION`. Runtime correctness = `RUNTIME_ADHERENCE_FAIL`: the semiannual H marker was missed, ordinary story deliberation reopened without fresh evidence, and CTRL/action pairing remains ambiguous. See [run evidence](runs/v6-run1-validation.md).
+- The v6 run read all three Skill bodies before its first action and every state-changing action was followed by a fresh observe. This single run does not prove sustained Skill adherence; long-horizon adherence remains NOT_PROVEN.
 - Gameplay effectiveness: NOT_PROVEN；survival improvement: NOT_PROVEN；score improvement: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test transfer: NOT_PROVEN.
 - S06 Run #1 raw evidence on the current machine: unavailable/deferred; no raw hash is asserted.
 
 ## Authorization
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
-- NEXT_GAME: NOT_AUTHORIZED; any benchmark requires a separate Main Game Gate.
+- NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
 - V6 final static acceptance: PASS; Design Freeze: ACTIVE. This static acceptance does not authorize gameplay; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
