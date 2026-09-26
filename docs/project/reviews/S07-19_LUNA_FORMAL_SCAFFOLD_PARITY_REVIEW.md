@@ -15,7 +15,7 @@ The run shows substantial formal-controller execution evidence, but not a comple
 5. Board → Planning → candidate → Risk → action: `PASS` for the 98-decision compact ledger; canonical CTRL notes were `98/98` valid.
 6. Outcome and M6–M48 checkpoints: `PASS`; M6/M12/M18/M24 recorded, M30/M36/M42/M48 explicitly `NOT_REACHED`.
 7. Safety exclusions and mutation boundary: `PASS`; provider/AgentServer/Runner/install/reload/second game/hidden-private access/Candidate mutation all `0`.
-8. Targeted verification and delivery: `PENDING_FINAL_COMMIT` at authoring time; the final commit/push and clean-tree state must be recorded with this review.
+8. Targeted verification and delivery: `PASS`; targeted tests, `git diff --check`, commit, push, and clean-tree verification completed at delivery.
 
 ## Runtime adherence summary
 
@@ -78,7 +78,7 @@ FACT: a formal Candidate scaffold was present, while the run still ended at M24.
 - Public-schema/behavior contract: actual listed tools included `new_game`, `observe`, and `take_action`; `take_action.choice` was declared integer and `notes` string.
 - Canonical-note audit: 98/98 valid; ledger: 98/98 records.
 - Public trajectory and ledger bytes/SHA-256 recorded in the run document.
-- Final `git diff --check`, commit, push, and clean-tree state: to be recorded after delivery.
+- Final `git diff --check`, commit, push, and clean-tree state: `PASS` at delivery; exact final SHA is recorded in the final TASK_RESULT response.
 
 ## TASK_RESULT — S07-19
 
@@ -89,7 +89,7 @@ FACT: a formal Candidate scaffold was present, while the run still ended at M24.
 - Base: `main@9602928e5fa3e5a087f8e8dbead63680deb093ea` = `origin/main` before execution.
 - Candidate: `candidate-v6c-compliance-cleanup`.
 - Authorization: `AUTHORIZE_S07_19_LUNA_FORMAL_SCAFFOLD_PARITY`.
-- Commit / Remote / Working Tree: exact final SHA is recorded in the final TASK_RESULT response; push and clean-tree checks are completed at delivery.
+- Commit / Remote / Working Tree: `PASS` at delivery; exact final SHA is recorded in the final TASK_RESULT response, remote is `origin/main`, and the working tree is clean.
 
 ### Player-phase integrity
 
