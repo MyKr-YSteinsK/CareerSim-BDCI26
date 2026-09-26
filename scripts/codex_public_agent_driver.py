@@ -1,4 +1,4 @@
-"""Thin interactive transport for the S07-13 Codex-as-Player pilot.
+"""Thin interactive transport for the S07-14 Codex-as-Player pilot.
 
 NO_POLICY_LOGIC: this module never selects an action. A choice is sent only
 after an explicit player input line naming a currently legal integer choice.
@@ -13,7 +13,7 @@ import json
 import os
 import sys
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -45,7 +45,7 @@ PUBLIC_TIME_FIELDS = {"current_month", "current_quarter", "current_year"}
 PUBLIC_FLAG_FIELDS = {"alive", "failed", "terminal", "game_over"}
 PUBLIC_EVENT_FIELDS = {"title", "description"}
 PUBLIC_CHOICE_FIELDS = {"choice", "action", "description"}
-PUBLIC_RECEIPT_FIELDS = {"success", "status", "message", "result", "feedback", "description"}
+PUBLIC_RECEIPT_FIELDS = {"success", "status", "reason", "message", "result", "feedback", "description"}
 
 
 @dataclass(frozen=True)
@@ -54,7 +54,11 @@ class PlayerInput:
     rationale: str
 
 
-def parse_player_input(line: str, legal_choice_ids: Sequence[int]) -> PlayerInput:
+def parse_player_input(
+    line: str,
+    legal_choice_ids: Sequence[int],
+    blocked_choice_ids: Sequence[int] = (),
+) -> PlayerInput:
     """Parse explicit '<integer> | <one-sentence rationale>' player input."""
 
     if "|" not in line:
@@ -68,6 +72,8 @@ def parse_player_input(line: str, legal_choice_ids: Sequence[int]) -> PlayerInpu
         raise ValueError("choice must be one integer") from exc
     if choice not in legal_choice_ids:
         raise ValueError("choice is not in the latest public legal-choice list")
+    if choice in blocked_choice_ids:
+        raise ValueError("this choice was just explicitly rejected in an unchanged public state")
     if not rationale or len(rationale) > 500:
         raise ValueError("provide one brief rationale (1-500 characters)")
     return PlayerInput(choice, rationale)
@@ -183,6 +189,103 @@ def project_public_snapshot(payload: Mapping[str, Any]) -> dict[str, Any]:
         "ending_score": ending_score,
         "ignored_field_names": sorted(ignored),
     }
+
+
+def compare_public_state(before: Mapping[str, Any], after: Mapping[str, Any]) -> str:
+    """Conservatively compare only fresh, participant-visible state fields."""
+
+    before_session = before.get("session_id")
+    after_session = after.get("session_id")
+    if not isinstance(before_session, str) or not before_session:
+        return "UNKNOWN_CRITICAL_STATE"
+    if not isinstance(after_session, str) or not after_session:
+        return "UNKNOWN_CRITICAL_STATE"
+    if before_session != after_session:
+        return "SESSION_MISMATCH"
+
+    changed = False
+    for key in ("time", "status"):
+        old = before.get(key)
+        new = after.get(key)
+        if not isinstance(old, Mapping) or not old or not isinstance(new, Mapping) or not new:
+            return "UNKNOWN_CRITICAL_STATE"
+        if set(old) != set(new):
+            return "UNKNOWN_CRITICAL_STATE"
+        changed = changed or old != new
+
+    old_flags = before.get("public_flags", {})
+    new_flags = after.get("public_flags", {})
+    if not isinstance(old_flags, Mapping) or not isinstance(new_flags, Mapping):
+        return "UNKNOWN_CRITICAL_STATE"
+    if bool(old_flags) != bool(new_flags) or set(old_flags) != set(new_flags):
+        if not changed:
+            return "UNKNOWN_CRITICAL_STATE"
+    elif old_flags != new_flags:
+        changed = True
+
+    old_terminal = before.get("terminal")
+    new_terminal = after.get("terminal")
+    if old_terminal is not None and not isinstance(old_terminal, bool):
+        return "UNKNOWN_CRITICAL_STATE"
+    if new_terminal is not None and not isinstance(new_terminal, bool):
+        return "UNKNOWN_CRITICAL_STATE"
+    if (old_terminal is None) != (new_terminal is None):
+        if not changed:
+            return "UNKNOWN_CRITICAL_STATE"
+    elif old_terminal != new_terminal:
+        changed = True
+
+    return "STATE_CHANGED" if changed else "STATE_UNCHANGED"
+
+
+@dataclass(frozen=True)
+class ActionReconciliation:
+    classification: str
+    comparison: str
+    snapshot: dict[str, Any] | None
+    receipt: dict[str, Any]
+    rejected: bool
+
+
+async def reconcile_completed_action(
+    before: Mapping[str, Any],
+    result: Any,
+    fresh_observe: Any,
+) -> ActionReconciliation:
+    """Reconcile every completed MCP result against exactly one fresh observe."""
+
+    payload, text, is_error = _decode_result(result)
+    receipt = _public_receipt(payload, text)
+    raw = _unwrap_public_payload(payload)
+    status = str(receipt.get("status", "")).lower()
+    negative = (
+        is_error
+        or raw.get("success") is False
+        or status in {"rejected", "invalid", "invalid_choice", "action_rejected"}
+    )
+    try:
+        snapshot = await fresh_observe()
+    except Exception:
+        return ActionReconciliation("UNKNOWN_SIDE_EFFECT", "OBSERVE_FAILED", None, receipt, False)
+    if not isinstance(snapshot, Mapping):
+        return ActionReconciliation("UNKNOWN_SIDE_EFFECT", "OBSERVE_UNCONFIRMED", None, receipt, False)
+
+    comparison = compare_public_state(before, snapshot)
+    if comparison in {"SESSION_MISMATCH", "UNKNOWN_CRITICAL_STATE"}:
+        return ActionReconciliation("UNKNOWN_SIDE_EFFECT", comparison, None, receipt, False)
+    if negative and comparison == "STATE_UNCHANGED":
+        return ActionReconciliation(
+            "EXPLICIT_ACTION_REJECTION_CONFIRMED", comparison, dict(snapshot), receipt, True
+        )
+    if negative and comparison == "STATE_CHANGED":
+        return ActionReconciliation(
+            "ACTION_RESPONSE_FALSE_BUT_PUBLIC_STATE_CHANGED", comparison, dict(snapshot), receipt, False
+        )
+    classification = (
+        "ACTION_RESPONSE_STATE_CHANGED" if comparison == "STATE_CHANGED"
+        else "ACTION_RESPONSE_STATE_UNCHANGED"
+    )
+    return ActionReconciliation(classification, comparison, dict(snapshot), receipt, False)
 
 
 def _decode_result(result: Any) -> tuple[Any, str, bool]:
@@ -389,10 +492,12 @@ async def run_pilot(output_dir: Path) -> int:
                         return None
                     snapshot = project_public_snapshot(_unwrap_public_payload(payload))
                     returned_session = snapshot["session_id"]
-                    if returned_session and returned_session != session_id:
+                    if not returned_session:
+                        evidence.write("stop", reason="OBSERVE_SESSION_ID_MISSING", expected=session_id)
+                        return None
+                    if returned_session != session_id:
                         evidence.write("stop", reason="OBSERVE_SESSION_MISMATCH", expected=session_id, returned=returned_session)
                         return None
-                    snapshot["session_id"] = returned_session or session_id
                     evidence.write("observe", count=observe_count, snapshot=snapshot)
                     _print_snapshot(snapshot, label)
                     return snapshot
@@ -402,11 +507,17 @@ async def run_pilot(output_dir: Path) -> int:
                     print("Observe failed or session identity mismatched; stopping.", flush=True)
                     return 3
 
+                blocked_choices: set[int] = set()
                 while current["terminal"] is not True:
                     legal_ids = [choice["choice"] for choice in current["choices"]]
                     if not legal_ids:
                         print("No legal public choices are available and terminal status is not confirmed; stopping.", flush=True)
                         evidence.write("stop", reason="NO_LEGAL_CHOICES_WITHOUT_PUBLIC_TERMINAL")
+                        return 4
+                    available_ids = [choice for choice in legal_ids if choice not in blocked_choices]
+                    if not available_ids:
+                        print("Every current legal choice was explicitly rejected in this unchanged state; stopping without resend.", flush=True)
+                        evidence.write("stop", reason="NO_UNBLOCKED_LEGAL_CHOICES", blocked_choices=sorted(blocked_choices))
                         return 4
                     if action_attempts >= 350:
                         print("Authorized action-attempt ceiling reached; stopping without another call.", flush=True)
@@ -415,12 +526,13 @@ async def run_pilot(output_dir: Path) -> int:
 
                     print(
                         "WAITING_FOR_PLAYER_CHOICE> enter '<legal integer> | one-sentence rationale'. "
-                        "No action is sent until explicit input.",
+                        + (f" Temporarily blocked rejected choices: {sorted(blocked_choices)}." if blocked_choices else "")
+                        + " No action is sent until explicit input.",
                         flush=True,
                     )
                     line = input().strip()
                     try:
-                        player_input = parse_player_input(line, legal_ids)
+                        player_input = parse_player_input(line, legal_ids, sorted(blocked_choices))
                     except ValueError as exc:
                         print(f"Input rejected locally; no MCP call made: {exc}", flush=True)
                         continue
@@ -451,30 +563,32 @@ async def run_pilot(output_dir: Path) -> int:
                         print("take_action transport outcome unknown; stopping, no resend.", flush=True)
                         return 6
 
-                    action_payload, action_text, action_is_error = _decode_result(action_result)
-                    receipt = _public_receipt(action_payload, action_text)
-                    success_value = action_payload.get("success") if isinstance(action_payload, Mapping) else None
-                    rejected_status = str(receipt.get("status", "")).lower() in {
-                        "rejected", "invalid", "invalid_choice", "action_rejected"
-                    }
-                    if success_value is False and not rejected_status and not action_is_error:
-                        evidence.write("stop", reason="TAKE_ACTION_OUTCOME_AMBIGUOUS", public_receipt=receipt)
-                        print("take_action returned an ambiguous result; stopping without resend.", flush=True)
-                        return 7
+                    reconciliation = await reconcile_completed_action(
+                        current,
+                        action_result,
+                        lambda: observe_and_render("FRESH PUBLIC OBSERVE AFTER ACTION RESPONSE"),
+                    )
                     evidence.write(
                         "take_action",
                         attempt=action_attempts,
-                        outcome="EXPLICIT_ERROR_RESPONSE" if action_is_error or rejected_status else "RETURNED",
-                        public_receipt=receipt,
+                        outcome=reconciliation.classification,
+                        state_comparison=reconciliation.comparison,
+                        public_receipt=reconciliation.receipt,
                     )
-
-                    # A completed MCP error/rejection is followed by one read-only
-                    # same-session observe; transport exceptions above never retry.
-                    current = await observe_and_render("FRESH PUBLIC OBSERVE AFTER ACTION RESPONSE")
-                    if current is None:
-                        print("Post-action observe could not safely confirm current public state; stopping.", flush=True)
-                        evidence.write("stop", reason="POST_ACTION_OBSERVE_UNCONFIRMED")
+                    if reconciliation.snapshot is None:
+                        print("Post-action observe could not safely confirm current public state; stopping without resend.", flush=True)
+                        evidence.write("stop", reason=reconciliation.classification)
                         return 8
+                    if reconciliation.rejected:
+                        blocked_choices.add(player_input.choice)
+                        print(
+                            f"Choice {player_input.choice} was explicitly rejected and public state is unchanged; "
+                            "choose another currently legal option.",
+                            flush=True,
+                        )
+                    elif reconciliation.comparison == "STATE_CHANGED":
+                        blocked_choices.clear()
+                    current = reconciliation.snapshot
 
                 print("Public terminal state confirmed.", flush=True)
                 evidence.write("terminal", snapshot=current, action_attempts=action_attempts)
