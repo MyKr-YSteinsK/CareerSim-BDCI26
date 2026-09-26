@@ -173,11 +173,29 @@ class FakeSessionContext:
         return None
 
 
-async def fake_batch(tmp_path, monkeypatch, client=None, transport_failure=False, stderr_text=""):
+async def fake_batch(
+    tmp_path,
+    monkeypatch,
+    client=None,
+    transport_failure=False,
+    stderr_text="",
+    *,
+    policy_order=None,
+    task_id="S07-07",
+    base_sha=batch_runner.S07_07_BASE_SHA,
+    return_report=False,
+    created_clients=None,
+):
     monkeypatch.setattr(batch_runner, "MCP_EXECUTABLE", Path(sys.executable))
     monkeypatch.setattr(batch_runner, "_planned_slots", lambda _p2: ["P0"])
     monkeypatch.setattr(batch_runner, "ClientSession", lambda *_args: FakeSessionContext())
-    monkeypatch.setattr(batch_runner, "MCPClientAdapter", lambda _session: client or FakePublicClient())
+    def make_client(_session):
+        instance = client if client is not None else FakePublicClient()
+        if created_clients is not None:
+            created_clients.append(instance)
+        return instance
+
+    monkeypatch.setattr(batch_runner, "MCPClientAdapter", make_client)
 
     @asynccontextmanager
     async def fake_stdio(_params, *, errlog):
@@ -189,8 +207,74 @@ async def fake_batch(tmp_path, monkeypatch, client=None, transport_failure=False
         yield object(), object()
 
     monkeypatch.setattr(batch_runner, "stdio_client", fake_stdio)
-    report = await batch_runner.run_live_batch(tmp_path / "runtime", tmp_path / "batch.json")
+    report = await batch_runner.run_live_batch(
+        tmp_path / "runtime",
+        tmp_path / "batch.json",
+        policy_order=policy_order,
+        task_id=task_id,
+        base_sha=base_sha,
+    )
+    if return_report:
+        return report
     return report["sessions"][0], report["totals"]
+
+
+@pytest.mark.asyncio
+async def test_explicit_s07_10_order_runs_only_six_p1_p2_sessions_and_records_identity(tmp_path, monkeypatch):
+    order = ["P1", "P2"] * 3
+    clients = []
+    report = await fake_batch(
+        tmp_path,
+        monkeypatch,
+        policy_order=order,
+        task_id="S07-10",
+        base_sha="test-base-sha",
+        return_report=True,
+        created_clients=clients,
+    )
+
+    assert report["task"] == "S07-10"
+    assert report["base"] == "test-base-sha"
+    assert report["planned_order"] == order
+    assert report["executed_order"] == order
+    assert [row["policy_code"] for row in report["sessions"]] == order
+    assert report["totals"]["direct_server_starts"] == 6
+    assert report["totals"]["new_game_count"] == 6
+    assert report["provider_calls"] == 0
+    assert report["agentserver_starts"] == 0
+    assert len(clients) == 6
+    assert all(
+        call[1]["notes"] == "S07-10 public mechanical probe"
+        for client in clients
+        for call in client.calls
+        if isinstance(call, tuple) and call[0] == "take_action"
+    )
+
+
+@pytest.mark.asyncio
+async def test_explicit_policy_order_rejects_p0_or_more_than_six_before_creating_runtime(tmp_path, monkeypatch):
+    monkeypatch.setattr(batch_runner, "MCP_EXECUTABLE", Path(sys.executable))
+    monkeypatch.setattr(batch_runner, "_planned_slots", lambda _p2: ["P0"])
+
+    with pytest.raises(ValueError, match="1-6 P1/P2"):
+        await batch_runner.run_live_batch(
+            tmp_path / "too-many",
+            tmp_path / "too-many.json",
+            policy_order=["P1"] * 7,
+            task_id="S07-10",
+            base_sha="test-base-sha",
+        )
+    with pytest.raises(ValueError, match="1-6 P1/P2"):
+        await batch_runner.run_live_batch(
+            tmp_path / "p0",
+            tmp_path / "p0.json",
+            policy_order=["P0"],
+            task_id="S07-10",
+            base_sha="test-base-sha",
+        )
+
+    assert not (tmp_path / "too-many").exists()
+    assert not (tmp_path / "p0").exists()
 
 
 @pytest.mark.asyncio

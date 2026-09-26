@@ -1,4 +1,4 @@
-"""Bounded direct-public-MCP batch runner for S07-07.
+"""Bounded direct-public-MCP batch runner for S07 mechanical-probe tasks.
 
 The live path is opt-in through ``--live`` and is intentionally serialized.
 Importing this module, running its tests, or calling the offline helpers never
@@ -49,6 +49,7 @@ MCP_EXECUTABLE = REPO_ROOT / ".venv" / "Scripts" / "career-emulator-mcp.exe"
 DEFAULT_RUNTIME_ROOT = REPO_ROOT / ".local" / "runtime" / "s07-07-mechanical-batch"
 DEFAULT_EVIDENCE_PATH = REPO_ROOT / "docs" / "project" / "runs" / "s07-07-mechanical-probe-batch.json"
 ACTION_CEILING = 300
+S07_07_BASE_SHA = "0a61130736408f56a98e4f3af71dd32c4e1cba80"
 
 # Only direct, public action-label semantics are mapped. Multi-target or
 # hidden-risk actions remain unmapped so the tracker cannot invent causality.
@@ -311,6 +312,7 @@ async def run_one_session(
     session_index: int,
     action_ceiling: int = ACTION_CEILING,
     result: SessionResult | None = None,
+    task_id: str = "S07-07",
 ) -> SessionResult:
     policy = _policy_for(policy_code)
     if result is None:
@@ -368,7 +370,7 @@ async def run_one_session(
                     {
                         "session_id": result.session_id,
                         "choice": decision.choice,
-                        "notes": "S07-07 public mechanical probe",
+                        "notes": f"{task_id} public mechanical probe",
                     },
                 )
             except ExplicitToolError:
@@ -523,13 +525,27 @@ def _totals(results: Sequence[SessionResult]) -> dict[str, int]:
     return {key: sum(getattr(result, key) for result in results) for key in keys}
 
 
-async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_path: Path = DEFAULT_EVIDENCE_PATH) -> dict[str, Any]:
+async def run_live_batch(
+    runtime_root: Path = DEFAULT_RUNTIME_ROOT,
+    evidence_path: Path = DEFAULT_EVIDENCE_PATH,
+    *,
+    policy_order: Sequence[str] | None = None,
+    task_id: str = "S07-07",
+    base_sha: str = S07_07_BASE_SHA,
+) -> dict[str, Any]:
+    if policy_order is None:
+        planned = _planned_slots(bool(STRUCTURAL_TARGETS))
+    else:
+        planned = list(policy_order)
+        if not planned or len(planned) > 6 or any(code not in {"P1", "P2"} for code in planned):
+            raise ValueError("explicit policy_order must contain 1-6 P1/P2 sessions")
+    if not task_id or not base_sha:
+        raise ValueError("task_id and base_sha must be non-empty")
     if not MCP_EXECUTABLE.is_file():
         raise FileNotFoundError(f"MCP executable missing: {MCP_EXECUTABLE}")
     runtime_root.mkdir(parents=True, exist_ok=False)
 
     p2_live_evaluable = bool(STRUCTURAL_TARGETS)
-    planned = _planned_slots(p2_live_evaluable)
     results: list[SessionResult] = []
     stop_reason: str | None = None
 
@@ -568,6 +584,7 @@ async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_pat
                             policy_code=policy_code,
                             session_index=index,
                             result=result,
+                            task_id=task_id,
                         )
                 result.shutdown_count = 1  # stdio_client exit completed.
         except Exception:
@@ -594,7 +611,7 @@ async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_pat
             flush=True,
         )
 
-        if index == 1 and result.status != "COMPLETED":
+        if task_id == "S07-07" and index == 1 and result.status != "COMPLETED":
             stop_reason = "MECHANICAL_PROBE_BATCH_STOPPED_AT_GATE_A"
             break
         if result.stop_batch:
@@ -603,8 +620,8 @@ async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_pat
 
     evidence_path.parent.mkdir(parents=True, exist_ok=True)
     batch = {
-        "task": "S07-07",
-        "base": "0a61130736408f56a98e4f3af71dd32c4e1cba80",
+        "task": task_id,
+        "base": base_sha,
         "candidate": "candidate-v6c-compliance-cleanup",
         "p2_live_evaluable": p2_live_evaluable,
         "planned_order": planned,
