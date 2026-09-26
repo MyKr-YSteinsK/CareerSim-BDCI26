@@ -2,14 +2,18 @@ import io
 import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from mcp.client.stdio import StdioServerParameters, stdio_client
 
 import scripts.run_public_mechanical_batch as batch_runner
 from scripts.run_public_mechanical_batch import (
+    ExplicitToolError,
     ProtocolError,
     _unexpected_runtime_text,
+    compare_rejection_observes,
+    decode_mcp_result,
     main,
     run_one_session,
     structural_target_for_choice,
@@ -57,6 +61,15 @@ def observe_payload(month, output, *, alive=True, failed=False):
     }
 
 
+def complete_observe(month=1, output=0, *, alive=True, failed=False, session_id="fake-session"):
+    payload = observe_payload(month, output, alive=alive, failed=failed)
+    payload["session_id"] = session_id
+    payload["current_state"]["status"].update(
+        skill=1, wealth=1, energy=2, duration_in_level=1
+    )
+    return payload
+
+
 class FakePublicClient:
     def __init__(self, *, terminal=True):
         self.terminal = terminal
@@ -83,6 +96,32 @@ class FakePublicClient:
         if name == "take_action":
             self.actions += 1
             return {"success": True, "error": None}
+        raise AssertionError(name)
+
+
+class RejectingPublicClient(FakePublicClient):
+    def __init__(self, *, after=None, recovery_error=False, tool_error=False):
+        super().__init__()
+        self.after = after or complete_observe()
+        self.recovery_error = recovery_error
+        self.tool_error = tool_error
+        self.observe_seen = 0
+
+    async def call_tool(self, name, arguments):
+        self.calls.append((name, arguments))
+        if name == "new_game":
+            return {"session_id": "fake-session"}
+        if name == "observe":
+            self.observe_seen += 1
+            if self.observe_seen == 1:
+                return complete_observe()
+            if self.recovery_error:
+                raise OSError("synthetic disconnected recovery")
+            return self.after
+        if name == "take_action":
+            if self.tool_error:
+                raise ExplicitToolError({"error": "public rejected"})
+            return {"success": False, "message": "public rejected"}
         raise AssertionError(name)
 
 
@@ -118,6 +157,89 @@ def test_public_tool_contract_and_no_seed_control():
 
     assert {"new_game", "observe", "take_action"}.issubset(names)
     assert seed_control is False
+
+
+def test_explicit_mcp_error_preserves_only_bounded_public_fields():
+    with pytest.raises(ExplicitToolError) as structured:
+        decode_mcp_result(SimpleNamespace(isError=True, structuredContent={"success": False, "message": "invalid choice", "hidden": "never"}, content=[]))
+    assert structured.value.receipt == {"success": False, "message": "invalid choice"}
+
+    text_block = SimpleNamespace(type="text", text='{"error":"public rejection","private":"never"}')
+    with pytest.raises(ExplicitToolError) as json_body:
+        decode_mcp_result(SimpleNamespace(isError=True, structuredContent=None, content=[text_block]))
+    assert json_body.value.receipt == {"error": "public rejection"}
+
+    with pytest.raises(ExplicitToolError) as unparsable:
+        decode_mcp_result(SimpleNamespace(isError=True, structuredContent=None, content=[SimpleNamespace(type="text", text="not JSON")]))
+    assert unparsable.value.receipt == {"reason_status": "EXPLICIT_REJECTION_NO_PUBLIC_REASON"}
+
+
+@pytest.mark.parametrize(
+    ("after", "expected", "delta_key"),
+    [
+        (complete_observe(), "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION", None),
+        (complete_observe(output=1), "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE", "output"),
+        (complete_observe(month=2), "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE", "current_month"),
+        (complete_observe(alive=False, failed=True), "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE", "alive"),
+        (complete_observe(session_id="other"), "REJECTION_STATE_UNCERTAIN", None),
+        ({**complete_observe(), "current_state": {"time": {"current_month": 1}}}, "REJECTION_STATE_UNCERTAIN", None),
+    ],
+)
+def test_rejection_public_state_comparison(after, expected, delta_key):
+    before = project_public_snapshot(complete_observe())
+    after_snapshot = project_public_snapshot(after)
+    status, delta = compare_rejection_observes(before, after_snapshot, "fake-session")
+    assert status == expected
+    assert (delta_key in delta) if delta_key else not delta
+
+
+@pytest.mark.asyncio
+async def test_rejection_unchanged_captures_receipt_and_observes_once_without_resend():
+    client = RejectingPublicClient()
+    result = await run_one_session(client, policy_code="P1", session_index=1)
+    assert result.status == "POLICY_ACTION_REJECTED"
+    assert result.rejection_recovery == "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION"
+    assert result.rejection_receipt == {"success": False, "message": "public rejected"}
+    assert result.take_action_count == 1 and result.successful_actions == 0
+    assert result.explicit_rejections == 1 and result.observe_count == 2
+    assert result.stop_batch is False
+
+
+@pytest.mark.asyncio
+async def test_rejection_changed_is_partial_anomaly_and_tool_error_is_recovered():
+    client = RejectingPublicClient(after=complete_observe(output=1), tool_error=True)
+    result = await run_one_session(client, policy_code="P2", session_index=1)
+    assert result.status == "EXPLICIT_REJECTION_STATE_CHANGED"
+    assert result.rejection_recovery == "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE"
+    assert result.rejection_public_delta["output"] == {"before": 0, "after": 1}
+    assert result.rejection_receipt == {"error": "public rejected"}
+    assert result.stop_batch is False
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("client", [
+    RejectingPublicClient(recovery_error=True),
+    RejectingPublicClient(after=complete_observe(session_id="other")),
+])
+async def test_rejection_recovery_unknown_stops_without_action_retry(client):
+    result = await run_one_session(client, policy_code="P1", session_index=1)
+    assert result.status in {"UNKNOWN_SIDE_EFFECT", "PUBLIC_INTERFACE_BOUNDARY_REVIEW_REQUIRED"}
+    assert result.stop_batch is True
+    assert result.take_action_count == 1
+
+
+@pytest.mark.asyncio
+async def test_confirmed_rejection_continues_next_fresh_slot(tmp_path, monkeypatch):
+    report = await fake_batch(
+        tmp_path, monkeypatch, client=RejectingPublicClient(),
+        policy_order=["P1", "P2"], task_id="S07-11", return_report=True,
+    )
+    assert report["executed_order"] == ["P1", "P2"]
+    assert [row["status"] for row in report["sessions"]] == ["POLICY_ACTION_REJECTED"] * 2
+    assert report["totals"]["new_game_count"] == 2
+    assert report["totals"]["explicit_rejections"] == 2
+    assert report["totals"]["observe_count"] == 4
+    assert report["decision"] == "MECHANICAL_PROBE_BATCH_EXECUTION_COMPLETE"
 
 
 def test_live_path_requires_explicit_flag_and_import_is_side_effect_free():

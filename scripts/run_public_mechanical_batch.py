@@ -59,6 +59,9 @@ STRUCTURAL_TARGETS: dict[str, tuple[str, str]] = {
     "心理修复": ("dignity", "energy:dignity"),
     "准备汇报材料": ("output", "energy:output"),
 }
+REJECTION_COMPARE_STATUS = frozenset(
+    {"level", "health", "dignity", "skill", "network", "output", "wealth", "energy", "duration_in_level"}
+)
 
 
 class PublicBatchError(RuntimeError):
@@ -67,6 +70,10 @@ class PublicBatchError(RuntimeError):
 
 class ExplicitToolError(PublicBatchError):
     """The server returned an explicit MCP/tool error, not an unknown outcome."""
+
+    def __init__(self, receipt: Mapping[str, Any] | None = None) -> None:
+        super().__init__("server returned an explicit MCP tool error")
+        self.receipt = bounded_rejection_receipt(receipt)
 
 
 class PublicBoundaryError(PublicBatchError):
@@ -110,30 +117,56 @@ def _unwrap_mapping(value: Mapping[str, Any]) -> Mapping[str, Any]:
     return value
 
 
-def decode_mcp_result(result: Any) -> Mapping[str, Any]:
-    """Decode one already-received MCP result without logging raw content."""
+def bounded_rejection_receipt(value: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Keep only small participant-visible scalar error fields, never raw MCP content."""
 
-    if bool(getattr(result, "isError", False)):
-        raise ExplicitToolError("server returned an explicit MCP tool error")
+    allowed = ("success", "error", "message", "reason", "status", "code", "error_code")
+    receipt: dict[str, Any] = {}
+    if isinstance(value, Mapping):
+        for key in allowed:
+            item = value.get(key)
+            if isinstance(item, bool) or (isinstance(item, (int, float)) and not isinstance(item, bool)):
+                receipt[key] = item
+            elif isinstance(item, str):
+                one_line = " ".join(item.split())
+                if len(one_line) <= 160 and not any(
+                    token in one_line.lower() for token in ("api_key", "bearer ", "password", "secret")
+                ):
+                    receipt[key] = one_line
+    if not any(key in receipt for key in ("error", "message", "reason", "status", "code", "error_code")):
+        receipt["reason_status"] = "EXPLICIT_REJECTION_NO_PUBLIC_REASON"
+    return receipt
 
+
+def _result_mapping(result: Any) -> Mapping[str, Any] | None:
     structured = getattr(result, "structuredContent", None)
     if isinstance(structured, Mapping):
         return _unwrap_mapping(structured)
-
     content = getattr(result, "content", None)
     if isinstance(content, Sequence):
         for block in content:
             if getattr(block, "type", None) != "text":
                 continue
-            text = getattr(block, "text", "")
-            if not isinstance(text, str):
+            body = getattr(block, "text", None)
+            if not isinstance(body, str):
                 continue
             try:
-                decoded = json.loads(text)
+                decoded = json.loads(body)
             except json.JSONDecodeError:
                 continue
             if isinstance(decoded, Mapping):
                 return _unwrap_mapping(decoded)
+    return None
+
+
+def decode_mcp_result(result: Any) -> Mapping[str, Any]:
+    """Decode one already-received MCP result without logging raw content."""
+
+    decoded = _result_mapping(result)
+    if bool(getattr(result, "isError", False)):
+        raise ExplicitToolError(decoded)
+    if decoded is not None:
+        return decoded
     raise ProtocolError("MCP result did not contain a public JSON mapping")
 
 
@@ -219,6 +252,46 @@ def project_session_snapshot(payload: Mapping[str, Any], expected_session_id: st
     return snapshot
 
 
+def compare_rejection_observes(
+    before: PublicSnapshot, after: PublicSnapshot, expected_session_id: str
+) -> tuple[str, dict[str, Any]]:
+    """Use only complete public core fields; text/choice drift is not mutation proof."""
+
+    if before.session_id != expected_session_id or after.session_id != expected_session_id:
+        return "REJECTION_STATE_UNCERTAIN", {}
+    if any(
+        value is None
+        for snap in (before, after)
+        for value in (snap.time.current_month, snap.time.current_quarter, snap.time.current_year, snap.alive, snap.failed)
+    ):
+        return "REJECTION_STATE_UNCERTAIN", {}
+    if any(
+        key not in snap.status or snap.status[key] is None
+        for snap in (before, after)
+        for key in REJECTION_COMPARE_STATUS
+    ):
+        return "REJECTION_STATE_UNCERTAIN", {}
+
+    delta: dict[str, Any] = {}
+    for key in ("current_month", "current_quarter", "current_year"):
+        old, new = getattr(before.time, key), getattr(after.time, key)
+        if old != new:
+            delta[key] = {"before": old, "after": new}
+    for key in sorted(REJECTION_COMPARE_STATUS):
+        old, new = before.status[key], after.status[key]
+        if old != new:
+            delta[key] = {"before": old, "after": new}
+    for key in ("alive", "failed"):
+        old, new = getattr(before, key), getattr(after, key)
+        if old != new:
+            delta[key] = {"before": old, "after": new}
+    if delta:
+        return "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE", delta
+    if before.event != after.event or before.public_feed != after.public_feed or set(before.choices) != set(after.choices):
+        return "REJECTION_STATE_UNCERTAIN", {}
+    return "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION", {}
+
+
 def structural_target_for_choice(snapshot: PublicSnapshot, choice_id: int) -> tuple[str, str] | None:
     """Return a directly mapped public target/path, or fail closed."""
 
@@ -240,6 +313,10 @@ class SessionResult:
     natural_terminal: bool = False
     survival_months: int | None = None
     successful_actions: int = 0
+    explicit_rejections: int = 0
+    rejection_receipt: dict[str, Any] | None = None
+    rejection_recovery: str | None = None
+    rejection_public_delta: dict[str, Any] = field(default_factory=dict)
     unsupported_decisions: int = 0
     invalid_calls: int = 0
     repeated_action_count: int = 0
@@ -355,7 +432,7 @@ async def run_one_session(
                 result.error_code = "POLICY_RETURNED_NONLEGAL_CHOICE"
                 result.stop_batch = True
                 break
-            if result.successful_actions >= action_ceiling:
+            if result.take_action_count >= action_ceiling:
                 result.status = "ACTION_CEILING"
                 result.error_code = "ACTION_CEILING_REACHED"
                 result.stop_batch = True
@@ -364,6 +441,7 @@ async def run_one_session(
             if pending_no_progress_choice == decision.choice:
                 result.repeated_investment_after_no_progress += 1
             result.take_action_count += 1
+            rejection: Mapping[str, Any] | None = None
             try:
                 receipt = await client.call_tool(
                     "take_action",
@@ -373,17 +451,54 @@ async def run_one_session(
                         "notes": f"{task_id} public mechanical probe",
                     },
                 )
-            except ExplicitToolError:
+            except ExplicitToolError as exc:
+                rejection = exc.receipt
+            else:
+                if receipt.get("success") is not True:
+                    rejection = bounded_rejection_receipt(receipt)
+            if rejection is not None:
                 result.invalid_calls += 1
-                result.status = "PROTOCOL_FAILURE"
-                result.error_code = "EXPLICIT_TAKE_ACTION_ERROR"
-                result.stop_batch = True
-                break
-            if receipt.get("success") is not True:
-                result.invalid_calls += 1
-                result.status = "PROTOCOL_FAILURE"
-                result.error_code = "EXPLICIT_TAKE_ACTION_REJECTION"
-                result.stop_batch = True
+                result.explicit_rejections += 1
+                result.rejection_receipt = dict(rejection)
+                result.observe_count += 1
+                try:
+                    recovery_payload = await client.call_tool("observe", {"session_id": result.session_id})
+                    state_payload = recovery_payload.get("current_state")
+                    observed_id = (
+                        state_payload.get("session_id")
+                        if isinstance(state_payload, Mapping) and state_payload.get("session_id")
+                        else recovery_payload.get("session_id")
+                    )
+                    if observed_id is not None and observed_id != result.session_id:
+                        result.status = "UNKNOWN_SIDE_EFFECT"
+                        result.error_code = "REJECTION_STATE_UNCERTAIN"
+                        result.rejection_recovery = "REJECTION_STATE_UNCERTAIN"
+                        result.stop_batch = True
+                        break
+                    recovery = project_session_snapshot(recovery_payload, result.session_id)
+                except PublicBoundaryError:
+                    result.status = "PUBLIC_INTERFACE_BOUNDARY_REVIEW_REQUIRED"
+                    result.error_code = "REJECTION_RECOVERY_PUBLIC_BOUNDARY"
+                    result.stop_batch = True
+                    break
+                except (UnknownSideEffectError, ExplicitToolError, ProtocolError, TimeoutError, ConnectionError, BrokenPipeError, OSError):
+                    result.status = "UNKNOWN_SIDE_EFFECT"
+                    result.error_code = "REJECTION_RECOVERY_OBSERVE_UNKNOWN"
+                    result.stop_batch = True
+                    break
+                comparison, delta = compare_rejection_observes(snapshot, recovery, result.session_id)
+                result.rejection_recovery = comparison
+                result.rejection_public_delta = delta
+                if comparison == "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION":
+                    result.status = "POLICY_ACTION_REJECTED"
+                elif comparison == "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE":
+                    result.status = "EXPLICIT_REJECTION_STATE_CHANGED"
+                else:
+                    result.status = "UNKNOWN_SIDE_EFFECT"
+                    result.error_code = "REJECTION_STATE_UNCERTAIN"
+                    result.stop_batch = True
+                snapshot = recovery
+                observed_payload = recovery_payload
                 break
 
             result.successful_actions += 1
@@ -520,6 +635,7 @@ def _totals(results: Sequence[SessionResult]) -> dict[str, int]:
         "observe_count",
         "take_action_count",
         "successful_actions",
+        "explicit_rejections",
         "shutdown_count",
     )
     return {key: sum(getattr(result, key) for result in results) for key in keys}
@@ -634,8 +750,11 @@ async def run_live_batch(
         "skill_installs_or_reloads": 0,
         "stop_reason": stop_reason,
         "decision": (
-            "MECHANICAL_PROBE_BATCH_COMPLETE"
-            if len(results) == len(planned) and all(item.status == "COMPLETED" for item in results)
+            "MECHANICAL_PROBE_BATCH_EXECUTION_COMPLETE"
+            if len(results) == len(planned) and all(
+                item.status in {"COMPLETED", "POLICY_ACTION_REJECTED", "EXPLICIT_REJECTION_STATE_CHANGED", "POLICY_MECHANICALLY_INVALID_OR_INCOMPLETE"}
+                for item in results
+            )
             else stop_reason or "MECHANICAL_PROBE_BATCH_STOPPED_ON_RUNTIME_BOUNDARY"
         ),
     }
