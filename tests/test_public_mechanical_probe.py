@@ -53,6 +53,7 @@ def test_public_projection_is_strict_and_records_unknown_names():
                 "hidden_counter": 99,
                 "current_state": {
                     **observe_payload()["current_state"],
+                    "status": {"output": 10, "hidden_risk": 7},
                     "private_formula": {"value": 1},
                 },
             }
@@ -65,8 +66,10 @@ def test_public_projection_is_strict_and_records_unknown_names():
     assert projected.choices[0].choice == 1
     assert "hidden_counter" in projected.ignored_fields
     assert "current_state.private_formula" in projected.ignored_fields
+    assert "current_state.status.hidden_risk" in projected.ignored_fields
     assert not hasattr(projected, "hidden_counter")
     assert "hidden_counter" not in projected.status
+    assert "hidden_risk" not in projected.status
 
 
 def test_min_id_control_returns_integer_one():

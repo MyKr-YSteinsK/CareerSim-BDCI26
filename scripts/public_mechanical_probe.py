@@ -25,6 +25,7 @@ _TOP = {"session_id", "current_state", "current_event", "choices", "events", "en
 _STATE = {"session_id", "time", "status", "simulation_flags"}
 _TIME = {"current_month", "current_quarter", "current_year"}
 _FLAGS = {"alive", "failed", "failure_reason"}
+_PUBLIC_STATUS = {"level", "health", "dignity", "skill", "network", "output", "wealth", "energy", "duration_in_level"}
 _EVENT = {"title", "description"}
 _CHOICE = {"choice", "action", "description"}
 
@@ -129,7 +130,7 @@ def project_public_snapshot(response: Mapping[str, Any]) -> PublicSnapshot:
     raw_status = _mapping(state.get("status"), "current_state.status", ignored)
     for key, value in raw_status.items():
         name = str(key)
-        if _scalar(value):
+        if name in _PUBLIC_STATUS and _scalar(value):
             status[name] = value
         else:
             ignored.add(f"current_state.status.{name}")
