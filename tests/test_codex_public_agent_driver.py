@@ -59,6 +59,30 @@ def test_unknown_terminal_or_empty_choice_does_not_invent_action() -> None:
     assert "private_action" in snapshot["ignored_field_names"]
 
 
+def test_public_terminal_dimensions_keep_allowlisted_scores_only() -> None:
+    snapshot = driver.project_public_snapshot(
+        {
+            "session_id": "public-session",
+            "ending_score": {
+                "quantitative_score": 65.16,
+                "dimensions": {
+                    "Level": {"raw": 6, "weighted_score": 18.0, "threshold": 999},
+                    "Risk Control": {"raw": 0, "score": 10.0},
+                    "private_metric": {"score": 50.0},
+                },
+            },
+        }
+    )
+
+    assert snapshot["ending_score"]["quantitative_score"] == 65.16
+    assert snapshot["ending_score"]["dimensions"] == {
+        "Level": {"raw": 6, "weighted_score": 18.0},
+        "Risk Control": {"raw": 0, "score": 10.0},
+    }
+    assert "ending_score.dimensions.Level.threshold" in snapshot["ignored_field_names"]
+    assert "ending_score.dimensions.private_metric" in snapshot["ignored_field_names"]
+
+
 def test_player_input_validation_is_not_an_action_selector() -> None:
     source = MODULE_PATH.read_text(encoding="utf-8")
     assert "WAITING_FOR_PLAYER_CHOICE>" in source
@@ -192,7 +216,13 @@ def _fake_tools() -> list[SimpleNamespace]:
     ]
 
 
-def _observe_payload(month: int, *, terminal: bool = False) -> dict[str, object]:
+def _observe_payload(
+    month: int,
+    *,
+    terminal: bool = False,
+    event_title: str = "Public event",
+    choices: list[dict[str, object]] | None = None,
+) -> dict[str, object]:
     return {
         "session_id": "pilot-session",
         "current_state": {
@@ -201,8 +231,8 @@ def _observe_payload(month: int, *, terminal: bool = False) -> dict[str, object]
             "status": {"health": 70 if month == 1 else 69},
             "simulation_flags": {"alive": not terminal, "failed": terminal},
         },
-        "current_event": {"title": "Public event", "description": "Participant-visible."},
-        "choices": [
+        "current_event": {"title": event_title, "description": "Participant-visible."},
+        "choices": choices if choices is not None else [
             {"choice": 1, "action": "First public action", "description": "Option one"},
             {"choice": 2, "action": "Second public action", "description": "Option two"},
         ],
@@ -255,6 +285,66 @@ def test_run_reconciles_rejection_blocks_resend_and_returns_to_player(
     result = asyncio.run(driver.run_pilot(tmp_path / "pilot-evidence"))
     assert result == 0
     assert fake_client.actions == [1, 2, 1]
+    assert fake_client.observe_count == 4
+
+
+def test_rejection_block_is_scoped_to_the_same_public_menu_context(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    energy_choices = [
+        {"choice": 2, "action": "技能学习", "description": "Energy action"},
+        {"choice": 8, "action": "保留体力", "description": "End Energy allocation"},
+    ]
+    main_choices = [
+        {"choice": 2, "action": "向领导汇报成果", "description": "Main action"},
+    ]
+
+    class FakeClient:
+        def __init__(self) -> None:
+            self.observe_count = 0
+            self.actions: list[int] = []
+
+        async def initialize(self) -> SimpleNamespace:
+            return SimpleNamespace(protocolVersion="test")
+
+        async def list_tools(self) -> SimpleNamespace:
+            return SimpleNamespace(tools=_fake_tools())
+
+        async def call_tool(self, name: str, arguments: dict[str, object]) -> SimpleNamespace:
+            if name == "new_game":
+                return _mcp_result({"session_id": "pilot-session"})
+            if name == "observe":
+                self.observe_count += 1
+                if self.observe_count <= 2:
+                    return _mcp_result(
+                        _observe_payload(1, event_title="Energy", choices=energy_choices)
+                    )
+                if self.observe_count == 3:
+                    return _mcp_result(
+                        _observe_payload(1, event_title="Quarterly Main", choices=main_choices)
+                    )
+                return _mcp_result(_observe_payload(2, terminal=True, choices=[]))
+            if name == "take_action":
+                choice = int(arguments["choice"])
+                self.actions.append(choice)
+                if len(self.actions) == 1:
+                    return _mcp_result({"success": False})
+                return _mcp_result({"success": True})
+            raise AssertionError(f"unexpected tool call: {name}")
+
+    fake_client = FakeClient()
+    _install_fake_mcp(monkeypatch, fake_client, tmp_path)
+    inputs = iter([
+        "2 | Try the public skill-learning action.",
+        "2 | Do not resend in the unchanged Energy menu.",
+        "8 | End this Energy allocation.",
+        "2 | In the new Main menu, this is a different action.",
+    ])
+    monkeypatch.setattr("builtins.input", lambda: next(inputs))
+
+    result = asyncio.run(driver.run_pilot(tmp_path / "menu-context-evidence"))
+    assert result == 0
+    assert fake_client.actions == [2, 8, 2]
     assert fake_client.observe_count == 4
 
 

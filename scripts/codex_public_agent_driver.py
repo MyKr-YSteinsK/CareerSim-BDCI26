@@ -1,4 +1,4 @@
-"""Thin interactive transport for the S07-14 Codex-as-Player pilot.
+"""Thin interactive transport for the S07-15 Codex-as-Player discovery runs.
 
 NO_POLICY_LOGIC: this module never selects an action. A choice is sent only
 after an explicit player input line naming a currently legal integer choice.
@@ -46,6 +46,17 @@ PUBLIC_FLAG_FIELDS = {"alive", "failed", "terminal", "game_over"}
 PUBLIC_EVENT_FIELDS = {"title", "description"}
 PUBLIC_CHOICE_FIELDS = {"choice", "action", "description"}
 PUBLIC_RECEIPT_FIELDS = {"success", "status", "reason", "message", "result", "feedback", "description"}
+PUBLIC_SCORE_DIMENSIONS = {
+    "level",
+    "wealth",
+    "resilience",
+    "skill",
+    "risk",
+    "risk_control",
+    "network",
+    "output",
+}
+PUBLIC_SCORE_COMPONENTS = {"raw", "raw_value", "score", "weighted", "weighted_score", "points"}
 
 
 @dataclass(frozen=True)
@@ -81,6 +92,43 @@ def parse_player_input(
 
 def _scalar(value: Any) -> bool:
     return value is None or isinstance(value, (str, bool, int, float))
+
+
+def _project_public_score_dimensions(value: Any, ignored: set[str]) -> dict[str, Any]:
+    """Retain only recognized public ending dimensions and numeric score components."""
+
+    if not isinstance(value, Mapping):
+        ignored.add("ending_score.dimensions")
+        return {}
+
+    dimensions: dict[str, Any] = {}
+    for name, detail in value.items():
+        normalized_name = str(name).strip().lower().replace(" ", "_")
+        prefix = f"ending_score.dimensions.{name}"
+        if normalized_name not in PUBLIC_SCORE_DIMENSIONS:
+            ignored.add(prefix)
+            continue
+        if isinstance(detail, (int, float)) and not isinstance(detail, bool):
+            dimensions[str(name)] = detail
+            continue
+        if isinstance(detail, Mapping):
+            components = {}
+            for component, score in detail.items():
+                if (
+                    str(component).lower() in PUBLIC_SCORE_COMPONENTS
+                    and isinstance(score, (int, float))
+                    and not isinstance(score, bool)
+                ):
+                    components[str(component)] = score
+                else:
+                    ignored.add(f"{prefix}.{component}")
+            if components:
+                dimensions[str(name)] = components
+            else:
+                ignored.add(prefix)
+            continue
+        ignored.add(prefix)
+    return dimensions
 
 
 def _unwrap_public_payload(value: Any) -> Mapping[str, Any]:
@@ -159,12 +207,15 @@ def project_public_snapshot(payload: Mapping[str, Any]) -> dict[str, Any]:
     ending_score: dict[str, Any] = {}
     raw_score = raw.get("ending_score")
     if isinstance(raw_score, Mapping):
-        ending_score = {
-            str(key): value
-            for key, value in raw_score.items()
-            if _scalar(value)
-        }
-        ignored.update(f"ending_score.{key}" for key, value in raw_score.items() if not _scalar(value))
+        for key, value in raw_score.items():
+            if key == "dimensions":
+                dimensions = _project_public_score_dimensions(value, ignored)
+                if dimensions:
+                    ending_score["dimensions"] = dimensions
+            elif _scalar(value):
+                ending_score[str(key)] = value
+            else:
+                ignored.add(f"ending_score.{key}")
     elif "ending_score" in raw:
         ignored.add("ending_score")
 
@@ -236,6 +287,23 @@ def compare_public_state(before: Mapping[str, Any], after: Mapping[str, Any]) ->
         changed = True
 
     return "STATE_CHANGED" if changed else "STATE_UNCHANGED"
+
+
+def _rejection_context(snapshot: Mapping[str, Any]) -> tuple[Any, ...]:
+    """Identify the public menu context for preventing an immediate resend."""
+
+    event = snapshot.get("event")
+    event_context = (
+        event.get("title"),
+        event.get("description"),
+    ) if isinstance(event, Mapping) else (None, None)
+    choices = snapshot.get("choices")
+    choice_context = tuple(
+        (choice.get("choice"), choice.get("action"), choice.get("description"))
+        for choice in choices
+        if isinstance(choice, Mapping)
+    ) if isinstance(choices, list) else ()
+    return snapshot.get("session_id"), event_context, choice_context
 
 
 @dataclass(frozen=True)
@@ -508,7 +576,11 @@ async def run_pilot(output_dir: Path) -> int:
                     return 3
 
                 blocked_choices: set[int] = set()
+                blocked_context: tuple[Any, ...] | None = None
                 while current["terminal"] is not True:
+                    if blocked_choices and blocked_context != _rejection_context(current):
+                        blocked_choices.clear()
+                        blocked_context = None
                     legal_ids = [choice["choice"] for choice in current["choices"]]
                     if not legal_ids:
                         print("No legal public choices are available and terminal status is not confirmed; stopping.", flush=True)
@@ -581,6 +653,7 @@ async def run_pilot(output_dir: Path) -> int:
                         return 8
                     if reconciliation.rejected:
                         blocked_choices.add(player_input.choice)
+                        blocked_context = _rejection_context(reconciliation.snapshot)
                         print(
                             f"Choice {player_input.choice} was explicitly rejected and public state is unchanged; "
                             "choose another currently legal option.",
@@ -588,6 +661,7 @@ async def run_pilot(output_dir: Path) -> int:
                         )
                     elif reconciliation.comparison == "STATE_CHANGED":
                         blocked_choices.clear()
+                        blocked_context = None
                     current = reconciliation.snapshot
 
                 print("Public terminal state confirmed.", flush=True)
