@@ -9,6 +9,7 @@ from mcp.client.stdio import StdioServerParameters, stdio_client
 import scripts.run_public_mechanical_batch as batch_runner
 from scripts.run_public_mechanical_batch import (
     ProtocolError,
+    _unexpected_runtime_text,
     main,
     run_one_session,
     structural_target_for_choice,
@@ -125,6 +126,15 @@ def test_live_path_requires_explicit_flag_and_import_is_side_effect_free():
     assert "if __name__ == \"__main__\"" in source
     assert "--live" in source
     assert "subprocess" not in source
+
+
+def test_fastmcp_auth_provider_path_warning_is_not_a_model_call():
+    warning = (
+        "D:\\CS\\CareerSim\\.venv\\Lib\\site-packages\\fastmcp\\server\\auth\\providers\\jwt.py:10: "
+        "AuthlibDeprecationWarning: authlib.jose module is deprecated"
+    )
+    assert _unexpected_runtime_text(warning) is False
+    assert _unexpected_runtime_text(warning + "\nprovider request started") is True
 
 
 @pytest.mark.asyncio

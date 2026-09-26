@@ -1,0 +1,113 @@
+{
+  "agentserver_starts": 0,
+  "base": "f425b0a7a3361c889d324101a012610af4d59f74",
+  "candidate": "candidate-v6c-compliance-cleanup",
+  "decision": "GATE_A_P0_RETRY_PASS",
+  "executed_order": [
+    "P0"
+  ],
+  "p2_live_evaluable": true,
+  "planned_order": [
+    "P0"
+  ],
+  "provider_calls": 0,
+  "runner_play": 0,
+  "sessions": [
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "child_spawn_confirmed": true,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": {
+        "competition_partial_score": 13.96,
+        "completed": false,
+        "grade": "E",
+        "grade_meaning": "速通离职 —— 工牌还没捂热就交回去了，前台都没来得及记住你的脸",
+        "outcome": "eliminated",
+        "quantitative_score": 19.95,
+        "survival_months": 2
+      },
+      "error_code": null,
+      "final_public_level": "L1",
+      "final_public_status": {
+        "dignity": 8,
+        "duration_in_level": 2,
+        "energy": 3,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": -1,
+        "skill": 3,
+        "wealth": 0
+      },
+      "initialize_count": 1,
+      "invalid_calls": 0,
+      "list_tools_count": 1,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 2441,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-09-gate-a-p0-retry\\01-p0\\server-stderr.log",
+          "sha256": "ed34056f24edca7c458065d5ac1c14bc190f16d5d6dbe00359f186c3f82e0086"
+        },
+        "session_summary": {
+          "bytes": 2741,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-09-gate-a-p0-retry\\01-p0\\session_summary.json",
+          "sha256": "224a562f3a2f2c887d60900135483a17b5ac310f0ed3b0e7f966ebb96cc09c34"
+        }
+      },
+      "longest_repeated_structural_path": 0,
+      "natural_terminal": true,
+      "new_game_count": 1,
+      "no_progress": 0,
+      "observe_count": 5,
+      "policy_code": "P0",
+      "policy_name": "MIN_ID_CONTROL",
+      "promotion_months": [],
+      "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+      "public_tool_names": [
+        "check_latest_logs",
+        "new_game",
+        "observe",
+        "show_employee_handbook",
+        "take_action"
+      ],
+      "public_warning_count": 1,
+      "repeated_action_count": 4,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "server_start_attempted": 1,
+      "session_id": "5888da780669417daf8c74124edcaf6e",
+      "session_index": 1,
+      "shutdown_count": 1,
+      "stall_signals": 0,
+      "status": "COMPLETED",
+      "stop_batch": false,
+      "structural_switch_count": 0,
+      "successful_actions": 4,
+      "survival_months": 2,
+      "take_action_count": 4,
+      "transport_entered": 1,
+      "unsupported_decisions": 0
+    }
+  ],
+  "skill_installs_or_reloads": 0,
+  "report_correction": {
+    "original_harness_status": "UNEXPECTED_AGENT_OR_PROVIDER_DEPENDENCY",
+    "reason": "The sole provider substring was in a FastMCP auth/providers/jwt.py AuthlibDeprecationWarning path; no model-provider activity was indicated. The task-local raw summary and stderr remain unchanged."
+  },
+  "stop_reason": null,
+  "task": "S07-09",
+  "totals": {
+    "direct_server_starts": 1,
+    "initialize_count": 1,
+    "list_tools_count": 1,
+    "new_game_count": 1,
+    "observe_count": 5,
+    "server_start_attempted": 1,
+    "shutdown_count": 1,
+    "successful_actions": 4,
+    "take_action_count": 4,
+    "transport_entered": 1
+  }
+}

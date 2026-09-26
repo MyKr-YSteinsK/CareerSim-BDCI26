@@ -491,8 +491,15 @@ def _write_local_evidence(result: SessionResult, session_dir: Path, stderr_path:
 
 
 def _unexpected_runtime_text(stderr: str) -> bool:
-    lowered = stderr.lower()
-    return any(token in lowered for token in ("deepseek", "agentserver", "jiuwenswarm", "prewarm", "provider"))
+    for line in stderr.splitlines():
+        lowered = line.lower().replace("\\", "/")
+        # A FastMCP import warning names its auth/providers module; this is
+        # not evidence that an AgentServer or model provider was invoked.
+        if "fastmcp/server/auth/providers/jwt.py:" in lowered and "authlibdeprecationwarning" in lowered:
+            continue
+        if any(token in lowered for token in ("deepseek", "agentserver", "jiuwenswarm", "prewarm", "provider")):
+            return True
+    return False
 
 
 def _planned_slots(p2_live_evaluable: bool) -> list[str]:
