@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import io
 import json
 import sys
 from collections.abc import Mapping, Sequence
@@ -263,6 +262,9 @@ class SessionResult:
     take_action_count: int = 0
     initialize_count: int = 0
     list_tools_count: int = 0
+    server_start_attempted: int = 0
+    transport_entered: int = 0
+    child_spawn_confirmed: bool | None = None
     direct_server_starts: int = 0
     shutdown_count: int = 0
     risk_override_exercised: bool = False
@@ -308,9 +310,11 @@ async def run_one_session(
     policy_code: str,
     session_index: int,
     action_ceiling: int = ACTION_CEILING,
+    result: SessionResult | None = None,
 ) -> SessionResult:
     policy = _policy_for(policy_code)
-    result = SessionResult(session_index, policy_code, policy.name)
+    if result is None:
+        result = SessionResult(session_index, policy_code, policy.name)
     probe = MechanicalProbe(policy)
     previous_snapshot: PublicSnapshot | None = None
     previous_level: str | None = None
@@ -472,15 +476,17 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _write_local_evidence(result: SessionResult, session_dir: Path, stderr: str) -> None:
+def _write_local_evidence(result: SessionResult, session_dir: Path, stderr_path: Path) -> None:
     session_dir.mkdir(parents=True, exist_ok=True)
     report_path = session_dir / "session_summary.json"
     report_path.write_text(json.dumps(result.local_dict(), ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
-    stderr_path = session_dir / "server-stderr.log"
-    stderr_path.write_text(stderr, encoding="utf-8")
     result.local_evidence = {
         "session_summary": {"path": str(report_path), "bytes": report_path.stat().st_size, "sha256": _sha256(report_path)},
-        "server_stderr": {"path": str(stderr_path), "bytes": stderr_path.stat().st_size, "sha256": _sha256(stderr_path)},
+        "server_stderr": (
+            {"path": str(stderr_path), "bytes": stderr_path.stat().st_size, "sha256": _sha256(stderr_path)}
+            if stderr_path.exists()
+            else {"path": str(stderr_path), "status": "UNAVAILABLE_PRESPAWN"}
+        ),
     }
 
 
@@ -496,6 +502,8 @@ def _planned_slots(p2_live_evaluable: bool) -> list[str]:
 
 def _totals(results: Sequence[SessionResult]) -> dict[str, int]:
     keys = (
+        "server_start_attempted",
+        "transport_entered",
         "direct_server_starts",
         "initialize_count",
         "list_tools_count",
@@ -521,9 +529,8 @@ async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_pat
     for index, policy_code in enumerate(planned, start=1):
         session_dir = runtime_root / f"{index:02d}-{policy_code.lower()}"
         session_dir.mkdir(parents=True, exist_ok=False)
-        stderr_buffer = io.StringIO()
-        result = SessionResult(index, policy_code, _policy_for(policy_code).name, direct_server_starts=1)
-        server_started = False
+        stderr_path = session_dir / "server-stderr.log"
+        result = SessionResult(index, policy_code, _policy_for(policy_code).name)
         try:
             env = {
                 "CAREER_EMULATOR_DB": str(session_dir / "probe.sqlite3"),
@@ -538,31 +545,40 @@ async def run_live_batch(runtime_root: Path = DEFAULT_RUNTIME_ROOT, evidence_pat
                 env=env,
                 cwd=str(MCP_EXECUTABLE.parent),
             )
-            async with stdio_client(params, errlog=stderr_buffer) as (read_stream, write_stream):
-                server_started = True
-                async with ClientSession(read_stream, write_stream) as session:
-                    result = await run_one_session(
-                        MCPClientAdapter(session),
-                        policy_code=policy_code,
-                        session_index=index,
-                    )
-                result.direct_server_starts = 1
-        except (UnknownSideEffectError, TimeoutError, ConnectionError, BrokenPipeError, OSError):
-            result.status = "UNKNOWN_SIDE_EFFECT"
-            result.error_code = "SERVER_START_OR_TRANSPORT"
-            result.stop_batch = True
+            # Validate the local OS handle before touching the SDK transport.
+            # StringIO.fileno() is an OSError and used to be misreported as a
+            # live/unknown server start despite failing before child creation.
+            with stderr_path.open("w", encoding="utf-8") as stderr_file:
+                stderr_file.fileno()
+                result.server_start_attempted = 1
+                async with stdio_client(params, errlog=stderr_file) as (read_stream, write_stream):
+                    result.transport_entered = 1
+                    result.child_spawn_confirmed = True  # SDK yields only after process creation.
+                    result.direct_server_starts = 1
+                    async with ClientSession(read_stream, write_stream) as session:
+                        await run_one_session(
+                            MCPClientAdapter(session),
+                            policy_code=policy_code,
+                            session_index=index,
+                            result=result,
+                        )
+                result.shutdown_count = 1  # stdio_client exit completed.
         except Exception:
-            result.status = "PROTOCOL_FAILURE"
-            result.error_code = "HARNESS_EXCEPTION"
+            if result.server_start_attempted:
+                result.status = "UNKNOWN_SIDE_EFFECT"
+                result.error_code = "LIVE_SERVER_START_OR_TRANSPORT_UNKNOWN"
+            else:
+                result.status = "TOOLING_OR_PRESPAWN_ERROR"
+                result.error_code = "PRESPAWN_LOCAL_FAILURE"
+                result.child_spawn_confirmed = False
             result.stop_batch = True
         finally:
-            result.shutdown_count = int(server_started)
-            stderr = stderr_buffer.getvalue()
+            stderr = stderr_path.read_text(encoding="utf-8", errors="replace") if stderr_path.exists() else ""
             if _unexpected_runtime_text(stderr):
                 result.status = "UNEXPECTED_AGENT_OR_PROVIDER_DEPENDENCY"
                 result.error_code = "AGENT_OR_PROVIDER_TEXT_IN_SERVER_STDERR"
                 result.stop_batch = True
-            _write_local_evidence(result, session_dir, stderr)
+            _write_local_evidence(result, session_dir, stderr_path)
             results.append(result)
 
         print(

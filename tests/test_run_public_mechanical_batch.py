@@ -1,9 +1,14 @@
-import asyncio
+import io
+import sys
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 import pytest
+from mcp.client.stdio import StdioServerParameters, stdio_client
 
+import scripts.run_public_mechanical_batch as batch_runner
 from scripts.run_public_mechanical_batch import (
+    ProtocolError,
     main,
     run_one_session,
     structural_target_for_choice,
@@ -129,3 +134,129 @@ async def test_action_ceiling_is_bounded_without_retry():
     assert result.status == "ACTION_CEILING"
     assert result.stop_batch is True
     assert result.successful_actions == 1
+
+
+@pytest.mark.asyncio
+async def test_sdk_stringio_fails_before_harmless_child_spawn_but_file_sink_works(tmp_path):
+    marker = tmp_path / "harmless-child-ran.txt"
+    code = f"from pathlib import Path; Path({str(marker)!r}).write_text('ran')"
+    params = StdioServerParameters(command=sys.executable, args=["-c", code])
+
+    with pytest.raises(io.UnsupportedOperation, match="fileno"):
+        async with stdio_client(params, errlog=io.StringIO()):
+            pass
+    assert not marker.exists()
+    assert issubclass(io.UnsupportedOperation, OSError)
+
+    with (tmp_path / "stderr.log").open("w", encoding="utf-8") as stderr_file:
+        assert stderr_file.fileno() >= 0
+        async with stdio_client(params, errlog=stderr_file):
+            pass
+    assert marker.read_text(encoding="utf-8") == "ran"
+
+
+class FakeSessionContext:
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *_args):
+        return None
+
+
+async def fake_batch(tmp_path, monkeypatch, client=None, transport_failure=False, stderr_text=""):
+    monkeypatch.setattr(batch_runner, "MCP_EXECUTABLE", Path(sys.executable))
+    monkeypatch.setattr(batch_runner, "_planned_slots", lambda _p2: ["P0"])
+    monkeypatch.setattr(batch_runner, "ClientSession", lambda *_args: FakeSessionContext())
+    monkeypatch.setattr(batch_runner, "MCPClientAdapter", lambda _session: client or FakePublicClient())
+
+    @asynccontextmanager
+    async def fake_stdio(_params, *, errlog):
+        assert errlog.fileno() >= 0
+        if transport_failure:
+            raise OSError("unconfirmed transport start")
+        errlog.write(stderr_text)
+        errlog.flush()
+        yield object(), object()
+
+    monkeypatch.setattr(batch_runner, "stdio_client", fake_stdio)
+    report = await batch_runner.run_live_batch(tmp_path / "runtime", tmp_path / "batch.json")
+    return report["sessions"][0], report["totals"]
+
+
+@pytest.mark.asyncio
+async def test_local_stderr_open_failure_is_prespawn_tooling_error(tmp_path, monkeypatch):
+    original_open = Path.open
+
+    def fail_local_sink(self, mode="r", *args, **kwargs):
+        if self.name == "server-stderr.log" and mode == "w":
+            raise OSError("local sink unavailable")
+        return original_open(self, mode, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", fail_local_sink)
+    session, totals = await fake_batch(tmp_path, monkeypatch)
+    assert session["status"] == "TOOLING_OR_PRESPAWN_ERROR"
+    assert session["error_code"] == "PRESPAWN_LOCAL_FAILURE"
+    assert session["child_spawn_confirmed"] is False
+    assert session["local_evidence"]["server_stderr"]["status"] == "UNAVAILABLE_PRESPAWN"
+    assert totals["server_start_attempted"] == 0
+    assert totals["direct_server_starts"] == 0
+    assert totals["initialize_count"] == 0
+    assert totals["shutdown_count"] == 0
+
+
+@pytest.mark.asyncio
+async def test_transport_failure_before_yield_remains_unknown(tmp_path, monkeypatch):
+    session, totals = await fake_batch(tmp_path, monkeypatch, transport_failure=True)
+    assert session["status"] == "UNKNOWN_SIDE_EFFECT"
+    assert session["error_code"] == "LIVE_SERVER_START_OR_TRANSPORT_UNKNOWN"
+    assert session["child_spawn_confirmed"] is None
+    assert totals["server_start_attempted"] == 1
+    assert totals["transport_entered"] == 0
+    assert totals["direct_server_starts"] == 0
+    assert totals["shutdown_count"] == 0
+
+
+@pytest.mark.asyncio
+async def test_entered_transport_with_initialize_failure_preserves_counts(tmp_path, monkeypatch):
+    class InitializeFails(FakePublicClient):
+        async def initialize(self):
+            raise OSError("no initialization response")
+
+    session, totals = await fake_batch(tmp_path, monkeypatch, client=InitializeFails())
+    assert session["status"] == "UNKNOWN_SIDE_EFFECT"
+    assert session["child_spawn_confirmed"] is True
+    assert totals["transport_entered"] == 1
+    assert totals["direct_server_starts"] == 1
+    assert totals["initialize_count"] == 1
+    assert totals["list_tools_count"] == 0
+    assert totals["shutdown_count"] == 1
+
+
+@pytest.mark.asyncio
+async def test_initialize_success_then_protocol_failure_preserves_counts(tmp_path, monkeypatch):
+    class ListFails(FakePublicClient):
+        async def list_tools(self):
+            raise ProtocolError("synthetic public schema error")
+
+    session, totals = await fake_batch(tmp_path, monkeypatch, client=ListFails())
+    assert session["status"] == "PROTOCOL_FAILURE"
+    assert totals["initialize_count"] == 1
+    assert totals["list_tools_count"] == 1
+    assert totals["new_game_count"] == 0
+    assert totals["shutdown_count"] == 1
+
+
+@pytest.mark.asyncio
+async def test_file_backed_transport_completes_and_stderr_is_retained(tmp_path, monkeypatch):
+    session, totals = await fake_batch(tmp_path, monkeypatch, stderr_text="harmless child diagnostic\n")
+    assert session["status"] == "COMPLETED"
+    assert session["child_spawn_confirmed"] is True
+    assert totals["server_start_attempted"] == 1
+    assert totals["transport_entered"] == 1
+    assert totals["direct_server_starts"] == 1
+    assert totals["initialize_count"] == 1
+    assert totals["list_tools_count"] == 1
+    assert totals["shutdown_count"] == 1
+    stderr_path = tmp_path / "runtime" / "01-p0" / "server-stderr.log"
+    assert stderr_path.read_text(encoding="utf-8") == "harmless child diagnostic\n"
+    assert session["local_evidence"]["server_stderr"]["bytes"] == stderr_path.stat().st_size
