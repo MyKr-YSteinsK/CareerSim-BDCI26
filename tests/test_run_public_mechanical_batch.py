@@ -14,6 +14,8 @@ from scripts.run_public_mechanical_batch import (
     _unexpected_runtime_text,
     compare_rejection_observes,
     decode_mcp_result,
+    is_public_affordability_rejection,
+    _policy_for,
     main,
     run_one_session,
     structural_target_for_choice,
@@ -61,12 +63,14 @@ def observe_payload(month, output, *, alive=True, failed=False):
     }
 
 
-def complete_observe(month=1, output=0, *, alive=True, failed=False, session_id="fake-session"):
+def complete_observe(month=1, output=0, *, alive=True, failed=False, session_id="fake-session", choices=None):
     payload = observe_payload(month, output, alive=alive, failed=failed)
     payload["session_id"] = session_id
     payload["current_state"]["status"].update(
         skill=1, wealth=1, energy=2, duration_in_level=1
     )
+    if choices is not None:
+        payload["choices"] = choices
     return payload
 
 
@@ -122,6 +126,46 @@ class RejectingPublicClient(FakePublicClient):
             if self.tool_error:
                 raise ExplicitToolError({"error": "public rejected"})
             return {"success": False, "message": "public rejected"}
+        raise AssertionError(name)
+
+
+class SyntheticAffordabilityClient:
+    def __init__(self, *, rejected_choices=(1,), terminal_after=1, rejection_message=None, change_state_on_success=True):
+        self.rejected_choices = set(rejected_choices)
+        self.terminal_after = terminal_after
+        self.rejection_message = rejection_message or "Insufficient energy for high_intensity_work: 1 remaining"
+        self.change_state_on_success = change_state_on_success
+        self.successes = 0
+        self.attempted_choices = []
+
+    async def initialize(self):
+        pass
+
+    async def list_tools(self):
+        return TOOLS
+
+    async def call_tool(self, name, arguments):
+        if name == "new_game":
+            return {"session_id": "fake-session"}
+        if name == "observe":
+            terminal = self.successes >= self.terminal_after
+            return complete_observe(
+                output=self.successes if self.change_state_on_success else 0,
+                alive=not terminal,
+                failed=terminal,
+                choices=[] if terminal else [
+                    {"choice": 1, "action": "高强度工作", "description": "public"},
+                    {"choice": 2, "action": "准备汇报材料", "description": "public"},
+                    {"choice": 3, "action": "人脉维护", "description": "public"},
+                ],
+            )
+        if name == "take_action":
+            choice = arguments["choice"]
+            self.attempted_choices.append(choice)
+            if choice in self.rejected_choices:
+                return {"success": False, "error": self.rejection_message}
+            self.successes += 1
+            return {"success": True}
         raise AssertionError(name)
 
 
@@ -228,6 +272,73 @@ async def test_rejection_recovery_unknown_stops_without_action_retry(client):
     assert result.take_action_count == 1
 
 
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        ("Insufficient energy for high_intensity_work: 1 remaining", True),
+        ("Insufficient resource for project_materials: 2 remaining", True),
+        ("not enough energy", False),
+        ("energy unavailable", False),
+    ],
+)
+def test_affordability_classifier_is_narrow_and_public(message, expected):
+    assert is_public_affordability_rejection({"error": message}) is expected
+
+
+@pytest.mark.asyncio
+async def test_p1r_recovers_by_reselecting_original_growth_policy_without_resending():
+    client = SyntheticAffordabilityClient(rejected_choices={1})
+    result = await run_one_session(client, policy_code="P1R", session_index=1)
+
+    assert result.status == "COMPLETED"
+    assert result.policy_name == "SIMPLE_PUBLIC_GROWTH_PRIOR+PUBLIC_AFFORDABILITY_RECOVERY"
+    assert client.attempted_choices == [1, 2]
+    assert result.recovered_rejections == 1
+    assert result.rejected_choice_ids == [1]
+    assert result.stall_signals == 0
+    assert result.successful_actions == 1
+
+
+@pytest.mark.asyncio
+async def test_state_change_resets_temporary_rejection_and_reuses_p1_choice():
+    client = SyntheticAffordabilityClient(rejected_choices={1}, terminal_after=2)
+    result = await run_one_session(client, policy_code="P1R", session_index=1)
+
+    assert result.status == "COMPLETED"
+    assert client.attempted_choices == [1, 2, 1, 2]
+    assert result.recovered_rejections == 2
+    assert result.stall_signals == 0
+
+
+@pytest.mark.asyncio
+async def test_all_current_choices_rejected_is_bounded_and_non_affordability_does_not_retry():
+    all_rejected = SyntheticAffordabilityClient(rejected_choices={1, 2, 3})
+    result = await run_one_session(all_rejected, policy_code="P2R", session_index=1)
+    assert result.status == "POLICY_NO_AFFORDABLE_PUBLIC_ACTION"
+    assert all_rejected.attempted_choices == [1, 2, 3]
+    assert result.explicit_rejections == result.recovered_rejections == 3
+    assert result.observe_count == 4
+    assert result.stall_signals == 0
+
+    non_afford = SyntheticAffordabilityClient(rejected_choices={1}, rejection_message="choice unavailable")
+    stopped = await run_one_session(non_afford, policy_code="P1R", session_index=1)
+    assert stopped.status == "POLICY_ACTION_REJECTED"
+    assert stopped.rejection_recovery == "EXPLICIT_REJECTION_NON_AFFORDABILITY"
+    assert non_afford.attempted_choices == [1]
+    assert stopped.recovered_rejections == 0
+
+
+@pytest.mark.asyncio
+async def test_successful_actions_are_also_bounded_when_public_state_does_not_change():
+    client = SyntheticAffordabilityClient(
+        rejected_choices={1}, terminal_after=99, change_state_on_success=False,
+    )
+    result = await run_one_session(client, policy_code="P1R", session_index=1)
+    assert result.status == "POLICY_DECISION_STATE_EXHAUSTED"
+    assert client.attempted_choices == [1, 2, 3]
+    assert result.take_action_count == 3
+
+
 @pytest.mark.asyncio
 async def test_confirmed_rejection_continues_next_fresh_slot(tmp_path, monkeypatch):
     report = await fake_batch(
@@ -240,6 +351,26 @@ async def test_confirmed_rejection_continues_next_fresh_slot(tmp_path, monkeypat
     assert report["totals"]["explicit_rejections"] == 2
     assert report["totals"]["observe_count"] == 4
     assert report["decision"] == "MECHANICAL_PROBE_BATCH_EXECUTION_COMPLETE"
+
+
+@pytest.mark.asyncio
+async def test_p1r_p2r_batch_order_and_policy_wrappers(tmp_path, monkeypatch):
+    order = ["P1R", "P2R", "P1R", "P2R"]
+    report = await fake_batch(
+        tmp_path, monkeypatch, client=RejectingPublicClient(),
+        policy_order=order, task_id="S07-12", return_report=True,
+    )
+    assert report["executed_order"] == order
+    assert [row["policy_name"] for row in report["sessions"]] == [
+        "SIMPLE_PUBLIC_GROWTH_PRIOR+PUBLIC_AFFORDABILITY_RECOVERY",
+        "STALL_AWARE_PUBLIC_GROWTH+PUBLIC_AFFORDABILITY_RECOVERY",
+        "SIMPLE_PUBLIC_GROWTH_PRIOR+PUBLIC_AFFORDABILITY_RECOVERY",
+        "STALL_AWARE_PUBLIC_GROWTH+PUBLIC_AFFORDABILITY_RECOVERY",
+    ]
+    assert type(_policy_for("P1R")).__name__ == "SimplePublicGrowthPrior"
+    assert type(_policy_for("P2R")).__name__ == "StallAwarePublicGrowth"
+    assert report["totals"]["new_game_count"] == 4
+    assert report["totals"]["server_start_attempted"] == 4
 
 
 def test_live_path_requires_explicit_flag_and_import_is_side_effect_free():

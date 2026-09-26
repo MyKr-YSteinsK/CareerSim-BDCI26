@@ -13,7 +13,7 @@ import hashlib
 import json
 import sys
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 from typing import Any, Protocol
 
@@ -292,6 +292,38 @@ def compare_rejection_observes(
     return "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION", {}
 
 
+def _public_decision_state_key(snapshot: PublicSnapshot) -> tuple[Any, ...]:
+    """Key temporary rejections to the current projected public decision state."""
+
+    return (
+        snapshot.session_id,
+        snapshot.time.current_month,
+        snapshot.time.current_quarter,
+        snapshot.time.current_year,
+        tuple(sorted(snapshot.status.items())),
+        snapshot.alive,
+        snapshot.failed,
+        snapshot.event.title,
+        snapshot.event.description,
+        tuple(sorted((item.choice, item.action, item.description) for item in snapshot.choices)),
+    )
+
+
+def is_public_affordability_rejection(receipt: Mapping[str, Any]) -> bool:
+    """Recognize only an explicit, narrowly phrased public resource-insufficiency receipt."""
+
+    import re
+
+    texts = [receipt.get(key) for key in ("error", "message", "reason")]
+    for text in texts:
+        if not isinstance(text, str):
+            continue
+        normalized = " ".join(text.lower().split())
+        if re.fullmatch(r"insufficient (?:energy|resource) for .+: \d+(?:\.\d+)? remaining", normalized):
+            return True
+    return False
+
+
 def structural_target_for_choice(snapshot: PublicSnapshot, choice_id: int) -> tuple[str, str] | None:
     """Return a directly mapped public target/path, or fail closed."""
 
@@ -314,6 +346,9 @@ class SessionResult:
     survival_months: int | None = None
     successful_actions: int = 0
     explicit_rejections: int = 0
+    recovered_rejections: int = 0
+    rejected_choice_ids: list[int] = field(default_factory=list)
+    rejection_events: list[dict[str, Any]] = field(default_factory=list)
     rejection_receipt: dict[str, Any] | None = None
     rejection_recovery: str | None = None
     rejection_public_delta: dict[str, Any] = field(default_factory=dict)
@@ -363,6 +398,7 @@ class SessionResult:
 
 
 def _policy_for(code: str) -> Any:
+    code = code[:-1] if code.endswith("R") else code
     return {
         "P0": MinIdControl,
         "P1": SimplePublicGrowthPrior,
@@ -391,13 +427,19 @@ async def run_one_session(
     result: SessionResult | None = None,
     task_id: str = "S07-07",
 ) -> SessionResult:
-    policy = _policy_for(policy_code)
+    recovery_enabled = policy_code in {"P1R", "P2R"}
+    base_policy_code = policy_code[:-1] if recovery_enabled else policy_code
+    policy = _policy_for(base_policy_code)
     if result is None:
-        result = SessionResult(session_index, policy_code, policy.name)
+        name = f"{policy.name}+PUBLIC_AFFORDABILITY_RECOVERY" if recovery_enabled else policy.name
+        result = SessionResult(session_index, policy_code, name)
     probe = MechanicalProbe(policy)
     previous_snapshot: PublicSnapshot | None = None
     previous_level: str | None = None
     pending_no_progress_choice: int | None = None
+    rejected_for_state: set[int] = set()
+    successful_for_state: set[int] = set()
+    current_decision_state: tuple[Any, ...] | None = None
 
     try:
         result.initialize_count += 1
@@ -419,7 +461,32 @@ async def run_one_session(
         previous_level = snapshot.status.get("level") if isinstance(snapshot.status.get("level"), str) else None
 
         while snapshot.terminal is not True:
-            decision: ActionDecision = probe.choose(snapshot)
+            state_key = _public_decision_state_key(snapshot)
+            if current_decision_state != state_key:
+                rejected_for_state.clear()
+                successful_for_state.clear()
+                current_decision_state = state_key
+            policy_snapshot = (
+                replace(
+                    snapshot,
+                    choices=tuple(
+                        choice for choice in snapshot.choices
+                        if choice.choice not in rejected_for_state | successful_for_state
+                    ),
+                )
+                if recovery_enabled and (rejected_for_state or successful_for_state)
+                else snapshot
+            )
+            if recovery_enabled and (rejected_for_state or successful_for_state) and not policy_snapshot.choices:
+                all_ids = {item.choice for item in snapshot.choices}
+                if all_ids and all_ids.issubset(rejected_for_state):
+                    result.status = "POLICY_NO_AFFORDABLE_PUBLIC_ACTION"
+                    result.error_code = "ALL_CURRENT_PUBLIC_CHOICES_EXPLICITLY_REJECTED"
+                else:
+                    result.status = "POLICY_DECISION_STATE_EXHAUSTED"
+                    result.error_code = "PUBLIC_CHOICES_ALREADY_ATTEMPTED_IN_UNCHANGED_STATE"
+                break
+            decision: ActionDecision = probe.choose(policy_snapshot)
             if decision.status != "ACTION":
                 result.unsupported_decisions += 1
                 result.status = "POLICY_MECHANICALLY_INVALID_OR_INCOMPLETE"
@@ -490,7 +557,42 @@ async def run_one_session(
                 result.rejection_recovery = comparison
                 result.rejection_public_delta = delta
                 if comparison == "EXPLICIT_REJECTION_CONFIRMED_NO_MUTATION":
-                    result.status = "POLICY_ACTION_REJECTED"
+                    if recovery_enabled and is_public_affordability_rejection(rejection):
+                        result.recovered_rejections += 1
+                        result.rejected_choice_ids.append(decision.choice)
+                        rejected_for_state.add(decision.choice)
+                        result.rejection_recovery = "PUBLIC_AFFORDABILITY_REJECTION_CONFIRMED"
+                        result.rejection_events.append(
+                            {
+                                "choice": decision.choice,
+                                "classification": result.rejection_recovery,
+                                "receipt": dict(rejection),
+                                "public_delta": {},
+                            }
+                        )
+                        if len(rejected_for_state | successful_for_state) >= len({item.choice for item in snapshot.choices}):
+                            if len(rejected_for_state) == len({item.choice for item in snapshot.choices}):
+                                result.status = "POLICY_NO_AFFORDABLE_PUBLIC_ACTION"
+                                result.error_code = "ALL_CURRENT_PUBLIC_CHOICES_EXPLICITLY_REJECTED"
+                            else:
+                                result.status = "POLICY_DECISION_STATE_EXHAUSTED"
+                                result.error_code = "PUBLIC_CHOICES_ALREADY_ATTEMPTED_IN_UNCHANGED_STATE"
+                        else:
+                            snapshot = recovery
+                            observed_payload = recovery_payload
+                            continue
+                    else:
+                        result.status = "POLICY_ACTION_REJECTED"
+                        if recovery_enabled:
+                            result.rejection_recovery = "EXPLICIT_REJECTION_NON_AFFORDABILITY"
+                            result.rejection_events.append(
+                                {
+                                    "choice": decision.choice,
+                                    "classification": result.rejection_recovery,
+                                    "receipt": dict(rejection),
+                                    "public_delta": {},
+                                }
+                            )
                 elif comparison == "EXPLICIT_REJECTION_WITH_PUBLIC_STATE_CHANGE":
                     result.status = "EXPLICIT_REJECTION_STATE_CHANGED"
                 else:
@@ -507,6 +609,12 @@ async def run_one_session(
             observed_payload = await client.call_tool("observe", {"session_id": result.session_id})
             fresh = project_session_snapshot(observed_payload, result.session_id)
             _record_public_snapshot(result, fresh)
+            if _public_decision_state_key(fresh) != current_decision_state:
+                rejected_for_state.clear()
+                successful_for_state.clear()
+                current_decision_state = _public_decision_state_key(fresh)
+            elif recovery_enabled:
+                successful_for_state.add(decision.choice)
 
             current_level = fresh.status.get("level") if isinstance(fresh.status.get("level"), str) else None
             promotion_label = current_level if previous_level and current_level and current_level != previous_level else None
@@ -636,6 +744,7 @@ def _totals(results: Sequence[SessionResult]) -> dict[str, int]:
         "take_action_count",
         "successful_actions",
         "explicit_rejections",
+        "recovered_rejections",
         "shutdown_count",
     )
     return {key: sum(getattr(result, key) for result in results) for key in keys}
@@ -653,8 +762,8 @@ async def run_live_batch(
         planned = _planned_slots(bool(STRUCTURAL_TARGETS))
     else:
         planned = list(policy_order)
-        if not planned or len(planned) > 6 or any(code not in {"P1", "P2"} for code in planned):
-            raise ValueError("explicit policy_order must contain 1-6 P1/P2 sessions")
+        if not planned or len(planned) > 6 or any(code not in {"P1", "P2", "P1R", "P2R"} for code in planned):
+            raise ValueError("explicit policy_order must contain 1-6 P1/P2/P1R/P2R sessions")
     if not task_id or not base_sha:
         raise ValueError("task_id and base_sha must be non-empty")
     if not MCP_EXECUTABLE.is_file():
@@ -669,7 +778,11 @@ async def run_live_batch(
         session_dir = runtime_root / f"{index:02d}-{policy_code.lower()}"
         session_dir.mkdir(parents=True, exist_ok=False)
         stderr_path = session_dir / "server-stderr.log"
-        result = SessionResult(index, policy_code, _policy_for(policy_code).name)
+        base_policy = policy_code[:-1] if policy_code.endswith("R") else policy_code
+        policy_name = _policy_for(base_policy).name
+        if policy_code.endswith("R"):
+            policy_name += "+PUBLIC_AFFORDABILITY_RECOVERY"
+        result = SessionResult(index, policy_code, policy_name)
         try:
             env = {
                 "CAREER_EMULATOR_DB": str(session_dir / "probe.sqlite3"),
@@ -752,7 +865,7 @@ async def run_live_batch(
         "decision": (
             "MECHANICAL_PROBE_BATCH_EXECUTION_COMPLETE"
             if len(results) == len(planned) and all(
-                item.status in {"COMPLETED", "POLICY_ACTION_REJECTED", "EXPLICIT_REJECTION_STATE_CHANGED", "POLICY_MECHANICALLY_INVALID_OR_INCOMPLETE"}
+                item.status in {"COMPLETED", "POLICY_ACTION_REJECTED", "EXPLICIT_REJECTION_STATE_CHANGED", "POLICY_NO_AFFORDABLE_PUBLIC_ACTION", "POLICY_DECISION_STATE_EXHAUSTED", "POLICY_MECHANICALLY_INVALID_OR_INCOMPLETE"}
                 for item in results
             )
             else stop_reason or "MECHANICAL_PROBE_BATCH_STOPPED_ON_RUNTIME_BOUNDARY"

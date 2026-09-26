@@ -1,0 +1,409 @@
+{
+  "agentserver_starts": 0,
+  "base": "ed7278b86456af0e0d68a4869c76c769635c3801",
+  "candidate": "candidate-v6c-compliance-cleanup",
+  "decision": "MECHANICAL_PROBE_BATCH_EXECUTION_COMPLETE",
+  "experiment_decision": "CHEAP_PROBE_INFORMATION_LIMIT_REACHED",
+  "experiment_summary": {
+    "fresh_sessions": 4,
+    "highest_month": 6,
+    "sessions_beyond_month_3": 1,
+    "terminal_sessions": 4,
+    "successful_48_month_completions": 0,
+    "grades": {"E": 4},
+    "comparable_checkpoints": 0,
+    "stall_signals": 0,
+    "explicit_affordability_rejections": 1,
+    "confirmed_recoveries": 1,
+    "unknown_side_effects": 0,
+    "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+    "hidden_cost_assumption": false
+  },
+  "executed_order": [
+    "P1R",
+    "P2R",
+    "P1R",
+    "P2R"
+  ],
+  "p2_live_evaluable": true,
+  "planned_order": [
+    "P1R",
+    "P2R",
+    "P1R",
+    "P2R"
+  ],
+  "provider_calls": 0,
+  "runner_play": 0,
+  "sessions": [
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "child_spawn_confirmed": true,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": {
+        "competition_partial_score": 14.17,
+        "completed": false,
+        "grade": "E",
+        "grade_meaning": "速通离职 —— 工牌还没捂热就交回去了，前台都没来得及记住你的脸",
+        "outcome": "eliminated",
+        "quantitative_score": 20.25,
+        "survival_months": 3
+      },
+      "error_code": null,
+      "explicit_rejections": 0,
+      "final_public_level": "L1",
+      "final_public_status": {
+        "dignity": 9,
+        "duration_in_level": 3,
+        "energy": 1,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": 3,
+        "skill": 8,
+        "wealth": -1
+      },
+      "initialize_count": 1,
+      "invalid_calls": 0,
+      "list_tools_count": 1,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 2441,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\01-p1r\\server-stderr.log",
+          "sha256": "c73b5c4962579ebc3db6626119bb240ac9f99cf835649c1961dd1a454f0bd0cc"
+        },
+        "session_summary": {
+          "bytes": 4598,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\01-p1r\\session_summary.json",
+          "sha256": "d72a5a790c9629af2117e8aad45f36cd9331293a929b05fe08eab5aab19f2744"
+        }
+      },
+      "longest_repeated_structural_path": 0,
+      "natural_terminal": true,
+      "new_game_count": 1,
+      "no_progress": 0,
+      "observe_count": 12,
+      "policy_code": "P1R",
+      "policy_name": "SIMPLE_PUBLIC_GROWTH_PRIOR+PUBLIC_AFFORDABILITY_RECOVERY",
+      "promotion_months": [],
+      "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+      "public_tool_names": [
+        "check_latest_logs",
+        "new_game",
+        "observe",
+        "show_employee_handbook",
+        "take_action"
+      ],
+      "public_warning_count": 3,
+      "recovered_rejections": 0,
+      "rejected_choice_ids": [],
+      "rejection_events": [],
+      "rejection_public_delta": {},
+      "rejection_receipt": null,
+      "rejection_recovery": null,
+      "repeated_action_count": 11,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "server_start_attempted": 1,
+      "session_id": "b4103bad4cd4416f9467e6ccdf1c27dc",
+      "session_index": 1,
+      "shutdown_count": 1,
+      "stall_signals": 0,
+      "status": "COMPLETED",
+      "stop_batch": false,
+      "structural_switch_count": 0,
+      "successful_actions": 11,
+      "survival_months": 3,
+      "take_action_count": 11,
+      "transport_entered": 1,
+      "unsupported_decisions": 0
+    },
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "child_spawn_confirmed": true,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": {
+        "competition_partial_score": 16.4,
+        "completed": false,
+        "grade": "E",
+        "grade_meaning": "速通离职 —— 工牌还没捂热就交回去了，前台都没来得及记住你的脸",
+        "outcome": "eliminated",
+        "quantitative_score": 23.43,
+        "survival_months": 6
+      },
+      "error_code": null,
+      "explicit_rejections": 1,
+      "final_public_level": "L2",
+      "final_public_status": {
+        "dignity": 10,
+        "duration_in_level": 1,
+        "energy": 0,
+        "health": 0,
+        "level": "L2",
+        "network": 3,
+        "output": 3,
+        "skill": 9,
+        "wealth": 1
+      },
+      "initialize_count": 1,
+      "invalid_calls": 1,
+      "list_tools_count": 1,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 2441,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\02-p2r\\server-stderr.log",
+          "sha256": "097201aeb15a73a78360bc46171439b36ace1973a43def7294f88e1d3cb80111"
+        },
+        "session_summary": {
+          "bytes": 7114,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\02-p2r\\session_summary.json",
+          "sha256": "a2f0f2d1df9ba00ab9ea3c8525c9f295e98e951c3c5120d186ab3ac0cff90657"
+        }
+      },
+      "longest_repeated_structural_path": 1,
+      "natural_terminal": true,
+      "new_game_count": 1,
+      "no_progress": 0,
+      "observe_count": 21,
+      "policy_code": "P2R",
+      "policy_name": "STALL_AWARE_PUBLIC_GROWTH+PUBLIC_AFFORDABILITY_RECOVERY",
+      "promotion_months": [
+        6
+      ],
+      "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+      "public_tool_names": [
+        "check_latest_logs",
+        "new_game",
+        "observe",
+        "show_employee_handbook",
+        "take_action"
+      ],
+      "public_warning_count": 5,
+      "recovered_rejections": 1,
+      "rejected_choice_ids": [
+        1
+      ],
+      "rejection_events": [
+        {
+          "choice": 1,
+          "classification": "PUBLIC_AFFORDABILITY_REJECTION_CONFIRMED",
+          "public_delta": {},
+          "receipt": {
+            "error": "Insufficient energy for high_intensity_work: 1 remaining",
+            "success": false
+          }
+        }
+      ],
+      "rejection_public_delta": {},
+      "rejection_receipt": {
+        "error": "Insufficient energy for high_intensity_work: 1 remaining",
+        "success": false
+      },
+      "rejection_recovery": "PUBLIC_AFFORDABILITY_REJECTION_CONFIRMED",
+      "repeated_action_count": 7,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "server_start_attempted": 1,
+      "session_id": "b96d6d7c1ede43f8a72bcdce09c4ea8b",
+      "session_index": 2,
+      "shutdown_count": 1,
+      "stall_signals": 0,
+      "status": "COMPLETED",
+      "stop_batch": false,
+      "structural_switch_count": 0,
+      "successful_actions": 19,
+      "survival_months": 6,
+      "take_action_count": 20,
+      "transport_entered": 1,
+      "unsupported_decisions": 0
+    },
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "child_spawn_confirmed": true,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": {
+        "competition_partial_score": 14.0,
+        "completed": false,
+        "grade": "E",
+        "grade_meaning": "速通离职 —— 工牌还没捂热就交回去了，前台都没来得及记住你的脸",
+        "outcome": "eliminated",
+        "quantitative_score": 20.0,
+        "survival_months": 3
+      },
+      "error_code": null,
+      "explicit_rejections": 0,
+      "final_public_level": "L1",
+      "final_public_status": {
+        "dignity": 9,
+        "duration_in_level": 3,
+        "energy": 1,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": 2,
+        "skill": 6,
+        "wealth": -1
+      },
+      "initialize_count": 1,
+      "invalid_calls": 0,
+      "list_tools_count": 1,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 2441,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\03-p1r\\server-stderr.log",
+          "sha256": "a93173d7e8520d785196debb27bc4f77ffd22b8f9642dcd8e8e7975591366d3e"
+        },
+        "session_summary": {
+          "bytes": 4585,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\03-p1r\\session_summary.json",
+          "sha256": "173712816f936a7df48003d27a885bb35883b8a4355a2de6c3f153a1d73b19e9"
+        }
+      },
+      "longest_repeated_structural_path": 0,
+      "natural_terminal": true,
+      "new_game_count": 1,
+      "no_progress": 0,
+      "observe_count": 12,
+      "policy_code": "P1R",
+      "policy_name": "SIMPLE_PUBLIC_GROWTH_PRIOR+PUBLIC_AFFORDABILITY_RECOVERY",
+      "promotion_months": [],
+      "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+      "public_tool_names": [
+        "check_latest_logs",
+        "new_game",
+        "observe",
+        "show_employee_handbook",
+        "take_action"
+      ],
+      "public_warning_count": 3,
+      "recovered_rejections": 0,
+      "rejected_choice_ids": [],
+      "rejection_events": [],
+      "rejection_public_delta": {},
+      "rejection_receipt": null,
+      "rejection_recovery": null,
+      "repeated_action_count": 11,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "server_start_attempted": 1,
+      "session_id": "bf4679ba83df4448a2f8955c90d4e546",
+      "session_index": 3,
+      "shutdown_count": 1,
+      "stall_signals": 0,
+      "status": "COMPLETED",
+      "stop_batch": false,
+      "structural_switch_count": 0,
+      "successful_actions": 11,
+      "survival_months": 3,
+      "take_action_count": 11,
+      "transport_entered": 1,
+      "unsupported_decisions": 0
+    },
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "child_spawn_confirmed": true,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": {
+        "competition_partial_score": 13.14,
+        "completed": false,
+        "grade": "E",
+        "grade_meaning": "速通离职 —— 工牌还没捂热就交回去了，前台都没来得及记住你的脸",
+        "outcome": "eliminated",
+        "quantitative_score": 18.77,
+        "survival_months": 3
+      },
+      "error_code": null,
+      "explicit_rejections": 0,
+      "final_public_level": "L1",
+      "final_public_status": {
+        "dignity": 10,
+        "duration_in_level": 3,
+        "energy": 3,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": 0,
+        "skill": 5,
+        "wealth": 0
+      },
+      "initialize_count": 1,
+      "invalid_calls": 0,
+      "list_tools_count": 1,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 2441,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\04-p2r\\server-stderr.log",
+          "sha256": "d0adb1796e8e32de8effdeb06321fc8c9707b76d8ed198dc5c272c1c02b92f6e"
+        },
+        "session_summary": {
+          "bytes": 3965,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-12-affordability-recovery\\04-p2r\\session_summary.json",
+          "sha256": "6271bd72c66a4da09a52c73d17204e45a5be115e66e2079a9f29a05da6538689"
+        }
+      },
+      "longest_repeated_structural_path": 0,
+      "natural_terminal": true,
+      "new_game_count": 1,
+      "no_progress": 0,
+      "observe_count": 9,
+      "policy_code": "P2R",
+      "policy_name": "STALL_AWARE_PUBLIC_GROWTH+PUBLIC_AFFORDABILITY_RECOVERY",
+      "promotion_months": [],
+      "public_seed_control": "NO_PUBLIC_SEED_CONTROL_FOUND",
+      "public_tool_names": [
+        "check_latest_logs",
+        "new_game",
+        "observe",
+        "show_employee_handbook",
+        "take_action"
+      ],
+      "public_warning_count": 3,
+      "recovered_rejections": 0,
+      "rejected_choice_ids": [],
+      "rejection_events": [],
+      "rejection_public_delta": {},
+      "rejection_receipt": null,
+      "rejection_recovery": null,
+      "repeated_action_count": 8,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "server_start_attempted": 1,
+      "session_id": "13f0e26ffc6045d69123b9fc373d30c8",
+      "session_index": 4,
+      "shutdown_count": 1,
+      "stall_signals": 0,
+      "status": "COMPLETED",
+      "stop_batch": false,
+      "structural_switch_count": 0,
+      "successful_actions": 8,
+      "survival_months": 3,
+      "take_action_count": 8,
+      "transport_entered": 1,
+      "unsupported_decisions": 0
+    }
+  ],
+  "skill_installs_or_reloads": 0,
+  "stop_reason": null,
+  "task": "S07-12",
+  "totals": {
+    "direct_server_starts": 4,
+    "explicit_rejections": 1,
+    "initialize_count": 4,
+    "list_tools_count": 4,
+    "new_game_count": 4,
+    "observe_count": 54,
+    "recovered_rejections": 1,
+    "server_start_attempted": 4,
+    "shutdown_count": 4,
+    "successful_actions": 49,
+    "take_action_count": 50,
+    "transport_entered": 4
+  }
+}
