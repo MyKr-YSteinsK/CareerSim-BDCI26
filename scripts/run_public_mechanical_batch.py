@@ -21,16 +21,28 @@ from typing import Any, Protocol
 from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
 
-from scripts.public_mechanical_probe import (
-    ActionDecision,
-    MechanicalProbe,
-    MinIdControl,
-    PublicSnapshot,
-    SimplePublicGrowthPrior,
-    StallAwarePublicGrowth,
-    classify_structural_context,
-    project_public_snapshot,
-)
+try:
+    from scripts.public_mechanical_probe import (
+        ActionDecision,
+        MechanicalProbe,
+        MinIdControl,
+        PublicSnapshot,
+        SimplePublicGrowthPrior,
+        StallAwarePublicGrowth,
+        classify_structural_context,
+        project_public_snapshot,
+    )
+except ModuleNotFoundError:  # Direct ``python scripts/run_public_mechanical_batch.py`` execution.
+    from public_mechanical_probe import (  # type: ignore[no-redef]
+        ActionDecision,
+        MechanicalProbe,
+        MinIdControl,
+        PublicSnapshot,
+        SimplePublicGrowthPrior,
+        StallAwarePublicGrowth,
+        classify_structural_context,
+        project_public_snapshot,
+    )
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
