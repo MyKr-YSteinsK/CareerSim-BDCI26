@@ -1,0 +1,104 @@
+{
+  "agentserver_starts": 0,
+  "base": "0a61130736408f56a98e4f3af71dd32c4e1cba80",
+  "candidate": "candidate-v6c-compliance-cleanup",
+  "decision": "MECHANICAL_PROBE_BATCH_STOPPED_ON_RUNTIME_BOUNDARY",
+  "execution_harness_commit": "58c1dd4f3e79297694311eca09bce598f6cfa7a2",
+  "executed_order": [
+    "P0"
+  ],
+  "p2_live_evaluable": true,
+  "planned_order": [
+    "P0",
+    "P1",
+    "P2",
+    "P1",
+    "P2",
+    "P0",
+    "P2",
+    "P0",
+    "P1"
+  ],
+  "provider_calls": 0,
+  "runner_play": 0,
+  "sessions": [
+    {
+      "advancing": 0,
+      "bounded_responses_after_stall": 0,
+      "comparable_checkpoints": 0,
+      "direct_server_starts": 1,
+      "ending_score": null,
+      "error_code": "SERVER_START_OR_TRANSPORT",
+      "final_public_level": null,
+      "final_public_status": {},
+      "initialize_count": 0,
+      "invalid_calls": 0,
+      "list_tools_count": 0,
+      "local_evidence": {
+        "server_stderr": {
+          "bytes": 0,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-07-mechanical-batch\\01-p0\\server-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "session_summary": {
+          "bytes": 1107,
+          "path": "D:\\CS\\CareerSim\\.local\\runtime\\s07-07-mechanical-batch\\01-p0\\session_summary.json",
+          "sha256": "c5517afe6550fc108c6dde56216807b93e3d9fbab1e6e3eb3b3fada419165d22"
+        }
+      },
+      "longest_repeated_structural_path": 0,
+      "natural_terminal": false,
+      "new_game_count": 0,
+      "no_progress": 0,
+      "observe_count": 0,
+      "policy_code": "P0",
+      "policy_name": "MIN_ID_CONTROL",
+      "promotion_months": [],
+      "public_seed_control": "UNKNOWN",
+      "public_tool_names": [],
+      "public_warning_count": 0,
+      "repeated_action_count": 0,
+      "repeated_investment_after_no_progress": 0,
+      "risk_override_exercised": false,
+      "session_id": null,
+      "session_index": 1,
+      "shutdown_count": 0,
+      "stall_signals": 0,
+      "status": "UNKNOWN_SIDE_EFFECT",
+      "stop_batch": true,
+      "structural_switch_count": 0,
+      "successful_actions": 0,
+      "survival_months": null,
+      "take_action_count": 0,
+      "unsupported_decisions": 0
+    }
+  ],
+  "skill_installs_or_reloads": 0,
+  "stop_reason": "UNKNOWN_SIDE_EFFECT_AFTER_DIRECT_SERVER_START",
+  "gate_a": {
+    "policy": "P0",
+    "status": "STOPPED_UNKNOWN_SIDE_EFFECT",
+    "server_start_attempts": 1,
+    "initialize": 0,
+    "list_tools": 0,
+    "new_game": 0,
+    "observe": 0,
+    "take_action": 0,
+    "actions": 0,
+    "stderr_bytes": 0,
+    "post_check_matching_processes": 0
+  },
+  "public_risk_override": "PUBLIC_RISK_OVERRIDE_NOT_EXERCISED",
+  "next_recommendation": "DEFER_SCRIPTED_PROBE",
+  "task": "S07-07",
+  "totals": {
+    "direct_server_starts": 1,
+    "initialize_count": 0,
+    "list_tools_count": 0,
+    "new_game_count": 0,
+    "observe_count": 0,
+    "shutdown_count": 0,
+    "successful_actions": 0,
+    "take_action_count": 0
+  }
+}
