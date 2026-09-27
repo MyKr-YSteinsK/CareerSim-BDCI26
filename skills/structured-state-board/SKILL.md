@@ -1,13 +1,13 @@
 ---
 name: structured-state-board
-description: "每次 fresh observe 后必须应用；只整理当前 session 的公开事实、freshness 与可归因变化；不规划、不判风险、不提交动作。"
+description: "每次 fresh observe 后必须应用；只整理当前 session 的公开事实、freshness 与可归因变化；不规划、不拥有 delivery lifecycle、不判风险、不提交动作。"
 ---
 
 # Structured State Board｜公开事实
 
 ## 职责与边界
 
-Board 只整理当前 CareerSim game session 可核实的公开事实、来源/freshness 和可直接比较的变化。conversation ID 不等于 game_session_id。Board 不拥有 Phase/Mode、Risk Budget、Primary Gap、Progress/STALLED、风险结论、review reset 或动作建议；Planning 负责策略，Risk 负责当前候选。
+Board 只整理当前 CareerSim game session 可核实的公开事实、来源/freshness 和可直接比较的变化。conversation ID 不等于 game_session_id。Board 不拥有 Phase/Mode、Global Objective、Risk Budget、Primary Gap、Progress/STALLED、delivery lifecycle、风险结论、review reset 或动作建议；Planning 负责策略，Delivery 负责其有界生命周期，Risk 负责当前候选。
 
 ## QUICK_SCAN｜每次 fresh state
 
@@ -37,7 +37,7 @@ recent_effects 最多两条，仅记录同一 session 内、来源明确且没�
 
 ## Context recovery
 
-若当前上下文含 framework 生成的 <state_snapshot>，视为 context-recovery epoch；snapshot 只是工作上下文，不是策略权威。先确认相同 game_session_id 并取得 fresh public state，再据此重建当前 Board。只有恢复事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
+若当前上下文含 framework 生成的 <state_snapshot>，视为 context-recovery epoch；snapshot 只是工作上下文，不是策略权威。先确认相同 game_session_id 并取得 fresh public state，再据此重建当前 Board。Board 只重建公共事实；Delivery lifecycle 由 Delivery Skill 从当前 session 的公开回执单独重建。只有恢复 Board 事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
 
 不读数据库、隐藏字段、其它对局或本机取证材料；不建立文件型 / durable Memory。
 

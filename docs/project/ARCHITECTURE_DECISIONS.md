@@ -2,33 +2,35 @@
 
 > 只记录当前有效决定；已结束阶段的证据与旧决策过程由 Git 历史保存。
 
-## AD-001 — Single Agent + Three Skills
+## AD-001 — Single Agent + Four Skills
 
 - 保持 Single Agent + Multiple Skills；Single Agent 是唯一 take_action submitter。
-- Current Skills: risk-review, structured-state-board, rolling-planning。
+- Current Skills: structured-state-board, rolling-planning, delivery-progress, risk-review。
 - 不因职责分工本身增加 agent、action writer 或常驻 orchestration loop。
 
 ## AD-002 — Evidence-driven runtime policy candidate
 
 - Original candidate `candidate-v6-auditable-control-loop` remains Main-accepted static work; its S06-24 single run was `VALID_48M_COMPLETION` (75.29 / 52.70 / A) but `RUNTIME_ADHERENCE_FAIL`.
-- Current candidate is `candidate-v6c-compliance-cleanup`, parent v6b; S07-02 removes narrow provenance risks without gameplay strategy redesign. v6b remains the immutable S06-25 runtime/audit-correctness parent. v6c is static-only and NOT_RUNTIME_VALIDATED. S06 Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION` and S06=`COMPLETE`; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
+- Current candidate is `candidate-v7-global-trajectory-delivery`, parent `candidate-v6c-compliance-cleanup`; S07-23 implements the Main-accepted S07-22 design as a static strategy/Skill update. v6c remains the immutable compliance-cleanup parent and v6b the earlier runtime/audit-correctness parent. v7 is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; no gameplay/provider/score/hidden-test validation transfers from earlier candidates. S06 Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION` and S06=`COMPLETE`; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
 - Main-accepted strategy contracts remain context recovery, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, and bounded ordinary-story comparison without an exact top-two cap. v6b added a canonical notes-prefix audit surface, decision-closed handoff, one-integer Energy calls, and explicit compression recovery; v6c preserves these contracts. Static contracts are not evidence of v6c runtime adherence or benefit.
-- Further offline policy growth is frozen pending runtime correctness/adherence evidence. S07 W2/W3 may resume only after review of the compliance cleanup; any gameplay still needs a separate Main Game Gate.
+- S07-23 is the authorized static policy evolution after the S07-22 review. Further strategy/architecture changes require Main review; gameplay still needs a separate Main Game Gate. W2/W3 remain separate, unstarted work and are not implied by this implementation.
 - For v6c, Skill-body recovery adherence, survival-trend judgment correctness, runtime marker truthfulness, gameplay effectiveness, survival improvement, score benefit, long-horizon adherence, hidden-test transfer and stable 80+ remain NOT_PROVEN.
 
 ## AD-003 — Bounded state; no durable Memory
 
 - structured-state-board owns sparse current-session public facts, freshness, and at most two attributable recent effects; unconfirmed facts remain unknown.
 - Planning distinguishes observed / inferred / unknown; stale or cross-session information cannot override fresh observe.
+- delivery-progress is the sole owner of a bounded current-session public delivery lifecycle; it does not own Board facts, strategy, risk, or actions. Planning reads its compact summary without rewriting it.
 - Durable cross-game Memory is NOT_IMPLEMENTED. Any future proposal must establish portability and session isolation before adoption.
 
 ## AD-004 — Runtime policy responsibility boundaries
 
-- Board: sparse current-session public facts and freshness; no strategy recommendation.
-- rolling-planning: sole strategic owner for one Primary Gap, progress, horizon, and path comparison.
+- Board: sparse current-session public facts and freshness; no strategy recommendation or derived delivery lifecycle.
+- rolling-planning: sole strategic owner for remaining-career objective, review/action horizons, one evidence-based Primary Gap, progress, Risk Budget, review reset, and path comparison.
+- delivery-progress: up to three relevant active lifecycle summaries and one recent review-linked closed evidence; updates only on relevant public evidence, never submits actions.
 - risk-review: rare review of explicit current-candidate Material Risk; Soft Cost alone does not trigger reconsideration, while a small cost is not assessed in isolation when Planning's public survival trend makes its dimension binding; no survival-trend ownership or action submission.
-- v6b/v6c static cadence preserves Board/Planning/Risk ownership and the retained strategy behavior. A CurrentRoundCompressor snapshot starts a recovery epoch; the persistent instruction requires fresh observe, all-three-Skill reread, and Board/Planning rebuild. Final Risk gate closes the decision unless fresh public evidence arrives.
+- v6b/v6c runtime contracts remain in force. A CurrentRoundCompressor snapshot starts a recovery epoch; the v7 persistent instruction requires fresh observe, all-four-Skill reread, and Board/Delivery/Planning rebuild from current-session public evidence. Final Risk gate closes the decision unless fresh public evidence arrives.
 - Free-text CTRL telemetry is retired. Each take_action notes field starts with exactly one canonical CTRL prefix; the Runner tool event is the auditable pairing source. Marker schema has no B/CP/checkpoint fields; checkpoint behavior remains a Planning concern. Multi-selection Energy is serialized as one integer call per action with fresh observe between calls.
 - Skills advise; they do not submit actions or create a second review loop.
 
@@ -53,7 +55,7 @@
 - Framework/Runner source may be inspected for submission/runtime contracts and allowed interface behavior, but simulator/game-rule internals are not admissible policy evidence.
 - S06-09 decoded simulator internals remain forensic history only: `NON_DEPLOYABLE`. They must not justify S07 policy selection unless the same principle is independently supported by allowed public evidence.
 - Generic public-state rules (for example, fresh-state recovery, visible survival-trend constraints, bounded reconsideration, observed-progress checks) remain admissible when supported independently by public evidence; exact hidden thresholds/formulas are not.
-- Team/Swarm remains deferred. S07 tests policy quality and variance before any architecture expansion.
+- S07-23 implements the Main-accepted static four-Skill architecture. This does not establish policy improvement or authorize further expansion; Team/Swarm remains deferred.
 - `NEXT_GAME = NOT_AUTHORIZED`; S07 does not begin with a mandatory live validation run.
 
 
@@ -68,3 +70,13 @@
 - Deployable v6c candidate metadata no longer points to quarantined forensic strategy evidence. Preserve that document only as quarantined forensic history.
 - This is compliance cleanup only: no provider, CareerSim service, MCP live operation, new game, gameplay, Team/Swarm, durable Memory, fifth Skill, or strategy redesign.
 - `NEXT_GAME = NOT_AUTHORIZED`.
+
+> S07-02 scope note: this decision records the v6c compliance-cleanup contract. Its three-Skill/current-candidate clauses were superseded for the current Candidate by S07-23 / AD-009; v6c and its historical evidence remain preserved as the parent.
+
+## AD-009 — Candidate v7 long-horizon and delivery architecture
+
+- Main accepted the S07-22 design direction for static implementation in S07-23: Single Agent + four Skills, with unchanged frozen Runner/dependencies and no live validation.
+- `structured-state-board` owns only fresh current-session public facts/effects; `rolling-planning` is the sole owner of the robust remaining-career objective, review/action horizons, one evidence-based Primary Gap, and review resets; `delivery-progress` owns a bounded current-session evidence lifecycle and updates only on relevant public triggers; `risk-review` remains the candidate-specific Material Risk gate.
+- Single Agent remains the only action submitter. Delivery is not a strategy/risk/action owner. Memory remains `NOT_IMPLEMENTED`; fifth Skill and Team/Swarm remain `DEFERRED`.
+- `candidate-v7-global-trajectory-delivery` is static-only and `NOT_RUNTIME_VALIDATED`. Gameplay/provider validation, score or survival improvement, long-horizon adherence, stable 80+, and hidden-test transfer remain `NOT_PROVEN`. `NEXT_GAME = NOT_AUTHORIZED`.
+- Further policy or architecture changes require Main review and evidence; implement/skill-load/runtime/gameplay effectiveness must be established separately rather than inferred from static identity or design.

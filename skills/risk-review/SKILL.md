@@ -15,6 +15,8 @@ description: "每个 take_action 前必须应用；只对已生成候选做 cand
 
 仅当 fresh participant-visible evidence 明示与当前候选相关的 Material Risk / 重大警告，或候选直接加重 TIGHT 所依据的公开生存约束时进入 FULL_REVIEW；否则返回 PASS。普通不确定性或 Soft Cost、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
 
+只有当前候选的公开交付依赖与 Material Risk 直接相关时，才读取 Delivery Skill 的对应 compact summary。单纯未交付、延期、没有回执或 UNKNOWN 本身不构成 Risk trigger，也不改变 Risk Budget。
+
 事件类别、标题或单个普通词不是风险证据；不使用预定义故事 pattern library。普通 delivery/scope、compensation/career、relationship boundary、org politics 属于 Planning，只有当前公开重大后果或警告才升级 Risk。
 
 不得读取 story option hidden status update、hidden counters、其它 session 或 Dev answer data；不得建立 event_id/title→choice lookup。

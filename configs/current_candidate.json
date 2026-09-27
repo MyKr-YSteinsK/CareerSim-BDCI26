@@ -1,22 +1,22 @@
 {
-  "candidate_id": "candidate-v6c-compliance-cleanup",
-  "status": "STATIC_COMPLIANCE_CLEANUP_NOT_RUNTIME_VALIDATED",
-  "decision": "V6C_SURGICAL_COMPLIANCE_CLEANUP",
+  "candidate_id": "candidate-v7-global-trajectory-delivery",
+  "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+  "decision": "S07_23_STATIC_IMPLEMENTATION",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "COMPLIANCE_CLEANUP_ONLY_NO_STRATEGY_REDIRECT",
-  "parent_candidate_id": "candidate-v6b-runtime-correctness",
-  "base_main_sha": "7e11db68ffc73990ed10eba9dcc0614eedc98274",
+  "strategy_delta": "LONG_HORIZON_PROGRESSION_AND_DELIVERY_ARCHITECTURE",
+  "parent_candidate_id": "candidate-v6c-compliance-cleanup",
+  "base_main_sha": "63208fb947d07397d67531673e36ba7f91c70cec",
   "parent_identity": {
-    "runtime_manifest_sha256": "8cbf68fa4c6ae055db9ad74942e37a649bfa13dca73b8924175467a5ee80e351",
+    "runtime_manifest_sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
     "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074",
     "skills": [
       {
         "name": "risk-review",
-        "git_blob": "f9cafecad85cad39d34bfd0266eaea9e88d882cc"
+        "git_blob": "ab20843eadad675dbf7aa8be0178fb52a3791208"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "78a4b578fcb71eef04bc97ec0e3471820fecfe2f"
+        "git_blob": "c4d2bfe065ee3c658e6cff041be87ae8c8c96bdf"
       },
       {
         "name": "structured-state-board",
@@ -26,24 +26,29 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
-    "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074"
+    "sha256": "873726a8bb83ae27c11c718091ed186e43e633392d5693a7672ab21fac8c0254",
+    "instruction_sha256": "fc8c328e5f8b44e93e675784f3771ca531658cdd8f9c50ee8487476be5193931"
   },
   "skills": [
     {
-      "name": "risk-review",
-      "path": "skills/risk-review/SKILL.md",
-      "git_blob": "ab20843eadad675dbf7aa8be0178fb52a3791208"
+      "name": "structured-state-board",
+      "path": "skills/structured-state-board/SKILL.md",
+      "git_blob": "758984f204a3c99e959905861e9b29dd9689b8d7"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "c4d2bfe065ee3c658e6cff041be87ae8c8c96bdf"
+      "git_blob": "6f4180e4c55794a30adbe7aec9e4249ebb63fd48"
     },
     {
-      "name": "structured-state-board",
-      "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "b6d371d74f3477f4f6cdeabe8482093a78cbe3e5"
+      "name": "delivery-progress",
+      "path": "skills/delivery-progress/SKILL.md",
+      "git_blob": "9a84f723da92971850f167a3eebdc862ff95c20c"
+    },
+    {
+      "name": "risk-review",
+      "path": "skills/risk-review/SKILL.md",
+      "git_blob": "b59fd1c8bc54d9b3469b4de22f3d5f8c126fb2ef"
     }
   ],
   "adopted_mechanisms": [
@@ -57,12 +62,19 @@
     "OBSERVED_EFFECT_AND_TWO_CHECKPOINT_STALL_DIAGNOSIS",
     "CANDIDATE_SPECIFIC_RISK_RECONSIDERATION",
     "CANONICAL_NOTES_CTRL_PREFIX",
-    "BOUNDED_PUBLIC_STORY_COMPARISON"
+    "BOUNDED_PUBLIC_STORY_COMPARISON",
+    "ROBUST_LONG_HORIZON_CAREER_OBJECTIVE",
+    "PROMOTION_LEVEL_AS_PROGRESSION_FEEDBACK",
+    "BOUNDED_CURRENT_SESSION_DELIVERY_LIFECYCLE",
+    "LOW_FREQUENCY_DELIVERY_EVIDENCE_TRACKING"
   ],
   "runtime_contract_delta": [
     "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
     "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
-    "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH"
+    "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+    "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+    "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+    "GLOBAL_REVIEW_ACTION_HORIZONS"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -78,18 +90,25 @@
   ],
   "architecture": {
     "action_submitter": "Single Agent",
-    "skill_count": 3,
+    "skill_count": 4,
     "retired_skills": {
       "career-action-trace": "RETIRED"
     },
     "memory": "NOT_IMPLEMENTED",
     "fifth_skill": "DEFERRED",
-    "team_swarm": "DEFERRED"
+    "team_swarm": "DEFERRED",
+    "active_skills": [
+      "structured-state-board",
+      "rolling-planning",
+      "delivery-progress",
+      "risk-review"
+    ]
   },
   "compliance_review": "docs/project/reviews/S07-01_COMPLIANCE_PROVENANCE_AND_PROBE_REVIEW.md",
   "environment_contract": "docs/project/OFFICIAL_SOURCE_LOCK.md",
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
+    "runtime_validated": false,
     "gameplay_validated": false,
     "provider_validated": false,
     "survival_improvement_proven": false,
@@ -98,5 +117,6 @@
     "stable_80_plus_proven": false,
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
-  }
+  },
+  "design_intent": "LONG_HORIZON_PROGRESSION_AND_DELIVERY_ARCHITECTURE"
 }
