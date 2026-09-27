@@ -449,9 +449,9 @@ def _timestamp() -> str:
 
 
 class JsonlEvidence:
-    def __init__(self, path: Path) -> None:
+    def __init__(self, path: Path, *, append: bool = False) -> None:
         self.path = path
-        self.file = path.open("x", encoding="utf-8", newline="\n")
+        self.file = path.open("a" if append else "x", encoding="utf-8", newline="\n")
 
     def write(self, kind: str, **fields: Any) -> None:
         self.file.write(json.dumps({"at": _timestamp(), "kind": kind, **fields}, ensure_ascii=False) + "\n")
@@ -493,15 +493,44 @@ def _print_snapshot(snapshot: Mapping[str, Any], label: str) -> None:
         print("Ignored unknown field names: " + ", ".join(snapshot["ignored_field_names"]), flush=True)
 
 
-async def run_pilot(output_dir: Path) -> int:
+def _resume_counts(path: Path, session_id: str) -> tuple[int, int]:
+    """Require a known, nonterminal public checkpoint before reconnecting."""
+
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    sessions = {row.get("session_id") for row in rows if row.get("kind") == "new_game"}
+    if sessions != {session_id}:
+        raise ValueError("resume session does not match the single recorded new_game")
+    observes = [row for row in rows if row.get("kind") == "observe"]
+    if not observes or observes[-1].get("snapshot", {}).get("session_id") != session_id:
+        raise ValueError("no same-session public observe checkpoint")
+    if observes[-1]["snapshot"].get("terminal") is not False:
+        raise ValueError("resume requires a nonterminal public checkpoint")
+    attempts = [row for row in rows if row.get("kind") == "take_action"]
+    if not attempts or attempts[-1].get("outcome") != "ACTION_RESPONSE_STATE_CHANGED":
+        raise ValueError("last action outcome is not confirmed as state changed")
+    boundary = [row for row in rows if row.get("kind") not in {"stop", "bridge_shutdown"}]
+    if boundary[-1].get("kind") != "take_action":
+        raise ValueError("resume checkpoint is not at a closed action boundary")
+    if boundary[-2].get("kind") != "observe":
+        raise ValueError("last action lacks its immediately preceding public observe")
+    return len(observes), len(attempts)
+
+
+async def run_pilot(output_dir: Path, resume_session_id: str | None = None) -> int:
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
 
-    if output_dir.exists():
-        raise FileExistsError(f"refusing to reuse existing task evidence directory: {output_dir}")
-    output_dir.mkdir(parents=True, exist_ok=False)
-    (output_dir / "emulator-logs").mkdir()
-    evidence = JsonlEvidence(output_dir / "public-trajectory.jsonl")
+    if resume_session_id is None:
+        if output_dir.exists():
+            raise FileExistsError(f"refusing to reuse existing task evidence directory: {output_dir}")
+        output_dir.mkdir(parents=True, exist_ok=False)
+        (output_dir / "emulator-logs").mkdir()
+        prior_observes, action_attempts = 0, 0
+    else:
+        prior_observes, action_attempts = _resume_counts(
+            output_dir / "public-trajectory.jsonl", resume_session_id
+        )
+    evidence = JsonlEvidence(output_dir / "public-trajectory.jsonl", append=resume_session_id is not None)
     executable = Path(sys.executable).parent / "career-emulator-mcp.exe"
     if not executable.is_file():
         evidence.close()
@@ -515,8 +544,7 @@ async def run_pilot(output_dir: Path) -> int:
     )
     print("Starting one direct career-emulator-mcp child; no AgentServer/provider is used.", flush=True)
     evidence.write("direct_mcp_start", executable=str(executable), args=params.args, cwd=params.cwd)
-    action_attempts = 0
-    session_id: str | None = None
+    session_id: str | None = resume_session_id
     status_code = 1
     try:
         async with stdio_client(params) as (read_stream, write_stream):
@@ -533,22 +561,26 @@ async def run_pilot(output_dir: Path) -> int:
                 print("Required public tool schemas:", json.dumps(contract, ensure_ascii=False), flush=True)
                 print("Public new_game seed/replay control:", "FOUND" if seed_control else "NOT FOUND", flush=True)
 
-                new_game_result = await client.call_tool("new_game", arguments={})
-                new_payload, new_text, new_error = _decode_result(new_game_result)
-                session_id = _find_session_id(new_payload)
-                evidence.write(
-                    "new_game",
-                    result_status="MCP_ERROR" if new_error else "RETURNED",
-                    session_id=session_id,
-                    public_receipt=_public_receipt(new_payload, new_text),
-                )
-                if new_error or not session_id:
-                    print("new_game did not return a clearly usable session identity; stopping without retry.", flush=True)
-                    evidence.write("stop", reason="NEW_GAME_ERROR_OR_SESSION_UNKNOWN")
-                    return 2
-                print(f"Fresh public session: {session_id}", flush=True)
+                if resume_session_id is None:
+                    new_game_result = await client.call_tool("new_game", arguments={})
+                    new_payload, new_text, new_error = _decode_result(new_game_result)
+                    session_id = _find_session_id(new_payload)
+                    evidence.write(
+                        "new_game",
+                        result_status="MCP_ERROR" if new_error else "RETURNED",
+                        session_id=session_id,
+                        public_receipt=_public_receipt(new_payload, new_text),
+                    )
+                    if new_error or not session_id:
+                        print("new_game did not return a clearly usable session identity; stopping without retry.", flush=True)
+                        evidence.write("stop", reason="NEW_GAME_ERROR_OR_SESSION_UNKNOWN")
+                        return 2
+                    print(f"Fresh public session: {session_id}", flush=True)
+                else:
+                    evidence.write("resume_session", session_id=session_id, prior_action_attempts=action_attempts)
+                    print(f"Resuming public session: {session_id}; no new_game call.", flush=True)
 
-                observe_count = 0
+                observe_count = prior_observes
 
                 async def observe_and_render(label: str) -> dict[str, Any] | None:
                     nonlocal observe_count
@@ -685,9 +717,10 @@ async def run_pilot(output_dir: Path) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--resume-session-id", help="reconnect to a recorded public session without new_game")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    return asyncio.run(run_pilot(args.output_dir.resolve()))
+    return asyncio.run(run_pilot(args.output_dir.resolve(), args.resume_session_id))
 
 
 if __name__ == "__main__":

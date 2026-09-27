@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from contextlib import asynccontextmanager
 import importlib.util
 from types import ModuleType, SimpleNamespace
@@ -381,3 +382,51 @@ def test_transport_exception_stops_without_read_only_replay_or_action_retry(
     assert result == 6
     assert fake_client.actions == [1]
     assert fake_client.observe_count == 1
+
+
+def test_resume_observes_existing_session_without_new_game(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    output_dir = tmp_path / "resume-evidence"
+    output_dir.mkdir()
+    trajectory = output_dir / "public-trajectory.jsonl"
+    rows = [
+        {"kind": "new_game", "session_id": "pilot-session"},
+        {"kind": "observe", "count": 1, "snapshot": {"session_id": "pilot-session", "terminal": False}},
+        {"kind": "take_action", "attempt": 1, "outcome": "ACTION_RESPONSE_STATE_CHANGED"},
+        {"kind": "bridge_shutdown"},
+    ]
+    trajectory.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+
+    class FakeClient:
+        async def initialize(self) -> SimpleNamespace:
+            return SimpleNamespace(protocolVersion="test")
+
+        async def list_tools(self) -> SimpleNamespace:
+            return SimpleNamespace(tools=_fake_tools())
+
+        async def call_tool(self, name: str, arguments: dict[str, object]) -> SimpleNamespace:
+            assert name == "observe"
+            assert arguments == {"session_id": "pilot-session"}
+            return _mcp_result(_observe_payload(2, terminal=True, choices=[]))
+
+    _install_fake_mcp(monkeypatch, FakeClient(), tmp_path)
+    assert asyncio.run(driver.run_pilot(output_dir, "pilot-session")) == 0
+    updated = [json.loads(line) for line in trajectory.read_text(encoding="utf-8").splitlines()]
+    assert sum(row["kind"] == "new_game" for row in updated) == 1
+    assert updated[-2]["kind"] == "terminal"
+
+
+def test_resume_rejects_unreconciled_player_decision(tmp_path: Path) -> None:
+    path = tmp_path / "public-trajectory.jsonl"
+    rows = [
+        {"kind": "new_game", "session_id": "pilot-session"},
+        {"kind": "observe", "snapshot": {"session_id": "pilot-session", "terminal": False}},
+        {"kind": "take_action", "outcome": "ACTION_RESPONSE_STATE_CHANGED"},
+        {"kind": "player_decision", "choice": 1},
+        {"kind": "stop", "reason": "TAKE_ACTION_TRANSPORT_OUTCOME_UNKNOWN"},
+        {"kind": "bridge_shutdown"},
+    ]
+    path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+    with pytest.raises(ValueError, match="closed action boundary"):
+        driver._resume_counts(path, "pilot-session")
