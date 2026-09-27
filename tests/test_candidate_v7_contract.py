@@ -16,6 +16,15 @@ EXPECTED_SKILLS = {
     "delivery-progress",
     "risk-review",
 }
+BASE_MAIN_SHA = "7b05c492bc5a5083226c4b7a64c1ce9482852941"
+PARENT_CANDIDATE_ID = "candidate-v7a-promotion-frontier"
+NEW_STORY_MECHANISMS = {
+    "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
+    "FACT_GROUNDED_ACCOUNTABLE_HANDLING",
+    "CLEAR_OWNERSHIP_AND_OBSERVABLE_CHECKPOINT",
+    "REVERSIBILITY_AND_OPTIONALITY_PRIOR",
+    "PROPORTIONAL_ESCALATION",
+}
 
 
 def _git_blob_id(path: Path) -> str:
@@ -43,10 +52,10 @@ def test_candidate_identity_matches_manifest_and_exact_skill_blobs() -> None:
     )
     manifest = _load_json(manifest_path)
 
-    assert candidate["candidate_id"] == "candidate-v7a-promotion-frontier"
-    assert candidate["parent_candidate_id"] == "candidate-v7-global-trajectory-delivery"
+    assert candidate["candidate_id"] == "candidate-v7b-semantic-generalization"
+    assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["base_main_sha"] == "21b5153b86a0b7e7ce2c31278620202b6739c536"
+    assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == candidate["candidate_id"]
     assert manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -63,13 +72,24 @@ def test_candidate_identity_matches_manifest_and_exact_skill_blobs() -> None:
         ["git", "show", f"{candidate['base_main_sha']}:configs/current_candidate.json"], cwd=ROOT
     )
     parent_candidate = _load_json_from_bytes(parent_candidate_bytes)
+    assert parent_candidate["candidate_id"] == PARENT_CANDIDATE_ID
+    parent_skill_ids = []
+    for entry in parent_candidate["skills"]:
+        actual_parent_blob = subprocess.check_output(
+            ["git", "rev-parse", f"{candidate['base_main_sha']}:{entry['path']}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert entry["git_blob"] == actual_parent_blob
+        parent_skill_ids.append({"name": entry["name"], "git_blob": actual_parent_blob})
+    assert parent_candidate["runtime_manifest"]["sha256"] == hashlib.sha256(parent_manifest_bytes).hexdigest()
+    assert parent_candidate["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(
+        parent_manifest["instruction"].encode("utf-8")
+    ).hexdigest()
     assert candidate["parent_identity"] == {
         "runtime_manifest_sha256": hashlib.sha256(parent_manifest_bytes).hexdigest(),
         "instruction_sha256": hashlib.sha256(parent_manifest["instruction"].encode("utf-8")).hexdigest(),
-        "skills": [
-            {"name": entry["name"], "git_blob": entry["git_blob"]}
-            for entry in parent_candidate["skills"]
-        ],
+        "skills": parent_skill_ids,
     }
 
     skill_entries = candidate["skills"]
@@ -106,6 +126,8 @@ def test_candidate_identity_matches_manifest_and_exact_skill_blobs() -> None:
         "EARLY_HORIZON_PROGRESSION_BIAS",
         "EXPLICIT_PUBLIC_AFFORDABILITY_CONSTRAINT",
     } <= set(candidate["adopted_mechanisms"])
+    assert NEW_STORY_MECHANISMS <= set(candidate["adopted_mechanisms"])
+    assert "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON" in candidate["runtime_contract_delta"]
 
 
 def test_four_skill_frontmatter_and_single_action_authority() -> None:
@@ -192,3 +214,55 @@ def test_promotion_frontier_is_qualitative_and_free_of_threshold_mappings() -> N
     )
     for pattern in forbidden_patterns:
         assert re.search(pattern, audited_surface, flags=re.IGNORECASE) is None
+
+
+def test_story_semantic_priors_stay_bounded_growth_preserving_and_event_agnostic() -> None:
+    candidate = _load_json(ROOT / "configs/current_candidate.json")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")
+    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
+    runtime_instruction = manifest["instruction"]
+    start = planning.index("### 陌生 Story 的事件无关语义比较")
+    end = planning.index("\nDECISION_CLOSED：", start)
+    story_policy = planning[start:end]
+
+    for heading in (
+        "Evidence-first / truthfulness",
+        "Accountable direct handling",
+        "Ownership / verification",
+        "Reversibility / optionality",
+        "Proportional escalation",
+    ):
+        assert heading in story_policy
+
+    for marker in (
+        "无 Material Risk",
+        "权力滥用",
+        "可信报复风险",
+        "必须升级",
+        "直接处理已失败",
+        "超出权限",
+        "confidentiality/compliance/safety",
+        "不得补造",
+        "Delivery 独占 lifecycle state",
+        "不因另一候选更礼貌、保守或可逆就自动压掉它",
+        "severity、scope、repeated failure",
+        "repeated failure",
+        "不是第二 strategy owner、Risk gate 或独立 score function",
+        "不触发额外 Skill 全文读取或每个 Story 的 FULL checkpoint",
+        "event/title/keyword→choice lookup",
+        "Dev event catalog",
+        "fixed answer",
+        "fixed escalation count",
+    ):
+        assert marker in story_policy
+
+    assert story_policy.index("fresh public facts") < story_policy.index("生成合法候选")
+    assert story_policy.index("生成合法候选") < story_policy.index("Risk gate")
+    assert "bounded, context-sensitive semantic comparison" in runtime_instruction
+    assert "clearly higher public Growth value" in runtime_instruction
+    assert "candidate-specific Material Risk gate" in runtime_instruction
+    assert "fixed answer" in runtime_instruction.lower()
+    assert "fixed escalation count" in runtime_instruction.lower()
+    assert "FIXED_STORY_ANSWER" in candidate["rejected_mechanisms"]
+    assert "NUMERIC_ESCALATION_LADDER" in candidate["rejected_mechanisms"]
+    assert all(value is False for value in candidate["validation"].values())

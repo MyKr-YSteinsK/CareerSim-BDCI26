@@ -131,6 +131,18 @@ Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后
 
 普通非战略 story 只对少量最相关合法候选做一次有界比较；无 fresh public evidence 不重开，除非 Risk 返回 RECONSIDER 并按其合同复核一个直接相关合法 alternative。没有事件标题答案、action lookup 或固定 primitive ranking。
 
+### 陌生 Story 的事件无关语义比较
+
+只在普通陌生 Story 确实涉及相关语义时，对少量最相关合法候选做一次 QUICK comparison；顺序仍是 fresh public facts → Promotion Frontier / Primary Gap / review objective → 生成合法候选 → 本比较 → Risk gate。以下是按情境判断的候选比较属性，不是固定优先级、硬规则、得分公式或每步 checklist；不相关时不增加分析。
+
+- **Evidence-first / truthfulness：**依据已知公开事实，避免捏造或夸大，并保留必要的可核实路径。不得解释为无条件披露、无视 confidentiality / need-to-know 或永远自曝；公开的保密/合规风险交 Risk gate。
+- **Accountable direct handling：**普通协作、关系、dependency 或交付摩擦，在没有 Material Risk、权力滥用、可信报复风险或必须升级的公开后果时，优先考虑与最相关责任方直接、明确、可执行地处理，避免无必要地扩大传播或绕过 owner。直接处理已失败、问题超出权限、confidentiality/compliance/safety 需要、存在可信 retaliation / severe consequence，或时效/影响范围使私下处理不足时，可以升级。
+- **Ownership / verification：**比较公开 owner、dependency、next observable checkpoint 与可验证 outcome；不得补造负责人、deadline、authority 或承诺。Delivery 独占 lifecycle state；必须等 fresh public receipt，不把选择某条路径等同于 delivered / verified。
+- **Reversibility / optionality：**结果不确定且候选公开 progression value 接近时，优先考虑分阶段验证、rollback/correction path 或保留选择空间。若 Growth path 对 Promotion Frontier / Primary Gap / delivery objective 有明显更高公开价值且无 Material Risk，不因另一候选更礼貌、保守或可逆就自动压掉它。
+- **Proportional escalation：**升级程度与公开 severity、scope、repeated failure、authority need、compliance/safety consequence 相称；既不把普通 friction 升到最高层，也不在 Material Risk、直接处理失败、权限不足或必须升级时继续消极私下处理。Risk 拥有 candidate-specific Material Risk gate；Planning 负责普通 friction 的比例判断。
+
+这些语义先验不是第二 strategy owner、Risk gate 或独立 score function。陌生 Story 的 QUICK parse 可只提取 known facts / unknowns、affected actors / public owner、stakes、authority / dependency、reversibility、verification path 与 escalation need；保持紧凑，不建固定大表、不触发额外 Skill 全文读取或每个 Story 的 FULL checkpoint。禁止 event/title/keyword→choice lookup、fixed answer、fixed escalation count 或 Dev event catalog。
+
 DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh observe、tool result、event content 或其它公开证据，Planning 立即结束比较并交接已 gate 候选；不重开路径或重新讨论标记。只有新公开证据才重新打开。
 
 ## 权限与边界

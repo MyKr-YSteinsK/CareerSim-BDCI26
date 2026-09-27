@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7a-promotion-frontier",
+  "candidate_id": "candidate-v7b-semantic-generalization",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_24_STATIC_STRATEGY_REFINEMENT",
+  "decision": "S07_25_STATIC_SEMANTIC_GENERALIZATION",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "PROMOTION_FRONTIER_LONG_HORIZON_OPTIMIZATION",
-  "parent_candidate_id": "candidate-v7-global-trajectory-delivery",
-  "base_main_sha": "21b5153b86a0b7e7ce2c31278620202b6739c536",
+  "strategy_delta": "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
+  "parent_candidate_id": "candidate-v7a-promotion-frontier",
+  "base_main_sha": "7b05c492bc5a5083226c4b7a64c1ce9482852941",
   "parent_identity": {
-    "runtime_manifest_sha256": "873726a8bb83ae27c11c718091ed186e43e633392d5693a7672ab21fac8c0254",
-    "instruction_sha256": "fc8c328e5f8b44e93e675784f3771ca531658cdd8f9c50ee8487476be5193931",
+    "runtime_manifest_sha256": "d2ff74e78f27f23a17bc99cf1a3f5fc8d389a02bd6aa7604ca569518ebb1b0e4",
+    "instruction_sha256": "2318ee73684118e066ffb319bd0739c96f03d2212cee6e1cb26d45599909a02f",
     "skills": [
       {
         "name": "structured-state-board",
@@ -16,7 +16,7 @@
       },
       {
         "name": "rolling-planning",
-        "git_blob": "6f4180e4c55794a30adbe7aec9e4249ebb63fd48"
+        "git_blob": "9c8ceaece1e200721d2eabd21f5b0c07f85ee383"
       },
       {
         "name": "delivery-progress",
@@ -30,8 +30,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "d2ff74e78f27f23a17bc99cf1a3f5fc8d389a02bd6aa7604ca569518ebb1b0e4",
-    "instruction_sha256": "2318ee73684118e066ffb319bd0739c96f03d2212cee6e1cb26d45599909a02f"
+    "sha256": "040b4786e3e76288bff68cbe83145330086b3eb314793f726df10b05b663896a",
+    "instruction_sha256": "8d0534c38c2d7d12f443f3438d4938aeadfe16abd2e1a8009661a4314798d9b9"
   },
   "skills": [
     {
@@ -42,7 +42,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "9c8ceaece1e200721d2eabd21f5b0c07f85ee383"
+      "git_blob": "b53845006c2a409b25bf6a8e06c6e312662ad201"
     },
     {
       "name": "delivery-progress",
@@ -75,7 +75,12 @@
     "CROSS_DIMENSION_PROGRESSION_BOTTLENECK",
     "GLOBAL_MARGINAL_VALUE_AWARENESS",
     "EARLY_HORIZON_PROGRESSION_BIAS",
-    "EXPLICIT_PUBLIC_AFFORDABILITY_CONSTRAINT"
+    "EXPLICIT_PUBLIC_AFFORDABILITY_CONSTRAINT",
+    "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
+    "FACT_GROUNDED_ACCOUNTABLE_HANDLING",
+    "CLEAR_OWNERSHIP_AND_OBSERVABLE_CHECKPOINT",
+    "REVERSIBILITY_AND_OPTIONALITY_PRIOR",
+    "PROPORTIONAL_ESCALATION"
   ],
   "runtime_contract_delta": [
     "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
@@ -87,7 +92,8 @@
     "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
     "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
     "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
-    "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET"
+    "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET",
+    "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -102,7 +108,9 @@
     "HIDDEN_STATE_RECONSTRUCTION",
     "EXACT_PROMOTION_THRESHOLD_OR_CAP_MAPPING",
     "FIXED_LEVEL_PROMOTION_TARGET",
-    "FIXED_CAREER_CAPITAL_RATIO"
+    "FIXED_CAREER_CAPITAL_RATIO",
+    "FIXED_STORY_ANSWER",
+    "NUMERIC_ESCALATION_LADDER"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
@@ -134,5 +142,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "PROMOTION_FRONTIER_LONG_HORIZON_OPTIMIZATION"
+  "design_intent": "PROMOTION_FRONTIER_WITH_EVENT_AGNOSTIC_SEMANTIC_PRIORS"
 }
