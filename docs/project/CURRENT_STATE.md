@@ -14,11 +14,12 @@
 - S07-24 completed the bounded static Promotion Frontier refinement as Candidate v7a; it does not authorize runtime validation or complete S07.
 - S07-25 completed the bounded static, event-agnostic Story semantic refinement as Candidate v7b; v7b is NOT_RUNTIME_VALIDATED and does not authorize runtime validation or complete S07.
 - S07-26 completed Candidate v7c's static global decision hierarchy and progressive-disclosure refinement. It uses public Level tenure only as optional qualitative context, adds review realization, time-to-realization and commitment congestion reasoning, and retains the four-Skill architecture. v7c is NOT_RUNTIME_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
+- S07-27 completed the bounded static strategic-continuity refinement as Candidate v7d. Planning owns a recoverable Active Review Plan with evidence-gated revision; Output is an explicit public progression signal; Layer 6 has a narrow Value of Information prior. AD-002's stale current-Candidate claim is marked historical. Runtime/provider/gameplay remain NOT_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED. Next recommendation: S07-28 Runtime Readiness Gate, with no live authorization implied.
 - Last verified: 2026-09-27
 
 ## Current candidate
 
-- Current candidate: `candidate-v7c-global-decision-policy`；parent: `candidate-v7b-semantic-generalization`；S07-26 static strategy and prompt refinement, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. v7b remains its four-Skill parent; v7 remains the immutable four-Skill architecture parent; v6c remains its compliance-cleanup ancestor and v6b the earlier runtime-correctness ancestor. No gameplay/provider evidence transfers from earlier candidates automatically.
+- Current Candidate: `candidate-v7d-strategic-continuity`；parent: `candidate-v7c-global-decision-policy`；S07-27 static refinement, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. Canonical identity is `configs/current_candidate.json`; v7c is the direct parent, v7b the prior strategy ancestor, and v7 the immutable four-Skill architecture parent. No gameplay/provider evidence transfers from earlier candidates automatically.
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Four Skills: structured-state-board, rolling-planning, delivery-progress, risk-review
@@ -49,5 +50,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
-- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 completed the bounded v7a refinement, and S07-25 completed the bounded v7b static refinement. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, fifth Skill, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
+- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, and S07-27 the v7d continuity refinement. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, fifth Skill, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.

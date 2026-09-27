@@ -1,22 +1,22 @@
 {
-  "candidate_id": "candidate-v7c-global-decision-policy",
+  "candidate_id": "candidate-v7d-strategic-continuity",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_26_STATIC_GLOBAL_DECISION_POLICY",
+  "decision": "S07_27_STATIC_STRATEGIC_CONTINUITY",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "HIERARCHICAL_DECISION_POLICY_AND_PROGRESSIVE_DISCLOSURE",
-  "parent_candidate_id": "candidate-v7b-semantic-generalization",
-  "base_main_sha": "d10f354f5338e7950bd49efeba7b9d524e82f23a",
+  "strategy_delta": "ACTIVE_REVIEW_PLAN_WITH_EVIDENCE_GATED_REVISION",
+  "parent_candidate_id": "candidate-v7c-global-decision-policy",
+  "base_main_sha": "40c1314cb4ebee76ea80d3ad3b00aa0c5645694d",
   "parent_identity": {
-    "runtime_manifest_sha256": "040b4786e3e76288bff68cbe83145330086b3eb314793f726df10b05b663896a",
-    "instruction_sha256": "8d0534c38c2d7d12f443f3438d4938aeadfe16abd2e1a8009661a4314798d9b9",
+    "runtime_manifest_sha256": "f41c6417009fb957de9e2c7cfde2d9e5185ecd1f09d3d49d32bfd82c67ec7fa0",
+    "instruction_sha256": "3ffafc11d04d5df0d40ae724b6420bf2c55ce648543b0408e5d535e26a62c27e",
     "skills": [
       {
         "name": "structured-state-board",
-        "git_blob": "758984f204a3c99e959905861e9b29dd9689b8d7"
+        "git_blob": "e76cb289833ad00a7c40c331cb8d6035bde15221"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "b53845006c2a409b25bf6a8e06c6e312662ad201"
+        "git_blob": "9dddf69c5ca040760343a8303ccfd8d029f091ff"
       },
       {
         "name": "delivery-progress",
@@ -30,8 +30,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "f41c6417009fb957de9e2c7cfde2d9e5185ecd1f09d3d49d32bfd82c67ec7fa0",
-    "instruction_sha256": "3ffafc11d04d5df0d40ae724b6420bf2c55ce648543b0408e5d535e26a62c27e"
+    "sha256": "22e63b86b98daa009838353491f629119b45d74da94adb6c0c1ff2c7ba6cef00",
+    "instruction_sha256": "72b851877971c998aeba804ae62275d0651be83bea717b6d7b6552fdb36317f3"
   },
   "skills": [
     {
@@ -42,7 +42,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "9dddf69c5ca040760343a8303ccfd8d029f091ff"
+      "git_blob": "7c9c226c3df80f386d1dcf0eb083cc912e5b55e3"
     },
     {
       "name": "delivery-progress",
@@ -88,7 +88,13 @@
     "CLOSE_BEFORE_OPEN_WHEN_GLOBALLY_DOMINANT",
     "LATE_HORIZON_REALIZATION_BIAS",
     "HIERARCHICAL_DECISION_POLICY",
-    "PROGRESSIVE_DISCLOSURE_RUNTIME_KERNEL"
+    "PROGRESSIVE_DISCLOSURE_RUNTIME_KERNEL",
+    "ACTIVE_REVIEW_PLAN",
+    "EVIDENCE_GATED_PLAN_REVISION",
+    "PRIMARY_GAP_PERSISTENCE",
+    "NEXT_OBSERVABLE_CHECKPOINT_CONTINUITY",
+    "EXPLICIT_OUTPUT_PROGRESSION_CONTEXT",
+    "NARROW_VALUE_OF_INFORMATION_PRIOR"
   ],
   "runtime_contract_delta": [
     "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
@@ -108,7 +114,8 @@
     "CONDITIONAL_CLOSE_BEFORE_OPEN",
     "LATE_HORIZON_REALIZATION_BIAS",
     "HIERARCHICAL_GLOBAL_DECISION_ORDER",
-    "MANIFEST_KERNEL_PROGRESSIVE_DISCLOSURE"
+    "MANIFEST_KERNEL_PROGRESSIVE_DISCLOSURE",
+    "ACTIVE_REVIEW_PLAN_RECOVERY_CONTINUITY"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -131,7 +138,15 @@
     "FIXED_COMMITMENT_COUNT_THRESHOLD",
     "FIXED_LATE_HORIZON_MONTH",
     "FIXED_TIME_TO_REALIZATION_MAPPING",
-    "COMMITMENT_COUNT_AS_CONGESTION_RULE"
+    "COMMITMENT_COUNT_AS_CONGESTION_RULE",
+    "FIXED_PLAN_DURATION",
+    "NUMERIC_PLAN_HYSTERESIS",
+    "FIXED_PRIMARY_GAP_SEQUENCE",
+    "FIXED_PRIMARY_GAP_SWITCH_COUNT",
+    "OUTPUT_THRESHOLD_OR_HIDDEN_OUTPUT_WEIGHT",
+    "FIXED_PROMOTION_MONTH",
+    "DEFAULT_INFORMATION_GATHERING",
+    "FIXED_OBJECTIVE_DURATION"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
@@ -163,5 +178,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "HIERARCHICAL_LONG_HORIZON_REALIZATION_POLICY"
+  "design_intent": "ACTIVE_REVIEW_PLAN_WITH_EVIDENCE_GATED_REVISION"
 }
