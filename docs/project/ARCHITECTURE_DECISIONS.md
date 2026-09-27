@@ -11,7 +11,7 @@
 ## AD-002 — Evidence-driven runtime policy candidate
 
 - Original candidate `candidate-v6-auditable-control-loop` remains Main-accepted static work; its S06-24 single run was `VALID_48M_COMPLETION` (75.29 / 52.70 / A) but `RUNTIME_ADHERENCE_FAIL`.
-- Current candidate is `candidate-v7-global-trajectory-delivery`, parent `candidate-v6c-compliance-cleanup`; S07-23 implements the Main-accepted S07-22 design as a static strategy/Skill update. v6c remains the immutable compliance-cleanup parent and v6b the earlier runtime/audit-correctness parent. v7 is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; no gameplay/provider/score/hidden-test validation transfers from earlier candidates. S06 Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION` and S06=`COMPLETE`; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
+- Current candidate is `candidate-v7a-promotion-frontier`, parent `candidate-v7-global-trajectory-delivery`; S07-24 adds a bounded static Promotion Frontier refinement to the S07-23 four-Skill design. v7 remains the immutable static parent; v6c remains the compliance-cleanup ancestor and v6b the earlier runtime/audit-correctness ancestor. v7a is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; no gameplay/provider/score/hidden-test validation transfers from earlier candidates. S06 Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION` and S06=`COMPLETE`; NEXT_GAME = NOT_AUTHORIZED; Design Freeze = ACTIVE.
 - Candidate identity and exact submission instruction are in configs/current_candidate.json and configs/runtime_manifest.json.
 - Main-accepted strategy contracts remain context recovery, candidate-first Risk ordering, fresh-state refresh, one Primary Gap and public survival-trend Risk Budget, review/promotion reset, observed > advertised, strict two-checkpoint STALLED, bounded RECONSIDER, joint Energy + Main planning, and bounded ordinary-story comparison without an exact top-two cap. v6b added a canonical notes-prefix audit surface, decision-closed handoff, one-integer Energy calls, and explicit compression recovery; v6c preserves these contracts. Static contracts are not evidence of v6c runtime adherence or benefit.
 - S07-23 is the authorized static policy evolution after the S07-22 review. Further strategy/architecture changes require Main review; gameplay still needs a separate Main Game Gate. W2/W3 remain separate, unstarted work and are not implied by this implementation.
@@ -27,7 +27,7 @@
 ## AD-004 — Runtime policy responsibility boundaries
 
 - Board: sparse current-session public facts and freshness; no strategy recommendation or derived delivery lifecycle.
-- rolling-planning: sole strategic owner for remaining-career objective, review/action horizons, one evidence-based Primary Gap, progress, Risk Budget, review reset, and path comparison.
+- rolling-planning: sole strategic owner for remaining-career objective, review/action horizons, qualitative Promotion Frontier / Progression Readiness, one evidence-based Primary Gap, cross-dimension bottleneck and marginal-value comparison, Progress, Risk Budget, review reset, and path comparison.
 - delivery-progress: up to three relevant active lifecycle summaries and one recent review-linked closed evidence; updates only on relevant public evidence, never submits actions.
 - risk-review: rare review of explicit current-candidate Material Risk; Soft Cost alone does not trigger reconsideration, while a small cost is not assessed in isolation when Planning's public survival trend makes its dimension binding; no survival-trend ownership or action submission.
 - v6b/v6c runtime contracts remain in force. A CurrentRoundCompressor snapshot starts a recovery epoch; the v7 persistent instruction requires fresh observe, all-four-Skill reread, and Board/Delivery/Planning rebuild from current-session public evidence. Final Risk gate closes the decision unless fresh public evidence arrives.
@@ -80,3 +80,14 @@
 - Single Agent remains the only action submitter. Delivery is not a strategy/risk/action owner. Memory remains `NOT_IMPLEMENTED`; fifth Skill and Team/Swarm remain `DEFERRED`.
 - `candidate-v7-global-trajectory-delivery` is static-only and `NOT_RUNTIME_VALIDATED`. Gameplay/provider validation, score or survival improvement, long-horizon adherence, stable 80+, and hidden-test transfer remain `NOT_PROVEN`. `NEXT_GAME = NOT_AUTHORIZED`.
 - Further policy or architecture changes require Main review and evidence; implement/skill-load/runtime/gameplay effectiveness must be established separately rather than inferred from static identity or design.
+
+> S07-23 scope note: v7 is retained as the immutable four-Skill parent. Its static-only validation boundary remains applicable to v7 and does not transfer gameplay evidence.
+
+## AD-010 — Candidate v7a Promotion Frontier refinement
+
+- S07-24 implements a bounded static refinement: qualitative public-evidence Promotion Frontier, cross-dimension bottleneck / marginal-value awareness, early-horizon progression bias under constraints, and explicit public affordability warnings.
+- Promotion Frontier uses current-session public Level, promotion/review feedback, career-capital and Delivery evidence. It does not estimate eligibility, probability, hidden thresholds, or caps. Primary Gap remains one likely public bottleneck, not the lowest metric.
+- S07-16 trajectories support only descriptive associations and counterexamples; they do not establish that early promotion or any single dimension causes higher score. The user-provided external threshold/cap claim is `USER_PROVIDED_UNVERIFIED_EXTERNAL_MECHANISM_SIGNAL` and is not encoded in deployable policy.
+- `GLOBAL_MARGINAL_VALUE_LOW` is a qualitative candidate-comparison observation, not a persistent enum or telemetry and not a replacement for the existing two-comparable-checkpoint STALLED rule.
+- Explicit public debt / inability-to-pay / severe affordability warning, or credible sustained financial deterioration with public consequence, may tighten Planning's Risk Budget without a numeric Wealth cutoff. Ordinary cost or an isolated decrease is insufficient.
+- Architecture remains Single Agent + four Skills; Memory=`NOT_IMPLEMENTED`; fifth Skill and Team/Swarm=`DEFERRED`. v7a is static-only and `NOT_RUNTIME_VALIDATED`; `NEXT_GAME = NOT_AUTHORIZED`.

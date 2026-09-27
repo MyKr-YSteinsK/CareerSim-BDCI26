@@ -1,33 +1,37 @@
 {
-  "candidate_id": "candidate-v7-global-trajectory-delivery",
+  "candidate_id": "candidate-v7a-promotion-frontier",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_23_STATIC_IMPLEMENTATION",
+  "decision": "S07_24_STATIC_STRATEGY_REFINEMENT",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "LONG_HORIZON_PROGRESSION_AND_DELIVERY_ARCHITECTURE",
-  "parent_candidate_id": "candidate-v6c-compliance-cleanup",
-  "base_main_sha": "63208fb947d07397d67531673e36ba7f91c70cec",
+  "strategy_delta": "PROMOTION_FRONTIER_LONG_HORIZON_OPTIMIZATION",
+  "parent_candidate_id": "candidate-v7-global-trajectory-delivery",
+  "base_main_sha": "21b5153b86a0b7e7ce2c31278620202b6739c536",
   "parent_identity": {
-    "runtime_manifest_sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
-    "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074",
+    "runtime_manifest_sha256": "873726a8bb83ae27c11c718091ed186e43e633392d5693a7672ab21fac8c0254",
+    "instruction_sha256": "fc8c328e5f8b44e93e675784f3771ca531658cdd8f9c50ee8487476be5193931",
     "skills": [
       {
-        "name": "risk-review",
-        "git_blob": "ab20843eadad675dbf7aa8be0178fb52a3791208"
+        "name": "structured-state-board",
+        "git_blob": "758984f204a3c99e959905861e9b29dd9689b8d7"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "c4d2bfe065ee3c658e6cff041be87ae8c8c96bdf"
+        "git_blob": "6f4180e4c55794a30adbe7aec9e4249ebb63fd48"
       },
       {
-        "name": "structured-state-board",
-        "git_blob": "b6d371d74f3477f4f6cdeabe8482093a78cbe3e5"
+        "name": "delivery-progress",
+        "git_blob": "9a84f723da92971850f167a3eebdc862ff95c20c"
+      },
+      {
+        "name": "risk-review",
+        "git_blob": "b59fd1c8bc54d9b3469b4de22f3d5f8c126fb2ef"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "873726a8bb83ae27c11c718091ed186e43e633392d5693a7672ab21fac8c0254",
-    "instruction_sha256": "fc8c328e5f8b44e93e675784f3771ca531658cdd8f9c50ee8487476be5193931"
+    "sha256": "d2ff74e78f27f23a17bc99cf1a3f5fc8d389a02bd6aa7604ca569518ebb1b0e4",
+    "instruction_sha256": "2318ee73684118e066ffb319bd0739c96f03d2212cee6e1cb26d45599909a02f"
   },
   "skills": [
     {
@@ -38,7 +42,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "6f4180e4c55794a30adbe7aec9e4249ebb63fd48"
+      "git_blob": "9c8ceaece1e200721d2eabd21f5b0c07f85ee383"
     },
     {
       "name": "delivery-progress",
@@ -66,7 +70,12 @@
     "ROBUST_LONG_HORIZON_CAREER_OBJECTIVE",
     "PROMOTION_LEVEL_AS_PROGRESSION_FEEDBACK",
     "BOUNDED_CURRENT_SESSION_DELIVERY_LIFECYCLE",
-    "LOW_FREQUENCY_DELIVERY_EVIDENCE_TRACKING"
+    "LOW_FREQUENCY_DELIVERY_EVIDENCE_TRACKING",
+    "PUBLIC_PROMOTION_FRONTIER_DIAGNOSIS",
+    "CROSS_DIMENSION_PROGRESSION_BOTTLENECK",
+    "GLOBAL_MARGINAL_VALUE_AWARENESS",
+    "EARLY_HORIZON_PROGRESSION_BIAS",
+    "EXPLICIT_PUBLIC_AFFORDABILITY_CONSTRAINT"
   ],
   "runtime_contract_delta": [
     "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
@@ -74,7 +83,11 @@
     "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
     "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
     "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
-    "GLOBAL_REVIEW_ACTION_HORIZONS"
+    "GLOBAL_REVIEW_ACTION_HORIZONS",
+    "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
+    "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
+    "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
+    "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -86,7 +99,10 @@
     "EXACT_DEV_SCORE_WEIGHTS_IN_RUNTIME",
     "EXACT_PROMOTION_PERFORMANCE_OR_HIDDEN_RISK_THRESHOLDS",
     "EVENT_ID_OR_TITLE_TO_CHOICE_LOOKUP",
-    "HIDDEN_STATE_RECONSTRUCTION"
+    "HIDDEN_STATE_RECONSTRUCTION",
+    "EXACT_PROMOTION_THRESHOLD_OR_CAP_MAPPING",
+    "FIXED_LEVEL_PROMOTION_TARGET",
+    "FIXED_CAREER_CAPITAL_RATIO"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
@@ -118,5 +134,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "LONG_HORIZON_PROGRESSION_AND_DELIVERY_ARCHITECTURE"
+  "design_intent": "PROMOTION_FRONTIER_LONG_HORIZON_OPTIMIZATION"
 }
