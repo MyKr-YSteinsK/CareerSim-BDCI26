@@ -16,6 +16,7 @@
 - S07-26 completed Candidate v7c's static global decision hierarchy and progressive-disclosure refinement. It uses public Level tenure only as optional qualitative context, adds review realization, time-to-realization and commitment congestion reasoning, and retains the four-Skill architecture. v7c is NOT_RUNTIME_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
 - S07-27 completed the bounded static strategic-continuity refinement as Candidate v7d. Planning owns a recoverable Active Review Plan with evidence-gated revision; Output is an explicit public progression signal; Layer 6 has a narrow Value of Information prior. AD-002's stale current-Candidate claim is marked historical. Runtime/provider/gameplay remain NOT_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED. Its next recommendation was S07-28; see the S07-28/28R readiness closeout below.
 - S07-28 was recovered and completed by S07-28R as `V7D_RUNTIME_READINESS_PASS_WITH_LIMITATION`. Canonical packaging, Runner validation, isolated installation, shared-state comparison, and local prerequisites passed. The original read-only DB byte-hash boundary incident was recorded and contained; Main found no strategy contamination. Provider/runtime/gameplay remain NOT_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED. Next Main action: S07-29 DeepSeek One-Game Gate.
+- S07-29 completed exactly one v7d DeepSeek game. It ended by natural elimination at Month 15 (`17.02` quantitative / `11.92` competition partial / `E`), so provider and gameplay validation are true for this one run. Runtime adherence failed on one schema-rejected `take_action` missing `choice`; the Active Review Plan was formed and revised after M6 review feedback, but later Primary Gap markers churned across ordinary story decisions. Long-horizon adherence and score improvement remain unproven; S07 stays ACTIVE and NEXT_GAME = NOT_AUTHORIZED. See [v7d Run #1 validation](runs/v7d-run1-validation.md).
 - Last verified: 2026-09-27
 
 ## Current candidate
@@ -31,11 +32,12 @@
 
 - Frozen Runner SHA and dependency/source identity: [OFFICIAL_SOURCE_LOCK](OFFICIAL_SOURCE_LOCK.md)
 - Local environment status and verification boundary: [ENVIRONMENT](ENVIRONMENT.md)
-- Root .venv is local/ignored. S07-28 packaging and isolated installation are validated; provider/runtime/gameplay are not validated. This state does not authorize a game.
+- Root .venv is local/ignored. S07-28 packaging and isolated installation passed; S07-29 exercised one configured DeepSeek run, with provider/gameplay validated for that session and runtime adherence failed. No further game is authorized.
 
 ## Runs and limitations
 
 - Key real-run records: [RUN_HISTORY](RUN_HISTORY.md)
+- S07-29 v7d Run #1: one early-termination observation; see [run validation](runs/v7d-run1-validation.md). It does not establish score or survival improvement, stable 80+, or hidden-test transfer.
 - Candidate v1 observed a high spread across two runs; this does not establish cause or stable performance.
 - S06 Run #1: 53.83 quantitative / 37.68 competition partial / 48 months / C. It is one Main-reviewed observation, not a causal result.
 - Candidate v4 first local run: 25.84 quantitative / 18.09 competition partial / 6 months / E; eliminated at M6 with Health=0. This is one terminal observation, not a 48-month completion or a causal result; the Runner score report was empty because the shared instance DB path differs from the root Runner's default, and the score was read from the exact session in the configured DB.
@@ -51,5 +53,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
-- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, and S07-28/28R the no-game runtime readiness gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, fifth Skill, provider/gameplay validation, or game authorization. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
+- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, and S07-28/28R the no-game runtime readiness gate. S07-29 consumed its one-game authorization; any further run requires a separate Main Game Gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, or fifth Skill. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
