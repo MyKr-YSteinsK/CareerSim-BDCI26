@@ -117,3 +117,11 @@
 - Output is restored as a public progression signal alongside Skill, Network, and Wealth. Layer 6 adds a narrow information-value prior for material near-ties when a legal, timely, low-cost public verification path does not displace a clearly dominant time-sensitive opportunity.
 - The v7c hierarchy and Single Agent + four-Skill ownership remain intact. Memory is `NOT_IMPLEMENTED`; fifth Skill and Team/Swarm remain `DEFERRED`. `candidate-v7d-strategic-continuity` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; runtime/provider/gameplay and score-effect claims remain unvalidated. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.
 - The canonical current Candidate identity is `configs/current_candidate.json`.
+
+## AD-014 — Candidate v7e lean review controller
+
+- S07-30 integrates the supplied v7e Planning Skill and manifest as a mechanical replacement. S07-29's single v7d run motivates the controller hypotheses; it does not establish causal strategy effects.
+- The controller anchors the Primary Gap to formal review / promotion feedback, makes public affordability conditions binding, treats event/person text as a soft public hint, and keeps causes of observed no-gain `UNKNOWN` rather than inferring hidden caps.
+- Ordinary Story deliberation is one pass over at most the top two candidates before Risk and `DECISION_CLOSED`. Quarterly Energy intent persists across integer actions unless fresh material evidence changes it.
+- Single Agent, four Skills, and Board / Planning / Delivery / Risk ownership remain unchanged. Memory remains `NOT_IMPLEMENTED`; fifth Skill and Team/Swarm remain `DEFERRED`.
+- `candidate-v7e-lean-review-controller` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all validation flags are false. The canonical current Candidate identity is `configs/current_candidate.json`. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.

@@ -17,11 +17,12 @@
 - S07-27 completed the bounded static strategic-continuity refinement as Candidate v7d. Planning owns a recoverable Active Review Plan with evidence-gated revision; Output is an explicit public progression signal; Layer 6 has a narrow Value of Information prior. AD-002's stale current-Candidate claim is marked historical. Runtime/provider/gameplay remain NOT_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED. Its next recommendation was S07-28; see the S07-28/28R readiness closeout below.
 - S07-28 was recovered and completed by S07-28R as `V7D_RUNTIME_READINESS_PASS_WITH_LIMITATION`. Canonical packaging, Runner validation, isolated installation, shared-state comparison, and local prerequisites passed. The original read-only DB byte-hash boundary incident was recorded and contained; Main found no strategy contamination. Provider/runtime/gameplay remain NOT_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED. Next Main action: S07-29 DeepSeek One-Game Gate.
 - S07-29 completed exactly one v7d DeepSeek game. It ended by natural elimination at Month 15 (`17.02` quantitative / `11.92` competition partial / `E`), so provider and gameplay validation are true for this one run. Runtime adherence failed on one schema-rejected `take_action` missing `choice`; the Active Review Plan was formed and revised after M6 review feedback, but later Primary Gap markers churned across ordinary story decisions. Long-horizon adherence and score improvement remain unproven; S07 stays ACTIVE and NEXT_GAME = NOT_AUTHORIZED. See [v7d Run #1 validation](runs/v7d-run1-validation.md).
-- Last verified: 2026-09-27
+- S07-30 completed the mechanical v7e replacement integration from the S07-29 forensic package. `candidate-v7e-lean-review-controller` anchors the Primary Gap to formal review feedback, treats binding affordability as a first-order constraint, keeps public hints soft, rejects hidden-cap inference, bounds ordinary Story deliberation to one pass, and carries Energy intent through a quarter absent material change. This is a static Candidate only; all v7e validation flags are false. S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
+- Last verified: 2026-09-28
 
 ## Current candidate
 
-- Current Candidate: `candidate-v7d-strategic-continuity`；parent: `candidate-v7c-global-decision-policy`；S07-27 static refinement, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. Canonical identity is `configs/current_candidate.json`; v7c is the direct parent, v7b the prior strategy ancestor, and v7 the immutable four-Skill architecture parent. No gameplay/provider evidence transfers from earlier candidates automatically.
+- Current Candidate: `candidate-v7e-lean-review-controller`；parent: `candidate-v7d-strategic-continuity`；S07-30 static integration, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. Canonical identity is `configs/current_candidate.json`; v7d is the direct parent. No gameplay/provider evidence transfers from earlier candidates automatically.
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Four Skills: structured-state-board, rolling-planning, delivery-progress, risk-review
@@ -32,7 +33,7 @@
 
 - Frozen Runner SHA and dependency/source identity: [OFFICIAL_SOURCE_LOCK](OFFICIAL_SOURCE_LOCK.md)
 - Local environment status and verification boundary: [ENVIRONMENT](ENVIRONMENT.md)
-- Root .venv is local/ignored. S07-28 packaging and isolated installation passed; S07-29 exercised one configured DeepSeek run, with provider/gameplay validated for that session and runtime adherence failed. No further game is authorized.
+- Root .venv is local/ignored. S07-28 packaging and isolated installation passed; S07-29 exercised one configured DeepSeek run on v7d, with provider/gameplay validated for that session and runtime adherence failed. v7e has not been run; all v7e validation flags remain false and no further game is authorized.
 
 ## Runs and limitations
 
@@ -53,5 +54,5 @@
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
 - NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
-- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, and S07-28/28R the no-game runtime readiness gate. S07-29 consumed its one-game authorization; any further run requires a separate Main Game Gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, or fifth Skill. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
+- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, S07-28/28R the no-game runtime readiness gate, S07-29 consumed its one-game authorization, and S07-30 integrated the static v7e replacement. Any further run requires a separate Main Game Gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, or fifth Skill. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.

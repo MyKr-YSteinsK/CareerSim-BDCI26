@@ -24,10 +24,11 @@ def build_submission(repo_root: Path, output_dir: Path) -> None:
     manifest = json.loads(manifest_bytes.decode("utf-8"))
     candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
 
-    if candidate.get("candidate_id") != "candidate-v7d-strategic-continuity":
-        raise ValueError("Current Candidate is not the expected v7d identity")
-    if manifest.get("name") != candidate["candidate_id"] or manifest.get("mode") != "agent":
-        raise ValueError("Canonical manifest identity or mode does not match v7d")
+    candidate_id = candidate.get("candidate_id")
+    if not candidate_id:
+        raise ValueError("Current Candidate identity is missing")
+    if manifest.get("name") != candidate_id or manifest.get("mode") != "agent":
+        raise ValueError("Canonical manifest identity or mode does not match current Candidate")
     if not str(manifest.get("instruction") or "").strip():
         raise ValueError("Canonical manifest instruction is missing")
 
