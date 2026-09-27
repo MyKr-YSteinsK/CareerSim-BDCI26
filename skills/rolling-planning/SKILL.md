@@ -1,152 +1,96 @@
 ---
 name: rolling-planning
-description: "每次决策必须应用；唯一战略 owner，连接剩余职业轨迹、review objective 与当前合法决策，并维护公开 Primary Gap、Progress、Risk Budget 和必要 checkpoint；不提交动作。"
+description: "每次决策必须应用；唯一 strategy owner，按公开证据分层比较长程 progression、review 兑现与当前合法候选；不提交动作。"
 ---
 
-# Rolling Planning｜公开证据滚动规划
+# Rolling Planning｜分层全局策略
 
-## 职责与快速扫描
+## 职责与证据边界
 
-Planning 是唯一战略 owner。每次决策基于当前 session 的 fresh public facts 与 Board 事实做短 scan：剩余职业轨迹、下个 review window、survival constraint、一个 Primary Gap、Progress 与 remaining realizable horizon。稳健提升 progression、可见交付、复利资产和终局选择空间是 global objective；风险作为约束，不是默认优化目标，也不使用隐藏分数权重。动作改变状态后，先 fresh observe 并更新事实；不得用变更前 scan 决定下一 Energy/Main action。take_action.notes 的唯一控制前缀由 persistent instruction 生成；Planning 不复制标记格式或提交动作。
+Planning 是唯一 strategy owner。只使用当前 game_session 的 fresh public facts、Board 可核实事实、Delivery 的相关 compact summary、合法选项、公开回执与 Handbook；不使用其它对局、局后信息、hidden threshold、evaluator weight 或 Dev 内部规则。Can Submit Action: No。
 
-只使用当前 game_session 的 fresh public evidence、Board 可核实事实与公开 Handbook。不得使用其它对局、局后信息、hidden threshold、evaluator weight 或 Dev 内部公式。
+Global Objective：在合规、生存及有公开依据的重大风险约束下，稳健推进剩余职业轨迹的 progression、可见交付、复利资产与终局选择空间。Level/promotion 是公开 progression feedback，不是 KPI、固定月份目标或成功保证。每次 quick scan 维护一个 evidence-based Primary Gap（证据不足则 UNKNOWN）、Progress、Risk Budget、下个 public review window 与 actual remaining horizon。
 
-## Planning state
+## Hierarchical Decision Policy
 
-每次决策维护：
+每步只展开当前支配层；低层比较不得把已形成明确优势的高层判断重新拉平。没有相关触发时做 QUICK scan；语义 factors 不是每步平铺的 checklist。
 
-- 一个公开 Primary Gap，或证据不足时 UNKNOWN；
-- Progress = ADVANCING / STALLED / UNKNOWN；
-- Risk Budget = AVAILABLE / TIGHT / UNKNOWN；
-- Global Horizon：剩余职业轨迹与仍可实现的 progression / compounding 窗口；
-- Review Horizon：到下一个公开 formal review / promotion feedback 的窗口；
-- Action Horizon：当前合法候选如何服务 review objective。
+### Layer 0｜Freshness and legality
 
-## v7 Career trajectory 与目标选择
+先确认 facts 属于当前 session 且新鲜，候选合法；snapshot/旧意图没有事实权威。来源、字段或选项不清时标 UNKNOWN，按正常公开流程补足。
 
-Global Objective：在合规、生存及有公开依据的重大风险约束下，稳健提升剩余职业生涯的 progression、可见交付、复利资产与终局选择空间。Level/promotion、Skill、Network、Output、Wealth 和可选机会是公开轨迹反馈，不设固定权重或月份 KPI。Promotion/no-promotion 是 progression feedback，可触发 review reset；它本身不是行动配方或成功保证。
+### Layer 1｜Binding constraints
 
-Primary Gap 仍只有一个，但表示当前公开证据下最可能限制下一阶段稳健 progression 的主要瓶颈，不自动等于当前最低数值。来源可包括 review feedback、晋升/未晋升结果、交付证据、career-capital imbalance、复利资产趋势和公开生存约束；证据不足时为 UNKNOWN。每个 local candidate 都须连回 Review Horizon objective；该 objective 再连回 Global Horizon。
+Planning 只设候选无关的 Risk Budget：AVAILABLE / TIGHT / UNKNOWN。公开 Health 明显低或在可比 fresh observations 中持续下降，或 Dignity / Network / Wealth / formal feedback 持续恶化并伴有可信的公开 survival warning/consequence，可能使相关预算变紧；近期冲击方向和真实可达的恢复机会影响保护程度。fresh public debt、无力支付、affordability crisis、严重财务警告或有公开后果的持续财务恶化可直接收紧 affordability constraint。不得设数值 cutoff、隐藏 streak 或固定 recovery quota；普通花费或一次小幅下降不足以收紧预算。
 
-## Promotion Frontier / Progression Readiness
+当直接相关的公开约束为 TIGHT，避免非必要地加重该约束；这不自动禁止不加重约束的 Growth。无 binding constraint 时，普通 Soft Cost 不应长期主导决策或自动否决对当前 gap 有更强公开贡献的 Growth path。Planning 不判断具体候选的 Material Risk；每个最终候选仍交 Risk gate。
 
-Promotion Frontier 是对下一阶段 progression 可能受何种公开条件约束的定性诊断，不是隐藏 eligibility checker。只在 FULL checkpoint 维护紧凑的 current-session profile，基于 fresh public Level/promotion/review feedback、Skill、Output、Network、Wealth、Delivery evidence 与其它直接相关事实；QUICK 决策不必重述。
+### Layer 2｜Promotion Frontier and one Primary Gap
 
-Profile 可包含：Level / review feedback、career-capital balance、likely progression bottleneck、相对领先且边际价值可能较低的维度、next observable progression evidence。证据不足时标 UNKNOWN。不得估算 promotion probability、threshold distance、hidden target 或 cap，也不将任何单一维度自动视为晋升条件。
+问：当前什么最可能限制下一阶段稳健 progression？综合 fresh public review/promotion feedback、Level、career-capital balance、Delivery evidence、public outcome trajectory，以及公开可见时的 CurrentLevelDuration / duration_in_level。Promotion Frontier 是 qualitative progression context，不是 eligibility checker；duration 只作当前职级 tenure context，不估计阈值、probability、固定任职目标或 Level→duration mapping。字段缺失或来源不清时为 UNKNOWN。
 
-## Delivery lifecycle integration
+Primary Gap 只有一个，不自动等于最低数值。若 career capital 相对均衡、公开 feedback 未指出单一短板，而 tenure 较短或 progression 证据不足，不要因此无证据地反复追投某一维；比较可见交付、复利资产、option value、生存/资源维护与下个 observable checkpoint。该判断依赖当前 public evidence，不是 duration 驱动的机械规则。
 
-Planning 读取 Delivery Skill 的当前 session compact summary，只用于判断机会、承诺、交付、证据和公开 review 联系是否改变 Primary Gap 或候选比较。Planning 拥有策略与 Primary Gap；不创建、覆盖或补全 Delivery 状态。申请/活动/口头完成/一般表扬不自动等于交付、验证或 recognition。缺失的公开回执保持 UNKNOWN。
+### Layer 3｜Review-window realization
 
-只有 Delivery 中的公开承诺、checkpoint、阻塞、结果或 review 证据实质改变当前 objective / gap 时，才触发相应的 Full checkpoint；无关 lifecycle 更新只做 quick scan，不展开长分析。
+将下一个公开 review / checkpoint 的 objective 连到 Primary Gap：什么结果有机会在该窗口前形成、被新鲜公开证据验证，并与 progression 相关？activity、申请、计划和报告不等于 result；Delivery lifecycle 与归因仍由 Delivery Skill 管理。
 
-## Cross-dimension bottleneck 与 global marginal value
+已知 review 前最后一个可行动窗口执行一次 Pre-Review Readiness Check，合并检查：
 
-若某 career-capital dimension 已相对相关维度明显领先，而 review、progression 或 delivery evidence 指向另一处约束，不因领先维度仍能增长就默认继续投资。比较应关注新增长对 Review Horizon 与 Global Horizon 的边际贡献，而不是追平数值或套用比例。
+- **Survival readiness：**fresh Health、warning、affordability/resource constraint、可避免的重大风险与现实可达的恢复机会；
+- **Progression realization readiness：**Primary Gap 是否仍明确；相关 commitment 是否接近 delivery / evidence / recognition；是否有合法行动能在 review 前把已有工作转成可观察结果；新 opportunity 的兑现是否明显晚于当前窗口。
 
-支持这种判断的公开信号可包括：formal feedback 反复指向同一短板；领先维度继续局部增长但未伴随 progression outcome 改善；或 delivery / recognition chain 显示瓶颈在另一环节。不得只因不同维度的数值大小不同就推断 bottleneck。
+若高价值 commitment 已接近可验证结果，在没有 binding constraint 时比较完成、验证或呈现该结果与新开长期机会。不得把它变成固定的 review 前汇报或菜单答案。
 
-GLOBAL_MARGINAL_VALUE_LOW 仅是 Path Trade-off 中可使用的语义描述：某路径仍可能带来局部增长，但对当前 progression frontier / global objective 的贡献较低。它不作为持久 enum 或 telemetry，不要求 STALLED，也不能由单次小幅变化推出。STALLED 仍仅表示相同 action/gap 在两个相邻 comparable checkpoints 均无目标进展；两者判断对象不同。
+### Layer 4｜Global compounding and remaining horizon
 
-Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支持：AVAILABLE 表示未观察到当前 material survival constraint 收紧预算；TIGHT 表示观察到该约束正在收紧可接受风险预算；UNKNOWN 表示证据过期、缺失或不清。Planning 不在候选生成前评估具体候选的 Material Risk；先生成候选，再由 Risk 做 candidate-specific gate。不得用数值阈值或隐藏库存定义这些语义。
+结合实际公开剩余 horizon 比较 Skill、Network、delivery capability、opportunity set、Wealth/resource option value 与后续 progression 机会，不设隐藏权重。
 
-公开 survival trend 也是候选无关 Risk Budget 的输入。fresh public evidence shows a binding survival trend when Health is visibly low or repeatedly declining across comparable fresh observations; or when another public survival-relevant dimension (Dignity / Network / Wealth / formal feedback) shows sustained deterioration together with a credible public survival warning/consequence. Recent shock direction and a realistically reachable recovery opportunity affect how strongly to protect the buffer. Do not use numeric thresholds, hidden streak counters, fixed recovery quotas, or treat one isolated small delta as a universal trigger.
+- **Long remaining horizon：**在 Risk Budget 可用且无 binding compliance/survival constraint 时，提高能推进 Promotion Frontier、可见交付、compounding 或 future options 的高价值 Growth path 的相对吸引力（保留 v7a early-horizon bias）。
+- **Intermediate horizon：**平衡 Growth 与当前 review-window realization，优先处理公开瓶颈及 active commitment 的可验证进展。
+- **Short remaining horizon：**降低 payoff 明显超出可见剩余期的长期投资相对优先级，提高能形成 delivery、evidence、recognition、progression 或 resource realization 的路径价值；保留 terminal option value。
 
-当 Risk Budget=TIGHT 是由直接相关的公开 survival trend 导致时，应暂缓或拒绝会直接加重该约束的非必要 Growth，直到 fresh public evidence 显示 buffer 已有足够恢复。这不等于禁止所有 Growth；不加重该约束的 Growth 仍可比较，并由 Risk gate 具体候选。
+Late-horizon realization bias 与 early-horizon bias 对称，但只随 actual remaining public horizon 变化；不得设置 M36/M42、terminal phase、固定动作清单或 Energy bundle。未知 payoff timing 保持 UNKNOWN，不猜隐藏 duration 或 event outcome。
 
-安全是约束，不是默认优化目标。Risk Budget AVAILABLE 且无 Material Risk 时，普通 Soft Cost 本身不能自动否决对当前 gap 有更强公开贡献的合法 Growth path。TIGHT 只约束与公开生存风险直接相关的候选；UNKNOWN 不得伪装成安全。
+### Layer 5｜Commitment efficiency and realization timing
 
-### Explicit affordability evidence
+Planning 读取 Delivery 的 compact lifecycle summary，判断现有 commitment、blocker/dependency、next public checkpoint、review relevance、公开 workload/resource context 与 remaining horizon 是否改变候选价值。不得把 active item 数量直接映射为拥堵。
 
-Fresh public evidence of debt, inability to pay, an affordability crisis, or a severe financial warning may immediately make affordability a binding survival/resource constraint and tighten the candidate-independent Risk Budget. Credible sustained financial deterioration with a public consequence can also matter without waiting for an arbitrary checkpoint count. Do not use a fixed Wealth cutoff: an ordinary cost, small spend, or isolated Wealth decrease alone does not make the budget TIGHT. Planning owns the budget; Risk still gates each concrete candidate.
+可在 Path Trade-off 中临时描述 Commitment Load（LIGHT / MEANINGFUL / CONGESTED / UNKNOWN），依据承诺是否仍开放、阻塞/依赖、checkpoint 临近程度、review 相关性、资源负荷与剩余窗口作定性判断；不设数量阈值，不持久化 enum/telemetry，不改写 Delivery state。
 
-### Early-horizon progression bias
+Time-to-Realization 是临时 qualitative comparison，可按证据使用 CURRENT_REVIEW_WINDOW / LATER_WINDOW / BEYOND_VISIBLE_HORIZON / UNKNOWN，无需保存状态。只依据公开 due window、next checkpoint、Delivery stage、剩余 review/career horizon、合法选项明文和 fresh feedback；不可见时标 UNKNOWN。
 
-当剩余职业轨迹较长、Risk Budget=AVAILABLE，且公开状态未显示 binding compliance constraint 时，提高能推进 Promotion Frontier、可见交付或受约束 career-capital dimension 的合法 Growth path 的相对优先级，因为它可能留下更长的复利窗口。Planning 不预判 candidate-specific Material Risk；每个候选仍须通过最终 Risk gate，公开重大风险优先。这是随公开剩余 horizon 调整的策略偏置，不是固定月份规则或每步必选 Growth。
+当高价值 commitment 接近可兑现节点、与 Promotion Frontier / Review Objective 直接相关，而新 opportunity 的收益更晚或不确定且无证据更优时，提高 close / deliver / verify / recognize 相对 open another commitment 的优先级。允许新机会胜出：旧项 BLOCKED 且本 Agent 无法推进；新机会更直接解决 progression bottleneck；旧项 global marginal value 已低；新机会有公开时效性；或剩余 horizon 足以支持其兑现。不得写成永远先完成旧项目。
 
-## Full checkpoint 与 review reset
+### Layer 6｜Near-tie Story semantic priors
 
-以下触发 full checkpoint：
+仅当候选 progression value 接近或 outcome 不确定时，提高 v7b 事件无关语义先验的区分作用；它不作为 Growth 的默认刹车。
 
-- new game/session baseline；
-- 当季首次 Energy 决策前；
-- 已知半年 review 前最后一个可行动窗口的轻量 reserve check；
-- 实际观察到 formal review / feedback / promotion / public no-advance result；
-- 与当前 Primary Gap 相关、且实质改变目标或结果解释的 Delivery evidence / blocker；
-- strict STALLED；
-- context recovery；
+- 事实优先：根据已知公开事实，避免捏造/夸大并保留可核实性；不等于无条件披露或忽略 need-to-know/confidentiality。
+- 普通协作摩擦在无 Material Risk、滥权、可信报复风险或必须升级证据时，可优先考虑与相关责任方直接、清晰、可执行地处理；已失败、超出权限、合规/保密/安全要求、可信 retaliation/severe consequence 或时效/范围不足以私下处理时可升级。
+- 比较公开 owner、dependency、next observable checkpoint 与可验证 outcome；不补造负责人、deadline、authority 或 commitment。Delivery 独占 lifecycle state，路径选择不等于 delivered/verified。
+- outcome 不确定且 progression value 接近时，优先考虑分阶段验证、可纠正/回滚或保留选择空间；明显更高公开 Growth value 且无 Material Risk 时，不因另一候选更礼貌、保守或可逆就自动压掉高价值路径。
+- escalation 与公开 severity、scope、repeated failure、authority need、compliance/safety consequence 相称；既不过度升级普通摩擦，也不在 Material Risk 或必须升级时继续消极私下处理。
 
-同时发生的触发合并为一个 checkpoint。普通 derived label 变化不得递归触发 full checkpoint。无需 FOUNDATION / PROMOTION / COMPOUNDING / FINAL_SPRINT 或 promotion-readiness enum；若 phase/mode 名称不改变当前选择，不输出。
+### Layer 7｜Candidate-specific Risk gate
 
-压缩/恢复后以 fresh public state 重建 Planning；不得把框架生成的 state snapshot 当作策略权威。持久 instruction 负责将压缩快照识别为 recovery epoch 并重读四份 Skill；Delivery 只从当前 session 公开证据恢复 lifecycle，证据不全时保持 UNKNOWN。
+候选生成与策略比较完成后，Risk Skill 只对最终具体候选作 Material Risk gate。Planning 不预判、不重做 Risk 判断；Risk 不重做 Global Horizon、Primary Gap、Commitment Load 或候选策略排序。按 persistent runtime contract 处理 bounded RECONSIDER；最终 gate 后执行 DECISION_CLOSED。
 
-单独的 material fresh public-state change 只触发 Board refresh 与 Planning quick scan；按需更新 Risk Budget / Primary Gap，不自动打开 full checkpoint。若同时满足上述 canonical trigger，合并处理；不得因派生状态或 gap 更新递归触发 checkpoint。
+## Checkpoint、进展与恢复
 
-实际观察到 promotion、formal review/feedback 或公开 no-advance result 后：
+FULL checkpoint 仅在 new session、当季首次 Energy 前、公开 review/promotion/no-advance、改变当前目标解释的相关 Delivery 证据/阻塞、strict STALLED、context recovery，或已知 review 前最后可行动窗口触发。并发触发合并一次；普通 derived label 改变不递归触发。
 
-- 刷新 Board facts；
-- 使旧 Progress comparison 失效；
-- 刷新 Promotion Frontier / Progression Readiness；
-- 判断 likely bottleneck 是否改变；
-- 以 fresh evidence 建立新 baseline；
-- 重新选择 / 保留 / UNKNOWN 一个 Primary Gap；
+checkpoint 最多 6 个字段：Horizon；Promotion Frontier；Primary Gap；Progress / Recent Effect；Risk Budget；Path Trade-off。Time-to-Realization 与 Commitment Load 如有用，只放 Path Trade-off，不新增持久状态。Energy 与 Main 在季度首次 Energy planning point 联合比较；任何 state-changing action 后 fresh observe、更新 Board，再 quick scan 后选择下一 action。
 
-多个 full-checkpoint trigger 同时发生时合并为一次 rebuild；不得由 Agent 另行输出 checkpoint marker。只有满足下述双 checkpoint 条件才可写 STALLED。
+实际观察到 review/promotion/no-advance 后，刷新 Board，废弃旧 Progress baseline，更新 Promotion Frontier 和一个 Primary Gap。只在同一 action、同一 gap、两个相邻 comparable checkpoints 均无目标进展时标 STALLED；action/gap/target 改变、状态过期、story 污染或来源不清时为 UNKNOWN。advertised effect 只是先验，同局可靠 comparable observed effect 优先。
 
-不得从 silence 推断 review 结果、延续旧 Level 的 Progress baseline，或估算 promotion probability / hidden threshold。
+Recovery：确认同一 game_session_id 并 fresh observe；重读四份 Skill；Board 重建公开事实（包括可见 Level tenure）；Delivery 只用当前 session 可恢复的公开证据重建相关 lifecycle；Planning 重建 Promotion Frontier、一个 Primary Gap、Risk Budget、时间兑现与 commitment 判断。旧 snapshot/intention 无权威；无法恢复的 commitment 标 UNKNOWN，不猜。
 
-## Checkpoint output
+## 权限与反过度拟合
 
-完整 checkpoint 最多 6 字段：
-
-    Horizon
-    Promotion Frontier
-    Primary Gap
-    Progress / Recent Effect
-    Risk Budget
-    Path Trade-off
-
-Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript。季度首次 Energy checkpoint 必须 jointly compare Energy 与 Main complementarity；quarterly policy 只保留：one gap、直接相关 survival constraint、Energy/Main 互补、重复投资前检查 fresh observed effect 与该路径的 global marginal value。
-
-在已知半年 review 前最后一个可行动窗口，检查 fresh survival facts、warning、剩余 story exposure 与可验证 recovery opportunity；不依赖 review 后的 Energy 挽救已发生的伤害。
-
-## Candidate comparison 与 anti-myopia
-
-每个合法候选须简短回答：它如何服务当前 Review Horizon objective、推进 Promotion Frontier / 当前 Primary Gap，并贡献于 Global Horizon？比较 progression relevance、公开交付/结果价值、复利价值、global marginal value、horizon fit、可逆性、资源/机会成本、依赖负担与当前生存约束；candidate-specific Material Risk 留给 Risk 最终 gate。该比较是语义判断，不是隐藏权重或数值加权公式。
-
-避免局部指标持续增长却不推进整体 progression、无 binding risk 时因普通 Soft Cost 放弃高价值 Growth、反复做活动却缺少交付/证据/recognition，以及永久保守。若候选局部有收益但其 global marginal value 已低，应明确比较其它公开 bottleneck 与 review objective。只在相同目标和可比 checkpoint 下按现有 STALLED 规则复核无进展；不设置固定季度行动比例、固定 Energy bundle 或月份晋升 KPI。
-
-## Progress / STALLED
-
-只用 Primary Gap 本身或直接相关的公开 career progress；表扬、菜单描述或不可比状态不足以判定 ADVANCING。
-
-- advertised effect 是菜单先验；同局可靠 comparable observed effect 优先。
-- 同一 strategic action、同一 Primary Gap、两个相邻 comparable checkpoints 均无 observed target progress，才标 STALLED。
-- action/gap/target 改变、state stale、story/event 污染、来源不清或 before/after 不可比时标 UNKNOWN；不得把一次无增长判为 STALLED。
-- STALLED 后只比较一个不同类型的合法 alternative；switch 不强制。有新证据说明旧 path 仍适用时可继续。
-
-## Energy、Main 与 story
-
-Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后都要 fresh observe、Board scan、Planning quick scan，再决定下一项；不得复用旧 scan。不能编码 fixed bundle、menu catalog 或固定赢家。
-
-普通非战略 story 只对少量最相关合法候选做一次有界比较；无 fresh public evidence 不重开，除非 Risk 返回 RECONSIDER 并按其合同复核一个直接相关合法 alternative。没有事件标题答案、action lookup 或固定 primitive ranking。
-
-### 陌生 Story 的事件无关语义比较
-
-只在普通陌生 Story 确实涉及相关语义时，对少量最相关合法候选做一次 QUICK comparison；顺序仍是 fresh public facts → Promotion Frontier / Primary Gap / review objective → 生成合法候选 → 本比较 → Risk gate。以下是按情境判断的候选比较属性，不是固定优先级、硬规则、得分公式或每步 checklist；不相关时不增加分析。
-
-- **Evidence-first / truthfulness：**依据已知公开事实，避免捏造或夸大，并保留必要的可核实路径。不得解释为无条件披露、无视 confidentiality / need-to-know 或永远自曝；公开的保密/合规风险交 Risk gate。
-- **Accountable direct handling：**普通协作、关系、dependency 或交付摩擦，在没有 Material Risk、权力滥用、可信报复风险或必须升级的公开后果时，优先考虑与最相关责任方直接、明确、可执行地处理，避免无必要地扩大传播或绕过 owner。直接处理已失败、问题超出权限、confidentiality/compliance/safety 需要、存在可信 retaliation / severe consequence，或时效/影响范围使私下处理不足时，可以升级。
-- **Ownership / verification：**比较公开 owner、dependency、next observable checkpoint 与可验证 outcome；不得补造负责人、deadline、authority 或承诺。Delivery 独占 lifecycle state；必须等 fresh public receipt，不把选择某条路径等同于 delivered / verified。
-- **Reversibility / optionality：**结果不确定且候选公开 progression value 接近时，优先考虑分阶段验证、rollback/correction path 或保留选择空间。若 Growth path 对 Promotion Frontier / Primary Gap / delivery objective 有明显更高公开价值且无 Material Risk，不因另一候选更礼貌、保守或可逆就自动压掉它。
-- **Proportional escalation：**升级程度与公开 severity、scope、repeated failure、authority need、compliance/safety consequence 相称；既不把普通 friction 升到最高层，也不在 Material Risk、直接处理失败、权限不足或必须升级时继续消极私下处理。Risk 拥有 candidate-specific Material Risk gate；Planning 负责普通 friction 的比例判断。
-
-这些语义先验不是第二 strategy owner、Risk gate 或独立 score function。陌生 Story 的 QUICK parse 可只提取 known facts / unknowns、affected actors / public owner、stakes、authority / dependency、reversibility、verification path 与 escalation need；保持紧凑，不建固定大表、不触发额外 Skill 全文读取或每个 Story 的 FULL checkpoint。禁止 event/title/keyword→choice lookup、fixed answer、fixed escalation count 或 Dev event catalog。
-
-DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh observe、tool result、event content 或其它公开证据，Planning 立即结束比较并交接已 gate 候选；不重开路径或重新讨论标记。只有新公开证据才重新打开。
-
-## 权限与边界
-
-- Planning 只给 Single Agent 有界建议；Can Submit Action: No。不得调用 new_game、observe 或 take_action。
-- 不建立 durable/cross-game Memory，不创建第二审查者、Agent、Team 或 Swarm；不使用 hidden thresholds、evaluator weights 或 Dev 公式。
-- session、month、state、effect 或 option 不 fresh / 不可比时标 UNKNOWN，回正常流程取得 fresh public evidence。
+- Planning 只向 Single Agent 提供有界比较，不调用 new_game、observe 或 take_action。
+- Board 只拥有公开事实；Delivery 只拥有 bounded current-session lifecycle；Risk 只拥有 candidate-specific Material Risk gate。
+- Planning must not create, overwrite, or complete Delivery state.
+- Planning must not create, overwrite, or complete Delivery state.
+- 不建立 durable/cross-game Memory，不创建 Agent、Team/Swarm 或第五 Skill；不使用 hidden threshold/cap/score weight、固定月份阶段、固定承诺数量、事件/标题/关键词答案表、历史动作序列或固定 action bundle。
+- 普通 Story QUICK comparison 只处理少量相关合法候选，不触发额外 Skill 全文读取或每个 Story 的 FULL checkpoint；无新公开证据不重开已关闭决策。

@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7b-semantic-generalization",
+  "candidate_id": "candidate-v7c-global-decision-policy",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_25_STATIC_SEMANTIC_GENERALIZATION",
+  "decision": "S07_26_STATIC_GLOBAL_DECISION_POLICY",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
-  "parent_candidate_id": "candidate-v7a-promotion-frontier",
-  "base_main_sha": "7b05c492bc5a5083226c4b7a64c1ce9482852941",
+  "strategy_delta": "HIERARCHICAL_DECISION_POLICY_AND_PROGRESSIVE_DISCLOSURE",
+  "parent_candidate_id": "candidate-v7b-semantic-generalization",
+  "base_main_sha": "d10f354f5338e7950bd49efeba7b9d524e82f23a",
   "parent_identity": {
-    "runtime_manifest_sha256": "d2ff74e78f27f23a17bc99cf1a3f5fc8d389a02bd6aa7604ca569518ebb1b0e4",
-    "instruction_sha256": "2318ee73684118e066ffb319bd0739c96f03d2212cee6e1cb26d45599909a02f",
+    "runtime_manifest_sha256": "040b4786e3e76288bff68cbe83145330086b3eb314793f726df10b05b663896a",
+    "instruction_sha256": "8d0534c38c2d7d12f443f3438d4938aeadfe16abd2e1a8009661a4314798d9b9",
     "skills": [
       {
         "name": "structured-state-board",
@@ -16,7 +16,7 @@
       },
       {
         "name": "rolling-planning",
-        "git_blob": "9c8ceaece1e200721d2eabd21f5b0c07f85ee383"
+        "git_blob": "b53845006c2a409b25bf6a8e06c6e312662ad201"
       },
       {
         "name": "delivery-progress",
@@ -30,19 +30,19 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "040b4786e3e76288bff68cbe83145330086b3eb314793f726df10b05b663896a",
-    "instruction_sha256": "8d0534c38c2d7d12f443f3438d4938aeadfe16abd2e1a8009661a4314798d9b9"
+    "sha256": "f41c6417009fb957de9e2c7cfde2d9e5185ecd1f09d3d49d32bfd82c67ec7fa0",
+    "instruction_sha256": "3ffafc11d04d5df0d40ae724b6420bf2c55ce648543b0408e5d535e26a62c27e"
   },
   "skills": [
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "758984f204a3c99e959905861e9b29dd9689b8d7"
+      "git_blob": "e76cb289833ad00a7c40c331cb8d6035bde15221"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "b53845006c2a409b25bf6a8e06c6e312662ad201"
+      "git_blob": "9dddf69c5ca040760343a8303ccfd8d029f091ff"
     },
     {
       "name": "delivery-progress",
@@ -80,7 +80,15 @@
     "FACT_GROUNDED_ACCOUNTABLE_HANDLING",
     "CLEAR_OWNERSHIP_AND_OBSERVABLE_CHECKPOINT",
     "REVERSIBILITY_AND_OPTIONALITY_PRIOR",
-    "PROPORTIONAL_ESCALATION"
+    "PROPORTIONAL_ESCALATION",
+    "PUBLIC_DURATION_IN_LEVEL_CONTEXT",
+    "REVIEW_WINDOW_REALIZATION_AWARENESS",
+    "TIME_TO_REALIZATION_AWARENESS",
+    "QUALITATIVE_COMMITMENT_CONGESTION",
+    "CLOSE_BEFORE_OPEN_WHEN_GLOBALLY_DOMINANT",
+    "LATE_HORIZON_REALIZATION_BIAS",
+    "HIERARCHICAL_DECISION_POLICY",
+    "PROGRESSIVE_DISCLOSURE_RUNTIME_KERNEL"
   ],
   "runtime_contract_delta": [
     "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
@@ -93,7 +101,14 @@
     "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
     "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
     "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET",
-    "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON"
+    "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON",
+    "PUBLIC_DURATION_CONTEXT_WITH_UNKNOWN_FALLBACK",
+    "REVIEW_SURVIVAL_AND_PROGRESSION_REALIZATION_READINESS",
+    "QUALITATIVE_TIME_TO_REALIZATION_AND_COMMITMENT_LOAD",
+    "CONDITIONAL_CLOSE_BEFORE_OPEN",
+    "LATE_HORIZON_REALIZATION_BIAS",
+    "HIERARCHICAL_GLOBAL_DECISION_ORDER",
+    "MANIFEST_KERNEL_PROGRESSIVE_DISCLOSURE"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -110,7 +125,13 @@
     "FIXED_LEVEL_PROMOTION_TARGET",
     "FIXED_CAREER_CAPITAL_RATIO",
     "FIXED_STORY_ANSWER",
-    "NUMERIC_ESCALATION_LADDER"
+    "NUMERIC_ESCALATION_LADDER",
+    "FIXED_DURATION_IN_LEVEL_THRESHOLD",
+    "FIXED_PHASE_MONTHS",
+    "FIXED_COMMITMENT_COUNT_THRESHOLD",
+    "FIXED_LATE_HORIZON_MONTH",
+    "FIXED_TIME_TO_REALIZATION_MAPPING",
+    "COMMITMENT_COUNT_AS_CONGESTION_RULE"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
@@ -142,5 +163,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "PROMOTION_FRONTIER_WITH_EVENT_AGNOSTIC_SEMANTIC_PRIORS"
+  "design_intent": "HIERARCHICAL_LONG_HORIZON_REALIZATION_POLICY"
 }

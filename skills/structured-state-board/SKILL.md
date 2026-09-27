@@ -15,6 +15,7 @@ Board 只整理当前 CareerSim game session 可核实的公开事实、来源/f
 
 - 确认当前 game_session_id、月份和公开 review window；
 - 读取 Health、Dignity、Network、Wealth、Level、Output、Skill 七项当前值；
+- 若 fresh participant-visible state 提供 `CurrentLevelDuration`（公开手册字段）或对应的 `duration_in_level`，记录原始来源、新鲜度与值；两者缺失或冲突时标 `UNKNOWN`。不得从月份、晋升间隔或隐藏状态推算；
 - 核对最近公开 formal feedback / review result / promotion result 与明确 warning；
 - 对可比较字段标记方向与来源；稳定事实不必重复叙述，只突出 changed / relevant / unknown；
 - 判断近期 before/after 是否被事件、其它动作、过期状态或不明来源污染；不能直接归因时记 UNKNOWN。
@@ -37,7 +38,7 @@ recent_effects 最多两条，仅记录同一 session 内、来源明确且没�
 
 ## Context recovery
 
-若当前上下文含 framework 生成的 <state_snapshot>，视为 context-recovery epoch；snapshot 只是工作上下文，不是策略权威。先确认相同 game_session_id 并取得 fresh public state，再据此重建当前 Board。Board 只重建公共事实；Delivery lifecycle 由 Delivery Skill 从当前 session 的公开回执单独重建。只有恢复 Board 事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
+若当前上下文含 framework 生成的 <state_snapshot>，视为 context-recovery epoch；snapshot 只是工作上下文，不是策略权威。先确认相同 game_session_id 并取得 fresh public state，再据此重建当前 Board，包括公开 Level 与 `CurrentLevelDuration` / `duration_in_level`；字段缺失时保持 `UNKNOWN`，不得从月份或晋升历史推算。Board 只重建公共事实；Delivery lifecycle 由 Delivery Skill 从当前 session 的公开回执单独重建。只有恢复 Board 事实确有必要时，才查看同一 session 最近最多五条公开日志，且最多恢复两条可直接确认的 effect。session 不符、来源不清或状态过期时丢弃旧事实并标 UNKNOWN。fresh state 优先于日志。
 
 不读数据库、隐藏字段、其它对局或本机取证材料；不建立文件型 / durable Memory。
 

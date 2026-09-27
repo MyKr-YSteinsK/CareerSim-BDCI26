@@ -13,11 +13,12 @@
 - S07-22 Main accepted the global-trajectory / delivery-lifecycle architecture for implementation. S07-23 completed Candidate v7 static implementation; S07 remains ACTIVE and this is not a stage-completion decision.
 - S07-24 completed the bounded static Promotion Frontier refinement as Candidate v7a; it does not authorize runtime validation or complete S07.
 - S07-25 completed the bounded static, event-agnostic Story semantic refinement as Candidate v7b; v7b is NOT_RUNTIME_VALIDATED and does not authorize runtime validation or complete S07.
+- S07-26 completed Candidate v7c's static global decision hierarchy and progressive-disclosure refinement. It uses public Level tenure only as optional qualitative context, adds review realization, time-to-realization and commitment congestion reasoning, and retains the four-Skill architecture. v7c is NOT_RUNTIME_VALIDATED; S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
 - Last verified: 2026-09-27
 
 ## Current candidate
 
-- Current candidate: `candidate-v7b-semantic-generalization`；parent: `candidate-v7a-promotion-frontier`；S07-25 static strategy refinement, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. v7a remains its four-Skill parent; v7 remains the immutable four-Skill architecture parent; v6c remains its compliance-cleanup ancestor and v6b the earlier runtime-correctness ancestor. No gameplay/provider evidence transfers from earlier candidates automatically.
+- Current candidate: `candidate-v7c-global-decision-policy`；parent: `candidate-v7b-semantic-generalization`；S07-26 static strategy and prompt refinement, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. v7b remains its four-Skill parent; v7 remains the immutable four-Skill architecture parent; v6c remains its compliance-cleanup ancestor and v6b the earlier runtime-correctness ancestor. No gameplay/provider evidence transfers from earlier candidates automatically.
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Four Skills: structured-state-board, rolling-planning, delivery-progress, risk-review
@@ -40,7 +41,7 @@
 - S06-09 decoded/internal Dev material in [STRATEGY_EVIDENCE](STRATEGY_EVIDENCE.md) is `FORENSIC_HISTORY_ONLY / NON_DEPLOYABLE` for S07 policy justification; current deployable policy must have independent allowed public provenance.
 - S06-24 v6 Run #1: 75.29 quantitative / 52.70 competition partial / 48 months / A; `VALID_48M_COMPLETION`. Runtime correctness = `RUNTIME_ADHERENCE_FAIL`: the semiannual H marker was missed, ordinary story deliberation reopened without fresh evidence, and CTRL/action pairing remains ambiguous. See [run evidence](runs/v6-run1-validation.md).
 - S06-24 correction: 203 `take_action` attempts = 202 successful state changes + 1 malformed Energy multi-select rejected before mutation; the two additional 328,103-token responses were CurrentRoundCompressor compressions. Two compressed snapshots occurred without a three-Skill reread.
-- v6b, v6c, v7, v7a, and v7b have no gameplay/provider validation transferred from earlier candidates. Runtime adherence, gameplay effectiveness, survival/score improvement, stable quantitative 80+, and hidden-test transfer remain NOT_PROVEN for v7b.
+- v6b, v6c, v7, v7a, v7b, and v7c have no gameplay/provider validation transferred from earlier candidates. Runtime adherence, gameplay effectiveness, survival/score improvement, stable quantitative 80+, and hidden-test transfer remain NOT_PROVEN for v7c.
 - Gameplay effectiveness: NOT_PROVEN；survival improvement: NOT_PROVEN；score improvement: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test transfer: NOT_PROVEN.
 - S06-24 local raw evidence was consulted read-only for S06-25 fact corrections and remains uncommitted; this state snapshot does not assert a canonical raw hash.
 
