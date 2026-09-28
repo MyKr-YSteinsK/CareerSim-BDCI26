@@ -1,41 +1,41 @@
 {
-  "candidate_id": "candidate-v7h-evidence-recovery-hardening",
+  "candidate_id": "candidate-v7i-pre-review-result-realization-probe",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_36_STATIC_EVIDENCE_RECOVERY_HARDENING",
+  "decision": "S07_37_STATIC_PRE_REVIEW_RESULT_REALIZATION_PROBE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "PRESERVE_V7G_STRATEGY",
-  "parent_candidate_id": "candidate-v7g-compact-skill-contracts",
-  "base_main_sha": "569da22eeb0d7f98e2ec7b6992b8eb5b8a82aafa",
+  "strategy_delta": "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+  "parent_candidate_id": "candidate-v7h-evidence-recovery-hardening",
+  "base_main_sha": "8f140642294604dd3cd2f59cf5c27df33a1090ea",
   "parent_identity": {
-    "runtime_manifest_sha256": "1633dbb9e7948131c91a075d340930c2536c76a04538d13360603631e45c47d6",
-    "instruction_sha256": "8ba742657e8ddaf521d6b2acab82f7f8655eac81bc43015580321aee455037ac",
+    "runtime_manifest_sha256": "1cf6901944db7943cf1e4af9a12243373c668cccfc37f15a050ea2b357913ef1",
+    "instruction_sha256": "a2053d7071401261b98e87030ae6047bfc3fb099ae0ead7c8e47736ba1e935e8",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "ec751e0b03c49d13641513eaa2af7c8bb00faa11"
+        "git_blob": "1707e8183e3b7f4c299838b4fc2c0f01de7581e2"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "11c2b09a684bd9ac9d3b676dd690ea56337c5fcb"
+        "git_blob": "d089760395a896c7b3f077c50d78fd0c4e76c5eb"
       },
       {
         "name": "delivery-progress",
         "path": "skills/delivery-progress/SKILL.md",
-        "git_blob": "c40a4f8487d99b76154894d859d6d81a6fcd8dd4"
+        "git_blob": "48dcbece745734a16f1b5caffadce55d7e7ecf97"
       },
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "d2c6e14c8e6ae3d3ebce12c43815f3a45cbfae6a"
+        "git_blob": "06bb1289499356d2d882dc4336eb17832f8e2fdf"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "1cf6901944db7943cf1e4af9a12243373c668cccfc37f15a050ea2b357913ef1",
-    "instruction_sha256": "a2053d7071401261b98e87030ae6047bfc3fb099ae0ead7c8e47736ba1e935e8"
+    "sha256": "0946e8b3c7cff62661bfb948a9e0cde39fce664847cb41bae4390587ae6c4fa3",
+    "instruction_sha256": "0dd590d21e036e5dc4cdde25553d250ac87439ab4cc1af29bc75c07367026721"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "d089760395a896c7b3f077c50d78fd0c4e76c5eb"
+      "git_blob": "67947aa2928eae2f09f94edfafd08fda00311fd5"
     },
     {
       "name": "delivery-progress",
@@ -84,13 +84,17 @@
     "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
     "HIDDEN_INTERNAL_FIELD_EXCLUSION",
     "CONTEXT_RECOVERY_HARDENING",
-    "PRESERVE_V7G_STRATEGY"
+    "PRESERVE_V7G_STRATEGY",
+    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+    "EVIDENCE_GATED_VISIBLE_OUTCOME",
+    "NO_FIXED_REPORT_ACTION",
+    "PRESERVE_V7H_CORRECTNESS"
   ],
   "runtime_contract_delta": [
-    "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
-    "HIDDEN_INTERNAL_FIELD_EXCLUSION",
-    "CONTEXT_RECOVERY_HARDENING",
-    "PRESERVE_V7G_STRATEGY"
+    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+    "EVIDENCE_GATED_VISIBLE_OUTCOME",
+    "NO_FIXED_REPORT_ACTION",
+    "PRESERVE_V7H_CORRECTNESS"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",

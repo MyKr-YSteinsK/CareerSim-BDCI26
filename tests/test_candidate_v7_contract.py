@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "569da22eeb0d7f98e2ec7b6992b8eb5b8a82aafa"
-PARENT_CANDIDATE_ID = "candidate-v7g-compact-skill-contracts"
-CURRENT_CANDIDATE_ID = "candidate-v7h-evidence-recovery-hardening"
+BASE_MAIN_SHA = "8f140642294604dd3cd2f59cf5c27df33a1090ea"
+PARENT_CANDIDATE_ID = "candidate-v7h-evidence-recovery-hardening"
+CURRENT_CANDIDATE_ID = "candidate-v7i-pre-review-result-realization-probe"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,10 +21,10 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
-    "HIDDEN_INTERNAL_FIELD_EXCLUSION",
-    "CONTEXT_RECOVERY_HARDENING",
-    "PRESERVE_V7G_STRATEGY",
+    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+    "EVIDENCE_GATED_VISIBLE_OUTCOME",
+    "NO_FIXED_REPORT_ACTION",
+    "PRESERVE_V7H_CORRECTNESS",
 }
 
 
@@ -90,8 +90,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_36_STATIC_EVIDENCE_RECOVERY_HARDENING"
-    assert candidate["strategy_delta"] == "PRESERVE_V7G_STRATEGY"
+    assert candidate["decision"] == "S07_37_STATIC_PRE_REVIEW_RESULT_REALIZATION_PROBE"
+    assert candidate["strategy_delta"] == "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -309,27 +309,77 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     assert "EXCLUDE_FROM_STRATEGY" in manifest
 
 
-def test_recovery_and_public_evidence_changes_add_no_score_tactic() -> None:
+def test_parent_correctness_and_other_skills_are_unchanged() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
-    for text in (manifest, parent):
-        assert "Strategy kernel:" in text and "Before take_action verify:" in text
-    strategy = lambda text: text.split("Strategy kernel:", 1)[1].split("Before take_action verify:", 1)[0]
-    assert strategy(manifest) == strategy(parent)
-    runtime = _runtime_text().lower()
-    assert not any(term in runtime for term in ("q1 result", "energy recipe", "network target"))
+    marker = "\nEarly evidence-gated pre-first-review prior:"
+    assert manifest.count(marker) == 1
+    before, after = manifest.split(marker, 1)
+    _, after = after.split("\nFormal review/promotion/no-advance", 1)
+    assert before + "\nFormal review/promotion/no-advance" + after == parent
+
+    for name in ("structured-state-board", "delivery-progress", "risk-review"):
+        path = f"skills/{name}/SKILL.md"
+        assert _canonical_text_bytes(ROOT / path) == _git_bytes(BASE_MAIN_SHA, path)
+
+    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
+    parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
+    heading = "\n#### Pre-first-review result realization prior\n"
+    assert planning.count(heading) == 1
+    before, after = planning.split(heading, 1)
+    _, after = after.split("\n### MODE=S", 1)
+    assert before + "\n### MODE=S" + after == parent_planning
 
 
-def test_candidate_and_state_record_hardening_without_validation_transfer() -> None:
+def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
+    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
+    prior = _section(planning, "#### Pre-first-review result realization prior", "### MODE=S")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+
+    # A: existing public delivery and a legal result action beat unsupported workload.
+    for marker in (
+        "before the first formal review",
+        "MODE=A",
+        "no binding public survival/resource constraint",
+        "current-session whitelisted Board/Delivery evidence",
+        "existing high-value commitment",
+        "work in progress or near completion",
+        "DELIVERY_CLAIMED + UNVERIFIED",
+        "legal action",
+        "prefer that result-realization action over another generic workload push",
+    ):
+        assert marker in prior
+    # B: a report-like label without underlying delivery never triggers the prior.
+    for marker in ("menu label", "underlying result is insufficient", "If no such delivery basis exists"):
+        assert marker in prior
+    # C: the first formal review ends this prior and returns control to the review plan.
+    assert "Exit this prior at the first formal review" in prior
+    assert "feedback-anchored `REVIEW_PLAN` owns the objective" in prior
+    # D: a material public constraint restores the existing MODE=S ordering.
+    assert "material constraint requires `MODE=S`" in prior
+    # E: a verified result with no new gap is not repeatedly packaged.
+    assert "DELIVERED + PUBLICLY_VERIFIED" in prior
+    assert "when the result becomes publicly verified" in prior
+    assert "do not repeat a presentation" in prior
+
+    assert "fixed report action" in prior
+    assert "promotion threshold" in prior
+    assert "not a fixed menu answer" in planning
+    assert "clearly superior time-sensitive" in prior
+    assert "After the first formal review" in manifest
+    assert not any(term in prior.lower() for term in ("month 3", "month 6", "m3", "m6", "two reports"))
+
+
+def test_candidate_and_state_record_single_probe_without_validation_transfer() -> None:
     candidate = _load_json(ROOT / "configs/current_candidate.json")
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     decisions = (ROOT / "docs/project/ARCHITECTURE_DECISIONS.md").read_text(encoding="utf-8")
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
-    assert "S07-36" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+`candidate-v7h-evidence-recovery-hardening`", state)
-    assert "all v7h validation flags are false" in state
-    assert "## AD-017" in decisions and "S07-36" in decisions
+    assert "S07-37" in state and CURRENT_CANDIDATE_ID in state
+    assert re.search(r"Current Candidate:\s+`candidate-v7i-pre-review-result-realization-probe`", state)
+    assert "all v7i validation flags are false" in state
+    assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions
     assert "NEXT_GAME = NOT_AUTHORIZED" in state
     assert "NEXT_GAME = NOT_AUTHORIZED" in decisions

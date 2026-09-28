@@ -72,6 +72,14 @@ Prefer, in order:
 
 Accept ordinary soft costs when the progression upside is materially stronger.
 
+#### Pre-first-review result realization prior
+
+Apply `PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR` only before the first formal review, in `MODE=A` with no binding public survival/resource constraint. Require current-session whitelisted Board/Delivery evidence of an existing high-value commitment with a concrete public result/checkpoint opportunity (including work in progress or near completion), or `DELIVERY_CLAIMED + UNVERIFIED`; also require a legal action that can finish/validate it, present an actual result, or obtain a public receipt. Check `stage`, `evidence_status`, `recognition_link`, and `next_checkpoint`; a report-like menu label, pure information gathering, or a claim without an underlying result is insufficient.
+
+When triggered, prefer that result-realization action over another generic workload push with no stronger current result evidence. Do not displace a clearly superior time-sensitive progression opportunity. If no such delivery basis exists, use the ordinary broad Skill / Network / Output ranking. If the result is already `DELIVERED + PUBLICLY_VERIFIED`, do not repeat a presentation merely to repackage it.
+
+Exit this prior at the first formal review, when the result becomes publicly verified, when the commitment becomes invalid or blocked, or when a material constraint requires `MODE=S`. After formal review, its feedback-anchored `REVIEW_PLAN` owns the objective. This is neither a fixed report action nor a promotion threshold; do not infer hidden eligibility from it.
+
 ### MODE=S
 
 Prefer candidates that:
