@@ -1,0 +1,417 @@
+"""Offline, run-scoped CareerSim evidence extraction. No runtime imports or calls."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+from collections import Counter
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from typing import Any
+
+
+SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
+PUBLIC_STATUS = {"level", "health", "dignity", "skill", "network", "output", "wealth", "energy", "duration_in_level"}
+SCORE_FIELDS = {"quantitative_score", "competition_partial_score", "survival_months", "grade", "completed", "outcome"}
+MAIN_ACTIONS = {"申请关键项目", "向领导汇报成果", "低调避险", "不行动"}
+CTRL = re.compile(r"^\[CTRL G=([^\]\r\n]+?) P=(?:A|S|\?) R=(?:PASS|ALLOW|WARN|RECONSIDER|UNKNOWN) X=(?:0|1|-)\]")
+SESSION = re.compile(r"\b(?:game_session_id|session_id|SESSION)\b[\"']?\s*[:=]\s*[\"']?([0-9a-f]{32})\b", re.I)
+STAMP = re.compile(r"\b(20\d\d-\d\d-\d\d[ T]\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)?)")
+REVIEW = re.compile(r"半年.{0,8}评审|绩效.{0,8}评审|晋升.{0,8}评审|formal review|performance review", re.I)
+QUARTER_MAIN = re.compile(r"季度.{0,8}主行动|季度.{0,8}行动|quarterly.{0,8}main", re.I)
+HIDDEN_NUMERIC = re.compile(r"\bHiddenRisk\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
+INTERNAL_SCORE_NUMERIC = re.compile(r"\b(?:internal_score|hidden_score)\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
+DELIVERY_MARKERS = ("stage=", "evidence_status=", "recognition_link=", "next_checkpoint=", "COMMITTED", "IN_PROGRESS", "BLOCKED", "DELIVERY_CLAIMED", "DELIVERED", "PUBLICLY_VERIFIED")
+
+
+def parse_time(value: str, naive_offset: timezone | None = None) -> datetime | None:
+    """Return a UTC timestamp; never guess a timezone for a naive log timestamp."""
+    try:
+        parsed = datetime.fromisoformat(value.strip().replace(" ", "T", 1).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        if naive_offset is None:
+            return None
+        parsed = parsed.replace(tzinfo=naive_offset)
+    return parsed.astimezone(timezone.utc)
+
+
+def parse_offset(value: str | None) -> timezone | None:
+    if value is None:
+        return None
+    match = re.fullmatch(r"([+-])(\d\d):(\d\d)", value)
+    if not match or int(match[2]) > 23 or int(match[3]) > 59:
+        raise ValueError("--log-utc-offset must have the form +08:00")
+    minutes = (int(match[2]) * 60 + int(match[3])) * (1 if match[1] == "+" else -1)
+    return timezone(timedelta(minutes=minutes))
+
+
+def file_identity(path: Path) -> dict[str, Any]:
+    digest = hashlib.sha256()
+    size = 0
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            size += len(block)
+            digest.update(block)
+    return {"name": path.name, "bytes": size, "sha256": digest.hexdigest()}
+
+
+def _node(record: dict[str, Any]) -> dict[str, Any]:
+    payload = record.get("payload")
+    if not isinstance(payload, dict):
+        return {}
+    delta = payload.get("delta")
+    return delta if isinstance(delta, dict) and "tool_call" not in payload and "raw_output" not in payload else payload
+
+
+def _result(node: dict[str, Any]) -> dict[str, Any]:
+    raw = node.get("raw_output")
+    if not isinstance(raw, dict):
+        return {}
+    result = raw.get("result")
+    if isinstance(result, dict):
+        return result
+    if isinstance(result, str):
+        try:
+            decoded = json.loads(result)
+        except json.JSONDecodeError:
+            return {}
+        return decoded if isinstance(decoded, dict) else {}
+    return {}
+
+
+def _arguments(call: dict[str, Any]) -> dict[str, Any]:
+    value = call.get("arguments")
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        try:
+            decoded = json.loads(value)
+        except json.JSONDecodeError:
+            return {}
+        return decoded if isinstance(decoded, dict) else {}
+    return {}
+
+
+def _public_state(data: dict[str, Any]) -> dict[str, Any]:
+    state = data.get("current_state")
+    state = state if isinstance(state, dict) else {}
+    status = state.get("status")
+    status = status if isinstance(status, dict) else {}
+    time = state.get("time")
+    time = time if isinstance(time, dict) else {}
+    return {
+        "session_id": state.get("session_id") or data.get("session_id"),
+        "time": {key: time.get(key) for key in ("current_month", "current_quarter", "current_year") if isinstance(time.get(key), int) and not isinstance(time.get(key), bool)},
+        "status": {key.lower(): value for key, value in status.items() if key.lower() in PUBLIC_STATUS and isinstance(value, (str, int, float)) and not isinstance(value, bool)},
+    }
+
+
+def _fresh_score(data: dict[str, Any]) -> dict[str, Any]:
+    score = data.get("ending_score")
+    if not isinstance(score, dict):
+        return {}
+    return {key: value for key, value in score.items() if key in SCORE_FIELDS and isinstance(value, (str, int, float, bool))}
+
+
+def _log_compressions(path: Path, start: datetime, end: datetime, offset: timezone | None) -> tuple[list[str], int]:
+    found: set[str] = set()
+    unscoped = 0
+    current: datetime | None = None
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            stamp = STAMP.search(line)
+            if stamp:
+                current = parse_time(stamp[1], offset)
+            if "CurrentRoundCompressor" not in line:
+                continue
+            if current is None:
+                unscoped += 1
+            elif start <= current <= end:
+                found.add(current.replace(microsecond=0).isoformat())
+    return sorted(found), unscoped
+
+
+def _transcript_evidence(path: Path) -> tuple[list[str], dict[str, int]]:
+    sessions: set[str] = set()
+    markers: Counter[str] = Counter()
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            sessions.update(match.lower() for match in SESSION.findall(line))
+            for marker in DELIVERY_MARKERS:
+                markers[marker] += line.count(marker)
+    return sorted(sessions), dict(sorted(markers.items()))
+
+
+def audit(
+    events: Path,
+    transcript: Path,
+    score_report: Path,
+    runner_result: Path,
+    llm_log: Path | None = None,
+    run_start: str | None = None,
+    run_end: str | None = None,
+    log_utc_offset: str | None = None,
+    evidence_manifest: Path | None = None,
+) -> dict[str, Any]:
+    """Extract one deterministic summary from explicit offline inputs."""
+    if bool(run_start) != bool(run_end):
+        raise ValueError("--run-start and --run-end must be supplied together")
+    offset = parse_offset(log_utc_offset)
+    limitations: set[str] = set()
+    new_game_ids: list[str] = []
+    observe_ids: list[str] = []
+    observes: list[dict[str, Any]] = []
+    calls: dict[str, dict[str, Any]] = {}
+    action_calls: list[dict[str, Any]] = []
+    timeline: list[tuple[datetime, str, str | None]] = []
+    first_ts: datetime | None = None
+    last_ts: datetime | None = None
+    latest_observe: dict[str, Any] | None = None
+    seen_calls: set[str] = set()
+    seen_results: set[str] = set()
+    review_checkpoints: list[dict[str, Any]] = []
+    promotions: list[dict[str, Any]] = []
+    quarter_main: list[dict[str, Any]] = []
+    pre_review_choices: list[dict[str, Any]] = []
+    first_review_month: int | None = None
+    previous_level: Any = None
+    ctrl = Counter()
+    violations = Counter()
+    note_delivery = Counter()
+
+    with events.open(encoding="utf-8") as handle:
+        for line_number, line in enumerate(handle, 1):
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"events line {line_number} is not JSON") from exc
+            if not isinstance(record, dict):
+                raise ValueError(f"events line {line_number} is not an object")
+            ts = parse_time(str(record.get("ts", "")))
+            if ts is not None:
+                first_ts = ts if first_ts is None else min(first_ts, ts)
+                last_ts = ts if last_ts is None else max(last_ts, ts)
+            kind = record.get("kind")
+            node = _node(record)
+            if kind == "tool_call":
+                call = node.get("tool_call")
+                if not isinstance(call, dict):
+                    continue
+                call_id = str(call.get("tool_call_id") or f"seq:{record.get('seq', line_number)}")
+                if call_id in seen_calls:
+                    continue
+                seen_calls.add(call_id)
+                name = str(call.get("name") or "")
+                args = _arguments(call)
+                calls[call_id] = {"name": name, "args": args}
+                if "take_action" in name:
+                    choice = args.get("choice")
+                    notes = args.get("notes")
+                    notes = notes if isinstance(notes, str) else ""
+                    ctrl["attempts"] += 1
+                    ctrl["valid"] += int(bool(CTRL.match(notes)) and notes.count("[CTRL") == 1)
+                    ctrl["missing"] += int("[CTRL" not in notes)
+                    ctrl["malformed_or_duplicate"] += int("[CTRL" in notes and (not CTRL.match(notes) or notes.count("[CTRL") != 1))
+                    ctrl["single_integer_choice"] += int(isinstance(choice, int) and not isinstance(choice, bool))
+                    violations["numeric_hiddenrisk_reference"] += int(bool(HIDDEN_NUMERIC.search(notes)))
+                    violations["numeric_internal_score_reference"] += int(bool(INTERNAL_SCORE_NUMERIC.search(notes)))
+                    for marker in DELIVERY_MARKERS:
+                        note_delivery[marker] += notes.count(marker)
+                    action = {"id": call_id, "name": name, "ts": ts, "choice": choice, "result": "UNKNOWN"}
+                    action_calls.append(action)
+                    if ts is not None:
+                        timeline.append((ts, "take_action", None))
+                    if latest_observe is not None:
+                        choices = latest_observe.get("choices", {})
+                        selected = choices.get(choice) if isinstance(choice, int) and not isinstance(choice, bool) else None
+                        title = latest_observe.get("event_title", "")
+                        month = latest_observe.get("month")
+                        if selected and (QUARTER_MAIN.search(title) or selected in MAIN_ACTIONS):
+                            quarter_main.append({"month": month, "action": selected, "source": "public_choice"})
+                continue
+            if kind != "tool_result":
+                continue
+            call_id = str(node.get("tool_call_id") or "")
+            if not call_id or call_id in seen_results:
+                continue
+            seen_results.add(call_id)
+            tool_name = str(node.get("tool_name") or calls.get(call_id, {}).get("name") or "")
+            result = _result(node)
+            if "new_game" in tool_name:
+                session_id = result.get("session_id")
+                if isinstance(session_id, str) and session_id:
+                    new_game_ids.append(session_id)
+            elif "observe" in tool_name and isinstance(result.get("current_state"), dict):
+                public = _public_state(result)
+                session_id = public.get("session_id")
+                if isinstance(session_id, str) and session_id:
+                    observe_ids.append(session_id)
+                state = result["current_state"]
+                flags = state.get("simulation_flags") if isinstance(state.get("simulation_flags"), dict) else {}
+                event = result.get("current_event") if isinstance(result.get("current_event"), dict) else {}
+                title = str(event.get("title") or "")[:200]
+                feed = str(result.get("events") or "")[:4000]
+                month = public["time"].get("current_month")
+                score = _fresh_score(result)
+                choices = {item.get("choice"): str(item.get("action") or "")[:200] for item in result.get("choices", []) if isinstance(item, dict) and isinstance(item.get("choice"), int)} if isinstance(result.get("choices"), list) else {}
+                snapshot = {"ts": ts, "public": public, "score": score, "flags": {key: flags.get(key) for key in ("failed", "alive", "failure_reason")}, "month": month, "event_title": title, "choices": choices}
+                observes.append(snapshot)
+                latest_observe = snapshot
+                if ts is not None:
+                    timeline.append((ts, "observe", session_id if isinstance(session_id, str) else None))
+                if REVIEW.search(title + " " + feed):
+                    if first_review_month is None and isinstance(month, int):
+                        first_review_month = month
+                    checkpoint = {"month": month, "event_title": title, "source": "public_observe"}
+                    if checkpoint not in review_checkpoints:
+                        review_checkpoints.append(checkpoint)
+                level = public["status"].get("level")
+                if level is not None and previous_level is not None and level != previous_level:
+                    promotions.append({"month": month, "from_level": previous_level, "to_level": level, "source": "observed_level_change"})
+                if level is not None:
+                    previous_level = level
+                if first_review_month is None and len(pre_review_choices) < 80:
+                    pre_review_choices.append({"month": month, "event_title": title, "legal_actions": list(choices.values())})
+            elif "take_action" in tool_name or call_id in {item["id"] for item in action_calls}:
+                for action in reversed(action_calls):
+                    if action["id"] == call_id:
+                        raw = node.get("raw_output")
+                        if result.get("success") is True or (isinstance(raw, dict) and raw.get("success") is True):
+                            action["result"] = "SUCCESS"
+                        elif result.get("success") is False or node.get("is_error") or node.get("error") or (isinstance(raw, dict) and (raw.get("isError") or raw.get("error"))):
+                            action["result"] = "ERROR"
+                        break
+            if "skill_tool" in tool_name or "skill_tool" in calls.get(call_id, {}).get("name", ""):
+                args = calls.get(call_id, {}).get("args", {})
+                arg_text = json.dumps(args, ensure_ascii=False)
+                raw = node.get("raw_output")
+                if not node.get("is_error") and not node.get("error") and not (isinstance(raw, dict) and (raw.get("isError") or raw.get("error"))):
+                    for skill in SKILLS:
+                        if skill in arg_text and ts is not None:
+                            timeline.append((ts, "skill_read", skill))
+
+    transcript_ids, transcript_delivery = _transcript_evidence(transcript)
+    score_data = json.loads(score_report.read_text(encoding="utf-8"))
+    runner_data = json.loads(runner_result.read_text(encoding="utf-8"))
+    if not isinstance(score_data, dict) or not isinstance(runner_data, dict):
+        raise ValueError("score report and runner result must be JSON objects")
+    unique_new = sorted(set(new_game_ids))
+    unique_observe = sorted(set(observe_ids))
+    session = unique_new[0] if len(unique_new) == 1 else "UNKNOWN"
+    events_identity = "PASS" if len(new_game_ids) == 1 and unique_observe == [session] else "FAIL_OR_UNKNOWN"
+    transcript_identity = "PASS" if transcript_ids == [session] else ("UNKNOWN" if not transcript_ids else "MISMATCH")
+    if events_identity != "PASS":
+        limitations.add("fresh_session_identity_not_established_from_events")
+    if transcript_identity != "PASS":
+        limitations.add("transcript_session_marker_" + transcript_identity.lower())
+    report_id = score_data.get("session_id")
+    score_report_identity = "MATCH" if report_id == session and session != "UNKNOWN" else ("EMPTY" if not report_id else "MISMATCH")
+    if score_report_identity != "MATCH":
+        limitations.add("score_report_session_field_" + score_report_identity.lower())
+    matching_observes = [item for item in observes if item["public"]["session_id"] == session]
+    terminal = matching_observes[-1] if matching_observes else None
+    fresh_score = terminal["score"] if terminal and events_identity == "PASS" else {}
+    if not fresh_score:
+        limitations.add("fresh_terminal_score_not_observed")
+    runner_exit = runner_data.get("exit_code", runner_data.get("runner_exit_code", "UNKNOWN"))
+    if not isinstance(runner_exit, int) or isinstance(runner_exit, bool):
+        runner_exit = "UNKNOWN"
+        limitations.add("runner_exit_code_unknown")
+    terminal_flags = terminal["flags"] if terminal else {}
+    completed = bool(terminal and ("Completed the 48-month simulation" in str(terminal_flags.get("failure_reason") or "") or fresh_score.get("completed") is True) and terminal["month"] == 49 and runner_exit == 0)
+    if not completed:
+        limitations.add("terminal_48m_completion_not_established")
+    if first_review_month is None:
+        limitations.add("first_formal_review_not_identified")
+    if len(pre_review_choices) >= 80:
+        limitations.add("pre_first_review_choice_list_truncated_at_80")
+    if run_start and run_end:
+        start, end = parse_time(run_start), parse_time(run_end)
+        source = "explicit"
+    elif events_identity == "PASS":
+        start, end = first_ts, last_ts
+        source = "events"
+    else:
+        start = end = None
+        source = "UNKNOWN"
+    if start is None or end is None or start > end:
+        limitations.add("run_window_unknown_or_invalid")
+        start = end = None
+    compression: dict[str, Any] = {"status": "UNKNOWN", "count": "UNKNOWN", "events_utc": [], "recovery": []}
+    if llm_log is not None:
+        if start is not None and end is not None:
+            stamps, unscoped = _log_compressions(llm_log, start, end, offset)
+            compression.update({"status": "SCOPED" if not unscoped else "PARTIAL", "count": len(stamps) if not unscoped else "UNKNOWN", "events_utc": stamps})
+            if unscoped:
+                limitations.add("llm_compressor_lines_without_usable_timestamp")
+            ordered = sorted(timeline, key=lambda item: item[0])
+            for stamp in stamps:
+                comp_ts = parse_time(stamp)
+                assert comp_ts is not None
+                next_action = next((ts for ts, kind, _ in ordered if kind == "take_action" and ts > comp_ts), None)
+                if next_action is None:
+                    compression["recovery"].append({"at_utc": stamp, "status": "UNKNOWN_NO_NEXT_ACTION"})
+                    continue
+                between = [(kind, value) for ts, kind, value in ordered if comp_ts < ts < next_action]
+                reread = sorted({value for kind, value in between if kind == "skill_read" and value in SKILLS})
+                fresh_observe = any(kind == "observe" and value == session for kind, value in between)
+                compression["recovery"].append({"at_utc": stamp, "fresh_observe": fresh_observe, "reread_skills": reread, "status": "PASS" if fresh_observe and len(reread) == 4 else "FAIL"})
+        else:
+            limitations.add("llm_log_not_counted_without_run_window")
+    else:
+        limitations.add("llm_log_not_supplied_compression_unknown")
+    usage = score_data.get("token_usage")
+    usage = usage if isinstance(usage, dict) else {}
+    token_usage = {key: usage.get(key, "UNKNOWN") for key in ("input_tokens", "output_tokens", "total_tokens")}
+    token_usage["binding"] = "SESSION_MATCH" if score_report_identity == "MATCH" else "RUNNER_REPORT_DIAGNOSTIC_ONLY"
+    token_usage["actual_billed_cost"] = "UNKNOWN"
+    identities = {name: file_identity(path) for name, path in (("events", events), ("transcript", transcript), ("score_report", score_report), ("runner_result", runner_result))}
+    if llm_log is not None:
+        identities["llm_log"] = file_identity(llm_log)
+    if evidence_manifest is not None:
+        identities["evidence_manifest"] = file_identity(evidence_manifest)
+    return {
+        "schema_version": 1,
+        "inputs": identities,
+        "run": {"session_id": session, "new_game_count": len(new_game_ids), "observe_count": len(observes), "events_identity": events_identity, "transcript_identity": transcript_identity, "transcript_session_ids": transcript_ids, "runner_exit_code": runner_exit, "window_source": source, "start_utc": start.isoformat() if start else "UNKNOWN", "end_utc": end.isoformat() if end else "UNKNOWN"},
+        "outcome": {"classification": "VALID_48M_COMPLETION" if completed else "UNKNOWN", "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
+        "trajectory": {"review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
+        "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "evidence_discipline_categories": dict(sorted(violations.items()))},
+        "adherence_evidence": {"compression": compression, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
+        "mechanism_inputs": {"first_formal_review_month": first_review_month if first_review_month is not None else "UNKNOWN", "pre_first_review_public_choices": pre_review_choices, "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"},
+        "usage": token_usage,
+        "limitations": sorted(limitations),
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    for name in ("events", "transcript", "score-report", "runner-result", "output"):
+        parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--llm-log", type=Path)
+    parser.add_argument("--run-start", help="timezone-aware ISO timestamp")
+    parser.add_argument("--run-end", help="timezone-aware ISO timestamp")
+    parser.add_argument("--log-utc-offset", help="offset for naive cumulative-log timestamps, e.g. +08:00")
+    parser.add_argument("--evidence-manifest", type=Path)
+    args = parser.parse_args()
+    inputs = [args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.evidence_manifest]
+    if args.output.resolve() in {path.resolve() for path in inputs if path is not None}:
+        parser.error("output must not overwrite an input artifact")
+    try:
+        summary = audit(args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.run_start, args.run_end, args.log_utc_offset, args.evidence_manifest)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        parser.error(str(exc))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(args.output)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

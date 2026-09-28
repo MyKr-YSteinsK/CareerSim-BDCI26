@@ -95,6 +95,10 @@ Plan 不得：
 
 可靠的既有 PASS 可在关键 identity inputs 未漂移时复用；新 worktree 本身不使全部 runtime evidence 自动失效。重验需求应由相关身份决定，包括 Runner / dependency、provider / model / config、MCP config、Skill / submission、shared runtime state、DB / config path 与 Task 时间敏感性。不得为“更放心”重复执行既有稳定证据已覆盖、且与本 Task acceptance 无直接关系的 probe；Plan 明确要求 fresh evidence 时除外。
 
+### Live-run execution modes and evidence pipeline
+
+Future live Plans may select exactly one of `CODEX_FULL_RUN` and `HUMAN_RUN_GPT_AUDIT`. The former retains Codex's full authorized prepare-to-Git path; the latter assigns fixed live commands to the user while keeping the same offline evidence schema. Neither mode grants side effects by itself; explicit Task permissions and ceilings still govern. The bounded P0–P6 phases, no-progress stop rule, root-relative command registry, one-pass `post_run_summary.json`, and secret-scanned development archive are defined in [LIVE_RUN_WORKFLOW](LIVE_RUN_WORKFLOW.md). Advisory checks remain nonblocking absent new material evidence of a hard-gate failure. Raw evidence stays local by default; only selected, scanned run-scoped files may be staged, and `FORENSIC_HOLD` remains independent.
+
 ## Repository workflow, verification tiers, and artifact budget
 
 - Default workflow is serialized work in the repository root on main, followed by targeted verification, one meaningful commit, and push. A branch requires a task-specific Main/Planner reason; a worktree requires separate justification and authorization, and is not implied by a branch.

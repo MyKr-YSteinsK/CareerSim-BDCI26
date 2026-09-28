@@ -6,7 +6,7 @@
 
 - `MyKr-YSteinsK/CareerSim-BDCI26`；`main`；Windows / PowerShell。`docs/project/`：`CURRENT_STATE.md` 管状态，`ARCHITECTURE_DECISIONS.md` 管架构，`OFFICIAL_SOURCE_LOCK.md` 管官方事实、冻结身份和运行/提交合同；环境与关键对局事实见 `ENVIRONMENT.md` / `RUN_HISTORY.md`。
 - 分支增量标记 `IN_FLIGHT_EVIDENCE`，不冒充 `MERGED_FACT`；历史按当时语境解读。官方身份变更须新证据/可比较配置，不覆盖旧结果。
-- 凭据、`.env`、cache、日志、DB、会话和本机生成状态不得提交；仅提交去敏的必要证据。不得静默改 frozen Runner、依赖或 `uv.lock`。
+- 凭据、`.env`、cache、shared DB、未扫描的日志/会话和其他本机生成状态不得提交；仅按 [LIVE_RUN_WORKFLOW](docs/project/LIVE_RUN_WORKFLOW.md) 的显式选择、run-window 截取与 secret scan 归档必要开发证据。不得静默改 frozen Runner、依赖或 `uv.lock`。
 
 ## 2. 本机 Workspace
 
@@ -26,7 +26,7 @@
 ## 4. Runtime Evidence Lifecycle
 
 - Canonical：去敏 RESULT/manifest/compact evidence；记 Experiment/Run/session、版本/config、假设/修改/基线、次数/时间、score/token/runtime、失败/决策、路径/bytes/hash；未知标明，缺失 usage 不记零。
-- Raw：transcript/events、服务日志、DB/session、provider usage、临时配置留本地。失败未决、结论依赖 raw、摘要不能独立解释或唯一复验来源须留存；hash 不替代源文件。
+- Raw：transcript/events、服务日志、DB/session、provider usage、临时配置默认留本地；仅经 [LIVE_RUN_WORKFLOW](docs/project/LIVE_RUN_WORKFLOW.md) 筛选和扫描的 run-scoped 开发证据可进入 private repo，shared DB、凭据和无关会话始终不得提交。失败未决、结论依赖 raw、摘要不能独立解释或唯一复验来源须留存；hash 不替代源文件，归档也不自动解除 `FORENSIC_HOLD`。
 - `FORENSIC_HOLD` 在 RESULT/manifest 记原因、最小文件/时间窗/路径/hash、责任 Task/解除者、解除条件/复查点；安装/清理可能覆盖时先授权保全快照，不以事后状态冒充历史。
 - Evidence Closure：责任 Task 提供独立可审结论/compact 证据，核实必要来源可恢复或无需复析，复现/child 等依赖已解除；Main/Stage 接受并记 hold 解除。之后仅授权清理可删指定 raw，记范围/复验限制；hash 或 COMPLETE 不自动关闭。
 
@@ -35,6 +35,7 @@
 - `READ_ONLY`：读 repo/Git/必要去敏证据、离线分析；不改 repo/runtime、不调用 provider。
 - `REPOSITORY_WRITE`：范围内 patch、offline/static 验证、授权 commit/push；不隐含 `LIVE_RUN`，validate 不保证无副作用。
 - `LIVE_RUN` 须 Task 明列依赖/Skill/submission 安装、服务/MCP、provider、game、smoke/benchmark、比赛提交的允许动作、次数/成本及停止条件；未列不授权，服务启动可能调用模型。
+- Future live Plans 可选 `CODEX_FULL_RUN` 或 `HUMAN_RUN_GPT_AUDIT`；两者共用 [LIVE_RUN_WORKFLOW](docs/project/LIVE_RUN_WORKFLOW.md) 的同一离线证据管线。Codex 全程模式按 P0–P6 有界执行；完成阶段仅因新的 material evidence 重开，同一诊断分支连续两次无新 material evidence 即停止并记 `UNKNOWN / LIMITATION`，FROZEN safety/identity 事项返 Main。
 - Windows 下 PowerShell 优先用于简单 Git / process / service control；YAML、JSON、hash、多条件结构化判断或多返回码汇总优先用 Python 或拆成原子命令。避免在复杂 inline expression 中混合 command execution、`$LASTEXITCODE`、对象构造和控制流；无副作用的本地 parser/script failure 按 Tooling Error 处理。
 - CareerSim live task 的 preflight 只将直接影响 live correctness / safety 或任务明确要求的必要 dependency/interface 的 Hard Gates 设为阻断条件；identity 未漂移的稳定 PASS 应复用。既定 Hard Gates 通过后，只有新 material evidence 才能增加 blocking diagnostic gate。
 - snapshot rehash、历史日志复查、ignore 检查和报告格式不得默认升级为 gameplay blocker；但 Plan / `FORENSIC_HOLD` 明确要求的唯一证据保全与核验仍须完成。效率规则不得削弱 `FORENSIC_HOLD`、secret protection、shared runtime 串行、bounded live retry 或 Unknown Side Effect 的 STOP 边界。
