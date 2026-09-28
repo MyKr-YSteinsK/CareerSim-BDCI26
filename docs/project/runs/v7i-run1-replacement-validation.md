@@ -2,16 +2,33 @@
 
 ## 验收摘要
 
-- Gameplay：VALID_48M_COMPLETION（基于 fresh events 的月份序列和 Runner exit 0；不使用未绑定的 score_report 完成字段）。
-- Runtime：RUNTIME_ADHERENCE_FAIL。
-- Strategy：PROMOTION_FIRST_ADHERENCE_FAIL。
-- Evidence：EVIDENCE_DISCIPLINE_FAIL。
+- Gameplay：VALID_48M_COMPLETION。
+- Score：VALID_FRESH_SESSION_SCORE_WITH_SCORE_REPORT_SESSION_FIELD_BUG；quantitative 64.0 / competition partial 44.8 / 48m / B。
+- Runtime：RUNTIME_ADHERENCE_FAIL，包括 2 次未注册工具路由错误与 2/2 次压缩后缺少强制四 Skill reread。
+- Strategy：PROMOTION_FIRST_ADHERENCE=PASS_WITH_LIMITATIONS。
+- Evidence：EVIDENCE_DISCIPLINE_FAIL（1 次 numeric HiddenRisk 写入 action note）。
+- Delivery lifecycle：DELIVERY_LIFECYCLE_ADHERENCE_NOT_PROVEN。
 - Recovery：RECOVERY_PATH_FAIL。
-- Mechanism：MECHANISM_NOT_TRIGGERED。
-- Score：STALE_SCORE_DIAGNOSTIC_ONLY；S07-40 数值成绩全部 UNKNOWN / EXCLUDED。
+- Mechanism：MECHANISM_NOT_TRIGGERED_WITH_DELIVERY_ADHERENCE_LIMITATION。
+- Decision closure：DECISION_CLOSURE_FAIL / SEVERE_VERBOSE_DELIBERATION。
+- Improvement causality、stable 80+、hidden-test transfer：NOT_PROVEN。
 - NEXT_GAME：NOT_AUTHORIZED。
 
-本报告只依据 S07-40 唯一 run 的现有 artifacts。没有再次启动/停止服务、运行 Runner、调用 provider、读取 shared DB 或做网络诊断。原始日志保存在本机，未提交。
+### Main Raw Re-Audit 修正（本节为当前权威结论）
+
+本节依据用户提供的 D:/CS/temp/CareerSim/S07-40｜Main-Raw-ReAudit.md。此前首轮 bounded pass 的下文仅作为审计轨迹保留；如与本节冲突，以本节为准。本轮没有重新解析 raw、日志或 shared DB，也没有运行 service、Runner 或 provider。
+
+- 成绩恢复为有效 fresh-session score：最终 fresh observe 与 transcript 末尾均记录 quantitative 64.0、competition partial 44.8、48m、B；score_report.session_id 为空是 Runner 字段缺陷，不再据此排除该成绩。
+- 历史分数仅作单局方向比较：相对 v7g +9.48、v6 -11.29、v1 #1 -12.04、v1 #2 +28.69；不证明因果收益或稳定优于 v7g。
+- 当前局 compression 为 2 次（19:37:12、19:45:43 +08:00），不是累计 llm.log 的 23 条历史记录。两次均 fresh observe 后直接继续 take_action，均缺少四 Skill reread，RECOVERY_PATH_FAIL。
+- 晋升月份修正为 M6 / M12 / M30 / M48；评审为 M6 C L1→L2、M12 B L2→L3、M18 B 无晋升、M24 B 无晋升、M30 B L3→L4、M36 A 无晋升、M42 A 无晋升、M48 A L4→L5。M36 的 L4 状态不是晋升月份。
+- Promotion-first 总体 PASS_WITH_LIMITATIONS：16 个季度 Main 中 12 次申请关键项目、4 次汇报成果，0 次低调避险、0 次不行动；202 次 action 中 P=A 196、P=S 6，后者对应明确 Health constraint。一次 numeric HiddenRisk action-note 仍使 EVIDENCE_DISCIPLINE_FAIL。
+- Delivery lifecycle 没有长程可审计维护证据，故 DELIVERY_LIFECYCLE_ADHERENCE_NOT_PROVEN。TRUE_TRIGGER=0；M5 原型/需求对齐为 CORRECT_NON_TRIGGER / BORDERLINE。Mechanism 结果为 MECHANISM_NOT_TRIGGERED_WITH_DELIVERY_ADHERENCE_LIMITATION，不代表 controller 已通过 runtime 验证。
+- Decision closure 修正为 DECISION_CLOSURE_FAIL / SEVERE_VERBOSE_DELIBERATION。Main 复核报告约 11,229 次 Hmm、约 420 次 reconsider、约 120 次 Let me reconsider、transcript 约 10,283 行；精确 candidate flip 数仍 UNKNOWN。Runner 汇总 output 254,782、total 42,887,446 tokens；实际 billed cost UNKNOWN。
+- 两次错误 tool route 均发生在 emulator dispatch 前；没有重复 state side effect。G continuity 相对 v7g materially improved，但不构成 causal score gain 证据。
+- Stable 80+、因果分数/生存提升、hidden-test transfer、Delivery controller 长程正确性仍 NOT_PROVEN。next_game_authorized=false。
+
+以下 identity、trajectory、action 与 artifact hash 的首轮记录继续保留；其中本节已明确更正的 score、compression、promotion、strategy、mechanism、decision-closure 判断由本节覆盖。
 
 ## Identity 与 provider gate
 
@@ -140,13 +157,12 @@ S07-38 pre-game provider failure 的原始 evidence 继续保持 FORENSIC_HOLD�
 
 首个 M6 Review feedback、202 个 take_action notes、service-log copies 均保存在同一清单指向的原始 artifacts 中；没有任何 shared DB 内容被读取或留存。
 
-## TASK_RESULT / handoff
+## TASK_RESULT / Main Raw Re-Audit amendment
 
-- Base/parent：main@33d89f773da2c90df4db9878d8d54c10bf6edd0e；Candidate v7i，parent v7h。
-- Fresh gameplay identity：events/transcript session 为 cec080dd3c1d43a0b9cb92945e9a824e；不同于旧 v7g。score_report session 不匹配（为空），score excluded。
-- Gameplay/Runtime/Strategy/Evidence/Recovery/Mechanism：VALID_48M_COMPLETION / FAIL / FAIL / FAIL / FAIL / NOT_TRIGGERED。
-- Provider：复用 S07-39 RETRY_GATE_PASS；真实 gameplay responses 存在。Usage/cost 限制如上。
-- Durable report：docs/project/runs/v7i-run1-replacement-validation.md；raw evidence 留本机。
-- S07-38 FORENSIC_HOLD：保留，待 Main 独立审阅。
-- next_game_authorized=false。
-- 最终交接：RETURN_TO_MAIN_AFTER_V7I_REPLACEMENT_ONE_GAME。
+- Fresh gameplay identity：cec080dd3c1d43a0b9cb92945e9a824e，与旧 v7g session 不同；48 个月完成。
+- Score：64.0 / 44.8 / 48m / B，由 fresh final observe 与 transcript 绑定；空 score_report.session_id 保留为 Runner 字段缺陷。
+- Classification：Gameplay VALID_48M_COMPLETION；Runtime FAIL；Promotion-first PASS_WITH_LIMITATIONS；Evidence FAIL；Recovery FAIL；Mechanism NOT_TRIGGERED_WITH_DELIVERY_ADHERENCE_LIMITATION；Decision closure SEVERE_VERBOSE_DELIBERATION。
+- Formal promotions：M6 / M12 / M30 / M48。
+- Canonical validation flags 保持 provider/gameplay=true、runtime/long-horizon=false；所有改善/迁移证明=false；next_game_authorized=false。configs/current_candidate.json 与复核结论一致，因此未改动。
+- S07-38 FORENSIC_HOLD 保留。raw evidence 保留本机；本轮没有重读、重算或更改其 hashes。
+- 后续三个 correctness patch 是 Main 的建议，本次仅修正 S07-40 事实记录；不改 Skills，不授权下一局。
