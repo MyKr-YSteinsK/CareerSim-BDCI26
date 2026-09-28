@@ -1,0 +1,28 @@
+{
+  "artifacts": [
+    {
+      "bytes": 890180,
+      "category": "core",
+      "name": "events.jsonl",
+      "sha256": "4b5f2c2057212e44310397f449ff6f41fe270b1b8c11945ea5a18b57ceb7af8b"
+    },
+    {
+      "bytes": 424,
+      "category": "core",
+      "name": "runner-result.json",
+      "sha256": "4437d474069db65779e2b071a3b5c86c348fc1f929c095e6aa37cdc393bdaf3c"
+    },
+    {
+      "bytes": 258955,
+      "category": "core",
+      "name": "transcript.log",
+      "sha256": "f15710f7eede7b1a52c51a80d16a824261fca4508b5f97837c2e3f9265870dbf"
+    }
+  ],
+  "run_id": "S07-46-v7m-run1",
+  "run_window_utc": {
+    "end": "2026-09-28T16:49:20.541221+00:00",
+    "start": "2026-09-28T16:39:37.849938+00:00"
+  },
+  "schema_version": 1
+}

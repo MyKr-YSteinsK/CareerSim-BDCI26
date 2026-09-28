@@ -1,0 +1,10 @@
+{
+  "exit_code": 1,
+  "runner_process_pid": 17744,
+  "process_start": "2026-09-29T00:39:37.8499380+08:00",
+  "process_end": "2026-09-29T00:49:20.5412210+08:00",
+  "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260928T163940Z",
+  "report_path": null,
+  "report_path_emitted": false,
+  "termination_class": "websockets.exceptions.ConnectionClosedError"
+}
