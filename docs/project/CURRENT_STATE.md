@@ -21,6 +21,7 @@
 - S07-31R completed the mechanical v7f promotion-first replacement. `candidate-v7f-promotion-first-survival-floor` defaults to progression under a qualitative public survival floor, keeps failure counts/thresholds unknown, and makes Wealth danger an income/progression recovery signal. It is static only; all v7f validation flags are false. S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
 - S07-32 completed the mechanical v7g compact Skill-contract refactor across all four Skills and the runtime manifest. It retains the v7f promotion-first survival-floor strategy while clarifying triggers, ownership, procedures, and outputs. This is a static prompt refactor; all v7g validation flags are false. S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
 - S07-33 stopped before Runner play after its single `career_emu` service lifecycle: the service reached `running`, the launcher exited `1` from GBK logging errors, and graceful stop succeeded. Automatic startup prewarm logged one DeepSeek completion (200 input / 1 output token); no v7g install or actual game-tool call occurred. All v7g validation flags remain false; see [v7g Run #1 attempt](runs/v7g-run1-validation.md).
+- S07-33R completed one fresh v7g DeepSeek game at `54.52 / 38.17 / 48m / C` (`VALID_48M_COMPLETION`). Provider/gameplay flags are true for this session; runtime adherence failed because two compression epochs lacked the required Skill/state/plan recovery evidence, and strategy adherence failed on ordinary-event G churn and numeric HiddenRisk reasoning. Improvement, stable-80+, hidden-transfer, and long-horizon adherence remain unproven; `next_game_authorized=false`. See [v7g Run #1 recovery validation](runs/v7g-run1-validation-r2.md). S07 remains ACTIVE; return to Main for review.
 - Last verified: 2026-09-28
 
 ## Current candidate
@@ -36,7 +37,7 @@
 
 - Frozen Runner SHA and dependency/source identity: [OFFICIAL_SOURCE_LOCK](OFFICIAL_SOURCE_LOCK.md)
 - Local environment status and verification boundary: [ENVIRONMENT](ENVIRONMENT.md)
-- Root .venv is local/ignored. S07-28 packaging and isolated installation passed; S07-29 exercised one configured DeepSeek run on v7d, with provider/gameplay validated for that session and runtime adherence failed. v7e, v7f, and v7g have not been run; all v7g validation flags remain false and no further game is authorized.
+- Root .venv is local/ignored. S07-28 packaging and isolated installation passed; S07-29 exercised one configured DeepSeek run on v7d with runtime adherence failed. S07-33R exercised one v7g DeepSeek game: provider/gameplay validated for that session, runtime and strategy adherence failed; long-horizon adherence and improvement remain unproven. v7e and v7f have not been run. No further game is authorized.
 
 ## Runs and limitations
 
@@ -49,13 +50,13 @@
 - S06-09 decoded/internal Dev material in [STRATEGY_EVIDENCE](STRATEGY_EVIDENCE.md) is `FORENSIC_HISTORY_ONLY / NON_DEPLOYABLE` for S07 policy justification; current deployable policy must have independent allowed public provenance.
 - S06-24 v6 Run #1: 75.29 quantitative / 52.70 competition partial / 48 months / A; `VALID_48M_COMPLETION`. Runtime correctness = `RUNTIME_ADHERENCE_FAIL`: the semiannual H marker was missed, ordinary story deliberation reopened without fresh evidence, and CTRL/action pairing remains ambiguous. See [run evidence](runs/v6-run1-validation.md).
 - S06-24 correction: 203 `take_action` attempts = 202 successful state changes + 1 malformed Energy multi-select rejected before mutation; the two additional 328,103-token responses were CurrentRoundCompressor compressions. Two compressed snapshots occurred without a three-Skill reread.
-- v6b, v6c, v7, v7a, v7b, v7c, v7d, v7e, v7f, and v7g have no gameplay/provider validation transferred from earlier candidates. Runtime adherence, gameplay effectiveness, survival/score improvement, stable quantitative 80+, and hidden-test transfer remain NOT_PROVEN for v7g.
+- Gameplay/provider validation does not transfer between Candidates. v7g has one direct provider/gameplay observation, but runtime adherence, long-horizon adherence, gameplay effectiveness, survival/score improvement, stable quantitative 80+, and hidden-test transfer remain NOT_PROVEN.
 - Gameplay effectiveness: NOT_PROVEN；survival improvement: NOT_PROVEN；score improvement: NOT_PROVEN；stable quantitative 80+: NOT_PROVEN；hidden-test transfer: NOT_PROVEN.
 - S06-24 local raw evidence was consulted read-only for S06-25 fact corrections and remains uncommitted; this state snapshot does not assert a canonical raw hash.
 
 ## Authorization
 
 - TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
-- NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
-- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, S07-28/28R the no-game runtime readiness gate, S07-29 consumed its one-game authorization, S07-30 integrated the static v7e replacement, S07-31R integrated the static v7f replacement, and S07-32 integrated the static v7g Skill-contract refactor. Any further run requires a separate Main Game Gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, or fifth Skill. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
+- NEXT_GAME: NOT_AUTHORIZED; the S07-33R one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
+- S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-02 Main acceptance=`PASS`; S07-22/23 completed the v7 static design/implementation, S07-24 the bounded v7a refinement, S07-25 the bounded v7b refinement, S07-26 the v7c hierarchy, S07-27 the v7d continuity refinement, S07-28/28R the no-game runtime readiness gate, S07-29 consumed its one-game authorization, S07-30 integrated the static v7e replacement, S07-31R integrated the static v7f replacement, S07-32 integrated the static v7g Skill-contract refactor, and S07-33R consumed one v7g game authorization. Any further run requires a separate Main Game Gate. W2/W3 remain separate and unstarted under the AD-007 public-interface evidence firewall. No Team/Swarm, Memory, or fifth Skill. Design Freeze remains ACTIVE; S07 remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
