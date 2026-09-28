@@ -16,8 +16,8 @@ SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "ri
 PUBLIC_STATUS = {"level", "health", "dignity", "skill", "network", "output", "wealth", "energy", "duration_in_level"}
 SCORE_FIELDS = {"quantitative_score", "competition_partial_score", "survival_months", "grade", "completed", "outcome"}
 MAIN_ACTIONS = {"申请关键项目", "向领导汇报成果", "低调避险", "不行动"}
-CTRL = re.compile(r"^\[CTRL G=([^\]\r\n]+?) P=(?:A|S|\?) R=(?:PASS|ALLOW|WARN|RECONSIDER|UNKNOWN) X=(?:0|1|-)\]")
-DL = re.compile(r"\[DL n=([0-3]) focus=(NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|CLOSED|UNKNOWN) evidence=(NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED) checkpoint=([01?]) recognition=([01?])\]")
+CTRL = re.compile(r"^\[CTRL G=(?P<gap>[^\]\r\n]+?) P=(?:A|S|\?) R=(?P<risk>PASS|ALLOW|WARN|RECONSIDER|UNKNOWN) X=(?P<x>0|1|-)\]")
+DL = re.compile(r"\[DL n=([0-3]) focus=(NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN) evidence=(NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED) checkpoint=([01?]) recognition=([01?])\]")
 SKILL_PATH = re.compile(r"(?:^|/)agent/workspace/skills/(structured-state-board|rolling-planning|delivery-progress|risk-review)/SKILL\.md$", re.I)
 INTERNAL_MARKER = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter|score|risk", re.I)
 SESSION = re.compile(r"\b(?:game_session_id|session_id|SESSION)\b[\"']?\s*[:=]\s*[\"']?([0-9a-f]{32})\b", re.I)
@@ -211,8 +211,10 @@ def audit(
     quarter_main: list[dict[str, Any]] = []
     pre_review_choices: list[dict[str, Any]] = []
     first_review_month: int | None = None
+    first_review_order: int | None = None
     previous_level: Any = None
     ctrl = Counter()
+    closure = Counter()
     violations = Counter()
     note_delivery = Counter()
     delivery_coverage = Counter()
@@ -254,13 +256,23 @@ def audit(
                     ctrl["missing"] += int("[CTRL" not in notes)
                     ctrl["malformed_or_duplicate"] += int("[CTRL" in notes and (not CTRL.match(notes) or notes.count("[CTRL") != 1))
                     ctrl["single_integer_choice"] += int(isinstance(choice, int) and not isinstance(choice, bool))
+                    ctrl_match = CTRL.match(notes)
+                    if not ctrl_match or notes.count("[CTRL") != 1:
+                        closure["malformed_or_missing_ctrl"] += 1
+                    else:
+                        risk, x = ctrl_match.group("risk", "x")
+                        if x == "0":
+                            closure["submitted_incomplete_x0"] += 1
+                        elif (risk == "RECONSIDER" and x != "1") or (risk != "RECONSIDER" and x != "-"):
+                            closure["contradictory_risk_x"] += 1
+                        else:
+                            closure["valid"] += 1
                     violations["numeric_hiddenrisk_reference"] += int(bool(HIDDEN_NUMERIC.search(notes)))
                     violations["numeric_internal_score_reference"] += int(bool(INTERNAL_SCORE_NUMERIC.search(notes)))
                     for marker in DELIVERY_MARKERS:
                         note_delivery[marker] += notes.count(marker)
                     delivery_coverage["attempts"] += 1
                     dl_count = notes.count("[DL")
-                    ctrl_match = CTRL.match(notes)
                     dl_match = DL.search(notes) if dl_count == 1 else None
                     marker_text = notes[notes.index("[DL"):].split("]", 1)[0] if dl_count else ""
                     marker_spans = re.findall(r"\[DL[^\]\r\n]*(?:\]|$)", notes)
@@ -278,7 +290,7 @@ def audit(
                     delivery_coverage["missing"] += int(dl_count == 0)
                     delivery_coverage["malformed_or_duplicate"] += int(dl_count > 0 and not valid_dl)
                     if valid_dl:
-                        delivery_actions.append({"action_index": len(action_calls) + 1, "month": latest_observe.get("month") if latest_observe else "UNKNOWN", "state": {"n": int(dl_match[1]), "focus": dl_match[2], "evidence": dl_match[3], "checkpoint": dl_match[4], "recognition": dl_match[5]}})
+                        delivery_actions.append({"action_index": len(action_calls) + 1, "event_order": line_number, "month": latest_observe.get("month") if latest_observe else "UNKNOWN", "state": {"n": int(dl_match[1]), "focus": dl_match[2], "evidence": dl_match[3], "checkpoint": dl_match[4], "recognition": dl_match[5]}})
                     action = {"id": call_id, "name": name, "ts": ts, "choice": choice, "result": "UNKNOWN"}
                     action_calls.append(action)
                     if ts is not None:
@@ -322,6 +334,8 @@ def audit(
                 if ts is not None:
                     timeline.append((ts, "observe", session_id if isinstance(session_id, str) else None))
                 if REVIEW.search(title + " " + feed):
+                    if first_review_order is None:
+                        first_review_order = line_number
                     if first_review_month is None and isinstance(month, int):
                         first_review_month = month
                     checkpoint = {"month": month, "event_title": title, "source": "public_observe"}
@@ -429,14 +443,15 @@ def audit(
     if evidence_manifest is not None:
         identities["evidence_manifest"] = file_identity(evidence_manifest)
     delivery_coverage["status"] = "UNKNOWN" if not action_calls else ("DELIVERY_MARKER_COVERAGE_PASS" if delivery_coverage["valid"] == len(action_calls) else "DELIVERY_MARKER_COVERAGE_FAIL")
-    pre_review_delivery = [item for item in delivery_actions if isinstance(item["month"], int) and first_review_month is not None and item["month"] < first_review_month]
+    pre_review_delivery = [item for item in delivery_actions if first_review_order is not None and item["event_order"] < first_review_order]
+    closure["status"] = "UNKNOWN" if not action_calls else ("CTRL_CLOSURE_PASS" if closure["valid"] == len(action_calls) else "CTRL_CLOSURE_FAIL")
     return {
         "schema_version": 1,
         "inputs": identities,
         "run": {"session_id": session, "new_game_count": len(new_game_ids), "observe_count": len(observes), "events_identity": events_identity, "transcript_identity": transcript_identity, "transcript_session_ids": transcript_ids, "runner_exit_code": runner_exit, "window_source": source, "start_utc": start.isoformat() if start else "UNKNOWN", "end_utc": end.isoformat() if end else "UNKNOWN"},
         "outcome": {"classification": "VALID_48M_COMPLETION" if completed else "UNKNOWN", "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
         "trajectory": {"review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
-        "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "evidence_discipline_categories": dict(sorted(violations.items()))},
+        "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "ctrl_closure": dict(sorted(closure.items())), "evidence_discipline_categories": dict(sorted(violations.items()))},
         "adherence_evidence": {"compression": compression, "delivery_marker_coverage": dict(sorted(delivery_coverage.items())), "delivery_states_by_action": delivery_actions, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if delivery_actions or any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
         "mechanism_inputs": {"first_formal_review_month": first_review_month if first_review_month is not None else "UNKNOWN", "pre_first_review_public_choices": pre_review_choices, "pre_first_review_delivery_states": pre_review_delivery, "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"},
         "usage": token_usage,

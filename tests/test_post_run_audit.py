@@ -213,3 +213,62 @@ def test_recovery_path_must_target_exact_installed_skill_file() -> None:
     for path in (root, root + "/risk-review", root + "/risk-review/README.md", root + "/risk-review/SKILL.md.bak", "skills/risk-review/SKILL.md", root + "/../skills/risk-review/SKILL.md"):
         assert _read_skill("read_file", {"path": path}) is None
     assert _read_skill("read_file", {"note": root + "/risk-review/SKILL.md"}) is None
+
+
+def test_ctrl_closure_accepts_ordinary_unknown_and_reconsidered_paths(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    _replace_action_notes(events, [
+        "[CTRL G=? P=A R=PASS X=-] Proceed",
+        "[CTRL G=? P=A R=RECONSIDER X=1] Proceed",
+        "[CTRL G=? P=A R=UNKNOWN X=-] Proceed",
+    ])
+    closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
+    assert closure["status"] == "CTRL_CLOSURE_PASS"
+    assert closure["valid"] == 3
+
+
+def test_ctrl_closure_rejects_incomplete_contradictory_and_malformed_paths(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    _replace_action_notes(events, [
+        "[CTRL G=? P=A R=PASS X=0] Incomplete",
+        "[CTRL G=? P=A R=PASS X=1] Contradictory",
+        "[CTRL G=? P=A R=RECONSIDER X=-] Contradictory",
+    ])
+    closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
+    assert closure["status"] == "CTRL_CLOSURE_FAIL"
+    assert closure["submitted_incomplete_x0"] == 1
+    assert closure["contradictory_risk_x"] == 2
+    _replace_action_notes(events, ["[CTRL broken]", "[CTRL G=? P=A R=PASS X=-] [CTRL duplicate]", "[CTRL G=? P=A R=UNKNOWN X=-]"])
+    closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
+    assert closure["status"] == "CTRL_CLOSURE_FAIL"
+    assert closure["malformed_or_missing_ctrl"] == 2
+
+
+def test_closed_delivery_focus_is_not_active(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    prefix = "[CTRL G=? P=A R=PASS X=-] "
+    _replace_action_notes(events, [
+        prefix + "[DL n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]",
+        prefix + "[DL n=1 focus=CLOSED evidence=PUBLICLY_VERIFIED checkpoint=0 recognition=1]",
+        prefix + "[DL n=0 focus=CLOSED evidence=PUBLICLY_VERIFIED checkpoint=0 recognition=1]",
+    ])
+    coverage = audit(events, transcript, score, runner)["adherence_evidence"]["delivery_marker_coverage"]
+    assert (coverage["valid"], coverage["malformed_or_duplicate"]) == (1, 2)
+
+
+def test_same_month_delivery_actions_use_review_event_order(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    first_observe = next(row for row in rows if row["kind"] == "tool_result" and row["payload"].get("tool_call_id") == "o1")
+    data = json.loads(first_observe["payload"]["raw_output"]["result"])
+    data["current_state"]["time"]["current_month"] = 6
+    data["current_event"]["title"] = "项目进展"
+    first_observe["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    marker = "[DL n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]"
+    _replace_action_notes(events, ["[CTRL G=? P=A R=PASS X=-] " + marker] * 3)
+    summary = audit(events, transcript, score, runner)
+    assert summary["mechanism_inputs"]["first_formal_review_month"] == 6
+    assert [item["action_index"] for item in summary["mechanism_inputs"]["pre_first_review_delivery_states"]] == [1]
+    assert [item["month"] for item in summary["mechanism_inputs"]["pre_first_review_delivery_states"]] == [6]
+    assert summary["mechanism_inputs"]["trigger_classification"] == "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"

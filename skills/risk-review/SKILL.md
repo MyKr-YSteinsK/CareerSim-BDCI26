@@ -52,7 +52,9 @@ For Wealth stress, distinguish discretionary spending from progression/income re
 `ALLOW` — material risk was reviewed and the candidate remains acceptable.<br>
 `WARN` — material concern exists but current evidence does not justify switching.<br>
 `RECONSIDER` — material risk is clear, the candidate does not handle it, and one directly relevant legal alternative exists. Compare at most that alternative, then close the decision.
-`UNKNOWN` — decision-relevant evidence is stale, missing, or ambiguous.
+`UNKNOWN` — decision-relevant public evidence is stale, missing, or source-ambiguous, so the candidate cannot receive a normal gate result yet. If normal public flow can resolve it, allow at most one fresh observe/rebuild cycle; genuinely new evidence may start one new Planning pass. If ambiguity remains and no further public evidence is obtainable within normal flow, make one bounded legal decision from available public evidence with CTRL `R=UNKNOWN X=-`. Do not loop observe/replan, invent facts, or infer hidden state.
+
+After `RECONSIDER`, compare at most one directly relevant legal replacement and give that selected candidate its own final Risk gate before submission. The action-note CTRL records the process as `R=RECONSIDER X=1` even when the replacement's gate result differs. With no reconsideration, use `X=-`; `X=0` marks an incomplete decision and forbids `take_action`.
 
 Do not invent numeric thresholds, hidden counts, failure probabilities, or hidden-risk values.
 

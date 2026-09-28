@@ -1,22 +1,22 @@
 ---
 name: delivery-progress
-description: "Use only when current-session public evidence creates or changes a career-relevant opportunity, commitment, milestone, blocker, delivery receipt, or review-linked result. Maintain a bounded delivery lifecycle summary for Planning; do not rank actions, assess risk, or submit actions."
+description: "Use after every fresh public Board to maintain a bounded current-session delivery lifecycle summary for Planning. Update only when relevant public evidence changes; otherwise return the supported current state or an explicit empty state. Do not rank actions, assess risk, or submit actions."
 ---
 
 # Delivery Progress
 
 ## Contract
 
-Track only work items that remain relevant to the current `REVIEW_PLAN`.
+Track review-relevant work items using the latest still-valid `REVIEW_PLAN` when available, fresh public progression/formal-review evidence, and broad visible-delivery relevance before the first review. Planning alone chooses the new objective and Primary Gap; Delivery never waits for a newly recomputed plan or invents one.
 
 Lifecycle:
 
 ```text
-OPPORTUNITY -> COMMITTED -> IN_PROGRESS -> BLOCKED
-            -> DELIVERY_CLAIMED -> DELIVERED -> CLOSED
+OPPORTUNITY -> COMMITTED -> IN_PROGRESS -> DELIVERY_CLAIMED -> DELIVERED -> CLOSED
+                 \-> BLOCKED -> IN_PROGRESS / DELIVERY_CLAIMED
 ```
 
-These are evidence labels, not hidden simulator states.
+These are evidence labels, not hidden simulator states or a mandatory sequence. `BLOCKED` is optional and may follow `COMMITTED` or `IN_PROGRESS`; use only stages supported by public evidence.
 
 Record each item as:
 
@@ -38,7 +38,7 @@ Update only on new public evidence that changes:
 - delivery result;
 - formal review / recognition linked to the item.
 
-Use `DELIVERY_CLAIMED + UNVERIFIED` when completion is asserted without a public receipt. Use `DELIVERED + PUBLICLY_VERIFIED` only when current-session public evidence verifies the result.
+Use `DELIVERY_CLAIMED + UNVERIFIED` when completion is asserted without public evidence of the deliverable. A successful MCP/`take_action` receipt proves execution only; generic `success=true`, action acceptance, or a command receipt cannot verify a career result. Use `DELIVERED + PUBLICLY_VERIFIED` only when participant-visible current-session evidence verifies the actual result or milestone.
 
 Do not infer recognition from a generic compliment, promotion, or review change.
 
@@ -57,10 +57,10 @@ For every fresh observation, emit one current bounded same-session Delivery stat
 Summarize the current state with one compact marker for the most decision-relevant item:
 
 ```text
-[DL n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|CLOSED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<0|1|?> recognition=<0|1|?>]
+[DL n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<0|1|?> recognition=<0|1|?>]
 ```
 
-`n` counts retained active review-relevant items. With `n=0`, use `focus=NONE evidence=NA checkpoint=0 recognition=0`. Set a flag to `1` only from a current-session public checkpoint or recognition link; use `?` when its status cannot be recovered. Keep item descriptions and hidden/internal fields or values out of the marker. The marker records existing Delivery evidence; it does not itself trigger the pre-first-review result-realization prior or change Planning's ranking.
+`n` counts retained active review-relevant items. The optional recent `CLOSED` item is not active and is never the action-note focus. With `n=0`, use `focus=NONE evidence=NA checkpoint=0 recognition=0`. Set a flag to `1` only from a current-session public checkpoint or recognition link; use `?` when its status cannot be recovered. Keep item descriptions and hidden/internal fields or values out of the marker. The marker records existing Delivery evidence; it does not itself trigger the pre-first-review result-realization prior or change Planning's ranking.
 
 ## Ownership
 
