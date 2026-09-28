@@ -13,6 +13,8 @@ Input:
 - current `MODE`;
 - candidate's public consequences.
 
+Use only whitelisted current-session public facts, participant-visible option text, and confirmed public receipts/logs. Ignore `HiddenRisk` (including numeric changes), hidden counters, internal score components, internal event identifiers/effects, and public-status-unclear payload fields even when a tool exposes them. Never put these values in a Risk reason, CTRL notes, or action rationale; `EXCLUDE_FROM_STRATEGY until verified public`.
+
 Output exactly one result:
 
 ```text

@@ -21,6 +21,8 @@ MODE = A | S
 
 ## Evidence order
 
+Consume only the same-session whitelisted public Board and Delivery summary, formal feedback, public legal choices, Handbook, and confirmed public receipts/logs. Ignore `HiddenRisk`, hidden counters, internal score components, internal event identifiers/effects, and public-status-unclear fields even when present in a tool payload; never use numeric internal-looking values in the Review Plan, candidate reason, CTRL notes, or action rationale. `EXCLUDE_FROM_STRATEGY until verified public`.
+
 Use evidence in this order:
 
 1. formal review / promotion / no-advance;
@@ -30,6 +32,8 @@ Use evidence in this order:
 5. advertised option effect or public hint.
 
 A lower-priority signal must not override a contradictory higher-priority signal.
+
+After context recovery and the required same-session fresh observe and four-Skill reread, restore `REVIEW_PLAN` from current-session public formal feedback and whitelisted Board/Delivery evidence. Set any unrecoverable Objective, Primary Gap, or Next Observable Checkpoint to `UNKNOWN`; do not reuse a stale plan or rank an action before recovery completes.
 
 ## Maintain the Review Plan
 

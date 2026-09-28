@@ -1,62 +1,62 @@
 {
-  "candidate_id": "candidate-v7g-compact-skill-contracts",
+  "candidate_id": "candidate-v7h-evidence-recovery-hardening",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_32_STATIC_COMPACT_SKILL_CONTRACTS",
+  "decision": "S07_36_STATIC_EVIDENCE_RECOVERY_HARDENING",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
-  "parent_candidate_id": "candidate-v7f-promotion-first-survival-floor",
-  "base_main_sha": "dc5e85cdaef136c9bc573a04c13a3e691bcf7790",
+  "strategy_delta": "PRESERVE_V7G_STRATEGY",
+  "parent_candidate_id": "candidate-v7g-compact-skill-contracts",
+  "base_main_sha": "569da22eeb0d7f98e2ec7b6992b8eb5b8a82aafa",
   "parent_identity": {
-    "runtime_manifest_sha256": "8a1aad7cc450567e9b09cdce5e534b7e683c9865cafb0681be5beebe8f7fdf76",
-    "instruction_sha256": "a72f76f8a169aaec2d78248326e5a7834f7a543a99edb7fe71ad9e16aa3ad01f",
+    "runtime_manifest_sha256": "1633dbb9e7948131c91a075d340930c2536c76a04538d13360603631e45c47d6",
+    "instruction_sha256": "8ba742657e8ddaf521d6b2acab82f7f8655eac81bc43015580321aee455037ac",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "bd4e57214fa067197b1255caa31536663f7dcee2"
+        "git_blob": "ec751e0b03c49d13641513eaa2af7c8bb00faa11"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "92aa8fca155d5c1591acfe8c6a5c36dc000f3ebd"
+        "git_blob": "11c2b09a684bd9ac9d3b676dd690ea56337c5fcb"
       },
       {
         "name": "delivery-progress",
         "path": "skills/delivery-progress/SKILL.md",
-        "git_blob": "9a84f723da92971850f167a3eebdc862ff95c20c"
+        "git_blob": "c40a4f8487d99b76154894d859d6d81a6fcd8dd4"
       },
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "1fe0f5a6becc139958778cd8cae72814ba7f3022"
+        "git_blob": "d2c6e14c8e6ae3d3ebce12c43815f3a45cbfae6a"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "1633dbb9e7948131c91a075d340930c2536c76a04538d13360603631e45c47d6",
-    "instruction_sha256": "8ba742657e8ddaf521d6b2acab82f7f8655eac81bc43015580321aee455037ac"
+    "sha256": "1cf6901944db7943cf1e4af9a12243373c668cccfc37f15a050ea2b357913ef1",
+    "instruction_sha256": "a2053d7071401261b98e87030ae6047bfc3fb099ae0ead7c8e47736ba1e935e8"
   },
   "skills": [
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "ec751e0b03c49d13641513eaa2af7c8bb00faa11"
+      "git_blob": "1707e8183e3b7f4c299838b4fc2c0f01de7581e2"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "11c2b09a684bd9ac9d3b676dd690ea56337c5fcb"
+      "git_blob": "d089760395a896c7b3f077c50d78fd0c4e76c5eb"
     },
     {
       "name": "delivery-progress",
       "path": "skills/delivery-progress/SKILL.md",
-      "git_blob": "c40a4f8487d99b76154894d859d6d81a6fcd8dd4"
+      "git_blob": "48dcbece745734a16f1b5caffadce55d7e7ecf97"
     },
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "d2c6e14c8e6ae3d3ebce12c43815f3a45cbfae6a"
+      "git_blob": "06bb1289499356d2d882dc4336eb17832f8e2fdf"
     }
   ],
   "adopted_mechanisms": [
@@ -80,14 +80,17 @@
     "CONCISE_IMPERATIVE_WORKFLOWS",
     "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
     "REDUCED_CROSS_SKILL_DUPLICATION",
-    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR"
+    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR",
+    "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
+    "HIDDEN_INTERNAL_FIELD_EXCLUSION",
+    "CONTEXT_RECOVERY_HARDENING",
+    "PRESERVE_V7G_STRATEGY"
   ],
   "runtime_contract_delta": [
-    "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
-    "CONCISE_IMPERATIVE_WORKFLOWS",
-    "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
-    "REDUCED_CROSS_SKILL_DUPLICATION",
-    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR"
+    "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
+    "HIDDEN_INTERNAL_FIELD_EXCLUSION",
+    "CONTEXT_RECOVERY_HARDENING",
+    "PRESERVE_V7G_STRATEGY"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -148,8 +151,8 @@
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,

@@ -42,6 +42,8 @@ Use `DELIVERY_CLAIMED + UNVERIFIED` when completion is asserted without a public
 
 Do not infer recognition from a generic compliment, promotion, or review change.
 
+After context recovery, reconstruct only items supported by the fresh same-session public Board, public receipts, and any contractually public same-session logs. If a stage, receipt, or recognition link cannot be recovered, write `UNKNOWN` rather than carrying forward stale lifecycle state. Exclude `HiddenRisk`, hidden counters, internal event identifiers/effects, and public-status-unclear payload fields.
+
 ## Bounds
 
 Keep:

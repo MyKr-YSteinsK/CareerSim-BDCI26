@@ -1,4 +1,4 @@
-"""Static identity and compact Skill-contract checks for the v7 Candidate."""
+"""Static identity and correctness-contract checks for the current v7 Candidate."""
 
 import hashlib
 import json
@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "dc5e85cdaef136c9bc573a04c13a3e691bcf7790"
-PARENT_CANDIDATE_ID = "candidate-v7f-promotion-first-survival-floor"
-CURRENT_CANDIDATE_ID = "candidate-v7g-compact-skill-contracts"
+BASE_MAIN_SHA = "569da22eeb0d7f98e2ec7b6992b8eb5b8a82aafa"
+PARENT_CANDIDATE_ID = "candidate-v7g-compact-skill-contracts"
+CURRENT_CANDIDATE_ID = "candidate-v7h-evidence-recovery-hardening"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,11 +21,10 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
-    "CONCISE_IMPERATIVE_WORKFLOWS",
-    "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
-    "REDUCED_CROSS_SKILL_DUPLICATION",
-    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR",
+    "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
+    "HIDDEN_INTERNAL_FIELD_EXCLUSION",
+    "CONTEXT_RECOVERY_HARDENING",
+    "PRESERVE_V7G_STRATEGY",
 }
 
 
@@ -91,8 +90,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_32_STATIC_COMPACT_SKILL_CONTRACTS"
-    assert candidate["strategy_delta"] == "PROFESSIONAL_SKILL_CONTRACT_REFACTOR"
+    assert candidate["decision"] == "S07_36_STATIC_EVIDENCE_RECOVERY_HARDENING"
+    assert candidate["strategy_delta"] == "PRESERVE_V7G_STRATEGY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -260,21 +259,77 @@ def test_manifest_retains_action_preflight_and_same_session_recovery() -> None:
     assert "choice is exactly one legal integer" in manifest
     assert "confirmed current session_id" in manifest
     assert "exactly one [CTRL" in manifest
-    recovery = manifest[manifest.index("On context recovery:"):]
-    for marker in ("confirm same game_session_id", "fresh observe", "reread all four Skills"):
+    recovery = manifest[manifest.index("On context recovery ("):]
+    for marker in (
+        "CurrentRoundCompressor",
+        "confirm same game_session_id",
+        "fresh observe",
+        "reread all four Skills",
+        *SKILL_ORDER,
+        "rebuild Board",
+        "rebuild Delivery",
+        "restore Review Plan",
+        "UNKNOWN",
+        "RECOVERY_PENDING",
+        "RECOVERY_READY",
+        "do not act",
+    ):
         assert marker in recovery
+    ordered = (
+        "STOP action submission",
+        "confirm same game_session_id",
+        "fresh observe",
+        "reread all four Skills",
+        "rebuild Board",
+        "rebuild Delivery",
+        "restore Review Plan",
+        "RECOVERY_READY",
+        "only then resume the decision loop",
+    )
+    assert [recovery.index(step) for step in ordered] == sorted(recovery.index(step) for step in ordered)
 
 
-def test_candidate_and_state_record_compact_refactor_without_validation_transfer() -> None:
+def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None:
+    texts = {
+        name: (ROOT / f"skills/{name}/SKILL.md").read_text(encoding="utf-8")
+        for name in SKILL_ORDER
+    }
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    for field in ("Health", "Dignity", "Skill", "Network", "Output", "Wealth", "Level", "Energy"):
+        assert field in manifest
+        assert field in texts["structured-state-board"]
+    for source in ("formal review", "legal-choice text", "public Handbook", "public action receipts"):
+        assert source in manifest
+    for name in SKILL_ORDER:
+        assert "HiddenRisk" in texts[name]
+        assert "public-status-unclear" in texts[name]
+    for target in ("Board", "Planning", "Delivery", "Risk", "CTRL notes", "action rationale"):
+        assert target in manifest
+    assert "numeric status_updates" in manifest
+    assert "EXCLUDE_FROM_STRATEGY" in manifest
+
+
+def test_recovery_and_public_evidence_changes_add_no_score_tactic() -> None:
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
+    for text in (manifest, parent):
+        assert "Strategy kernel:" in text and "Before take_action verify:" in text
+    strategy = lambda text: text.split("Strategy kernel:", 1)[1].split("Before take_action verify:", 1)[0]
+    assert strategy(manifest) == strategy(parent)
+    runtime = _runtime_text().lower()
+    assert not any(term in runtime for term in ("q1 result", "energy recipe", "network target"))
+
+
+def test_candidate_and_state_record_hardening_without_validation_transfer() -> None:
     candidate = _load_json(ROOT / "configs/current_candidate.json")
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     decisions = (ROOT / "docs/project/ARCHITECTURE_DECISIONS.md").read_text(encoding="utf-8")
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
-    assert "S07-32" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+`candidate-v7g-compact-skill-contracts`", state)
-    assert "all v7g validation flags are false" in state
-    assert "## AD-016" in decisions and "S07-32" in decisions
+    assert "S07-36" in state and CURRENT_CANDIDATE_ID in state
+    assert re.search(r"Current Candidate:\s+`candidate-v7h-evidence-recovery-hardening`", state)
+    assert "all v7h validation flags are false" in state
+    assert "## AD-017" in decisions and "S07-36" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions
     assert "NEXT_GAME = NOT_AUTHORIZED" in state
     assert "NEXT_GAME = NOT_AUTHORIZED" in decisions

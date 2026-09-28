@@ -27,7 +27,7 @@ UNKNOWN: <decision-relevant unresolved facts | none>
 ## Procedure
 
 1. Verify `game_session_id` and freshness. Discard stale or cross-session context.
-2. Copy the current public state exactly. Record `CurrentLevelDuration` or `duration_in_level` only when participant-visible; otherwise `UNKNOWN`.
+2. Apply the public-evidence whitelist before copying: current-session participant-visible Health, Dignity, Skill, Network, Output, Wealth, Level, Energy, and `CurrentLevelDuration` or `duration_in_level` only when participant-visible; formal review/promotion/no-advance, event and legal-choice text, public Handbook, confirmed action receipts, and contractually public logs. Keep unverified fields `UNKNOWN`.
 3. Preserve the latest formal review, promotion, or no-advance evidence.
 4. Keep a public fact in `STICKY` until fresh evidence resolves it when it concerns:
    - depleted or deteriorating Wealth / affordability / income;
@@ -37,11 +37,12 @@ UNKNOWN: <decision-relevant unresolved facts | none>
    - accident, trust, compliance, confidentiality, or safety warning.
 5. Keep at most the last two formal review checkpoints.
 6. Keep at most two recent effects. Attribute an effect only when one action is followed by a fresh observe with no intervening event/action contamination.
-7. On recovery, rebuild from fresh observe first; consult only a small amount of same-session public log history if required.
+7. On recovery, verify the same session and rebuild this replacement Board from a fresh observe first; consult only a small amount of same-session public log history if required. Mark missing public review evidence `UNKNOWN`; do not carry a stale Board forward.
 
 ## Invariants
 
 - Separate observed facts from `UNKNOWN`.
+- Exclude `HiddenRisk`, hidden counters, internal score components, internal event identifiers/effects, and other non-public or public-status-unclear fields, even if a tool payload includes numeric `status_updates`. Never copy their values into the Board, CTRL notes, or action rationale; `EXCLUDE_FROM_STRATEGY until verified public`.
 - Do not infer thresholds, counters, caps, hidden risk, or causal rules.
 - Do not use other games, database contents, or post-game forensic artifacts.
 - Do not accumulate a transcript.

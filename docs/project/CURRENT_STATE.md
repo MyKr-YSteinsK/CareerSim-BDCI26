@@ -22,11 +22,12 @@
 - S07-32 completed the mechanical v7g compact Skill-contract refactor across all four Skills and the runtime manifest. It retains the v7f promotion-first survival-floor strategy while clarifying triggers, ownership, procedures, and outputs. This is a static prompt refactor; all v7g validation flags are false. S07 remains ACTIVE and NEXT_GAME = NOT_AUTHORIZED.
 - S07-33 stopped before Runner play after its single `career_emu` service lifecycle: the service reached `running`, the launcher exited `1` from GBK logging errors, and graceful stop succeeded. Automatic startup prewarm logged one DeepSeek completion (200 input / 1 output token); no v7g install or actual game-tool call occurred. All v7g validation flags remain false; see [v7g Run #1 attempt](runs/v7g-run1-validation.md).
 - S07-33R completed one fresh v7g DeepSeek game at `54.52 / 38.17 / 48m / C` (`VALID_48M_COMPLETION`). Provider/gameplay flags are true for this session; runtime adherence failed because two compression epochs lacked the required Skill/state/plan recovery evidence, and strategy adherence failed on ordinary-event G churn and numeric HiddenRisk reasoning. Improvement, stable-80+, hidden-transfer, and long-horizon adherence remain unproven; `next_game_authorized=false`. See [v7g Run #1 recovery validation](runs/v7g-run1-validation-r2.md). S07 remains ACTIVE; return to Main for review.
+- S07-36 created `candidate-v7h-evidence-recovery-hardening` from v7g. Its public-field exclusion and explicit post-compression recovery gate address observed correctness failures without a new score tactic. This is static only; all v7h validation flags are false, no v7g gameplay/provider evidence transfers, and NEXT_GAME remains NOT_AUTHORIZED.
 - Last verified: 2026-09-28
 
 ## Current candidate
 
-- Current Candidate: `candidate-v7g-compact-skill-contracts`；parent: `candidate-v7f-promotion-first-survival-floor`；S07-32 static integration, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. Canonical identity is `configs/current_candidate.json`; v7f is the direct parent. No gameplay/provider/runtime/score/adherence evidence transfers from earlier candidates automatically.
+- Current Candidate: `candidate-v7h-evidence-recovery-hardening`；parent: `candidate-v7g-compact-skill-contracts`；S07-36 correctness hardening, `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`. Canonical identity is `configs/current_candidate.json`. No gameplay/provider/runtime/score/adherence evidence transfers from v7g.
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Four Skills: structured-state-board, rolling-planning, delivery-progress, risk-review
