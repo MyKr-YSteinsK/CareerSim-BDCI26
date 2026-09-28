@@ -1,24 +1,24 @@
 {
-  "candidate_id": "candidate-v7f-promotion-first-survival-floor",
+  "candidate_id": "candidate-v7g-compact-skill-contracts",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_31R_STATIC_PROMOTION_FIRST_SURVIVAL_FLOOR",
+  "decision": "S07_32_STATIC_COMPACT_SKILL_CONTRACTS",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
-  "parent_candidate_id": "candidate-v7e-lean-review-controller",
-  "base_main_sha": "7aed55348ce49eded8e14d79fea31ae815092fc9",
+  "strategy_delta": "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
+  "parent_candidate_id": "candidate-v7f-promotion-first-survival-floor",
+  "base_main_sha": "dc5e85cdaef136c9bc573a04c13a3e691bcf7790",
   "parent_identity": {
-    "runtime_manifest_sha256": "bef78e0fd991c589ff2b52a1c920dd6a6af4106fa404afedd6926c770437535d",
-    "instruction_sha256": "35698e81705a84cecddea37c58d84db0be17bdd01fff2f3890d54990599d043d",
+    "runtime_manifest_sha256": "8a1aad7cc450567e9b09cdce5e534b7e683c9865cafb0681be5beebe8f7fdf76",
+    "instruction_sha256": "a72f76f8a169aaec2d78248326e5a7834f7a543a99edb7fe71ad9e16aa3ad01f",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "e76cb289833ad00a7c40c331cb8d6035bde15221"
+        "git_blob": "bd4e57214fa067197b1255caa31536663f7dcee2"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "9775a8f19f4e41736bad1d34ef8c7db614a77c81"
+        "git_blob": "92aa8fca155d5c1591acfe8c6a5c36dc000f3ebd"
       },
       {
         "name": "delivery-progress",
@@ -28,35 +28,35 @@
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "b59fd1c8bc54d9b3469b4de22f3d5f8c126fb2ef"
+        "git_blob": "1fe0f5a6becc139958778cd8cae72814ba7f3022"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "8a1aad7cc450567e9b09cdce5e534b7e683c9865cafb0681be5beebe8f7fdf76",
-    "instruction_sha256": "a72f76f8a169aaec2d78248326e5a7834f7a543a99edb7fe71ad9e16aa3ad01f"
+    "sha256": "1633dbb9e7948131c91a075d340930c2536c76a04538d13360603631e45c47d6",
+    "instruction_sha256": "8ba742657e8ddaf521d6b2acab82f7f8655eac81bc43015580321aee455037ac"
   },
   "skills": [
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "bd4e57214fa067197b1255caa31536663f7dcee2"
+      "git_blob": "ec751e0b03c49d13641513eaa2af7c8bb00faa11"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "92aa8fca155d5c1591acfe8c6a5c36dc000f3ebd"
+      "git_blob": "11c2b09a684bd9ac9d3b676dd690ea56337c5fcb"
     },
     {
       "name": "delivery-progress",
       "path": "skills/delivery-progress/SKILL.md",
-      "git_blob": "9a84f723da92971850f167a3eebdc862ff95c20c"
+      "git_blob": "c40a4f8487d99b76154894d859d6d81a6fcd8dd4"
     },
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "1fe0f5a6becc139958778cd8cae72814ba7f3022"
+      "git_blob": "d2c6e14c8e6ae3d3ebce12c43815f3a45cbfae6a"
     }
   ],
   "adopted_mechanisms": [
@@ -75,18 +75,19 @@
     "CURRENT_SESSION_PUBLIC_EVIDENCE_ONLY",
     "SINGLE_AGENT_FOUR_SKILL_OWNERSHIP",
     "DELIVERY_PROGRESS_LIFECYCLE_PRESERVED",
-    "DECISION_CLOSED_AFTER_RISK_GATE"
+    "DECISION_CLOSED_AFTER_RISK_GATE",
+    "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
+    "CONCISE_IMPERATIVE_WORKFLOWS",
+    "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
+    "REDUCED_CROSS_SKILL_DUPLICATION",
+    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR"
   ],
   "runtime_contract_delta": [
-    "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
-    "FORMAL_REVIEW_ANCHORED_GAP",
-    "INCOME_RECOVERY_NOT_PASSIVE_SAFETY",
-    "STRONG_BROAD_GROWTH_MAIN_ACTION_PRIOR",
-    "TEMPORARY_STABILIZE_THEN_RETURN_TO_ADVANCE",
-    "STICKY_PUBLIC_FAILURE_DIRECTION_FACTS",
-    "BOUNDED_NON_NUMERIC_STORY_SHORTLIST",
-    "QUARTER_ENERGY_INTENT",
-    "TAKE_ACTION_ARGUMENT_PREFLIGHT"
+    "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
+    "CONCISE_IMPERATIVE_WORKFLOWS",
+    "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
+    "REDUCED_CROSS_SKILL_DUPLICATION",
+    "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",

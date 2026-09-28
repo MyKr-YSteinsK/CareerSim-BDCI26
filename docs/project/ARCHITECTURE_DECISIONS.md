@@ -133,3 +133,9 @@
 - Board retains sticky public failure-direction facts and recent review evidence. Risk allows ordinary growth costs absent a directly supported Material Risk. Exact failure counts, numeric thresholds, consecutive triggers, and penalties remain unknown and are not encoded.
 - The quarterly Main Action has a strong but non-mandatory broad-growth prior. Public hints remain soft, no-gain does not imply a hidden cap, Story comparison has no fixed candidate count, and `take_action` requires one legal integer choice.
 - Single Agent, four Skills, and Board / Planning / Delivery / Risk ownership remain unchanged. `candidate-v7f-promotion-first-survival-floor` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all validation flags are false and no gameplay/provider/runtime/score evidence transfers from v7e or earlier candidates. The canonical identity is `configs/current_candidate.json`. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.
+
+## AD-016 — Candidate v7g compact Skill contracts
+
+- S07-32 mechanically refactors the four Skills and runtime manifest for clearer trigger descriptions, imperative procedures, explicit inputs/outputs, and less cross-Skill duplication. It adds no strategy mechanism and preserves `PROMOTION_FIRST_WITH_SURVIVAL_FLOOR` from v7f.
+- Board owns public facts, Planning owns strategy and candidate ranking, Delivery owns the bounded current-session lifecycle, and Risk owns the final candidate gate. Single Agent remains the only action submitter; no Skill, Memory, Team/Swarm, or framework is added.
+- `candidate-v7g-compact-skill-contracts` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all validation flags remain false and no runtime/gameplay/score/adherence evidence transfers from v7f or earlier candidates. The canonical identity is `configs/current_candidate.json`. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.

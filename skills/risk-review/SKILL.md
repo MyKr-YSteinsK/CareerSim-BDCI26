@@ -1,77 +1,63 @@
 ---
 name: risk-review
-description: "每个 take_action 前检查 Planning 已选候选是否有公开、直接、足以威胁继续游戏的重大风险；只守生存底线，不把正常成长动作变成保守选择。"
+description: "Use immediately before every take_action on Planning's final candidate. Pass ordinary growth costs; escalate only when fresh public evidence shows a direct material threat to survival, job continuity, trust, compliance, confidentiality, safety, or an already-binding Health/Dignity/Wealth constraint. Never re-plan the whole decision."
 ---
 
-# Risk Review｜Survival Floor Gate
+# Risk Review
 
-Risk 的职责是防止一次明显可避免的选择把整局打穿，不负责把策略变得“最安全”。
+## Contract
 
-Planning 先选候选，Risk 最后审一次。
+Input:
+- Planning's final legal candidate;
+- fresh Board;
+- current `MODE`;
+- candidate's public consequences.
 
-## 默认
+Output exactly one result:
 
-如果候选只有：
+```text
+RISK: PASS|ALLOW|WARN|RECONSIDER|UNKNOWN
+REASON: <one concise public-evidence reason>
+```
 
-- 普通 workload；
-- 小幅 Health / Dignity 成本；
-- 一般关系摩擦；
-- 普通 uncertainty；
-- 可接受的机会成本；
+## Quick gate
 
-而当前没有对应的公开严重 warning，则 `PASS`。
+Return `PASS` when the candidate has only ordinary:
+- workload;
+- small Health/Dignity cost;
+- relationship friction;
+- uncertainty;
+- opportunity cost;
 
-**不能因为 Growth action 有成本就自动拦截。**
+and no fresh public evidence makes that cost material.
 
-## Material Risk
+Do not block a high-value growth path merely because it is not the safest option.
 
-只有 fresh public evidence 支持下面这类重大后果时才做 FULL_REVIEW：
+## Full review
 
-- 明确严重健康/心理生存风险；
-- dismissal / job-continuity danger；
-- trust crisis 或严重 retaliation；
-- compliance / confidentiality / safety；
-- candidate 会直接加重当前已经明显恶化的 Wealth / Health / Dignity 生存方向；
-- 当前公开事故/warning 与 candidate 有直接、具体的再次恶化关系。
+Run a full review only when the candidate directly touches a material public risk such as:
+- severe Health or psychological danger;
+- job-continuity / dismissal danger;
+- trust crisis or credible retaliation;
+- compliance / confidentiality / safety;
+- explicit affordability pressure;
+- direct worsening of the binding constraint that caused `MODE=S`.
 
-官网只公开失败方向，不公开精确阈值、计数和连续触发条件，所以 Risk 不使用任何自创数字线或次数规则。
+For Wealth stress, distinguish discretionary spending from progression/income recovery. Do not reject a growth action solely because Wealth is low when the action directly supports performance, promotion, or job continuity.
 
-## Wealth guard
+## Result rules
 
-Wealth 很低/非正或有 affordability warning 时：
+`ALLOW` — material risk was reviewed and the candidate remains acceptable.<br>
+`WARN` — material concern exists but current evidence does not justify switching.<br>
+`RECONSIDER` — material risk is clear, the candidate does not handle it, and one directly relevant legal alternative exists. Compare at most that alternative, then close the decision.
+`UNKNOWN` — decision-relevant evidence is stale, missing, or ambiguous.
 
-- 明确的非必要金钱支出可以触发审查；
-- 明显伤害 job continuity 的选择可以触发审查；
-- **能够改善正式绩效、晋升或收入能力的 Growth action 不因为 Wealth 低就被 Risk 否决。**
+Do not invent numeric thresholds, hidden counts, failure probabilities, or hidden-risk values.
 
-财富危机不是“停止成长”的理由。
+## Close
 
-## Health / Dignity guard
+After the final risk result, the decision is closed unless new public evidence arrives.
 
-只有 fresh public symptoms / warning /明显持续恶化已经成立时，才阻止继续叠加非必要的严重透支。
+Risk does not own the Review Plan or candidate ranking.
 
-如果状态已经恢复、warning 已解除，就回到普通标准，不长期维持高敏感度。
-
-## Compliance / trust
-
-保密、合规、安全问题按公开事实处理。存在直接合法替代方案时，可以 `RECONSIDER`。
-
-普通组织政治、普通关系选择、普通 Story 语义不由 Risk 二次规划。
-
-## Result
-
-返回：
-
-`ALLOW / WARN / RECONSIDER / UNKNOWN`
-
-`RECONSIDER` 只在：
-
-1. Material Risk 明确；
-2. 当前候选没有处理；
-3. 有一个直接相关合法 alternative。
-
-最多比较一个 alternative。替代候选也过一次 gate。
-
-最终 gate 后进入 `DECISION_CLOSED`。没有新的 fresh observe / tool result / event evidence 就不重开。
-
-Can Submit Action: No。Risk 不调用 `new_game`、`observe` 或 `take_action`，不跨 session 保存判断。
+Can Submit Action: No. Do not call `new_game`, `observe`, or `take_action`.
