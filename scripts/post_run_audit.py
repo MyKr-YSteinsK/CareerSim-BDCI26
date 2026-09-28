@@ -17,6 +17,9 @@ PUBLIC_STATUS = {"level", "health", "dignity", "skill", "network", "output", "we
 SCORE_FIELDS = {"quantitative_score", "competition_partial_score", "survival_months", "grade", "completed", "outcome"}
 MAIN_ACTIONS = {"申请关键项目", "向领导汇报成果", "低调避险", "不行动"}
 CTRL = re.compile(r"^\[CTRL G=([^\]\r\n]+?) P=(?:A|S|\?) R=(?:PASS|ALLOW|WARN|RECONSIDER|UNKNOWN) X=(?:0|1|-)\]")
+DL = re.compile(r"\[DL n=([0-3]) focus=(NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|CLOSED|UNKNOWN) evidence=(NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED) checkpoint=([01?]) recognition=([01?])\]")
+SKILL_PATH = re.compile(r"(?:^|/)agent/workspace/skills/(structured-state-board|rolling-planning|delivery-progress|risk-review)/SKILL\.md$", re.I)
+INTERNAL_MARKER = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter|score|risk", re.I)
 SESSION = re.compile(r"\b(?:game_session_id|session_id|SESSION)\b[\"']?\s*[:=]\s*[\"']?([0-9a-f]{32})\b", re.I)
 STAMP = re.compile(r"\b(20\d\d-\d\d-\d\d[ T]\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)?)")
 REVIEW = re.compile(r"半年.{0,8}评审|绩效.{0,8}评审|晋升.{0,8}评审|formal review|performance review", re.I)
@@ -94,6 +97,36 @@ def _arguments(call: dict[str, Any]) -> dict[str, Any]:
             return {}
         return decoded if isinstance(decoded, dict) else {}
     return {}
+
+
+def _read_skill(name: str, args: dict[str, Any]) -> str | None:
+    """Accept only an explicit installed SKILL.md target, never a text mention."""
+    if not ("skill_tool" in name or "read_file" in name):
+        return None
+    for key in ("path", "file_path", "filename"):
+        path = args.get(key)
+        if not isinstance(path, str) or ".." in path.replace("\\", "/").split("/"):
+            continue
+        normalized = path.replace("\\", "/")
+        if not re.match(r"^(?:[A-Za-z]:/|/)", normalized):
+            continue
+        match = SKILL_PATH.search(normalized)
+        if match:
+            return match[1].lower()
+    if "skill_tool" in name:
+        # The skill tool accepts a skill id directly; a successful result proves the read.
+        skill = next((args[key] for key in ("skill_name", "skill_id", "skill", "name") if key in args), None)
+        if isinstance(skill, str) and skill in SKILLS:
+            return skill
+    return None
+
+
+def _successful_read(node: dict[str, Any]) -> bool:
+    raw = node.get("raw_output")
+    if not isinstance(raw, dict) or node.get("is_error") or node.get("error") or raw.get("isError") or raw.get("error"):
+        return False
+    result = _result(node)
+    return not (result.get("error") or result.get("isError")) and result.get("success") is not False and raw.get("success") is not False and bool(raw.get("result"))
 
 
 def _public_state(data: dict[str, Any]) -> dict[str, Any]:
@@ -182,6 +215,8 @@ def audit(
     ctrl = Counter()
     violations = Counter()
     note_delivery = Counter()
+    delivery_coverage = Counter()
+    delivery_actions: list[dict[str, Any]] = []
 
     with events.open(encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, 1):
@@ -223,6 +258,27 @@ def audit(
                     violations["numeric_internal_score_reference"] += int(bool(INTERNAL_SCORE_NUMERIC.search(notes)))
                     for marker in DELIVERY_MARKERS:
                         note_delivery[marker] += notes.count(marker)
+                    delivery_coverage["attempts"] += 1
+                    dl_count = notes.count("[DL")
+                    ctrl_match = CTRL.match(notes)
+                    dl_match = DL.search(notes) if dl_count == 1 else None
+                    marker_text = notes[notes.index("[DL"):].split("]", 1)[0] if dl_count else ""
+                    marker_spans = re.findall(r"\[DL[^\]\r\n]*(?:\]|$)", notes)
+                    contaminated = any(INTERNAL_MARKER.search(span) for span in marker_spans)
+                    if contaminated:
+                        violations["delivery_marker_internal_reference"] += 1
+                    valid_dl = bool(
+                        dl_match and ctrl_match and not contaminated
+                        and notes[ctrl_match.end():dl_match.start()] == " "
+                        and dl_match[0] == "[DL" + marker_text.split("[DL", 1)[-1] + "]"
+                        and ((dl_match[1] == "0" and dl_match.groups()[1:] == ("NONE", "NA", "0", "0"))
+                             or (dl_match[1] != "0" and dl_match[2] != "NONE" and dl_match[3] != "NA"))
+                    )
+                    delivery_coverage["valid"] += int(valid_dl)
+                    delivery_coverage["missing"] += int(dl_count == 0)
+                    delivery_coverage["malformed_or_duplicate"] += int(dl_count > 0 and not valid_dl)
+                    if valid_dl:
+                        delivery_actions.append({"action_index": len(action_calls) + 1, "month": latest_observe.get("month") if latest_observe else "UNKNOWN", "state": {"n": int(dl_match[1]), "focus": dl_match[2], "evidence": dl_match[3], "checkpoint": dl_match[4], "recognition": dl_match[5]}})
                     action = {"id": call_id, "name": name, "ts": ts, "choice": choice, "result": "UNKNOWN"}
                     action_calls.append(action)
                     if ts is not None:
@@ -287,14 +343,9 @@ def audit(
                         elif result.get("success") is False or node.get("is_error") or node.get("error") or (isinstance(raw, dict) and (raw.get("isError") or raw.get("error"))):
                             action["result"] = "ERROR"
                         break
-            if "skill_tool" in tool_name or "skill_tool" in calls.get(call_id, {}).get("name", ""):
-                args = calls.get(call_id, {}).get("args", {})
-                arg_text = json.dumps(args, ensure_ascii=False)
-                raw = node.get("raw_output")
-                if not node.get("is_error") and not node.get("error") and not (isinstance(raw, dict) and (raw.get("isError") or raw.get("error"))):
-                    for skill in SKILLS:
-                        if skill in arg_text and ts is not None:
-                            timeline.append((ts, "skill_read", skill))
+            read_skill = _read_skill(calls.get(call_id, {}).get("name", tool_name), calls.get(call_id, {}).get("args", {}))
+            if read_skill and ts is not None and _successful_read(node):
+                timeline.append((ts, "skill_read", read_skill))
 
     transcript_ids, transcript_delivery = _transcript_evidence(transcript)
     score_data = json.loads(score_report.read_text(encoding="utf-8"))
@@ -359,8 +410,9 @@ def audit(
                     compression["recovery"].append({"at_utc": stamp, "status": "UNKNOWN_NO_NEXT_ACTION"})
                     continue
                 between = [(kind, value) for ts, kind, value in ordered if comp_ts < ts < next_action]
-                reread = sorted({value for kind, value in between if kind == "skill_read" and value in SKILLS})
                 fresh_observe = any(kind == "observe" and value == session for kind, value in between)
+                first_fresh = next((ts for ts, kind, value in ordered if comp_ts < ts < next_action and kind == "observe" and value == session), None)
+                reread = sorted({value for ts, kind, value in ordered if first_fresh is not None and first_fresh < ts < next_action and kind == "skill_read" and value in SKILLS})
                 compression["recovery"].append({"at_utc": stamp, "fresh_observe": fresh_observe, "reread_skills": reread, "status": "PASS" if fresh_observe and len(reread) == 4 else "FAIL"})
         else:
             limitations.add("llm_log_not_counted_without_run_window")
@@ -376,6 +428,8 @@ def audit(
         identities["llm_log"] = file_identity(llm_log)
     if evidence_manifest is not None:
         identities["evidence_manifest"] = file_identity(evidence_manifest)
+    delivery_coverage["status"] = "UNKNOWN" if not action_calls else ("DELIVERY_MARKER_COVERAGE_PASS" if delivery_coverage["valid"] == len(action_calls) else "DELIVERY_MARKER_COVERAGE_FAIL")
+    pre_review_delivery = [item for item in delivery_actions if isinstance(item["month"], int) and first_review_month is not None and item["month"] < first_review_month]
     return {
         "schema_version": 1,
         "inputs": identities,
@@ -383,8 +437,8 @@ def audit(
         "outcome": {"classification": "VALID_48M_COMPLETION" if completed else "UNKNOWN", "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
         "trajectory": {"review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
         "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "evidence_discipline_categories": dict(sorted(violations.items()))},
-        "adherence_evidence": {"compression": compression, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
-        "mechanism_inputs": {"first_formal_review_month": first_review_month if first_review_month is not None else "UNKNOWN", "pre_first_review_public_choices": pre_review_choices, "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"},
+        "adherence_evidence": {"compression": compression, "delivery_marker_coverage": dict(sorted(delivery_coverage.items())), "delivery_states_by_action": delivery_actions, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if delivery_actions or any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
+        "mechanism_inputs": {"first_formal_review_month": first_review_month if first_review_month is not None else "UNKNOWN", "pre_first_review_public_choices": pre_review_choices, "pre_first_review_delivery_states": pre_review_delivery, "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"},
         "usage": token_usage,
         "limitations": sorted(limitations),
     }

@@ -52,7 +52,15 @@ Keep:
 
 When over the limit, retain items with the strongest current decision relevance: explicit commitment, near checkpoint, active blocker, or verified review linkage.
 
-If nothing changed, return `NO_CHANGE`.
+For every fresh observation, emit one current bounded same-session Delivery state after Board and before Planning. If evidence changed, update it; otherwise carry forward only the previously supported same-session state. If no review-relevant item remains, emit the explicit empty state. `NO_CHANGE` may describe the transition, but must not replace the current state when an item exists. After recovery, mark unrecoverable fields `UNKNOWN`.
+
+Summarize the current state with one compact marker for the most decision-relevant item:
+
+```text
+[DL n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|CLOSED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<0|1|?> recognition=<0|1|?>]
+```
+
+`n` counts retained active review-relevant items. With `n=0`, use `focus=NONE evidence=NA checkpoint=0 recognition=0`. Set a flag to `1` only from a current-session public checkpoint or recognition link; use `?` when its status cannot be recovered. Keep item descriptions and hidden/internal fields or values out of the marker. The marker records existing Delivery evidence; it does not itself trigger the pre-first-review result-realization prior or change Planning's ranking.
 
 ## Ownership
 

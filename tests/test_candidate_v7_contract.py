@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "94f4eb13e7d6bfadadc2df5037c2476cf63471f5"
-PARENT_CANDIDATE_ID = "candidate-v7i-pre-review-result-realization-probe"
-CURRENT_CANDIDATE_ID = "candidate-v7j-decision-closure-hardening"
+BASE_MAIN_SHA = "af5d8bea7b96d3567ffdafbf5d7d6faf70e65377"
+PARENT_CANDIDATE_ID = "candidate-v7j-decision-closure-hardening"
+CURRENT_CANDIDATE_ID = "candidate-v7k-delivery-observability-hardening"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,11 +21,9 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "ONE_OBSERVE_ONE_PLANNING_PASS",
-    "RISK_ONLY_BOUNDED_RECONSIDER",
-    "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
-    "PRESERVE_V7I_RESULT_REALIZATION_PRIOR",
-    "PRESERVE_RECOVERY_AND_DELIVERY_CONTRACTS",
+    "CURRENT_DELIVERY_SNAPSHOT_EACH_OBSERVE",
+    "ONE_DL_MARKER_AFTER_CTRL",
+    "PRESERVE_V7J_STRATEGY_AND_RECOVERY",
 }
 
 
@@ -91,8 +89,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_41_STATIC_DECISION_CLOSURE_HARDENING"
-    assert candidate["strategy_delta"] == "DECISION_CLOSURE_HARDENING_ONLY"
+    assert candidate["decision"] == "S07_43_STATIC_DELIVERY_RECOVERY_OBSERVABILITY_HARDENING"
+    assert candidate["strategy_delta"] == "OBSERVABILITY_ONLY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -119,9 +117,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
         _git_blob_id(ROOT / entry["path"]) for entry in entries
     }
     assert candidate["adopted_mechanisms"] == parent_candidate["adopted_mechanisms"] + [
-        "ONE_OBSERVE_ONE_PLANNING_PASS",
-        "RISK_ONLY_BOUNDED_RECONSIDER",
-        "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
+        "CURRENT_DELIVERY_SNAPSHOT_MARKER",
     ]
     assert set(candidate["runtime_contract_delta"]) == REQUIRED_DELTA
     for key in ("deferred_mechanisms", "rejected_mechanisms", "architecture", "design_intent", "runner_sha"):
@@ -316,29 +312,28 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     assert "EXCLUDE_FROM_STRATEGY" in manifest
 
 
-def test_v7i_prior_recovery_delivery_and_other_skills_are_unchanged() -> None:
+def test_v7j_strategy_recovery_and_other_skills_are_unchanged() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
-    old_story = "Ordinary Story decisions are bounded: eliminate dominated options, stop on clear preference, and do not reconsider without new public evidence."
-    new_story = _section(manifest, "Decision budget per fresh observe:", " Quarterly Energy")
-    old_close = "After the final Risk gate, DECISION_CLOSED unless new public evidence arrives."
-    new_close = _section(manifest, "Risk PASS/ALLOW/WARN closes immediately.", "\nOn context recovery")
-    assert manifest.replace(new_story, old_story).replace(new_close, old_close) == parent
+    assert manifest.replace(
+        _section(manifest, "Decision loop:", "\nStrategy kernel"),
+        _section(parent, "Decision loop:", "\nStrategy kernel"),
+    ).replace(
+        _section(manifest, "notes begin with", " Risk PASS/ALLOW"),
+        _section(parent, "notes begin with", " Risk PASS/ALLOW"),
+    ) == parent
     assert _section(manifest, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance") == _section(parent, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance")
     assert _section(manifest, "On context recovery (", "No Team/Swarm") == _section(parent, "On context recovery (", "No Team/Swarm")
 
-    for name in ("structured-state-board", "delivery-progress", "risk-review"):
+    for name in ("structured-state-board", "rolling-planning", "risk-review"):
         path = f"skills/{name}/SKILL.md"
         assert _canonical_text_bytes(ROOT / path) == _git_bytes(BASE_MAIN_SHA, path)
-
-    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
-    parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
-    heading = "\n## Same-observation decision budget\n"
-    assert planning.count(heading) == 1
-    before, after = planning.split(heading, 1)
-    _, after = after.split("\n## Select MODE", 1)
-    assert before + "\n## Select MODE" + after == parent_planning
-    assert _section(planning, "#### Pre-first-review result realization prior", "### MODE=S") == _section(parent_planning, "#### Pre-first-review result realization prior", "### MODE=S")
+    delivery = (ROOT / "skills/delivery-progress/SKILL.md").read_text(encoding="utf-8")
+    parent_delivery = _git_bytes(BASE_MAIN_SHA, "skills/delivery-progress/SKILL.md").decode("utf-8")
+    assert delivery.startswith(parent_delivery.split("If nothing changed, return `NO_CHANGE`.")[0])
+    assert delivery.endswith(parent_delivery.split("If nothing changed, return `NO_CHANGE`.")[1])
+    assert "current bounded same-session Delivery state" in delivery
+    assert "n=0" in delivery and "NO_CHANGE" in delivery
 
 
 def test_one_observe_one_pass_and_risk_only_reconsideration() -> None:
@@ -417,7 +412,7 @@ def test_candidate_and_state_record_static_closure_without_validation_transfer()
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-37" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+candidate-v7j-decision-closure-hardening", state)
+    assert re.search(r"Current Candidate:\s+candidate-v7k-delivery-observability-hardening", state)
     assert "all v7i validation flags are false" in state
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions
