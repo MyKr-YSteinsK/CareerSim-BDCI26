@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "8f140642294604dd3cd2f59cf5c27df33a1090ea"
-PARENT_CANDIDATE_ID = "candidate-v7h-evidence-recovery-hardening"
-CURRENT_CANDIDATE_ID = "candidate-v7i-pre-review-result-realization-probe"
+BASE_MAIN_SHA = "94f4eb13e7d6bfadadc2df5037c2476cf63471f5"
+PARENT_CANDIDATE_ID = "candidate-v7i-pre-review-result-realization-probe"
+CURRENT_CANDIDATE_ID = "candidate-v7j-decision-closure-hardening"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,10 +21,11 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
-    "EVIDENCE_GATED_VISIBLE_OUTCOME",
-    "NO_FIXED_REPORT_ACTION",
-    "PRESERVE_V7H_CORRECTNESS",
+    "ONE_OBSERVE_ONE_PLANNING_PASS",
+    "RISK_ONLY_BOUNDED_RECONSIDER",
+    "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
+    "PRESERVE_V7I_RESULT_REALIZATION_PRIOR",
+    "PRESERVE_RECOVERY_AND_DELIVERY_CONTRACTS",
 }
 
 
@@ -90,8 +91,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_37_STATIC_PRE_REVIEW_RESULT_REALIZATION_PROBE"
-    assert candidate["strategy_delta"] == "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR"
+    assert candidate["decision"] == "S07_41_STATIC_DECISION_CLOSURE_HARDENING"
+    assert candidate["strategy_delta"] == "DECISION_CLOSURE_HARDENING_ONLY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -117,8 +118,14 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(ROOT / entry["path"]) for entry in entries
     }
-    assert REQUIRED_DELTA <= set(candidate["adopted_mechanisms"])
+    assert candidate["adopted_mechanisms"] == parent_candidate["adopted_mechanisms"] + [
+        "ONE_OBSERVE_ONE_PLANNING_PASS",
+        "RISK_ONLY_BOUNDED_RECONSIDER",
+        "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
+    ]
     assert set(candidate["runtime_contract_delta"]) == REQUIRED_DELTA
+    for key in ("deferred_mechanisms", "rejected_mechanisms", "architecture", "design_intent", "runner_sha"):
+        assert candidate[key] == parent_candidate[key]
     assert candidate["design_intent"] == "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR"
 
     assert set(candidate["validation"]) == {
@@ -309,14 +316,16 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     assert "EXCLUDE_FROM_STRATEGY" in manifest
 
 
-def test_parent_correctness_and_other_skills_are_unchanged() -> None:
+def test_v7i_prior_recovery_delivery_and_other_skills_are_unchanged() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
-    marker = "\nEarly evidence-gated pre-first-review prior:"
-    assert manifest.count(marker) == 1
-    before, after = manifest.split(marker, 1)
-    _, after = after.split("\nFormal review/promotion/no-advance", 1)
-    assert before + "\nFormal review/promotion/no-advance" + after == parent
+    old_story = "Ordinary Story decisions are bounded: eliminate dominated options, stop on clear preference, and do not reconsider without new public evidence."
+    new_story = _section(manifest, "Decision budget per fresh observe:", " Quarterly Energy")
+    old_close = "After the final Risk gate, DECISION_CLOSED unless new public evidence arrives."
+    new_close = _section(manifest, "Risk PASS/ALLOW/WARN closes immediately.", "\nOn context recovery")
+    assert manifest.replace(new_story, old_story).replace(new_close, old_close) == parent
+    assert _section(manifest, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance") == _section(parent, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance")
+    assert _section(manifest, "On context recovery (", "No Team/Swarm") == _section(parent, "On context recovery (", "No Team/Swarm")
 
     for name in ("structured-state-board", "delivery-progress", "risk-review"):
         path = f"skills/{name}/SKILL.md"
@@ -324,11 +333,42 @@ def test_parent_correctness_and_other_skills_are_unchanged() -> None:
 
     planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
     parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
-    heading = "\n#### Pre-first-review result realization prior\n"
+    heading = "\n## Same-observation decision budget\n"
     assert planning.count(heading) == 1
     before, after = planning.split(heading, 1)
-    _, after = after.split("\n### MODE=S", 1)
-    assert before + "\n### MODE=S" + after == parent_planning
+    _, after = after.split("\n## Select MODE", 1)
+    assert before + "\n## Select MODE" + after == parent_planning
+    assert _section(planning, "#### Pre-first-review result realization prior", "### MODE=S") == _section(parent_planning, "#### Pre-first-review result realization prior", "### MODE=S")
+
+
+def test_one_observe_one_pass_and_risk_only_reconsideration() -> None:
+    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    section = _section(planning, "## Same-observation decision budget", "## Select MODE")
+    for marker in (
+        "ONE FRESH OBSERVE = ONE PLANNING PASS",
+        "set `MODE + REVIEW_PLAN`",
+        "eliminate clearly unacceptable or dominated",
+        "at most two genuinely competitive options",
+        "compare them once",
+        "exactly one final `CANDIDATE`",
+        "Only Risk=`RECONSIDER` may reopen selection once",
+        "at most one directly relevant legal alternative",
+        "`PASS`, `ALLOW`, or `WARN`",
+        "`UNKNOWN` does not authorize a new Planning pass",
+        "A new thought about unchanged evidence never reopens Planning",
+        "Do not submit before closure",
+    ):
+        assert marker in section
+    for marker in (
+        "ONE OBSERVE = ONE PLANNING PASS",
+        "at most two genuinely competitive choices once",
+        "exactly one final CANDIDATE",
+        "Only Risk=RECONSIDER may reopen selection once",
+        "at most one directly relevant legal alternative",
+        "Never take_action before closure",
+    ):
+        assert marker in manifest
 
 
 def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
@@ -370,14 +410,14 @@ def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
     assert not any(term in prior.lower() for term in ("month 3", "month 6", "m3", "m6", "two reports"))
 
 
-def test_candidate_and_state_record_single_probe_without_validation_transfer() -> None:
+def test_candidate_and_state_record_static_closure_without_validation_transfer() -> None:
     candidate = _load_json(ROOT / "configs/current_candidate.json")
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     decisions = (ROOT / "docs/project/ARCHITECTURE_DECISIONS.md").read_text(encoding="utf-8")
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-37" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+`candidate-v7i-pre-review-result-realization-probe`", state)
+    assert re.search(r"Current Candidate:\s+candidate-v7j-decision-closure-hardening", state)
     assert "all v7i validation flags are false" in state
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions

@@ -46,6 +46,12 @@ After context recovery and the required same-session fresh observe and four-Skil
   - the current objective is no longer feasible.
 - Do not change the gap because of an ordinary Story or one transient state fluctuation.
 
+## Same-observation decision budget
+
+ONE FRESH OBSERVE = ONE PLANNING PASS. In that pass, set `MODE + REVIEW_PLAN`, eliminate clearly unacceptable or dominated legal options, retain at most two genuinely competitive options, compare them once using the ranking below, and emit exactly one final `CANDIDATE`. Keep the comparison sufficient for a difficult choice but the output concise; do not narrate self-dialogue or cycle through candidates.
+
+After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once: compare at most one directly relevant legal alternative against the candidate, choose once, obtain the final Risk result under the existing ownership contract, then close. `UNKNOWN` does not authorize a new Planning pass; handle missing decision-relevant public evidence under the existing Risk/observe contract. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure.
+
 ## Select MODE
 
 Use `A` unless fresh public evidence shows a material constraint.
