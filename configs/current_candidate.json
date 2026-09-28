@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7e-lean-review-controller",
+  "candidate_id": "candidate-v7f-promotion-first-survival-floor",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_30_STATIC_LEAN_REVIEW_CONTROLLER",
+  "decision": "S07_31R_STATIC_PROMOTION_FIRST_SURVIVAL_FLOOR",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "FORMAL_REVIEW_ANCHORED_LEAN_REVIEW_CONTROLLER",
-  "parent_candidate_id": "candidate-v7d-strategic-continuity",
-  "base_main_sha": "786db94f6683fd0c11aa6eae85ca11a95a1e032a",
+  "strategy_delta": "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
+  "parent_candidate_id": "candidate-v7e-lean-review-controller",
+  "base_main_sha": "7aed55348ce49eded8e14d79fea31ae815092fc9",
   "parent_identity": {
-    "runtime_manifest_sha256": "22e63b86b98daa009838353491f629119b45d74da94adb6c0c1ff2c7ba6cef00",
-    "instruction_sha256": "72b851877971c998aeba804ae62275d0651be83bea717b6d7b6552fdb36317f3",
+    "runtime_manifest_sha256": "bef78e0fd991c589ff2b52a1c920dd6a6af4106fa404afedd6926c770437535d",
+    "instruction_sha256": "35698e81705a84cecddea37c58d84db0be17bdd01fff2f3890d54990599d043d",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "7c9c226c3df80f386d1dcf0eb083cc912e5b55e3"
+        "git_blob": "9775a8f19f4e41736bad1d34ef8c7db614a77c81"
       },
       {
         "name": "delivery-progress",
@@ -34,19 +34,19 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "bef78e0fd991c589ff2b52a1c920dd6a6af4106fa404afedd6926c770437535d",
-    "instruction_sha256": "35698e81705a84cecddea37c58d84db0be17bdd01fff2f3890d54990599d043d"
+    "sha256": "8a1aad7cc450567e9b09cdce5e534b7e683c9865cafb0681be5beebe8f7fdf76",
+    "instruction_sha256": "a72f76f8a169aaec2d78248326e5a7834f7a543a99edb7fe71ad9e16aa3ad01f"
   },
   "skills": [
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "e76cb289833ad00a7c40c331cb8d6035bde15221"
+      "git_blob": "bd4e57214fa067197b1255caa31536663f7dcee2"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "9775a8f19f4e41736bad1d34ef8c7db614a77c81"
+      "git_blob": "92aa8fca155d5c1591acfe8c6a5c36dc000f3ebd"
     },
     {
       "name": "delivery-progress",
@@ -56,53 +56,37 @@
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "b59fd1c8bc54d9b3469b4de22f3d5f8c126fb2ef"
+      "git_blob": "1fe0f5a6becc139958778cd8cae72814ba7f3022"
     }
   ],
   "adopted_mechanisms": [
-    "PUBLIC_STATE_SURVIVAL_GUARD",
-    "CANDIDATE_FIRST_CONTROL_ORDER",
-    "FRESH_STATE_AFTER_STATE_CHANGING_ACTION",
-    "PUBLIC_CONSEQUENCE_DRIVEN_RISK_GATE",
-    "OBSERVED_EFFECT_AND_TWO_CHECKPOINT_STALL_DIAGNOSIS",
-    "CANDIDATE_SPECIFIC_RISK_RECONSIDERATION",
-    "CANONICAL_NOTES_CTRL_PREFIX",
-    "BOUNDED_PUBLIC_STORY_COMPARISON",
-    "PROMOTION_LEVEL_AS_PROGRESSION_FEEDBACK",
-    "BOUNDED_CURRENT_SESSION_DELIVERY_LIFECYCLE",
-    "LOW_FREQUENCY_DELIVERY_EVIDENCE_TRACKING",
-    "EXPLICIT_PUBLIC_AFFORDABILITY_CONSTRAINT",
-    "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
-    "FACT_GROUNDED_ACCOUNTABLE_HANDLING",
-    "CLEAR_OWNERSHIP_AND_OBSERVABLE_CHECKPOINT",
-    "REVERSIBILITY_AND_OPTIONALITY_PRIOR",
-    "PROPORTIONAL_ESCALATION",
-    "ACTIVE_REVIEW_PLAN",
-    "EVIDENCE_GATED_PLAN_REVISION",
-    "PRIMARY_GAP_PERSISTENCE",
-    "NEXT_OBSERVABLE_CHECKPOINT_CONTINUITY",
-    "FORMAL_REVIEW_ANCHORED_PLAN",
-    "ORDINARY_STORY_GAP_STABILITY",
-    "BINDING_AFFORDABILITY_GUARD",
-    "PUBLIC_HINT_SOFT_EVIDENCE_ONLY",
-    "NO_HIDDEN_CAP_INFERENCE_FROM_NO_GAIN",
-    "ONE_PASS_BOUNDED_DELIBERATION",
-    "QUARTER_ENERGY_INTENT_PERSISTENCE"
+    "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
+    "PRE_REVIEW_BALANCED_SNO_PROGRESSION",
+    "FORMAL_REVIEW_ANCHORED_GAP",
+    "INCOME_RECOVERY_NOT_PASSIVE_SAFETY",
+    "STRONG_BROAD_GROWTH_MAIN_ACTION_PRIOR",
+    "TEMPORARY_STABILIZE_THEN_RETURN_TO_ADVANCE",
+    "STICKY_PUBLIC_FAILURE_DIRECTION_FACTS",
+    "PUBLIC_HINT_SOFT_ONLY",
+    "NO_HIDDEN_CAP_FROM_NO_GAIN",
+    "BOUNDED_NON_NUMERIC_STORY_SHORTLIST",
+    "QUARTER_ENERGY_INTENT",
+    "TAKE_ACTION_ARGUMENT_PREFLIGHT",
+    "CURRENT_SESSION_PUBLIC_EVIDENCE_ONLY",
+    "SINGLE_AGENT_FOUR_SKILL_OWNERSHIP",
+    "DELIVERY_PROGRESS_LIFECYCLE_PRESERVED",
+    "DECISION_CLOSED_AFTER_RISK_GATE"
   ],
   "runtime_contract_delta": [
-    "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
-    "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
-    "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
-    "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
-    "FRESH_OBSERVE_AFTER_STATE_CHANGING_ACTION",
-    "ACTIVE_REVIEW_PLAN_RECOVERY_CONTINUITY",
-    "FORMAL_REVIEW_ANCHORED_PLAN",
-    "ORDINARY_STORY_CANNOT_REDEFINE_PRIMARY_GAP",
-    "BINDING_AFFORDABILITY_GUARD",
-    "PUBLIC_HINT_SOFT_EVIDENCE_ONLY",
-    "NO_HIDDEN_CAP_INFERENCE_FROM_NO_GAIN",
-    "ONE_PASS_BOUNDED_STORY_DELIBERATION",
-    "QUARTER_ENERGY_INTENT_PERSISTENCE"
+    "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
+    "FORMAL_REVIEW_ANCHORED_GAP",
+    "INCOME_RECOVERY_NOT_PASSIVE_SAFETY",
+    "STRONG_BROAD_GROWTH_MAIN_ACTION_PRIOR",
+    "TEMPORARY_STABILIZE_THEN_RETURN_TO_ADVANCE",
+    "STICKY_PUBLIC_FAILURE_DIRECTION_FACTS",
+    "BOUNDED_NON_NUMERIC_STORY_SHORTLIST",
+    "QUARTER_ENERGY_INTENT",
+    "TAKE_ACTION_ARGUMENT_PREFLIGHT"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -137,7 +121,10 @@
     "PUBLIC_HINT_AS_CONFIRMED_HARD_RULE",
     "HIDDEN_CAP_INFERENCE_FROM_NO_GAIN",
     "UNBOUNDED_STORY_RECONSIDERATION",
-    "ENERGY_REPLAN_WITHOUT_MATERIAL_CHANGE"
+    "ENERGY_REPLAN_WITHOUT_MATERIAL_CHANGE",
+    "EXACT_FAILURE_COUNTS_OR_CONSECUTIVE_TRIGGERS",
+    "NUMERIC_SURVIVAL_FAILURE_THRESHOLD",
+    "RISK_BUDGET_TIGHT_RISK_DEPENDENCY"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
@@ -169,5 +156,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "FORMAL_REVIEW_ANCHORED_LEAN_REVIEW_CONTROLLER"
+  "design_intent": "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR"
 }

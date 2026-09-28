@@ -1,322 +1,223 @@
 ---
 name: rolling-planning
-description: "每次决策必须应用；唯一 strategy owner。维护一个稳定的 review-window 计划，用公开证据做短而有界的候选比较；不提交动作。"
+description: "每次决策必须应用；唯一 strategy owner。默认主动追求晋升、可见交付和长期复利，只在公开生存风险已经形成约束时短暂收缩；不提交动作。"
 ---
 
-# Rolling Planning｜Lean Review Controller
+# Rolling Planning｜Promotion-First with Survival Floor
 
-## 1. 职责与证据边界
+目标不是“最安全地活着”，而是在不提前出局的前提下尽量把 48 个月变成持续晋升和资产复利。
 
-Planning 是唯一 strategy owner。只使用当前 game_session 的 fresh participant-visible public facts、Board 可核实事实、Delivery compact summary、合法选项、公开回执/日志与 Handbook。
+官方公开信息已经足够支持一个明确方向：
 
-禁止使用或推断：
+- 晋升窗口每 6 个月开放；
+- 晋升综合考虑 Skill、Network、Output；
+- Level 越高，月薪越高；
+- C/D 绩效会减少奖金；
+- 结局里 Level 和 Wealth 都是重要维度；
+- 具体晋升阈值、失败阈值、隐藏风险和随机触发条件不公开。
 
-- hidden threshold / hidden cap / hidden score weight / hidden formula；
-- event/title/keyword→固定答案；
-- 其它对局结果；
-- Dev/private/internal evidence；
-- “某个公开提示 = 已确认 simulator hard rule”。
+因此默认策略是：
 
-公开人物或事件文本中的提示可以作为 **public hint**，但只能表示“有人公开这样说过”，不能升级为已确认机制。
+> **积极推进职业资本和晋升，风险控制只守底线，不把 Agent 变成长期保守型。**
 
-Can Submit Action: No。
+Planning 只使用当前 game session 的 fresh participant-visible public facts、Board、Delivery compact summary、当前合法选项、公开回执/日志和 Handbook。
 
----
+禁止使用 hidden threshold、hidden cap、hidden score weight、hidden formula、事件答案表、其它对局作为当前局事实。
 
-## 2. Active Review Plan｜唯一稳定策略状态
+## 1. Review Plan
 
-Planning 只维护：
+只维护：
 
 `Review Objective / Primary Gap / Next Observable Checkpoint`
 
-### Review Objective
+Primary Gap 是 progression gap，不是“本月最危险的东西”。
 
-当前 review window 内最重要的可验证职业目标。
+最近一次 formal review、promotion 或 no-advance 是最强 progression evidence。普通 Story、一次状态波动和人物暗示不能随意重写 G。
 
-### Primary Gap
+### 第一次 review 之前
 
-当前公开证据下，最限制稳健 progression 的一个主要瓶颈；可为 `UNKNOWN`。
+没有正式反馈时，不凭最低 stat 强行猜瓶颈，`G=?` 合法。
 
-### Next Observable Checkpoint
+默认 Objective：
 
-下一条足以判断计划推进、完成或失效的公开证据，例如：
+> 在第一次 6 个月 review/promotion window 前，尽量形成可见交付，并让 Skill、Network、Output 都保持上升。
 
-- formal review / performance feedback；
-- promotion / no-advance；
-- Delivery receipt / blocker result；
-- 明确、可归因的 public outcome。
+这里追求的是 balanced progression，不是均匀分数。一个候选如果能同时改善多个晋升维度或形成更强的可见交付，通常比只改善一个边缘维度更有价值。
 
-**普通 Story 不得改变 Primary Gap。**
+## 2. Default mode = Advance
 
-QUICK 决策默认保留整个 Active Review Plan。
+`P=A` 是常态。
 
-只有以下 fresh material evidence 才允许 FULL revision：
+只要没有真实 binding survival constraint，就主动追求：
 
-1. formal review / promotion / no-advance；
-2. binding survival/resource constraint 明显改变；
-3. Objective 已公开完成；
-4. 当前路径被 fresh public result 明确失效；
-5. repeated comparable observed miss 已足以说明当前路径没有推进目标。
+1. promotion / Level progression；
+2. visible delivery / Output；
+3. Skill、Network、Output 的复合增长；
+4. 能在下个 review 被组织看见的 ownership / result；
+5. future option value。
 
-FULL trigger 不等于必须换计划；证据不足则保留。
+普通 Health/Dignity 小成本、一般工作量、日常人际摩擦和普通 uncertainty 不能自动压掉明显高价值的 Growth path。
 
----
+### Quarterly Main Action
 
-## 3. Decision Order｜每步只走一次
+公开菜单里，`申请关键项目` 同时公开增加 Output、Skill、Network，是最直接覆盖三项晋升维度的主行动之一。
 
-每次决策按以下顺序：
+因此在以下条件都满足时，把它作为**强默认候选**：
 
-### A. Freshness / legality
+- 当前没有 binding survival constraint；
+- 没有 fresh formal feedback 明确要求另一条更直接的修复路径；
+- 当前 commitment load 没有明显超载；
+- 没有 fresh observed evidence 表明本季度重复它只产生明显成本而没有进展。
 
-确认当前 state、event、choices 属于同一 fresh session。来源不清标 `UNKNOWN`，不猜。
+这是默认，不是固定答案。`向领导汇报成果`、`主动争取资源`、`主动曝光成果`、`建立导师关系`、`修复关键关系` 等，如果更直接解决当前 formal feedback，也可以胜出。
 
-### B. Binding survival/resource constraints
+原则是：
 
-优先检查：
+> **主行动优先选能最快把 review gap 变成可见结果、并尽可能覆盖多个晋升维度的路径。**
 
-- Health
-- Dignity
-- Wealth / affordability
-- explicit compliance/confidentiality/safety warning
-- formal performance warning
-- credible public consequence
+不要因为“低调避险更安全”就默认放弃季度 Growth。
 
-若存在 binding constraint：
+## 3. Energy：增长为主，恢复按需
 
-> 先避免可避免地继续恶化该约束，再比较 progression。
+Energy 不跨季度累计，所以默认应把 3 点用于当前最有价值的事情，不无理由浪费。
 
-### Affordability Guard
+优先比较公开效果与当前 Review Plan：
 
-以下任一情况都把 affordability 视为 binding：
+- `准备汇报材料`：Output + Dignity，适合可见产出 / review realization；
+- `人脉维护`：Network + Dignity，适合关系和组织连接；
+- `技能学习`：Skill +，但有 Health 成本；
+- `高强度工作`：Output +，但有 Health / Dignity 成本；
+- `健康恢复` / `心理修复`：只在对应生存维度已经成为真实约束时优先；
+- `处理历史埋雷`：真实组织影响不可见，只有当前公开风险/warning 与它直接相关时才提高优先级。
 
-- Wealth 已非正；
-- Wealth 持续耗尽且接近非正；
-- fresh public debt / payment / poverty / affordability warning；
-- 公开结果表明当前收入能力不足以覆盖持续成本。
+不写固定 Energy 套餐。每季度第一次 Energy 形成一个 `Quarter Intent`，之后逐个整数执行并 fresh observe；没有 material change 不从头重算。
 
-这不是 simulator failure-threshold 推断。
+## 4. Survival Floor｜只守真正会把局打穿的方向
 
-当 affordability binding：
+失败方向是公开的，但内部阈值、计数、连续触发条件不公开，所以这里绝不写“X 以下必死”或“第 N 次必死”。
 
-- 避免非必要、公开可见的 Wealth 成本；
-- 不为了轻微 Network / Story 好感承担明显资源成本；
-- 优先保护 job continuity；
-- promotion / Level progression 同时具有 career 与 future-income value；
-- 必要的健康/合规处理仍可优先，不能为了省钱承担更大的生存或合规风险。
+### Wealth
 
-不得推断“连续几个月”或某个具体 Wealth 数字就是隐藏终局阈值。
+Wealth 很低、非正、持续恶化，或出现 affordability / income warning 时，进入 **Income Recovery Alert**。
 
-### C. Active Review Plan
+这时不要变成低调保守模式。正确动作是：
 
-**Formal review / promotion feedback 是 progression 的最高优先级 public evidence。**
+- 避免公开明确的非必要 Wealth 花费；
+- 不为轻微社交收益承担明显金钱成本；
+- **继续积极追求绩效和晋升**，因为更高 Level 公开对应更高月薪；
+- 优先修复 formal review 指出的产出/绩效问题；
+- 不选择只“降低存在感”却不能改善收入能力的动作，除非有直接 Material Risk。
 
-如果正式反馈明确指出：
+也就是说：
 
-- 产出不足；
-- 关系/协作不足；
-- 技术能力不足；
-- 风险/可靠性问题；
-- 其它具体短板；
+> Wealth 危机首先要求更快恢复收入和晋升能力，而不是停止成长。
 
-则该反馈优先于：
+### Health / Dignity
 
-- 某个普通 Story 的诱导；
-- “最低 stat”猜测；
-- 某人一句关于隐藏机制的提示；
-- 对未观察机制的脑补。
+只有 fresh state 已经出现明确症状、warning、持续快速恶化，或候选公开写明会进一步严重透支时，才切 `P=S` 临时 Stabilize。
 
-no-advance / poor review 表示当前 review plan 没有充分兑现；下一窗口默认围绕正式反馈形成可见结果，而不是每个 Story 重新定义战略。
+P=S 的目标不是养满状态，而是：
 
-### D. Candidate fit
+> 用最少的季度/Story机会解除立即生存风险，然后马上回到 P=A。
 
-优先选择：
+不要为了把 Health/Dignity 永久维持在高位而牺牲长期 progression。
 
-1. 解除 binding constraint；
-2. 推进当前 Review Objective / Primary Gap；
-3. 把 active commitment 推到 delivery / observable evidence；
-4. 在长 horizon 下形成清晰 compounding value。
+### Network / Skill
 
-已有高价值 commitment 接近兑现、而新机会需要额外负荷且不能明显更好时，优先完成和证明已有工作。
+如果出现明确的长期孤立、技能掉队 warning，或者 formal feedback 直接点名对应问题，把它提升为 review gap。
 
-**公开写明会显著增加 workload / 降低当前产出 / 恶化健康时，不得仅因 speculative promotion hint 就强行追加 commitment。**
+没有这种 evidence 时，不根据单个数值猜 hidden danger line。
 
-### E. Near-tie semantic priors
+### Accident / trust / compliance
 
-只有候选仍接近时才使用：
+公开爆雷、信任、合规、保密、安全 warning 出现后，只对**直接相关**的候选提高风险权重。
 
-- 事实优先；
-- 普通摩擦优先直接、清晰、可执行处理；
-- 保密/合规遵守 need-to-know；
-- 可逆/分阶段优于不可逆的大赌注；
-- escalation 与公开 severity 相称。
+不猜隐藏计数，也不因为一次 warning 把后续所有 Growth 都视为危险。
 
-这些只是 tie-breaker，不得覆盖 A–D。
+## 5. Formal feedback beats speculation
 
-### F. Candidate-specific Risk gate
+formal review 明确说“产出不够”，下一窗口就重点做 visible delivery / Output realization。
 
-Planning 完成排序后，把最终候选交给 Risk Skill。
+明确说关系、协作或技术不足，就相应修复 Network / ownership / Skill。
 
-Risk gate 后进入 `DECISION_CLOSED`。
+如果 review 只是 C 或笼统“亮点不足”，但没有点出具体原因：
 
-无 fresh evidence 时不得重新打开同一个决策。
+- 不发明隐藏绩效硬指标；
+- 不把某个 Story hint 升级成晋升条件；
+- 继续优先 visible delivery + balanced Skill/Network/Output progression；
+- 下一个 review 是主要 checkpoint。
 
----
+C/D 的负奖金同时会伤 Wealth，所以低绩效后的正确方向是**更积极地产生成果**，不是纯风险规避。
 
-## 4. Bounded Deliberation｜禁止反复重想
+## 6. Delivery before endless new commitments
+
+Opportunity 不是分数，交付和组织看得到的结果才有价值。
+
+已有 high-value commitment 已接近交付时，如果新机会会明显拖慢当前产出、增加严重 workload，且没有更高 progression value，就先完成旧项。
+
+反过来，如果现有事项没有明确 commitment / receipt，不能因为“close-before-open”而错过明显更高价值的成长机会。
+
+## 7. Public hint ≠ hidden rule
+
+人物说“这件事对绩效很重要”只能是 soft hint。
+
+禁止写成：
+
+- confirmed hard indicator；
+- promotion requirement；
+- hidden cap / threshold；
+- fixed optimal route。
+
+尤其不能因为一个 soft hint 去接受公开写明会明显伤害当前 Output、Health、Wealth 或重要交付的选择。
+
+## 8. Observed result > advertised result
+
+选项描述的公开效果是 prior，fresh observe 才是结果。
+
+只记：
+
+`OBSERVED_GAIN / OBSERVED_NO_GAIN / OBSERVED_COST / UNKNOWN`
+
+no-gain 只降低这条路径的边际价值，不推断 cap、threshold、formula。
+
+如果一条路径已经 no-gain/cost，但后来出现新的 formal feedback、Delivery evidence 或新的公开理由，仍可重新选择；不要把“曾经 no-gain”变成永久禁令。
+
+## 9. Story：偏进攻，不做无限分析
 
 普通 Story：
 
-1. 先淘汰明显支配劣势候选；
-2. 最多深入比较剩余 top 2；
-3. 一次形成结论；
-4. 交 Risk gate；
-5. 提交并停止。
+- 先排除明显违规、明显灾难或明显被支配的选项；
+- 在剩下的真实竞争候选中，优先 progression / ownership / visible result；
+- ordinary soft cost 可以接受；
+- 一旦一个候选在当前 `P + Review Plan` 下明显更强，就结束比较；
+- Risk gate 后 `DECISION_CLOSED`。
 
-禁止：
+不规定固定 shortlist 数量，也不连续 `hmm / let me reconsider`。
 
-- 连续 “let me reconsider / hmm” 循环；
-- 选定候选后又反复重排同一批信息；
-- 为证明自己更谨慎而重复分析；
-- 因普通 uncertainty 启动额外 handbook / log / observe。
+没有新的 fresh public evidence，不能重新打开同一决定。
 
-只有 **新 fresh public evidence** 才允许重新打开。
+## 10. Take-action preflight
 
----
+每次调用 `take_action` 前机械确认：
 
-## 5. Public Hint ≠ Hidden Mechanic
+- 当前 `session_id` 已确认；
+- `choice` 是当前合法选项中的**一个整数**；
+- candidate 已最终确定；
+- notes 首位且仅有一个：
+  `[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> X=<0|1|->]`
 
-公开事件可以说：
+参数不完整时不调用工具。
 
-- “某项可能影响绩效”；
-- “领导暗示某项重要”；
-- “某行动广告会增加某状态”。
+## 11. Recovery
 
-这些都可以用于当前候选比较，但不得转换成：
-
-- confirmed hard indicator；
-- hidden promotion threshold；
-- hidden cap；
-- fixed optimal route。
-
-例如：
-
-> “Leader 暗示带新人有利于绩效”
-
-只能记为：
-
-`public hint supporting mentoring value`
-
-不能记为：
-
-`mentoring is a confirmed hard requirement for grade A`
-
-若该 hint 与当前 Health、Output、Wealth、formal feedback 或 commitment load 冲突，以更直接、更新鲜、可验证的 public evidence 为先。
-
----
-
-## 6. Observed Effect Discipline
-
-Advertised effect 只是先验。
-
-fresh observed result 可以更新该路径的局部价值，但：
-
-**不得从一次或几次未增长推断 hidden cap / threshold / formula。**
-
-正确处理：
-
-- 记录 `OBSERVED_GAIN / OBSERVED_NO_GAIN / OBSERVED_COST / UNKNOWN`；
-- observed downside + no target progress → 立即降低该路径的相对价值；
-- repeated comparable miss → 在有新支持证据前不要机械重复；
-- 原因保持 `UNKNOWN`，除非 public evidence 明确解释。
-
-禁止：
-
-- “Network=3 所以 L1 cap=3”；
-- “Output 不增长所以已封顶”；
-- “Skill=9 是隐藏上限”。
-
----
-
-## 7. Review-window Control
-
-正式 review / promotion/no-advance 后执行 FULL checkpoint：
-
-`Horizon | Promotion Frontier | Active Review Plan | Progress/Recent Effect | Risk Budget | Path Trade-off`
-
-重点回答：
-
-- 正式反馈到底说了什么？
-- 哪个公开结果最能改变下一次 review？
-- 当前 constraint 是否会让这个计划不可持续？
-- 已有 commitment 是否应先兑现？
-
-接近已知 review 的最后可行动窗口时：
-
-> 优先把现有工作转换为 visible delivery / evidence / recognition，同时保住 survival/resource floor。
-
-不得固定成“review 前必汇报”或某个菜单答案。
-
----
-
-## 8. Quarterly Energy / Main Action
-
-季度首次 Energy 决策：
-
-先基于同一个 Active Review Plan 一次性形成本季度的 Energy intent。
-
-之后每次 Energy 仍只提交 **一个整数 choice**，并 fresh observe。
-
-若 fresh observe 没有 material change：
-
-> 不重新规划整套 Energy allocation。
-
-只有 binding constraint / fresh material outcome 改变时才调整剩余 Energy intent。
-
-主行动继续服务同一个 Active Review Plan。
-
-不得因为 advertised gain 未出现就推断 hidden cap。
-
----
-
-## 9. Marker Semantics
-
-`P` 明确定义为：
-
-- `P=A`：Advance / progression path；
-- `P=S`：Stabilize / survival-resource path；
-- `P=?`：纯 administrative / 无战略归类。
-
-`G` 必须对应当前 Active Review Plan 的 Primary Gap。
-
-普通 Story 不得为了描述局部事件而临时改 `G`。
-
----
-
-## 10. Recovery
-
-context recovery 时：
+context recovery：
 
 1. 确认同一 game_session_id；
 2. fresh observe；
-3. 重读四 Skills；
-4. Board 重建 fresh public facts；
-5. Delivery 只用当前 session public evidence 重建相关 lifecycle；
-6. Planning 恢复或重建 Active Review Plan；
-7. 无法恢复的内容标 `UNKNOWN`。
+3. 重读四个 Skill；
+4. Board 重建 fresh facts / Sticky facts / 最近 review；
+5. Delivery 只用当前 session 的公开 evidence 重建；
+6. Planning 恢复 Review Plan；
+7. 恢复不了就 `UNKNOWN`。
 
-旧 snapshot / intention 不具有事实或 receipt 权威。
-
----
-
-## 11. Anti-overfit / Ownership
-
-- Single Agent 唯一 action submitter。
-- Planning 不调用 new_game / observe / take_action。
-- Board 只拥有 public facts。
-- Delivery 只拥有 current-session bounded lifecycle。
-- Risk 只拥有 candidate-specific Material Risk gate。
-- Planning 不 create / overwrite / complete Delivery state。
-- Memory=NOT_IMPLEMENTED。
-- fifth Skill=DEFERRED。
-- Team/Swarm=DEFERRED。
-- 不使用固定 promotion month、固定 action bundle、固定 capital ratio、固定 Story answer、hidden cap/threshold/weight。
+Single Agent 是唯一 action submitter。Planning 不调用 `new_game`、`observe` 或 `take_action`。不使用跨局 Memory，不增加第五 Skill，不启用 Team/Swarm。

@@ -125,3 +125,11 @@
 - Ordinary Story deliberation is one pass over at most the top two candidates before Risk and `DECISION_CLOSED`. Quarterly Energy intent persists across integer actions unless fresh material evidence changes it.
 - Single Agent, four Skills, and Board / Planning / Delivery / Risk ownership remain unchanged. Memory remains `NOT_IMPLEMENTED`; fifth Skill and Team/Swarm remain `DEFERRED`.
 - `candidate-v7e-lean-review-controller` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all validation flags are false. The canonical current Candidate identity is `configs/current_candidate.json`. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.
+
+## AD-015 — Candidate v7f promotion-first with survival floor
+
+- S07-31R mechanically integrates the supplied Board, Planning, Risk, and runtime manifest replacements. The direct parent is `candidate-v7e-lean-review-controller`; Delivery remains unchanged.
+- Planning defaults to promotion, visible delivery, and Skill / Network / Output progression while retaining a qualitative public survival floor. Wealth danger calls for income and progression recovery, not passive low-profile behavior; temporary Stabilize is limited to an active public Health / Dignity constraint and returns to Advance when it clears.
+- Board retains sticky public failure-direction facts and recent review evidence. Risk allows ordinary growth costs absent a directly supported Material Risk. Exact failure counts, numeric thresholds, consecutive triggers, and penalties remain unknown and are not encoded.
+- The quarterly Main Action has a strong but non-mandatory broad-growth prior. Public hints remain soft, no-gain does not imply a hidden cap, Story comparison has no fixed candidate count, and `take_action` requires one legal integer choice.
+- Single Agent, four Skills, and Board / Planning / Delivery / Risk ownership remain unchanged. `candidate-v7f-promotion-first-survival-floor` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all validation flags are false and no gameplay/provider/runtime/score evidence transfers from v7e or earlier candidates. The canonical identity is `configs/current_candidate.json`. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.

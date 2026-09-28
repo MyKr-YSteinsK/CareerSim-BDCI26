@@ -1,48 +1,77 @@
 ---
 name: risk-review
-description: "每个 take_action 前必须应用；只对已生成候选做 candidate-specific Material Risk gate；不规划、不提交动作。"
+description: "每个 take_action 前检查 Planning 已选候选是否有公开、直接、足以威胁继续游戏的重大风险；只守生存底线，不把正常成长动作变成保守选择。"
 ---
 
-# Risk Review｜候选风险门
+# Risk Review｜Survival Floor Gate
 
-## QUICK_GATE｜candidate-first
+Risk 的职责是防止一次明显可避免的选择把整局打穿，不负责把策略变得“最安全”。
 
-每次 story、Energy 或 Main take_action 前，只检查已经生成的当前合法候选及 fresh current-session public facts：
+Planning 先选候选，Risk 最后审一次。
 
-- candidate 的明确公开后果；
-- fresh public warning / consequence；
-- Planning Risk Budget=TIGHT 时，candidate 是否直接加重相关公开生存风险。
+## 默认
 
-仅当 fresh participant-visible evidence 明示与当前候选相关的 Material Risk / 重大警告，或候选直接加重 TIGHT 所依据的公开生存约束时进入 FULL_REVIEW；否则返回 PASS。普通不确定性或 Soft Cost、普通负荷/分歧、日常 CI/testing、泛化角色/项目词及普通交付/关系/组织政治，不单独触发 FULL_REVIEW。
+如果候选只有：
 
-只有当前候选的公开交付依赖与 Material Risk 直接相关时，才读取 Delivery Skill 的对应 compact summary。单纯未交付、延期、没有回执或 UNKNOWN 本身不构成 Risk trigger，也不改变 Risk Budget。
+- 普通 workload；
+- 小幅 Health / Dignity 成本；
+- 一般关系摩擦；
+- 普通 uncertainty；
+- 可接受的机会成本；
 
-事件类别、标题或单个普通词不是风险证据；不使用预定义故事 pattern library。普通 delivery/scope、compensation/career、relationship boundary、org politics 属于 Planning，只有当前公开重大后果或警告才升级 Risk。
+而当前没有对应的公开严重 warning，则 `PASS`。
 
-不得读取 story option hidden status update、hidden counters、其它 session 或 Dev answer data；不得建立 event_id/title→choice lookup。
+**不能因为 Growth action 有成本就自动拦截。**
 
-## FULL_REVIEW｜当前候选
+## Material Risk
 
-Material Risk 是 fresh public evidence 明示的重大健康/生存后果、信任危机、保密/合规、报复/升级、解雇或同类后果。Soft Cost 包括少量 Health/Dignity 消耗、时间、普通关系摩擦、一般压力或不确定性。一次性小额 Health/Dignity 消耗，只有在 Planning 的 fresh public survival trend 未使该维度成为当前约束时，才可孤立按 Soft Cost 处理；若 Planning 因该公开趋势恶化将 Risk Budget 设为 TIGHT，不得孤立评估下一笔小额代价。Soft Cost 单独仍不足以触发 RECONSIDER 或自动否决有公开收益的 Growth path；两者并存时仍完整审查重大后果。Planning owns the public survival trend and candidate-independent Risk Budget; Risk remains a candidate-specific gate.
+只有 fresh public evidence 支持下面这类重大后果时才做 FULL_REVIEW：
 
-只用当前 session 的 fresh public facts、公开反馈、当前合法候选与 public handbook。Risk Budget 不是 hidden-risk 估计。
+- 明确严重健康/心理生存风险；
+- dismissal / job-continuity danger；
+- trust crisis 或严重 retaliation；
+- compliance / confidentiality / safety；
+- candidate 会直接加重当前已经明显恶化的 Wealth / Health / Dignity 生存方向；
+- 当前公开事故/warning 与 candidate 有直接、具体的再次恶化关系。
 
-FULL_REVIEW 返回 ALLOW / WARN / RECONSIDER / UNKNOWN，并给一句公开证据理由：
+官网只公开失败方向，不公开精确阈值、计数和连续触发条件，所以 Risk 不使用任何自创数字线或次数规则。
 
-- ALLOW：没有要求改变当前候选的 Material Risk。
-- WARN：新鲜且来源清楚的公开证据支持 concern，但不要求更换候选或直接 mitigation；仍允许提交，并附一句简短理由。
-- RECONSIDER：仅当 Material Risk 明确、存在直接相关合法 alternative 且当前候选未处理该风险时使用。只比较一个 alternative；比较完成后，本次 action path 的过程结果仍为 RECONSIDER，X=1。若换候选，替代候选仍须过 Material Risk gate，但不得把过程结果改写成 PASS；若有公开证据支持，也可在完成比较后保留原候选。比较未完成时 X=0，禁止调用 take_action。
-- 未有候选触发 RECONSIDER 时，R 记录最终普通 gate 结果，X=-。
-- UNKNOWN：相关证据 stale/missing、来源不清或后果不清。若正常允许的流程可补得 fresh public state，只刷新一次；否则保留 UNKNOWN 并做一次 bounded legal decision，不死循环。
+## Wealth guard
 
-DECISION_CLOSED：最终候选完成最终 Risk gate 后，若没有新的 fresh observe、tool result、event content 或其它公开证据，gate 与候选决定即关闭；不重跑 Risk gate、不重开比较或重复审查。只有新公开证据才允许重新审查。
+Wealth 很低/非正或有 affordability warning 时：
 
-## Terminal-risk constraint
+- 明确的非必要金钱支出可以触发审查；
+- 明显伤害 job continuity 的选择可以触发审查；
+- **能够改善正式绩效、晋升或收入能力的 Growth action 不因为 Wealth 低就被 Risk 否决。**
 
-若 fresh public evidence 表明候选的已知 effect 会增加可避免的 terminal/material survival risk，且存在直接相关的合法 mitigation，不得提交明显加重该风险的非必要候选。该约束针对具体候选，不让 Risk 变成第二决策者；Single Agent 保持最终 action authority。
+财富危机不是“停止成长”的理由。
 
-## 权限
+## Health / Dignity guard
 
-- QUICK_GATE / FULL_REVIEW 只审已生成的当前候选；Risk 不拥有 Primary Gap、一般策略、phase 或持久风险状态。
-- Can Submit Action: No。Skills 不创建第二审查者；Single Agent 是唯一动作提交者。
-- Risk 不调用 observe、take_action 或 new_game；不得跨 session 复用旧判断。
+只有 fresh public symptoms / warning /明显持续恶化已经成立时，才阻止继续叠加非必要的严重透支。
+
+如果状态已经恢复、warning 已解除，就回到普通标准，不长期维持高敏感度。
+
+## Compliance / trust
+
+保密、合规、安全问题按公开事实处理。存在直接合法替代方案时，可以 `RECONSIDER`。
+
+普通组织政治、普通关系选择、普通 Story 语义不由 Risk 二次规划。
+
+## Result
+
+返回：
+
+`ALLOW / WARN / RECONSIDER / UNKNOWN`
+
+`RECONSIDER` 只在：
+
+1. Material Risk 明确；
+2. 当前候选没有处理；
+3. 有一个直接相关合法 alternative。
+
+最多比较一个 alternative。替代候选也过一次 gate。
+
+最终 gate 后进入 `DECISION_CLOSED`。没有新的 fresh observe / tool result / event evidence 就不重开。
+
+Can Submit Action: No。Risk 不调用 `new_game`、`observe` 或 `take_action`，不跨 session 保存判断。
