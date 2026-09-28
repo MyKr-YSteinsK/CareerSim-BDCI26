@@ -45,13 +45,13 @@ def _fixtures(tmp_path: Path) -> tuple[Path, Path, Path, Path, Path]:
         _call(1, 0, "n", "mcp_career-emulator_new_game", {}),
         _result(2, 0, "n", "mcp_career-emulator_new_game", {"session_id": SESSION}),
         _result(3, 1, "o1", "mcp_career-emulator_observe", _observe(1, 1, "入职")),
-        _call(4, 2, "a1", "mcp_career-emulator_take_action", {"choice": 1, "notes": "[CTRL G=? P=A R=PASS X=0] Proceed"}),
+        _call(4, 2, "a1", "mcp_career-emulator_take_action", {"choice": 1, "notes": "[CTRL G=? P=A R=PASS X=-] Proceed"}),
         _result(5, 2, "a1", "mcp_career-emulator_take_action", {"success": True}),
         _result(6, 6, "o2", "mcp_career-emulator_observe", _observe(6, 2, "半年评审")),
-        _call(7, 7, "a2", "mcp__career-emulator__take_action", {"choice": 1, "notes": "[CTRL G=Output P=A R=PASS X=0] HiddenRisk-1"}),
+        _call(7, 7, "a2", "mcp__career-emulator__take_action", {"choice": 1, "notes": "[CTRL G=Output P=A R=PASS X=-] HiddenRisk-1"}),
         _result(8, 7, "a2", "mcp__career-emulator__take_action", {"success": False, "error": "Ability not found"}),
         _result(9, 9, "o3", "mcp_career-emulator_observe", _observe(24, 3, "季度主行动")),
-        _call(10, 10, "a3", "mcp_career-emulator_take_action", {"choice": 1, "notes": "[CTRL G=Output P=A R=PASS X=0] Proceed"}),
+        _call(10, 10, "a3", "mcp_career-emulator_take_action", {"choice": 1, "notes": "[CTRL G=Output P=A R=PASS X=-] Proceed"}),
         _result(11, 10, "a3", "mcp_career-emulator_take_action", {"success": True}),
         _result(12, 11, "o4", "mcp_career-emulator_observe", _observe(49, 5, "游戏结束", terminal=True)),
     ]
@@ -78,7 +78,7 @@ def test_fresh_score_and_cumulative_log_scoping(tmp_path: Path) -> None:
     assert summary["outcome"]["terminal_fresh_score"]["quantitative_score"] == 64.0
     assert summary["outcome"]["score_report_session_field"] == "EMPTY"
     assert summary["adherence_evidence"]["compression"]["count"] == 2
-    assert [item["status"] for item in summary["adherence_evidence"]["compression"]["recovery"]] == ["FAIL", "FAIL"]
+    assert [item["overall_status"] for item in summary["adherence_evidence"]["compression"]["recovery"]] == ["RECOVERY_FAIL", "RECOVERY_FAIL"]
     assert summary["trajectory"]["promotion_checkpoints"][0] == {"month": 6, "from_level": 1, "to_level": 2, "source": "observed_level_change"}
     assert summary["trajectory"]["quarterly_main_actions"] == [{"month": 24, "action": "申请关键项目", "source": "public_choice"}]
     assert summary["actions"]["attempts"] == 3
@@ -128,7 +128,7 @@ def _replace_action_notes(events: Path, notes: list[str]) -> None:
 
 def test_delivery_marker_states_coverage_and_pre_review_inputs(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
-    prefix = "[CTRL G=? P=A R=PASS X=0] "
+    prefix = "[CTRL G=? P=A R=PASS X=-] "
     _replace_action_notes(events, [
         prefix + "[DL n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]",
         prefix + "[DL n=1 focus=DELIVERY_CLAIMED evidence=UNVERIFIED checkpoint=1 recognition=?]",
@@ -145,7 +145,7 @@ def test_delivery_marker_states_coverage_and_pre_review_inputs(tmp_path: Path) -
 
 def test_delivery_missing_malformed_duplicate_unknown_and_internal_redaction(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
-    prefix = "[CTRL G=? P=A R=PASS X=0] "
+    prefix = "[CTRL G=? P=A R=PASS X=-] "
     _replace_action_notes(events, [
         prefix + "[DL n=1 focus=UNKNOWN evidence=UNKNOWN checkpoint=? recognition=?]",
         prefix + "No marker",
@@ -162,7 +162,7 @@ def test_delivery_missing_malformed_duplicate_unknown_and_internal_redaction(tmp
 
 def test_delivery_single_malformed_and_clean_duplicate_are_rejected(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
-    prefix = "[CTRL G=? P=A R=PASS X=0] "
+    prefix = "[CTRL G=? P=A R=PASS X=-] "
     empty = "[DL n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]"
     _replace_action_notes(events, [prefix + empty, prefix + "[DL n=0 focus=NONE evidence=NA checkpoint=1 recognition=0]", prefix + empty + " " + empty])
     coverage = audit(events, transcript, score, runner)["adherence_evidence"]["delivery_marker_coverage"]
@@ -194,7 +194,10 @@ def test_recovery_accepts_structured_skill_tool_and_exact_read_file(tmp_path: Pa
         events, transcript, score, runner, log = _fixtures(folder)
         _recovery_events(events, mechanism)
         summary = audit(events, transcript, score, runner, log, log_utc_offset="+08:00")
-        assert [item["status"] for item in summary["adherence_evidence"]["compression"]["recovery"]] == ["FAIL", "PASS"], summary["adherence_evidence"]["compression"]["recovery"]
+        recovery = summary["adherence_evidence"]["compression"]["recovery"]
+        assert [item["tool_order_status"] for item in recovery] == ["FAIL", "PASS"]
+        assert [item["overall_status"] for item in recovery] == ["RECOVERY_FAIL", "TOOL_ORDER_PASS_REBUILD_UNVERIFIED"]
+        assert set(recovery[-1]["rebuild_evidence"].values()) == {"UNKNOWN"}
 
 
 def test_recovery_rejects_three_reads_late_reads_and_calls_without_results(tmp_path: Path) -> None:
@@ -204,7 +207,7 @@ def test_recovery_rejects_three_reads_late_reads_and_calls_without_results(tmp_p
         events, transcript, score, runner, log = _fixtures(folder)
         _recovery_events(events, "read_file", count, late, results, early, failed)
         summary = audit(events, transcript, score, runner, log, log_utc_offset="+08:00")
-        assert summary["adherence_evidence"]["compression"]["recovery"][-1]["status"] == "FAIL"
+        assert summary["adherence_evidence"]["compression"]["recovery"][-1]["overall_status"] == "RECOVERY_FAIL"
 
 
 def test_recovery_path_must_target_exact_installed_skill_file() -> None:
@@ -219,7 +222,7 @@ def test_ctrl_closure_accepts_ordinary_unknown_and_reconsidered_paths(tmp_path: 
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     _replace_action_notes(events, [
         "[CTRL G=? P=A R=PASS X=-] Proceed",
-        "[CTRL G=? P=A R=RECONSIDER X=1] Proceed",
+        "[CTRL G=? P=A R=PASS X=1] Proceed",
         "[CTRL G=? P=A R=UNKNOWN X=-] Proceed",
     ])
     closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
@@ -231,13 +234,13 @@ def test_ctrl_closure_rejects_incomplete_contradictory_and_malformed_paths(tmp_p
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     _replace_action_notes(events, [
         "[CTRL G=? P=A R=PASS X=0] Incomplete",
-        "[CTRL G=? P=A R=PASS X=1] Contradictory",
-        "[CTRL G=? P=A R=RECONSIDER X=-] Contradictory",
+        "[CTRL G=? P=A R=RECONSIDER X=1] Nonfinal",
+        "[CTRL G=? P=A R=RECONSIDER X=-] Nonfinal",
     ])
     closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
     assert closure["status"] == "CTRL_CLOSURE_FAIL"
     assert closure["submitted_incomplete_x0"] == 1
-    assert closure["contradictory_risk_x"] == 2
+    assert closure["submitted_nonfinal_r_reconsider"] == 2
     _replace_action_notes(events, ["[CTRL broken]", "[CTRL G=? P=A R=PASS X=-] [CTRL duplicate]", "[CTRL G=? P=A R=UNKNOWN X=-]"])
     closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
     assert closure["status"] == "CTRL_CLOSURE_FAIL"
@@ -272,3 +275,71 @@ def test_same_month_delivery_actions_use_review_event_order(tmp_path: Path) -> N
     assert [item["action_index"] for item in summary["mechanism_inputs"]["pre_first_review_delivery_states"]] == [1]
     assert [item["month"] for item in summary["mechanism_inputs"]["pre_first_review_delivery_states"]] == [6]
     assert summary["mechanism_inputs"]["trigger_classification"] == "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"
+
+
+def test_final_r_and_independent_x_marker_combinations(tmp_path: Path) -> None:
+    for risk in ("PASS", "ALLOW", "WARN", "UNKNOWN"):
+        for x in ("-", "1"):
+            folder = tmp_path / f"{risk}-{x}"
+            folder.mkdir()
+            events, transcript, score, runner, _ = _fixtures(folder)
+            note = f"[CTRL G=Output P=A R={risk} X={x}] Proceed"
+            _replace_action_notes(events, [note] * 3)
+            closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
+            assert closure["status"] == "CTRL_CLOSURE_PASS"
+            assert closure["valid"] == 3
+            assert closure["basis"] == "MARKER_CONSISTENCY_ONLY"
+
+
+def test_ctrl_trajectory_is_compact_deterministic_and_redacts_internal_gap(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    _replace_action_notes(events, [
+        "[CTRL G=Skill P=A R=PASS X=-] Proceed",
+        "[CTRL G=Skill P=S R=ALLOW X=1] Proceed",
+        "[CTRL G=Output P=A R=UNKNOWN X=-] Proceed",
+    ])
+    actions = audit(events, transcript, score, runner)["actions"]
+    assert [(item["action_index"], item["month"], item["G"], item["P"], item["R"], item["X"]) for item in actions["ctrl_states_by_action"]] == [
+        (1, 1, "Skill", "A", "PASS", "-"),
+        (2, 6, "Skill", "S", "ALLOW", "1"),
+        (3, 24, "Output", "A", "UNKNOWN", "-"),
+    ]
+    assert actions["ctrl_trajectory"] == {
+        "P_counts": {"A": 2, "S": 1},
+        "R_counts": {"ALLOW": 1, "PASS": 1, "UNKNOWN": 1},
+        "X_counts": {"-": 2, "1": 1},
+        "G_change_count": 1,
+        "G_values_in_order": ["Skill", "Skill", "Output"],
+        "G_semantic_justification": "NOT_INFERRED",
+    }
+    assert "ctrl_x1_branch_use_not_independently_verified" in audit(events, transcript, score, runner)["limitations"]
+    _replace_action_notes(events, [
+        "[CTRL G=Skill P=A R=PASS X=-] Proceed",
+        "[CTRL G=HiddenRisk-999 P=A R=PASS X=-] Proceed",
+        "[CTRL G=Output P=A R=PASS X=-] Proceed",
+    ])
+    summary = audit(events, transcript, score, runner)
+    assert summary["actions"]["ctrl_states_by_action"][1]["G"] == "REDACTED_INTERNAL_REFERENCE"
+    assert "HiddenRisk-999" not in json.dumps(summary, ensure_ascii=False)
+
+
+def test_compressor_microseconds_distinguish_events_and_exact_duplicate_dedups(tmp_path: Path) -> None:
+    events, transcript, score, runner, log = _fixtures(tmp_path)
+    old = "".join(f"2026-09-27 18:00:{second:02d} CurrentRoundCompressor\n" for second in range(23))
+    first = "2026-09-28 18:08:00.340444 CurrentRoundCompressor completed\n"
+    second = "2026-09-28 18:08:00.840444 CurrentRoundCompressor completed\n"
+    log.write_text(old + first + first + second, encoding="utf-8")
+    compression = audit(events, transcript, score, runner, log, log_utc_offset="+08:00")["adherence_evidence"]["compression"]
+    assert compression["count"] == 2
+    assert compression["events_utc"] == ["2026-09-28T10:08:00.340444+00:00", "2026-09-28T10:08:00.840444+00:00"]
+
+
+def test_recovery_ready_text_cannot_upgrade_tool_order_to_full_recovery(tmp_path: Path) -> None:
+    events, transcript, score, runner, log = _fixtures(tmp_path)
+    _recovery_events(events, "read_file")
+    with transcript.open("a", encoding="utf-8") as handle:
+        handle.write("RECOVERY_READY Board rebuilt Delivery rebuilt Review Plan restored\n")
+    recovery = audit(events, transcript, score, runner, log, log_utc_offset="+08:00")["adherence_evidence"]["compression"]["recovery"][-1]
+    assert recovery["tool_order_status"] == "PASS"
+    assert recovery["overall_status"] == "TOOL_ORDER_PASS_REBUILD_UNVERIFIED"
+    assert set(recovery["rebuild_evidence"].values()) == {"UNKNOWN"}

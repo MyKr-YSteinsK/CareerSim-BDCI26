@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "3864b98c19c6425da615fcd006d0776c852f4a3c"
-PARENT_CANDIDATE_ID = "candidate-v7k-delivery-observability-hardening"
-CURRENT_CANDIDATE_ID = "candidate-v7l-pre-game-contract-hardening"
+BASE_MAIN_SHA = "17af11d737f8d686e5d1212396234cbb064b2fcd"
+PARENT_CANDIDATE_ID = "candidate-v7l-pre-game-contract-hardening"
+CURRENT_CANDIDATE_ID = "candidate-v7m-final-r-recovery-audit-hardening"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,11 +21,10 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "DELIVERY_CONSULT_EVERY_OBSERVE",
-    "OPTIONAL_BLOCKED_AND_EXECUTION_RECEIPT_BOUNDARY",
-    "CTRL_CLOSURE_AND_BOUNDED_UNKNOWN",
-    "ACTIVE_DELIVERY_FOCUS_ONLY",
-    "PRESERVE_V7K_STRATEGY_AND_RECOVERY",
+    "FINAL_R_AND_INDEPENDENT_X",
+    "ONE_RECONSIDER_BRANCH_MAXIMUM",
+    "CURRENT_SURVIVAL_MODE_BEFORE_PROGRESSION_EVIDENCE_ORDER",
+    "PRESERVE_V7L_DELIVERY_AND_RECOVERY_CONTRACTS",
 }
 
 
@@ -91,8 +90,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_44_STATIC_PRE_GAME_CONTRACT_CONSISTENCY_HARDENING"
-    assert candidate["strategy_delta"] == "PRE_GAME_CONTRACT_CONSISTENCY_ONLY"
+    assert candidate["decision"] == "S07_45_STATIC_FINAL_R_RECOVERY_AUDIT_HARDENING"
+    assert candidate["strategy_delta"] == "FINAL_PRE_GAME_CORRECTNESS_AND_AUDIT_ONLY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -312,7 +311,7 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     assert "EXCLUDE_FROM_STRATEGY" in manifest
 
 
-def test_v7k_strategy_recovery_and_other_skills_are_unchanged() -> None:
+def test_v7l_strategy_recovery_and_other_skills_are_unchanged() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
     assert manifest.replace(
@@ -325,10 +324,11 @@ def test_v7k_strategy_recovery_and_other_skills_are_unchanged() -> None:
     assert _section(manifest, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance") == _section(parent, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance")
     assert _section(manifest, "On context recovery (", "No Team/Swarm") == _section(parent, "On context recovery (", "No Team/Swarm")
 
-    assert _canonical_text_bytes(ROOT / "skills/structured-state-board/SKILL.md") == _git_bytes(BASE_MAIN_SHA, "skills/structured-state-board/SKILL.md")
+    for name in ("structured-state-board", "delivery-progress"):
+        assert _canonical_text_bytes(ROOT / f"skills/{name}/SKILL.md") == _git_bytes(BASE_MAIN_SHA, f"skills/{name}/SKILL.md")
     planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
     parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
-    assert planning.replace(_section(planning, "After emitting `CANDIDATE`", "\n## Select MODE"), _section(parent_planning, "After emitting `CANDIDATE`", "\n## Select MODE")) == parent_planning
+    assert planning.replace(_section(planning, "First select `MODE`", "1. formal review"), _section(parent_planning, "Use evidence in this order:", "1. formal review")).replace(_section(planning, "After emitting `CANDIDATE`", "\n## Select MODE"), _section(parent_planning, "After emitting `CANDIDATE`", "\n## Select MODE")) == parent_planning
     risk = (ROOT / "skills/risk-review/SKILL.md").read_text(encoding="utf-8")
     parent_risk = _git_bytes(BASE_MAIN_SHA, "skills/risk-review/SKILL.md").decode("utf-8")
     assert risk.replace(_section(risk, "`UNKNOWN` —", "Do not invent numeric thresholds"), _section(parent_risk, "`UNKNOWN` —", "Do not invent numeric thresholds")) == parent_risk
@@ -386,10 +386,16 @@ def test_pre_game_delivery_and_ctrl_contract_is_consistent() -> None:
     assert "DELIVERED + PUBLICLY_VERIFIED" in delivery
     assert "|CLOSED|UNKNOWN>" not in delivery + manifest
     assert "recent `CLOSED` item is not active" in delivery
-    assert "R=RECONSIDER X=1" in risk + planning + manifest
+    assert "CTRL `R` records that selected candidate's final" in risk
+    assert "CTRL `R` records that final result" in planning
+    assert "CTRL R always records the selected submitted candidate's final Risk result" in manifest
+    assert "do not open a second branch" in risk
+    assert "do not search another alternative" in planning
+    assert "do not open a second branch" in manifest
     assert "X=0" in risk + planning + manifest
     assert "at most one fresh observe/rebuild cycle" in risk + planning + manifest
-    assert "R=UNKNOWN X=-" in risk + planning + manifest
+    assert "R=UNKNOWN" in risk + planning + manifest
+    assert "older progression feedback cannot override" in planning
 
 
 def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
@@ -438,7 +444,7 @@ def test_candidate_and_state_record_static_closure_without_validation_transfer()
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-37" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+candidate-v7l-pre-game-contract-hardening", state)
+    assert re.search(r"Current Candidate:\s+candidate-v7m-final-r-recovery-audit-hardening", state)
     assert "all v7i validation flags are false" in state
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions

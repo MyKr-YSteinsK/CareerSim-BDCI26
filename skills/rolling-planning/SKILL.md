@@ -23,7 +23,7 @@ MODE = A | S
 
 Consume only the same-session whitelisted public Board and Delivery summary, formal feedback, public legal choices, Handbook, and confirmed public receipts/logs. Ignore `HiddenRisk`, hidden counters, internal score components, internal event identifiers/effects, and public-status-unclear fields even when present in a tool payload; never use numeric internal-looking values in the Review Plan, candidate reason, CTRL notes, or action rationale. `EXCLUDE_FROM_STRATEGY until verified public`.
 
-Use evidence in this order:
+First select `MODE` against current binding public survival/resource constraints. The following order interprets progression evidence for `REVIEW_PLAN`; older progression feedback cannot override a current material Health/Dignity/Wealth/job/trust/compliance/safety constraint:
 
 1. formal review / promotion / no-advance;
 2. fresh observed action result;
@@ -50,7 +50,7 @@ After context recovery and the required same-session fresh observe and four-Skil
 
 ONE FRESH OBSERVE = ONE PLANNING PASS. In that pass, set `MODE + REVIEW_PLAN`, eliminate clearly unacceptable or dominated legal options, retain at most two genuinely competitive options, compare them once using the ranking below, and emit exactly one final `CANDIDATE`. Keep the comparison sufficient for a difficult choice but the output concise; do not narrate self-dialogue or cycle through candidates.
 
-After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once: compare at most one directly relevant legal alternative against the candidate, choose once, obtain that candidate's own final Risk result, then close with CTRL `R=RECONSIDER X=1`. `UNKNOWN` does not authorize a new Planning pass: normal public flow may resolve it through at most one fresh observe/rebuild cycle, with a new pass only on genuinely new evidence; otherwise choose once from available public evidence with `R=UNKNOWN X=-`. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure; `X=0` forbids submission.
+After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once per fresh evidence state: compare at most one directly relevant legal alternative, select once, and obtain that selected candidate's own final Risk result. CTRL `R` records that final result, not the initial `RECONSIDER`; set `X=1` when this one branch completed, or `X=-` when no branch was used. If the selected candidate's gate again returns `RECONSIDER`, the path is incomplete (`X=0`): do not search another alternative or submit until genuinely new public evidence arrives. `UNKNOWN` does not authorize a new Planning pass: normal public flow may resolve it through at most one fresh observe/rebuild cycle, with a new pass only on genuinely new evidence; otherwise choose once from available public evidence with `R=UNKNOWN` and `X=-` or `X=1` according to branch use. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure; `X=0` forbids submission.
 
 ## Select MODE
 
