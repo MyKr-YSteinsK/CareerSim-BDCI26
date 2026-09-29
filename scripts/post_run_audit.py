@@ -17,7 +17,7 @@ PUBLIC_STATUS = {"level", "health", "dignity", "skill", "network", "output", "we
 SCORE_FIELDS = {"quantitative_score", "competition_partial_score", "survival_months", "grade", "completed", "outcome"}
 MAIN_ACTIONS = {"申请关键项目", "向领导汇报成果", "低调避险", "不行动"}
 CTRL = re.compile(r"^\[CTRL G=(?P<gap>[^\]\r\n]+?) P=(?P<phase>A|S|\?) R=(?P<risk>PASS|ALLOW|WARN|RECONSIDER|UNKNOWN) X=(?P<x>0|1|-)\]")
-DL = re.compile(r"\[DL n=([0-3]) focus=(NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN) evidence=(NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED) checkpoint=([01?]) recognition=([01?])\]")
+DL = re.compile(r"\[DL (?:(?:i=(?P<item_id>NONE|D[1-9][0-9]*|UNKNOWN)) )?n=(?P<n>[0-3]) focus=(?P<focus>NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN) evidence=(?P<evidence>NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED) checkpoint=(?P<checkpoint>[01?]) recognition=(?P<recognition>[01?])\]")
 SKILL_PATH = re.compile(r"(?:^|/)agent/workspace/skills/(structured-state-board|rolling-planning|delivery-progress|risk-review)/SKILL\.md$", re.I)
 INTERNAL_MARKER = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter|score|risk", re.I)
 SESSION = re.compile(r"\b(?:game_session_id|session_id|SESSION)\b[\"']?\s*[:=]\s*[\"']?([0-9a-f]{32})\b", re.I)
@@ -292,18 +292,27 @@ def audit(
                     contaminated = any(INTERNAL_MARKER.search(span) for span in marker_spans)
                     if contaminated:
                         violations["delivery_marker_internal_reference"] += 1
+                    dl_n = int(dl_match["n"]) if dl_match else None
+                    dl_item_id = dl_match["item_id"] if dl_match else None
+                    valid_identity = (
+                        dl_item_id is None
+                        or (dl_n == 0 and dl_item_id == "NONE")
+                        or (dl_n is not None and dl_n > 0 and dl_item_id != "NONE")
+                    )
                     valid_dl = bool(
                         dl_match and ctrl_match and not contaminated
                         and notes[ctrl_match.end():dl_match.start()] == " "
                         and dl_match[0] == "[DL" + marker_text.split("[DL", 1)[-1] + "]"
-                        and ((dl_match[1] == "0" and dl_match.groups()[1:] == ("NONE", "NA", "0", "0"))
-                             or (dl_match[1] != "0" and dl_match[2] != "NONE" and dl_match[3] != "NA"))
+                        and valid_identity
+                        and ((dl_n == 0 and dl_match["focus"] == "NONE" and dl_match["evidence"] == "NA" and dl_match["checkpoint"] == "0" and dl_match["recognition"] == "0")
+                             or (dl_n != 0 and dl_match["focus"] != "NONE" and dl_match["evidence"] != "NA"))
                     )
                     delivery_coverage["valid"] += int(valid_dl)
                     delivery_coverage["missing"] += int(dl_count == 0)
                     delivery_coverage["malformed_or_duplicate"] += int(dl_count > 0 and not valid_dl)
+                    delivery_coverage["identity_missing"] += int(valid_dl and dl_item_id is None)
                     if valid_dl:
-                        delivery_actions.append({"action_index": len(action_calls) + 1, "event_order": line_number, "month": latest_observe.get("month") if latest_observe else "UNKNOWN", "state": {"n": int(dl_match[1]), "focus": dl_match[2], "evidence": dl_match[3], "checkpoint": dl_match[4], "recognition": dl_match[5]}})
+                        delivery_actions.append({"action_index": len(action_calls) + 1, "event_order": line_number, "month": latest_observe.get("month") if latest_observe else "UNKNOWN", "state": {"item_id": dl_item_id or "UNKNOWN", "n": dl_n, "focus": dl_match["focus"], "evidence": dl_match["evidence"], "checkpoint": dl_match["checkpoint"], "recognition": dl_match["recognition"]}})
                     action = {"id": call_id, "name": name, "ts": ts, "choice": choice, "result": "UNKNOWN"}
                     action_calls.append(action)
                     if ts is not None:

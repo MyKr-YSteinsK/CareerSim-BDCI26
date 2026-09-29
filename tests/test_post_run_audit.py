@@ -145,6 +145,22 @@ def test_delivery_marker_states_coverage_and_pre_review_inputs(tmp_path: Path) -
     assert summary["mechanism_inputs"]["trigger_classification"] == "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"
 
 
+def test_delivery_marker_accepts_current_session_item_identity(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    prefix = "[CTRL G=? P=A R=PASS X=-] "
+    _replace_action_notes(events, [
+        prefix + "[DL i=NONE n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]",
+        prefix + "[DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=1 recognition=0]",
+        prefix + "[DL i=UNKNOWN n=1 focus=DELIVERY_CLAIMED evidence=UNKNOWN checkpoint=? recognition=?]",
+    ])
+    summary = audit(events, transcript, score, runner)
+    coverage = summary["adherence_evidence"]["delivery_marker_coverage"]
+    states = summary["adherence_evidence"]["delivery_states_by_action"]
+    assert coverage["status"] == "DELIVERY_MARKER_COVERAGE_PASS"
+    assert (coverage["valid"], coverage["identity_missing"]) == (3, 0)
+    assert [item["state"]["item_id"] for item in states] == ["NONE", "D1", "UNKNOWN"]
+
+
 def test_delivery_missing_malformed_duplicate_unknown_and_internal_redaction(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     prefix = "[CTRL G=? P=A R=PASS X=-] "

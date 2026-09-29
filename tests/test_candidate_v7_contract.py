@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "17af11d737f8d686e5d1212396234cbb064b2fcd"
-PARENT_CANDIDATE_ID = "candidate-v7l-pre-game-contract-hardening"
-CURRENT_CANDIDATE_ID = "candidate-v7m-final-r-recovery-audit-hardening"
+BASE_MAIN_SHA = "fee5b1de5052a0285d934e77d2073abb6cffc654"
+PARENT_CANDIDATE_ID = "candidate-v7m-final-r-recovery-audit-hardening"
+CURRENT_CANDIDATE_ID = "candidate-v7n-public-state-delivery-constraint-hardening"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,10 +21,9 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "FINAL_R_AND_INDEPENDENT_X",
-    "ONE_RECONSIDER_BRANCH_MAXIMUM",
-    "CURRENT_SURVIVAL_MODE_BEFORE_PROGRESSION_EVIDENCE_ORDER",
-    "PRESERVE_V7L_DELIVERY_AND_RECOVERY_CONTRACTS",
+    "PUBLIC_STATE_VERBATIM_COPY_AND_ATTRIBUTION",
+    "CURRENT_SESSION_DELIVERY_ITEM_PROOF_BINDING",
+    "EXPLICIT_BINDING_CONSTRAINT_MODE_AND_RISK_LABEL",
 }
 
 
@@ -90,8 +89,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_45_STATIC_FINAL_R_RECOVERY_AUDIT_HARDENING"
-    assert candidate["strategy_delta"] == "FINAL_PRE_GAME_CORRECTNESS_AND_AUDIT_ONLY"
+    assert candidate["decision"] == "S07_48_PUBLIC_STATE_DELIVERY_CONSTRAINT_HARDENING"
+    assert candidate["strategy_delta"] == "S07_47_EVIDENCE_BACKED_CORRECTNESS_PATCH_ONLY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -311,31 +310,91 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     assert "EXCLUDE_FROM_STRATEGY" in manifest
 
 
-def test_v7l_strategy_recovery_and_other_skills_are_unchanged() -> None:
+def test_s07_48_board_copies_fresh_public_values_and_quarantines_mixed_effects() -> None:
+    board = (ROOT / "skills/structured-state-board/SKILL.md").read_text(encoding="utf-8")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    state_contract = _section(board, "## Contract", "## Procedure")
+    for field in ("Health", "Dignity", "Skill", "Network", "Output", "Wealth", "Level", "Energy"):
+        assert field in state_contract
+    for marker in (
+        "Copy `Health`, `Dignity`, `Skill`, `Network`, `Output`, `Wealth`, `Level`, and `Energy` directly",
+        "Preserve each reported value and precision",
+        "Never calculate, round, predict, reconcile, or replace a `STATE` value",
+        "EFFECTS: UNKNOWN / MIXED",
+        "explicit current acute physical or psychological symptom",
+        "Ordinary fatigue",
+        "Downstream Planning/Risk receive the whitelisted Board",
+        "never quote, compare, summarize, or reason from their values",
+    ):
+        assert marker in board
+    assert "salary/bonus text" in board
+    assert "Do not infer thresholds, counters, caps" in board
+    assert "deterministic payload filter" in manifest
+
+
+def test_s07_48_delivery_identity_proof_and_non_saturating_retirement() -> None:
+    delivery = (ROOT / "skills/delivery-progress/SKILL.md").read_text(encoding="utf-8")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    for marker in (
+        "agent-generated `D1`, `D2`, … identity",
+        "never reuse one for another item during that session",
+        "monotonic `NEXT_ID` cursor",
+        "Reset only after verifying a different fresh `game_session_id`",
+        "mark identity `UNKNOWN`",
+        "Store a short `proof_basis` attached to that item",
+        "generic `success=true`",
+        "Generic praise",
+        "does not verify delivery",
+        "explicitly connects recognition to that item's result",
+        "completed items without an active checkpoint",
+        "Do not use arbitrary TTLs or fixed months",
+        "Three genuinely active items are valid",
+        "replace the least relevant item",
+        "[DL i=<NONE|D#|UNKNOWN> n=<0-3>",
+        "i=NONE focus=NONE evidence=NA checkpoint=0 recognition=0",
+    ):
+        assert marker in delivery
+    assert "[DL i=<NONE|D#|UNKNOWN> n=<0-3>" in manifest
+    assert "cross-game memory" in delivery.lower()
+
+
+def test_s07_48_explicit_binding_constraint_and_full_risk_labels() -> None:
+    planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
+    risk = (ROOT / "skills/risk-review/SKILL.md").read_text(encoding="utf-8")
+    manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    mode = _section(planning, "## Select MODE", "## Rank legal candidates")
+    for marker in (
+        "Before progression ranking",
+        "unresolved binding constraint",
+        "explicit acute physical symptoms",
+        "An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate",
+        "Return to `MODE=A` when fresh public evidence indicates",
+        "mild fatigue without an explicit material symptom/warning",
+        "do not use a numeric threshold",
+    ):
+        assert marker in mode
+    assert "explicit acute physical symptom" in risk
+    assert "A safe, constructive candidate still receives Full Review" in risk
+    assert "After Full Review, never output `PASS`" in risk
+    assert "`ALLOW`" in risk
+    assert "Full Review" in manifest and "never output PASS" in manifest
+    assert "mild fatigue" in manifest.lower()
+
+
+def test_v7m_prior_closure_quarter_intent_and_recovery_contracts_are_preserved() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
-    assert manifest.replace(
-        _section(manifest, "Decision loop:", "\nStrategy kernel"),
-        _section(parent, "Decision loop:", "\nStrategy kernel"),
-    ).replace(
-        _section(manifest, "notes begin with", "\nOn context recovery"),
-        _section(parent, "notes begin with", "\nOn context recovery"),
-    ) == parent
     assert _section(manifest, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance") == _section(parent, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance")
     assert _section(manifest, "On context recovery (", "No Team/Swarm") == _section(parent, "On context recovery (", "No Team/Swarm")
 
-    for name in ("structured-state-board", "delivery-progress"):
-        assert _canonical_text_bytes(ROOT / f"skills/{name}/SKILL.md") == _git_bytes(BASE_MAIN_SHA, f"skills/{name}/SKILL.md")
     planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
     parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
-    assert planning.replace(_section(planning, "First select `MODE`", "1. formal review"), _section(parent_planning, "Use evidence in this order:", "1. formal review")).replace(_section(planning, "After emitting `CANDIDATE`", "\n## Select MODE"), _section(parent_planning, "After emitting `CANDIDATE`", "\n## Select MODE")) == parent_planning
+    assert _section(planning, "## Same-observation decision budget", "## Select MODE") == _section(parent_planning, "## Same-observation decision budget", "## Select MODE")
+    assert _section(planning, "#### Pre-first-review result realization prior", "### MODE=S") == _section(parent_planning, "#### Pre-first-review result realization prior", "### MODE=S")
+    assert _section(planning, "## Quarterly control", "## Output") == _section(parent_planning, "## Quarterly control", "## Output")
     risk = (ROOT / "skills/risk-review/SKILL.md").read_text(encoding="utf-8")
     parent_risk = _git_bytes(BASE_MAIN_SHA, "skills/risk-review/SKILL.md").decode("utf-8")
-    assert risk.replace(_section(risk, "`UNKNOWN` —", "Do not invent numeric thresholds"), _section(parent_risk, "`UNKNOWN` —", "Do not invent numeric thresholds")) == parent_risk
-    delivery = (ROOT / "skills/delivery-progress/SKILL.md").read_text(encoding="utf-8")
-    assert "Use after every fresh public Board" in delivery
-    assert "current bounded same-session Delivery state" in delivery
-    assert "n=0" in delivery and "NO_CHANGE" in delivery
+    assert _section(risk, "After `RECONSIDER`", "## Close") == _section(parent_risk, "After `RECONSIDER`", "## Close")
 
 
 def test_one_observe_one_pass_and_risk_only_reconsideration() -> None:
@@ -443,8 +502,8 @@ def test_candidate_and_state_record_static_closure_without_validation_transfer()
     decisions = (ROOT / "docs/project/ARCHITECTURE_DECISIONS.md").read_text(encoding="utf-8")
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
-    assert "S07-37" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+candidate-v7m-final-r-recovery-audit-hardening", state)
+    assert "S07-48" in state and "S07-47" in state and CURRENT_CANDIDATE_ID in state
+    assert re.search(r"Current Candidate:\s+candidate-v7n-public-state-delivery-constraint-hardening", state)
     assert "all v7i validation flags are false" in state
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions

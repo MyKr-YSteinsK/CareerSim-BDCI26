@@ -54,14 +54,15 @@ After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `AL
 
 ## Select MODE
 
-Use `A` unless fresh public evidence shows a material constraint.
+Before progression ranking, evaluate the current whitelisted Board and participant-visible event/choice semantics for an unresolved binding constraint. Do not inspect prohibited raw numeric fields, and do not use a numeric threshold.
 
-Switch to `S` only for a current constraint such as:
-- severe Health/Dignity deterioration or explicit warning;
-- depleted/deteriorating Wealth with affordability or income pressure;
-- explicit job-continuity, compliance, confidentiality, safety, or trust danger.
+Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, explicit job-continuity warning, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
 
-In `S`, remove the immediate danger with the smallest reasonable opportunity cost, then return to `A` once the constraint is relieved.
+Return to `MODE=A` when fresh public evidence indicates that binding condition is resolved or the risk-bearing situation has ended. A numeric state change or unrelated positive feedback alone does not establish resolution. Ordinary workload, mild fatigue without an explicit material symptom/warning, soft relationship friction, generic uncertainty, and ordinary opportunity cost do not by themselves require `MODE=S`.
+
+When no unresolved binding constraint is present, use `A` and continue promotion-first progression.
+
+In `S`, keep the constraint visible in the current plan, remove or contain it with the smallest reasonable opportunity cost, and return to `A` once fresh public evidence resolves it.
 
 Wealth stress is an income-recovery problem, not a reason for permanent low-profile play: avoid discretionary cost while continuing to repair performance, promotion, and income capacity.
 
