@@ -10,9 +10,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "fee5b1de5052a0285d934e77d2073abb6cffc654"
-PARENT_CANDIDATE_ID = "candidate-v7m-final-r-recovery-audit-hardening"
-CURRENT_CANDIDATE_ID = "candidate-v7n-public-state-delivery-constraint-hardening"
+BASE_MAIN_SHA = "23b5c52cdcd18aaf3f2613654b0d9d2302343661"
+PARENT_CANDIDATE_ID = "candidate-v7n-public-state-delivery-constraint-hardening"
+CURRENT_CANDIDATE_ID = "candidate-v7o-execution-persistence-convergence"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -21,9 +21,11 @@ SKILL_ORDER = (
 )
 EXPECTED_SKILLS = set(SKILL_ORDER)
 REQUIRED_DELTA = {
-    "PUBLIC_STATE_VERBATIM_COPY_AND_ATTRIBUTION",
-    "CURRENT_SESSION_DELIVERY_ITEM_PROOF_BINDING",
-    "EXPLICIT_BINDING_CONSTRAINT_MODE_AND_RISK_LABEL",
+    "WHOLE_GAME_EXECUTION_PERSISTENCE",
+    "MANIFEST_SEMANTIC_DEDUPLICATION",
+    "NORMAL_FLOW_NO_SKILL_REREAD",
+    "HIDDEN_FIELD_SALIENCE_HARDENING",
+    "NUMERIC_STATE_NOT_AUTOMATIC_BINDING_CONSTRAINT",
 }
 
 
@@ -89,8 +91,8 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S07_48_PUBLIC_STATE_DELIVERY_CONSTRAINT_HARDENING"
-    assert candidate["strategy_delta"] == "S07_47_EVIDENCE_BACKED_CORRECTNESS_PATCH_ONLY"
+    assert candidate["decision"] == "S08_04_EXECUTION_PERSISTENCE_CONVERGENCE"
+    assert candidate["strategy_delta"] == "NO_STRATEGY_DELTA"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -187,11 +189,12 @@ def test_four_skill_frontmatter_describes_scope_trigger_and_ownership() -> None:
 def test_promotion_first_advance_and_temporary_survival_floor_remain() -> None:
     planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
+    candidate = _load_json(ROOT / "configs/current_candidate.json")
     combined = planning + "\n" + manifest
 
     assert "Maximize long-horizon progression" in planning
     assert "`A` = Advance. Default." in planning
-    assert "Promotion-first with Survival Floor" in manifest
+    assert candidate["design_intent"] == "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR"
     assert "switch to temporary stabilization" in planning.lower()
     assert "return to `A`" in planning
     assert "permanent low-profile play" in planning
@@ -242,7 +245,7 @@ def test_story_and_energy_have_no_fixed_answer_or_bundle() -> None:
     assert "not a fixed menu answer" in combined.lower()
     assert "a fixed optimal action" in planning.lower()
     assert "QUARTER_INTENT" in energy
-    assert "exactly one integer choice per action" in manifest
+    assert "exactly one legal integer choice" in manifest
     assert not re.search(r"(?:fixed|standard)\s+Energy\s+bundle", combined, re.IGNORECASE)
 
 
@@ -256,20 +259,21 @@ def test_risk_gates_candidates_without_replanning() -> None:
 
 def test_manifest_retains_action_preflight_and_same_session_recovery() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
-    assert "Before take_action verify" in manifest
-    assert "choice is exactly one legal integer" in manifest
-    assert "confirmed current session_id" in manifest
-    assert "exactly one [CTRL" in manifest
-    recovery = manifest[manifest.index("On context recovery ("):]
+    assert "Before each take_action" in manifest
+    assert "exactly one legal integer choice" in manifest
+    assert "current game_session_id" in manifest
+    assert "exactly one `[CTRL" in manifest
+    assert "exactly one `[DL" in manifest
+    recovery = manifest[manifest.index("CONTEXT RECOVERY"):]
     for marker in (
         "CurrentRoundCompressor",
-        "confirm same game_session_id",
+        "confirm the same game_session_id",
         "fresh observe",
         "reread all four Skills",
         *SKILL_ORDER,
         "rebuild Board",
         "rebuild Delivery",
-        "restore Review Plan",
+        "restore the Review Plan",
         "UNKNOWN",
         "RECOVERY_PENDING",
         "RECOVERY_READY",
@@ -277,15 +281,15 @@ def test_manifest_retains_action_preflight_and_same_session_recovery() -> None:
     ):
         assert marker in recovery
     ordered = (
-        "STOP action submission",
-        "confirm same game_session_id",
+        "stop action submission",
+        "confirm the same game_session_id",
         "fresh observe",
         "reread all four Skills",
         "rebuild Board",
         "rebuild Delivery",
-        "restore Review Plan",
+        "restore the Review Plan",
         "RECOVERY_READY",
-        "only then resume the decision loop",
+        "resume the loop only then",
     )
     assert [recovery.index(step) for step in ordered] == sorted(recovery.index(step) for step in ordered)
 
@@ -297,7 +301,6 @@ def test_public_evidence_whitelist_excludes_internal_fields_everywhere() -> None
     }
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
     for field in ("Health", "Dignity", "Skill", "Network", "Output", "Wealth", "Level", "Energy"):
-        assert field in manifest
         assert field in texts["structured-state-board"]
     for source in ("formal review", "legal-choice text", "public Handbook", "public action receipts"):
         assert source in manifest
@@ -329,7 +332,7 @@ def test_s07_48_board_copies_fresh_public_values_and_quarantines_mixed_effects()
         assert marker in board
     assert "salary/bonus text" in board
     assert "Do not infer thresholds, counters, caps" in board
-    assert "deterministic payload filter" in manifest
+    assert "instruction-only" in manifest and "deterministic raw-payload filter" in manifest
 
 
 def test_s07_48_delivery_identity_proof_and_non_saturating_retirement() -> None:
@@ -377,15 +380,15 @@ def test_s07_48_explicit_binding_constraint_and_full_risk_labels() -> None:
     assert "A safe, constructive candidate still receives Full Review" in risk
     assert "After Full Review, never output `PASS`" in risk
     assert "`ALLOW`" in risk
-    assert "Full Review" in manifest and "never output PASS" in manifest
-    assert "mild fatigue" in manifest.lower()
+    assert "risk-review=final candidate risk gate" in manifest
+    assert "Full Review" not in manifest and "mild fatigue" not in manifest.lower()
 
 
-def test_v7m_prior_closure_quarter_intent_and_recovery_contracts_are_preserved() -> None:
+def test_planning_and_risk_details_remain_skill_owned_and_preserved() -> None:
     manifest = _load_json(ROOT / "configs/runtime_manifest.json")["instruction"]
-    parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))["instruction"]
-    assert _section(manifest, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance") == _section(parent, "Early evidence-gated pre-first-review prior:", "\nFormal review/promotion/no-advance")
-    assert _section(manifest, "On context recovery (", "No Team/Swarm") == _section(parent, "On context recovery (", "No Team/Swarm")
+    assert "rolling-planning=strategy, objectives, and ranking" in manifest
+    assert "Early evidence-gated pre-first-review prior" not in manifest
+    assert "On context recovery (" not in manifest
 
     planning = (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf-8")
     parent_planning = _git_bytes(BASE_MAIN_SHA, "skills/rolling-planning/SKILL.md").decode("utf-8")
@@ -416,15 +419,8 @@ def test_one_observe_one_pass_and_risk_only_reconsideration() -> None:
         "Do not submit before closure",
     ):
         assert marker in section
-    for marker in (
-        "ONE OBSERVE = ONE PLANNING PASS",
-        "at most two genuinely competitive choices once",
-        "exactly one final CANDIDATE",
-        "Only Risk=RECONSIDER may reopen selection once",
-        "at most one directly relevant legal alternative",
-        "Never take_action before closure",
-    ):
-        assert marker in manifest
+    assert "Planning closed on exactly one candidate" in manifest
+    assert "Never act before closure" in manifest
 
 
 def test_pre_game_delivery_and_ctrl_contract_is_consistent() -> None:
@@ -450,10 +446,9 @@ def test_pre_game_delivery_and_ctrl_contract_is_consistent() -> None:
     assert "CTRL R always records the selected submitted candidate's final Risk result" in manifest
     assert "do not open a second branch" in risk
     assert "do not search another alternative" in planning
-    assert "do not open a second branch" in manifest
     assert "X=0" in risk + planning + manifest
-    assert "at most one fresh observe/rebuild cycle" in risk + planning + manifest
-    assert "R=UNKNOWN" in risk + planning + manifest
+    assert "at most one fresh observe/rebuild cycle" in risk + planning
+    assert "R=UNKNOWN" in risk + planning
     assert "older progression feedback cannot override" in planning
 
 
@@ -492,7 +487,7 @@ def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
     assert "promotion threshold" in prior
     assert "not a fixed menu answer" in planning
     assert "clearly superior time-sensitive" in prior
-    assert "After the first formal review" in manifest
+    assert "rolling-planning=strategy, objectives, and ranking" in manifest
     assert not any(term in prior.lower() for term in ("month 3", "month 6", "m3", "m6", "two reports"))
 
 
@@ -503,8 +498,8 @@ def test_candidate_and_state_record_static_closure_without_validation_transfer()
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-48" in state and "S07-47" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+candidate-v7n-public-state-delivery-constraint-hardening", state)
-    assert "all v7i validation flags are false" in state
+    assert re.search(r"Current Candidate:\s+candidate-v7o-execution-persistence-convergence", state)
+    assert "all v7i validation flags remain false" in state
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions
     assert "NEXT_GAME = NOT_AUTHORIZED" in state

@@ -56,6 +56,8 @@ After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `AL
 
 Before progression ranking, evaluate the current whitelisted Board and participant-visible event/choice semantics for an unresolved binding constraint. Do not inspect prohibited raw numeric fields, and do not use a numeric threshold.
 
+A displayed H/D/W number or an ordinary one-step decrease alone does not establish a binding constraint and does not justify `MODE=S`. Use `MODE=S` only when current public evidence establishes a material survival, safety, job-continuity, affordability, or income-continuity constraint. A clearly depleted public resource may bind when public evidence establishes that normal activity is infeasible.
+
 Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, explicit job-continuity warning, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
 
 Return to `MODE=A` when fresh public evidence indicates that binding condition is resolved or the risk-bearing situation has ended. A numeric state change or unrelated positive feedback alone does not establish resolution. Ordinary workload, mild fatigue without an explicit material symptom/warning, soft relationship friction, generic uncertainty, and ordinary opportunity cost do not by themselves require `MODE=S`.

@@ -1,52 +1,52 @@
 {
-  "candidate_id": "candidate-v7n-public-state-delivery-constraint-hardening",
+  "candidate_id": "candidate-v7o-execution-persistence-convergence",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S07_48_PUBLIC_STATE_DELIVERY_CONSTRAINT_HARDENING",
+  "decision": "S08_04_EXECUTION_PERSISTENCE_CONVERGENCE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "S07_47_EVIDENCE_BACKED_CORRECTNESS_PATCH_ONLY",
-  "parent_candidate_id": "candidate-v7m-final-r-recovery-audit-hardening",
-  "base_main_sha": "fee5b1de5052a0285d934e77d2073abb6cffc654",
+  "strategy_delta": "NO_STRATEGY_DELTA",
+  "parent_candidate_id": "candidate-v7n-public-state-delivery-constraint-hardening",
+  "base_main_sha": "23b5c52cdcd18aaf3f2613654b0d9d2302343661",
   "parent_identity": {
-    "runtime_manifest_sha256": "1bb92ccae8cad01b8586aa57c8f2d49aede28f424b488e0b8d8c570c592fcef9",
-    "instruction_sha256": "559a38e29e92f59df57834b62f0cc0fbc47f07e824043d98e2f34a20fd5776c2",
+    "runtime_manifest_sha256": "66195dcf79ec85412ce2aea179f63ec5b2f58ac992b1136b842d7913578601a1",
+    "instruction_sha256": "f80173a59ef8483c8eb18ef29bea5ca5a56544b15cb731e3bcf78855b4d77ab6",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "1707e8183e3b7f4c299838b4fc2c0f01de7581e2"
+        "git_blob": "bb6583e83c2ae8472909a543e1531543f39dbe1a"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "1fba1f0fad152817f965aeb7396dc167dd6a5e61"
+        "git_blob": "56b6825b009ce513a64bea83ff2d44aec4748667"
       },
       {
         "name": "delivery-progress",
         "path": "skills/delivery-progress/SKILL.md",
-        "git_blob": "2746b17c843b3bea5a77b9b75bb3abb65c405c06"
+        "git_blob": "ed06db1d1ffafbdca15dbf6eca75df91bdbb6ee2"
       },
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "2b4388efe51a312645efb1fdeae21be3fdd9518e"
+        "git_blob": "02df0a1f2ac47c6f60df0d931625f50afb3dce93"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "66195dcf79ec85412ce2aea179f63ec5b2f58ac992b1136b842d7913578601a1",
-    "instruction_sha256": "f80173a59ef8483c8eb18ef29bea5ca5a56544b15cb731e3bcf78855b4d77ab6"
+    "sha256": "addcf3485836683f8a2ebe957a2105a0ca4a9d8d26bb35483ccc5109fb5d6cd9",
+    "instruction_sha256": "240413d929766033274c47efb058392e7b7cabed660733566fe2a1ab690aaaa1"
   },
   "skills": [
     {
       "name": "structured-state-board",
       "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "bb6583e83c2ae8472909a543e1531543f39dbe1a"
+      "git_blob": "bb68c3e9f79885b164a8032af9d53b6c9d1ece94"
     },
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "56b6825b009ce513a64bea83ff2d44aec4748667"
+      "git_blob": "dbb527ad8a2d9c2c41de09442e4351803966f256"
     },
     {
       "name": "delivery-progress",
@@ -95,9 +95,11 @@
     "CURRENT_DELIVERY_SNAPSHOT_MARKER"
   ],
   "runtime_contract_delta": [
-    "PUBLIC_STATE_VERBATIM_COPY_AND_ATTRIBUTION",
-    "CURRENT_SESSION_DELIVERY_ITEM_PROOF_BINDING",
-    "EXPLICIT_BINDING_CONSTRAINT_MODE_AND_RISK_LABEL"
+    "WHOLE_GAME_EXECUTION_PERSISTENCE",
+    "MANIFEST_SEMANTIC_DEDUPLICATION",
+    "NORMAL_FLOW_NO_SKILL_REREAD",
+    "HIDDEN_FIELD_SALIENCE_HARDENING",
+    "NUMERIC_STATE_NOT_AUTOMATIC_BINDING_CONSTRAINT"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
