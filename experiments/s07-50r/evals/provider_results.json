@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "classification": "MICRO_EVAL_ONLY",
+  "provider_contract": {
+    "model_alias": "deepseek-flash",
+    "endpoint_host": "api.deepseek.com",
+    "thinking_condition": "OFFICIAL_DEFAULT_THINKING",
+    "thinking": {
+      "type": "enabled"
+    },
+    "reasoning_effort": "high",
+    "max_tokens": 4096,
+    "temperature": "OMITTED_THINKING_MODE",
+    "stream": false,
+    "response_format": {
+      "type": "json_object"
+    },
+    "runtime_equivalence": "RUNTIME_MODE_NOT_VERIFIED"
+  },
+  "request_caps": {
+    "preflight": 1,
+    "sanity": 4,
+    "matrix": 80,
+    "total": 85
+  },
+  "new_provider_requests": 1,
+  "stages": {
+    "preflight": {
+      "status": "FAIL",
+      "gate": "PROVIDER_PREFLIGHT_FAIL",
+      "request_count": 1,
+      "request_index": 1
+    }
+  },
+  "requests": [
+    {
+      "request_index": 1,
+      "stage": "preflight",
+      "version": null,
+      "case_ids": [],
+      "repetition": null,
+      "retry_of_request_index": null,
+      "request_state": "COMPLETED",
+      "http_success": false,
+      "http_status": null,
+      "provider_reported_model": null,
+      "finish_reason": null,
+      "content_present": false,
+      "content_chars": null,
+      "reasoning_content_present": false,
+      "reasoning_chars": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "reasoning_tokens": null,
+      "total_tokens": null,
+      "output_classification": "TRANSPORT_ERROR",
+      "observable_output": null,
+      "output_chars": null
+    }
+  ],
+  "case_results": []
+}
