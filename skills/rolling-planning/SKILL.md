@@ -1,164 +1,208 @@
 ---
 name: rolling-planning
-description: "Use for every CareerSim decision after the fresh Board is available. Maintain one review-window objective and progression gap, default to aggressive career advancement, switch to temporary stabilization only for material public survival constraints, rank current legal candidates, and return one final candidate without submitting it."
+description: "Use for every CareerSim decision after fresh Board and Delivery are available. 维护跨 Review 的长期晋升目标、当前 Review Window、失败恢复状态与一个 Primary Gap；默认 MODE=A，仅在明确重大生存或连续性约束下临时 MODE=S；比较合法选项并返回唯一 CANDIDATE，不提交动作。"
 ---
 
-# Rolling Planning
+# Rolling Planning｜滚动规划与失败恢复
 
-## Objective
+## 职责
 
-Maximize long-horizon progression while preserving a survival floor.
+本 Skill 是唯一战略层。
 
-State:
+目标：
 
-```text
-REVIEW_PLAN = <Objective | Primary Gap | Next Observable Checkpoint>
-MODE = A | S
-```
+> 在守住 survival floor 的前提下，最大化 48 个月长期晋升与职业资本；坏局面出现时进行有界恢复，恢复后回到长期主线。
 
-`A` = Advance. Default.<br>
-`S` = Stabilize. Temporary response to a material public survival/resource constraint.
-
-## Evidence order
-
-Consume only the same-session whitelisted public Board and Delivery summary, formal feedback, public legal choices, Handbook, and confirmed public receipts/logs. Ignore `HiddenRisk`, hidden counters, internal score components, internal event identifiers/effects, and public-status-unclear fields even when present in a tool payload; never use numeric internal-looking values in the Review Plan, candidate reason, CTRL notes, or action rationale. `EXCLUDE_FROM_STRATEGY until verified public`.
-
-First select `MODE` against current binding public survival/resource constraints. The following order interprets progression evidence for `REVIEW_PLAN`; older progression feedback cannot override a current material Health/Dignity/Wealth/job/trust/compliance/safety constraint:
-
-1. formal review / promotion / no-advance;
-2. fresh observed action result;
-3. current public state and explicit warning;
-4. Delivery evidence;
-5. advertised option effect or public hint.
-
-A lower-priority signal must not override a contradictory higher-priority signal.
-
-After context recovery and the required same-session fresh observe and four-Skill reread, restore `REVIEW_PLAN` from current-session public formal feedback and whitelisted Board/Delivery evidence. Set any unrecoverable Objective, Primary Gap, or Next Observable Checkpoint to `UNKNOWN`; do not reuse a stale plan or rank an action before recovery completes.
-
-## Maintain the Review Plan
-
-- Before the first formal review, allow `Primary Gap=UNKNOWN`. Pursue visible delivery and broad Skill / Network / Output progression.
-- After formal feedback, anchor the gap to the clearest public progression deficit. If feedback names no concrete deficit, set `Primary Gap=DIRECT_PROGRESSION_EVIDENCE`; do not invent a hidden requirement or preserve a generic gap when current public evidence supports direct progress.
-- A good formal grade without promotion still means promotion readiness is unresolved. Do not treat grade alone as completion of the promotion objective.
-- Use the next public formal review as the checkpoint for promotion preparation. Actions taken after a completed review prepare the following review; they cannot repair the checkpoint that has already been decided.
-- Revise the plan only when:
-  - formal review / promotion / no-advance changes the evidence;
-  - the objective is publicly completed;
-  - fresh evidence invalidates the current gap/path; or
-  - the current objective is no longer feasible.
-- Do not change the gap because of an ordinary Story or one transient state fluctuation.
-
-## Same-observation decision budget
-
-ONE FRESH OBSERVE = ONE PLANNING PASS. In that pass, set `MODE + REVIEW_PLAN`, eliminate clearly unacceptable or dominated legal options, retain at most two genuinely competitive options, compare them once using the ranking below, and emit exactly one final `CANDIDATE`. Keep the comparison sufficient for a difficult choice but the output concise; do not narrate self-dialogue or cycle through candidates.
-
-After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once per fresh evidence state: compare at most one directly relevant legal alternative, select once, and obtain that selected candidate's own final Risk result. CTRL `R` records that final result, not the initial `RECONSIDER`; set `X=1` when this one branch completed, or `X=-` when no branch was used. If the selected candidate's gate again returns `RECONSIDER`, the path is incomplete (`X=0`): do not search another alternative or submit until genuinely new public evidence arrives. `UNKNOWN` does not authorize a new Planning pass: normal public flow may resolve it through at most one fresh observe/rebuild cycle, with a new pass only on genuinely new public evidence; otherwise choose once from available public evidence with `R=UNKNOWN` and `X=-` or `X=1` according to branch use. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure; `X=0` forbids submission.
-
-## Select MODE
-
-Before progression ranking, evaluate the current whitelisted Board and participant-visible event/choice semantics for an unresolved binding constraint. Do not inspect prohibited raw numeric fields, and do not use a numeric threshold.
-
-Poor grade, no-advance, weak Skill/Network/Output, generic “improve performance” feedback, or an unresolved promotion gap do not by themselves justify `MODE=S`. Without a separate explicit material survival, safety, job-continuity, affordability, or income-continuity constraint, repair performance and promotion in `MODE=A`. Only an explicit participant-visible material dismissal or job-continuity threat may make a performance situation binding.
-
-A displayed H/D/W number or an ordinary one-step decrease alone does not establish a binding constraint and does not justify `MODE=S`. Use `MODE=S` only when current public evidence establishes a material survival, safety, job-continuity, affordability, or income-continuity constraint. A clearly depleted public resource may bind when public evidence establishes that normal activity is infeasible.
-
-Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, an explicit participant-visible material dismissal or job-continuity threat, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
-
-Return to `MODE=A` when fresh public evidence indicates that binding condition is resolved or the risk-bearing situation has ended. A numeric state change or unrelated positive feedback alone does not establish resolution. Ordinary workload, mild fatigue without an explicit material symptom/warning, soft relationship friction, generic uncertainty, and ordinary opportunity cost do not by themselves require `MODE=S`.
-
-When no unresolved binding constraint is present, use `A` and continue promotion-first progression.
-
-In `S`, keep the constraint visible in the current plan, remove or contain it with the smallest reasonable opportunity cost, and return to `A` once fresh public evidence resolves it.
-
-Wealth stress is an income-recovery problem, not a reason for permanent low-profile play: avoid discretionary cost while continuing to repair performance, promotion, and income capacity.
-
-## Rank legal candidates
-
-### Public warning cleanup
-
-When fresh participant-visible feedback explicitly says risk is elevated, accumulating, or needs handling, and a legal option explicitly repairs that warned risk, one bounded cleanup before the next formal review may be a high-priority candidate. Do not repeat cleanup without a new public warning or other fresh evidence. A warning alone does not create permanent `MODE=S`; acute survival or safety constraints still outrank cleanup. Never infer hidden Risk values.
-
-### MODE=A
-
-Consume the Board's current-Level `PROGRESSION_RESPONSE`. `GAIN` is current evidence that the dimension is responsive; `NO_GAIN` discounts only that dimension for current-Level marginal allocation; `UNKNOWN` stays open and is not evidence of a cap. A multidimensional action retains value from responsive or unknown dimensions even when another dimension is `NO_GAIN`. The Board resets all responses on a Level change. For non-specific review feedback, do not starve one of Skill, Network, or Output across scarce quarterly opportunities solely because another was recently salient. Specific formal feedback may concentrate effort. Do not impose a fixed ratio or forced balance.
-
-When the current review gap is unresolved, prefer the legal option with the most direct observable path to the review/promotion objective over generic relationship-building or role-breadth options, unless fresh formal feedback specifically names Network/breadth as the primary gap or another option has clearly stronger current public evidence. This is a general ranking prior, never a fixed answer or eligibility claim.
-
-Do not demote Skill because of terminal-score saturation assumptions. Skill, Network, and Output all remain promotion-relevant progression dimensions unless fresh public evidence shows otherwise. Compare them using formal review evidence, fresh observed action results, current public state, and time to the next review; never use hidden thresholds or assumed caps.
-
-Prefer, in order:
-
-1. direct progress on the current review gap;
-2. visible delivery / ownership likely to matter at the next checkpoint;
-3. options that publicly improve multiple progression dimensions among Skill / Network / Output;
-4. long-horizon compounding and future option value.
-
-Accept ordinary soft costs when the progression upside is materially stronger.
-
-#### Pre-first-review result realization prior
-
-Apply `PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR` only before the first formal review, in `MODE=A` with no binding public survival/resource constraint. Require current-session whitelisted Board/Delivery evidence of an existing high-value commitment with a concrete public result/checkpoint opportunity (including work in progress or near completion), or `DELIVERY_CLAIMED + UNVERIFIED`; also require a legal action that can finish/validate it, present an actual result, or obtain a public receipt. Check `stage`, `evidence_status`, `recognition_link`, and `next_checkpoint`; a report-like menu label, pure information gathering, or a claim without an underlying result is insufficient.
-
-When triggered, prefer that result-realization action over another generic workload push with no stronger current result evidence. Do not displace a clearly superior time-sensitive progression opportunity. If no such delivery basis exists, use the ordinary broad Skill / Network / Output ranking. If the result is already `DELIVERED + PUBLICLY_VERIFIED`, do not repeat a presentation merely to repackage it.
-
-Exit this prior at the first formal review, when the result becomes publicly verified, when the commitment becomes invalid or blocked, or when a material constraint requires `MODE=S`. After formal review, its feedback-anchored `REVIEW_PLAN` owns the objective. This is neither a fixed report action nor a promotion threshold; do not infer hidden eligibility from it.
-
-### Review-window delivery certainty
-
-Before the next public formal review, an explicit near-term delivery cost is material evidence. If a legal option explicitly delays current scheduled deliverables, sacrifices near-term delivery certainty for speculative long-horizon learning, or introduces first-delivery uncertainty while another legal option preserves current delivery certainty, prefer the delivery-certain path unless the uncertain option is required for safety/compliance or specific formal review feedback directly makes it the stronger progression response. This prior is strongest before first promotion or after a failed review. It is not a fixed-month rule or Story answer, and it does not ban long-term learning.
-
-### MODE=S
-
-Prefer candidates that:
-1. do not worsen the binding constraint;
-2. directly relieve it or protect job continuity;
-3. preserve as much review/progression value as possible.
-
-Do not convert `S` into permanent risk avoidance.
-
-### Delivery constraint
-
-If an active high-value commitment is near a public result, prefer finishing/validating it over opening a weaker speculative commitment. Do not block a clearly superior new opportunity merely because an old item exists.
-
-## Public-hint discipline
-
-Treat statements such as “this may help performance/promotion” as soft evidence only.
-
-Never convert them into:
-- a confirmed hidden requirement;
-- a hidden threshold/cap;
-- a fixed optimal action.
-
-If advertised gain is absent after a clean fresh observe, record `OBSERVED_NO_GAIN` or `OBSERVED_COST`; keep the cause `UNKNOWN`. Fresh observed no-gain outranks the advertised effect for the current decision. Do not immediately repeat the same action merely to confirm it when another still-responsive progression path exists. When comparing a multi-dimension option, discount only the dimension with current no-gain evidence and retain any other still-responsive public benefit. Treat no-gain as local to the current Level/context: clear it after a Level change or after a later clean fresh observe shows that dimension increasing again. Do not infer a cap or formula.
-
-## Story stop rule
-
-- Eliminate clearly dominated or clearly unacceptable options.
-- Compare only the small set that remains genuinely competitive.
-- Stop when one candidate is clearly preferred under `MODE + REVIEW_PLAN`.
-- Do not reopen the same decision without new public evidence.
-
-## Quarterly control
-
-At the first Energy decision of a quarter, set:
+维护：
 
 ```text
-QUARTER_INTENT = <MODE | target | intended use of remaining Energy>
+REVIEW_PLAN = <Long Horizon | Primary Gap | Next Review Checkpoint>
+MODE = <A|S>
+RECOVERY = <NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN>
 ```
 
-Submit Energy one integer at a time. After each action, fresh observe. Replan the remaining Energy after material new evidence, including a clean `OBSERVED_NO_GAIN` on the intended progression dimension.
+- `A=Advance`：默认。
+- `S=Stabilize`：只用于明确、当前、重大的生存/连续性约束。
+- `RECOVERY` 描述当前失败模式，不自动决定 `MODE`。
 
-As the next formal review approaches, treat the remaining pre-review Energy/Main opportunities as scarce promotion-preparation capacity. With no binding constraint, prefer still-responsive Skill / Network / Output progression that can materialize before that checkpoint. Do not spend remaining Energy repeatedly on a current-Level no-gain path when another still-responsive promotion-relevant path is legal.
+禁止：使用 `HiddenRisk`、hidden counters、internal score、internal event id/effect、其它隐藏/私有证据、固定事件答案、隐藏阈值、跨局记忆或自行提交动作。
 
-For the quarterly Main Action, apply the same ranking. When no material constraint exists, give a strong prior to broad-growth options that combine visible ownership with multiple still-responsive public progression gains; discount a dimension currently marked `OBSERVED_NO_GAIN` until fresh public evidence contradicts it. This is a prior, not a fixed menu answer.
+## 证据优先级
 
-## Output
+只使用同局白名单 Board、Delivery、正式 Review、公开合法选项、Handbook 与已确认公开结果。
 
-Return only:
+progression 判断优先级：
+
+1. 正式 `Review / promotion / no-advance`；
+2. clean fresh observed result；
+3. 当前 `STATE / STICKY / PROGRESSION_RESPONSE`；
+4. Delivery 证据；
+5. advertised effect / public hint。
+
+低优先级证据不得覆盖高优先级冲突证据。
+
+## 长期规划一致性
+
+长期主线默认保持：
+
+`SURVIVE → PROMOTE → COMPOUND`
+
+failure recovery 只能暂时改变短期路径，不得无依据改写长期主线。
+
+Review Window：
+
+1. 第一次正式 Review 前允许 `Primary Gap=UNKNOWN`；优先可靠交付与广义 Skill / Network / Output 成长。
+2. 正式 Review 后，用最明确的公开 progression deficit 更新 `Primary Gap`。
+3. 反馈不具体时使用 `DIRECT_PROGRESSION_EVIDENCE`；不得编造隐藏晋升条件。
+4. 良好绩效 + `no-promotion` 仍表示 promotion readiness 未完成。
+5. 下一次公开正式 Review 是当前准备 checkpoint。
+6. Review 已经结算后，之后动作只能服务下一 checkpoint，不能补救已经发生的 Review。
+7. 普通 Story 或一次短期波动不得随意改写 `Primary Gap`。
+
+## Failure Recovery Contract
+
+### `PROGRESSION`
+
+触发：低绩效、`no-promotion`、公开 Skill/Network/Output/delivery 表现不足、晋升准备未完成。
+
+处理：
+
+- 保持 `MODE=A`；
+- 重建 `Primary Gap`；
+- 使用 `PROGRESSION_RESPONSE` 与 Delivery 找仍有响应、且能在下一 Review 前兑现的路径；
+- 不因失败本身进入长期保守。
+
+退出：promotion；Review 明确显示原 gap 已解决；或 fresh evidence 证明当前路径失效并完成重规划。
+
+### `RESOURCE`
+
+触发：fresh public evidence 明确显示 Health / Dignity / Wealth / affordability / income continuity 已形成重大 binding constraint。
+
+处理：
+
+- `MODE=S`；
+- 只做解除当前约束所需的最小合理动作；
+- 尽量保留 progression value。
+
+退出：fresh public evidence 显示约束已解除或场景结束；立即回 `MODE=A`，恢复原 `REVIEW_PLAN`。
+
+禁止：为了“更安全”把资源补满后长期停留在 S。
+
+### `RISK`
+
+触发：fresh public warning 明确表示风险 elevated / accumulating / needs handling，且存在明确 reparative legal option。
+
+处理：
+
+- 通常保持 `MODE=A`；
+- 在下一 Review 前允许一次 bounded cleanup 作为高优先候选；
+- 只有风险升级为 material survival / job-continuity / trust / compliance / confidentiality crisis 时才进入 `MODE=S`。
+
+退出：完成一次 cleanup 后 fresh observe；没有新 warning 时回主线；没有新证据不得连续 cleanup。
+
+### `DELIVERY`
+
+触发：active commitment 接近 checkpoint，但处于 blocked / unverified / delayed；当前选择明确牺牲近端交付确定性；或 Review 反馈直接指向 delivery / ownership。
+
+处理：
+
+- 通常保持 `MODE=A`；
+- 优先完成、验证或修复高价值近端交付；
+- 不为 speculative long-horizon gain 无理由牺牲当前 Review 前明确交付。
+
+退出：item `DELIVERED + PUBLICLY_VERIFIED`；commitment 公开取消/被替代；或 fresh evidence 表明继续投入已不是最佳 Review path。
+
+## MODE
+
+以下内容单独不能触发 `MODE=S`：
+
+- 低绩效；
+- `no-promotion`；
+- weak Skill / Network / Output；
+- generic “improve performance”；
+- 一次数值下降；
+- 普通工作负荷、疲劳、摩擦或不确定性。
+
+只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint，或明确重大 Health/Dignity/Wealth 资源约束已经使正常活动不可行时，才使用 `S`。
+
+`S` 必须有明确 binding reason 与退出条件。约束解除后立即回 `A`。
+
+## Progression Routing
+
+读取 Board `PROGRESSION_RESPONSE`：
+
+- `GAIN`：当前 Level 下该维度最近可响应；
+- `NO_GAIN`：只降低该维度当前边际价值；
+- `UNKNOWN`：保持开放，不当成 cap。
+
+规则：
+
+1. multidimensional action 中，一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值。
+2. 有仍有响应的合法路径时，不立即重复同一个 no-gain 投入只为再次确认。
+3. Level change 后所有 response 重新开放。
+4. non-specific Review 下，不得长期饿死 Skill / Network / Output 中某一维；specific feedback 可以集中投入。
+5. 不设固定比例、固定 target、隐藏阈值。
+6. Skill 不因 terminal-score saturation 假设被降权；它始终可能具有 promotion value。
+
+## Ranking
+
+`MODE=A` 下依次偏好：
+
+1. 当前 `Primary Gap` 的直接、可观察进展；
+2. 下一 Review 前可兑现的 delivery / ownership；
+3. still-responsive 的 Skill / Network / Output 多维成长；
+4. long-horizon compounding / option value。
+
+Review 前，explicit near-term delivery delay / first-delivery uncertainty 是真实负证据。若一个合法选项保持当前交付确定性，另一个只提供 speculative long-horizon gain 且明确损害近端交付，优先交付确定路径；除非 safety/compliance 或 specific Review feedback 明确支持后者。
+
+`MODE=S` 下依次偏好：
+
+1. 不继续恶化 binding constraint；
+2. 直接解除或控制该约束；
+3. 在安全前提下保留尽可能多 progression value。
+
+如果明确的 job-continuity threat 本身由绩效或交付失败造成，那么直接修复绩效、完成关键交付或恢复晋升成长可以是 `MODE=S` 下最直接的 constraint-relief action；不得把 `S` 机械理解为低调、停止成长或选择最保守动作。
+
+## Quarterly Control
+
+季度第一次 Energy：
 
 ```text
-PLAN: G=<gap|?> P=<A|S|?> checkpoint=<short checkpoint>
-CANDIDATE: choice=<one legal integer> reason=<one concise evidence-based reason>
+QUARTER_INTENT = <MODE | target | remaining-Energy intent>
 ```
 
-Do not call `new_game`, `observe`, or `take_action`. Can Submit Action: No.
+每次只提交一个 Energy integer；动作后必须 fresh observe。
+
+出现 clean `OBSERVED_NO_GAIN` 后立即重新分配剩余 Energy。
+
+越接近下一 Review，剩余 Energy/Main opportunity 越稀缺；无 binding constraint 时，优先 still-responsive、能在 checkpoint 前兑现的 promotion-relevant progress。
+
+Main Action 使用同一 ranking，不按菜单名字固定答案。
+
+## Decision Budget
+
+`ONE FRESH OBSERVE = ONE PLANNING PASS`
+
+每次：
+
+1. 确认 `MODE + RECOVERY + REVIEW_PLAN`；
+2. 删除明显不可接受或被支配的选项；
+3. 最多保留两个 genuinely competitive candidates；
+4. 比较一次；
+5. 输出唯一 `CANDIDATE`。
+
+只有 Risk=`RECONSIDER` 可在同一 fresh evidence 下重开一次，并且只比较一个直接相关替代项。
+
+没有 new public evidence 不得反复自我辩论、重复规划或换候选。
+
+## 输出
+
+只返回：
+
+```text
+PLAN: G=<gap|?> P=<A|S|?> F=<NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN> checkpoint=<short checkpoint>
+CANDIDATE: choice=<one legal integer> reason=<one concise public-evidence reason>
+```
+
+**Can Submit Action: No.**
+不得调用 `new_game`、`observe` 或 `take_action`。

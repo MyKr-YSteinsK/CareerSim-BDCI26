@@ -1,72 +1,96 @@
 ---
 name: risk-review
-description: "Use immediately before every take_action on Planning's final candidate. Pass ordinary growth costs; escalate only when fresh public evidence shows a direct material threat to survival, job continuity, trust, compliance, confidentiality, safety, or an already-binding Health/Dignity/Wealth constraint. Never re-plan the whole decision."
+description: "Use immediately before every take_action on Planning's final candidate. 只对最终候选执行风险 gate：普通成长成本直接 PASS；只有 fresh public evidence 显示重大生存、工作连续性、信任、合规、保密、安全或已 binding 的资源风险时做 Full Review；不得重新规划整局。"
 ---
 
-# Risk Review
+# Risk Review｜最终候选风险门禁
 
-## Contract
+## 职责
 
-Input:
-- Planning's final legal candidate;
-- fresh Board;
-- current `MODE`;
-- candidate's public consequences.
+本 Skill 只审核 Planning 已选出的最终合法 `CANDIDATE`。
 
-Use only whitelisted current-session public facts, participant-visible option text, and confirmed public receipts/logs. Ignore `HiddenRisk` (including numeric changes), hidden counters, internal score components, internal event identifiers/effects, and public-status-unclear payload fields even when a tool exposes them. Never put these values in a Risk reason, CTRL notes, or action rationale; `EXCLUDE_FROM_STRATEGY until verified public`.
+不拥有 `REVIEW_PLAN`，不拥有 `Primary Gap`，不重新做 candidate ranking。
 
-Output exactly one result:
+输入：
+
+- Planning final `CANDIDATE`；
+- fresh Board；
+- 当前 `MODE`；
+- 候选的 participant-visible consequences。
+
+只使用 current-session public evidence。
+
+禁止使用 `HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear numeric fields。
+
+## 输出
+
+严格输出：
 
 ```text
 RISK: PASS|ALLOW|WARN|RECONSIDER|UNKNOWN
 REASON: <one concise public-evidence reason>
 ```
 
-## Quick gate
+## Quick Gate
 
-Return `PASS` when the candidate has only ordinary:
-- workload;
-- small Health/Dignity cost;
-- relationship friction;
-- uncertainty;
-- opportunity cost;
+如果候选只包含普通：
 
-and no fresh public evidence makes that cost material.
+- workload；
+- 小幅 Health / Dignity cost；
+- relationship friction；
+- uncertainty；
+- opportunity cost；
 
-Do not block a high-value growth path merely because it is not the safest option.
+且 fresh public evidence 没有把这些成本升级为 material risk，返回：
 
-## Full review
+`PASS`
 
-Run a full review only when the candidate directly touches a material public risk such as:
-- an explicit acute physical symptom or psychological danger;
-- a material safety warning;
-- job-continuity / dismissal danger;
-- trust crisis or credible retaliation;
-- compliance / confidentiality / safety;
-- explicit affordability pressure;
-- direct worsening of the binding constraint that caused `MODE=S`.
+不要仅因为另一个选项更安全就拦截高价值成长路径。
 
-For Wealth stress, distinguish discretionary spending from progression/income recovery. Do not reject a growth action solely because Wealth is low when the action directly supports performance, promotion, or job continuity.
+## Full Review
 
-A direct material risk includes an action in an event about that risk, an action that could worsen the unresolved binding condition, or an action selected to contain/resolve it. A safe, constructive candidate still receives Full Review when it directly addresses the risk.
+候选直接涉及以下重大公开风险时才执行 Full Review：
 
-## Result rules
+- acute physical symptom / psychological danger；
+- material safety warning；
+- explicit job-continuity / dismissal danger；
+- trust crisis / credible retaliation；
+- compliance / confidentiality；
+- explicit affordability pressure；
+- 会直接恶化当前 `MODE=S` binding constraint 的行为。
 
-`ALLOW` — material risk was reviewed and the candidate remains acceptable.<br>
-`WARN` — material concern exists but current evidence does not justify switching.<br>
-`RECONSIDER` — material risk is clear, the candidate does not handle it, and one directly relevant legal alternative exists. Compare at most that alternative, then close the decision.
-`UNKNOWN` — decision-relevant public evidence is stale, missing, or source-ambiguous, so the candidate cannot receive a normal gate result yet. If normal public flow can resolve it, allow at most one fresh observe/rebuild cycle; genuinely new evidence may start one new Planning pass. If ambiguity remains and no further public evidence is obtainable within normal flow, make one bounded legal decision from available public evidence with final CTRL `R=UNKNOWN`; use `X=-` without reconsideration or `X=1` after one completed reconsideration branch. Do not loop observe/replan, invent facts, or infer hidden state.
+Wealth 紧张时区分 discretionary spending 与 performance/promotion/income recovery；不要仅因 Wealth 低就否决直接支持绩效、晋升或工作连续性的动作。
 
-`PASS` is reserved for the Quick gate when only ordinary costs are involved and no current material public risk is directly engaged. After Full Review, never output `PASS`: use `ALLOW`, `WARN`, `RECONSIDER`, or `UNKNOWN` according to the public evidence. A reasonable risk-handling candidate may receive `ALLOW`; Full Review is an audit step, not a requirement to reject or change it.
+## Result
 
-After `RECONSIDER`, compare at most one directly relevant legal replacement and give the selected candidate its own final Risk gate before submission. CTRL `R` records that selected candidate's final `PASS|ALLOW|WARN|UNKNOWN` result; `X=1` records the completed reconsideration branch. If the selected candidate's Risk gate again returns `RECONSIDER`, do not open a second branch or coerce it into `PASS`: the path remains incomplete with `X=0`, and `take_action` is forbidden until genuinely new public evidence arrives. With no reconsideration use `X=-`; any `X=0` forbids submission.
+- `ALLOW`：重大风险已审查，候选仍可接受。
+- `WARN`：存在重大 concern，但现有证据不足以要求换选。
+- `RECONSIDER`：重大风险明确；当前候选未处理；当前合法选项中存在一个直接相关替代项。只允许 Planning 比较这个替代项一次。
+- `UNKNOWN`：关键公开证据过期、缺失或来源不清。
 
-Do not invent numeric thresholds, hidden counts, failure probabilities, or hidden-risk values.
+Full Review 后不得返回 `PASS`；使用 `ALLOW / WARN / RECONSIDER / UNKNOWN`。
+
+`RECONSIDER` 之后：
+
+1. Planning 最多比较一个直接相关替代项；
+2. 选定后，该候选必须重新经过 Risk；
+3. 最终 CTRL `R` 记录提交候选的最终 `PASS|ALLOW|WARN|UNKNOWN`；
+4. `X=1` 表示完成一次 reconsideration branch；
+5. 如果第二次仍为 `RECONSIDER`，使用 `X=0`，禁止 `take_action`，直到 genuinely new public evidence 到达。
+
+`UNKNOWN` 不允许无限 observe/replan。正常流程最多尝试一次 fresh observe/rebuild；仍无法消除时，基于现有公开证据做一次 bounded legal decision，最终 `R=UNKNOWN`。
+
+## 与 Planning Recovery 的边界
+
+Planning 的 `RECOVERY=RISK` 是战略恢复状态；Risk Review 仍然只 gate 当前 final candidate。
+
+一个 public warning 允许 Planning 考虑 bounded cleanup，不等于 Risk 自动 `RECONSIDER`。只有当前 final candidate 直接触及 material risk，才进入 Full Review。
 
 ## Close
 
-After the final risk result, the decision is closed unless new public evidence arrives.
+Risk 给出最终结果后，本次 decision closed；除非出现 genuinely new public evidence。
 
-Risk does not own the Review Plan or candidate ranking.
+禁止编造 numeric threshold、hidden count、failure probability 或 hidden-risk value。
 
-Can Submit Action: No. Do not call `new_game`, `observe`, or `take_action`.
+**Can Submit Action: No.**
+不调用 `new_game`、`observe` 或 `take_action`。

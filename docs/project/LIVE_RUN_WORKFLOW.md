@@ -11,6 +11,10 @@
 
 Future Codex-facing live Plans select exactly one mode. If no mode is selected, the Plan's explicit permissions govern; omission grants no live operation. Both modes use `scripts/post_run_audit.py` schema version 1 and the same evidence policy. The optional screening metadata field is additive and development-only. Who typed a terminal command does not change a session, score, or adherence classification.
 
+## Progress reporting
+
+Use the [Live Run Progress Reporting Contract](LIVE_RUN_PROGRESS_CONTRACT.md) for update cadence and ETA. It defines reporting only and grants no additional runtime operation, probe, or retry authority.
+
 ## `CODEX_FULL_RUN` phases
 
 ```text

@@ -1,78 +1,119 @@
 ---
 name: delivery-progress
-description: "Use after every fresh public Board to maintain a bounded current-session delivery lifecycle summary for Planning. Update only when relevant public evidence changes; otherwise return the supported current state or an explicit empty state. Do not rank actions, assess risk, or submit actions."
+description: "Use after every fresh public Board. 维护当前 session 中与 Review 相关的最多三个 delivery items，记录 commitment、进行中、blocked、claimed、verified 与 recognition 证据；只管理交付生命周期，不决定目标、不排序动作、不评估风险、不提交动作。"
 ---
 
-# Delivery Progress
+# Delivery Progress｜交付进展
 
-## Contract
+## 职责
 
-Track review-relevant work items using the latest still-valid `REVIEW_PLAN` when available, fresh public progression/formal-review evidence, and broad visible-delivery relevance before the first review. Planning alone chooses the new objective and Primary Gap; Delivery never waits for a newly recomputed plan or invents one.
+本 Skill 只回答：
 
-Lifecycle:
+> 当前 Review 相关的公开工作项做到哪一步、下一 checkpoint 是什么、结果是否已经被公开验证。
+
+第一次正式 Review 前若尚无有效 `REVIEW_PLAN`，使用当前公开 commitment、近期 checkpoint 与明显交付相关性判断 item 是否值得跟踪。第一次正式 Review 后，以最新仍有效的 `REVIEW_PLAN` 为主要相关性依据。
+
+Delivery 不等待 Planning 重新计算，也不自行发明 Objective / `Primary Gap`。
+
+职责边界：
+
+- Board：公开事实；
+- Planning：Objective / `Primary Gap` / candidate ranking；
+- Risk：final candidate risk gate；
+- Delivery：当前 session 的 delivery lifecycle。
+
+## Lifecycle
 
 ```text
 OPPORTUNITY -> COMMITTED -> IN_PROGRESS -> DELIVERY_CLAIMED -> DELIVERED -> CLOSED
                  \-> BLOCKED -> IN_PROGRESS / DELIVERY_CLAIMED
 ```
 
-These are evidence labels, not hidden simulator states or a mandatory sequence. `BLOCKED` is optional and may follow `COMMITTED` or `IN_PROGRESS`; use only stages supported by public evidence.
+这些是 evidence labels，不是 simulator hidden state，也不是强制顺序。
 
-Record each item as:
+每项格式：
 
 ```text
-<local_id> | <short participant-visible item> | stage | owner/dependency | next_checkpoint | proof_basis | evidence_status | recognition_link
+<local_id> | <short public item> | stage | owner/dependency | next_checkpoint | proof_basis | evidence_status | recognition_link
 ```
 
-`local_id` is an agent-generated `D1`, `D2`, … identity, never a simulator/internal ID. Start at `D1` in a verified fresh session; assign a new identity to each distinct public work item and never reuse one for another item during that session, including after retirement. Keep a monotonic `NEXT_ID` cursor in the current Delivery snapshot. Reset only after verifying a different fresh `game_session_id`. The short description is participant-visible and only serves to distinguish the item; no cross-game memory is allowed. On recovery, carry only identities and cursor present in recoverable current-session public state. If the prior mapping/cursor cannot be recovered, mark identity `UNKNOWN` and do not reuse an uncertain ID.
+`evidence_status`：
 
-`evidence_status`:
 - `UNKNOWN`
 - `UNVERIFIED`
 - `PUBLICLY_VERIFIED`
 
-## Update rules
+## Identity
 
-Update only on new public evidence that changes:
-- opportunity relevance;
-- commitment / ownership;
-- milestone or blocker;
-- delivery result;
-- formal review / recognition linked to the item.
+`local_id=D1,D2,...` 只在当前 game session 内使用。
 
-Use `DELIVERY_CLAIMED + UNVERIFIED` when completion is asserted without public evidence of the deliverable. A successful MCP/`take_action` receipt proves execution only; generic `success=true`, action acceptance, or a command receipt cannot verify a career result. Use `DELIVERED + PUBLICLY_VERIFIED` only when participant-visible current-session evidence verifies the actual result or milestone. Store a short `proof_basis` attached to that item, such as `result accepted`, `adopted`, `milestone completed`, `artifact confirmed`, or `stakeholder confirmed result`; do not copy the full event text into the compact marker.
+1. fresh session 从 `D1` 开始。
+2. 每个 distinct public work item 使用新 ID。
+3. 同局已用 ID 不复用，即使 item 已 retired。
+4. 维护 `NEXT_ID`。
+5. 只有确认 session 改变才重置。
+6. recovery 后若 ID/cursor 无法可靠恢复，写 `UNKNOWN`；不得猜测或复用 uncertain ID。
 
-Generic praise, “最近干得不错”, a generic promotion/review, successful communication, an action receipt, or willingness to receive a future result does not verify delivery. A planned result or claim remains `UNVERIFIED` until evidence confirms it happened. Do not infer recognition from a generic compliment, promotion, or review change. Set item-linked `recognition_link=1` only when public evidence explicitly connects recognition to that item's result; record the short public link in its `proof_basis`. Otherwise use `0` or `?`.
+## 更新规则
 
-After context recovery, reconstruct only items supported by the fresh same-session public Board, public receipts, and any contractually public same-session logs. If a stage, receipt, or recognition link cannot be recovered, write `UNKNOWN` rather than carrying forward stale lifecycle state. Exclude `HiddenRisk`, hidden counters, internal event identifiers/effects, and public-status-unclear payload fields.
+只在 fresh public evidence 改变以下内容时更新：
 
-## Bounds
+- opportunity relevance；
+- commitment / ownership；
+- milestone / blocker；
+- delivery result；
+- 与 item 明确关联的正式 Review / recognition。
 
-Keep:
-- at most 3 active items;
-- at most 1 recent closed item directly relevant to the current review objective.
+### 结果验证
 
-An item remains active only while current public evidence supports an unresolved commitment/claim, work in progress, blocker, current or near checkpoint, or relevant review link. Move completed items without an active checkpoint to `CLOSED`; retire opportunities that are no longer relevant and commitments publicly cancelled or superseded. A completed item may be the single recent closed item if it remains directly relevant to the current review objective. Do not use arbitrary TTLs or fixed months for retirement.
+- `DELIVERY_CLAIMED + UNVERIFIED`：声称完成，但公开证据尚未验证真实结果。
+- `DELIVERED + PUBLICLY_VERIFIED`：当前 session 的 participant-visible evidence 明确验证真实结果或 milestone。
 
-When over the active limit, retain items with the strongest current decision relevance: explicit commitment, near checkpoint, active blocker, or verified review linkage. If the limit is full and a more relevant item appears, replace the least relevant item only when public evidence supports that judgment; close or retire it as appropriate and preserve its identity as retired. Three genuinely active items are valid; never reduce `n` just to avoid saturation.
+成功的 MCP / `take_action` receipt 只证明工具执行，不证明 career result。
 
-For every fresh observation, emit one current bounded same-session Delivery state after Board and before Planning. If evidence changed, update it; otherwise carry forward only the previously supported same-session state. If no review-relevant item remains, emit the explicit empty state. `NO_CHANGE` may describe the transition, but must not replace the current state when an item exists. After recovery, mark unrecoverable fields `UNKNOWN`.
+generic praise、普通 promotion/review、成功沟通、action receipt、未来承诺都不能单独验证交付。
 
-Summarize the current state with one compact marker for the most decision-relevant item:
+`recognition_link=1` 仅在公开证据明确把 recognition 与该 item 的结果关联时使用；否则 `0` 或 `?`。
+
+## 与 Review / Recovery 的关系
+
+如果高价值 active item 接近公开 checkpoint：
+
+- Planning 可以把完成或验证它作为 `RECOVERY=DELIVERY` 或普通 Advance 路径；
+- 本 Skill 只报告 lifecycle，不决定是否继续投入。
+
+context recovery 后，只恢复 fresh same-session public evidence 能支持的 item。无法恢复的 stage / proof / recognition 写 `UNKNOWN`。
+
+## Bound
+
+保留：
+
+- 最多 3 个 active items；
+- 最多 1 个与当前 Review objective 直接相关的 recent closed item。
+
+active item 必须仍有公开证据支持 unresolved commitment、work in progress、blocker、near checkpoint 或 review linkage。
+
+超过 active limit 时，仅按当前决策相关性保留：明确 commitment、near checkpoint、active blocker、verified review linkage。不要为了降低 `n` 人为删除真实 active item。
+
+## 输出
+
+每次 fresh Board 后输出当前完整 bounded Delivery state，并给最相关 item 一个 marker：
 
 ```text
 [DL i=<NONE|D#|UNKNOWN> n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<0|1|?> recognition=<0|1|?>]
 ```
 
-`n` counts retained active review-relevant items. `i` identifies the marker's focus item and must map to exactly one item in the current-session Delivery state. The optional recent `CLOSED` item is not active and is never the action-note focus. With `n=0`, use `i=NONE focus=NONE evidence=NA checkpoint=0 recognition=0`. Set a flag to `1` only from current-session evidence linked to that item; use `?` when its status cannot be recovered. Keep descriptions, proof text, and hidden/internal fields or values out of the marker. The marker records existing Delivery evidence; it does not itself trigger the pre-first-review result-realization prior or change Planning's ranking.
+- `n` = active item 数量；
+- `i` 必须映射到当前 Delivery state 中唯一 item；
+- recent `CLOSED` item 不计入 `n`，也不能成为 action-note focus；
+- `n=0` 时使用 `i=NONE focus=NONE evidence=NA checkpoint=0 recognition=0`。
 
-## Ownership
+marker 只记录现有 Delivery evidence，不自动改变 Planning ranking。
 
-- Board owns public facts.
-- Planning owns objective, gap, and candidate ranking.
-- Risk owns final candidate risk review.
-- Delivery owns only lifecycle state.
+## 不变量
 
-Use current-session public evidence only. Do not use hidden state, another game, or durable cross-game memory.
-
-Can Submit Action: No. Do not call `new_game`, `observe`, or `take_action`.
+- current-session public evidence only。
+- 不使用 hidden state、其它 game 或 durable cross-game memory。
+- 不等待 Planning 重新计算才能维护已存在 lifecycle；但绝不自行创建 Objective / `Primary Gap`。
+- **Can Submit Action: No.**
+- 不调用 `new_game`、`observe` 或 `take_action`。

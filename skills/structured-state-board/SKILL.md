@@ -1,61 +1,128 @@
 ---
 name: structured-state-board
-description: "Use after every fresh observe and during same-session recovery to normalize public state, formal review evidence, unresolved failure-direction signals, and up to two attributable recent effects. Facts only: do not plan, infer hidden rules, assess risk, or submit actions."
+description: "Use after every fresh observe and during same-session recovery. 将当前局公开状态、正式 Review、未解除重大警告，以及当前 Level 下 Skill/Network/Output 的可归因响应整理成唯一紧凑 Board；只记录事实，不规划、不评估候选风险、不推断隐藏规则、不提交动作。"
 ---
 
-# Structured State Board
+# Structured State Board｜结构化状态板
 
-## Contract
+## 职责
 
-Input:
-- latest fresh `observe`;
-- confirmed result of the immediately preceding action;
-- same-session public logs only when recovery requires them.
+本 Skill 是当前游戏 session 的事实层。只负责整理：
 
-Output one compact replacement board:
+- 当前公开状态；
+- 最新正式 `Review / promotion / no-advance`；
+- 尚未解除的重大公开约束；
+- 当前 Level 下 `Skill / Network / Output` 的可归因成长响应；
+- 仍无法确认的决策相关事实。
+
+禁止：制定战略目标、排序合法选项、执行 Risk gate、推断隐藏机制、提交动作。
+
+## 输入
+
+只使用：
+
+- 最新 fresh `observe`；
+- 紧邻前一动作的已确认公开结果；
+- 当前 session 的上一版 Board；
+- recovery 必要时的少量同局公开日志。
+
+禁止使用其他 game、隐藏字段、数据库、局后取证结论或跨局记忆。
+
+## 输出
+
+每次输出完整替换 Board：
 
 ```text
 SESSION: <game_session_id> | M=<month> Q=<quarter>
 STATE: H=<Health> D=<Dignity> S=<Skill> N=<Network> O=<Output> W=<Wealth> L=<Level> E=<Energy>
-TENURE: <public field/value | UNKNOWN>
+TENURE: <public value | UNKNOWN>
 REVIEW: <latest formal grade/feedback/promotion/no-advance | none>
-PROGRESSION_RESPONSE:
-  S=<GAIN|NO_GAIN|UNKNOWN>
-  N=<GAIN|NO_GAIN|UNKNOWN>
-  O=<GAIN|NO_GAIN|UNKNOWN>
-  LEVEL=<current Level>
-STICKY: <unresolved public warning(s) | none>
+PROGRESSION_RESPONSE: S=<GAIN|NO_GAIN|UNKNOWN> N=<GAIN|NO_GAIN|UNKNOWN> O=<GAIN|NO_GAIN|UNKNOWN> LEVEL=<Level>
+STICKY: <unresolved binding public warning(s) | none>
 EFFECTS: <up to 2 attributable recent effects | none>
 UNKNOWN: <decision-relevant unresolved facts | none>
 ```
 
-## Procedure
+## STATE
 
-1. Verify `game_session_id` and freshness. Discard stale or cross-session context.
-2. Construct a public evidence view before returning facts to Planning or Risk. Copy `Health`, `Dignity`, `Skill`, `Network`, `Output`, `Wealth`, `Level`, and `Energy` directly from the latest fresh participant-visible `current_state.status`; copy public time and `duration_in_level` from that observation. Preserve each reported value and precision. If a field is missing or its public status is unclear, write `UNKNOWN`.
-3. Never calculate, round, predict, reconcile, or replace a `STATE` value using salary/bonus text, events, advertised effects, previous observations, or action notes. Keep relevant public salary or event information as a separate fact; wait for a fresh observation to update `STATE`.
-4. Preserve the latest formal review, promotion, or no-advance evidence.
-5. Keep a public fact in `STICKY` only while fresh evidence shows an unresolved material warning, condition, or continuity problem, including:
-   - an affordability / income-continuity crisis;
-   - an explicit material Health or Dignity warning;
-   - an explicit participant-visible material dismissal or job-continuity threat;
-   - sustained Network isolation or an explicit isolation warning;
-   - an accident, trust, compliance, confidentiality, or safety warning;
-   - a clearly depleted public resource when public evidence establishes that normal activity is infeasible.
-   A poor grade, no-advance result, or ordinary performance deficit alone stays in `REVIEW` as a Planning progression problem; it does not create binding `STICKY` state. Performance evidence enters `STICKY` only when participant-visible feedback explicitly states a material dismissal or job-continuity threat.
-   A numeric fluctuation or ordinary one-step decline alone remains a `STATE` observation; it does not create a binding `STICKY` warning.
-6. An explicit current acute physical or psychological symptom, or material safety warning, is decision-relevant and must enter `STICKY` even when numeric status appears adequate. Keep it unresolved until fresh public evidence explicitly indicates resolution or the risk-bearing situation has ended. Ordinary fatigue, workload, uncertainty, or mild soft cost alone does not create a binding warning.
-7. Keep at most the last two formal review checkpoints.
-8. Maintain `PROGRESSION_RESPONSE` independently for Skill (`S`), Network (`N`), and Output (`O`) at the current public Level. If the session or Level changed, reset all three responses to `UNKNOWN`. Otherwise carry forward each untouched dimension from the preceding same-session Board. For each dimension explicitly advertised as a positive change by the immediately preceding confirmed legal action, compare the public value with its preceding observation: record `GAIN` if it increased and `NO_GAIN` if it stayed unchanged only when the fresh observe cleanly separates that action from salary, review, promotion, unrelated events, and intervening actions; otherwise record `UNKNOWN`. A later clean advertised gain overwrites `NO_GAIN`. Never infer a cap, threshold, formula, eligibility, or hidden cause.
-9. Keep at most two recent effects. Attribute a state change only when one confirmed action is followed by a fresh observe and the public evidence separates its effect from other causes. A salary, bonus, review, promotion, unrelated event, or intervening action contaminates attribution; report `EFFECTS: UNKNOWN / MIXED` rather than assigning the combined delta to one action. `PROGRESSION_RESPONSE` is the compact long-lived current-Level carrier; keep `EFFECTS` bounded.
-10. On recovery, verify the same session and rebuild this replacement Board from a fresh observe first; consult only a small amount of same-session public log history if required. Reconstruct progression responses only from bounded same-session public evidence; otherwise mark them `UNKNOWN`. Mark missing public review evidence `UNKNOWN`; do not carry a stale Board forward.
+1. 先确认 `game_session_id` 与 freshness。session 不匹配时丢弃旧 Board。
+2. `STATE` 只从最新参与者可见的 `current_state.status` 直接复制，保持原值与精度。
+3. 字段缺失或公开身份不明确时写 `UNKNOWN`。
+4. 不根据工资、bonus、事件描述、advertised effect、旧观察或 action notes 计算、补全、修正或预测 `STATE`。
+5. 其它公开信息如有价值，作为独立事实保留；等待 fresh observe 更新 `STATE`。
 
-## Invariants
+## REVIEW 与 STICKY
 
-- Separate observed facts from `UNKNOWN`.
-- Exclude `HiddenRisk`, hidden counters, internal score components, internal event identifiers/effects, and other non-public or public-status-unclear fields, even if a tool payload includes numeric `status_updates`. Never copy their values into the Board, CTRL notes, or action rationale; `EXCLUDE_FROM_STRATEGY until verified public`.
-- Downstream Planning/Risk receive the whitelisted Board plus participant-visible event and legal-choice semantics only. When raw tool payloads also contain prohibited or public-status-unclear numeric fields, ignore them at source; never quote, compare, summarize, or reason from their values in visible reasoning, plan, candidate reason, Risk reason, CTRL, or DL.
-- Do not infer thresholds, counters, caps, hidden risk, or causal rules.
-- Do not use other games, database contents, or post-game forensic artifacts.
-- Do not accumulate a transcript.
-- Can Submit Action: No.
+`REVIEW` 保存最新正式绩效、晋升、未晋升及公开反馈。
+
+以下内容单独不能形成 binding `STICKY`：
+
+- 低绩效；
+- `no-promotion`；
+- 普通绩效不足；
+- Skill / Network / Output 偏弱；
+- 一次数值下降；
+- 普通工作负荷、疲劳或不确定性。
+
+这些属于 Planning 的 progression 问题。
+
+只有 fresh public evidence 明确显示尚未解除的重大约束时才进入 `STICKY`，例如：
+
+- affordability / income-continuity crisis；
+- 明确重大 Health / Dignity warning；
+- 明确 dismissal / job-continuity threat；
+- 明确严重 Network isolation，且公开文本说明其已经威胁 job continuity / trust；
+- material accident / trust / compliance / confidentiality / safety crisis；
+- 公开资源明显枯竭，且正常活动已不可行。
+
+acute physical / psychological / safety warning 必须进入 `STICKY`，即使公开数值看起来尚可。
+
+只有 fresh public evidence 明确表明约束已解除，或对应风险场景已经结束，才移出 `STICKY`。
+
+## PROGRESSION_RESPONSE
+
+目的：保留“当前 Level 下，该成长维度最近一次可归因投入是否真实生效”的事实；不得推断 cap。
+
+分别维护 `S / N / O`：
+
+- `GAIN`：某合法动作公开说明会正向影响该维度，且紧邻 fresh observe 中该维度真实增加；
+- `NO_GAIN`：满足清晰归因条件，但该维度保持不变；
+- `UNKNOWN`：未测试、证据缺失或存在混杂。
+
+规则：
+
+1. 只有“紧邻动作 → fresh observe”，且不存在 review、promotion、salary、无关事件或其它动作混杂时才更新。
+2. 只更新该动作明确涉及的维度；其它维度沿用上一版同局 Board。
+3. 后续 clean `GAIN` 覆盖旧 `NO_GAIN`。
+4. Level 改变时，`S/N/O` 全部重置为 `UNKNOWN`。
+5. session 改变时全部重置。
+6. `NO_GAIN` 只说明当前 Level/context 下最近一次可归因投入未产生该公开增长；不得推断 cap、threshold、formula、eligibility 或 hidden cause。
+
+## EFFECTS
+
+最多保留两个 recent effects。
+
+只有清晰归因时记录具体 effect。若存在 salary、review、promotion、无关 event 或其它 plausible cause，写：
+
+`EFFECTS: UNKNOWN / MIXED`
+
+`PROGRESSION_RESPONSE` 是 current-Level 的紧凑事实载体；`EFFECTS` 只保存最近局部变化。
+
+## Recovery
+
+出现 resume / compaction / recovery 后：
+
+1. 确认仍为同一 `game_session_id`；
+2. 先 fresh observe；
+3. 重建 `STATE / REVIEW / STICKY`；
+4. 仅在必要时读取少量同局公开历史，重建 `PROGRESSION_RESPONSE / EFFECTS`；
+5. 无法可靠恢复的字段写 `UNKNOWN`；
+6. 不沿用无法验证的旧 Board。
+
+## 不变量
+
+- observed fact 与 `UNKNOWN` 必须分开。
+- `HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear numeric fields 一律 `EXCLUDE_FROM_STRATEGY`。
+- 不引用、不比较、不总结、不记忆上述受限值。
+- 不累积完整 transcript。
+- **Can Submit Action: No.**
