@@ -151,3 +151,15 @@
 - S07-37 implements one low-confidence score hypothesis from S07-35: before the first formal review, in `MODE=A` without a binding public constraint, Planning may prefer a legal action that makes an existing current-session, public-evidence-backed commitment/result visible or verifiable over a generic workload push lacking stronger result evidence. A menu label alone cannot trigger it; publicly verified results are not repackaged. Formal feedback, a material constraint, an invalid/blocked commitment, or public verification ends the prior.
 - This is not a fixed report action, Energy distribution, Output target, promotion threshold, or event-title lookup. Delivery's existing `stage / evidence_status / recognition_link / next_checkpoint` contract supplies the evidence, so its lifecycle and Board/Risk ownership remain unchanged. The v7h public-evidence whitelist, internal-field exclusion, context recovery gate, and action preflight are preserved.
 - `candidate-v7i-pre-review-result-realization-probe` is `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED` with all validation flags false. No score benefit or gameplay adherence is proven; no earlier Candidate validation transfers. `NEXT_GAME = NOT_AUTHORIZED`; S07 remains ACTIVE.
+
+
+## AD-009 — S07 closeout and S08 runtime-persistence boundary
+
+- Main closes S07 as `PASS_WITH_KNOWN_RUNTIME_PERSISTENCE_LIMITATION`. Stable 80+, score improvement, v7n runtime validation, and hidden-test transfer remain unproven.
+- Current handoff Candidate remains `candidate-v7n-public-state-delivery-constraint-hardening`; S07-50 experimental rewrite copies remain isolated and are not integrated.
+- S07-51R's `max_continuations` stop is classified as a whole-game execution-round persistence / continuation-efficiency bottleneck. It is not treated as a natural CareerSim failure, transport failure, or permission to modify the frozen Runner.
+- Frozen Runner behavior is part of the runtime contract: `MAX_CONTINUATIONS=20`; nonterminal `e2a.complete` boundaries consume continuation budget. A valid 48-month candidate under the same Runner proves that the limit itself does not prevent completion when execution rounds make sufficient progress.
+- `DECISION_CLOSED` / one-observe-one-planning-pass is a local decision-control contract, not permission to end the whole CareerSim task. Whether current authoring causes JiuwenSwarm to emit `e2a.complete` too frequently is a hypothesis requiring offline round-boundary forensics before any patch.
+- S08 is `S08-Lab｜整局持续执行与回合效率`. Its first task is offline-only continuation-round forensic comparison; no provider, service, MCP, game, Candidate change, or Runner modification is authorized by this decision.
+- Team/Swarm, durable Memory, fifth Skill, and score-directed policy redesign remain deferred until the runtime-persistence bottleneck is resolved or disproven.
+- `NEXT_GAME = NOT_AUTHORIZED`.
