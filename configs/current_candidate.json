@@ -124,8 +124,8 @@
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": false,
-    "provider_validated": false,
+    "gameplay_validated": true,
+    "provider_validated": true,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,

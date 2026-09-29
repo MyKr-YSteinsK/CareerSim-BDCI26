@@ -177,6 +177,16 @@ See [the full S08-RUN01 validation record](runs/v7o-run1-validation.md).
 
 See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 
+## S08-RUN03 v7t Run #1
+
+- **Classification / identity:** `VALID_48M_COMPLETION`; Candidate `candidate-v7t-execution-semantic-repair`, parent v7s; launch base `main@e4ec82958ccfcac23ca8b28af14e69be1c470fa2`; Runner SHA `f61c738c72e51b77298cc1c14c7c6ebf4b6c527d`; one fresh session, score report/transcript/events identity match.
+- **Outcome:** `65.71 / 46.00 / 48m / B / L5`; promotions M6 L1→L2, M12 L2→L3, M30 L3→L4, M48 L4→L5. This restores the early M6/M12 chain partially, but L4 arrived at M30, not M18. Score comparisons to prior runs are descriptive only; no score/survival improvement claim, L6 evidence or stable-80+ claim.
+- **Recovery / strategy:** public Health 3→5→7 used two S actions then returned to A; two bounded HR-warning cleanups followed qualifying public warnings and returned to mainline. A=205, S=2 (0.97%); no long-term S deadlock. M42 had three successive L4 Output choices at 26→26, so `NO_GAIN_ROUTING=NOT_SUPPORTED`. Early promotion=`PARTIALLY_RESTORED`; failure recovery=`PARTIALLY_EFFECTIVE`; MODE control=`SUPPORTED`; Delivery recovery=`INCONCLUSIVE`; Risk cleanup=`SUPPORTED`.
+- **Adherence / audit:** 207 successful actions, 0 failures, 190 observes. Eighteen per-action fresh-observe boundaries were missing across nine quarterly-energy windows; `CTRL_CLOSURE_FAIL` (`X=0` on all 207); Delivery marker coverage `0/207` valid. Compression/recovery UNKNOWN because no safe run-window `llm.log` slice was supplied to the one-pass post-run audit. These are material runtime limitations; `runtime_validated=false` and `long_horizon_adherence=false` remain.
+- **Efficiency / cleanup:** input 38,690,418; output 200,839; total 38,891,257; wall 21m27.957s; actual billed cost UNKNOWN. One Runner invocation and service lifecycle; stop exited 0 and all four listeners were released. No provider probe, game intervention, retry or replacement run.
+- **Evidence:** secret scan and core session-consistency check passed. [S08-RUN03 archive](../../artifacts/dev-runs/s08-run03-v7t/) contains exact events, transcript, score report, an explicitly reconstructed Runner result (Runner emitted no separate result file), one-pass post-run summary and manifest. `FORENSIC_HOLD=ACTIVE` pending Main/Stage review. Full checkpoints, progression pairs, hashes and limitations are in [v7t Run #1 validation](runs/v7t-run1-validation.md).
+- **Candidate / authorization:** `gameplay_validated=true`, `provider_validated=true` for this session only; runtime, long-horizon, improvement, stable-80+, and hidden-transfer flags remain false. No Candidate/Skill/manifest/Runner/dependency/retry patch was made. Decision=`V7T_RUN_ACCEPTED_RECOVERY_REVIEW`; authorization consumed; `NEXT_GAME=NOT_AUTHORIZED`; no replacement run authorized.
+
 ## Cross-run limits
 
 - Candidate v1 had two runs: quantitative spread 40.73, partial-score spread 28.51, survival spread 23 months. This is observed high variance, not a causal estimate or statistically stable performance claim.

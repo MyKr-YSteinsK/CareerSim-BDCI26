@@ -1,0 +1,16 @@
+{
+  "source_status": "RECONSTRUCTED_FROM_INTERACTIVE_RUNNER_STDOUT",
+  "runner_emitted_separate_result_file": false,
+  "exit_code": 0,
+  "termination_reason": null,
+  "submission_name": "local-s06-adaptive-controller",
+  "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T171757Z",
+  "events_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T171757Z\\events-20260929T171757Z.jsonl",
+  "transcript_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T171757Z\\transcript-20260929T171757Z.log",
+  "outcome": "completed",
+  "completed": true,
+  "survival_months": 48,
+  "quantitative_score": 65.71,
+  "competition_partial_score": 46.0,
+  "grade": "B"
+}
