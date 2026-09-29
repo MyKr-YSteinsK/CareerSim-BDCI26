@@ -135,6 +135,12 @@
 - **Failure interpretation:** primary INSUFFICIENT_EVIDENCE. Client socket abort/no close frame precedes the logged service model-stream error; exact initiator UNKNOWN. Read-only status-query causality has NO_DIRECT_MECHANISM_FOUND, and fresh gameplay continued to M20 afterward. Existing cleanup PASS retained. S07-47 recommendation: STATIC_PATCH_JUSTIFIED_BEFORE_RETRY, pending Main, without game authorization.
 - **Validation flags / review:** `provider_validated=false`, `gameplay_validated=false`, `runtime_validated=false`, `long_horizon_adherence=false`, and all improvement/transfer flags remain false. `configs/current_candidate.json` was left unchanged because this attempt does not meet any validation threshold. `next_game_authorized=false`; S07 remains ACTIVE and is pending Main review. S07-38 `FORENSIC_HOLD` was not modified.
 
+## S07-51 v7n Run #1 attempt
+
+- **Classification:** `TECHNICAL_PRE_GAME_FAILURE`. One authorized service lifecycle reached readiness and was gracefully stopped once (stop exit `0`; manager `stopped`; ports `19092`, `20000`, `20001`, `6173` released). One Runner `play` invocation failed before WebSocket connection or `new_game`: `resolve_instance_ws_url()` could not spawn bare-name `jiuwenswarm-start --list` (`FileNotFoundError`, WinError 2). No retry or second lifecycle occurred.
+- **Identity / evidence:** base `main@4e6c68a12bdd8ad36d7ffecd5b074eab92ce70a9`; Candidate `candidate-v7n-public-state-delivery-constraint-hardening`, parent v7m. No fresh game session, current events/transcript/output directory, or score exists. The old Runner output pointer was excluded. Detailed evidence and local capture hashes are in [v7n Run #1 validation](runs/v7n-run1-validation.md); raw captures remain under `.local/runtime/s07-51-v7n-run1/`.
+- **Validation / next step:** provider/gameplay/runtime and all Skill audits remain unvalidated; Candidate identity and validation flags are unchanged. The S07-51 Runner-play allowance is consumed; `NEXT_GAME=NOT_AUTHORIZED` pending a separate Main Game Gate.
+
 ## Cross-run limits
 
 - Candidate v1 had two runs: quantitative spread 40.73, partial-score spread 28.51, survival spread 23 months. This is observed high variance, not a causal estimate or statistically stable performance claim.
