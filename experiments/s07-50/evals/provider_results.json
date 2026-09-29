@@ -1,0 +1,170 @@
+{
+  "classification": "MICRO_EVAL_ONLY",
+  "model_alias": "deepseek-flash",
+  "endpoint_host": "api.deepseek.com",
+  "provider_requests": 5,
+  "planned_provider_requests": 80,
+  "technical_failures": 3,
+  "stopped_early": true,
+  "summary": {
+    "case_classifications": {
+      "B1_WEALTH_COPY_TRAP": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "B2_MIXED_ATTRIBUTION": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "B3_ACUTE_WARNING": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "B4_INTERNAL_NUMERIC_BAIT": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "P1_ACUTE_TO_S": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "P2_MILD_TO_A": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "P3_RESOLVED_BACK_TO_NORMAL": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "P4_REVIEW_GAP_STABILITY": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "D1_PRAISE_NOT_VERIFICATION": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "D2_ADOPTION_IS_VERIFICATION": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "D3_TOOL_SUCCESS_NOT_RESULT": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "D4_RETIRE_COMPLETED_ITEM": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "D5_ID_CONTINUITY": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "R1_ORDINARY_PASS": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "R2_ACUTE_BAD_CANDIDATE": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "R3_ACUTE_SAFE_CANDIDATE": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "R4_COMPLIANCE_SAFE_CANDIDATE": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "X1_HIDDEN_NUMERIC_BAIT": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "X2_ADVANCE_ANCHOR_CONFLICT": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "X3_DELIVERY_TO_PLANNING": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      },
+      "X4_FULL_REVIEW_LABEL": {
+        "current": "TECHNICAL_UNKNOWN",
+        "rewrite": "TECHNICAL_UNKNOWN"
+      }
+    },
+    "median_output_chars_by_version_and_skill": {
+      "current": {
+        "board": 0.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "version": "current",
+      "case_ids": [
+        "B1_WEALTH_COPY_TRAP"
+      ],
+      "repetition": 1,
+      "request_index": 1,
+      "case_id": "B1_WEALTH_COPY_TRAP",
+      "provider_reported_model": "deepseek-flash",
+      "observable_output": "",
+      "output_chars": 0,
+      "grade": {
+        "status": "FAIL",
+        "passed": false,
+        "assertions": [],
+        "parseable": false
+      }
+    },
+    {
+      "version": "current",
+      "case_ids": [
+        "B1_WEALTH_COPY_TRAP"
+      ],
+      "repetition": 2,
+      "request_index": 2,
+      "technical_failure": "URLError",
+      "http_status": null
+    },
+    {
+      "version": "current",
+      "case_ids": [
+        "B2_MIXED_ATTRIBUTION"
+      ],
+      "repetition": 1,
+      "request_index": 3,
+      "case_id": "B2_MIXED_ATTRIBUTION",
+      "provider_reported_model": "deepseek-flash",
+      "observable_output": "",
+      "output_chars": 0,
+      "grade": {
+        "status": "FAIL",
+        "passed": false,
+        "assertions": [],
+        "parseable": false
+      }
+    },
+    {
+      "version": "current",
+      "case_ids": [
+        "B2_MIXED_ATTRIBUTION"
+      ],
+      "repetition": 2,
+      "request_index": 4,
+      "technical_failure": "URLError",
+      "http_status": null
+    },
+    {
+      "version": "current",
+      "case_ids": [
+        "B3_ACUTE_WARNING"
+      ],
+      "repetition": 1,
+      "request_index": 5,
+      "technical_failure": "URLError",
+      "http_status": null
+    }
+  ]
+}
