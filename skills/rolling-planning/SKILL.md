@@ -29,7 +29,7 @@ RECOVERY = <NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN>
 
 ## 证据优先级
 
-只使用同局白名单 Board、Delivery、正式 Review、公开合法选项、Handbook 与已确认公开结果。
+只使用同局白名单 Board、Delivery、正式 Review、最新 fresh observe 中参与者可见的 event 描述与合法 choice 语义、公开合法选项、Handbook 与已确认公开结果。
 
 progression 判断优先级：
 
@@ -98,7 +98,7 @@ Review Window：
 - 在下一 Review 前允许一次 bounded cleanup 作为高优先候选；
 - 只有风险升级为 material survival / job-continuity / trust / compliance / confidentiality crisis 时才进入 `MODE=S`。
 
-退出：完成一次 cleanup 后 fresh observe；没有新 warning 时回主线；没有新证据不得连续 cleanup。
+退出：完成一次 cleanup 后必须 fresh observe，并默认回长期主线。只有后续 fresh public evidence 明确表明同一风险仍未解除/再次 elevated，或出现新的同类 warning，才允许再次 cleanup；无关的新 evidence 不得重置限制。
 
 ### `DELIVERY`
 
@@ -113,6 +113,8 @@ Review Window：
 退出：item `DELIVERED + PUBLICLY_VERIFIED`；commitment 公开取消/被替代；或 fresh evidence 表明继续投入已不是最佳 Review path。
 
 ## MODE
+
+判断 MODE 前，必须结合 Board 与当前 participant-visible event/choice 语义判断是否存在尚未解除的 binding constraint；不得只根据状态数字或旧 Review 判断。
 
 以下内容单独不能触发 `MODE=S`：
 
@@ -140,7 +142,7 @@ Review Window：
 1. multidimensional action 中，一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值。
 2. 有仍有响应的合法路径时，不立即重复同一个 no-gain 投入只为再次确认。
 3. Level change 后所有 response 重新开放。
-4. non-specific Review 下，不得长期饿死 Skill / Network / Output 中某一维；specific feedback 可以集中投入。
+4. non-specific Review 下，只对当前 `GAIN/UNKNOWN` 的 Skill / Network / Output 维度维持 coverage；不得因另一维最近更显著而长期忽略仍为 `GAIN/UNKNOWN` 的维度。当前 Level 的 `NO_GAIN` 维度不受 coverage 义务约束，直到 Level change 或后续 clean `GAIN` 重置/覆盖。specific feedback 可以集中投入，但不得依赖 hidden threshold/cap。
 5. 不设固定比例、固定 target、隐藏阈值。
 6. Skill 不因 terminal-score saturation 假设被降权；它始终可能具有 promotion value。
 

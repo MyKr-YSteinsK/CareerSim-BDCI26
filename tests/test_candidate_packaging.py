@@ -56,7 +56,7 @@ def test_candidate_bundle_is_deterministic_and_matches_runner_contract(tmp_path:
     assert (first / "manifest.json").read_bytes() == manifest_bytes
     manifest = json.loads(manifest_bytes.decode("utf-8"))
     assert manifest["mode"] == "agent"
-    assert manifest["name"] == "candidate-v7s-zh-recovery-controller"
+    assert manifest["name"] == "candidate-v7t-execution-semantic-repair"
     assert manifest["instruction"]
     assert set(list_bundle_skill_ids(first)) == EXPECTED_SKILLS
     for name in EXPECTED_SKILLS:

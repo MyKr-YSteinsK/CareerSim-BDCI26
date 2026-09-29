@@ -1,4 +1,4 @@
-"""Static identity and semantic-contract checks for the v7s Candidate."""
+"""Static identity and semantic-contract checks for the v7t Candidate."""
 
 import hashlib
 import json
@@ -9,9 +9,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "ea7a6fbf14c346418e23fe86a438c5c2c193b6f3"
-PARENT_CANDIDATE_ID = "candidate-v7r-early-promotion-rescue"
-CURRENT_CANDIDATE_ID = "candidate-v7s-zh-recovery-controller"
+BASE_MAIN_SHA = "3060c63142f9ad2489d08399fc750a23ff3244e8"
+PARENT_CANDIDATE_ID = "candidate-v7s-zh-recovery-controller"
+CURRENT_CANDIDATE_ID = "candidate-v7t-execution-semantic-repair"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -72,7 +72,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S08_08_ZH_EXECUTABLE_RECOVERY_CONTRACTS"
+    assert candidate["decision"] == "S08_08R_EXECUTION_SEMANTIC_REPAIR"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -98,11 +98,12 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
+    assert candidate["strategy_delta"] == "EXECUTION_CONTRACT_AMBIGUITY_REPAIR_ONLY"
+    assert candidate["design_intent"] == "HIGH_CEILING_WITH_RECOVERABLE_FAILURE_FLOOR"
     assert candidate["runtime_contract_delta"] == [
-        "ZH_PRIMARY_RUNTIME_PROSE",
-        "EXPLICIT_FAILURE_RECOVERY_STATE",
-        "MULTI_SKILL_HANDOFF_CLARIFICATION",
-        "MULTI_DIMENSION_PROMOTION_COVERAGE",
+        "CURRENT_EVENT_SEMANTICS_EXPLICIT",
+        "NO_GAIN_COVERAGE_DISAMBIGUATION",
+        "BOUNDED_CLEANUP_RETRIGGER_HARDENING",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -209,6 +210,32 @@ def test_progression_response_tracks_clean_gain_no_gain_reset_and_multidimension
     assert "Skill 不因 terminal-score saturation 假设被降权" in routing
 
 
+def test_non_specific_coverage_exempts_current_level_no_gain_until_reset() -> None:
+    planning = _skill("rolling-planning")
+    routing = _section(planning, "## Progression Routing", "## Ranking")
+
+    assert "只对当前 `GAIN/UNKNOWN` 的 Skill / Network / Output 维度维持 coverage" in routing
+    assert "不得因另一维最近更显著而长期忽略仍为 `GAIN/UNKNOWN` 的维度" in routing
+    assert "当前 Level 的 `NO_GAIN` 维度不受 coverage 义务约束" in routing
+    assert "直到 Level change 或后续 clean `GAIN` 重置/覆盖" in routing
+    scenario = {"S": "GAIN", "N": "UNKNOWN", "O": "NO_GAIN"}
+    coverage_candidates = {
+        dimension for dimension, response in scenario.items() if response in {"GAIN", "UNKNOWN"}
+    }
+    assert coverage_candidates == {"S", "N"}
+    assert "O" not in coverage_candidates
+    after_clean_gain = {**scenario, "O": "GAIN"}
+    assert "O" in {
+        dimension for dimension, response in after_clean_gain.items() if response in {"GAIN", "UNKNOWN"}
+    }
+    after_level_change = dict.fromkeys(scenario, "UNKNOWN")
+    assert set(after_level_change) == {
+        dimension
+        for dimension, response in after_level_change.items()
+        if response in {"GAIN", "UNKNOWN"}
+    }
+
+
 def test_review_window_preserves_promotion_readiness_and_checkpoint() -> None:
     planning = _skill("rolling-planning")
     review_window = _section(planning, "## 长期规划一致性", "## Failure Recovery Contract")
@@ -222,14 +249,37 @@ def test_review_window_preserves_promotion_readiness_and_checkpoint() -> None:
 def test_risk_recovery_cleanup_is_bounded_and_risk_does_not_replan() -> None:
     planning = _skill("rolling-planning")
     risk = _skill("risk-review")
+    manifest = _json("configs/runtime_manifest.json")["instruction"]
     cleanup = _section(planning, "### `RISK`", "### `DELIVERY`")
     assert "fresh public warning 明确表示风险 elevated / accumulating / needs handling" in cleanup
     assert "存在明确 reparative legal option" in cleanup
     assert "一次 bounded cleanup" in cleanup
-    assert "没有新证据不得连续 cleanup" in cleanup
+    assert "完成一次 cleanup 后必须 fresh observe，并默认回长期主线" in cleanup
+    assert "同一风险仍未解除/再次 elevated" in cleanup
+    assert "出现新的同类 warning" in cleanup
+    assert "无关的新 evidence 不得重置限制" in cleanup
+    assert "在下一 Review 前允许一次 bounded cleanup" in cleanup
+    cleanup_exit = (
+        "完成一次 cleanup 后必须 fresh observe，并默认回长期主线。只有后续 fresh public evidence "
+        "明确表明同一风险仍未解除/再次 elevated，或出现新的同类 warning，才允许再次 cleanup；"
+        "无关的新 evidence 不得重置限制"
+    )
+    assert cleanup_exit in cleanup
+    assert cleanup_exit in manifest
     assert "只有风险升级为 material survival / job-continuity / trust / compliance / confidentiality crisis 时才进入 `MODE=S`" in cleanup
     assert "不重新做 candidate ranking" in risk
     assert "一个 public warning 允许 Planning 考虑 bounded cleanup，不等于 Risk 自动 `RECONSIDER`" in risk
+
+
+def test_planning_explicitly_uses_current_participant_visible_event_semantics() -> None:
+    planning = _skill("rolling-planning")
+    evidence = _section(planning, "## 证据优先级", "## 长期规划一致性")
+    mode = _section(planning, "## MODE", "## Progression Routing")
+
+    assert "最新 fresh observe 中参与者可见的 event 描述与合法 choice 语义" in evidence
+    assert "结合 Board 与当前 participant-visible event/choice 语义" in mode
+    assert "尚未解除的 binding constraint" in mode
+    assert "不得只根据状态数字或旧 Review 判断" in mode
 
 
 def test_delivery_tracks_before_first_review_and_receipts_do_not_verify_results() -> None:
@@ -290,8 +340,14 @@ def test_evidence_firewall_and_no_fixed_hidden_rules_are_explicit() -> None:
     assert "固定事件答案" in runtime
 
 
-def test_runner_dependencies_and_local_runtime_config_remain_frozen() -> None:
+def test_runner_and_dependency_files_remain_frozen() -> None:
     candidate = _json("configs/current_candidate.json")
+    for relative in (
+        "skills/structured-state-board/SKILL.md",
+        "skills/delivery-progress/SKILL.md",
+        "skills/risk-review/SKILL.md",
+    ):
+        assert (ROOT / relative).read_bytes() == _git_bytes(BASE_MAIN_SHA, relative)
     for relative in ("pyproject.toml", "uv.lock", "career_sim_runner"):
         changed = subprocess.check_output(
             ["git", "diff", "--name-only", BASE_MAIN_SHA, "--", relative],
@@ -302,5 +358,5 @@ def test_runner_dependencies_and_local_runtime_config_remain_frozen() -> None:
     assert candidate["runner_sha"] == "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
 
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
-    assert "Current Candidate: candidate-v7s-zh-recovery-controller" in state
+    assert f"Current Candidate: {CURRENT_CANDIDATE_ID}" in state
     assert "NEXT_GAME = NOT_AUTHORIZED" in state
