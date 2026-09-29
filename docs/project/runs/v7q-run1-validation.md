@@ -8,7 +8,9 @@
 - Parent: `candidate-v7p-score-gap-convergence`
 - Plan SHA-256: `087db83e6c74444b70a09177ca87a00468b9ca56ccdef872a59751a0ea067102`
 - Base commit: `main@0a7001e67fc4350383382039d592a2b0ceb2b964`
-- Final commit: this report is included in the final S08-RUN02 integration commit.
+- Initial evidence integration commit: `31c0501249ab4be6a82c3346039290b291fc80ef`.
+- Follow-up correction: post-push source reconciliation found the exact transcript session ID; this report records that correction without rewriting the pushed integration commit.
+- Final commit: this report's transcript-attribution correction is included in its follow-up commit.
 - Remote state: `origin/main` equals the commit containing this report (verified after push).
 - Working tree: clean after the final commit/push.
 - Fresh session: `e12d08fe0d0b4fb0b4cac12d5123839e`
@@ -28,7 +30,7 @@
 
 - The fresh session ended by natural elimination at public M24, after 24 survival months. Quantitative score `26.80`; competition partial `18.76`; grade `E`; completed=false.
 - Final public state: Level L1; Health 8; Dignity 7; Skill 9; Network 0; Output 3; Wealth 5; Energy 0.
-- Final observe and score report identify session `e12d08fe0d0b4fb0b4cac12d5123839e`; the events also contain the same session. Transcript session marker is `UNKNOWN`, so no transcript-only identity claim is made.
+- Final observe, score report, events, and the transcript's exact `SESSION` marker identify session `e12d08fe0d0b4fb0b4cac12d5123839e`.
 - Compared descriptively with v7o (`71.83`, L5, 48 months), this run is `-45.03` quantitative points, ends 24 months earlier, and finishes one observed level lower than the prior final level. Different single-run trajectories do not establish a causal score or survival effect.
 - Usage: 20,446,982 input tokens; 76,134 output; 20,523,116 total. Actual billed cost is `UNKNOWN`; Runner-reported `0.0` is not treated as billing evidence.
 
@@ -102,13 +104,13 @@ Decision: `NO_GAIN_ROUTING_NOT_SUPPORTED`. Some choices rerouted to a dimension 
 
 - `evidence-manifest.json`: 1,081 bytes; SHA-256 `9cbe6f989a194165d7f8b18c330eacd215f3100613795a9e8726e7457cfeee14`; its run-window fields are `UNKNOWN`. Exact Runner start/end are recorded above and in `.local/runtime/s08-run02/run-artifacts.json`.
 - `post_run_summary.json` records compression as unknown; raw service stdout/stderr remain local and were not archived because they are unscoped diagnostic captures. No shared database, `.env`, credentials, or unrelated sessions were archived.
-- `FORENSIC_HOLD=ACTIVE`. Reason: early natural terminal and transcript session marker/compression recovery remain `UNKNOWN` while this evidence is under Main/Stage review. Minimum held evidence is the five archived core artifacts above plus the corresponding local run-scoped originals. Window: `2026-09-29T14:08:25.530761Z`–`2026-09-29T14:18:35.580303Z`. Responsible task: `S08-RUN02`; release owner: Main/Stage after accepting the independent classification and confirming no further raw reanalysis is required. Hashing/archive completion does not release the hold.
+- `FORENSIC_HOLD=ACTIVE`. Reason: the early natural terminal remains under Main/Stage strategy review; compression/recovery are `UNKNOWN`. Session identity matches across events, transcript, and score report. Minimum held evidence is the five archived core artifacts above plus the corresponding local run-scoped originals. Window: `2026-09-29T14:08:25.530761Z`–`2026-09-29T14:18:35.580303Z`. Responsible task: `S08-RUN02`; release owner: Main/Stage after accepting the independent classification and confirming no further raw reanalysis is required. Hashing/archive completion does not release the hold.
 
 ## Repository updates and limits
 
 - `configs/current_candidate.json`: `gameplay_validated=true` and `provider_validated=true` for this session. `runtime_validated=false`; survival/score improvement, long-horizon adherence, stable-80+, hidden-test transfer, and next-game authorization remain false.
 - Candidate behavior, Skills, Runner, dependencies, retry configuration, and runtime files were not modified. S08 remains active; no Stage completion is asserted.
-- Post-edit targeted verification: the Plan-authorized suite passed **33 tests**; Candidate/evidence JSON parsing and the authored-file `git diff --check` passed. The first post-edit test run exposed one stale case-sensitive assertion; it was corrected before the final passing run. Full staged `git diff --check` flags CRLF carriage returns in the archived raw events/transcript (`-text`); byte inspection found no trailing spaces or tabs, and the evidence bytes remain unchanged per manifest. Final branch is `main`; this report is included in the single integration commit and pushed to `origin/main`.
+- Post-edit targeted verification: the Plan-authorized suite passed **33 tests**; Candidate/evidence JSON parsing and the authored-file `git diff --check` passed. The first post-edit test run exposed one stale case-sensitive assertion; it was corrected before the final passing run. Full staged `git diff --check` flags CRLF carriage returns in the archived raw events/transcript (`-text`); byte inspection found no trailing spaces or tabs, and the evidence bytes remain unchanged per manifest. The evidence integration was pushed once as `31c0501`; a documentation-only follow-up commit corrects transcript attribution after source reconciliation. Final branch is `main`; both commits are pushed to `origin/main`.
 
 ## Final decision
 
