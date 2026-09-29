@@ -16,6 +16,7 @@
 | S07-29 v7d Run #1 | candidate-v7d-strategic-continuity | 17.02 | 11.92 | 15 months | E | Valid early termination; runtime adherence failed |
 | S07-33R v7g Run #1 | candidate-v7g-compact-skill-contracts | 54.52 | 38.17 | 48 months | C | Completed; runtime and strategy adherence failed |
 | S08-RUN01 v7o Run #1 | candidate-v7o-execution-persistence-convergence | 71.83 | 50.28 | 48 months | A | Valid 48-month completion; runtime/correctness limitations |
+| S08-RUN02 v7q Run #1 | candidate-v7q-checkpoint-marginal-progression | 26.80 | 18.76 | 24 months | E | Natural terminal at M24; L1; checkpoint/no-gain limitations |
 
 ## S01-03 baseline
 
@@ -164,6 +165,17 @@
 - **Next decision:** `S08_RUN_ACCEPTED_RETURN_FOR_SCORE_AND_STRATEGY_REVIEW`.
 
 See [the full S08-RUN01 validation record](runs/v7o-run1-validation.md).
+
+## S08-RUN02 v7q Run #1
+
+- **Classification / identity:** `EARLY_NATURAL_TERMINAL`; Candidate `candidate-v7q-checkpoint-marginal-progression`, parent v7p; base `main@0a7001e67fc4350383382039d592a2b0ceb2b964`; fresh session `e12d08fe0d0b4fb0b4cac12d5123839e`; frozen Runner SHA `f61c738c72e51b77298cc1c14c7c6ebf4b6c527d`. Events and score report match the fresh session; transcript session marker is `UNKNOWN`.
+- **Outcome:** 24 survival months, quantitative `26.80`, competition partial `18.76`, grade `E`, completed=false. Final public state: L1; Health 8, Dignity 7, Skill 9, Network 0, Output 3, Wealth 5, Energy 0. Comparison to v7o's 71.83 is descriptive only; no causal score/survival claim follows.
+- **Bounded strategy audit:** formal reviews M6/M12/M18 each received grade C, remained public L1, and showed no promotion; M24 terminated before another review. First subsequent G markers were PERF/RISK, OUTPUT, PERF, and none after the terminal M24. Of 15 clean advertised quarterly Energy progression pairs, 9 gained and 6 had zero gain. Three zero-gain choices were followed by a different dimension that gained; stale Network zero-gain recurred at M12/M15. M36–M48 and L6 were not reached, so checkpoint preparation is inconclusive. Routing label: `NO_GAIN_ROUTING_NOT_SUPPORTED`.
+- **Correctness / runtime:** 97/97 actions succeeded; 98 observes; 0 action errors/unknown results; one counted completion boundary, 0 continuation sends, no `max_continuations`, and 0 Runner-boundary zero-work provider-error terminations. CTRL/DL markers were syntactically consistent 97/97, not semantic proof. No confirmed numeric-only false `MODE=S` case was found; 46 of 62 `P=S` decisions remain unclassified by the bounded lexical scan. Compression/recovery is `UNKNOWN`; the run ended naturally at M24 and elimination cause is not attributed.
+- **Cleanup / evidence:** one `career_emu` lifecycle, one fresh Runner `play` without `--continue`, one `new_game`; one graceful stop exited 0, manager confirmed stopped, and all four listeners were released. The secret/session consistency scan passed. Core archive: [S08-RUN02 evidence](../../artifacts/dev-runs/s08-run02-v7q/); local raw remains under `.local/runtime/s08-run02/` and the exact Runner output directory. Full counts and artifact hashes are in [v7q Run #1 validation](runs/v7q-run1-validation.md).
+- **Candidate / authorization:** `gameplay_validated=true` and `provider_validated=true` for this one session; runtime, improvement, long-horizon, stable-80+, and hidden-transfer flags remain false. No Candidate behavior, Skill, Runner, dependency, or runtime config was changed. `FORENSIC_HOLD=ACTIVE` pending Main/Stage evidence review. Decision=`V7Q_RUN_ACCEPTED_STRATEGY_REVIEW`; authorization consumed; `NEXT_GAME=NOT_AUTHORIZED`.
+
+See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 
 ## Cross-run limits
 

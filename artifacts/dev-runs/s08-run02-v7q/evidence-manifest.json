@@ -1,0 +1,40 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1052155,
+      "category": "core",
+      "name": "events.jsonl",
+      "sha256": "a183ac4167b21b4afe817698e9d3d431a516934d22ab8191fce8bd56b2573ae9"
+    },
+    {
+      "bytes": 132979,
+      "category": "core",
+      "name": "post_run_summary.json",
+      "sha256": "43ff6b36db04258252b7ed77059c538107767a376b683807cb81b6b13cb7a2d5"
+    },
+    {
+      "bytes": 812,
+      "category": "core",
+      "name": "runner-result.json",
+      "sha256": "47ada42a6ce37d2e97bcb8424f58a5576e5f8a3a404d1eb7ee5afadd586c1536"
+    },
+    {
+      "bytes": 2726,
+      "category": "core",
+      "name": "score_report.json",
+      "sha256": "750c0db5581ccd214c6312ed63e8637d04d19693ed120aa683c2d1abbb42ef10"
+    },
+    {
+      "bytes": 196565,
+      "category": "core",
+      "name": "transcript.log",
+      "sha256": "cab15ddb26b26049f0a3fb119b7f1d1c95e8f7a6b5628ed51997fd2d3cf1567a"
+    }
+  ],
+  "run_id": "s08-run02-v7q",
+  "run_window_utc": {
+    "end": "UNKNOWN",
+    "start": "UNKNOWN"
+  },
+  "schema_version": 1
+}

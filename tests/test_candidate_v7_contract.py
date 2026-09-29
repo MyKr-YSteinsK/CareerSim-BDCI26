@@ -145,7 +145,17 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
         "hidden_test_transfer_proven",
         "next_game_authorized",
     }
-    assert all(value is False for value in candidate["validation"].values())
+    assert candidate["validation"] == {
+        "runtime_validated": False,
+        "gameplay_validated": True,
+        "provider_validated": True,
+        "survival_improvement_proven": False,
+        "score_improvement_proven": False,
+        "long_horizon_adherence": False,
+        "stable_80_plus_proven": False,
+        "hidden_test_transfer_proven": False,
+        "next_game_authorized": False,
+    }
     assert candidate["architecture"]["skill_count"] == 4
     assert set(candidate["architecture"]["active_skills"]) == EXPECTED_SKILLS
     assert candidate["architecture"]["action_submitter"] == "Single Agent"
@@ -514,7 +524,7 @@ def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
     assert not any(term in prior.lower() for term in ("month 3", "month 6", "m3", "m6", "two reports"))
 
 
-def test_candidate_and_state_record_static_closure_without_validation_transfer() -> None:
+def test_candidate_and_state_record_session_validation_without_transfer() -> None:
     candidate = _load_json(ROOT / "configs/current_candidate.json")
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     review = (ROOT / "docs/project/reviews/S08-06_V7Q_CHECKPOINT_MARGINAL_PROGRESSION.md").read_text(encoding="utf-8")
@@ -525,7 +535,9 @@ def test_candidate_and_state_record_static_closure_without_validation_transfer()
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-48" in state and "S07-47" in state and CURRENT_CANDIDATE_ID in state
     assert current_line.startswith("- Current Candidate: candidate-v7q-checkpoint-marginal-progression")
-    assert "v7q is static and all runtime/gameplay/provider/survival/score/long-horizon/stable-80+/hidden-transfer validation flags remain false" in current_line
+    assert "one M24 early natural terminal (26.8 / 18.76 / 24 months / E)" in current_line
+    assert "gameplay/provider validation applies only to this session" in current_line
+    assert "Runtime, survival/score improvement, long-horizon, stable-80+, and hidden-transfer validation remain false" in current_line
     assert "NEXT_GAME = NOT_AUTHORIZED" in current_line
     assert candidate["strategy_delta"] == "CHECKPOINT_AWARE_MARGINAL_PROGRESSION"
     assert "V7Q_READY_FOR_GAME_GATE" in review

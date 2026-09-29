@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "candidate": "candidate-v7q-checkpoint-marginal-progression",
+  "exit_code": 0,
+  "runner_exit_code": 0,
+  "session_id": "e12d08fe0d0b4fb0b4cac12d5123839e",
+  "drive_session_id": "career-sim-runner-0d30e9871322",
+  "start_utc": "2026-09-29T14:08:25.530761+00:00",
+  "end_utc": "2026-09-29T14:18:35.580303+00:00",
+  "authorization": "CONSUMED",
+  "command": [
+    "D:\\CS\\CareerSim\\.venv\\Scripts\\python.exe",
+    "-m",
+    "career_sim_runner",
+    "play",
+    "--submission",
+    "D:\\CS\\CareerSim\\.local\\runtime\\s08-run02\\submission"
+  ],
+  "submission_dir": "D:\\CS\\CareerSim\\.local\\runtime\\s08-run02\\submission",
+  "runner_output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T140828Z"
+}
