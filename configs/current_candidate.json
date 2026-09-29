@@ -1,24 +1,24 @@
 {
-  "candidate_id": "candidate-v7o-execution-persistence-convergence",
+  "candidate_id": "candidate-v7p-score-gap-convergence",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S08_04_EXECUTION_PERSISTENCE_CONVERGENCE",
+  "decision": "S08_05_SCORE_GAP_CONVERGENCE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY",
-  "parent_candidate_id": "candidate-v7n-public-state-delivery-constraint-hardening",
-  "base_main_sha": "23b5c52cdcd18aaf3f2613654b0d9d2302343661",
+  "strategy_delta": "REVIEW_GAP_DIRECTNESS_AND_COMPRESSION_RESILIENT_KERNEL",
+  "parent_candidate_id": "candidate-v7o-execution-persistence-convergence",
+  "base_main_sha": "3fd64bead5600c2f0bab677e7b832fe3678bdf12",
   "parent_identity": {
-    "runtime_manifest_sha256": "66195dcf79ec85412ce2aea179f63ec5b2f58ac992b1136b842d7913578601a1",
-    "instruction_sha256": "f80173a59ef8483c8eb18ef29bea5ca5a56544b15cb731e3bcf78855b4d77ab6",
+    "runtime_manifest_sha256": "addcf3485836683f8a2ebe957a2105a0ca4a9d8d26bb35483ccc5109fb5d6cd9",
+    "instruction_sha256": "240413d929766033274c47efb058392e7b7cabed660733566fe2a1ab690aaaa1",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "bb6583e83c2ae8472909a543e1531543f39dbe1a"
+        "git_blob": "bb68c3e9f79885b164a8032af9d53b6c9d1ece94"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "56b6825b009ce513a64bea83ff2d44aec4748667"
+        "git_blob": "dbb527ad8a2d9c2c41de09442e4351803966f256"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "addcf3485836683f8a2ebe957a2105a0ca4a9d8d26bb35483ccc5109fb5d6cd9",
-    "instruction_sha256": "240413d929766033274c47efb058392e7b7cabed660733566fe2a1ab690aaaa1"
+    "sha256": "27146632a28f436c41f65c6324b942088e1a18097f3aa3debe9f94e642fbc334",
+    "instruction_sha256": "3ea153a93928a5c2e8b82d268836b104ae63473dafeed8dc89f76d31a6ff21fc"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "dbb527ad8a2d9c2c41de09442e4351803966f256"
+      "git_blob": "74d8c522024545e8eca32b927d1a9639924a028d"
     },
     {
       "name": "delivery-progress",
@@ -92,14 +92,17 @@
     "ONE_OBSERVE_ONE_PLANNING_PASS",
     "RISK_ONLY_BOUNDED_RECONSIDER",
     "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
-    "CURRENT_DELIVERY_SNAPSHOT_MARKER"
+    "CURRENT_DELIVERY_SNAPSHOT_MARKER",
+    "COMPRESSION_RESILIENT_CRITICAL_KERNEL",
+    "OBSERVABLE_RECOVERY_SIGNAL_BEST_EFFORT",
+    "DIRECT_PROGRESSION_ON_NON_SPECIFIC_REVIEW",
+    "QUALITATIVE_SKILL_SATURATION_PRIORITY"
   ],
   "runtime_contract_delta": [
-    "WHOLE_GAME_EXECUTION_PERSISTENCE",
-    "MANIFEST_SEMANTIC_DEDUPLICATION",
-    "NORMAL_FLOW_NO_SKILL_REREAD",
-    "HIDDEN_FIELD_SALIENCE_HARDENING",
-    "NUMERIC_STATE_NOT_AUTOMATIC_BINDING_CONSTRAINT"
+    "COMPRESSION_RESILIENT_CRITICAL_KERNEL",
+    "OBSERVABLE_RECOVERY_SIGNAL_BEST_EFFORT",
+    "REVIEW_GAP_DIRECTNESS",
+    "QUALITATIVE_NON_SKILL_DIRECT_SCORE_PRIORITY"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",
@@ -160,8 +163,8 @@
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,

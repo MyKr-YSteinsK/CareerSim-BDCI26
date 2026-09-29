@@ -38,7 +38,7 @@ After context recovery and the required same-session fresh observe and four-Skil
 ## Maintain the Review Plan
 
 - Before the first formal review, allow `Primary Gap=UNKNOWN`. Pursue visible delivery and broad Skill / Network / Output progression.
-- After formal feedback, anchor the gap to the clearest public progression deficit.
+- After formal feedback, anchor the gap to the clearest public progression deficit. If feedback names no concrete deficit, set `Primary Gap=DIRECT_PROGRESSION_EVIDENCE`; do not invent a hidden requirement or preserve a generic gap when current public evidence supports direct progress.
 - Revise the plan only when:
   - formal review / promotion / no-advance changes the evidence;
   - the objective is publicly completed;
@@ -71,6 +71,10 @@ Wealth stress is an income-recovery problem, not a reason for permanent low-prof
 ## Rank legal candidates
 
 ### MODE=A
+
+When the current review gap is unresolved, prefer the legal option with the most direct observable path to the review/promotion objective over generic relationship-building or role-breadth options, unless fresh formal feedback specifically names Network/breadth as the primary gap or another option has clearly stronger current public evidence. This is a general ranking prior, never a fixed answer or eligibility claim.
+
+Do not prefer pure Skill growth solely for direct terminal score when a stronger public progression, Network, Wealth, or resilience path is available. Skill remains valuable when public review or progression evidence makes it instrumental.
 
 Prefer, in order:
 
