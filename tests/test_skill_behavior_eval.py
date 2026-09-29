@@ -399,7 +399,7 @@ def test_rewrite_and_formal_candidate_boundaries_are_separate():
     assert "step 1 — constraint gate" in rewrite.casefold()
     assert current != rewrite
     identity = json.loads((ROOT / "configs" / "current_candidate.json").read_text(encoding="utf-8"))
-    assert identity["candidate_id"] == "candidate-v7q-checkpoint-marginal-progression"
+    assert identity["candidate_id"] == "candidate-v7r-early-promotion-rescue"
     assert eval_tool.EXPERIMENT == ROOT / "experiments" / "s07-50"
     assert eval_tool.DEFAULT_OUTPUT_PATH == ROOT / "experiments" / "s07-50r" / "evals" / "provider_results.json"
 

@@ -58,9 +58,11 @@ After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `AL
 
 Before progression ranking, evaluate the current whitelisted Board and participant-visible event/choice semantics for an unresolved binding constraint. Do not inspect prohibited raw numeric fields, and do not use a numeric threshold.
 
+Poor grade, no-advance, weak Skill/Network/Output, generic “improve performance” feedback, or an unresolved promotion gap do not by themselves justify `MODE=S`. Without a separate explicit material survival, safety, job-continuity, affordability, or income-continuity constraint, repair performance and promotion in `MODE=A`. Only an explicit participant-visible material dismissal or job-continuity threat may make a performance situation binding.
+
 A displayed H/D/W number or an ordinary one-step decrease alone does not establish a binding constraint and does not justify `MODE=S`. Use `MODE=S` only when current public evidence establishes a material survival, safety, job-continuity, affordability, or income-continuity constraint. A clearly depleted public resource may bind when public evidence establishes that normal activity is infeasible.
 
-Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, explicit job-continuity warning, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
+Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, an explicit participant-visible material dismissal or job-continuity threat, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
 
 Return to `MODE=A` when fresh public evidence indicates that binding condition is resolved or the risk-bearing situation has ended. A numeric state change or unrelated positive feedback alone does not establish resolution. Ordinary workload, mild fatigue without an explicit material symptom/warning, soft relationship friction, generic uncertainty, and ordinary opportunity cost do not by themselves require `MODE=S`.
 
@@ -72,7 +74,13 @@ Wealth stress is an income-recovery problem, not a reason for permanent low-prof
 
 ## Rank legal candidates
 
+### Public warning cleanup
+
+When fresh participant-visible feedback explicitly says risk is elevated, accumulating, or needs handling, and a legal option explicitly repairs that warned risk, one bounded cleanup before the next formal review may be a high-priority candidate. Do not repeat cleanup without a new public warning or other fresh evidence. A warning alone does not create permanent `MODE=S`; acute survival or safety constraints still outrank cleanup. Never infer hidden Risk values.
+
 ### MODE=A
+
+Consume the Board's current-Level `PROGRESSION_RESPONSE`. `GAIN` is current evidence that the dimension is responsive; `NO_GAIN` discounts only that dimension for current-Level marginal allocation; `UNKNOWN` stays open and is not evidence of a cap. A multidimensional action retains value from responsive or unknown dimensions even when another dimension is `NO_GAIN`. The Board resets all responses on a Level change. For non-specific review feedback, do not starve one of Skill, Network, or Output across scarce quarterly opportunities solely because another was recently salient. Specific formal feedback may concentrate effort. Do not impose a fixed ratio or forced balance.
 
 When the current review gap is unresolved, prefer the legal option with the most direct observable path to the review/promotion objective over generic relationship-building or role-breadth options, unless fresh formal feedback specifically names Network/breadth as the primary gap or another option has clearly stronger current public evidence. This is a general ranking prior, never a fixed answer or eligibility claim.
 
@@ -94,6 +102,10 @@ Apply `PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR` only before the first formal r
 When triggered, prefer that result-realization action over another generic workload push with no stronger current result evidence. Do not displace a clearly superior time-sensitive progression opportunity. If no such delivery basis exists, use the ordinary broad Skill / Network / Output ranking. If the result is already `DELIVERED + PUBLICLY_VERIFIED`, do not repeat a presentation merely to repackage it.
 
 Exit this prior at the first formal review, when the result becomes publicly verified, when the commitment becomes invalid or blocked, or when a material constraint requires `MODE=S`. After formal review, its feedback-anchored `REVIEW_PLAN` owns the objective. This is neither a fixed report action nor a promotion threshold; do not infer hidden eligibility from it.
+
+### Review-window delivery certainty
+
+Before the next public formal review, an explicit near-term delivery cost is material evidence. If a legal option explicitly delays current scheduled deliverables, sacrifices near-term delivery certainty for speculative long-horizon learning, or introduces first-delivery uncertainty while another legal option preserves current delivery certainty, prefer the delivery-certain path unless the uncertain option is required for safety/compliance or specific formal review feedback directly makes it the stronger progression response. This prior is strongest before first promotion or after a failed review. It is not a fixed-month rule or Story answer, and it does not ban long-term learning.
 
 ### MODE=S
 

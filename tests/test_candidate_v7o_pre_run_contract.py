@@ -1,4 +1,4 @@
-"""Static strategy and runtime-contract checks for v7q; not runtime enforcement."""
+"""Static strategy and runtime-contract checks for v7r; not runtime enforcement."""
 
 import json
 import re
@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "4d88b8d131e7408791adeaf6962280c2a2392fc4"
+BASE_MAIN_SHA = "94b6acf771442cc3435af6ac1a43c25c9722bd5d"
 V7N_MANIFEST_BASE_SHA = "23b5c52cdcd18aaf3f2613654b0d9d2302343661"
 
 
@@ -18,6 +18,12 @@ def _manifest() -> tuple[dict, str]:
 
 def _skill(name: str) -> str:
     return (ROOT / f"skills/{name}/SKILL.md").read_text(encoding="utf-8")
+
+
+def _section(text: str, start: str, end: str) -> str:
+    start_index = text.index(start)
+    end_index = text.index(end, start_index + len(start))
+    return text[start_index:end_index]
 
 
 def _v7n_manifest() -> str:
@@ -76,8 +82,10 @@ def test_skill_load_policy_and_context_recovery_are_ordered() -> None:
 
 def test_manifest_owns_global_contracts_without_copying_skill_procedures() -> None:
     value, instruction = _manifest()
-    assert value["name"] == "candidate-v7q-checkpoint-marginal-progression"
+    assert value["name"] == "candidate-v7r-early-promotion-rescue"
     assert len(instruction) <= 5200
+    assert "Poor performance and no-promotion alone are progression evidence, not MODE=S." in instruction
+    assert "Absent an explicit material job-continuity threat, repair review gaps in MODE=A." in instruction
     reduction = 1 - len(instruction) / len(_v7n_manifest())
     assert reduction >= 0.35
     for owner in (
@@ -131,6 +139,85 @@ def test_checkpoint_aware_marginal_progression_contract() -> None:
     assert "another still-responsive progression path exists" in planning
     assert "retain any other still-responsive public benefit" in planning
     assert "after a later clean fresh observe shows that dimension increasing again" in planning
+
+
+def test_v7r_board_separates_review_from_sticky_and_tracks_progression_response() -> None:
+    board = _skill("structured-state-board")
+    assert "REVIEW: <latest formal grade/feedback/promotion/no-advance | none>" in board
+    assert "PROGRESSION_RESPONSE:" in board
+    for marker in (
+        "S=<GAIN|NO_GAIN|UNKNOWN>",
+        "N=<GAIN|NO_GAIN|UNKNOWN>",
+        "O=<GAIN|NO_GAIN|UNKNOWN>",
+        "LEVEL=<current Level>",
+        "A poor grade, no-advance result, or ordinary performance deficit alone",
+        "does not create binding `STICKY` state",
+        "explicitly states a material dismissal or job-continuity threat",
+        "If the session or Level changed, reset all three responses to `UNKNOWN`",
+        "carry forward each untouched dimension",
+        "record `GAIN` if it increased and `NO_GAIN` if it stayed unchanged",
+        "A later clean advertised gain overwrites `NO_GAIN`",
+        "Reconstruct progression responses only from bounded same-session public evidence",
+        "otherwise mark them `UNKNOWN`",
+        "keep `EFFECTS` bounded",
+    ):
+        assert marker in board
+
+
+def test_v7r_mode_split_and_progression_responses_cover_review_scenarios() -> None:
+    planning = _skill("rolling-planning")
+    mode = _section(planning, "## Select MODE", "## Rank legal candidates")
+    for marker in (
+        "Poor grade, no-advance, weak Skill/Network/Output",
+        "do not by themselves justify `MODE=S`",
+        "repair performance and promotion in `MODE=A`",
+        "Only an explicit participant-visible material dismissal or job-continuity threat",
+        "explicit acute physical symptoms",
+        "active trust/compliance/confidentiality crisis",
+        "direct affordability/income-continuity crisis",
+    ):
+        assert marker in mode
+
+    response = planning[planning.index("Consume the Board's current-Level `PROGRESSION_RESPONSE`"):planning.index("When the current review gap is unresolved")]
+    for marker in (
+        "`GAIN` is current evidence",
+        "`NO_GAIN` discounts only that dimension",
+        "`UNKNOWN` stays open",
+        "retains value from responsive or unknown dimensions",
+        "do not starve one of Skill, Network, or Output across scarce quarterly opportunities",
+        "Specific formal feedback may concentrate effort",
+        "Do not impose a fixed ratio",
+    ):
+        assert marker in response
+
+
+def test_v7r_delivery_certainty_and_public_warning_cleanup_are_bounded() -> None:
+    planning = _skill("rolling-planning")
+    delivery = _section(planning, "### Review-window delivery certainty", "### MODE=S")
+    for marker in (
+        "Before the next public formal review",
+        "delays current scheduled deliverables",
+        "near-term delivery certainty for speculative long-horizon learning",
+        "introduces first-delivery uncertainty",
+        "preserves current delivery certainty",
+        "unless the uncertain option is required for safety/compliance",
+        "specific formal review feedback directly makes it the stronger progression response",
+        "not a fixed-month rule or Story answer",
+        "does not ban long-term learning",
+    ):
+        assert marker in delivery
+
+    cleanup = _section(planning, "### Public warning cleanup", "### MODE=A")
+    for marker in (
+        "risk is elevated, accumulating, or needs handling",
+        "legal option explicitly repairs that warned risk",
+        "one bounded cleanup before the next formal review",
+        "Do not repeat cleanup without a new public warning or other fresh evidence",
+        "A warning alone does not create permanent `MODE=S`",
+        "acute survival or safety constraints still outrank cleanup",
+        "Never infer hidden Risk values",
+    ):
+        assert marker in cleanup
 
 
 def test_public_risk_review_still_gates_material_compliance_and_confidentiality() -> None:
@@ -229,6 +316,24 @@ def test_delivery_risk_blobs_and_frozen_runner_are_unchanged_from_base() -> None
             text=True,
         ).strip()
         assert actual == expected
+
+    for relative in ("pyproject.toml", "uv.lock"):
+        expected = subprocess.check_output(
+            ["git", "rev-parse", f"{BASE_MAIN_SHA}:{relative}"], cwd=ROOT, text=True
+        ).strip()
+        actual = subprocess.check_output(
+            ["git", "hash-object", f"--path={relative}", str(ROOT / relative)],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert actual == expected
+
+    frozen_changes = subprocess.check_output(
+        ["git", "diff", "--name-only", BASE_MAIN_SHA, "--", "career_sim_runner"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
+    assert frozen_changes == ""
 
     candidate = json.loads((ROOT / "configs/current_candidate.json").read_text(encoding="utf-8"))
     assert candidate["runner_sha"] == "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
