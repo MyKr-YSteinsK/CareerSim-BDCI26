@@ -1,0 +1,9 @@
+{
+  "run_id": "S08-RUN01",
+  "runner_process_id": 8980,
+  "started_at_utc": "2026-09-29T11:54:38.998424+00:00",
+  "finished_at_utc": "2026-09-29T12:16:22.501988+00:00",
+  "exit_code": 0,
+  "game_authorization": "CONSUMED",
+  "new_game_count": "UNKNOWN_PENDING_OFFLINE_AUDIT"
+}

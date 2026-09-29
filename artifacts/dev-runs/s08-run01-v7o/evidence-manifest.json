@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "bytes": 2067779,
+      "category": "core",
+      "name": "events.jsonl",
+      "sha256": "b6eb500f9e8ad3966e595e65a5d558c2c8b50097bf908fd8b93a1b5f14567df4"
+    },
+    {
+      "bytes": 2239905,
+      "category": "diagnostic",
+      "name": "llm-run.log",
+      "sha256": "6a727f69e00acd56dcf80ba5605cc076cc68a5046463cb2cfb16e2cc09b0eec4"
+    },
+    {
+      "bytes": 263268,
+      "category": "core",
+      "name": "post_run_summary.json",
+      "sha256": "f0961f094132a09a44cadcc32b6cc50e11c086e3612cc89276d749f8b8c54067"
+    },
+    {
+      "bytes": 277,
+      "category": "core",
+      "name": "runner-result.json",
+      "sha256": "35de0677816136591a23c5ed847c8d7fb249c585fcf090ec08c96215e24bef6a"
+    },
+    {
+      "bytes": 1205,
+      "category": "core",
+      "name": "score_report.json",
+      "sha256": "f5916ad029f9ed0b162885d7c939c4d3d0889c82fba5f79e14b1fd3c6f05080d"
+    },
+    {
+      "bytes": 4776463,
+      "category": "diagnostic",
+      "name": "service-run.log",
+      "sha256": "fa20f750679c9a52112c4dbf232bd246587974538d699300e6da38769f80d81a"
+    },
+    {
+      "bytes": 391194,
+      "category": "core",
+      "name": "transcript.log",
+      "sha256": "a15555f91ae738859844cd0ffc2768ea00ab79c5f2adf10bc7144d7e3742b0e7"
+    }
+  ],
+  "run_id": "s08-run01-v7o",
+  "run_window_utc": {
+    "end": "2026-09-29T12:16:22.501988+00:00",
+    "start": "2026-09-29T11:54:38.998424+00:00"
+  },
+  "schema_version": 1
+}

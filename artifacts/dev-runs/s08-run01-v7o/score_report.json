@@ -1,0 +1,28 @@
+{
+  "submission_name": "local-s06-adaptive-controller",
+  "submission_dir": "D:\\CS\\CareerSim\\.local\\runtime\\s08-run01\\submission",
+  "skill_name": "submission-skills",
+  "drive_session_id": "career-sim-runner-046c24628571",
+  "session_id": "ab65fb3e46964184b0936fee4d7b3c49",
+  "play_exit_code": 0,
+  "termination_reason": null,
+  "token_usage": {
+    "input_tokens": 41778768,
+    "output_tokens": 154920,
+    "total_tokens": 41933688,
+    "total_cost": 0.0,
+    "by_model": {
+      "deepseek-flash": {
+        "input_tokens": 41778768,
+        "output_tokens": 154920,
+        "total_tokens": 41933688,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "ending_score": {},
+  "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T115441Z",
+  "events_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T115441Z\\events-20260929T115441Z.jsonl",
+  "transcript_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260929T115441Z\\transcript-20260929T115441Z.log",
+  "scored_at": "2026-09-29T12:16:22.130551+00:00"
+}
