@@ -28,6 +28,7 @@ HIDDEN_NUMERIC = re.compile(r"\bHiddenRisk\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
 INTERNAL_SCORE_NUMERIC = re.compile(r"\b(?:internal_score|hidden_score)\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
 SENSITIVE_G = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter", re.I)
 DELIVERY_MARKERS = ("stage=", "evidence_status=", "recognition_link=", "next_checkpoint=", "COMMITTED", "IN_PROGRESS", "BLOCKED", "DELIVERY_CLAIMED", "DELIVERED", "PUBLICLY_VERIFIED")
+SCREENING_STOP_REASONS = {"CLEARLY_BEHIND_NO_MATERIAL_COUNTERSIGNAL"}
 
 
 def parse_time(value: str, naive_offset: timezone | None = None) -> datetime | None:
@@ -151,6 +152,74 @@ def _fresh_score(data: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in score.items() if key in SCORE_FIELDS and isinstance(value, (str, int, float, bool))}
 
 
+def _validate_screening_stop(
+    metadata: dict[str, Any],
+    *,
+    session: str,
+    events_identity: str,
+    transcript_identity: str,
+    matching_observes: list[dict[str, Any]],
+    review_event_orders: list[tuple[int, int]],
+    terminal: dict[str, Any] | None,
+    runner_exit: int | str,
+    fresh_score: dict[str, Any],
+    score_data: dict[str, Any],
+) -> dict[str, Any]:
+    """Validate supplied censored-stop metadata against explicit public artifacts.
+
+    This validates an evidence classification; it does not implement or prove a
+    safe runtime stop. The caller must separately establish that lifecycle.
+    """
+    if type(metadata.get("schema_version")) is not int or metadata.get("schema_version") != 1:
+        raise ValueError("screening metadata schema_version must be 1")
+    if metadata.get("classification") != "SCREENING_STOP_CENSORED":
+        raise ValueError("screening metadata classification must be SCREENING_STOP_CENSORED")
+    if metadata.get("decision") != "STOP_SCREENING":
+        raise ValueError("screening metadata decision must be STOP_SCREENING")
+    if metadata.get("session_id") != session or session == "UNKNOWN":
+        raise ValueError("screening metadata session_id must match the unique fresh session")
+    if events_identity != "PASS" or transcript_identity != "PASS":
+        raise ValueError("screening stop requires matching fresh events and transcript identity")
+    if metadata.get("checkpoint_month") != 24 or type(metadata.get("checkpoint_month")) is not int:
+        raise ValueError("screening stop checkpoint_month must be 24")
+    if metadata.get("checkpoint_complete") is not True:
+        raise ValueError("screening stop requires checkpoint_complete=true")
+    if metadata.get("continued_to_m48") is not False:
+        raise ValueError("screening stop requires continued_to_m48=false")
+    stop_month = metadata.get("stop_month")
+    if type(stop_month) is not int or stop_month < 24:
+        raise ValueError("screening stop stop_month must be an integer >= 24")
+    if not matching_observes or not any(item["month"] == 24 for item in matching_observes):
+        raise ValueError("screening stop requires a fresh M24 public observation")
+    m24_review_orders = [order for month, order in review_event_orders if month == 24]
+    latest_m24_orders = [item["event_order"] for item in matching_observes if item["month"] == 24]
+    if not m24_review_orders or not latest_m24_orders or max(m24_review_orders) > max(latest_m24_orders):
+        raise ValueError("screening stop requires a public M24 review before the latest M24 state")
+    if terminal is None or terminal.get("month") != stop_month:
+        raise ValueError("screening stop stop_month must match the last fresh observe")
+    observed_months = [item["month"] for item in matching_observes if isinstance(item["month"], int)]
+    if not observed_months or max(observed_months) != stop_month:
+        raise ValueError("screening stop stop_month must match the maximum observed public month")
+    if terminal["flags"].get("alive") is not True or terminal["flags"].get("failed") is not False:
+        raise ValueError("screening stop requires a nonterminal alive public state")
+    if runner_exit != 0:
+        raise ValueError("screening stop requires Runner exit_code=0; technical failures are not censored stops")
+    if fresh_score or score_data.get("ending_score"):
+        raise ValueError("screening stop cannot carry a terminal score")
+    reason = metadata.get("reason")
+    if reason not in SCREENING_STOP_REASONS:
+        raise ValueError("screening metadata reason must be an approved public-only reason code")
+    return {
+        "classification": "SCREENING_STOP_CENSORED",
+        "decision": "STOP_SCREENING",
+        "checkpoint_month": 24,
+        "stop_month": stop_month,
+        "reason": reason.strip(),
+        "continued_to_m48": False,
+        "metadata_integrity": "SESSION_TRANSCRIPT_AND_PUBLIC_STATE_MATCH",
+    }
+
+
 def _log_compressions(path: Path, start: datetime, end: datetime, offset: timezone | None) -> tuple[list[str], int]:
     found: set[tuple[str, str]] = set()
     unscoped = 0
@@ -190,6 +259,7 @@ def audit(
     run_end: str | None = None,
     log_utc_offset: str | None = None,
     evidence_manifest: Path | None = None,
+    screening_metadata: Path | None = None,
 ) -> dict[str, Any]:
     """Extract one deterministic summary from explicit offline inputs."""
     if bool(run_start) != bool(run_end):
@@ -208,6 +278,7 @@ def audit(
     seen_calls: set[str] = set()
     seen_results: set[str] = set()
     review_checkpoints: list[dict[str, Any]] = []
+    review_event_orders: list[tuple[int, int]] = []
     promotions: list[dict[str, Any]] = []
     quarter_main: list[dict[str, Any]] = []
     pre_review_choices: list[dict[str, Any]] = []
@@ -350,12 +421,14 @@ def audit(
                 month = public["time"].get("current_month")
                 score = _fresh_score(result)
                 choices = {item.get("choice"): str(item.get("action") or "")[:200] for item in result.get("choices", []) if isinstance(item, dict) and isinstance(item.get("choice"), int)} if isinstance(result.get("choices"), list) else {}
-                snapshot = {"ts": ts, "public": public, "score": score, "flags": {key: flags.get(key) for key in ("failed", "alive", "failure_reason")}, "month": month, "event_title": title, "choices": choices}
+                snapshot = {"ts": ts, "public": public, "score": score, "flags": {key: flags.get(key) for key in ("failed", "alive", "failure_reason")}, "month": month, "event_title": title, "choices": choices, "event_order": line_number}
                 observes.append(snapshot)
                 latest_observe = snapshot
                 if ts is not None:
                     timeline.append((ts, "observe", session_id if isinstance(session_id, str) else None))
                 if REVIEW.search(title + " " + feed):
+                    if isinstance(month, int):
+                        review_event_orders.append((month, line_number))
                     if first_review_order is None:
                         first_review_order = line_number
                     if first_review_month is None and isinstance(month, int):
@@ -393,9 +466,10 @@ def audit(
     score_data = json.loads(score_report.read_text(encoding="utf-8")) if score_report is not None else {}
     if score_report is None:
         limitations.add("score_report_missing_partial_audit")
+    screening_data = json.loads(screening_metadata.read_text(encoding="utf-8")) if screening_metadata is not None else None
     runner_data = json.loads(runner_result.read_text(encoding="utf-8"))
-    if not isinstance(score_data, dict) or not isinstance(runner_data, dict):
-        raise ValueError("score report and runner result must be JSON objects")
+    if not isinstance(score_data, dict) or not isinstance(runner_data, dict) or (screening_metadata is not None and not isinstance(screening_data, dict)):
+        raise ValueError("score report, runner result, and screening metadata must be JSON objects")
     unique_new = sorted(set(new_game_ids))
     unique_observe = sorted(set(observe_ids))
     session = unique_new[0] if len(unique_new) == 1 else "UNKNOWN"
@@ -470,7 +544,7 @@ def audit(
     token_usage = {key: usage.get(key, "UNKNOWN") for key in ("input_tokens", "output_tokens", "total_tokens")}
     token_usage["binding"] = "SESSION_MATCH" if score_report_identity == "MATCH" else "RUNNER_REPORT_DIAGNOSTIC_ONLY"
     token_usage["actual_billed_cost"] = "UNKNOWN"
-    identities = {name: file_identity(path) for name, path in (("events", events), ("transcript", transcript), ("score_report", score_report), ("runner_result", runner_result)) if path is not None}
+    identities = {name: file_identity(path) for name, path in (("events", events), ("transcript", transcript), ("score_report", score_report), ("runner_result", runner_result), ("screening_metadata", screening_metadata)) if path is not None}
     if llm_log is not None:
         identities["llm_log"] = file_identity(llm_log)
     if evidence_manifest is not None:
@@ -483,14 +557,30 @@ def audit(
         limitations.add("ctrl_x1_branch_use_not_independently_verified")
     gaps = [item["G"] for item in ctrl_states]
     partial = bool(not completed and events_identity == "PASS" and transcript_identity == "PASS" and terminal and isinstance(runner_exit, int) and runner_exit != 0 and not fresh_score)
+    screening_info = None
+    if screening_metadata is not None:
+        screening_info = _validate_screening_stop(
+            screening_data,
+            session=session,
+            events_identity=events_identity,
+            transcript_identity=transcript_identity,
+            matching_observes=matching_observes,
+            review_event_orders=review_event_orders,
+            terminal=terminal,
+            runner_exit=runner_exit,
+            fresh_score=fresh_score,
+            score_data=score_data,
+        )
+        limitations.add("screening_metadata_does_not_prove_safe_runtime_stop")
+        limitations.add("screening_gate_justification_not_independently_audited")
     public_observes = [{"at_utc": item["ts"].isoformat() if item["ts"] else "UNKNOWN", "public": item["public"], "alive": item["flags"].get("alive"), "failed": item["flags"].get("failed"), "event_title": item["event_title"]} for item in matching_observes]
     natural_terminal = True if completed or fresh_score else (False if terminal_flags.get("alive") is True and terminal_flags.get("failed") is False else "UNKNOWN")
     gap_changes = sum(a != b for a, b in zip(gaps, gaps[1:]) if a != "UNKNOWN" and b != "UNKNOWN" and a != "REDACTED_INTERNAL_REFERENCE" and b != "REDACTED_INTERNAL_REFERENCE")
-    return {
+    summary = {
         "schema_version": 1,
         "inputs": identities,
         "run": {"session_id": session, "new_game_count": len(new_game_ids), "observe_count": len(observes), "events_identity": events_identity, "transcript_identity": transcript_identity, "transcript_session_ids": transcript_ids, "runner_exit_code": runner_exit, "window_source": source, "start_utc": start.isoformat() if start else "UNKNOWN", "end_utc": end.isoformat() if end else "UNKNOWN"},
-        "outcome": {"classification": "VALID_48M_COMPLETION" if completed else ("PARTIAL_GAMEPLAY_TECHNICAL_FAILURE" if partial else "UNKNOWN"), "natural_terminal_observed": natural_terminal, "max_month": max((item["month"] for item in matching_observes if isinstance(item["month"], int)), default="UNKNOWN"), "last_observe_alive": terminal_flags.get("alive", "UNKNOWN"), "last_observe_failed": terminal_flags.get("failed", "UNKNOWN"), "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
+        "outcome": {"classification": "SCREENING_STOP_CENSORED" if screening_info else ("VALID_48M_COMPLETION" if completed else ("PARTIAL_GAMEPLAY_TECHNICAL_FAILURE" if partial else "UNKNOWN")), "natural_terminal_observed": False if screening_info else natural_terminal, "max_month": max((item["month"] for item in matching_observes if isinstance(item["month"], int)), default="UNKNOWN"), "last_observe_alive": terminal_flags.get("alive", "UNKNOWN"), "last_observe_failed": terminal_flags.get("failed", "UNKNOWN"), "terminal_fresh_score": "UNKNOWN" if screening_info else (fresh_score or "UNKNOWN"), "score_source": "UNKNOWN" if screening_info else ("fresh_final_observe" if fresh_score else "UNKNOWN"), "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
         "trajectory": {"public_observations": public_observes, "review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
         "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "ctrl_closure": dict(sorted(closure.items())), "ctrl_states_by_action": ctrl_states, "ctrl_trajectory": {"P_counts": dict(sorted(phase_counts.items())), "R_counts": dict(sorted(risk_counts.items())), "X_counts": dict(sorted(x_counts.items())), "G_change_count": gap_changes, "G_values_in_order": gaps, "G_semantic_justification": "NOT_INFERRED"}, "evidence_discipline_categories": dict(sorted(violations.items()))},
         "adherence_evidence": {"transcript_evidence_discipline_categories": transcript_discipline, "compression": compression, "delivery_marker_coverage": dict(sorted(delivery_coverage.items())), "delivery_states_by_action": delivery_actions, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if delivery_actions or any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
@@ -498,24 +588,28 @@ def audit(
         "usage": token_usage,
         "limitations": sorted(limitations),
     }
+    if screening_info is not None:
+        summary["screening"] = screening_info
+    return summary
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("events", "transcript", "runner-result", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
-    parser.add_argument("--score-report", type=Path, help="omit for partial technical-failure evidence; a supplied path must exist")
+    parser.add_argument("--score-report", type=Path, help="omit when auditing partial or censored evidence; a supplied path must exist")
     parser.add_argument("--llm-log", type=Path)
     parser.add_argument("--run-start", help="timezone-aware ISO timestamp")
     parser.add_argument("--run-end", help="timezone-aware ISO timestamp")
     parser.add_argument("--log-utc-offset", help="offset for naive cumulative-log timestamps, e.g. +08:00")
     parser.add_argument("--evidence-manifest", type=Path)
+    parser.add_argument("--screening-metadata", type=Path, help="verified development-only SCREENING_STOP_CENSORED metadata; does not prove safe runtime stop")
     args = parser.parse_args()
-    inputs = [args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.evidence_manifest]
+    inputs = [args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.evidence_manifest, args.screening_metadata]
     if args.output.resolve() in {path.resolve() for path in inputs if path is not None}:
         parser.error("output must not overwrite an input artifact")
     try:
-        summary = audit(args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.run_start, args.run_end, args.log_utc_offset, args.evidence_manifest)
+        summary = audit(args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.run_start, args.run_end, args.log_utc_offset, args.evidence_manifest, args.screening_metadata)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
     args.output.parent.mkdir(parents=True, exist_ok=True)

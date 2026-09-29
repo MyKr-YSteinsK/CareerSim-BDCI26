@@ -9,7 +9,7 @@
 | `CODEX_FULL_RUN` | Codex runs the Plan-authorized prepare, start, play, and graceful cleanup steps. | Codex extracts one offline summary, integrates the result, and performs authorized Git delivery. This mode remains available for unattended reproduction, submission readiness, and runtime validation. |
 | `HUMAN_RUN_GPT_AUDIT` | The user runs the Plan's fixed live commands and preserves the artifacts. | The same offline parser produces the same summary schema. Main/GPT may review raw evidence; Codex handles scoped implementation, integration, verification, and Git. |
 
-Future Codex-facing live Plans select exactly one mode. If no mode is selected, the Plan's explicit permissions govern; omission grants no live operation. Both modes use `scripts/post_run_audit.py` schema version 1 and the same evidence policy. Who typed a terminal command does not change a session, score, or adherence classification.
+Future Codex-facing live Plans select exactly one mode. If no mode is selected, the Plan's explicit permissions govern; omission grants no live operation. Both modes use `scripts/post_run_audit.py` schema version 1 and the same evidence policy. The optional screening metadata field is additive and development-only. Who typed a terminal command does not change a session, score, or adherence classification.
 
 ## `CODEX_FULL_RUN` phases
 
@@ -49,7 +49,7 @@ The operator builds the absolute CLI/Python path from the verified repository ro
 
 ## One-pass offline audit
 
-`scripts/post_run_audit.py` accepts explicit `--events`, `--transcript`, `--score-report`, `--runner-result`, and `--output` paths. Optional inputs are `--llm-log`, `--run-start`, `--run-end`, `--log-utc-offset`, and `--evidence-manifest`. It never locates the latest run, queries a DB, imports a provider, or starts a service.
+`scripts/post_run_audit.py` accepts explicit `--events`, `--transcript`, `--score-report`, `--runner-result`, and `--output` paths. Optional inputs are `--llm-log`, `--run-start`, `--run-end`, `--log-utc-offset`, `--evidence-manifest`, and `--screening-metadata`. It never locates the latest run, queries a DB, imports a provider, or starts a service.
 
 Example shape (paths supplied by the actual run):
 
@@ -62,6 +62,14 @@ The deterministic `post_run_summary.json` has schema version 1 and top-level `in
 Score from a final observe is valid when that observe belongs to the single fresh session, even if `score_report.session_id` is blank; the blank field remains a defect. Missing usage is `UNKNOWN`, and reported cost 0.0 never means billed cost zero. Only allowlisted participant-visible status and scalar score fields enter the summary; numeric hidden values never enter strategy facts.
 
 The parser uses an explicit run window when supplied. Otherwise it may derive one from a single consistent fresh event session. A cumulative `llm.log` is counted only within that window; naive timestamps require an explicit UTC offset. Unscoped compressor lines make the count `UNKNOWN`, not zero. The S07-40 historical contamination (23 cumulative records versus 2 in the run) has a synthetic regression test. Report writing reads this summary first; reopen raw only for one identified acceptance gap, and stop after the no-progress rule.
+
+## M24 development screening
+
+The development-only criteria and evidence firewall are defined in [M24_ADAPTIVE_SCREENING_PROTOCOL](M24_ADAPTIVE_SCREENING_PROTOCOL.md). They do not authorize a game or a stop. A future Main Game Gate must separately authorize the live run, and safe same-session STOP/CONTINUE behavior must be available and validated before a run is started with API-saving expectations. The current frozen Runner/public interface has no proven graceful M24 stop or pause seam; until that changes through a separately authorized engineering task, do not stop at M24. If an independently authorized run is already underway, keep the same session running to natural terminal rather than interrupting it to imitate censorship.
+
+After a future verified graceful screening stop, a caller may supply `--screening-metadata <screening-stop.json>`. The metadata must declare schema version 1, `SCREENING_STOP_CENSORED`, `STOP_SCREENING`, the unique fresh `session_id`, `checkpoint_month=24`, `checkpoint_complete=true`, actual `stop_month`, `continued_to_m48=false`, and the bounded public-only reason code `CLEARLY_BEHIND_NO_MATERIAL_COUNTERSIGNAL`. The audit rejects identity mismatch, missing M24 state/review, terminal state, nonzero Runner exit, and terminal score. It emits score `UNKNOWN`, `natural_terminal_observed=false`, the screening classification/reason, and the normal public CTRL/DL/trajectory fields. This metadata is a classification input: it does not prove that the runtime stop was graceful, that the gate justification was semantically sound, or that the same session can continue. Never supply it for a technical failure or natural terminal.
+
+For each screening run, record actual `months_executed`, `successful_actions`, `input_tokens`, `output_tokens`, `total_tokens`, `compression_count`, `wall_clock_seconds`, reliable provider-reported `api_cost` and source, screening decision, `continued_to_M48`, and marginal M25–M48 tokens/cost. Unknown telemetry remains `UNKNOWN`; do not infer a 50% saving from a 24-month stop.
 
 ## Development evidence archive
 

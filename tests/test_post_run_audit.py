@@ -410,6 +410,90 @@ def test_partial_session_mismatch_cannot_claim_valid_partial(tmp_path: Path) -> 
     assert summary["outcome"]["classification"] == "UNKNOWN"
 
 
+def _screening_stop_fixtures(tmp_path: Path) -> tuple[Path, Path, Path, Path, Path]:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    last_observe = rows[-1]
+    data = _observe(24, 3, "半年绩效评审")
+    data["current_state"]["simulation_flags"].update(alive=True, failed=False)
+    last_observe["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    score.unlink()
+    runner.write_text('{"exit_code": 0}', encoding="utf-8")
+    metadata = tmp_path / "screening-stop.json"
+    metadata.write_text(json.dumps({
+        "schema_version": 1,
+        "classification": "SCREENING_STOP_CENSORED",
+        "decision": "STOP_SCREENING",
+        "session_id": SESSION,
+        "checkpoint_month": 24,
+        "checkpoint_complete": True,
+        "stop_month": 24,
+        "continued_to_m48": False,
+        "reason": "CLEARLY_BEHIND_NO_MATERIAL_COUNTERSIGNAL",
+    }), encoding="utf-8")
+    return events, transcript, runner, score, metadata
+
+
+def test_screening_stop_is_censored_and_keeps_score_unknown(tmp_path: Path) -> None:
+    events, transcript, runner, _, metadata = _screening_stop_fixtures(tmp_path)
+    summary = audit(events, transcript, None, runner, screening_metadata=metadata)
+    assert summary["run"]["session_id"] == SESSION
+    assert summary["run"]["runner_exit_code"] == 0
+    assert summary["outcome"]["classification"] == "SCREENING_STOP_CENSORED"
+    assert summary["outcome"]["max_month"] == 24
+    assert summary["outcome"]["last_observe_alive"] is True
+    assert summary["outcome"]["last_observe_failed"] is False
+    assert summary["outcome"]["natural_terminal_observed"] is False
+    assert summary["outcome"]["terminal_fresh_score"] == "UNKNOWN"
+    assert summary["screening"]["continued_to_m48"] is False
+    assert summary["screening"]["checkpoint_month"] == 24
+    assert summary["actions"]["ctrl"]["attempts"] == 3
+    assert summary["adherence_evidence"]["delivery_marker_coverage"]["attempts"] == 3
+    assert "screening_metadata_does_not_prove_safe_runtime_stop" in summary["limitations"]
+    output = tmp_path / "screened-partial.json"
+    subprocess.run([
+        sys.executable,
+        str(Path(__file__).resolve().parents[1] / "scripts" / "post_run_audit.py"),
+        "--events", str(events), "--transcript", str(transcript), "--runner-result", str(runner),
+        "--screening-metadata", str(metadata), "--output", str(output),
+    ], check=True, capture_output=True, text=True)
+    assert json.loads(output.read_text(encoding="utf-8")) == summary
+
+
+def test_screening_stop_rejects_mismatched_session_and_natural_terminal(tmp_path: Path) -> None:
+    events, transcript, runner, _, metadata = _screening_stop_fixtures(tmp_path)
+    payload = json.loads(metadata.read_text(encoding="utf-8"))
+    payload["session_id"] = "b" * 32
+    metadata.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="session_id must match"):
+        audit(events, transcript, None, runner, screening_metadata=metadata)
+
+    payload["session_id"] = SESSION
+    metadata.write_text(json.dumps(payload), encoding="utf-8")
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    data = json.loads(rows[-1]["payload"]["raw_output"]["result"])
+    data["current_event"]["title"] = "普通工作"
+    rows[-1]["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    with pytest.raises(ValueError, match="M24 review before the latest M24 state"):
+        audit(events, transcript, None, runner, screening_metadata=metadata)
+
+    data["current_event"]["title"] = "半年绩效评审"
+    data["current_state"]["simulation_flags"].update(alive=False, failed=True)
+    rows[-1]["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    with pytest.raises(ValueError, match="nonterminal alive public state"):
+        audit(events, transcript, None, runner, screening_metadata=metadata)
+
+    data["current_state"]["simulation_flags"].update(alive=True, failed=False)
+    rows[-1]["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    runner.write_text('{"exit_code": 1}', encoding="utf-8")
+    with pytest.raises(ValueError, match="Runner exit_code=0"):
+        audit(events, transcript, None, runner, screening_metadata=metadata)
+
+
 def test_public_review_feed_and_energy_are_not_confused_with_main(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
