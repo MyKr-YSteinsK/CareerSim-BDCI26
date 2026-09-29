@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7p-score-gap-convergence",
+  "candidate_id": "candidate-v7q-checkpoint-marginal-progression",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S08_05_SCORE_GAP_CONVERGENCE",
+  "decision": "S08_06_CHECKPOINT_MARGINAL_PROGRESSION",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "REVIEW_GAP_DIRECTNESS_AND_COMPRESSION_RESILIENT_KERNEL",
-  "parent_candidate_id": "candidate-v7o-execution-persistence-convergence",
-  "base_main_sha": "3fd64bead5600c2f0bab677e7b832fe3678bdf12",
+  "strategy_delta": "CHECKPOINT_AWARE_MARGINAL_PROGRESSION",
+  "parent_candidate_id": "candidate-v7p-score-gap-convergence",
+  "base_main_sha": "4d88b8d131e7408791adeaf6962280c2a2392fc4",
   "parent_identity": {
-    "runtime_manifest_sha256": "addcf3485836683f8a2ebe957a2105a0ca4a9d8d26bb35483ccc5109fb5d6cd9",
-    "instruction_sha256": "240413d929766033274c47efb058392e7b7cabed660733566fe2a1ab690aaaa1",
+    "runtime_manifest_sha256": "27146632a28f436c41f65c6324b942088e1a18097f3aa3debe9f94e642fbc334",
+    "instruction_sha256": "3ea153a93928a5c2e8b82d268836b104ae63473dafeed8dc89f76d31a6ff21fc",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "dbb527ad8a2d9c2c41de09442e4351803966f256"
+        "git_blob": "74d8c522024545e8eca32b927d1a9639924a028d"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "27146632a28f436c41f65c6324b942088e1a18097f3aa3debe9f94e642fbc334",
-    "instruction_sha256": "3ea153a93928a5c2e8b82d268836b104ae63473dafeed8dc89f76d31a6ff21fc"
+    "sha256": "c42120ac426c396e9fdea5909a6188da8efd3c1939db3e688a92971637cdb298",
+    "instruction_sha256": "ff1cb090c264de260e959362c7c9fa972eabc3e1d0fe15c1e4595903c3229bca"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "74d8c522024545e8eca32b927d1a9639924a028d"
+      "git_blob": "62ba12ca8007e9a2370022680a3f8eced2163d10"
     },
     {
       "name": "delivery-progress",
@@ -96,13 +96,15 @@
     "COMPRESSION_RESILIENT_CRITICAL_KERNEL",
     "OBSERVABLE_RECOVERY_SIGNAL_BEST_EFFORT",
     "DIRECT_PROGRESSION_ON_NON_SPECIFIC_REVIEW",
-    "QUALITATIVE_SKILL_SATURATION_PRIORITY"
+    "CHECKPOINT_AWARE_PROMOTION_READINESS",
+    "OBSERVED_NO_GAIN_ROUTING",
+    "SKILL_PROMOTION_VALUE_PRESERVED"
   ],
   "runtime_contract_delta": [
-    "COMPRESSION_RESILIENT_CRITICAL_KERNEL",
-    "OBSERVABLE_RECOVERY_SIGNAL_BEST_EFFORT",
-    "REVIEW_GAP_DIRECTNESS",
-    "QUALITATIVE_NON_SKILL_DIRECT_SCORE_PRIORITY"
+    "CHECKPOINT_AWARE_PROMOTION_READINESS",
+    "OBSERVED_NO_GAIN_ROUTING",
+    "SKILL_TERMINAL_SCORE_DEMOTION_REMOVED",
+    "COMPRESSION_RESILIENT_MARGINAL_PROGRESSION_KERNEL"
   ],
   "deferred_mechanisms": [
     "FIXED_ACTION_PRIORITY_RANKING",

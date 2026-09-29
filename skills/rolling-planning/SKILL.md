@@ -39,6 +39,8 @@ After context recovery and the required same-session fresh observe and four-Skil
 
 - Before the first formal review, allow `Primary Gap=UNKNOWN`. Pursue visible delivery and broad Skill / Network / Output progression.
 - After formal feedback, anchor the gap to the clearest public progression deficit. If feedback names no concrete deficit, set `Primary Gap=DIRECT_PROGRESSION_EVIDENCE`; do not invent a hidden requirement or preserve a generic gap when current public evidence supports direct progress.
+- A good formal grade without promotion still means promotion readiness is unresolved. Do not treat grade alone as completion of the promotion objective.
+- Use the next public formal review as the checkpoint for promotion preparation. Actions taken after a completed review prepare the following review; they cannot repair the checkpoint that has already been decided.
 - Revise the plan only when:
   - formal review / promotion / no-advance changes the evidence;
   - the objective is publicly completed;
@@ -50,7 +52,7 @@ After context recovery and the required same-session fresh observe and four-Skil
 
 ONE FRESH OBSERVE = ONE PLANNING PASS. In that pass, set `MODE + REVIEW_PLAN`, eliminate clearly unacceptable or dominated legal options, retain at most two genuinely competitive options, compare them once using the ranking below, and emit exactly one final `CANDIDATE`. Keep the comparison sufficient for a difficult choice but the output concise; do not narrate self-dialogue or cycle through candidates.
 
-After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once per fresh evidence state: compare at most one directly relevant legal alternative, select once, and obtain that selected candidate's own final Risk result. CTRL `R` records that final result, not the initial `RECONSIDER`; set `X=1` when this one branch completed, or `X=-` when no branch was used. If the selected candidate's gate again returns `RECONSIDER`, the path is incomplete (`X=0`): do not search another alternative or submit until genuinely new public evidence arrives. `UNKNOWN` does not authorize a new Planning pass: normal public flow may resolve it through at most one fresh observe/rebuild cycle, with a new pass only on genuinely new evidence; otherwise choose once from available public evidence with `R=UNKNOWN` and `X=-` or `X=1` according to branch use. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure; `X=0` forbids submission.
+After emitting `CANDIDATE`, Planning is closed for this observation. `PASS`, `ALLOW`, or `WARN` from Risk closes the decision immediately. Only Risk=`RECONSIDER` may reopen selection once per fresh evidence state: compare at most one directly relevant legal alternative, select once, and obtain that selected candidate's own final Risk result. CTRL `R` records that final result, not the initial `RECONSIDER`; set `X=1` when this one branch completed, or `X=-` when no branch was used. If the selected candidate's gate again returns `RECONSIDER`, the path is incomplete (`X=0`): do not search another alternative or submit until genuinely new public evidence arrives. `UNKNOWN` does not authorize a new Planning pass: normal public flow may resolve it through at most one fresh observe/rebuild cycle, with a new pass only on genuinely new public evidence; otherwise choose once from available public evidence with `R=UNKNOWN` and `X=-` or `X=1` according to branch use. A new thought about unchanged evidence never reopens Planning; only a new observe, action receipt, or formal feedback with genuinely new public evidence can start a new pass. Do not submit before closure; `X=0` forbids submission.
 
 ## Select MODE
 
@@ -74,7 +76,7 @@ Wealth stress is an income-recovery problem, not a reason for permanent low-prof
 
 When the current review gap is unresolved, prefer the legal option with the most direct observable path to the review/promotion objective over generic relationship-building or role-breadth options, unless fresh formal feedback specifically names Network/breadth as the primary gap or another option has clearly stronger current public evidence. This is a general ranking prior, never a fixed answer or eligibility claim.
 
-Do not prefer pure Skill growth solely for direct terminal score when a stronger public progression, Network, Wealth, or resilience path is available. Skill remains valuable when public review or progression evidence makes it instrumental.
+Do not demote Skill because of terminal-score saturation assumptions. Skill, Network, and Output all remain promotion-relevant progression dimensions unless fresh public evidence shows otherwise. Compare them using formal review evidence, fresh observed action results, current public state, and time to the next review; never use hidden thresholds or assumed caps.
 
 Prefer, in order:
 
@@ -115,7 +117,7 @@ Never convert them into:
 - a hidden threshold/cap;
 - a fixed optimal action.
 
-If advertised gain is absent after a fresh observe, record `OBSERVED_NO_GAIN` or `OBSERVED_COST`; keep the cause `UNKNOWN`. Do not infer a cap or formula.
+If advertised gain is absent after a clean fresh observe, record `OBSERVED_NO_GAIN` or `OBSERVED_COST`; keep the cause `UNKNOWN`. Fresh observed no-gain outranks the advertised effect for the current decision. Do not immediately repeat the same action merely to confirm it when another still-responsive progression path exists. When comparing a multi-dimension option, discount only the dimension with current no-gain evidence and retain any other still-responsive public benefit. Treat no-gain as local to the current Level/context: clear it after a Level change or after a later clean fresh observe shows that dimension increasing again. Do not infer a cap or formula.
 
 ## Story stop rule
 
@@ -132,9 +134,11 @@ At the first Energy decision of a quarter, set:
 QUARTER_INTENT = <MODE | target | intended use of remaining Energy>
 ```
 
-Submit Energy one integer at a time. After each action, fresh observe. Replan the remaining Energy only after material new evidence.
+Submit Energy one integer at a time. After each action, fresh observe. Replan the remaining Energy after material new evidence, including a clean `OBSERVED_NO_GAIN` on the intended progression dimension.
 
-For the quarterly Main Action, apply the same ranking. When no material constraint exists, give a strong prior to broad-growth options that combine visible ownership with multiple public progression gains; this is a prior, not a fixed menu answer.
+As the next formal review approaches, treat the remaining pre-review Energy/Main opportunities as scarce promotion-preparation capacity. With no binding constraint, prefer still-responsive Skill / Network / Output progression that can materialize before that checkpoint. Do not spend remaining Energy repeatedly on a current-Level no-gain path when another still-responsive promotion-relevant path is legal.
+
+For the quarterly Main Action, apply the same ranking. When no material constraint exists, give a strong prior to broad-growth options that combine visible ownership with multiple still-responsive public progression gains; discount a dimension currently marked `OBSERVED_NO_GAIN` until fresh public evidence contradicts it. This is a prior, not a fixed menu answer.
 
 ## Output
 
