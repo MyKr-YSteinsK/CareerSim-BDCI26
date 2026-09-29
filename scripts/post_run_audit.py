@@ -22,8 +22,8 @@ SKILL_PATH = re.compile(r"(?:^|/)agent/workspace/skills/(structured-state-board|
 INTERNAL_MARKER = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter|score|risk", re.I)
 SESSION = re.compile(r"\b(?:game_session_id|session_id|SESSION)\b[\"']?\s*[:=]\s*[\"']?([0-9a-f]{32})\b", re.I)
 STAMP = re.compile(r"\b(20\d\d-\d\d-\d\d[ T]\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)?)")
-REVIEW = re.compile(r"半年.{0,8}评审|绩效.{0,8}评审|晋升.{0,8}评审|formal review|performance review", re.I)
-QUARTER_MAIN = re.compile(r"季度.{0,8}主行动|季度.{0,8}行动|quarterly.{0,8}main", re.I)
+REVIEW = re.compile(r"半年.{0,8}评审|绩效.{0,8}评审|晋升.{0,8}评审|半年绩效评级|半年谈话|formal review|performance review", re.I)
+QUARTER_MAIN = re.compile(r"季度.{0,8}主行动|quarterly.{0,8}main", re.I)
 HIDDEN_NUMERIC = re.compile(r"\bHiddenRisk\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
 INTERNAL_SCORE_NUMERIC = re.compile(r"\b(?:internal_score|hidden_score)\s*(?:[:=]\s*)?[+-]?\d+\b", re.I)
 SENSITIVE_G = re.compile(r"hidden|internal|event[_ -]?id|threshold|counter", re.I)
@@ -183,7 +183,7 @@ def _transcript_evidence(path: Path) -> tuple[list[str], dict[str, int]]:
 def audit(
     events: Path,
     transcript: Path,
-    score_report: Path,
+    score_report: Path | None,
     runner_result: Path,
     llm_log: Path | None = None,
     run_start: str | None = None,
@@ -375,7 +375,15 @@ def audit(
                 timeline.append((ts, "skill_read", read_skill))
 
     transcript_ids, transcript_delivery = _transcript_evidence(transcript)
-    score_data = json.loads(score_report.read_text(encoding="utf-8"))
+    transcript_text = transcript.read_text(encoding="utf-8")
+    transcript_discipline = {
+        "numeric_hiddenrisk_reference": len(HIDDEN_NUMERIC.findall(transcript_text)),
+        "numeric_internal_score_reference": len(INTERNAL_SCORE_NUMERIC.findall(transcript_text)),
+        "basis": "TEXT_MATCHES_NOT_SEMANTIC_VERDICT",
+    }
+    score_data = json.loads(score_report.read_text(encoding="utf-8")) if score_report is not None else {}
+    if score_report is None:
+        limitations.add("score_report_missing_partial_audit")
     runner_data = json.loads(runner_result.read_text(encoding="utf-8"))
     if not isinstance(score_data, dict) or not isinstance(runner_data, dict):
         raise ValueError("score report and runner result must be JSON objects")
@@ -389,7 +397,7 @@ def audit(
     if transcript_identity != "PASS":
         limitations.add("transcript_session_marker_" + transcript_identity.lower())
     report_id = score_data.get("session_id")
-    score_report_identity = "MATCH" if report_id == session and session != "UNKNOWN" else ("EMPTY" if not report_id else "MISMATCH")
+    score_report_identity = "MISSING" if score_report is None else ("MATCH" if report_id == session and session != "UNKNOWN" else ("EMPTY" if not report_id else "MISMATCH"))
     if score_report_identity != "MATCH":
         limitations.add("score_report_session_field_" + score_report_identity.lower())
     matching_observes = [item for item in observes if item["public"]["session_id"] == session]
@@ -453,7 +461,7 @@ def audit(
     token_usage = {key: usage.get(key, "UNKNOWN") for key in ("input_tokens", "output_tokens", "total_tokens")}
     token_usage["binding"] = "SESSION_MATCH" if score_report_identity == "MATCH" else "RUNNER_REPORT_DIAGNOSTIC_ONLY"
     token_usage["actual_billed_cost"] = "UNKNOWN"
-    identities = {name: file_identity(path) for name, path in (("events", events), ("transcript", transcript), ("score_report", score_report), ("runner_result", runner_result))}
+    identities = {name: file_identity(path) for name, path in (("events", events), ("transcript", transcript), ("score_report", score_report), ("runner_result", runner_result)) if path is not None}
     if llm_log is not None:
         identities["llm_log"] = file_identity(llm_log)
     if evidence_manifest is not None:
@@ -465,15 +473,18 @@ def audit(
     if x_counts["1"]:
         limitations.add("ctrl_x1_branch_use_not_independently_verified")
     gaps = [item["G"] for item in ctrl_states]
+    partial = bool(not completed and events_identity == "PASS" and transcript_identity == "PASS" and terminal and isinstance(runner_exit, int) and runner_exit != 0 and not fresh_score)
+    public_observes = [{"at_utc": item["ts"].isoformat() if item["ts"] else "UNKNOWN", "public": item["public"], "alive": item["flags"].get("alive"), "failed": item["flags"].get("failed"), "event_title": item["event_title"]} for item in matching_observes]
+    natural_terminal = True if completed or fresh_score else (False if terminal_flags.get("alive") is True and terminal_flags.get("failed") is False else "UNKNOWN")
     gap_changes = sum(a != b for a, b in zip(gaps, gaps[1:]) if a != "UNKNOWN" and b != "UNKNOWN" and a != "REDACTED_INTERNAL_REFERENCE" and b != "REDACTED_INTERNAL_REFERENCE")
     return {
         "schema_version": 1,
         "inputs": identities,
         "run": {"session_id": session, "new_game_count": len(new_game_ids), "observe_count": len(observes), "events_identity": events_identity, "transcript_identity": transcript_identity, "transcript_session_ids": transcript_ids, "runner_exit_code": runner_exit, "window_source": source, "start_utc": start.isoformat() if start else "UNKNOWN", "end_utc": end.isoformat() if end else "UNKNOWN"},
-        "outcome": {"classification": "VALID_48M_COMPLETION" if completed else "UNKNOWN", "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
-        "trajectory": {"review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
+        "outcome": {"classification": "VALID_48M_COMPLETION" if completed else ("PARTIAL_GAMEPLAY_TECHNICAL_FAILURE" if partial else "UNKNOWN"), "natural_terminal_observed": natural_terminal, "max_month": max((item["month"] for item in matching_observes if isinstance(item["month"], int)), default="UNKNOWN"), "last_observe_alive": terminal_flags.get("alive", "UNKNOWN"), "last_observe_failed": terminal_flags.get("failed", "UNKNOWN"), "terminal_fresh_score": fresh_score or "UNKNOWN", "score_source": "fresh_final_observe" if fresh_score else "UNKNOWN", "score_report_session_field": score_report_identity, "terminal_public_state": terminal["public"] if terminal else "UNKNOWN"},
+        "trajectory": {"public_observations": public_observes, "review_checkpoints": review_checkpoints, "promotion_checkpoints": promotions, "quarterly_main_actions": quarter_main},
         "actions": {"attempts": len(action_calls), "success": sum(item["result"] == "SUCCESS" for item in action_calls), "errors": sum(item["result"] == "ERROR" for item in action_calls), "unknown_results": sum(item["result"] == "UNKNOWN" for item in action_calls), "noncanonical_routes": sum(item["name"] != "mcp_career-emulator_take_action" for item in action_calls), "ctrl": dict(sorted(ctrl.items())), "ctrl_closure": dict(sorted(closure.items())), "ctrl_states_by_action": ctrl_states, "ctrl_trajectory": {"P_counts": dict(sorted(phase_counts.items())), "R_counts": dict(sorted(risk_counts.items())), "X_counts": dict(sorted(x_counts.items())), "G_change_count": gap_changes, "G_values_in_order": gaps, "G_semantic_justification": "NOT_INFERRED"}, "evidence_discipline_categories": dict(sorted(violations.items()))},
-        "adherence_evidence": {"compression": compression, "delivery_marker_coverage": dict(sorted(delivery_coverage.items())), "delivery_states_by_action": delivery_actions, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if delivery_actions or any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
+        "adherence_evidence": {"transcript_evidence_discipline_categories": transcript_discipline, "compression": compression, "delivery_marker_coverage": dict(sorted(delivery_coverage.items())), "delivery_states_by_action": delivery_actions, "delivery_marker_mentions": {"transcript": transcript_delivery, "action_notes": dict(sorted(note_delivery.items()))}, "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF" if delivery_actions or any(transcript_delivery.values()) or any(note_delivery.values()) else "NOT_OBSERVED"},
         "mechanism_inputs": {"first_formal_review_month": first_review_month if first_review_month is not None else "UNKNOWN", "pre_first_review_public_choices": pre_review_choices, "pre_first_review_delivery_states": pre_review_delivery, "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"},
         "usage": token_usage,
         "limitations": sorted(limitations),
@@ -482,8 +493,9 @@ def audit(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("events", "transcript", "score-report", "runner-result", "output"):
+    for name in ("events", "transcript", "runner-result", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--score-report", type=Path, help="omit for partial technical-failure evidence; a supplied path must exist")
     parser.add_argument("--llm-log", type=Path)
     parser.add_argument("--run-start", help="timezone-aware ISO timestamp")
     parser.add_argument("--run-end", help="timezone-aware ISO timestamp")

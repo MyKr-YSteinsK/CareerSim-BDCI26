@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from scripts.post_run_audit import _read_skill, audit
 
 
@@ -343,3 +345,76 @@ def test_recovery_ready_text_cannot_upgrade_tool_order_to_full_recovery(tmp_path
     assert recovery["tool_order_status"] == "PASS"
     assert recovery["overall_status"] == "TOOL_ORDER_PASS_REBUILD_UNVERIFIED"
     assert set(recovery["rebuild_evidence"].values()) == {"UNKNOWN"}
+
+
+def test_partial_without_score_deduplicates_and_preserves_audits(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    rows[-1] = _result(12, 11, "o4", "mcp_career-emulator_observe", _observe(20, 3, "仍在进行"))
+    data = json.loads(rows[-1]["payload"]["raw_output"]["result"])
+    data["current_state"]["simulation_flags"].update(alive=True, failed=False)
+    rows[-1]["payload"]["raw_output"]["result"] = json.dumps(data)
+    earlier = next(row for row in rows if row["payload"].get("tool_call_id") == "o3")
+    earlier["payload"]["raw_output"]["result"] = json.dumps(_observe(18, 3, "季度主行动"))
+    events.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+    marker = "[CTRL G=? P=A R=PASS X=-] [DL n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]"
+    _replace_action_notes(events, [marker] * 3)
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    duplicates = [{**row, "payload": {"delta": row["payload"]}} for row in rows]
+    events.write_text("".join(json.dumps(row) + "\n" for row in rows + duplicates), encoding="utf-8")
+    runner.write_text('{"exit_code": 1}', encoding="utf-8")
+    score.unlink()
+    summary = audit(events, transcript, None, runner)
+    assert summary["run"]["session_id"] == SESSION
+    assert summary["run"]["new_game_count"] == 1
+    assert summary["run"]["observe_count"] == 4
+    assert summary["run"]["events_identity"] == "PASS"
+    assert summary["actions"]["attempts"] == 3
+    assert summary["actions"]["ctrl_closure"]["valid"] == 3
+    assert summary["adherence_evidence"]["delivery_marker_coverage"]["valid"] == 3
+    assert summary["outcome"]["classification"] == "PARTIAL_GAMEPLAY_TECHNICAL_FAILURE"
+    assert summary["outcome"]["max_month"] == 20
+    assert summary["outcome"]["natural_terminal_observed"] is False
+    assert summary["outcome"]["last_observe_alive"] is True
+    assert summary["outcome"]["terminal_fresh_score"] == "UNKNOWN"
+    assert summary["outcome"]["score_report_session_field"] == "MISSING"
+    assert summary["usage"]["total_tokens"] == "UNKNOWN"
+    assert "score_report" not in summary["inputs"]
+    output = tmp_path / "partial.json"
+    subprocess.run([sys.executable, str(Path(__file__).resolve().parents[1] / "scripts/post_run_audit.py"), "--events", str(events), "--transcript", str(transcript), "--runner-result", str(runner), "--output", str(output)], check=True, capture_output=True)
+    assert json.loads(output.read_text(encoding="utf-8")) == summary
+
+
+def test_partial_session_mismatch_cannot_claim_valid_partial(tmp_path: Path) -> None:
+    events, transcript, _, runner, _ = _fixtures(tmp_path)
+    runner.write_text('{"exit_code": 1}', encoding="utf-8")
+    transcript.write_text("SESSION=" + "b" * 32, encoding="utf-8")
+    summary = audit(events, transcript, None, runner)
+    assert summary["run"]["transcript_identity"] == "MISMATCH"
+    assert summary["outcome"]["classification"] == "UNKNOWN"
+
+
+def test_public_review_feed_and_energy_are_not_confused_with_main(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    rows = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+    row = next(row for row in rows if row["payload"].get("tool_call_id") == "o2")
+    data = json.loads(row["payload"]["raw_output"]["result"])
+    data["current_event"]["title"] = "季度体力行动分配"
+    data["events"] = "【半年谈话】整体达标，亮点不突出。半年绩效奖金（C）"
+    data["choices"][0]["action"] = "健康恢复"
+    row["payload"]["raw_output"]["result"] = json.dumps(data, ensure_ascii=False)
+    events.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+    with transcript.open("a", encoding="utf-8") as handle:
+        handle.write("HiddenRisk=999")
+    summary = audit(events, transcript, score, runner)
+    assert summary["mechanism_inputs"]["first_formal_review_month"] == 6
+    assert summary["trajectory"]["quarterly_main_actions"] == [{"month": 24, "action": "申请关键项目", "source": "public_choice"}]
+    assert summary["adherence_evidence"]["transcript_evidence_discipline_categories"]["numeric_hiddenrisk_reference"] == 1
+    assert "HiddenRisk=999" not in json.dumps(summary)
+
+
+def test_explicit_missing_score_path_is_not_silently_ignored(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    score.unlink()
+    with pytest.raises(FileNotFoundError):
+        audit(events, transcript, score, runner)
