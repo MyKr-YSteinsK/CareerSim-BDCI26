@@ -11,6 +11,7 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_MAIN_SHA = "23b5c52cdcd18aaf3f2613654b0d9d2302343661"
+S08_04_COMMIT_SHA = "aba687672cda4164c75a7b57d2bad4ae01902654"
 PARENT_CANDIDATE_ID = "candidate-v7n-public-state-delivery-constraint-hardening"
 CURRENT_CANDIDATE_ID = "candidate-v7o-execution-persistence-convergence"
 SKILL_ORDER = (
@@ -92,7 +93,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
     assert candidate["decision"] == "S08_04_EXECUTION_PERSISTENCE_CONVERGENCE"
-    assert candidate["strategy_delta"] == "NO_STRATEGY_DELTA"
+    assert candidate["strategy_delta"] == "MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY"
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert manifest["name"] == CURRENT_CANDIDATE_ID and manifest["mode"] == "agent"
     assert candidate["runtime_manifest"]["path"] == "configs/runtime_manifest.json"
@@ -118,6 +119,14 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(ROOT / entry["path"]) for entry in entries
     }
+    runtime_paths = [candidate["runtime_manifest"]["path"], *(entry["path"] for entry in entries)]
+    for relative_path in runtime_paths:
+        expected_blob = subprocess.check_output(
+            ["git", "rev-parse", f"{S08_04_COMMIT_SHA}:{relative_path}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert _git_blob_id(ROOT / relative_path) == expected_blob
     assert candidate["adopted_mechanisms"] == parent_candidate["adopted_mechanisms"]
     assert set(candidate["runtime_contract_delta"]) == REQUIRED_DELTA
     for key in ("deferred_mechanisms", "rejected_mechanisms", "architecture", "design_intent", "runner_sha"):
@@ -494,12 +503,22 @@ def test_pre_first_review_prior_semantic_cases_a_to_e() -> None:
 def test_candidate_and_state_record_static_closure_without_validation_transfer() -> None:
     candidate = _load_json(ROOT / "configs/current_candidate.json")
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
+    review = (ROOT / "docs/project/reviews/S08-04_EXECUTION_PERSISTENCE_PRE_RUN_CONVERGENCE.md").read_text(encoding="utf-8")
     decisions = (ROOT / "docs/project/ARCHITECTURE_DECISIONS.md").read_text(encoding="utf-8")
+    current_section = state.split("## Current candidate\n", 1)[1].split("\n## ", 1)[0]
+    current_line = next(line for line in current_section.splitlines() if line.startswith("- Current Candidate:"))
 
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert "S07-48" in state and "S07-47" in state and CURRENT_CANDIDATE_ID in state
-    assert re.search(r"Current Candidate:\s+candidate-v7o-execution-persistence-convergence", state)
-    assert "all v7i validation flags remain false" in state
+    assert current_line.startswith("- Current Candidate: candidate-v7o-execution-persistence-convergence")
+    assert "v7o runtime/gameplay/provider/long-horizon/survival/score/stable-80+/hidden-transfer validation flags remain false" in current_line
+    assert "NEXT_GAME = NOT_AUTHORIZED" in current_line
+    assert candidate["strategy_delta"] == "MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY"
+    assert "New strategy mechanism: `NO`." in review
+    assert "Behavior-relevant correctness/policy delta: `YES`" in review
+    assert "Execution persistence delta: `YES`." in review
+    assert "NO_STRATEGY_DELTA" not in review
+    assert "NO_STRATEGY_DELTA" not in current_section
     assert "## AD-018" in decisions and "S07-37" in decisions
     assert "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR" in decisions
     assert "NEXT_GAME = NOT_AUTHORIZED" in state

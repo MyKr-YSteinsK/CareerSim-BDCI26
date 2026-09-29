@@ -12,7 +12,7 @@
 - Repository branch: `main`.
 - Base: `23b5c52cdcd18aaf3f2613654b0d9d2302343661`, the v7n/S08-03 baseline required by the Plan.
 - Parent Candidate: `candidate-v7n-public-state-delivery-constraint-hardening`.
-- Strategy delta: `NO_STRATEGY_DELTA`.
+- Strategy delta: `MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY`.
 - Candidate status: `STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED`; all runtime, gameplay, provider, survival, score, long-horizon, stable-80+, hidden-transfer, and next-game authorization flags remain false.
 
 ## 3. Evidence Basis
@@ -58,7 +58,13 @@ Board keeps an ordinary numeric fluctuation or one-step decline in `STATE`; by i
 
 ## 10. Strategy Preservation
 
-`NO_STRATEGY_DELTA` is retained. Promotion-first with Survival Floor, default `MODE=A`, temporary stabilization, review-feedback anchoring, the pre-first-review result-realization prior, quarterly Energy intent, one-observation/one-Planning-pass discipline, Risk closure, and action preflight remain represented in their owning files. No fixed action sequence or hidden threshold was added.
+No new strategy mechanism was introduced. v7o includes a narrow evidence-backed MODE/binding-constraint correctness clarification that can affect decisions in numeric-only low/declining-state cases.
+
+- New strategy mechanism: `NO`.
+- Behavior-relevant correctness/policy delta: `YES`, narrow and evidence-backed.
+- Execution persistence delta: `YES`.
+
+A future v7o run therefore cannot be interpreted as a pure execution-persistence delta. Promotion-first with Survival Floor, default `MODE=A`, temporary stabilization, review-feedback anchoring, the pre-first-review result-realization prior, quarterly Energy intent, one-observation/one-Planning-pass discipline, Risk closure, and action preflight remain represented in their owning files. No fixed action sequence or hidden threshold was added.
 
 ## 11. Delivery/Risk Identity
 

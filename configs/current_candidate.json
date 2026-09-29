@@ -3,7 +3,7 @@
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
   "decision": "S08_04_EXECUTION_PERSISTENCE_CONVERGENCE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "NO_STRATEGY_DELTA",
+  "strategy_delta": "MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY",
   "parent_candidate_id": "candidate-v7n-public-state-delivery-constraint-hardening",
   "base_main_sha": "23b5c52cdcd18aaf3f2613654b0d9d2302343661",
   "parent_identity": {
