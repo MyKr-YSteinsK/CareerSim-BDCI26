@@ -8,7 +8,7 @@
 
 中文用于 CareerSim 自然语言判断；以下 machine-facing tokens 固定英文，不翻译：
 
-`MODE / REVIEW_PLAN / RECOVERY / PROGRESSION_RESPONSE / GAIN / NO_GAIN / UNKNOWN / PASS / ALLOW / WARN / RECONSIDER / CTRL / DL / RECOVERY_PENDING / RECOVERY_READY`
+`MODE / REVIEW_PLAN / RECOVERY / PROGRESSION_RESPONSE / GAIN / NO_GAIN / UNKNOWN / PASS / ALLOW / WARN / RECONSIDER / CONTROL_STATE / READY / OBSERVE_REQUIRED / BLOCKED / CTRL / RB / NONE / DONE / NEAR / NOT_NEAR / RECOVERY_PENDING / RECOVERY_READY`
 
 关键规则允许在 manifest 与所属 Skill 中重复，用于 compression 后保留和显著性强化；重复不得产生不同触发条件、不同 owner 或不同退出规则。
 
@@ -24,6 +24,19 @@ fresh observe
   → take_action
   → fresh observe
 ```
+
+### Executor Control State
+
+The executor owns `CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED`; no Skill may declare it ready on the executor's behalf.
+
+- `READY` requires a current-session fresh observe, rebuilt Board and Delivery, one new Planning pass, final Risk review, and a closed preflight.
+- Every successful `take_action` immediately sets `OBSERVE_REQUIRED`. Its `{success,error}` receipt contains no fresh public state and cannot update Board or Delivery.
+- While `OBSERVE_REQUIRED`, choose no next candidate and submit no second action. The only next gameplay call is a same-session fresh `observe`.
+- After a successful observe, rebuild Board (including current-Level `PROGRESSION_RESPONSE`), Delivery, Planning, and Risk before returning to `READY`.
+- An action with unknown outcome, failed observe, session mismatch, or unclosed preflight sets `BLOCKED`. Submit no action; use only the existing bounded same-session recovery contract.
+- `RECOVERY_PENDING` keeps the state blocked. `RECOVERY_READY` alone does not authorize an action; finish the fresh observe, all-Skill rebuild, final Risk, and preflight before returning to `READY`.
+
+Before any action, preflight requires `CONTROL_STATE=READY`, a final Risk other than `RECONSIDER`, and CTRL `RB=NONE|DONE`. `RB=BLOCKED` always forbids submission.
 
 Single Agent 是唯一 action submitter。
 
@@ -85,6 +98,8 @@ Planning 使用这些事实做 marginal routing：
 `ONE FRESH OBSERVE = ONE PLANNING PASS`
 
 Planning 最多比较两个 genuinely competitive candidates。Risk 只有一次 bounded `RECONSIDER` 分支。没有 genuinely new public evidence 不得重新规划。
+
+Quarterly Energy is strictly sequential: each cycle selects one Energy action, takes it only after Risk/preflight, obtains a same-session fresh observe, rebuilds Board and `PROGRESSION_RESPONSE`, updates Delivery, and runs a new Planning pass for remaining Energy. The prior remaining-action sequence is discarded; it never authorizes a batch.
 
 ## 8. Whole-game Persistence
 

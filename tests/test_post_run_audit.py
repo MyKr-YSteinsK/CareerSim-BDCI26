@@ -323,6 +323,39 @@ def test_final_r_and_independent_x_marker_combinations(tmp_path: Path) -> None:
             assert closure["basis"] == "MARKER_CONSISTENCY_ONLY"
 
 
+def test_ctrl_v2_rb_states_and_named_delivery_checkpoints(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    _replace_action_notes(events, [
+        "[CTRL G=? P=A R=PASS RB=NONE]\n[DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0]",
+        "[CTRL G=Output P=A R=ALLOW RB=DONE] [DL i=D1 n=1 focus=COMMITTED evidence=UNVERIFIED checkpoint=NEAR recognition=0]",
+        "[CTRL G=Output P=A R=PASS RB=BLOCKED] [DL i=D2 n=1 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=UNKNOWN recognition=?]",
+    ])
+    summary = audit(events, transcript, score, runner)
+    closure = summary["actions"]["ctrl_closure"]
+    actions = summary["actions"]
+    coverage = summary["adherence_evidence"]["delivery_marker_coverage"]
+
+    assert closure["status"] == "CTRL_CLOSURE_FAIL"
+    assert closure["valid"] == 2
+    assert closure["submitted_blocked_rb"] == 1
+    assert [item["RB"] for item in actions["ctrl_states_by_action"]] == ["NONE", "DONE", "BLOCKED"]
+    assert actions["ctrl_trajectory"]["RB_counts"] == {"BLOCKED": 1, "DONE": 1, "NONE": 1}
+    assert coverage["valid"] == 3
+    assert [item["state"]["checkpoint"] for item in summary["adherence_evidence"]["delivery_states_by_action"]] == [
+        "NOT_NEAR", "NEAR", "UNKNOWN"
+    ]
+
+
+def test_ctrl_v2_reconsider_remains_nonfinal_even_with_done_rb(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    _replace_action_notes(events, ["[CTRL G=? P=A R=RECONSIDER RB=DONE] Proceed"] * 3)
+    closure = audit(events, transcript, score, runner)["actions"]["ctrl_closure"]
+
+    assert closure["status"] == "CTRL_CLOSURE_FAIL"
+    assert closure.get("valid", 0) == 0
+    assert closure["submitted_nonfinal_r_reconsider"] == 3
+
+
 def test_ctrl_trajectory_is_compact_deterministic_and_redacts_internal_gap(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     _replace_action_notes(events, [

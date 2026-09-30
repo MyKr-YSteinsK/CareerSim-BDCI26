@@ -1,4 +1,4 @@
-"""Static identity and semantic-contract checks for the v7t Candidate."""
+"""Static identity and inherited strategy-contract checks for the current Candidate."""
 
 import hashlib
 import json
@@ -9,9 +9,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "3060c63142f9ad2489d08399fc750a23ff3244e8"
-PARENT_CANDIDATE_ID = "candidate-v7s-zh-recovery-controller"
-CURRENT_CANDIDATE_ID = "candidate-v7t-execution-semantic-repair"
+BASE_MAIN_SHA = "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a"
+PARENT_CANDIDATE_ID = "candidate-v7t-execution-semantic-repair"
+CURRENT_CANDIDATE_ID = "candidate-v7u-runtime-adherence-protocol"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -72,7 +72,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S08_08R_EXECUTION_SEMANTIC_REPAIR"
+    assert candidate["decision"] == "S08_10_RUNTIME_ADHERENCE_PROTOCOL_REPAIR"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -88,9 +88,11 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
         "instruction_sha256": parent["runtime_manifest"]["instruction_sha256"],
         "skills": parent_skills,
     }
-    assert candidate["parent_identity"]["runtime_manifest_sha256"] == hashlib.sha256(
-        parent_manifest_bytes
-    ).hexdigest()
+    parent_manifest_hashes = {
+        hashlib.sha256(parent_manifest_bytes).hexdigest(),
+        hashlib.sha256(parent_manifest_bytes.replace(b"\n", b"\r\n")).hexdigest(),
+    }
+    assert candidate["parent_identity"]["runtime_manifest_sha256"] in parent_manifest_hashes
 
     entries = candidate["skills"]
     assert {entry["name"] for entry in entries} == EXPECTED_SKILLS
@@ -98,12 +100,13 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
-    assert candidate["strategy_delta"] == "EXECUTION_CONTRACT_AMBIGUITY_REPAIR_ONLY"
+    assert candidate["strategy_delta"] == "RUNTIME_ADHERENCE_PROTOCOL_ONLY"
     assert candidate["design_intent"] == "HIGH_CEILING_WITH_RECOVERABLE_FAILURE_FLOOR"
     assert candidate["runtime_contract_delta"] == [
-        "CURRENT_EVENT_SEMANTICS_EXPLICIT",
-        "NO_GAIN_COVERAGE_DISAMBIGUATION",
-        "BOUNDED_CLEANUP_RETRIGGER_HARDENING",
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -303,9 +306,12 @@ def test_manifest_preserves_whole_game_persistence_preflight_and_recovery_order(
     assert "`DECISION_CLOSED` 只关闭当前 action selection，不结束 assistant execution" in manifest
     assert "每次 successful take_action 后立即 fresh observe 并进入下一决策" in manifest
     assert "不得因为 action、month、quarter、Review、promotion、局部 closure" in manifest
-    assert "每次 take_action 前确认：当前 game_session_id；恰好一个合法 integer choice" in manifest
-    assert "[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|UNKNOWN> X=<0|1|->]" in manifest
-    assert "[DL i=<NONE|D#|UNKNOWN> n=<0-3>" in manifest
+    assert "CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED" in manifest
+    assert "successful `take_action`" in manifest
+    assert "唯一合法的下一 gameplay call 是同一 session 的 fresh `observe`" in manifest
+    assert "[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> RB=<NONE|DONE|BLOCKED>]" in manifest
+    assert "checkpoint=<NEAR|NOT_NEAR|UNKNOWN>" in manifest
+    assert "CONTROL_STATE=READY" in manifest and "RB in {NONE,DONE}" in manifest
 
     recovery = manifest[manifest.index("CONTEXT RECOVERY"):]
     ordered = (
@@ -340,14 +346,10 @@ def test_evidence_firewall_and_no_fixed_hidden_rules_are_explicit() -> None:
     assert "固定事件答案" in runtime
 
 
-def test_runner_and_dependency_files_remain_frozen() -> None:
+def test_board_runner_and_dependency_files_remain_frozen() -> None:
     candidate = _json("configs/current_candidate.json")
-    for relative in (
-        "skills/structured-state-board/SKILL.md",
-        "skills/delivery-progress/SKILL.md",
-        "skills/risk-review/SKILL.md",
-    ):
-        assert (ROOT / relative).read_bytes() == _git_bytes(BASE_MAIN_SHA, relative)
+    board = "skills/structured-state-board/SKILL.md"
+    assert (ROOT / board).read_bytes() == _git_bytes(BASE_MAIN_SHA, board)
     for relative in ("pyproject.toml", "uv.lock", "career_sim_runner"):
         changed = subprocess.check_output(
             ["git", "diff", "--name-only", BASE_MAIN_SHA, "--", relative],

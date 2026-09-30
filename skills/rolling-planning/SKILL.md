@@ -167,15 +167,31 @@ Review 前，explicit near-term delivery delay / first-delivery uncertainty 是�
 
 ## Quarterly Control
 
-季度第一次 Energy：
+季度第一次 Energy 只记录当前目标：
 
 ```text
-QUARTER_INTENT = <MODE | target | remaining-Energy intent>
+QUARTER_INTENT = <MODE | current target>
 ```
 
-每次只提交一个 Energy integer；动作后必须 fresh observe。
+不得预先承诺剩余 Energy 的动作数量、选择序列或固定批次。旧 `QUARTER_INTENT` 是目标提示，不授权后续动作。
 
-出现 clean `OBSERVED_NO_GAIN` 后立即重新分配剩余 Energy。
+每轮只能选一个 Energy action，并依次完成：
+
+```text
+fresh same-session observe
+→ Board rebuild and PROGRESSION_RESPONSE update
+→ Delivery rebuild
+→ new Planning pass for remaining Energy
+→ Risk and executor preflight
+→ submit exactly one action
+→ CONTROL_STATE=OBSERVE_REQUIRED
+```
+
+动作 receipt 只有 `success/error`，不能解除 `OBSERVE_REQUIRED`、更新 Board 或授权下一动作。每次 fresh observe 后，丢弃旧剩余动作意图；Board、Delivery、Planning 和 Risk 完成新一轮后才可重新 READY。observe 失败或 session 不匹配时为 `BLOCKED`，禁止 action。
+
+出现 clean `OBSERVED_NO_GAIN` 后，Board 先记录该维度 `NO_GAIN`，然后必须重建 Planning 并重新分配剩余 Energy。若存在 responsive alternative，不得立即再次选择同一个 no-gain action；旧批次计划不能覆盖该门禁。
+
+例如 Energy=3、Output=26：第一次 Report Preparation 后 fresh observe 仍为 Output=26 时，下一轮必须看到 Board `O=NO_GAIN` 并执行新的 Planning pass；存在 responsive alternative 时，第二次 immediate Report Preparation 不符合合同。
 
 越接近下一 Review，剩余 Energy/Main opportunity 越稀缺；无 binding constraint 时，优先 still-responsive、能在 checkpoint 前兑现的 promotion-relevant progress。
 

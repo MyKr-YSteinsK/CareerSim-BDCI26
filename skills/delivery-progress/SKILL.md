@@ -100,13 +100,15 @@ active item 必须仍有公开证据支持 unresolved commitment、work in progr
 每次 fresh Board 后输出当前完整 bounded Delivery state，并给最相关 item 一个 marker：
 
 ```text
-[DL i=<NONE|D#|UNKNOWN> n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<0|1|?> recognition=<0|1|?>]
+[DL i=<NONE|D#|UNKNOWN> n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<NEAR|NOT_NEAR|UNKNOWN> recognition=<0|1|?>]
 ```
+
+`checkpoint=NEAR` 需要公开证据表明该 item 与当前 Review Window 或 commitment 的 near-term checkpoint 相关；`NOT_NEAR` 表示没有此类公开依据；证据不足时用 `UNKNOWN`。不得用数字倒计时推导 near status。
 
 - `n` = active item 数量；
 - `i` 必须映射到当前 Delivery state 中唯一 item；
 - recent `CLOSED` item 不计入 `n`，也不能成为 action-note focus；
-- `n=0` 时使用 `i=NONE focus=NONE evidence=NA checkpoint=0 recognition=0`。
+- `n=0` 时使用 `i=NONE focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0`。
 
 marker 只记录现有 Delivery evidence，不自动改变 Planning ranking。
 

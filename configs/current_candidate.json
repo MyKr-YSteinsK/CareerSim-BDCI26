@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7t-execution-semantic-repair",
+  "candidate_id": "candidate-v7u-runtime-adherence-protocol",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S08_08R_EXECUTION_SEMANTIC_REPAIR",
+  "decision": "S08_10_RUNTIME_ADHERENCE_PROTOCOL_REPAIR",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "EXECUTION_CONTRACT_AMBIGUITY_REPAIR_ONLY",
-  "parent_candidate_id": "candidate-v7s-zh-recovery-controller",
-  "base_main_sha": "3060c63142f9ad2489d08399fc750a23ff3244e8",
+  "strategy_delta": "RUNTIME_ADHERENCE_PROTOCOL_ONLY",
+  "parent_candidate_id": "candidate-v7t-execution-semantic-repair",
+  "base_main_sha": "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a",
   "parent_identity": {
-    "runtime_manifest_sha256": "68736614b176a3847ee0da12e6f13787fedb878b768c489fc5bfa46a4eb5decf",
-    "instruction_sha256": "53c9d8bda8a10c3c1b38c67fc43d02a1609afc3b892d6a1d3426dec70d9ea032",
+    "runtime_manifest_sha256": "15c3638da5e49b60fa6f30f3d702cc5d170cc91c91628f0dc0ac4eb4fd4b1c1d",
+    "instruction_sha256": "a6c94438dc7a06cdd9515f39a4ea19b5b59f5863a8478d205c2284ddc5889021",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "ef3183e5461ecd2603152e1a3caf88991f8150f0"
+        "git_blob": "4f4b7c6418529f1ba48c24d2fa9447b20aa591e7"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "15c3638da5e49b60fa6f30f3d702cc5d170cc91c91628f0dc0ac4eb4fd4b1c1d",
-    "instruction_sha256": "a6c94438dc7a06cdd9515f39a4ea19b5b59f5863a8478d205c2284ddc5889021"
+    "sha256": "3f15967c29afddcd9baaaac04fbe0261241947be76e207c8d3388169d6c1ffee",
+    "instruction_sha256": "5dd3c81f0ca574096946158d35ed93b659e919d5e83dbb19aee2fc63c9ebd200"
   },
   "skills": [
     {
@@ -46,17 +46,17 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "4f4b7c6418529f1ba48c24d2fa9447b20aa591e7"
+      "git_blob": "6088fc6f56c60d8d98b176b6c7ef8f05b1f2f8dd"
     },
     {
       "name": "delivery-progress",
       "path": "skills/delivery-progress/SKILL.md",
-      "git_blob": "34f88bd75a286a4e6cd21f150ad884f5cd181cd9"
+      "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
     },
     {
       "name": "risk-review",
       "path": "skills/risk-review/SKILL.md",
-      "git_blob": "10ebf393b6e9156e52382effe503d29c3169e118"
+      "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
     }
   ],
   "adopted_mechanisms": [
@@ -84,9 +84,10 @@
     "ENGLISH_STRUCTURED_CONTROL_TOKENS"
   ],
   "runtime_contract_delta": [
-    "CURRENT_EVENT_SEMANTICS_EXPLICIT",
-    "NO_GAIN_COVERAGE_DISAMBIGUATION",
-    "BOUNDED_CLEANUP_RETRIGGER_HARDENING"
+    "FRESH_OBSERVE_CONTROL_STATE",
+    "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+    "NAMED_DELIVERY_CHECKPOINT_ENUM",
+    "PER_ACTION_ENERGY_REPLAN"
   ],
   "deferred_mechanisms": [
     "DURABLE_OR_CROSS_GAME_MEMORY",
@@ -124,8 +125,8 @@
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,

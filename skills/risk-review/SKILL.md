@@ -75,8 +75,10 @@ Full Review 后不得返回 `PASS`；使用 `ALLOW / WARN / RECONSIDER / UNKNOWN
 1. Planning 最多比较一个直接相关替代项；
 2. 选定后，该候选必须重新经过 Risk；
 3. 最终 CTRL `R` 记录提交候选的最终 `PASS|ALLOW|WARN|UNKNOWN`；
-4. `X=1` 表示完成一次 reconsideration branch；
-5. 如果第二次仍为 `RECONSIDER`，使用 `X=0`，禁止 `take_action`，直到 genuinely new public evidence 到达。
+4. CTRL v2 使用 `[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> RB=<NONE|DONE|BLOCKED>]`；`R` 是最终候选的 Risk 结果。
+5. 初次 Risk 非 `RECONSIDER` 且无 reconsideration branch 时记 `RB=NONE`；一次 bounded branch 完成且最终 Risk 不为 `RECONSIDER` 时记 `RB=DONE`。
+6. 最终 Risk 仍为 `RECONSIDER` 或分支/门禁无法闭合时记 `RB=BLOCKED`；`RB=BLOCKED` 禁止提交，直到 genuinely new public evidence 到达并重新完成完整 gate。
+7. 执行器只可在 `CONTROL_STATE=READY`、最终 `R!=RECONSIDER` 且 `RB in {NONE,DONE}` 时提交。Risk 仍只返回既定 `RISK / REASON`，不提交动作、不自行声明 CONTROL_STATE。
 
 `UNKNOWN` 不允许无限 observe/replan。正常流程最多尝试一次 fresh observe/rebuild；仍无法消除时，基于现有公开证据做一次 bounded legal decision，最终 `R=UNKNOWN`。
 
