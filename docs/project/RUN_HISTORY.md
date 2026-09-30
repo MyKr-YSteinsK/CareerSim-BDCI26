@@ -36,6 +36,15 @@
 - Candidate identity, run date, completion reason, usage, and billed cost: UNKNOWN in the compact comparison record.
 - Source at closeout: experiments/S04-04-high-score-confirmation/two_run_comparison.json.
 
+## S09-02 — Offline joint failure-floor / high-score review
+
+- No new run: provider/service/MCP/game = 0. Candidate/Skill/manifest/runtime mutation = 0; HPL_COORDINATION_IMPACT=NONE; existing FORENSIC_HOLDs preserved.
+- Cohort: v1 #1/#2 (Tier B Git summaries; original raw unavailable), v6/v7o donors; v7g/v7i replacement/v7t/v7v survivor controls; v4/v7d/v7q/v7w failures (10 Tier A exact streams). Registered source hashes match.
+- Strict same-session action attribution: 976 clean / 512 mixed / 20 unknown attempts. H: 143 negative, observed max loss2, median/P75/P90/P95=1/1/1/2. W: 16 negative, observed max loss4, median/P75=2/2, P90/P95 UNKNOWN. These are dependent selected historical samples, not simulator/Test bounds or numeric MODE thresholds.
+- v4's final H1→0 coincides with Energy refill, retained as mixed terminal evidence; its terminal public Level is L2. v7d W2→0 at M9 did not immediately terminate. v1 #2's coarse M24→25 W9→3 is excluded from single-action shock statistics.
+- Findings: donor early promotion cadence co-occurs with broad growth but is insufficient for survival (v1 paired trust failure); v7q/v7w progression weakness precedes persistent S. v7w's 42-action S sequence is an adherence concern, not a proven cause of elimination. Its adjacent-zero repeats include unknown receipts and are not upgraded to clean NO_GAIN evidence.
+- Decision: S09_02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS_COMPLETE_DESIGN_EVIDENCE_READY. Minimum proposed hypothesis is fresh public binding basis for each continued-S decision; no implementation or new game permission. See [full joint review](reviews/S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md). NEXT_GAME=NOT_AUTHORIZED.
+
 ## Candidate v1 #1 — S04-03
 
 - Source commit: 7a055dea76580117ca74cddb49bb04efcf605eb1.
