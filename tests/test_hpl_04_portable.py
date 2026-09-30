@@ -20,7 +20,13 @@ package_manifest = importlib.util.module_from_spec(_PACKAGE_MANIFEST_SPEC)
 _PACKAGE_MANIFEST_SPEC.loader.exec_module(package_manifest)
 
 
-def _portable_zip(path: Path, *, forbidden_entry: str | None = None, source_path_leak: bool = False) -> None:
+def _portable_zip(
+    path: Path,
+    *,
+    forbidden_entry: str | None = None,
+    source_path_leak: bool = False,
+    binary_provider_marker: bool = False,
+) -> None:
     root = "CareerSim-Human-v1"
     resources = package_manifest.REQUIRED_RESOURCES
     files = {resource: f"fixture:{resource}".encode() for resource in resources}
@@ -58,7 +64,7 @@ def _portable_zip(path: Path, *, forbidden_entry: str | None = None, source_path
         },
     }
     entries = {
-        f"{root}/CareerSim Human.exe": b"fixture-executable",
+        f"{root}/CareerSim Human.exe": b"gitcode_api" if binary_provider_marker else b"fixture-executable",
         f"{root}/BUILD_MANIFEST.json": json.dumps(manifest).encode(),
         f"{root}/README.txt": b"D:\\CS\\CareerSim" if source_path_leak else b"portable fixture",
         f"{root}/LICENSES/LICENSE.txt": b"license",
@@ -87,6 +93,11 @@ def test_portable_verifier_accepts_default_dataset_fixture_and_rejects_agent_pat
     _portable_zip(leaked, source_path_leak=True)
     with pytest.raises(ValueError, match="leaks a repository"):
         package_manifest.verify(leaked)
+
+    provider = tmp_path / "provider.zip"
+    _portable_zip(provider, binary_provider_marker=True)
+    with pytest.raises(ValueError, match="excluded provider"):
+        package_manifest.verify(provider)
 
 
 def test_packaged_startup_self_check_requires_performance_score_default_resource(tmp_path, monkeypatch):
@@ -168,6 +179,8 @@ def test_build_contract_uses_hpl_only_runtime_and_onedir():
     assert "career_emulator/data/dataset" in source
     assert "ef3b02b22f9d00ef35775930e33807f19380a0455999f452b058f00e104c4d09" in source
     assert "flet-runtime\\1.0.1\\flet-windows.zip" in source
+    assert "--exclude-module=gitcode_api" in source
+    assert "--exclude-module=fastmcp" in source
     assert "runtime 'venv\\Scripts\\python.exe'" not in source
     assert "uv run" not in source
     assert "root .venv" not in source

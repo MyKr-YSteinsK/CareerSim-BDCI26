@@ -70,6 +70,8 @@ FORBIDDEN_TEXT_MARKERS = (
     b"fastmcp",
     b"gitcode_api",
 )
+SOURCE_PATH_MARKERS = FORBIDDEN_TEXT_MARKERS[:8]
+BINARY_PROVIDER_MARKERS = (b"jiuwenswarm", b"fastmcp", b"gitcode_api")
 TEXT_SUFFIXES = {
     ".cfg",
     ".ini",
@@ -298,8 +300,18 @@ def _check_source_path_leaks(archive: zipfile.ZipFile, names: list[str]) -> None
         if name.endswith("/"):
             continue
         blob = archive.read(name).lower()
-        if any(marker in blob for marker in FORBIDDEN_TEXT_MARKERS):
+        if any(marker in blob for marker in SOURCE_PATH_MARKERS):
             raise ValueError(f"portable ZIP leaks a repository, HPL runtime or uv Python path: {name}")
+
+
+def _check_binary_provider_content(archive: zipfile.ZipFile, names: list[str]) -> None:
+    native_suffixes = {".exe", ".dll", ".pyd"}
+    for name in names:
+        if Path(name).suffix.casefold() not in native_suffixes:
+            continue
+        blob = archive.read(name).lower()
+        if any(marker in blob for marker in BINARY_PROVIDER_MARKERS):
+            raise ValueError(f"portable native binary contains an excluded provider or service module: {name}")
 
 
 def verify(archive_path: Path) -> dict[str, object]:
@@ -384,6 +396,7 @@ def verify(archive_path: Path) -> dict[str, object]:
             raise ValueError("portable manifest does not identify the performance_score default resource")
         _check_source_path_leaks(archive, names)
         _check_forbidden_content(archive, names)
+        _check_binary_provider_content(archive, names)
         return {
             "archive": str(archive_path),
             "bytes": archive_path.stat().st_size,

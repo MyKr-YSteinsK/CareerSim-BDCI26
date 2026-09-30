@@ -25,6 +25,7 @@ $entry = Join-Path $worktree 'hpl_client\app.py'
 $dist = Join-Path $runtime 'package-build\dist'
 $release = Join-Path $runtime 'package-build\release'
 $packageBuild = Join-Path $runtime 'package-build'
+$fletRuntimeSource = Join-Path $packageBuild 'flet-runtime-source'
 $packCwd = Join-Path $packageBuild 'pack-cwd'
 $payload = Join-Path $release 'CareerSim-Human-v1'
 $zip = Join-Path $release 'CareerSim-Human-v1-Windows-x64.zip'
@@ -78,24 +79,34 @@ if (-not $SkipBuild) {
         Remove-Item -LiteralPath $packageBuild -Recurse -Force
     }
     New-Item -ItemType Directory -Path $packCwd, $dist, $release -Force | Out-Null
+    New-Item -ItemType Directory -Path $fletRuntimeSource -Force | Out-Null
+    Expand-Archive -LiteralPath $fletArchiveSource -DestinationPath $fletRuntimeSource -Force
+    if (-not (Test-Path -LiteralPath (Join-Path $fletRuntimeSource 'flet\flet.exe') -PathType Leaf)) {
+        throw 'Pinned Flet archive does not contain its expected flet\flet.exe client.'
+    }
 
     # Restrict all subprocess resolution to the official packaging venv and Windows.
     $env:VIRTUAL_ENV = $packageVenv
     Remove-Item Env:PYTHONPATH -ErrorAction SilentlyContinue
-    Remove-Item Env:FLET_VIEW_PATH -ErrorAction SilentlyContinue
+    $env:FLET_VIEW_PATH = $fletRuntimeSource
     foreach ($name in @('FLET_FORCE_WEB_SERVER', 'FLET_DISPLAY_URL_PREFIX', 'FLET_SERVER_IP', 'FLET_SERVER_PORT')) {
         Remove-Item "Env:$name" -ErrorAction SilentlyContinue
     }
     $env:PATH = (Join-Path $packageVenv 'Scripts') + ';' + (Join-Path $env:SystemRoot 'System32') + ';' + $env:SystemRoot
 
     $datasetArgument = $datasetSource + ';career_emulator/data/dataset'
-    $fletArchiveArgument = $fletArchiveSource + ';flet_desktop/app'
     $packArgs = @(
         'pack', $entry, '--onedir', '--name', 'CareerSim Human', '--distpath', $dist,
-        '--add-data', $datasetArgument, '--add-data', $fletArchiveArgument,
+        '--add-data', $datasetArgument,
         '--hidden-import', 'career_emulator.game',
         '--hidden-import', 'scripts.hpl_evidence_writer',
         '--hidden-import', 'scripts.hpl_public_evidence',
+        '--pyinstaller-build-args=--exclude-module=gitcode_api',
+        '--pyinstaller-build-args=--exclude-module=fastmcp',
+        '--pyinstaller-build-args=--exclude-module=jiuwenswarm',
+        '--pyinstaller-build-args=--exclude-module=career_emulator.cli',
+        '--pyinstaller-build-args=--exclude-module=career_emulator.share_run',
+        '--pyinstaller-build-args=--exclude-module=career_emulator.server',
         '--product-name', 'CareerSim Human', '--file-description', 'CareerSim Human portable client',
         '--product-version', '1.0.0', '--file-version', '1.0.0.0', '--yes'
     )
@@ -132,6 +143,7 @@ if (-not $SkipBuild) {
     }
     $packagedFletArchive = Join-Path $payload '_internal\flet_desktop\app\flet-windows.zip'
     if (-not (Test-Path -LiteralPath $packagedFletArchive -PathType Leaf)) { throw 'The bundled Flet archive is missing.' }
+    Copy-Item -LiteralPath $fletArchiveSource -Destination $packagedFletArchive -Force
     $packagedFletHash = (Get-FileHash -LiteralPath $packagedFletArchive -Algorithm SHA256).Hash.ToLowerInvariant()
     if ($packagedFletHash -ne $expectedFletArchiveHash) { throw "Bundled Flet archive hash mismatch: $packagedFletHash" }
 
@@ -140,7 +152,7 @@ if (-not $SkipBuild) {
         '--dataset-source' $datasetSource `
         '--site-packages' $sitePackages `
         '--source-commit' $sourceCommit `
-        '--build-command' ('flet pack --onedir --add-data <career_emulator_bdci26/dev/dataset>;career_emulator/data/dataset --add-data <verified-flet-windows.zip>;flet_desktop/app sha256=' + $expectedFletArchiveHash)
+        '--build-command' ('flet pack --onedir --add-data <career_emulator_bdci26/dev/dataset>;career_emulator/data/dataset --pyinstaller-build-args=exclude-provider-modules;FLET_VIEW_PATH=<pinned-flet-runtime> sha256=' + $expectedFletArchiveHash)
     if ($LASTEXITCODE -ne 0) { throw "Portable BUILD_MANIFEST generation failed with exit code $LASTEXITCODE" }
     Compress-Archive -Path $payload -DestinationPath $zip -CompressionLevel Optimal
 }
