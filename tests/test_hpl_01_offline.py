@@ -17,7 +17,12 @@ from scripts.hpl_public_evidence import project_cli_frame
 def test_preflight_plans_isolated_storage_without_creating_it(tmp_path: Path) -> None:
     runtime_root = tmp_path / "not-created" / "hpl-run-01"
 
-    plan = build_preflight(runtime_root)
+    hpl_python = Path(__file__).resolve().parents[4] / ".local/runtime/human-play-lab/venv/Scripts/python.exe"
+    result = subprocess.run(
+        [str(hpl_python), "-m", "scripts.hpl_preflight", "--runtime-root", str(runtime_root)],
+        check=True, capture_output=True, text=True, timeout=30,
+    )
+    plan = json.loads(result.stdout)
 
     assert not runtime_root.exists()
     assert plan["execution"] == {
@@ -31,7 +36,8 @@ def test_preflight_plans_isolated_storage_without_creating_it(tmp_path: Path) ->
         "career-emulator-bdci26": "1.0.0",
     }
     assert plan["dataset"]["split"] == "dev"
-    assert plan["dataset"]["current_default_identity"] in {"UNKNOWN", "PATH_MATCHES_PINNED_DEV"}
+    assert plan["dataset"]["current_default_identity"] == "COMPLETE_BYTE_IDENTICAL_DEV_MIRROR"
+    assert plan["dataset"]["distribution_record_verified"] is True
     assert set(plan["dataset"]["engine_paths"]) == {
         "event_dir",
         "fixed_event_dir",

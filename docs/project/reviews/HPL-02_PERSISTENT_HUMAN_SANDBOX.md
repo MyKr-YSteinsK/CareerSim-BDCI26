@@ -6,6 +6,8 @@
 >
 > Boundary: `NO GAME / NO PROVIDER`; this decision does not authorize the first Human Run or complete the Human Play Lab track.
 
+> Follow-up: HPL-RUN01 exposed a missing package-default `performance_score` route. The seven injected directories were insufficient. See [HPL-RUN01 dataset routing repair](HPL-RUN01_DATASET_ROUTING_REPAIR.md) for the complete local Dev mirror and stronger preflight. The original verification below records only the HPL-02 offline boundary.
+
 ## Identity and lineage
 
 - Accepted parent: `HPL-01 @ a874f5471bbff4c46216f36174acb4d785c05cc4`.
