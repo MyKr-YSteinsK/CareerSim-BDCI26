@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "receipt_source": "Derived from the completed interactive Runner process exit receipt and its exact score_report.json; the Runner emitted no separate runner-result file.",
+  "exit_code": 0,
+  "play_exit_code": 0,
+  "session_id": "700f8ed814844694869d93461e7ef748",
+  "drive_session_id": "career-sim-runner-05ecebf950de",
+  "started_at_utc": "2026-09-30T13:11:04+00:00",
+  "ended_at_utc": "2026-09-30T13:14:16.638819+00:00",
+  "outcome": "eliminated",
+  "survival_months": 8,
+  "completed": false,
+  "quantitative_score": 19.82,
+  "competition_partial_score": 13.88,
+  "grade": "E"
+}

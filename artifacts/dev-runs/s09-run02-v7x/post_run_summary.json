@@ -1,0 +1,2055 @@
+{
+  "actions": {
+    "attempts": 29,
+    "ctrl": {
+      "attempts": 29,
+      "malformed_or_duplicate": 0,
+      "missing": 0,
+      "single_integer_choice": 29,
+      "valid": 29
+    },
+    "ctrl_closure": {
+      "basis": "MARKER_CONSISTENCY_ONLY",
+      "status": "CTRL_CLOSURE_PASS",
+      "valid": 29
+    },
+    "ctrl_states_by_action": [
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 1,
+        "month": 1
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 2,
+        "month": 1
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 3,
+        "month": 1
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 4,
+        "month": 1
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 5,
+        "month": 2
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 6,
+        "month": 2
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 7,
+        "month": 2
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 8,
+        "month": 3
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 9,
+        "month": 3
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 10,
+        "month": 3
+      },
+      {
+        "G": "SURVIVAL",
+        "P": "S",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 11,
+        "month": 3
+      },
+      {
+        "G": "SURVIVAL",
+        "P": "S",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 12,
+        "month": 3
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 13,
+        "month": 3
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 14,
+        "month": 3
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 15,
+        "month": 4
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 16,
+        "month": 4
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 17,
+        "month": 4
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 18,
+        "month": 5
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 19,
+        "month": 5
+      },
+      {
+        "G": "?",
+        "P": "A",
+        "R": "PASS",
+        "RB": "DONE",
+        "action_index": 20,
+        "month": 5
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 21,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 22,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 23,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 24,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 25,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 26,
+        "month": 6
+      },
+      {
+        "G": "OUTPUT",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 27,
+        "month": 7
+      },
+      {
+        "G": "NETWORK",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 28,
+        "month": 7
+      },
+      {
+        "G": "NETWORK",
+        "P": "A",
+        "R": "PASS",
+        "RB": "NONE",
+        "action_index": 29,
+        "month": 7
+      }
+    ],
+    "ctrl_trajectory": {
+      "G_change_count": 4,
+      "G_semantic_justification": "NOT_INFERRED",
+      "G_values_in_order": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "SURVIVAL",
+        "SURVIVAL",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "OUTPUT",
+        "OUTPUT",
+        "OUTPUT",
+        "OUTPUT",
+        "OUTPUT",
+        "OUTPUT",
+        "OUTPUT",
+        "NETWORK",
+        "NETWORK"
+      ],
+      "P_counts": {
+        "A": 27,
+        "S": 2
+      },
+      "RB_counts": {
+        "DONE": 1,
+        "NONE": 28
+      },
+      "R_counts": {
+        "PASS": 29
+      }
+    },
+    "errors": 0,
+    "evidence_discipline_categories": {
+      "numeric_hiddenrisk_reference": 0,
+      "numeric_internal_score_reference": 0
+    },
+    "noncanonical_routes": 0,
+    "success": 29,
+    "unknown_results": 0
+  },
+  "adherence_evidence": {
+    "compression": {
+      "count": "UNKNOWN",
+      "events_utc": [],
+      "recovery": [],
+      "status": "UNKNOWN"
+    },
+    "delivery_lifecycle_status": "MARKERS_OBSERVED_NOT_ADHERENCE_PROOF",
+    "delivery_marker_coverage": {
+      "attempts": 29,
+      "identity_missing": 0,
+      "malformed_or_duplicate": 0,
+      "missing": 0,
+      "status": "DELIVERY_MARKER_COVERAGE_PASS",
+      "valid": 29
+    },
+    "delivery_marker_mentions": {
+      "action_notes": {
+        "BLOCKED": 0,
+        "COMMITTED": 0,
+        "DELIVERED": 0,
+        "DELIVERY_CLAIMED": 0,
+        "IN_PROGRESS": 0,
+        "PUBLICLY_VERIFIED": 0,
+        "evidence_status=": 0,
+        "next_checkpoint=": 0,
+        "recognition_link=": 0,
+        "stage=": 0
+      },
+      "transcript": {
+        "BLOCKED": 0,
+        "COMMITTED": 0,
+        "DELIVERED": 0,
+        "DELIVERY_CLAIMED": 0,
+        "IN_PROGRESS": 0,
+        "PUBLICLY_VERIFIED": 0,
+        "evidence_status=": 0,
+        "next_checkpoint=": 0,
+        "recognition_link=": 0,
+        "stage=": 0
+      }
+    },
+    "delivery_states_by_action": [
+      {
+        "action_index": 1,
+        "event_order": 29,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 2,
+        "event_order": 37,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 3,
+        "event_order": 45,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 4,
+        "event_order": 53,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 5,
+        "event_order": 61,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 6,
+        "event_order": 69,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 7,
+        "event_order": 77,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 8,
+        "event_order": 85,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 9,
+        "event_order": 93,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 10,
+        "event_order": 101,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 11,
+        "event_order": 109,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 12,
+        "event_order": 117,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 13,
+        "event_order": 125,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 14,
+        "event_order": 133,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 15,
+        "event_order": 141,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 16,
+        "event_order": 149,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 17,
+        "event_order": 157,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 18,
+        "event_order": 165,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 19,
+        "event_order": 173,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 20,
+        "event_order": 181,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 21,
+        "event_order": 189,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 22,
+        "event_order": 197,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 23,
+        "event_order": 205,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 24,
+        "event_order": 213,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 25,
+        "event_order": 221,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 26,
+        "event_order": 229,
+        "month": 6,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 27,
+        "event_order": 237,
+        "month": 7,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 28,
+        "event_order": 245,
+        "month": 7,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 29,
+        "event_order": 253,
+        "month": 7,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      }
+    ],
+    "transcript_evidence_discipline_categories": {
+      "basis": "TEXT_MATCHES_NOT_SEMANTIC_VERDICT",
+      "numeric_hiddenrisk_reference": 6,
+      "numeric_internal_score_reference": 0
+    }
+  },
+  "inputs": {
+    "events": {
+      "bytes": 376682,
+      "name": "events-20260930T131104Z.jsonl",
+      "sha256": "8e757e1f207c54c10c7ce9281bf8169c086b916e3ebac8784784775ec557be4a"
+    },
+    "runner_result": {
+      "bytes": 626,
+      "name": "runner-result.json",
+      "sha256": "fa537c917b2b85d008c53a016dd7365e7796157cc6deb2c24f766a76ac8e7021"
+    },
+    "score_report": {
+      "bytes": 2722,
+      "name": "score_report.json",
+      "sha256": "dcaf6f5ed6acbeec811077ad23bf27200b3c14f19d83fbb03333278078617fd3"
+    },
+    "transcript": {
+      "bytes": 79869,
+      "name": "transcript-20260930T131104Z.log",
+      "sha256": "333d4b1d05c11b75670f956aef964894c63697bbfa46d76519ea9596d0b69d52"
+    }
+  },
+  "limitations": [
+    "ctrl_rb_done_branch_use_not_independently_verified",
+    "llm_log_not_supplied_compression_unknown",
+    "terminal_48m_completion_not_established"
+  ],
+  "mechanism_inputs": {
+    "first_formal_review_month": 6,
+    "pre_first_review_delivery_states": [
+      {
+        "action_index": 1,
+        "event_order": 29,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 2,
+        "event_order": 37,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 3,
+        "event_order": 45,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 4,
+        "event_order": 53,
+        "month": 1,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 5,
+        "event_order": 61,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 6,
+        "event_order": 69,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 7,
+        "event_order": 77,
+        "month": 2,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 8,
+        "event_order": 85,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 9,
+        "event_order": 93,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 10,
+        "event_order": 101,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 11,
+        "event_order": 109,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 12,
+        "event_order": 117,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 13,
+        "event_order": 125,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 14,
+        "event_order": 133,
+        "month": 3,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 15,
+        "event_order": 141,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 16,
+        "event_order": 149,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 17,
+        "event_order": 157,
+        "month": 4,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 18,
+        "event_order": 165,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 19,
+        "event_order": 173,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      },
+      {
+        "action_index": 20,
+        "event_order": 181,
+        "month": 5,
+        "state": {
+          "checkpoint": "NOT_NEAR",
+          "evidence": "NA",
+          "focus": "NONE",
+          "item_id": "NONE",
+          "n": 0,
+          "recognition": "0"
+        }
+      }
+    ],
+    "pre_first_review_public_choices": [
+      {
+        "event_title": "新员工手册",
+        "legal_actions": [
+          "继续"
+        ],
+        "month": 1
+      },
+      {
+        "event_title": "年会被起哄上台表演长链",
+        "legal_actions": [
+          "大方接下，挑个简单不出错的形式（讲个段子/带大家做个互动），把气氛炒起来",
+          "笑着婉拒，但主动提议替代方案（帮忙张罗游戏/给表演的同事捧场）",
+          "黑着脸硬拒「我不会这些」，场面一度冷掉"
+        ],
+        "month": 1
+      },
+      {
+        "event_title": "同事深夜工作消息与领导点赞",
+        "legal_actions": [
+          "立刻回复显示专业",
+          "次日上班再回，并说明作息边界",
+          "私聊 Leader 建议重要事项用邮件",
+          "也学唐颖深夜发消息"
+        ],
+        "month": 1
+      },
+      {
+        "event_title": "得知未公开调整好友问买房",
+        "legal_actions": [
+          "暗示「近期可能有变动，建议谨慎」，不透露文件",
+          "只说「公司整体稳定」，不透露内幕",
+          "私下告知调整方向，请她绝对保密"
+        ],
+        "month": 1
+      },
+      {
+        "event_title": "年会被起哄上台表演长链",
+        "legal_actions": [
+          "见好就收，把舞台交还给主持人，回座位继续融入",
+          "趁热度想多表现，硬撑着主持，后面渐渐力不从心"
+        ],
+        "month": 2
+      },
+      {
+        "event_title": "合作同事会上甩锅",
+        "legal_actions": [
+          "冷静列举时间线与邮件记录，澄清责任归属",
+          "先承担部分责任稳住客户，会后再找小周对峙",
+          "当场反击，指出小周未按时提供联调环境",
+          "沉默，请 Leader 主持厘清"
+        ],
+        "month": 2
+      },
+      {
+        "event_title": "合作同事会上甩锅",
+        "legal_actions": [
+          "主动起草联合改进计划，抄送 Leader 并邀请小周共创",
+          "只写自己负责部分，明确边界"
+        ],
+        "month": 2
+      },
+      {
+        "event_title": "年会与大领导同桌的社交分寸长链",
+        "legal_actions": [
+          "自然地找个轻松又得体的话题（行业趣闻/对公司活动的真诚感受）开个头",
+          "逮住机会猛夸领导、刻意刷存在感",
+          "紧张到全程低头吃饭，一句话不敢说"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "暴雨下班仅有一伞与小赵",
+        "legal_actions": [
+          "邀小赵共撑一把伞，步行到地铁站",
+          "把伞借给小赵，自己冒雨跑百米去打车",
+          "提议拼车，费用 AA",
+          "说伞只够一个人，各自想办法"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "暴雨下班仅有一伞与小赵",
+        "legal_actions": [
+          "接受，顺便听他说说项目困境",
+          "婉拒，赶最后一班地铁回家"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "季度体力行动分配",
+        "legal_actions": [
+          "高强度工作",
+          "技能学习",
+          "人脉维护",
+          "处理历史埋雷",
+          "心理修复",
+          "健康恢复",
+          "准备汇报材料",
+          "保留体力（不行动）"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "季度体力行动分配",
+        "legal_actions": [
+          "高强度工作",
+          "技能学习",
+          "人脉维护",
+          "处理历史埋雷",
+          "心理修复",
+          "健康恢复",
+          "准备汇报材料",
+          "保留体力（不行动）"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "季度体力行动分配",
+        "legal_actions": [
+          "高强度工作",
+          "技能学习",
+          "人脉维护",
+          "处理历史埋雷",
+          "心理修复",
+          "健康恢复",
+          "准备汇报材料",
+          "保留体力（不行动）"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "季度主行动选择",
+        "legal_actions": [
+          "申请关键项目",
+          "向领导汇报成果",
+          "主动争取资源",
+          "申请岗位轮岗",
+          "主动曝光成果",
+          "建立导师关系",
+          "修复关键关系",
+          "低调避险",
+          "不行动"
+        ],
+        "month": 3
+      },
+      {
+        "event_title": "年会与大领导同桌的社交分寸长链",
+        "legal_actions": [
+          "用一两句话讲清自己做的事和价值，点到为止、不喧宾夺主",
+          "抓住机会长篇大论汇报工作、还顺带提了诉求"
+        ],
+        "month": 4
+      },
+      {
+        "event_title": "邻座香水味太冲",
+        "legal_actions": [
+          "委婉如实说自己对浓香味比较敏感，问能否喷淡一点",
+          "违心夸「好闻」，继续头疼着忍",
+          "转头跟别的同事吐槽她「熏死人」"
+        ],
+        "month": 4
+      },
+      {
+        "event_title": "跨组架构评审的参与与坚持决策",
+        "legal_actions": [
+          "接下评审邀请，深度通读并准备意见",
+          "谢绝评审，留出时间专注本组排期"
+        ],
+        "month": 4
+      },
+      {
+        "event_title": "跨组架构评审的参与与坚持决策",
+        "legal_actions": [
+          "整理一份完整的风险评估文档，正式提交技术委员会",
+          "尊重对方组的判断，把意见以附录形式备案即可"
+        ],
+        "month": 5
+      },
+      {
+        "event_title": "过度热情打探隐私的新同事长链",
+        "legal_actions": [
+          "笑着岔开话题，用轻松的方式划清边界：「这些就不聊啦，说点别的」",
+          "板起脸直接说「这是我的私事，请不要打听」",
+          "碍于新同事面子，勉强一一回答"
+        ],
+        "month": 5
+      },
+      {
+        "event_title": "跨部门重大事故是否主动支援",
+        "legal_actions": [
+          "主动请缨加入救火小组",
+          "在群里表示可远程答疑两小时，不现场驻场",
+          "沉默，专注自有项目"
+        ],
+        "month": 5
+      }
+    ],
+    "trigger_classification": "UNKNOWN_REQUIRES_SEMANTIC_AUDIT"
+  },
+  "outcome": {
+    "classification": "UNKNOWN",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 8,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 13.88,
+      "completed": false,
+      "grade": "E",
+      "outcome": "eliminated",
+      "quantitative_score": 19.82,
+      "survival_months": 8
+    },
+    "terminal_public_state": {
+      "session_id": "700f8ed814844694869d93461e7ef748",
+      "status": {
+        "dignity": 7,
+        "duration_in_level": 8,
+        "energy": 0,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": 3,
+        "skill": 9,
+        "wealth": 3
+      },
+      "time": {
+        "current_month": 8,
+        "current_quarter": 3,
+        "current_year": 1
+      }
+    }
+  },
+  "run": {
+    "end_utc": "2026-09-30T13:14:16.638819+00:00",
+    "events_identity": "PASS",
+    "new_game_count": 1,
+    "observe_count": 30,
+    "runner_exit_code": 0,
+    "session_id": "700f8ed814844694869d93461e7ef748",
+    "start_utc": "2026-09-30T13:11:04+00:00",
+    "transcript_identity": "PASS",
+    "transcript_session_ids": [
+      "700f8ed814844694869d93461e7ef748"
+    ],
+    "window_source": "explicit"
+  },
+  "schema_version": 1,
+  "trajectory": {
+    "promotion_checkpoints": [],
+    "public_observations": [
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:11.148266+00:00",
+        "event_title": "新员工手册",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 5,
+            "duration_in_level": 1,
+            "energy": 3,
+            "health": 5,
+            "level": "L1",
+            "network": 1,
+            "output": 0,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 1,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:15.515980+00:00",
+        "event_title": "年会被起哄上台表演长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 5,
+            "duration_in_level": 1,
+            "energy": 3,
+            "health": 5,
+            "level": "L1",
+            "network": 1,
+            "output": 0,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 1,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:20.985186+00:00",
+        "event_title": "同事深夜工作消息与领导点赞",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 6,
+            "duration_in_level": 1,
+            "energy": 3,
+            "health": 4,
+            "level": "L1",
+            "network": 3,
+            "output": 0,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 1,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:29.469115+00:00",
+        "event_title": "得知未公开调整好友问买房",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 5,
+            "duration_in_level": 1,
+            "energy": 3,
+            "health": 2,
+            "level": "L1",
+            "network": 5,
+            "output": 1,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 1,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:38.792857+00:00",
+        "event_title": "年会被起哄上台表演长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 6,
+            "duration_in_level": 2,
+            "energy": 3,
+            "health": 2,
+            "level": "L1",
+            "network": 5,
+            "output": 1,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 2,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:42.860410+00:00",
+        "event_title": "合作同事会上甩锅",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 7,
+            "duration_in_level": 2,
+            "energy": 3,
+            "health": 3,
+            "level": "L1",
+            "network": 3,
+            "output": 1,
+            "skill": 1,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 2,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:47.047892+00:00",
+        "event_title": "合作同事会上甩锅",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 9,
+            "duration_in_level": 2,
+            "energy": 3,
+            "health": 3,
+            "level": "L1",
+            "network": 2,
+            "output": 1,
+            "skill": 2,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 2,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:51.152384+00:00",
+        "event_title": "年会与大领导同桌的社交分寸长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 3,
+            "health": 3,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 3,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:11:55.353307+00:00",
+        "event_title": "暴雨下班仅有一伞与小赵",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 3,
+            "health": 3,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:03.596782+00:00",
+        "event_title": "暴雨下班仅有一伞与小赵",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 3,
+            "health": 2,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 1
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:08.534834+00:00",
+        "event_title": "季度体力行动分配",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 3,
+            "health": 1,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:22.569396+00:00",
+        "event_title": "季度体力行动分配",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 2,
+            "health": 3,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:27.615938+00:00",
+        "event_title": "季度体力行动分配",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 1,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:34.604367+00:00",
+        "event_title": "季度主行动选择",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 3,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 5,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:39.417721+00:00",
+        "event_title": "年会与大领导同桌的社交分寸长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 4,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 6,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 4,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:45.256132+00:00",
+        "event_title": "邻座香水味太冲",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 4,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 8,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 4,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:49.541578+00:00",
+        "event_title": "跨组架构评审的参与与坚持决策",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 4,
+            "energy": 0,
+            "health": 6,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 8,
+            "wealth": 2
+          },
+          "time": {
+            "current_month": 4,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:12:54.314189+00:00",
+        "event_title": "跨组架构评审的参与与坚持决策",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 5,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 1,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 5,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:00.009227+00:00",
+        "event_title": "过度热情打探隐私的新同事长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 5,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 2,
+            "output": 0,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 5,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:04.308852+00:00",
+        "event_title": "跨部门重大事故是否主动支援",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 5,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 0,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 5,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:10.864122+00:00",
+        "event_title": "过度热情打探隐私的新同事长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 6,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 0,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:18.575169+00:00",
+        "event_title": "无领导小群转发领导发言截图",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 6,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 0,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:23.226743+00:00",
+        "event_title": "同事总迟交拖累你的进度",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 6,
+            "energy": 0,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 0,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:27.997698+00:00",
+        "event_title": "季度体力行动分配",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 6,
+            "energy": 3,
+            "health": 5,
+            "level": "L1",
+            "network": 3,
+            "output": 1,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:39.035640+00:00",
+        "event_title": "季度体力行动分配",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 9,
+            "duration_in_level": 6,
+            "energy": 1,
+            "health": 4,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:43.617159+00:00",
+        "event_title": "季度主行动选择",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 6,
+            "energy": 0,
+            "health": 4,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 6,
+            "current_quarter": 2,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:13:54.018326+00:00",
+        "event_title": "动了去意后公司挽留的抉择长链",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 7,
+            "energy": 0,
+            "health": 4,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 7,
+            "current_quarter": 3,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:14:00.803679+00:00",
+        "event_title": "观察升职靠关系而非能力",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 10,
+            "duration_in_level": 7,
+            "energy": 0,
+            "health": 4,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 7,
+            "current_quarter": 3,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": true,
+        "at_utc": "2026-09-30T13:14:05.962385+00:00",
+        "event_title": "观察升职靠关系而非能力",
+        "failed": false,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 9,
+            "duration_in_level": 7,
+            "energy": 0,
+            "health": 2,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 7,
+            "current_quarter": 3,
+            "current_year": 1
+          }
+        }
+      },
+      {
+        "alive": false,
+        "at_utc": "2026-09-30T13:14:13.843971+00:00",
+        "event_title": "",
+        "failed": true,
+        "public": {
+          "session_id": "700f8ed814844694869d93461e7ef748",
+          "status": {
+            "dignity": 7,
+            "duration_in_level": 8,
+            "energy": 0,
+            "health": 0,
+            "level": "L1",
+            "network": 3,
+            "output": 3,
+            "skill": 9,
+            "wealth": 3
+          },
+          "time": {
+            "current_month": 8,
+            "current_quarter": 3,
+            "current_year": 1
+          }
+        }
+      }
+    ],
+    "quarterly_main_actions": [
+      {
+        "action": "申请关键项目",
+        "month": 3,
+        "source": "public_choice"
+      },
+      {
+        "action": "向领导汇报成果",
+        "month": 6,
+        "source": "public_choice"
+      }
+    ],
+    "review_checkpoints": [
+      {
+        "event_title": "过度热情打探隐私的新同事长链",
+        "month": 6,
+        "source": "public_observe"
+      }
+    ]
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 4286674,
+    "output_tokens": 29445,
+    "total_tokens": 4316119
+  }
+}

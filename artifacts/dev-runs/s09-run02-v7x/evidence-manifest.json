@@ -1,0 +1,28 @@
+{
+  "artifacts": [
+    {
+      "bytes": 52755,
+      "category": "core",
+      "name": "post_run_summary.json",
+      "sha256": "e20c3e376571c13dea42631dfb013d88703301b10693a9006cfac03d58d2d46a"
+    },
+    {
+      "bytes": 626,
+      "category": "core",
+      "name": "runner-result.json",
+      "sha256": "fa537c917b2b85d008c53a016dd7365e7796157cc6deb2c24f766a76ac8e7021"
+    },
+    {
+      "bytes": 2722,
+      "category": "core",
+      "name": "score_report.json",
+      "sha256": "dcaf6f5ed6acbeec811077ad23bf27200b3c14f19d83fbb03333278078617fd3"
+    }
+  ],
+  "run_id": "s09-run02-v7x",
+  "run_window_utc": {
+    "end": "2026-09-30T13:14:16.638819+00:00",
+    "start": "2026-09-30T13:11:04+00:00"
+  },
+  "schema_version": 1
+}
