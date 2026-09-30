@@ -1,0 +1,22 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1421,
+      "category": "core",
+      "name": "runner-result.json",
+      "sha256": "2c0a7391639c7c58736db23e2a78e0e635b6eb1c875e15ee1f6eb30c3fe04352"
+    },
+    {
+      "bytes": 6544,
+      "category": "diagnostic",
+      "name": "service-run.log",
+      "sha256": "ddbe79b4040bab1b7dffaf6d50baf6640b9c9c703dcb9377d8bb4715bbae4cd1"
+    }
+  ],
+  "run_id": "s09-run03-v7y",
+  "run_window_utc": {
+    "end": "2026-09-30T20:12:04.113749+00:00",
+    "start": "2026-09-30T20:10:58.847334+00:00"
+  },
+  "schema_version": 1
+}

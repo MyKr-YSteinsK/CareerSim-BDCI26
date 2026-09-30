@@ -1,0 +1,74 @@
+2026-09-30T20:10:58.847334+00:00 [controller] authorized service stdout begins
+[start_services] Checking ports for instance 'career_emu'...
+  ✓ agent_server: 19092 - available
+  ✓ web: 20000 - available
+  ✓ gateway: 20001 - available
+  ✓ frontend: 6173 - available
+2026-10-01 04:10:59.356 INFO jiuwenswarm.instance_manager.lock: Removed stale lock file: C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.instance.lock
+2026-10-01 04:10:59.360 INFO jiuwenswarm.instance_manager.bootstrap: Created bootstrap .env for instance 'career_emu': C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.env
+[start_services] starting app: D:\CS\CareerSim\.venv\Scripts\python.exe -m jiuwenswarm.app --dotenv C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.env (cwd=C:\Users\Yukis\.jiuwenswarm-instances\career_emu)
+[start_services] starting web: D:\CS\CareerSim\.venv\Scripts\python.exe -m jiuwenswarm.channels.web.app_web --dotenv C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.env (cwd=C:\Users\Yukis\.jiuwenswarm-instances\career_emu)
+2026-10-01 04:10:59.378 INFO jiuwenswarm.instance_manager.lock: Wrote PID file for instance 'career_emu': pid=2264, path=C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.instance.pid
+[start_services] Instance 'career_emu' started
+2026-10-01 04:11:05 | common | default_trace_id | INFO | Registered connector pool type: default
+2026-10-01 04:11:05 | common | default_trace_id | INFO | Registered connector pool type: httpx
+2026-10-01 04:11:05 | common | default_trace_id | INFO | Registered connector pool type: default
+2026-10-01 04:11:05 | common | default_trace_id | INFO | Registered connector pool type: httpx
+[start_services] ⏳ Web UI starting... (port 6173)
+[start_services] ⏳ AgentServer WebSocket starting... (port 19092)
+[start_services] ⏳ Gateway HTTP starting... (port 20001)
+[start_services] ⏳ WebChannel WebSocket starting... (port 20000)
+
+================================================================
+  服务启动中，端口信息如下：
+  … Web UI                 http://localhost:6173
+  … AgentServer WebSocket  ws://localhost:19092
+  … Gateway HTTP           http://localhost:20001
+  … WebChannel WebSocket   ws://localhost:20000/ws
+================================================================
+
+2026-10-01 04:11:56 | common | default_trace_id | INFO | Registered query expression support for milvus
+2026-10-01 04:11:56 | common | default_trace_id | INFO | Registered query expression support for chroma
+2026-10-01 04:11:56 | common | default_trace_id | INFO | Registered query expression support for milvus
+2026-10-01 04:11:56 | common | default_trace_id | INFO | Registered query expression support for chroma
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .xlsx
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .csv
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .tsv
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .xlsx
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .csv
+2026-10-01 04:11:57 | common | default_trace_id | INFO | Registered parser ExcelParser for .tsv
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .txt
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .md
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .markdown
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser HTMLFileParser for .htm
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser HTMLFileParser for .html
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .txt
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .md
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser TxtMdParser for .markdown
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser HTMLFileParser for .htm
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser HTMLFileParser for .html
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser JSONParser for .json
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser JSONParser for .json
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser PDFParser for .pdf
+2026-10-01 04:11:59 | common | default_trace_id | INFO | Registered parser PDFParser for .pdf
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser WordParser for .docx
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser WordParser for .docx
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .png
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .png
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jpg
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jpeg
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jpg
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .webp
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .gif
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jpeg
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jfif
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .webp
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .gif
+2026-10-01 04:12:00 | common | default_trace_id | INFO | Registered parser ImageParser for .jfif
+
+2026-09-30T20:11:59.301050+00:00 [controller] graceful stop stdout begins
+[start_services] Stopping instance 'career_emu' (PID=2264)...
+[start_services] Instance 'career_emu' stopped.
+2026-10-01 04:12:00.578 INFO jiuwenswarm.instance_manager.status: Stopping instance 'career_emu' with PID 2264
+2026-10-01 04:12:01.587 INFO jiuwenswarm.instance_manager.lock: Deleted PID file for instance 'career_emu': C:\Users\Yukis\.jiuwenswarm-instances\career_emu\.instance.pid
+2026-10-01 04:12:01.588 INFO jiuwenswarm.instance_manager.status: Instance 'career_emu' stopped
