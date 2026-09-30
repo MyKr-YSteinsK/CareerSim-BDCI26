@@ -9,10 +9,10 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PARENT_BASE_SHA = "74e856c5be7a9a134f93e9876ffbfd14398199ab"
+PARENT_BASE_SHA = "da5359d2d9a978475484300cf1f4a75013393329"
 TASK_ANCHOR_SHA = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
-PARENT_CANDIDATE_ID = "candidate-v7w-high-score-core-recovery"
-CURRENT_CANDIDATE_ID = "candidate-v7x-fresh-binding-reauthorization"
+PARENT_CANDIDATE_ID = "candidate-v7x-fresh-binding-reauthorization"
+CURRENT_CANDIDATE_ID = "candidate-v7y-story-exposure-guard"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -73,10 +73,10 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == PARENT_BASE_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S09_03_STATIC_NONSTICKY_STABILIZATION_REAUTHORIZATION"
+    assert candidate["decision"] == "S09_05_STATIC_STORY_EXPOSURE_GUARD"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
-    assert len(manifest["instruction"]) <= 5200
+    assert len(manifest["instruction"]) <= 5000
     assert candidate["runtime_manifest"]["sha256"] == hashlib.sha256(manifest_bytes).hexdigest()
     assert candidate["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(
         manifest["instruction"].encode("utf-8")
@@ -101,11 +101,11 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
-    assert candidate["strategy_delta"] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
-    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_FRESH_STABILIZATION_REAUTHORIZATION"
+    assert candidate["strategy_delta"] == "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR"
+    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_BOUNDED_STORY_EXPOSURE_GUARD"
     assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
     assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"] + [
-        "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION",
+        "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -396,7 +396,7 @@ def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
     assert "M54 / future Review" in horizon
 
 
-def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
+def test_current_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
     manifest = _json("configs/runtime_manifest.json")
     parent = json.loads(_git_bytes(PARENT_BASE_SHA, "configs/runtime_manifest.json"))
     instruction = manifest["instruction"]
@@ -413,12 +413,11 @@ def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
     assert {key: manifest[key] for key in ("team", "mode")} == {
         key: parent[key] for key in ("team", "mode")
     }
-    assert len(instruction) <= 5200
+    assert len(instruction) <= 5000
     assert prefix == parent_prefix
     assert suffix == parent_suffix
-    assert "MODE=A 使用 Promotion Portfolio" in kernel
-    assert "broad still-responsive promotion compounding 是 strong default prior" in kernel
-    assert "fresh、specific、responsive 的 Review gap" in kernel
-    assert "Time-sensitive realization exception 仍优先" in kernel
-    assert "不跨 Review 自动继承" in kernel
+    assert "MODE=A：Time-sensitive realization 优先" in kernel
+    assert "Promotion Portfolio 以 broad still-responsive compounding 为 strong default prior" in kernel
+    assert "fresh、specific、responsive 且 checkpoint 前可兑现的 Review gap" in kernel
+    assert "Primary Gap 仅作 advisory，不跨 Review 继承" in kernel
     assert "clean NO_GAIN/non-responsive path" in kernel

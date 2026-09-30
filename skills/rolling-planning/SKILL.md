@@ -130,6 +130,7 @@ Survival / Continuity 是 hard floor，不是持续最大化目标。没有 fres
    - **Broad compounding** 是 strong default prior：still-responsive Skill / Network / Output、career capital、ownership / visibility、verified realizable result，以及多维 promotion-relevant 合法行动。
    - **Conditional Primary Gap** 只有在最新 Review feedback fresh 且 specific、对应路径仍 responsive、存在 participant-visible legal action 且进展能在 next realizable checkpoint 前兑现时，才获得 strong directional weight；没有更高优先级 realization exception 或更新的 superseding / clean `NO_GAIN` evidence 时，可以短期成为 dominant path。不得仅因过去投入而维持其 dominance。
    - **Dominance expiry：**新 Formal Review 重建 Portfolio、fresh evidence supersedes gap、对应路径变为 `NO_GAIN` / non-responsive，或 checkpoint 已过时，旧 gap 不再 dominant 且不跨 Review 自动继承；不得长期因此压掉其它 still-responsive promotion-relevant paths。
+   - **Current Story exposure guard：**仅对当前 Story/event 生效。最新 fresh public context 若明确存在 physical / safety / workload exposure，且一个合法低暴露 option 不明显牺牲 binding Delivery、income continuity 或明确高价值 progression，也保护 job continuity，并与最佳成长候选价值相近，则保持 `MODE=A` 并优先其保留 optionality。单纯数值低、普通疲劳/负荷、过去暴露/恢复、成本不明或 high-tradeoff 选项不触发；一次 choice 后即失效，下一 fresh observe 重新判断。不得推断未选项 hidden effect。
 3. **Long-horizon option value：**不牺牲当前明确可兑现机会时保留未来复利价值。
 4. **Filler：**只有当前没有 meaningful progression / realization path 时才考虑低价值 safety / filler。
 

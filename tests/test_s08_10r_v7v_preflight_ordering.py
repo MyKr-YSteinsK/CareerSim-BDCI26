@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
 V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
-TASK_ANCHOR = "74e856c5be7a9a134f93e9876ffbfd14398199ab"
+TASK_ANCHOR = "da5359d2d9a978475484300cf1f4a75013393329"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -85,22 +85,22 @@ def test_action_consumes_single_use_preflight_and_recovery_rebuilds_ready() -> N
     assert "→ READY → new preflight" in manifest
 
 
-def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> None:
+def test_current_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> None:
     candidate = _json("configs/current_candidate.json")
     manifest_path = ROOT / "configs/runtime_manifest.json"
     manifest_bytes = manifest_path.read_bytes()
     manifest = json.loads(manifest_bytes.decode("utf-8"))
     parent = json.loads(_git_bytes(TASK_ANCHOR, "configs/current_candidate.json"))
 
-    assert candidate["candidate_id"] == "candidate-v7x-fresh-binding-reauthorization"
-    assert candidate["parent_candidate_id"] == "candidate-v7w-high-score-core-recovery"
+    assert candidate["candidate_id"] == "candidate-v7y-story-exposure-guard"
+    assert candidate["parent_candidate_id"] == "candidate-v7x-fresh-binding-reauthorization"
     assert candidate["base_main_sha"] == TASK_ANCHOR
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S09_03_STATIC_NONSTICKY_STABILIZATION_REAUTHORIZATION"
-    assert candidate["strategy_delta"] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
+    assert candidate["decision"] == "S09_05_STATIC_STORY_EXPOSURE_GUARD"
+    assert candidate["strategy_delta"] == "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR"
     assert manifest["name"] == candidate["candidate_id"]
     assert manifest["mode"] == "agent"
-    assert len(manifest["instruction"]) <= 5200
+    assert len(manifest["instruction"]) <= 5000
     assert candidate["runtime_manifest"]["sha256"] == hashlib.sha256(manifest_bytes).hexdigest()
     assert candidate["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(
         manifest["instruction"].encode("utf-8")
@@ -110,9 +110,10 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
     assert candidate["adopted_mechanisms"][: len(parent["adopted_mechanisms"])] == parent[
         "adopted_mechanisms"
     ]
-    assert candidate["adopted_mechanisms"][-3] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
-    assert candidate["adopted_mechanisms"][-2] == "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
-    assert candidate["adopted_mechanisms"][-1] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
+    assert candidate["adopted_mechanisms"][-4] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
+    assert candidate["adopted_mechanisms"][-3] == "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
+    assert candidate["adopted_mechanisms"][-2] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
+    assert candidate["adopted_mechanisms"][-1] == "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR"
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["validation"] and all(value is False for value in candidate["validation"].values())
 
