@@ -9,9 +9,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
-PARENT_CANDIDATE_ID = "candidate-v7u-runtime-adherence-protocol"
-CURRENT_CANDIDATE_ID = "candidate-v7v-preflight-ordering-repair"
+BASE_MAIN_SHA = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+PARENT_CANDIDATE_ID = "candidate-v7v-preflight-ordering-repair"
+CURRENT_CANDIDATE_ID = "candidate-v7w-high-score-core-recovery"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -72,7 +72,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S08_10R_PREFLIGHT_ORDERING_REPAIR"
+    assert candidate["decision"] == "S09_01_STATIC_STRATEGY_IMPLEMENTATION"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -100,14 +100,17 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
-    assert candidate["strategy_delta"] == "RUNTIME_GATE_ORDERING_CORRECTION_ONLY"
-    assert candidate["design_intent"] == "HIGH_CEILING_WITH_RECOVERABLE_FAILURE_FLOOR"
-    assert candidate["runtime_contract_delta"] == [
-        "FRESH_OBSERVE_CONTROL_STATE",
-        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
-        "NAMED_DELIVERY_CHECKPOINT_ENUM",
-        "PER_ACTION_ENERGY_REPLAN",
-        "ACYCLIC_PREFLIGHT_ORDERING",
+    assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+    assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
+    assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"] + [
+        "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING",
+        "PRIMARY_GAP_AS_ADVISORY_SIGNAL",
+        "BROAD_PROMOTION_COMPOUNDING_PRIOR",
+        "NO_GAIN_POSITIVE_REALLOCATION",
+        "SPARSE_DELIVERY_OVERRIDE",
+        "REVIEW_STRATEGY_RECONSTRUCTION",
+        "TERMINAL_HORIZON_DIRECT_REALIZATION",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -170,9 +173,8 @@ def test_review_deficits_route_to_progression_without_automatic_sticky_or_mode_s
     for marker in ("低绩效", "`no-promotion`", "weak Skill / Network / Output", "不能触发 `MODE=S`"):
         assert marker in mode
     assert "只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint" in mode
-    assert "低绩效、`no-promotion`" in manifest
-    assert "不是 `MODE=S`" in manifest
-    assert "在 A 中修复绩效和晋升" in manifest
+    assert "默认 MODE=A" in manifest
+    assert "Survival / Continuity 是 hard floor" in manifest
 
 
 def test_material_job_threat_can_bind_and_performance_repair_can_relieve_it() -> None:
@@ -185,12 +187,12 @@ def test_material_job_threat_can_bind_and_performance_repair_can_relieve_it() ->
     resource = _section(planning, "### `RESOURCE`", "### `RISK`")
     assert "重大 binding constraint" in resource
     assert "只做解除当前约束所需的最小合理动作" in resource
-    assert "约束已解除或场景结束；立即回 `MODE=A`，恢复原 `REVIEW_PLAN`" in resource
+    assert "fresh public evidence 显示约束已解除或场景结束后，立即回 `MODE=A`" in resource
     assert "job-continuity threat" in planning
     assert "直接修复绩效、完成关键交付或恢复晋升成长" in planning
-    assert "不得把 `S` 机械理解为低调、停止成长" in planning
-    assert "job-continuity threat" in manifest
-    assert "直接修复绩效或交付属于 constraint relief" in manifest
+    assert "`MODE=S` 不等于停止成长" in planning
+    assert "job-continuity threat" in planning
+    assert "直接修复绩效、完成关键交付或恢复晋升成长可作为 constraint relief" in planning
 
 
 def test_progression_response_tracks_clean_gain_no_gain_reset_and_multidimensional_value() -> None:
@@ -209,7 +211,7 @@ def test_progression_response_tracks_clean_gain_no_gain_reset_and_multidimension
         assert marker in response
     routing = _section(planning, "## Progression Routing", "## Ranking")
     assert "一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值" in routing
-    assert "不立即重复同一个 no-gain 投入" in routing
+    assert "不立即重复同一路径" in routing
     assert "Level change 后所有 response 重新开放" in routing
     assert "Skill 不因 terminal-score saturation 假设被降权" in routing
 
@@ -218,9 +220,8 @@ def test_non_specific_coverage_exempts_current_level_no_gain_until_reset() -> No
     planning = _skill("rolling-planning")
     routing = _section(planning, "## Progression Routing", "## Ranking")
 
-    assert "只对当前 `GAIN/UNKNOWN` 的 Skill / Network / Output 维度维持 coverage" in routing
-    assert "不得因另一维最近更显著而长期忽略仍为 `GAIN/UNKNOWN` 的维度" in routing
-    assert "当前 Level 的 `NO_GAIN` 维度不受 coverage 义务约束" in routing
+    assert "non-specific Review 下，只保护当前 `GAIN/UNKNOWN` 的 Skill / Network / Output" in routing
+    assert "当前 Level 的 `NO_GAIN` 不承担 coverage 义务" in routing
     assert "直到 Level change 或后续 clean `GAIN` 重置/覆盖" in routing
     scenario = {"S": "GAIN", "N": "UNKNOWN", "O": "NO_GAIN"}
     coverage_candidates = {
@@ -244,10 +245,10 @@ def test_review_window_preserves_promotion_readiness_and_checkpoint() -> None:
     planning = _skill("rolling-planning")
     review_window = _section(planning, "## 长期规划一致性", "## Failure Recovery Contract")
     assert "良好绩效 + `no-promotion` 仍表示 promotion readiness 未完成" in review_window
-    assert "下一次公开正式 Review 是当前准备 checkpoint" in review_window
+    assert "当前公开 horizon 内下一次真实 Formal Review 是准备 checkpoint" in review_window
     routing = _section(planning, "## Progression Routing", "## Ranking")
     assert "Skill 不因 terminal-score saturation 假设被降权" in routing
-    assert "它始终可能具有 promotion value" in routing
+    assert "Skill 不因 terminal-score saturation 假设被降权" in routing
 
 
 def test_risk_recovery_cleanup_is_bounded_and_risk_does_not_replan() -> None:
@@ -258,19 +259,14 @@ def test_risk_recovery_cleanup_is_bounded_and_risk_does_not_replan() -> None:
     assert "fresh public warning 明确表示风险 elevated / accumulating / needs handling" in cleanup
     assert "存在明确 reparative legal option" in cleanup
     assert "一次 bounded cleanup" in cleanup
-    assert "完成一次 cleanup 后必须 fresh observe，并默认回长期主线" in cleanup
+    assert "完成一次 cleanup 后 fresh observe，默认回长期主线" in cleanup
     assert "同一风险仍未解除/再次 elevated" in cleanup
     assert "出现新的同类 warning" in cleanup
-    assert "无关的新 evidence 不得重置限制" in cleanup
-    assert "在下一 Review 前允许一次 bounded cleanup" in cleanup
-    cleanup_exit = (
-        "完成一次 cleanup 后必须 fresh observe，并默认回长期主线。只有后续 fresh public evidence "
-        "明确表明同一风险仍未解除/再次 elevated，或出现新的同类 warning，才允许再次 cleanup；"
-        "无关的新 evidence 不得重置限制"
-    )
-    assert cleanup_exit in cleanup
-    assert cleanup_exit in manifest
-    assert "只有风险升级为 material survival / job-continuity / trust / compliance / confidentiality crisis 时才进入 `MODE=S`" in cleanup
+    assert "无关证据不得重置限制" in cleanup
+    assert "同一风险仍未解除/再次 elevated" in cleanup
+    assert "出现新的同类 warning" in cleanup
+    assert "无关证据不得重置限制" in cleanup
+    assert "只有风险成为 material survival / job-continuity / trust / compliance / confidentiality crisis 才进入 `MODE=S`" in cleanup
     assert "不重新做 candidate ranking" in risk
     assert "一个 public warning 允许 Planning 考虑 bounded cleanup，不等于 Risk 自动 `RECONSIDER`" in risk
 
@@ -282,7 +278,7 @@ def test_planning_explicitly_uses_current_participant_visible_event_semantics() 
 
     assert "最新 fresh observe 中参与者可见的 event 描述与合法 choice 语义" in evidence
     assert "结合 Board 与当前 participant-visible event/choice 语义" in mode
-    assert "尚未解除的 binding constraint" in mode
+    assert "尚未解除、当前 binding 的 material constraint" in mode
     assert "不得只根据状态数字或旧 Review 判断" in mode
 
 
@@ -361,5 +357,47 @@ def test_board_runner_and_dependency_files_remain_frozen() -> None:
     assert candidate["runner_sha"] == "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
 
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
-    assert f"Current Candidate: {CURRENT_CANDIDATE_ID}" in state
+    assert f"Current Candidate: `{CURRENT_CANDIDATE_ID}`" in state
     assert "NEXT_GAME = NOT_AUTHORIZED" in state
+
+
+def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
+    planning = _skill("rolling-planning")
+    ranking = _section(planning, "## Ranking", "## Final Horizon")
+    routing = _section(planning, "## Progression Routing", "## Ranking")
+    delivery = _section(planning, "### `DELIVERY`", "## MODE")
+    mode = _section(planning, "## MODE", "## Progression Routing")
+    horizon = _section(planning, "## Final Horizon", "## Quarterly Control")
+
+    assert "普通工作负荷" in mode and "不单独触发 `S`" in mode
+    assert "minimum necessary stabilization" in mode and "立即回 `A`" in mode
+    assert ranking.index("Broad promotion compounding") < ranking.index("Advisory Primary Gap")
+    assert "Primary Gap` 是最新 Review" in planning
+    assert "旧 gap 不得永久压过宽广复利路径" in planning
+    assert "positive reallocation" in routing and "低价值 Health/safety filler" in routing
+    assert "不得整体否决该 action" in routing
+    assert "普通 `IN_PROGRESS + NOT_NEAR`" in delivery and "只作背景证据" in delivery
+    assert "checkpoint=NEAR" in delivery and "active blocker" in delivery
+    assert "terminal-horizon direct realization" in horizon
+    assert "M54 / future Review" in horizon
+
+
+def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
+    manifest = _json("configs/runtime_manifest.json")
+    parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))
+    instruction = manifest["instruction"]
+    parent_instruction = parent["instruction"]
+    start = "CRITICAL KERNEL\n"
+    end = "\n\nSTARTUP AND FLOW\n"
+    prefix = instruction.split(start, 1)[0]
+    suffix = instruction.split(end, 1)[1]
+    parent_prefix = parent_instruction.split(start, 1)[0]
+    parent_suffix = parent_instruction.split(end, 1)[1]
+
+    assert manifest["name"] == CURRENT_CANDIDATE_ID
+    assert {key: manifest[key] for key in ("team", "mode")} == {
+        key: parent[key] for key in ("team", "mode")
+    }
+    assert len(instruction) <= 5200
+    assert prefix == parent_prefix
+    assert suffix == parent_suffix

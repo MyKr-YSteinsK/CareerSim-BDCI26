@@ -51,7 +51,7 @@ def test_repository_governance_files_reference_contracts_without_copying_them() 
 def test_current_candidate_is_not_frozen_for_submission_and_builder_whitelist_is_exact() -> None:
     candidate = json.loads((ROOT / "configs/current_candidate.json").read_text(encoding="utf-8"))
     builder = (ROOT / "scripts/build_final_solution.py").read_text(encoding="utf-8")
-    assert candidate["candidate_id"] == "candidate-v7v-preflight-ordering-repair"
+    assert candidate["candidate_id"] == "candidate-v7w-high-score-core-recovery"
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
     assert candidate["validation"]["next_game_authorized"] is False
     assert "FINAL_FROZEN_FOR_SUBMISSION" in builder
@@ -75,8 +75,8 @@ def test_current_state_and_review_record_static_scope_and_no_live_authority() ->
     review = (ROOT / "docs/project/reviews/S08-08_V7S_ZH_EXECUTION_CONTRACT_CONVERGENCE.md").read_text(encoding="utf-8")
     current_section = state.split("## Current candidate\n", 1)[1].split("\n## ", 1)[0]
 
-    assert "candidate-v7v-preflight-ordering-repair" in current_section
-    assert "all validation flags are false" in current_section
+    assert "candidate-v7w-high-score-core-recovery" in current_section
+    assert "All validation flags are false" in current_section
     assert "NEXT_GAME = NOT_AUTHORIZED" in current_section
     assert "V7S_READY_FOR_GAME_GATE" in review
     assert "no provider call" in review.casefold()

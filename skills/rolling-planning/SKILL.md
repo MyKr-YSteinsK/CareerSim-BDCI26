@@ -1,6 +1,6 @@
 ---
 name: rolling-planning
-description: "Use for every CareerSim decision after fresh Board and Delivery are available. 维护跨 Review 的长期晋升目标、当前 Review Window、失败恢复状态与一个 Primary Gap；默认 MODE=A，仅在明确重大生存或连续性约束下临时 MODE=S；比较合法选项并返回唯一 CANDIDATE，不提交动作。"
+description: "Use for every CareerSim decision after fresh Board and Delivery are available. 维护晋升复利主线、当前 Review checkpoint 与有界恢复；将 Primary Gap 作为方向性提示，默认 MODE=A，仅在明确重大约束下短暂 MODE=S；比较合法选项并返回唯一 CANDIDATE，不提交动作。"
 ---
 
 # Rolling Planning｜滚动规划与失败恢复
@@ -43,78 +43,51 @@ progression 判断优先级：
 
 ## 长期规划一致性
 
-长期主线默认保持：
+长期目标固定为：
 
-`SURVIVE → PROMOTE → COMPOUND`
+`SURVIVE AS A HARD FLOOR → PROMOTE → COMPOUND CAREER CAPITAL`
 
-failure recovery 只能暂时改变短期路径，不得无依据改写长期主线。
+Survival / Continuity 是 hard floor，不是持续最大化目标。没有 fresh participant-visible material constraint 时，默认 MODE=A，把行动预算用于 promotion 和 career-capital compounding。Recovery 只能临时改变短期路径，解除约束或修复后回主线。
 
-Review Window：
+每次 Formal Review 后重建：
 
-1. 第一次正式 Review 前允许 `Primary Gap=UNKNOWN`；优先可靠交付与广义 Skill / Network / Output 成长。
-2. 正式 Review 后，用最明确的公开 progression deficit 更新 `Primary Gap`。
-3. 反馈不具体时使用 `DIRECT_PROGRESSION_EVIDENCE`；不得编造隐藏晋升条件。
-4. 良好绩效 + `no-promotion` 仍表示 promotion readiness 未完成。
-5. 下一次公开正式 Review 是当前准备 checkpoint。
-6. Review 已经结算后，之后动作只能服务下一 checkpoint，不能补救已经发生的 Review。
-7. 普通 Story 或一次短期波动不得随意改写 `Primary Gap`。
+- 当前 Level、S/N/O progression response 与公开 career capital；
+- 最新公开 Review feedback、仍可用的成长路径与真实 Delivery exception；
+- 当前公开 horizon 内下一项可由合法行动影响的 checkpoint。
+
+`REVIEW_PLAN = <Long Horizon | Primary Gap | Next Realizable Checkpoint>`：
+
+- `Long Horizon` 始终是稳定约束下的 promotion compounding；
+- `Primary Gap` 是最新 Review / public progression evidence 给出的方向性提示，不是永久目标；具体反馈不清时用 `DIRECT_PROGRESSION_EVIDENCE`；
+- 每次 Formal Review 都更新整个 plan，旧 gap、rationale 和 ranking 不自动继承；Review 已结算后，行动服务下一 checkpoint，不能补救已结束的 Review。
+
+低绩效、`no-promotion`、弱 S/N/O、一般 Story 或短期波动都不单独改写长期主线或触发 MODE=S。良好绩效 + `no-promotion` 仍表示 promotion readiness 未完成；当前公开 horizon 内下一次真实 Formal Review 是准备 checkpoint。第一次 Review 前可用 `Primary Gap=UNKNOWN`，先做广义成长与可靠交付。
 
 ## Failure Recovery Contract
 
 ### `PROGRESSION`
 
-触发：低绩效、`no-promotion`、公开 Skill/Network/Output/delivery 表现不足、晋升准备未完成。
+触发：低绩效、`no-promotion`、公开 Skill/Network/Output 或 delivery 表现不足、晋升准备未完成。保持 `MODE=A`，重建方向性 gap；先从 `PROGRESSION_RESPONSE` 与合法选项中找仍有响应、能在 checkpoint 前兑现的 promotion path。失败本身不授权长期保守。
 
-处理：
-
-- 保持 `MODE=A`；
-- 重建 `Primary Gap`；
-- 使用 `PROGRESSION_RESPONSE` 与 Delivery 找仍有响应、且能在下一 Review 前兑现的路径；
-- 不因失败本身进入长期保守。
-
-退出：promotion；Review 明确显示原 gap 已解决；或 fresh evidence 证明当前路径失效并完成重规划。
+退出：promotion；Review 明确显示原方向已解决；或 fresh evidence 证明原路径无响应且已完成正向重分配。
 
 ### `RESOURCE`
 
-触发：fresh public evidence 明确显示 Health / Dignity / Wealth / affordability / income continuity 已形成重大 binding constraint。
+触发：fresh public evidence 明确表明 Health / Dignity / Wealth、affordability 或 income continuity 已形成重大 binding constraint，使正常活动受到实质限制。
 
-处理：
-
-- `MODE=S`；
-- 只做解除当前约束所需的最小合理动作；
-- 尽量保留 progression value。
-
-退出：fresh public evidence 显示约束已解除或场景结束；立即回 `MODE=A`，恢复原 `REVIEW_PLAN`。
-
-禁止：为了“更安全”把资源补满后长期停留在 S。
+处理：`MODE=S` 只做解除当前约束所需的最小合理动作，并尽量保留 progression value。fresh public evidence 显示约束已解除或场景结束后，立即回 `MODE=A` 并恢复长期主线。不得补满资源或为“更安全”延长 S。
 
 ### `RISK`
 
-触发：fresh public warning 明确表示风险 elevated / accumulating / needs handling，且存在明确 reparative legal option。
-
-处理：
-
-- 通常保持 `MODE=A`；
-- 在下一 Review 前允许一次 bounded cleanup 作为高优先候选；
-- 只有风险升级为 material survival / job-continuity / trust / compliance / confidentiality crisis 时才进入 `MODE=S`。
-
-退出：完成一次 cleanup 后必须 fresh observe，并默认回长期主线。只有后续 fresh public evidence 明确表明同一风险仍未解除/再次 elevated，或出现新的同类 warning，才允许再次 cleanup；无关的新 evidence 不得重置限制。
+触发：fresh public warning 明确表示风险 elevated / accumulating / needs handling，且存在明确 reparative legal option。通常保持 `MODE=A`，至多一次 bounded cleanup；完成一次 cleanup 后 fresh observe，默认回长期主线。只有同一风险仍未解除/再次 elevated，或出现新的同类 warning，才允许再次 cleanup。无关证据不得重置限制。只有风险成为 material survival / job-continuity / trust / compliance / confidentiality crisis 才进入 `MODE=S`。
 
 ### `DELIVERY`
 
-触发：active commitment 接近 checkpoint，但处于 blocked / unverified / delayed；当前选择明确牺牲近端交付确定性；或 Review 反馈直接指向 delivery / ownership。
-
-处理：
-
-- 通常保持 `MODE=A`；
-- 优先完成、验证或修复高价值近端交付；
-- 不为 speculative long-horizon gain 无理由牺牲当前 Review 前明确交付。
-
-退出：item `DELIVERED + PUBLICLY_VERIFIED`；commitment 公开取消/被替代；或 fresh evidence 表明继续投入已不是最佳 Review path。
+触发：fresh public evidence 表明 checkpoint=NEAR、active blocker、高价值结果未验证且当前可验证、explicit Review linkage，或当前选择会明显破坏已确认的高价值近端交付。通常保持 `MODE=A`，优先完成、验证或修复高价值近端交付；只对该 exception 给予短期优先。普通 `IN_PROGRESS + NOT_NEAR` 且无 blocker/linkage 只作背景证据，不持续抬高 ranking。交付完成并公开验证、commitment 取消/替代，或 fresh evidence 改变 Review path 后退出。
 
 ## MODE
 
-判断 MODE 前，必须结合 Board 与当前 participant-visible event/choice 语义判断是否存在尚未解除的 binding constraint；不得只根据状态数字或旧 Review 判断。
+判断 MODE 前，必须结合 Board 与当前 participant-visible event/choice 语义及 fresh observe，确认是否存在尚未解除、当前 binding 的 material constraint；不得只根据状态数字或旧 Review 判断。
 
 以下内容单独不能触发 `MODE=S`：
 
@@ -125,9 +98,9 @@ Review Window：
 - 一次数值下降；
 - 普通工作负荷、疲劳、摩擦或不确定性。
 
-只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint，或明确重大 Health/Dignity/Wealth 资源约束已经使正常活动不可行时，才使用 `S`。
+只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint，或重大 Health/Dignity/Wealth 约束已使正常活动不可行时，才使用 `S`。
 
-`S` 必须有明确 binding reason 与退出条件。约束解除后立即回 `A`。
+`S` 必须有明确 binding reason 与退出条件，只执行 minimum necessary stabilization。约束解除后立即回 `A`。低绩效、`no-promotion`、弱 Skill/Network/Output、普通疲劳/负荷/摩擦/不确定性均不单独触发 `S`。
 
 ## Progression Routing
 
@@ -139,31 +112,32 @@ Review Window：
 
 规则：
 
-1. multidimensional action 中，一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值。
-2. 有仍有响应的合法路径时，不立即重复同一个 no-gain 投入只为再次确认。
-3. Level change 后所有 response 重新开放。
-4. non-specific Review 下，只对当前 `GAIN/UNKNOWN` 的 Skill / Network / Output 维度维持 coverage；不得因另一维最近更显著而长期忽略仍为 `GAIN/UNKNOWN` 的维度。当前 Level 的 `NO_GAIN` 维度不受 coverage 义务约束，直到 Level change 或后续 clean `GAIN` 重置/覆盖。specific feedback 可以集中投入，但不得依赖 hidden threshold/cap。
-5. 不设固定比例、固定 target、隐藏阈值。
-6. Skill 不因 terminal-score saturation 假设被降权；它始终可能具有 promotion value。
+1. clean `NO_GAIN` 只局部降低当前 Level/context 下对应 dimension/path 的即时边际价值；先刷新当前 response，再扫描其余合法 promotion-relevant 路径并做 positive reallocation。
+2. 有 still-responsive progression path 时，不因一个 `NO_GAIN` 转向低价值 Health/safety filler，也不立即重复同一路径。
+3. multidimensional action 中，一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值；只要其它 promotion-relevant 维度仍 `GAIN/UNKNOWN`，不得整体否决该 action。
+4. non-specific Review 下，只保护当前 `GAIN/UNKNOWN` 的 Skill / Network / Output；当前 Level 的 `NO_GAIN` 不承担 coverage 义务，直到 Level change 或后续 clean `GAIN` 重置/覆盖。Level change 后所有 response 重新开放。
+5. specific feedback 可短期集中，但 `Primary Gap` 只在路径仍 responsive 且无更高价值选项时影响 ranking。不得推断 hidden/permanent cap、eligibility 或 promotion impossibility。
+6. 不设固定 action、比例、target、月份或隐藏阈值；Skill 不因 terminal-score saturation 假设被降权。
 
 ## Ranking
 
-`MODE=A` 下依次偏好：
+`MODE=S` 只处理当前 binding constraint，并保留可行的 progression value；约束解除后立即回 `A`。
 
-1. 当前 `Primary Gap` 的直接、可观察进展；
-2. 下一 Review 前可兑现的 delivery / ownership；
-3. still-responsive 的 Skill / Network / Output 多维成长；
-4. long-horizon compounding / option value。
+无 binding constraint 时默认 `MODE=A`，按以下条件式顺序 ranking：
 
-Review 前，explicit near-term delivery delay / first-delivery uncertainty 是真实负证据。若一个合法选项保持当前交付确定性，另一个只提供 speculative long-horizon gain 且明确损害近端交付，优先交付确定路径；除非 safety/compliance 或 specific Review feedback 明确支持后者。
+1. **Time-sensitive realization exception：**明确且当前可实现的 Review/promotion realization；满足 `DELIVERY` 触发条件的近端交付、blocker、高价值待验证结果或 explicit Review linkage。
+2. **Broad promotion compounding：**still-responsive Skill / Network / Output、career capital、ownership / visibility、verified realizable result，以及同时改善多个 promotion-relevant 维度的合法行动。它是 `MODE=A` 的 strong default prior。
+3. **Advisory Primary Gap：**仅当 feedback specific、对应路径仍 responsive，且没有更高价值的 realization / broad progression 时，短期集中该方向。旧 gap 不得永久压过宽广复利路径。
+4. **Long-horizon option value：**不牺牲当前明确可兑现机会时保留未来复利价值。
+5. **Filler：**只有当前没有 meaningful progression / realization path 时才考虑低价值 safety / filler。
 
-`MODE=S` 下依次偏好：
+不得把普通 `IN_PROGRESS` 当成全局高优先级；action 名称、固定比例或数字下降本身不决定 ranking。
 
-1. 不继续恶化 binding constraint；
-2. 直接解除或控制该约束；
-3. 在安全前提下保留尽可能多 progression value。
+## Final Horizon
 
-如果明确的 job-continuity threat 本身由绩效或交付失败造成，那么直接修复绩效、完成关键交付或恢复晋升成长可以是 `MODE=S` 下最直接的 constraint-relief action；不得把 `S` 机械理解为低调、停止成长或选择最保守动作。
+使用公开固定 48-month horizon，不构造不存在的未来 Review。当剩余 horizon 内已没有下一项 Formal Review 时，从 review preparation 切换到 `terminal-horizon direct realization`：优先当前可立即兑现的 career capital、public-state value、ownership / visibility、verified result 与有依据的 survival protection。不得以 M54 / future Review 为理由做准备，也不得编码固定 promotion month。
+
+如果明确的 job-continuity threat 由绩效或交付失败造成，直接修复绩效、完成关键交付或恢复晋升成长可作为 constraint relief；`MODE=S` 不等于停止成长。
 
 ## Quarterly Control
 

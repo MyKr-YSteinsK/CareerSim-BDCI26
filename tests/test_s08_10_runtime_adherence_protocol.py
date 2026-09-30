@@ -9,7 +9,7 @@ from scripts.s08_09_runtime_contract_forensics import analyze as analyze_run03
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a"
-V7V_BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
+V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -77,14 +77,18 @@ def test_quarterly_energy_invalidates_batch_intent_after_fresh_no_gain() -> None
     assert "丢弃旧剩余动作意图" in quarter
     assert "Energy=3、Output=26" in quarter
     assert "第二次 immediate Report Preparation 不符合合同" in quarter
-    assert "不立即重复同一个 no-gain 投入" in planning
+    assert "不得立即再次选择同一个 no-gain action" in quarter
 
 
-def test_v7t_strategy_and_frozen_surfaces_are_preserved() -> None:
+def test_v7w_strategy_delta_preserves_frozen_v7v_runtime_surfaces() -> None:
     candidate = _json("configs/current_candidate.json")
-    parent = json.loads(subprocess.check_output(["git", "show", f"{BASE}:configs/current_candidate.json"], cwd=ROOT))
-    assert candidate["strategy_delta"] == "RUNTIME_GATE_ORDERING_CORRECTION_ONLY"
-    assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"]
+    parent = json.loads(subprocess.check_output(["git", "show", f"{V7V_SNAPSHOT}:configs/current_candidate.json"], cwd=ROOT))
+    assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+    assert candidate["parent_candidate_id"] == parent["candidate_id"]
+    assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
+    assert candidate["adopted_mechanisms"][: len(parent["adopted_mechanisms"])] == parent[
+        "adopted_mechanisms"
+    ]
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -92,10 +96,14 @@ def test_v7t_strategy_and_frozen_surfaces_are_preserved() -> None:
     board = "skills/structured-state-board/SKILL.md"
     assert (ROOT / board).read_bytes() == subprocess.check_output(["git", "show", f"{BASE}:{board}"], cwd=ROOT)
 
-    base_planning = _base_text("skills/rolling-planning/SKILL.md")
     current_planning = _read("skills/rolling-planning/SKILL.md")
-    assert base_planning.split("## Quarterly Control", 1)[0] == current_planning.split("## Quarterly Control", 1)[0]
-    assert base_planning.split("## Decision Budget", 1)[1] == current_planning.split("## Decision Budget", 1)[1]
+    v7v_planning = subprocess.check_output(
+        ["git", "show", f"{V7V_SNAPSHOT}:skills/rolling-planning/SKILL.md"],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+    )
+    assert v7v_planning.split("## Quarterly Control", 1)[1] == current_planning.split("## Quarterly Control", 1)[1]
 
     base_delivery = _base_text("skills/delivery-progress/SKILL.md")
     current_delivery = _read("skills/delivery-progress/SKILL.md")
@@ -115,18 +123,18 @@ def test_v7t_strategy_and_frozen_surfaces_are_preserved() -> None:
         "保持 `MODE=A`",
         "只做解除当前约束所需的最小合理动作",
         "fresh public warning 明确表示风险 elevated / accumulating / needs handling",
-        "完成一次 cleanup 后必须 fresh observe，并默认回长期主线",
+        "完成一次 cleanup 后 fresh observe，默认回长期主线",
         "最新 fresh observe 中参与者可见的 event 描述与合法 choice 语义",
-        "hidden threshold/cap",
+        "hidden/permanent cap",
     ):
         assert invariant in planning or invariant in risk
 
 
-def test_v7v_candidate_is_unvalidated_and_run03_audit_is_unchanged() -> None:
+def test_v7w_candidate_is_unvalidated_and_run03_audit_is_unchanged() -> None:
     candidate = _json("configs/current_candidate.json")
-    assert candidate["candidate_id"] == "candidate-v7v-preflight-ordering-repair"
-    assert candidate["parent_candidate_id"] == "candidate-v7u-runtime-adherence-protocol"
-    assert candidate["base_main_sha"] == V7V_BASE
+    assert candidate["candidate_id"] == "candidate-v7w-high-score-core-recovery"
+    assert candidate["parent_candidate_id"] == "candidate-v7v-preflight-ordering-repair"
+    assert candidate["base_main_sha"] == V7V_SNAPSHOT
     assert all(value is False for value in candidate["validation"].values())
 
     result = analyze_run03(ROOT)

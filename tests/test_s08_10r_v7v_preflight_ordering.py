@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
+V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -83,32 +84,32 @@ def test_action_consumes_single_use_preflight_and_recovery_rebuilds_ready() -> N
     assert "→ READY → new preflight" in manifest
 
 
-def test_v7v_identity_preserves_parent_strategy_skill_blobs_and_validation_flags() -> None:
+def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> None:
     candidate = _json("configs/current_candidate.json")
     manifest_path = ROOT / "configs/runtime_manifest.json"
     manifest_bytes = manifest_path.read_bytes()
     manifest = json.loads(manifest_bytes.decode("utf-8"))
-    parent = json.loads(_git_bytes(BASE, "configs/current_candidate.json"))
+    parent = json.loads(_git_bytes(V7V_SNAPSHOT, "configs/current_candidate.json"))
 
-    assert candidate["candidate_id"] == "candidate-v7v-preflight-ordering-repair"
-    assert candidate["parent_candidate_id"] == "candidate-v7u-runtime-adherence-protocol"
-    assert candidate["base_main_sha"] == BASE
+    assert candidate["candidate_id"] == "candidate-v7w-high-score-core-recovery"
+    assert candidate["parent_candidate_id"] == "candidate-v7v-preflight-ordering-repair"
+    assert candidate["base_main_sha"] == V7V_SNAPSHOT
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S08_10R_PREFLIGHT_ORDERING_REPAIR"
-    assert candidate["strategy_delta"] == "RUNTIME_GATE_ORDERING_CORRECTION_ONLY"
+    assert candidate["decision"] == "S09_01_STATIC_STRATEGY_IMPLEMENTATION"
+    assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
     assert manifest["name"] == candidate["candidate_id"]
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
-    assert len(manifest["instruction"]) < 5194
     assert candidate["runtime_manifest"]["sha256"] == hashlib.sha256(manifest_bytes).hexdigest()
     assert candidate["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(
         manifest["instruction"].encode("utf-8")
     ).hexdigest()
-    assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"] + [
-        "ACYCLIC_PREFLIGHT_ORDERING"
-    ]
+    assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
     assert candidate["architecture"] == parent["architecture"]
-    assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"]
+    assert candidate["adopted_mechanisms"][: len(parent["adopted_mechanisms"])] == parent[
+        "adopted_mechanisms"
+    ]
+    assert candidate["adopted_mechanisms"][-1] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["validation"] and all(value is False for value in candidate["validation"].values())
 
@@ -116,8 +117,8 @@ def test_v7v_identity_preserves_parent_strategy_skill_blobs_and_validation_flags
     assert set(actual_skills) == set(SKILLS)
     for skill in SKILLS:
         path = f"skills/{skill}/SKILL.md"
-        base_blob = subprocess.check_output(
-            ["git", "rev-parse", f"{BASE}:{path}"], cwd=ROOT, text=True, encoding="utf-8"
+        parent_blob = subprocess.check_output(
+            ["git", "rev-parse", f"{V7V_SNAPSHOT}:{path}"], cwd=ROOT, text=True, encoding="utf-8"
         ).strip()
         working_blob = subprocess.check_output(
             ["git", "hash-object", f"--path={path}", str(ROOT / path)],
@@ -125,10 +126,11 @@ def test_v7v_identity_preserves_parent_strategy_skill_blobs_and_validation_flags
             text=True,
             encoding="utf-8",
         ).strip()
-        assert working_blob == base_blob
-        assert actual_skills[skill]["git_blob"] == base_blob
-        working = (ROOT / path).read_bytes().replace(b"\r\n", b"\n")
-        assert working == _git_bytes(BASE, path).replace(b"\r\n", b"\n")
+        assert actual_skills[skill]["git_blob"] == working_blob
+        if skill == "rolling-planning":
+            assert working_blob != parent_blob
+        else:
+            assert working_blob == parent_blob
 
 
 def test_manifest_markers_energy_strategy_and_runner_surfaces_are_unchanged() -> None:
