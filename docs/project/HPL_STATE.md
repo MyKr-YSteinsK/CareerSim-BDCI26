@@ -5,9 +5,9 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-04B Local Web Runtime Gate`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL_LOCAL_WEB_RUNTIME_GATE_BLOCKED`.
-- Decision: official signed CPython runs, but one default GameEngine import triggered Code Integrity 3033/3077/3118 for unsigned `msgpack/_cmsgpack.cp312-win_amd64.pyd`. The import exited 0 because upstream msgpack catches ImportError and falls back; this does not satisfy the no-block acceptance criterion. Stop before loaded-module inventory, constructor probe and localhost launch; return to Main/Planner without workaround or HPL-05 implementation. HPL-04 remains unaccepted and its packaged smokes unverified. Never resume HPL-RUN01.
+- Current task: `HPL-04C msgpack native extension avoidance probe`.
+- Status: `IN_FLIGHT_EVIDENCE / HPL_MSGPACK_NATIVE_AVOIDANCE_PASS`.
+- Decision: a fresh signed-CPython probe venv omitting only msgpack's native PYD imports CareerSim with no Code Integrity events and uses the unchanged upstream pure Python fallback. Synthetic serialization checks pass; all 45 observed loaded native modules have valid signatures. This validates only import/fallback feasibility, not gameplay, full performance, localhost or a released client. Return to Main/Planner; do not implement HPL-05 or authorize a Human Run. HPL-04B's original default import remains blocked and HPL-04 remains unaccepted. Never resume HPL-RUN01.
 - Human Run authorization: `NOT_AUTHORIZED`; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 
 ## Lineage
@@ -37,6 +37,15 @@
 - Copied 13 installed distributions with RECORD hash verification and source-wheel identity retention; `pip check` passes. Flet/PyInstaller/Jiuwen/MCP/provider packages are absent. Only the BDCI26 Dev files were copied; no test/dev_final/test_final resource was read. No dataset load or mirror probe was necessary for import.
 - Default GameEngine import: one attempt, exit 0, stdout `CareerSim GameEngine import OK`, empty stderr; native-load block confirmed by correlated Code Integrity records 1506–1510. Popup visibility is UNKNOWN, not a claimed NO. `_cmsgpack` is NotSigned, SHA256 `0f750d717d6a2ddd61b7d2c376d0cb28fc468347cbc0c1a46aa59126a2fb18c0`. No fallback flag or simulator patch was applied.
 - Local gate evidence is on `FORENSIC_HOLD` pending Main/Planner review. Preserve scripts, environment, stdout/stderr, package identities, signatures and event XML; see [HPL-04B review](reviews/HPL-04B_LOCAL_WEB_RUNTIME_GATE.md). No real game, engine construction, action, provider, MCP, Jiuwen, security change or localhost listener occurred. Existing HPL-RUN01 hold is unchanged.
+
+## HPL-04C native avoidance boundary
+
+- Parent: HPL-04B `35bd347f0e356a0570d868edab983520a4adc086`; existing HPL branch/worktree, no main merge/rebase.
+- Probe-only environment: `D:\CS\CareerSim\.local\runtime\human-play-lab\msgpack-probe\venv`, official PSF CPython 3.12.10. Copied the prior 13-distribution closure, validating RECORD hashes; omitted `msgpack/_cmsgpack.cp312-win_amd64.pyd` before copy. All Python package source bytes are unchanged. The original HPL development/packaging/HPL-04B environments are unchanged.
+- One minimal CareerSim import and one mode/performance probe each exited 0 with empty stderr and no Code Integrity events. `msgpack==1.2.3` reports `hasattr(_cmsgpack)=False`, no native spec, and Packer/Unpacker/unpackb originate from `msgpack.fallback`; no fallback environment flag was set.
+- Actual loaded inventory: 45 modules (1 EXE / 32 DLL / 12 PYD), 19 PSF and 26 Microsoft Valid, zero unsigned/invalid loaded binaries. Bootstrap pip's six unsigned distlib launcher templates are present but not loaded and are not CareerSim runtime dependencies.
+- Synthetic 800-byte payload, 3 × 1,000 encode/decode samples: medians 101.75 / 175.12 µs per operation; msgpack import 9.49 ms, subsequent CareerSim import 172.41 ms. No native performance baseline was run under the blocking host policy; no gameplay or dataset decoding was performed.
+- Review: [HPL-04C native avoidance](reviews/HPL-04C_MSGPACK_NATIVE_AVOIDANCE.md). Local scripts, identities, measurements and signature inventory remain ignored under `msgpack-probe`; preserve pending Main/Planner review. Existing HPL-RUN01 and HPL-04B FORENSIC_HOLDs remain unchanged. No DB/session/game/local web listener was created.
 
 ## HPL-04 portable package boundary
 
