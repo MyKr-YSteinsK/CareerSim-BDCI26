@@ -146,6 +146,7 @@ def test_public_projection_drops_hidden_and_unknown_values() -> None:
         {"month": 1, "event_title": "Public event", "choice": 1, "action": "Participant-visible choice"}
     ]
     assert projected["human_interpretation"]["text"] == "My interpretation"
+    assert "human_interpretation" not in projected["observed_fact"]
     assert "observed_fact" in projected and "human_interpretation" in projected
     assert projected["unknown_fields"] == sorted(projected["unknown_fields"])
     assert any("HiddenRisk" in path for path in projected["unknown_fields"])
@@ -169,11 +170,35 @@ def test_public_projection_drops_hidden_and_unknown_values() -> None:
     )
 
 
+def test_allowlisted_frame_is_clean_and_keeps_interpretation_separate() -> None:
+    frame = {
+        "state": {"month": 1},
+        "event": {"title": "Public event", "description": "Visible description"},
+        "choices": [{"choice": 1, "action": "Visible action", "energy_cost": 2}],
+        "human_selection": {"choice": 1, "action": "Visible action"},
+        "warning": "Visible warning",
+        "handbook": "Visible handbook",
+        "action_receipt": {"status": "accepted", "message": "Visible receipt"},
+        "final_result": {"outcome": "complete", "survival_months": 1},
+        "review": {"month": 1, "text": "Visible review"},
+        "promotion": {"month": 1, "from_level": "L1", "to_level": "L2"},
+        "public_log": [{"month": 1, "event_title": "Public event", "choice": 1, "action": "Visible action"}],
+        "human_interpretation": {"created_at": "2026-09-30T00:00:00+08:00", "text": "My interpretation"},
+    }
+
+    projected = project_cli_frame(frame)
+
+    assert projected["public_status"] == "PUBLIC_FIELDS_ALLOWLISTED"
+    assert projected["unknown_fields"] == []
+    assert projected["human_interpretation"]["text"] == "My interpretation"
+    assert "human_interpretation" not in projected["observed_fact"]
+
+
 def test_hidden_looking_text_is_marked_unknown_and_omitted() -> None:
     projected = project_cli_frame({"warning": "HiddenRisk=900"})
 
     assert projected["public_status"] == "PUBLIC_STATUS_UNKNOWN"
     assert projected["observed_fact"] == {}
     assert "warning" in projected["unknown_fields"]
-    assert "event.event_id" in projected["unknown_fields"]
-    assert "event.node_id" in projected["unknown_fields"]
+    assert "event.event_id" not in projected["unknown_fields"]
+    assert "event.node_id" not in projected["unknown_fields"]

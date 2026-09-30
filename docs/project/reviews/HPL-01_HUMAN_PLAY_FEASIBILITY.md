@@ -24,7 +24,7 @@
 | Dataset | `CONFIRMED` route mechanism; active default `UNKNOWN` | CLI 默认读安装包目录 `career_emulator/data/dataset`；`play` 本身不更新题库。`CAREER_EMULATOR_DATASET` 只影响 `update_dataset()` 选择哪个 split，不能重定向 loader root；`career-emulator update` / MCP `run_mcp` 可创建、替换或下载此目录，本任务没有执行。当前默认目录不是指向已安装 `career_emulator_bdci26/dev/dataset` 的同一路径，其实际来源未检查，故标为 `UNKNOWN`。已确认安装包 `career-emulator-bdci26==1.0.0` 的 `dev/dataset` 及 CLI 所需七个子目录存在。Wrapper 可将这些只读路径显式传给 `GameEngine`，绕开当前不明的默认目录；不需要 update/download。 |
 | Isolation | `CONFIRMED`（按 wrapper 设计） | 唯一 `.local/runtime/hpl-<run-id>` 下的 DB 与 logs 通过 import 前环境变量独立；raw transcript 留在同一 run root；dataset 只读使用已安装 Dev distribution 路径。CLI 不启动 JiuwenSwarm、AgentServer 或 MCP service。`worktree isolation != runtime isolation`；未来 Human/Agent 运行仍须遵守 shared runtime 串行合同。 |
 | Public render boundary | `CONFIRMED` with log restriction | CLI 显示 session、Month/Quarter/Year/Level、Health/Dignity/Skill/Network/Output/Wealth/Energy、event title/description、choices/action/energy cost、warning 和 Handbook。`DEBUG_MODE=False` 时不显示 `statistics`。可选 `logs` 命令会显示日志文件路径、动作与 `status_updates` 计算结果；wrapper 必须阻止 `logs` 输入，且不得把 raw log 字符串放入 canonical evidence。成功动作没有单独 receipt 文本，不能伪造；以之后的新 CLI observation 作为下一状态证据。 |
-| Hidden-looking fields | `CONFIRMED` firewall required | CLI renderer 会显示 `event_id` / `node_id`；终局还显示 score `dimensions` 的 raw/normalized/weight/contribution。它们不得进入 canonical observed facts，记录路径并标记 `PUBLIC_STATUS_UNKNOWN`。Simulator model 的隐藏字段名也包括 `statistics`、active/completed nodes、event queue/counters、failure-rule remainder 等；Human evidence 不读取这些值，不用 event-id→answer mapping。 |
+| Hidden-looking fields | `CONFIRMED` firewall required | CLI renderer 可能显示 `event_id` / `node_id`；终局还可能显示 score `dimensions` 的 raw/normalized/weight/contribution。它们不得进入 canonical observed facts；仅当对应字段实际出现在捕获 frame 时记录路径并标记 `PUBLIC_STATUS_UNKNOWN`。Simulator model 的隐藏字段名也包括 `statistics`、active/completed nodes、event queue/counters、failure-rule remainder 等；Human evidence 不读取这些值，不用 event-id→answer mapping。 |
 | Route A vs B | `CONFIRMED` — choose A | Route A 具备本地交互、DB/log override 与可由 CLI stdin/stdout 边界归档的路径；projection helper 只接收已提取的 CLI frame，不访问 private simulator internals。Route B 没有 Route A 的 material failure 证据，却引入 MCP service、更多内部字段和默认 dataset update 行为，不采用。 |
 
 ### Public evidence schema
@@ -41,7 +41,7 @@ Schema version: `hpl-public-evidence/v1`。每份真实 Run manifest 至少包�
 ## Minimal artifacts and verification
 
 - `scripts/hpl_preflight.py` 只解析安装身份、Dev dataset 目录与新 runtime DB/log 目标，打印 dry-run JSON；不建目录、不导入 emulator、不启动 CLI。
-- `scripts/hpl_public_evidence.py` 提供 fixture 可验证的 allowlist projector。
+- `scripts/hpl_public_evidence.py` 提供 fixture 可验证的 allowlist projector；`human_interpretation` 只写在独立顶层结构，永不进入 `observed_fact`。event/node ID 与 score dimensions 仅在输入实际包含时记录 unknown path、不保存值；完全 allowlisted frame 且无其它 unknown 时状态为 `PUBLIC_FIELDS_ALLOWLISTED`。
 - `tests/test_hpl_01_offline.py` 覆盖 path isolation/no-write、真实安装包 env override、hidden-looking field dropping 与 interpretation 分离。
 - 实际执行过官方 `career-emulator --help` 和 `career-emulator play --help`；两者只显示参数并退出 0。输出有 Authlib deprecation warning，不影响 help 结果。
 - 绝未运行 `play`、`update`、MCP、service、dataset download、Provider 或 Candidate install/reload。

@@ -51,7 +51,6 @@ PUBLIC_FRAME_FIELDS = frozenset(
         "human_interpretation",
     }
 )
-KNOWN_CLI_UNALLOWLISTED_FIELDS = ("event.event_id", "event.node_id")
 
 _FIELD_ALLOWLISTS = {
     "state": PUBLIC_STATE_FIELDS,
@@ -61,7 +60,6 @@ _FIELD_ALLOWLISTS = {
     "final_result": PUBLIC_RESULT_FIELDS,
     "review": PUBLIC_REVIEW_FIELDS,
     "promotion": PUBLIC_PROMOTION_FIELDS,
-    "human_interpretation": PUBLIC_INTERPRETATION_FIELDS,
 }
 _HIDDEN_LOOKING_TEXT = (
     "hiddenrisk",
@@ -118,12 +116,9 @@ def _copy_scalar_fields(value: Any, path: str, allowed: frozenset[str], unknown:
 
 def project_cli_frame(frame: Mapping[str, Any]) -> dict[str, Any]:
     """Return allowlisted participant-visible facts and paths for anything omitted."""
-    # career-emulator 1.0.1 prints both identifiers for each visible event. The
-    # terminal renderer also prints score dimensions at game end; those values
-    # are reported when present below but are never copied into observed facts.
-    unknown: list[str] = list(KNOWN_CLI_UNALLOWLISTED_FIELDS)
-    if "final_result" in frame:
-        unknown.append("final_result.dimensions")
+    # Unallowlisted identifiers and score dimensions are recorded as paths only
+    # when they actually appear in the captured frame.
+    unknown: list[str] = []
     for key, value in frame.items():
         if key not in PUBLIC_FRAME_FIELDS:
             _unknown_paths(value, str(key), unknown)
