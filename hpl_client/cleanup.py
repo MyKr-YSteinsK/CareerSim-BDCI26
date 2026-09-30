@@ -11,6 +11,10 @@ from hpl_client.export import ARTIFACTS, verify_zip
 HELD_RUN_ID = "47472aa8b73b4bf6847209f99a8abb39"
 
 
+def _stable_exports(layout):
+    return Path(getattr(layout, "exports_root", Path(layout.sandbox_root) / "exports"))
+
+
 def _reject_links(path):
     for entry in (path, *path.parents):
         if entry.is_symlink() or getattr(entry, "is_junction", lambda: False)():
@@ -27,7 +31,7 @@ def assert_cleanup_target(root, layout, *, exports=None):
     _reject_links(root)
     if exports is not None:
         _reject_links(exports)
-        if exports.resolve() != (layout.sandbox_root / "exports").resolve():
+        if exports.resolve() != _stable_exports(layout).resolve():
             raise ValueError("ZIP must be in stable HPL exports")
     for entry in root.rglob("*"):
         if entry.is_symlink() or getattr(entry, "is_junction", lambda: False)():

@@ -149,7 +149,7 @@ def finalize_success(root, layout):
     manifest, _, _ = verify_zip(source, root.name)
     if manifest.get("run_status") != "ENDED":
         raise ValueError("only a normal ended run can be finalized")
-    destination = layout.sandbox_root / "exports"
+    destination = Path(getattr(layout, "exports_root", layout.sandbox_root / "exports"))
     assert_cleanup_target(root, layout, exports=destination)
     destination.mkdir(exist_ok=True)
     suffix = 1

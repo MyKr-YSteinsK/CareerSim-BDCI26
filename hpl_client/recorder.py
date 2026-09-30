@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 import traceback
 from datetime import datetime
 
@@ -13,9 +14,10 @@ def now():
 
 
 class RunRecorder:
-    def __init__(self, root, manifest):
+    def __init__(self, root, manifest, *, diagnostics_root=None):
         self.root = root
         self.manifest = manifest
+        self.diagnostics_root = diagnostics_root
         self.frames = []
         self.finalized = False
         (root / "staging").mkdir(exist_ok=True)
@@ -59,8 +61,14 @@ class RunRecorder:
         self.finalized = True
 
     def failure(self, error):
-        # Local technical traceback is deliberately excluded from canonical export.
-        (self.root / "scratch" / "technical_error.log").write_text(
-            "".join(traceback.format_exception(error)), encoding="utf-8"
-        )
+        self.diagnostic(error, "technical_error")
         self.finish("TECHNICAL_FAILURE", unknown=True)
+
+    def diagnostic(self, error, stage):
+        """Keep local tracebacks with this run and in the portable diagnostics folder."""
+        details = "".join(traceback.format_exception(error))
+        (self.root / "scratch" / f"{stage}.log").write_text(details, encoding="utf-8")
+        if self.diagnostics_root is not None:
+            identifier = re.sub(r"[^A-Za-z0-9_-]", "_", self.root.name)
+            target = self.diagnostics_root / f"{identifier}-{stage}.log"
+            target.write_text(details, encoding="utf-8")

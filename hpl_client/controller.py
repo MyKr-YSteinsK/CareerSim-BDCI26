@@ -20,15 +20,44 @@ from hpl_client.game_adapter import PublicGameAdapter
 from hpl_client.export import finalize_success
 from hpl_client.presentation import choice_disabled_reason
 from hpl_client.recorder import RunRecorder, now
+from hpl_client.runtime_paths import (
+    is_packaged_mode,
+    packaged_identity,
+    packaged_startup_self_check,
+    resolve_packaged_layout,
+)
 
 
 def create_human_run(tag):
     """Called only by the user's GUI Start action, never at app startup."""
-    layout = resolve_layout()
-    _, identity = _load_environment_manifest(layout)
-    for package in ("flet", "flet-desktop"):
-        if metadata.version(package) != "1.0.1":
-            raise RuntimeError("HPL requires Flet desktop 1.0.1")
+    if is_packaged_mode():
+        layout = resolve_packaged_layout()
+        self_check = packaged_startup_self_check(layout)
+        identity = packaged_identity(layout)
+        engine_paths = self_check["engine_paths"]
+        hpl_commit = identity["hpl_commit"]
+        python_version = identity["python_version"]
+        dataset_root = identity["dataset_root"]
+        runtime_label = "UserData/Runs"
+        venv_label = "PACKAGED_BUNDLE"
+        launcher_version = "hpl-04/portable"
+        dataset_source = "HPL_PORTABLE_BDCI26_DEV"
+        evidence_basis = "Validated portable bundle; direct local GameEngine; no provider path"
+    else:
+        layout = resolve_layout()
+        _, identity = _load_environment_manifest(layout)
+        for package in ("flet", "flet-desktop"):
+            if metadata.version(package) != "1.0.1":
+                raise RuntimeError("HPL requires Flet desktop 1.0.1")
+        engine_paths = identity["dataset"]["engine_paths"]
+        hpl_commit = _git_value(layout, "rev-parse", "HEAD")
+        python_version = identity["python_version"]
+        dataset_root = "career_emulator_bdci26/dev/dataset"
+        runtime_label = "runs"
+        venv_label = "HPL_DEDICATED_VENV"
+        launcher_version = "hpl-03/v1"
+        dataset_source = "HPL_INSTALLED_BDCI26_DEV"
+        evidence_basis = "Validated HPL dependency closure; direct local GameEngine; no provider path"
     identifier = uuid.uuid4().hex
     root = layout.runs_root / identifier
     assert_isolated_run_root(root, layout)
@@ -44,26 +73,26 @@ def create_human_run(tag):
         "human_tag": tag,
         "started_at": now(),
         "ended_at": "PENDING",
-        "hpl_commit": _git_value(layout, "rev-parse", "HEAD"),
-        "launcher_version": "hpl-03/v1",
-        "python_version": identity["python_version"],
+        "hpl_commit": hpl_commit,
+        "launcher_version": launcher_version,
+        "python_version": python_version,
         "career_emulator_version": "1.0.1",
         "career_emulator_bdci26_version": "1.0.0",
-        "dataset_source": "HPL_INSTALLED_BDCI26_DEV",
+        "dataset_source": dataset_source,
         "dataset_split": "dev",
-        "dataset_root": "career_emulator_bdci26/dev/dataset",
-        "hpl_venv_root": "HPL_DEDICATED_VENV",
-        "hpl_runtime_root": "runs/" + identifier,
+        "dataset_root": dataset_root,
+        "hpl_venv_root": venv_label,
+        "hpl_runtime_root": runtime_label + "/" + identifier,
         "provider_used": False,
-        "provider_evidence_basis": "Validated HPL dependency closure; direct local GameEngine; no provider path",
+        "provider_evidence_basis": evidence_basis,
         "public_evidence_schema_version": SCHEMA_VERSION,
     }
-    recorder = RunRecorder(root, manifest)
+    recorder = RunRecorder(root, manifest, diagnostics_root=getattr(layout, "diagnostics_root", None))
     try:
         from career_emulator.game import GameEngine
 
         engine = GameEngine(
-            **engine_constructor_kwargs(identity["dataset"]["engine_paths"], runtime / "career_emulator.sqlite3")
+            **engine_constructor_kwargs(engine_paths, runtime / "career_emulator.sqlite3")
         )
         # Storage defaults freeze on first import. Explicitly route every fresh run's
         # existing store before any engine IO, including subsequent games in this process.
@@ -190,7 +219,7 @@ class HumanGameController:
         self.finalization_status = "EXPORTING"
         try:
             operation = asyncio.create_task(
-                asyncio.to_thread(self._finalizer, self.recorder.root, self._layout or resolve_layout())
+                asyncio.to_thread(self._finalizer, self.recorder.root, self._layout or self._active_layout())
             )
             try:
                 result = await asyncio.shield(operation)
@@ -206,9 +235,13 @@ class HumanGameController:
             )
             self._adapter = None
             return True
-        except Exception:
+        except Exception as error:
             self.finalization_status = "EXPORT_FAILED_RETAINED"
             self.export_message = "导出未完成，本局数据已保留。可重试导出，不会重复游戏操作。"
+            try:
+                self.recorder.diagnostic(error, "export_error")
+            except Exception:
+                pass
             return False
 
     async def finish_export(self):
@@ -220,3 +253,7 @@ class HumanGameController:
             return await self._finalize_ended()
         finally:
             self.busy = False
+
+    @staticmethod
+    def _active_layout():
+        return resolve_packaged_layout() if is_packaged_mode() else resolve_layout()

@@ -14,6 +14,12 @@ from hpl_client.cleanup import cleanup_success
 from hpl_client.fixtures import fixture_controller
 from hpl_client.export import readable_filename
 from hpl_client.presentation import FONT_FAMILY, choice_disabled_reason, handbook_dialog
+from hpl_client.runtime_paths import (
+    configure_packaged_flet,
+    is_packaged_mode,
+    packaged_startup_self_check,
+    resolve_packaged_layout,
+)
 from scripts.hpl_play import _load_environment_manifest, resolve_layout
 
 
@@ -43,6 +49,16 @@ def panel(controls, *, spacing=16, **kwargs):
         border_radius=18,
         animate_opacity=ft.Animation(160, ft.AnimationCurve.EASE_OUT),
     )
+
+
+def packaged_startup_message(error):
+    detail = str(error)
+    if "应用目录" in detail or "UserData" in detail:
+        return (
+            f"{detail}\n请将完整的 CareerSim Human 文件夹解压到桌面、D 盘或其他普通可写目录后重新启动。"
+            "应用不会改存到 Documents、LocalAppData 或其他位置。"
+        )
+    return f"便携版启动检查失败：{detail}\n未创建对局。请检查完整性并重新解压整个便携版目录。"
 
 
 def game_columns(left, event_content, choice_content):
@@ -108,15 +124,52 @@ def choice_card(choice, energy, on_select, *, disabled=False, index=1):
 
 
 def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_report=None):
-    layout = resolve_layout()
-    _load_environment_manifest(layout)
-    desktop = layout.sandbox_root / "venv" / "flet-desktop" / "flet"
-    if not (desktop / "flet.exe").is_file():
-        raise RuntimeError("HPL Flet 1.0.1 desktop runtime is missing; install it into the HPL venv before launch")
-    os.environ["FLET_VIEW_PATH"] = str(desktop)
-    # Ignore inherited web/Agent launch overrides. Desktop uses local IPC only.
-    for name in ("FLET_FORCE_WEB_SERVER", "FLET_DISPLAY_URL_PREFIX", "FLET_SERVER_IP", "FLET_SERVER_PORT"):
-        os.environ.pop(name, None)
+    startup_error = ""
+    if is_packaged_mode():
+        try:
+            layout = resolve_packaged_layout()
+            packaged_startup_self_check(layout)
+            configure_packaged_flet(layout)
+        except Exception as error:
+            layout = None
+            startup_error = packaged_startup_message(error)
+        # A portable build must use the Flet runtime collected beside the
+        # executable. Never inherit the developer machine's FLET_VIEW_PATH or
+        # server overrides into the packaged process.
+        for name in ("FLET_VIEW_PATH", "FLET_FORCE_WEB_SERVER", "FLET_DISPLAY_URL_PREFIX", "FLET_SERVER_IP", "FLET_SERVER_PORT"):
+            os.environ.pop(name, None)
+    else:
+        layout = resolve_layout()
+        _load_environment_manifest(layout)
+        desktop = layout.sandbox_root / "venv" / "flet-desktop" / "flet"
+        if not (desktop / "flet.exe").is_file():
+            raise RuntimeError("HPL Flet 1.0.1 desktop runtime is missing; install it into the HPL venv before launch")
+        os.environ["FLET_VIEW_PATH"] = str(desktop)
+        # Ignore inherited web/Agent launch overrides. Desktop uses local IPC only.
+        for name in ("FLET_FORCE_WEB_SERVER", "FLET_DISPLAY_URL_PREFIX", "FLET_SERVER_IP", "FLET_SERVER_PORT"):
+            os.environ.pop(name, None)
+    if startup_error:
+        if smoke_report:
+            Path(smoke_report).write_text(
+                json.dumps(
+                    {
+                        "fixture": fixture,
+                        "phase": "NOT_STARTED",
+                        "page_session_connected": False,
+                        "real_engine_imported": "career_emulator.game" in sys.modules,
+                        "startup_gate": "FAIL_CLOSED",
+                        "startup_error": startup_error,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            return
+        if os.name == "nt":
+            import ctypes
+
+            ctypes.windll.user32.MessageBoxW(0, startup_error, "CareerSim Human", 0x10)
+            return
+        raise RuntimeError(startup_error)
     controller = (
         fixture_controller(ending=fixture_screen == "ended", energy=1 if fixture_screen == "energy" else 8)
         if fixture
@@ -133,7 +186,7 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
         page.theme = ft.Theme(font_family=FONT_FAMILY, color_scheme_seed="#386B63", use_material3=True)
         page.bgcolor = "#F2F5FA"
         page.padding = 28
-        if fixture and fixture_screen != "start":
+        if not startup_error and fixture and fixture_screen != "start":
             await controller.start()
             if fixture_screen == "ended":
                 controller.export_path = Path(
@@ -178,7 +231,7 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
                         set_message("Fixture 不生成真实运行资料；ZIP 由离线测试验证。")
                     elif controller.finalization_status == "CLEANUP_PENDING" and controller.export_path:
                         await asyncio.to_thread(
-                            cleanup_success, controller.recorder.root, controller.export_path, resolve_layout()
+                            cleanup_success, controller.recorder.root, controller.export_path, layout
                         )
                         controller.finalization_status = "SUCCESSFULLY_FINALIZED_AND_EXPORTED"
                         controller.export_message = "临时文件已清理。"
@@ -198,6 +251,10 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
             def open_handbook(_):
                 handbook_dialog(page, facts.get("handbook", ""))
 
+            def open_export_folder(_):
+                if controller.export_path and not fixture:
+                    os.startfile(Path(controller.export_path).parent)
+
             header = ft.Row(
                 [
                     ft.Text("CareerSim Human", size=28, weight=ft.FontWeight.BOLD),
@@ -210,6 +267,24 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
                 color="#526480",
                 size=12,
             )
+            if startup_error:
+                return ft.Column(
+                    [
+                        header,
+                        ft.Container(height=32),
+                        panel(
+                            [
+                                ft.Text("无法安全启动便携版", size=28, weight=ft.FontWeight.BOLD),
+                                ft.Text(startup_error, size=15, color="#9E3F38", selectable=True),
+                                ft.Text("未创建对局，也未下载或回退到外部 Python。", size=14),
+                            ]
+                        ),
+                        ft.Container(expand=True),
+                        footer,
+                    ],
+                    expand=True,
+                    horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                )
             if not controller.view:
                 return ft.Column(
                     [
@@ -325,6 +400,8 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
                     center.append(ft.Text(controller.export_message, size=14, color="#315F57"))
                 if controller.export_path:
                     center.append(ft.Text(str(controller.export_path), size=13, selectable=True, color="#354951"))
+                    if not fixture:
+                        center.append(ft.TextButton(content="打开导出文件夹", on_click=open_export_folder))
                 if message:
                     center.append(ft.Text(message, selectable=True, color="#354951"))
             elif controller.phase == "TECHNICAL_FAILURE":
@@ -387,7 +464,7 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
             )
 
         page.render(Client)
-        if fixture and fixture_screen == "handbook":
+        if fixture and fixture_screen == "handbook" and controller.view:
             handbook_dialog(page, controller.view.facts.get("handbook", ""))
         if smoke_report:
             await asyncio.sleep(1)
@@ -405,6 +482,12 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
         if smoke_seconds:
             await asyncio.sleep(smoke_seconds)
             await page.window.close()
+            # Flet's desktop close callback can remain alive when the fixture
+            # is launched headlessly by an isolated verifier. This branch is
+            # reachable only with the explicit fixture-only smoke arguments;
+            # exit after the report has been flushed so the verifier cannot
+            # turn a harmless UI close delay into a package failure.
+            os._exit(0)
 
     ft.run(main, host="127.0.0.1", no_cdn=True, assets_dir=None)
 
