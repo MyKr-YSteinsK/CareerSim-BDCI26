@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
 V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+TASK_ANCHOR = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -109,7 +110,8 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
     assert candidate["adopted_mechanisms"][: len(parent["adopted_mechanisms"])] == parent[
         "adopted_mechanisms"
     ]
-    assert candidate["adopted_mechanisms"][-1] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
+    assert candidate["adopted_mechanisms"][-2] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
+    assert candidate["adopted_mechanisms"][-1] == "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["validation"] and all(value is False for value in candidate["validation"].values())
 
@@ -119,6 +121,9 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
         path = f"skills/{skill}/SKILL.md"
         parent_blob = subprocess.check_output(
             ["git", "rev-parse", f"{V7V_SNAPSHOT}:{path}"], cwd=ROOT, text=True, encoding="utf-8"
+        ).strip()
+        anchor_blob = subprocess.check_output(
+            ["git", "rev-parse", f"{TASK_ANCHOR}:{path}"], cwd=ROOT, text=True, encoding="utf-8"
         ).strip()
         working_blob = subprocess.check_output(
             ["git", "hash-object", f"--path={path}", str(ROOT / path)],
@@ -131,6 +136,7 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
             assert working_blob != parent_blob
         else:
             assert working_blob == parent_blob
+            assert working_blob == anchor_blob
 
 
 def test_manifest_markers_energy_strategy_and_runner_surfaces_are_unchanged() -> None:
@@ -146,6 +152,6 @@ def test_manifest_markers_energy_strategy_and_runner_surfaces_are_unchanged() ->
     assert "QUARTER_INTENT = <MODE | current target>" in planning
     for path in ("pyproject.toml", "uv.lock", "career_sim_runner"):
         changed = subprocess.check_output(
-            ["git", "diff", "--name-only", BASE, "--", path], cwd=ROOT, text=True, encoding="utf-8"
+            ["git", "diff", "--name-only", TASK_ANCHOR, "--", path], cwd=ROOT, text=True, encoding="utf-8"
         ).strip()
         assert changed == ""

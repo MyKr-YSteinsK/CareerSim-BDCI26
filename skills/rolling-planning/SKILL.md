@@ -123,13 +123,15 @@ Survival / Continuity 是 hard floor，不是持续最大化目标。没有 fres
 
 `MODE=S` 只处理当前 binding constraint，并保留可行的 progression value；约束解除后立即回 `A`。
 
-无 binding constraint 时默认 `MODE=A`，按以下条件式顺序 ranking：
+无 binding constraint 时默认 `MODE=A`，按以下顺序选择：
 
-1. **Time-sensitive realization exception：**明确且当前可实现的 Review/promotion realization；满足 `DELIVERY` 触发条件的近端交付、blocker、高价值待验证结果或 explicit Review linkage。
-2. **Broad promotion compounding：**still-responsive Skill / Network / Output、career capital、ownership / visibility、verified realizable result，以及同时改善多个 promotion-relevant 维度的合法行动。它是 `MODE=A` 的 strong default prior。
-3. **Advisory Primary Gap：**仅当 feedback specific、对应路径仍 responsive，且没有更高价值的 realization / broad progression 时，短期集中该方向。旧 gap 不得永久压过宽广复利路径。
-4. **Long-horizon option value：**不牺牲当前明确可兑现机会时保留未来复利价值。
-5. **Filler：**只有当前没有 meaningful progression / realization path 时才考虑低价值 safety / filler。
+1. **Time-sensitive realization exception：**明确且当前可实现的 Review/promotion realization；满足 `DELIVERY` 触发条件的近端交付、blocker、高价值待验证结果或 explicit Review linkage，优先于普通 Portfolio 比较。
+2. **Promotion Portfolio：**条件式比较 broad progression 与 Primary Gap，不设固定全局先后。
+   - **Broad compounding** 是 strong default prior：still-responsive Skill / Network / Output、career capital、ownership / visibility、verified realizable result，以及多维 promotion-relevant 合法行动。
+   - **Conditional Primary Gap** 只有在最新 Review feedback fresh 且 specific、对应路径仍 responsive、存在 participant-visible legal action 且进展能在 next realizable checkpoint 前兑现时，才获得 strong directional weight；没有更高优先级 realization exception 或更新的 superseding / clean `NO_GAIN` evidence 时，可以短期成为 dominant path。不得仅因过去投入而维持其 dominance。
+   - **Dominance expiry：**新 Formal Review 重建 Portfolio、fresh evidence supersedes gap、对应路径变为 `NO_GAIN` / non-responsive，或 checkpoint 已过时，旧 gap 不再 dominant 且不跨 Review 自动继承；不得长期因此压掉其它 still-responsive promotion-relevant paths。
+3. **Long-horizon option value：**不牺牲当前明确可兑现机会时保留未来复利价值。
+4. **Filler：**只有当前没有 meaningful progression / realization path 时才考虑低价值 safety / filler。
 
 不得把普通 `IN_PROGRESS` 当成全局高优先级；action 名称、固定比例或数字下降本身不决定 ranking。
 

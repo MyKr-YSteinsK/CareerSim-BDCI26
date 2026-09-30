@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "6f2fac907cdda2752af899d2890975d12a08709b17b284e850d19571fa30dd46",
-    "instruction_sha256": "167867d59a9bf562c62ef6f64f6dc942a27a85a05a329fd2bb6610fa6cbed1d4"
+    "sha256": "458dabe60c9e85be8e565e7d6c0f8779a6b17cfcea9a4e0b290a445e3e549e9e",
+    "instruction_sha256": "9557d99721df44841e09dd2ba1bc95fde17935316ce01eae52fd8492f841b434"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "dbc515505ffc801adaf030f370e3d80edd487280"
+      "git_blob": "0fe511e691559d87e3dd204db6e4c46e0a93e36c"
     },
     {
       "name": "delivery-progress",
@@ -88,7 +88,8 @@
     "NO_GAIN_POSITIVE_REALLOCATION",
     "SPARSE_DELIVERY_OVERRIDE",
     "REVIEW_STRATEGY_RECONSTRUCTION",
-    "TERMINAL_HORIZON_DIRECT_REALIZATION"
+    "TERMINAL_HORIZON_DIRECT_REALIZATION",
+    "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
   ],
   "runtime_contract_delta": [
     "FRESH_OBSERVE_CONTROL_STATE",

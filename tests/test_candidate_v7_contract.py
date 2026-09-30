@@ -9,7 +9,8 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+PARENT_BASE_SHA = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+TASK_ANCHOR_SHA = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
 PARENT_CANDIDATE_ID = "candidate-v7v-preflight-ordering-repair"
 CURRENT_CANDIDATE_ID = "candidate-v7w-high-score-core-recovery"
 SKILL_ORDER = (
@@ -52,14 +53,14 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     manifest_path = ROOT / "configs/runtime_manifest.json"
     manifest_bytes = manifest_path.read_bytes()
     manifest = json.loads(manifest_bytes.decode("utf-8"))
-    parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/current_candidate.json"))
-    parent_manifest_bytes = _git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json")
+    parent = json.loads(_git_bytes(PARENT_BASE_SHA, "configs/current_candidate.json"))
+    parent_manifest_bytes = _git_bytes(PARENT_BASE_SHA, "configs/runtime_manifest.json")
     parent_manifest = json.loads(parent_manifest_bytes.decode("utf-8"))
     parent_skills = [
         {
             "name": name,
             "git_blob": subprocess.check_output(
-                ["git", "rev-parse", f"{BASE_MAIN_SHA}:skills/{name}/SKILL.md"],
+                ["git", "rev-parse", f"{PARENT_BASE_SHA}:skills/{name}/SKILL.md"],
                 cwd=ROOT,
                 text=True,
             ).strip(),
@@ -70,7 +71,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
 
     assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
-    assert candidate["base_main_sha"] == BASE_MAIN_SHA
+    assert candidate["base_main_sha"] == PARENT_BASE_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
     assert candidate["decision"] == "S09_01_STATIC_STRATEGY_IMPLEMENTATION"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
@@ -111,6 +112,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
         "SPARSE_DELIVERY_OVERRIDE",
         "REVIEW_STRATEGY_RECONSTRUCTION",
         "TERMINAL_HORIZON_DIRECT_REALIZATION",
+        "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -345,11 +347,24 @@ def test_evidence_firewall_and_no_fixed_hidden_rules_are_explicit() -> None:
 
 def test_board_runner_and_dependency_files_remain_frozen() -> None:
     candidate = _json("configs/current_candidate.json")
-    board = "skills/structured-state-board/SKILL.md"
-    assert (ROOT / board).read_bytes() == _git_bytes(BASE_MAIN_SHA, board)
+    for skill in ("structured-state-board", "delivery-progress", "risk-review"):
+        path = f"skills/{skill}/SKILL.md"
+        working_blob = subprocess.check_output(
+            ["git", "hash-object", f"--path={path}", str(ROOT / path)],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        ).strip()
+        anchor_blob = subprocess.check_output(
+            ["git", "rev-parse", f"{TASK_ANCHOR_SHA}:{path}"],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        ).strip()
+        assert working_blob == anchor_blob
     for relative in ("pyproject.toml", "uv.lock", "career_sim_runner"):
         changed = subprocess.check_output(
-            ["git", "diff", "--name-only", BASE_MAIN_SHA, "--", relative],
+            ["git", "diff", "--name-only", TASK_ANCHOR_SHA, "--", relative],
             cwd=ROOT,
             text=True,
         ).strip()
@@ -371,9 +386,15 @@ def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
 
     assert "普通工作负荷" in mode and "不单独触发 `S`" in mode
     assert "minimum necessary stabilization" in mode and "立即回 `A`" in mode
-    assert ranking.index("Broad promotion compounding") < ranking.index("Advisory Primary Gap")
+    assert ranking.index("Time-sensitive realization exception") < ranking.index("Promotion Portfolio")
+    assert "Broad compounding** 是 strong default prior" in ranking
+    assert "Primary Gap** 只有在最新 Review feedback fresh 且 specific" in ranking
+    assert "可以短期成为 dominant path" in ranking
+    assert "新 Formal Review 重建 Portfolio" in ranking
+    assert "旧 gap 不再 dominant 且不跨 Review 自动继承" in ranking
+    assert "对应路径变为 `NO_GAIN` / non-responsive" in ranking
+    assert "不得长期因此压掉其它 still-responsive promotion-relevant paths" in ranking
     assert "Primary Gap` 是最新 Review" in planning
-    assert "旧 gap 不得永久压过宽广复利路径" in planning
     assert "positive reallocation" in routing and "低价值 Health/safety filler" in routing
     assert "不得整体否决该 action" in routing
     assert "普通 `IN_PROGRESS + NOT_NEAR`" in delivery and "只作背景证据" in delivery
@@ -384,13 +405,14 @@ def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
 
 def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
     manifest = _json("configs/runtime_manifest.json")
-    parent = json.loads(_git_bytes(BASE_MAIN_SHA, "configs/runtime_manifest.json"))
+    parent = json.loads(_git_bytes(TASK_ANCHOR_SHA, "configs/runtime_manifest.json"))
     instruction = manifest["instruction"]
     parent_instruction = parent["instruction"]
     start = "CRITICAL KERNEL\n"
     end = "\n\nSTARTUP AND FLOW\n"
     prefix = instruction.split(start, 1)[0]
     suffix = instruction.split(end, 1)[1]
+    kernel = instruction.split(start, 1)[1].split(end, 1)[0]
     parent_prefix = parent_instruction.split(start, 1)[0]
     parent_suffix = parent_instruction.split(end, 1)[1]
 
@@ -401,3 +423,9 @@ def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
     assert len(instruction) <= 5200
     assert prefix == parent_prefix
     assert suffix == parent_suffix
+    assert "MODE=A 使用 Promotion Portfolio" in kernel
+    assert "broad still-responsive promotion compounding 是 strong default prior" in kernel
+    assert "fresh、specific、responsive 的 Review gap" in kernel
+    assert "Time-sensitive realization exception 仍优先" in kernel
+    assert "不跨 Review 自动继承" in kernel
+    assert "clean NO_GAIN/non-responsive path" in kernel
