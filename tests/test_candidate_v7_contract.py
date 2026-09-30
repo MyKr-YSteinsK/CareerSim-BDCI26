@@ -9,9 +9,9 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MAIN_SHA = "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a"
-PARENT_CANDIDATE_ID = "candidate-v7t-execution-semantic-repair"
-CURRENT_CANDIDATE_ID = "candidate-v7u-runtime-adherence-protocol"
+BASE_MAIN_SHA = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
+PARENT_CANDIDATE_ID = "candidate-v7u-runtime-adherence-protocol"
+CURRENT_CANDIDATE_ID = "candidate-v7v-preflight-ordering-repair"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -72,7 +72,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == BASE_MAIN_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S08_10_RUNTIME_ADHERENCE_PROTOCOL_REPAIR"
+    assert candidate["decision"] == "S08_10R_PREFLIGHT_ORDERING_REPAIR"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -100,13 +100,14 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
-    assert candidate["strategy_delta"] == "RUNTIME_ADHERENCE_PROTOCOL_ONLY"
+    assert candidate["strategy_delta"] == "RUNTIME_GATE_ORDERING_CORRECTION_ONLY"
     assert candidate["design_intent"] == "HIGH_CEILING_WITH_RECOVERABLE_FAILURE_FLOOR"
     assert candidate["runtime_contract_delta"] == [
         "FRESH_OBSERVE_CONTROL_STATE",
         "EXPLICIT_RECONSIDER_BRANCH_ENUM",
         "NAMED_DELIVERY_CHECKPOINT_ENUM",
         "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -308,7 +309,7 @@ def test_manifest_preserves_whole_game_persistence_preflight_and_recovery_order(
     assert "不得因为 action、month、quarter、Review、promotion、局部 closure" in manifest
     assert "CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED" in manifest
     assert "successful `take_action`" in manifest
-    assert "唯一合法的下一 gameplay call 是同一 session 的 fresh `observe`" in manifest
+    assert "下一 gameplay call 只能同 session fresh `observe`" in manifest
     assert "[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> RB=<NONE|DONE|BLOCKED>]" in manifest
     assert "checkpoint=<NEAR|NOT_NEAR|UNKNOWN>" in manifest
     assert "CONTROL_STATE=READY" in manifest and "RB in {NONE,DONE}" in manifest

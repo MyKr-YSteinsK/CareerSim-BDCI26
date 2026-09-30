@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7u-runtime-adherence-protocol",
+  "candidate_id": "candidate-v7v-preflight-ordering-repair",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S08_10_RUNTIME_ADHERENCE_PROTOCOL_REPAIR",
+  "decision": "S08_10R_PREFLIGHT_ORDERING_REPAIR",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "RUNTIME_ADHERENCE_PROTOCOL_ONLY",
-  "parent_candidate_id": "candidate-v7t-execution-semantic-repair",
-  "base_main_sha": "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a",
+  "strategy_delta": "RUNTIME_GATE_ORDERING_CORRECTION_ONLY",
+  "parent_candidate_id": "candidate-v7u-runtime-adherence-protocol",
+  "base_main_sha": "882d47202d4d8d8305acbf7edb451ee8d68fe1ce",
   "parent_identity": {
-    "runtime_manifest_sha256": "15c3638da5e49b60fa6f30f3d702cc5d170cc91c91628f0dc0ac4eb4fd4b1c1d",
-    "instruction_sha256": "a6c94438dc7a06cdd9515f39a4ea19b5b59f5863a8478d205c2284ddc5889021",
+    "runtime_manifest_sha256": "3f15967c29afddcd9baaaac04fbe0261241947be76e207c8d3388169d6c1ffee",
+    "instruction_sha256": "5dd3c81f0ca574096946158d35ed93b659e919d5e83dbb19aee2fc63c9ebd200",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,24 +18,24 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "4f4b7c6418529f1ba48c24d2fa9447b20aa591e7"
+        "git_blob": "6088fc6f56c60d8d98b176b6c7ef8f05b1f2f8dd"
       },
       {
         "name": "delivery-progress",
         "path": "skills/delivery-progress/SKILL.md",
-        "git_blob": "34f88bd75a286a4e6cd21f150ad884f5cd181cd9"
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
       },
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "10ebf393b6e9156e52382effe503d29c3169e118"
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "3f15967c29afddcd9baaaac04fbe0261241947be76e207c8d3388169d6c1ffee",
-    "instruction_sha256": "5dd3c81f0ca574096946158d35ed93b659e919d5e83dbb19aee2fc63c9ebd200"
+    "sha256": "c4030a21f2bf7b08a2f1b927058379fd30bd45fa247ce1615444f7f531ebbc53",
+    "instruction_sha256": "f2dac483c287a1ac3bf2b73956d37b6c3ebd9799e475cc0ac71729e2c99dcea9"
   },
   "skills": [
     {
@@ -87,7 +87,8 @@
     "FRESH_OBSERVE_CONTROL_STATE",
     "EXPLICIT_RECONSIDER_BRANCH_ENUM",
     "NAMED_DELIVERY_CHECKPOINT_ENUM",
-    "PER_ACTION_ENERGY_REPLAN"
+    "PER_ACTION_ENERGY_REPLAN",
+    "ACYCLIC_PREFLIGHT_ORDERING"
   ],
   "deferred_mechanisms": [
     "DURABLE_OR_CROSS_GAME_MEMORY",

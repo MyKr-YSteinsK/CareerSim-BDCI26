@@ -8,7 +8,7 @@
 
 中文用于 CareerSim 自然语言判断；以下 machine-facing tokens 固定英文，不翻译：
 
-`MODE / REVIEW_PLAN / RECOVERY / PROGRESSION_RESPONSE / GAIN / NO_GAIN / UNKNOWN / PASS / ALLOW / WARN / RECONSIDER / CONTROL_STATE / READY / OBSERVE_REQUIRED / BLOCKED / CTRL / RB / NONE / DONE / NEAR / NOT_NEAR / RECOVERY_PENDING / RECOVERY_READY`
+`MODE / REVIEW_PLAN / RECOVERY / PROGRESSION_RESPONSE / GAIN / NO_GAIN / UNKNOWN / PASS / ALLOW / WARN / RECONSIDER / CONTROL_STATE / READY / OBSERVE_REQUIRED / BLOCKED / PREFLIGHT / CTRL / RB / NONE / DONE / NEAR / NOT_NEAR / RECOVERY_PENDING / RECOVERY_READY`
 
 关键规则允许在 manifest 与所属 Skill 中重复，用于 compression 后保留和显著性强化；重复不得产生不同触发条件、不同 owner 或不同退出规则。
 
@@ -20,23 +20,28 @@ fresh observe
   → delivery-progress
   → rolling-planning
   → risk-review
+  → CONTROL_STATE=READY
   → preflight
-  → take_action
+  → PREFLIGHT=PASS
+  → exactly one take_action
+  → CONTROL_STATE=OBSERVE_REQUIRED
   → fresh observe
 ```
 
 ### Executor Control State
 
-The executor owns `CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED`; no Skill may declare it ready on the executor's behalf.
+The executor owns `CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED`; no Skill may declare `READY` on its behalf.
 
-- `READY` requires a current-session fresh observe, rebuilt Board and Delivery, one new Planning pass, final Risk review, and a closed preflight.
-- Every successful `take_action` immediately sets `OBSERVE_REQUIRED`. Its `{success,error}` receipt contains no fresh public state and cannot update Board or Delivery.
-- While `OBSERVE_REQUIRED`, choose no next candidate and submit no second action. The only next gameplay call is a same-session fresh `observe`.
-- After a successful observe, rebuild Board (including current-Level `PROGRESSION_RESPONSE`), Delivery, Planning, and Risk before returning to `READY`.
-- An action with unknown outcome, failed observe, session mismatch, or unclosed preflight sets `BLOCKED`. Submit no action; use only the existing bounded same-session recovery contract.
-- `RECOVERY_PENDING` keeps the state blocked. `RECOVERY_READY` alone does not authorize an action; finish the fresh observe, all-Skill rebuild, final Risk, and preflight before returning to `READY`.
+- `READY` is established after a same-session fresh observe, rebuilt Board and Delivery, one new Planning pass, and final Risk. Preflight is not part of `READY` creation.
+- Preflight consumes that existing `READY`. It checks the same `game_session_id`, one legal integer choice, and Board/Delivery/Planning/final Risk from the same fresh observe; final `R!=RECONSIDER`; CTRL `RB in {NONE,DONE}`; and valid CTRL/DL markers.
+- On success, `PREFLIGHT=PASS` authorizes exactly one submission of the current choice. It does not create `READY` or a reusable authorization. Any failed check sets `BLOCKED` and forbids `take_action`.
+- A successful `take_action` consumes the `READY` decision and one-use preflight, then sets `OBSERVE_REQUIRED`. Its `{success,error}` receipt has no fresh public state and cannot update Board/Delivery, return `READY`, or authorize another action.
+- While `OBSERVE_REQUIRED`, reuse no candidate or prior state and submit no action. The only next gameplay call is a same-session fresh `observe`.
+- After that observe, rebuild Board (including current-Level `PROGRESSION_RESPONSE`), Delivery, Planning, and final Risk; then establish `READY`. Only afterward may a new preflight run.
+- Failed/unknown action outcome, failed observe, session mismatch, or preflight failure sets `BLOCKED`. Submit no action; use only the existing bounded same-session recovery contract.
+- `RECOVERY_PENDING` keeps the state blocked. `RECOVERY_READY` alone authorizes no action; restart with a same-session fresh observe, rebuild Board/Delivery/Planning/final Risk, establish `READY`, then run a new preflight.
 
-Before any action, preflight requires `CONTROL_STATE=READY`, a final Risk other than `RECONSIDER`, and CTRL `RB=NONE|DONE`. `RB=BLOCKED` always forbids submission.
+`RB=BLOCKED` always forbids submission.
 
 Single Agent 是唯一 action submitter。
 
@@ -111,7 +116,7 @@ active game 必须持续执行。一次 action closure 不是 assistant executio
 
 只有 observable recovery signal 才触发 recovery。顺序固定：
 
-`same session → fresh observe → reread 4 Skills → rebuild Board → rebuild Delivery → restore Planning → RECOVERY_READY`
+`same session → fresh observe → reread 4 Skills → rebuild Board → rebuild Delivery → restore Planning → RECOVERY_READY → fresh observe → rebuild Board/Delivery/Planning/final Risk → READY → new preflight`
 
 未完成时禁止 action。
 

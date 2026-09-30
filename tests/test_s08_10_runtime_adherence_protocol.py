@@ -9,6 +9,7 @@ from scripts.s08_09_runtime_contract_forensics import analyze as analyze_run03
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a"
+V7V_BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -32,18 +33,18 @@ def test_executor_control_state_is_explicit_and_cross_file_consistent() -> None:
 
     state_steps = (
         "`CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED` 由执行器维护",
-        "每次 successful `take_action` 后立即进入 `OBSERVE_REQUIRED`",
-        "唯一合法的下一 gameplay call 是同一 session 的 fresh `observe`",
-        "observe 成功后依次重建 Board",
-        "action 失败或结果未知、observe 失败、session identity 不匹配",
+        "successful `take_action` 消耗 READY 与单次 preflight",
+        "下一 gameplay call 只能同 session fresh `observe`",
+        "fresh observe 后重建 Board",
+        "action 失败/未知、observe 失败、session mismatch",
     )
     assert all(step in manifest for step in state_steps)
     assert [manifest.index(step) for step in state_steps] == sorted(manifest.index(step) for step in state_steps)
-    assert "`{success,error}` receipt contains no fresh public state" in runtime
+    assert "Its `{success,error}` receipt has no fresh public state" in runtime
     assert "only next gameplay call is a same-session fresh `observe`" in runtime
     assert "`CONTROL_STATE=READY`" in risk
-    assert "`RECOVERY_PENDING` keeps `CONTROL_STATE=BLOCKED`" in manifest
-    assert "`RECOVERY_READY` alone does not authorize action" in manifest
+    assert "`RECOVERY_PENDING` 保持 `CONTROL_STATE=BLOCKED`" in manifest
+    assert "`RECOVERY_READY` 不授权 action" in manifest
 
     ctrl_v2 = "[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> RB=<NONE|DONE|BLOCKED>]"
     dl_v2 = "[DL i=<NONE|D#|UNKNOWN> n=<0-3> focus=<NONE|OPPORTUNITY|COMMITTED|IN_PROGRESS|BLOCKED|DELIVERY_CLAIMED|DELIVERED|UNKNOWN> evidence=<NA|UNKNOWN|UNVERIFIED|PUBLICLY_VERIFIED> checkpoint=<NEAR|NOT_NEAR|UNKNOWN> recognition=<0|1|?>]"
@@ -82,7 +83,7 @@ def test_quarterly_energy_invalidates_batch_intent_after_fresh_no_gain() -> None
 def test_v7t_strategy_and_frozen_surfaces_are_preserved() -> None:
     candidate = _json("configs/current_candidate.json")
     parent = json.loads(subprocess.check_output(["git", "show", f"{BASE}:configs/current_candidate.json"], cwd=ROOT))
-    assert candidate["strategy_delta"] == "RUNTIME_ADHERENCE_PROTOCOL_ONLY"
+    assert candidate["strategy_delta"] == "RUNTIME_GATE_ORDERING_CORRECTION_ONLY"
     assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"]
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["architecture"] == parent["architecture"]
@@ -121,11 +122,11 @@ def test_v7t_strategy_and_frozen_surfaces_are_preserved() -> None:
         assert invariant in planning or invariant in risk
 
 
-def test_v7u_candidate_is_unvalidated_and_run03_audit_is_unchanged() -> None:
+def test_v7v_candidate_is_unvalidated_and_run03_audit_is_unchanged() -> None:
     candidate = _json("configs/current_candidate.json")
-    assert candidate["candidate_id"] == "candidate-v7u-runtime-adherence-protocol"
-    assert candidate["parent_candidate_id"] == "candidate-v7t-execution-semantic-repair"
-    assert candidate["base_main_sha"] == BASE
+    assert candidate["candidate_id"] == "candidate-v7v-preflight-ordering-repair"
+    assert candidate["parent_candidate_id"] == "candidate-v7u-runtime-adherence-protocol"
+    assert candidate["base_main_sha"] == V7V_BASE
     assert all(value is False for value in candidate["validation"].values())
 
     result = analyze_run03(ROOT)
