@@ -177,3 +177,15 @@
 - If a candidate executes the intended strategy correctly, completes 48 months, and still scores in the same mid/low range, do not automatically add more prompt rules; treat environment variance / policy hypothesis failure as live alternatives and return to evidence.
 - S09 is an optimization sprint, but not an unlimited task sink. After three live Candidate evaluations or six substantive S09 tasks, whichever comes first, Stage must produce an interim Main checkpoint before opening another candidate family. In all cases, creation of S09-10 or later requires Main review.
 - `NEXT_GAME = NOT_AUTHORIZED`; opening S09 does not grant a live run.
+
+
+## AD-HPL-001 — Human Play Lab isolation boundary
+
+- Open parallel track `Human Play Lab｜人工游玩策略实验线`; it is not part of Candidate lineage and does not replace S09.
+- Feasibility is `SUPPORTED_PENDING_LOCAL_ZERO_PROVIDER_AND_ISOLATION_PREFLIGHT`: official `career-emulator` exposes a participant-facing local CLI, while Agent automation uses the separate MCP/Runner path.
+- HPL-01 is offline/static only: verify the installed 1.0.1 CLI/MCP path, zero-provider dependency, participant-visible output boundary, isolated DB/log/runtime routing, minimal interaction route, evidence schema and stop conditions.
+- Human evidence is Research Evidence / Hypothesis Source only. It cannot directly change formal Agent policy.
+- Do not modify current Candidate, formal Skills, runtime manifest, frozen Runner, dependencies, retry policy, or submission path.
+- Human strategy input may use participant-visible public evidence only; no hidden/internal state, simulator-rule decoding, private/test evidence, or event-to-answer lookup.
+- Shared CareerSim resources remain serialized; branch/worktree isolation alone does not prove runtime isolation.
+- `HUMAN_PLAY_NEXT_GAME = NOT_AUTHORIZED`.
