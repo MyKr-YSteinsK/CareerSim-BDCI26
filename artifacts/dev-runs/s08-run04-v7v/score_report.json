@@ -1,0 +1,86 @@
+{
+  "submission_name": "local-s06-adaptive-controller",
+  "submission_dir": "D:\\CS\\CareerSim\\.local\\runtime\\s08-run04\\submission",
+  "skill_name": "submission-skills",
+  "drive_session_id": "career-sim-runner-9e5108c3d6b4",
+  "session_id": "6761193aab14417fac35125321eda37b",
+  "play_exit_code": 0,
+  "termination_reason": null,
+  "token_usage": {
+    "input_tokens": 42332120,
+    "output_tokens": 261713,
+    "total_tokens": 42593833,
+    "total_cost": 0.0,
+    "by_model": {
+      "deepseek-flash": {
+        "input_tokens": 42332120,
+        "output_tokens": 261713,
+        "total_tokens": 42593833,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "ending_score": {
+    "outcome": "completed",
+    "survival_months": 48,
+    "completed": true,
+    "quantitative_score": 58.97,
+    "competition_partial_score": 41.28,
+    "grade": "C",
+    "grade_meaning": "勉强苟住 —— 没被优化就算成功，奖金刚够覆盖加班外卖钱，下一轮再接再厉～",
+    "dimensions": [
+      {
+        "name": "level",
+        "label": "职级成就",
+        "raw_value": 5.0,
+        "normalized_score": 50.0,
+        "weight": 0.3,
+        "weighted_score": 15.0
+      },
+      {
+        "name": "wealth",
+        "label": "累计财富",
+        "raw_value": 25.2,
+        "normalized_score": 31.5,
+        "weight": 0.2,
+        "weighted_score": 6.3
+      },
+      {
+        "name": "resilience",
+        "label": "身心健康",
+        "raw_value": 20.0,
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0
+      },
+      {
+        "name": "skill",
+        "label": "专业能力",
+        "raw_value": 100.0,
+        "normalized_score": 83.33,
+        "weight": 0.15,
+        "weighted_score": 12.5
+      },
+      {
+        "name": "risk_control",
+        "label": "风险控制",
+        "raw_value": 6.0,
+        "normalized_score": 40.0,
+        "weight": 0.1,
+        "weighted_score": 4.0
+      },
+      {
+        "name": "network",
+        "label": "同事关系",
+        "raw_value": 37.0,
+        "normalized_score": 61.67,
+        "weight": 0.1,
+        "weighted_score": 6.17
+      }
+    ]
+  },
+  "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T054629Z",
+  "events_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T054629Z\\events-20260930T054629Z.jsonl",
+  "transcript_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T054629Z\\transcript-20260930T054629Z.log",
+  "scored_at": "2026-09-30T06:13:50.274565+00:00"
+}

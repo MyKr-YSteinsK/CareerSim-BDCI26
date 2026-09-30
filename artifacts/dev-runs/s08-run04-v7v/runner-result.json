@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "outcome": "completed",
+  "completed": true,
+  "survival_months": 48,
+  "termination_reason": null,
+  "result_source": "RECONSTRUCTED_FROM_INTERACTIVE_RUNNER_STDOUT",
+  "run_start_utc": "2026-09-30T05:46:27.0506200Z",
+  "run_end_utc": "2026-09-30T06:14:12.7024425Z",
+  "output_directory": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T054629Z"
+}
