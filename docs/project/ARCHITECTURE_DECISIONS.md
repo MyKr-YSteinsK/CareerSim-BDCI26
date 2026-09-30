@@ -163,3 +163,17 @@
 - S08 is `S08-Lab｜整局持续执行与回合效率`. Its first task is offline-only continuation-round forensic comparison; no provider, service, MCP, game, Candidate change, or Runner modification is authorized by this decision.
 - Team/Swarm, durable Memory, fifth Skill, and score-directed policy redesign remain deferred until the runtime-persistence bottleneck is resolved or disproven.
 - `NEXT_GAME = NOT_AUTHORIZED`.
+
+
+## AD-010 — S08 closeout and S09 stable high-score sprint
+
+- Main closes S08 as `PASS_WITH_KNOWN_STRATEGY_LIMITATION`; S08 runtime objective is `SUFFICIENT_FOR_STRATEGY_HANDOFF`, not “all goals complete”.
+- Current handoff Candidate remains `candidate-v7v-preflight-ordering-repair`. Its v7v runtime shell, fresh-observe discipline, whole-game persistence, CTRL/DL contracts, preflight ordering repair, and bounded failure-recovery behavior are the default frozen baseline for S09.
+- S09 is `S09-Lab｜稳定高分策略冲刺与候选赛跑`. Its objective is score optimization under a Survival / Continuity hard floor, not further general runtime-control expansion.
+- Initial design hypothesis: `STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING`. Planning is the primary strategy modification surface. Primary Gap becomes advisory rather than a permanent single-dimension objective; NO_GAIN should cause positive reallocation to still-responsive promotion-relevant Skill/Network/Output paths; recovery should be minimum necessary stabilization; Delivery remains a sparse exception; Review feedback is directional, not a permanent tunnel; late-horizon logic must stop using nonexistent future-review rationale.
+- Board, Delivery, Risk, runtime shell, frozen Runner, dependencies, retry policy, architecture, Team/Swarm, durable Memory, fifth Skill, and hidden-rule boundaries remain unchanged by default. Any exception requires evidence and Main review.
+- Candidate development follows bounded sprint cycles: one primary behavior delta per candidate, static/behavioral verification, then at most one Main-authorized fresh game for that candidate before the next strategy decision. Micro-checks do not become separate numbered tasks.
+- A valid run is judged on both Failure Floor and Score Ceiling. Score alone does not establish causality; runtime/strategy adherence must be checked before using a run to justify another patch.
+- If a candidate executes the intended strategy correctly, completes 48 months, and still scores in the same mid/low range, do not automatically add more prompt rules; treat environment variance / policy hypothesis failure as live alternatives and return to evidence.
+- S09 is an optimization sprint, but not an unlimited task sink. After three live Candidate evaluations or six substantive S09 tasks, whichever comes first, Stage must produce an interim Main checkpoint before opening another candidate family. In all cases, creation of S09-10 or later requires Main review.
+- `NEXT_GAME = NOT_AUTHORIZED`; opening S09 does not grant a live run.
