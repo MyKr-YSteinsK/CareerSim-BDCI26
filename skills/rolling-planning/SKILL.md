@@ -100,7 +100,7 @@ Survival / Continuity 是 hard floor，不是持续最大化目标。没有 fres
 
 只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint，或重大 Health/Dignity/Wealth 约束已使正常活动不可行时，才使用 `S`。
 
-`S` 必须有明确 binding reason 与退出条件，只执行 minimum necessary stabilization。约束解除后立即回 `A`。低绩效、`no-promotion`、弱 Skill/Network/Output、普通疲劳/负荷/摩擦/不确定性均不单独触发 `S`。
+`S` 必须有明确 binding reason 与退出条件，只执行 minimum necessary stabilization。每次 fresh observe 后，上一次 `MODE=S` 授权自动失效；本轮从 `MODE=A` 重新判断。只有当前 fresh public evidence 仍能独立证明同一或新的 binding constraint，才可重新授权 `S`。同一 threat 若当前公开证据仍明确 unresolved，可以连续重授权 `S`；这不是强制单回合退出。旧 `S`、旧 RECOVERY、旧 binding reason 或主观“尚未解除”不能单独续期。约束解除后立即回 `A`。低绩效、`no-promotion`、弱 Skill/Network/Output、普通疲劳/负荷/摩擦/不确定性均不单独触发 `S`。
 
 ## Progression Routing
 

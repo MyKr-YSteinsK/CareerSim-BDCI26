@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7w-high-score-core-recovery",
+  "candidate_id": "candidate-v7x-fresh-binding-reauthorization",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S09_01_STATIC_STRATEGY_IMPLEMENTATION",
+  "decision": "S09_03_STATIC_NONSTICKY_STABILIZATION_REAUTHORIZATION",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING",
-  "parent_candidate_id": "candidate-v7v-preflight-ordering-repair",
-  "base_main_sha": "62b4937af10bd6fd8fea4cc794ac1b986cb7863e",
+  "strategy_delta": "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION",
+  "parent_candidate_id": "candidate-v7w-high-score-core-recovery",
+  "base_main_sha": "74e856c5be7a9a134f93e9876ffbfd14398199ab",
   "parent_identity": {
-    "runtime_manifest_sha256": "c4030a21f2bf7b08a2f1b927058379fd30bd45fa247ce1615444f7f531ebbc53",
-    "instruction_sha256": "f2dac483c287a1ac3bf2b73956d37b6c3ebd9799e475cc0ac71729e2c99dcea9",
+    "runtime_manifest_sha256": "458dabe60c9e85be8e565e7d6c0f8779a6b17cfcea9a4e0b290a445e3e549e9e",
+    "instruction_sha256": "9557d99721df44841e09dd2ba1bc95fde17935316ce01eae52fd8492f841b434",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "6088fc6f56c60d8d98b176b6c7ef8f05b1f2f8dd"
+        "git_blob": "0fe511e691559d87e3dd204db6e4c46e0a93e36c"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "458dabe60c9e85be8e565e7d6c0f8779a6b17cfcea9a4e0b290a445e3e549e9e",
-    "instruction_sha256": "9557d99721df44841e09dd2ba1bc95fde17935316ce01eae52fd8492f841b434"
+    "sha256": "882c979821375393988ee0e989e2a503b8528562605618d7ab5c1bf5699f1804",
+    "instruction_sha256": "fef598a0a6903418400e91e651934ba9f48988110b02155cec92060452c419c9"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "0fe511e691559d87e3dd204db6e4c46e0a93e36c"
+      "git_blob": "cc84c28f64831f8588f1b92e3027ed222234ebbf"
     },
     {
       "name": "delivery-progress",
@@ -89,7 +89,8 @@
     "SPARSE_DELIVERY_OVERRIDE",
     "REVIEW_STRATEGY_RECONSTRUCTION",
     "TERMINAL_HORIZON_DIRECT_REALIZATION",
-    "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
+    "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING",
+    "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
   ],
   "runtime_contract_delta": [
     "FRESH_OBSERVE_CONTROL_STATE",
@@ -134,8 +135,8 @@
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,
@@ -143,5 +144,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+  "design_intent": "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_FRESH_STABILIZATION_REAUTHORIZATION"
 }

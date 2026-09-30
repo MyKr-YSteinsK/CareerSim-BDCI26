@@ -10,6 +10,7 @@ from scripts.s08_09_runtime_contract_forensics import analyze as analyze_run03
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "591ce8a203c4e7dda18ced9031c4c2bf6b4c844a"
 V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+S09_03_ANCHOR = "74e856c5be7a9a134f93e9876ffbfd14398199ab"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -81,7 +82,14 @@ def test_quarterly_energy_invalidates_batch_intent_after_fresh_no_gain() -> None
 
 
 def test_v7w_strategy_delta_preserves_frozen_v7v_runtime_surfaces() -> None:
-    candidate = _json("configs/current_candidate.json")
+    candidate = json.loads(
+        subprocess.check_output(
+            ["git", "show", f"{S09_03_ANCHOR}:configs/current_candidate.json"],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        )
+    )
     parent = json.loads(subprocess.check_output(["git", "show", f"{V7V_SNAPSHOT}:configs/current_candidate.json"], cwd=ROOT))
     assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
     assert candidate["parent_candidate_id"] == parent["candidate_id"]
@@ -130,12 +138,22 @@ def test_v7w_strategy_delta_preserves_frozen_v7v_runtime_surfaces() -> None:
         assert invariant in planning or invariant in risk
 
 
-def test_v7w_candidate_is_unvalidated_and_run03_audit_is_unchanged() -> None:
-    candidate = _json("configs/current_candidate.json")
+def test_v7w_candidate_at_s09_03_anchor_is_unvalidated_and_run03_audit_is_unchanged() -> None:
+    candidate = json.loads(
+        subprocess.check_output(
+            ["git", "show", f"{S09_03_ANCHOR}:configs/current_candidate.json"],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        )
+    )
     assert candidate["candidate_id"] == "candidate-v7w-high-score-core-recovery"
     assert candidate["parent_candidate_id"] == "candidate-v7v-preflight-ordering-repair"
     assert candidate["base_main_sha"] == V7V_SNAPSHOT
-    assert all(value is False for value in candidate["validation"].values())
+    assert candidate["validation"]["runtime_validated"] is False
+    assert candidate["validation"]["gameplay_validated"] is True
+    assert candidate["validation"]["provider_validated"] is True
+    assert candidate["validation"]["next_game_authorized"] is False
 
     result = analyze_run03(ROOT)
     coverage = result["post_run_audit_replay_after_parser_patch"]["delivery_marker_coverage"]

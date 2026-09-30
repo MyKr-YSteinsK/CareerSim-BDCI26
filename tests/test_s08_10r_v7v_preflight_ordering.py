@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "882d47202d4d8d8305acbf7edb451ee8d68fe1ce"
 V7V_SNAPSHOT = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
-TASK_ANCHOR = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
+TASK_ANCHOR = "74e856c5be7a9a134f93e9876ffbfd14398199ab"
 SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
@@ -90,14 +90,14 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
     manifest_path = ROOT / "configs/runtime_manifest.json"
     manifest_bytes = manifest_path.read_bytes()
     manifest = json.loads(manifest_bytes.decode("utf-8"))
-    parent = json.loads(_git_bytes(V7V_SNAPSHOT, "configs/current_candidate.json"))
+    parent = json.loads(_git_bytes(TASK_ANCHOR, "configs/current_candidate.json"))
 
-    assert candidate["candidate_id"] == "candidate-v7w-high-score-core-recovery"
-    assert candidate["parent_candidate_id"] == "candidate-v7v-preflight-ordering-repair"
-    assert candidate["base_main_sha"] == V7V_SNAPSHOT
+    assert candidate["candidate_id"] == "candidate-v7x-fresh-binding-reauthorization"
+    assert candidate["parent_candidate_id"] == "candidate-v7w-high-score-core-recovery"
+    assert candidate["base_main_sha"] == TASK_ANCHOR
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S09_01_STATIC_STRATEGY_IMPLEMENTATION"
-    assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+    assert candidate["decision"] == "S09_03_STATIC_NONSTICKY_STABILIZATION_REAUTHORIZATION"
+    assert candidate["strategy_delta"] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
     assert manifest["name"] == candidate["candidate_id"]
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -110,8 +110,9 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
     assert candidate["adopted_mechanisms"][: len(parent["adopted_mechanisms"])] == parent[
         "adopted_mechanisms"
     ]
-    assert candidate["adopted_mechanisms"][-2] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
-    assert candidate["adopted_mechanisms"][-1] == "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
+    assert candidate["adopted_mechanisms"][-3] == "TERMINAL_HORIZON_DIRECT_REALIZATION"
+    assert candidate["adopted_mechanisms"][-2] == "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING"
+    assert candidate["adopted_mechanisms"][-1] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
     assert candidate["rejected_mechanisms"] == parent["rejected_mechanisms"]
     assert candidate["validation"] and all(value is False for value in candidate["validation"].values())
 
@@ -134,6 +135,7 @@ def test_v7w_identity_preserves_v7v_runtime_shell_and_validation_boundary() -> N
         assert actual_skills[skill]["git_blob"] == working_blob
         if skill == "rolling-planning":
             assert working_blob != parent_blob
+            assert working_blob != anchor_blob
         else:
             assert working_blob == parent_blob
             assert working_blob == anchor_blob

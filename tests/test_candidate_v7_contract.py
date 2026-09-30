@@ -9,10 +9,10 @@ from career_sim_runner.skill_contract import validate_skill_frontmatter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PARENT_BASE_SHA = "62b4937af10bd6fd8fea4cc794ac1b986cb7863e"
+PARENT_BASE_SHA = "74e856c5be7a9a134f93e9876ffbfd14398199ab"
 TASK_ANCHOR_SHA = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
-PARENT_CANDIDATE_ID = "candidate-v7v-preflight-ordering-repair"
-CURRENT_CANDIDATE_ID = "candidate-v7w-high-score-core-recovery"
+PARENT_CANDIDATE_ID = "candidate-v7w-high-score-core-recovery"
+CURRENT_CANDIDATE_ID = "candidate-v7x-fresh-binding-reauthorization"
 SKILL_ORDER = (
     "structured-state-board",
     "rolling-planning",
@@ -73,7 +73,7 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
     assert candidate["base_main_sha"] == PARENT_BASE_SHA
     assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S09_01_STATIC_STRATEGY_IMPLEMENTATION"
+    assert candidate["decision"] == "S09_03_STATIC_NONSTICKY_STABILIZATION_REAUTHORIZATION"
     assert manifest["name"] == CURRENT_CANDIDATE_ID
     assert manifest["mode"] == "agent"
     assert len(manifest["instruction"]) <= 5200
@@ -101,18 +101,11 @@ def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> Non
     assert {entry["git_blob"] for entry in entries} == {
         _git_blob_id(entry["path"]) for entry in entries
     }
-    assert candidate["strategy_delta"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
-    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING"
+    assert candidate["strategy_delta"] == "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION"
+    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_FRESH_STABILIZATION_REAUTHORIZATION"
     assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
     assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"] + [
-        "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING",
-        "PRIMARY_GAP_AS_ADVISORY_SIGNAL",
-        "BROAD_PROMOTION_COMPOUNDING_PRIOR",
-        "NO_GAIN_POSITIVE_REALLOCATION",
-        "SPARSE_DELIVERY_OVERRIDE",
-        "REVIEW_STRATEGY_RECONSTRUCTION",
-        "TERMINAL_HORIZON_DIRECT_REALIZATION",
-        "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING",
+        "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION",
     ]
     assert candidate["architecture"] == parent["architecture"]
     assert candidate["runner_sha"] == parent["runner_sha"]
@@ -405,7 +398,7 @@ def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
 
 def test_v7w_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
     manifest = _json("configs/runtime_manifest.json")
-    parent = json.loads(_git_bytes(TASK_ANCHOR_SHA, "configs/runtime_manifest.json"))
+    parent = json.loads(_git_bytes(PARENT_BASE_SHA, "configs/runtime_manifest.json"))
     instruction = manifest["instruction"]
     parent_instruction = parent["instruction"]
     start = "CRITICAL KERNEL\n"
