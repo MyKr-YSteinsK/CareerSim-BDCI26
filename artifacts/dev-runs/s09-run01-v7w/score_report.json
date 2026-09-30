@@ -1,0 +1,86 @@
+{
+  "submission_name": "local-s06-adaptive-controller",
+  "submission_dir": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run01-v7w\\submission",
+  "skill_name": "submission-skills",
+  "drive_session_id": "career-sim-runner-76f144249da4",
+  "session_id": "57b66b2fb19f483ba9de86b23f160f4c",
+  "play_exit_code": 0,
+  "termination_reason": null,
+  "token_usage": {
+    "input_tokens": 21051766,
+    "output_tokens": 116067,
+    "total_tokens": 21167833,
+    "total_cost": 0.0,
+    "by_model": {
+      "deepseek-flash": {
+        "input_tokens": 21051766,
+        "output_tokens": 116067,
+        "total_tokens": 21167833,
+        "total_cost": 0.0
+      }
+    }
+  },
+  "ending_score": {
+    "outcome": "eliminated",
+    "survival_months": 24,
+    "completed": false,
+    "quantitative_score": 30.31,
+    "competition_partial_score": 21.22,
+    "grade": "D",
+    "grade_meaning": "半途折戟 —— 简历上多了段不想细聊的经历，面试官问起只能说「方向不太合适」",
+    "dimensions": [
+      {
+        "name": "level",
+        "label": "职级成就",
+        "raw_value": 2.0,
+        "normalized_score": 20.0,
+        "weight": 0.3,
+        "weighted_score": 6.0
+      },
+      {
+        "name": "wealth",
+        "label": "累计财富",
+        "raw_value": 6.4,
+        "normalized_score": 8.0,
+        "weight": 0.2,
+        "weighted_score": 1.6
+      },
+      {
+        "name": "resilience",
+        "label": "身心健康",
+        "raw_value": 15.0,
+        "normalized_score": 75.0,
+        "weight": 0.15,
+        "weighted_score": 11.25
+      },
+      {
+        "name": "skill",
+        "label": "专业能力",
+        "raw_value": 9.0,
+        "normalized_score": 7.5,
+        "weight": 0.15,
+        "weighted_score": 1.12
+      },
+      {
+        "name": "risk_control",
+        "label": "风险控制",
+        "raw_value": 0.0,
+        "normalized_score": 100.0,
+        "weight": 0.1,
+        "weighted_score": 10.0
+      },
+      {
+        "name": "network",
+        "label": "同事关系",
+        "raw_value": 2.0,
+        "normalized_score": 3.33,
+        "weight": 0.1,
+        "weighted_score": 0.33
+      }
+    ]
+  },
+  "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T100431Z",
+  "events_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T100431Z\\events-20260930T100431Z.jsonl",
+  "transcript_log": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260930T100431Z\\transcript-20260930T100431Z.log",
+  "scored_at": "2026-09-30T10:16:52.803374+00:00"
+}
