@@ -5,8 +5,8 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-03 Flet desktop Human client`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL03_DESKTOP_CLIENT_READY_FOR_USER_LIVE_SMOKE`.
+- Current task: `HPL-03A desktop UI stabilization and automatic run finalization`.
+- Status: `IN_FLIGHT_EVIDENCE / HPL03A_UI_AND_RUN_FINALIZATION_READY_FOR_USER_LIVE_SMOKE`.
 - Decision: return desktop implementation and offline evidence to Main for acceptance; the user starts any subsequent GUI run manually. Never resume HPL-RUN01.
 - Human Run authorization: `NOT_AUTHORIZED`; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 
@@ -17,6 +17,8 @@
 - Persistent HPL worktree: `D:\CS\CareerSim\.local\worktrees\human-play-lab`.
 - HPL-03 accepted parent: `436492783ac06f4fcc75b8608eb47014be556a90`; latest observed `origin/main`: `43258d41a02ac65c9f1e5d0367ca7612a36c7da7`. No main merge/rebase.
 - Repair base: HPL-02 `36fa0922622a9fbd9e7d43a8f0ad85008e3b1977`. Formal `origin/main` observed for this repair: `5bc07edc49bb352a686d13940fb36f78d01ca827`. HPL remains unmerged into `main`.
+
+- HPL-03A accepted parent: `eafe2b669f531562d772ca6a425ea85d14d0ecdc`; observed `origin/main`: `aa3844c85c982e42a859a18cfc60820df32600a0`. No main merge/rebase.
 
 ## Human sandbox
 
@@ -34,6 +36,8 @@
 - Raw terminal transcript: `transcript\`; local-only and excluded from canonical trajectory values.
 - Canonical artifacts: `evidence\manifest.json`, `trajectory.jsonl`, `summary.json`, and `integrity.json`; trajectory frames pass through `scripts/hpl_public_evidence.py`.
 - Desktop launcher: `scripts\hpl-ui.ps1`. Startup validates HPL identity and opens the start screen without importing GameEngine or creating a game. Only the user's Start click constructs a fresh run. After first-import defaults freeze, each fresh engine's store log directory is explicitly rebound before IO to the new run root.
+- Desktop UI uses Microsoft YaHei UI, fixed status/event/choice columns with independent scrolling, a public handbook modal, and collapsible recent choices. Header owns Year/Quarter/Month/Level. Energy-insufficient, illegal, stale, malformed, duplicate and wrong-run choices are rejected before submission as `INVALID_ACTION / NO_MUTATION`; they do not end the run or add canonical transitions.
+- Normal desktop endings automatically finalize canonical evidence, build/verify the exact five-file public ZIP, publish exclusively to `D:\CS\CareerSim\.local\runtime\human-play-lab\exports`, reverify, then remove only that ended run root. Names use participant, public quantitative score, final Level and local end timestamp; collisions append a short suffix. Active/technical/unknown/held runs cannot use success cleanup. Export failures retain the run and permit IO-only retry; Windows cleanup locks preserve a verified ZIP with `CLEANUP_PENDING`.
 - CLI fallback: `scripts\hpl.ps1`; default is a no-write preflight. A future CLI live invocation requires both `-Live` and a non-empty `-AuthorizationId`.
 - GUI public transitions and submission intents are flushed/fsynced to `staging/public_journal.jsonl`; canonical evidence uses the accepted projector/writer. Ending/failure export validates hashes, public projection, run/session identity and known secret patterns, then includes only four canonical files plus `README.txt`. DB/logs/technical tracebacks are excluded. Unknown mutation results stop the run without retry/observe/DB inquiry.
 - The official CLI `GameEngine` factory is wired to the seven HPL Dev dataset paths. All package-default consumers, including the independent performance-score loader, resolve the complete local Dev mirror. Raw `logs` input is intercepted, and `cli.offer_share` is replaced with a no-op before the CLI play function.
@@ -51,5 +55,6 @@
 - `HPL_RUNTIME_ISOLATION=STATICALLY_PROVEN_FOR_DEDICATED_SANDBOX` for checkout, Python environment, package/data copy, and target storage paths. No Human run was created in HPL-02.
 - The first live CLI write set, actual runtime provider behavior, real transcript parser coverage, and Human strategy effectiveness remain `UNKNOWN` until separately authorized evidence exists.
 - `HPL_AGENT_PARALLEL_RUN_ALLOWED` is not granted. Return to Main for a dedicated first-Human-Game gate; the first run should not overlap an Agent game.
-- Latest report: [HPL-03 desktop client](reviews/HPL-03_FLET_DESKTOP_CLIENT.md): 41 offline tests and start/game/end fixture desktop smoke passed; actual GUI gameplay remains unexecuted. Root Agent environment/runtime and failed-run hold are preserved. Concurrent main commit `43258d4` independently changed Agent Candidate configs/rolling-planning; HPL does not carry those changes.
+- Latest report: [HPL-03A UI and finalization](reviews/HPL-03A_UI_AND_RUN_FINALIZATION.md): 61 offline tests, Ruff, diff check, and active/energy/handbook/ended Windows fixture smoke passed. No real game or mutation; actual user interaction and live ending IO remain unexecuted. HPL-RUN01 and formal Agent protected paths retain their observed identity.
+- Historical report: [HPL-03 desktop client](reviews/HPL-03_FLET_DESKTOP_CLIENT.md): 41 offline tests and start/game/end fixture desktop smoke passed; actual GUI gameplay remains unexecuted. Root Agent environment/runtime and failed-run hold are preserved. Concurrent main commit `43258d4` independently changed Agent Candidate configs/rolling-planning; HPL does not carry those changes.
 - [HPL-RUN01 dataset routing repair](reviews/HPL-RUN01_DATASET_ROUTING_REPAIR.md) and [HPL-02 review](reviews/HPL-02_PERSISTENT_HUMAN_SANDBOX.md) remain historical evidence; HPL-02's seven-directory assumption did not cover all default consumers.

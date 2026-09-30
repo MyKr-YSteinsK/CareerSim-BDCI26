@@ -10,22 +10,24 @@ from pathlib import Path
 import flet as ft
 
 from hpl_client.controller import HumanGameController
-from hpl_client.export import export_run
+from hpl_client.cleanup import cleanup_success
 from hpl_client.fixtures import fixture_controller
+from hpl_client.export import readable_filename
+from hpl_client.presentation import FONT_FAMILY, choice_disabled_reason, handbook_dialog
 from scripts.hpl_play import _load_environment_manifest, resolve_layout
 
 
 LABELS = {
-    "health": "健康",
-    "dignity": "尊严",
-    "skill": "技能",
-    "network": "人脉",
-    "output": "产出",
-    "wealth": "财富",
-    "energy": "精力",
+    "health": "Health · 健康",
+    "dignity": "Dignity · 尊严",
+    "skill": "Skill · 技能",
+    "network": "Network · 人脉",
+    "output": "Output · 产出",
+    "wealth": "Wealth · 财富",
+    "energy": "Energy · 精力",
 }
 RESULT_LABELS = {
-    "grade": "等级",
+    "grade": "最终评级",
     "survival_months": "生存月份",
     "quantitative_score": "量化得分",
     "competition_partial_score": "竞赛部分得分",
@@ -33,9 +35,75 @@ RESULT_LABELS = {
 }
 
 
-def panel(controls, **kwargs):
+def panel(controls, *, spacing=16, **kwargs):
     return ft.Container(
-        content=ft.Column(controls, spacing=16, **kwargs), padding=24, bgcolor="#FFFFFF", border_radius=20
+        content=ft.Column(controls, spacing=spacing, horizontal_alignment=ft.CrossAxisAlignment.STRETCH, **kwargs),
+        padding=20,
+        bgcolor="#FFFFFF",
+        border_radius=18,
+        animate_opacity=ft.Animation(160, ft.AnimationCurve.EASE_OUT),
+    )
+
+
+def game_columns(left, event_content, choice_content):
+    """Keep event text and the independently scrolling choice rail as siblings."""
+    return ft.Row(
+        [
+            ft.Container(content=panel(left, spacing=6, scroll=ft.ScrollMode.AUTO), width=238),
+            ft.Container(content=panel(event_content, scroll=ft.ScrollMode.AUTO), expand=True),
+            ft.Container(content=panel(choice_content, scroll=ft.ScrollMode.AUTO), width=340),
+        ],
+        expand=True,
+        spacing=16,
+        vertical_alignment=ft.CrossAxisAlignment.STRETCH,
+    )
+
+
+def choice_card(choice, energy, on_select, *, disabled=False, index=1):
+    reason = choice_disabled_reason(choice, energy)
+    blocked = bool(reason) or disabled
+    cost = choice.get("energy_cost")
+    subtitle = f"需要精力 {cost}" if cost is not None else "可用行动"
+    if reason:
+        subtitle = reason.replace("，", "\n", 1)
+    return ft.Container(
+        content=ft.Column(
+            [
+                ft.Row(
+                    [
+                        ft.Container(
+                            content=ft.Text(
+                                f"{index:02d}",
+                                size=12,
+                                weight=ft.FontWeight.BOLD,
+                                color="#3E7168" if not blocked else "#66757A",
+                            ),
+                            bgcolor="#E8F1EF" if not blocked else "#EDF0F0",
+                            border_radius=8,
+                            padding=8,
+                        ),
+                        ft.Text(
+                            choice["action"],
+                            size=15,
+                            weight=ft.FontWeight.W_600,
+                            color="#243A40" if not blocked else "#58676D",
+                            expand=True,
+                            selectable=True,
+                        ),
+                    ],
+                    vertical_alignment=ft.CrossAxisAlignment.START,
+                ),
+                ft.Text(subtitle, size=12, color="#536D68" if not blocked else "#596A70", selectable=True),
+            ],
+            spacing=9,
+        ),
+        padding=14,
+        bgcolor="#F6FAF9" if not blocked else "#F0F2F2",
+        border_radius=13,
+        border=ft.Border.all(1, "#DCE9E6" if not blocked else "#E1E5E5"),
+        on_click=on_select if not blocked else None,
+        ink=not blocked,
+        animate_opacity=ft.Animation(140, ft.AnimationCurve.EASE_OUT),
     )
 
 
@@ -49,19 +117,32 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
     # Ignore inherited web/Agent launch overrides. Desktop uses local IPC only.
     for name in ("FLET_FORCE_WEB_SERVER", "FLET_DISPLAY_URL_PREFIX", "FLET_SERVER_IP", "FLET_SERVER_PORT"):
         os.environ.pop(name, None)
-    controller = fixture_controller(ending=fixture_screen == "ended") if fixture else HumanGameController()
+    controller = (
+        fixture_controller(ending=fixture_screen == "ended", energy=1 if fixture_screen == "energy" else 8)
+        if fixture
+        else HumanGameController()
+    )
 
     async def main(page: ft.Page):
         page.title = "CareerSim Human" + (" · FIXTURE" if fixture else "")
-        page.window.width = 1100
-        page.window.height = 700
-        page.window.min_width = 900
-        page.window.min_height = 650
+        page.window.width = 1280
+        page.window.height = 820
+        page.window.min_width = 980
+        page.window.min_height = 680
         page.theme_mode = ft.ThemeMode.LIGHT
+        page.theme = ft.Theme(font_family=FONT_FAMILY, color_scheme_seed="#386B63", use_material3=True)
         page.bgcolor = "#F2F5FA"
         page.padding = 28
         if fixture and fixture_screen != "start":
             await controller.start()
+            if fixture_screen == "ended":
+                controller.export_path = Path(
+                    readable_filename(
+                        {"human_tag": "local", "ended_at": "2026-09-30T21:45:30+08:00"},
+                        [controller.view.projection],
+                    )
+                )
+                controller.export_message = "离线展示：以下为数据包文件名示例，未生成真实对局包。"
 
         @ft.component
         def Client():
@@ -69,12 +150,14 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
             tag, set_tag = ft.use_state("local")
             pending, set_pending = ft.use_state(False)
             message, set_message = ft.use_state("")
+            show_history, set_show_history = ft.use_state(False)
 
             async def start(_):
                 if controller.busy:
                     return
                 set_pending(True)
                 set_message("")
+                await asyncio.sleep(0)
                 await controller.start(tag)
                 set_pending(False)
                 refresh(tick + 1)
@@ -83,19 +166,37 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
                 if controller.busy:
                     return
                 set_pending(True)
-                await asyncio.sleep(0)  # Let Flet render the disabled/loading state.
+                await asyncio.sleep(0)
                 await controller.choose(choice, revision, run_id)
                 set_pending(False)
                 refresh(lambda value: value + 1)
 
-            def export(_):
+            async def finalize(_):
+                set_pending(True)
                 try:
                     if fixture:
                         set_message("Fixture 不生成真实运行资料；ZIP 由离线测试验证。")
+                    elif controller.finalization_status == "CLEANUP_PENDING" and controller.export_path:
+                        await asyncio.to_thread(
+                            cleanup_success, controller.recorder.root, controller.export_path, resolve_layout()
+                        )
+                        controller.finalization_status = "SUCCESSFULLY_FINALIZED_AND_EXPORTED"
+                        controller.export_message = "临时文件已清理。"
+                        set_message(controller.export_message + "\n" + str(controller.export_path))
                     else:
-                        set_message("已导出：" + str(export_run(controller.recorder.root)))
+                        await controller.finish_export()
+                        set_message(
+                            controller.export_message
+                            + ("\n" + str(controller.export_path) if controller.export_path else "")
+                        )
                 except Exception:
-                    set_message("导出验证未通过。请保留本地 evidence，不分享未验证资料。")
+                    set_message("导出未完成，本局资料已保留。")
+                finally:
+                    set_pending(False)
+                    refresh(lambda value: value + 1)
+
+            def open_handbook(_):
+                handbook_dialog(page, facts.get("handbook", ""))
 
             header = ft.Row(
                 [
@@ -139,97 +240,155 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
             facts = view.facts
             state = facts["state"]
             title = f"Year {state.get('year', '—')} · Q{state.get('quarter', '—')} · Month {state.get('month', '—')}  /  {state.get('level', '—')}"
-            left = panel(
-                [ft.Text("当前状态", weight=ft.FontWeight.BOLD, size=18)]
-                + [
-                    ft.Row(
+            stats = [
+                ft.Container(
+                    content=ft.Column(
                         [
-                            ft.Text(label, color="#526480"),
-                            ft.Container(expand=True),
-                            ft.Text(str(state.get(key, "—")), size=22, weight=ft.FontWeight.BOLD),
-                        ]
-                    )
-                    for key, label in LABELS.items()
-                ]
-            )
-            center = []
-            if controller.error:
-                center.append(ft.Text(controller.error, color="#B42318", size=16))
+                            ft.Text(label, size=12, color="#586B78"),
+                            ft.Text(str(state.get(key, "—")), size=18, weight=ft.FontWeight.W_600, color="#23343D"),
+                        ],
+                        spacing=2,
+                    ),
+                    bgcolor="#F3F7F6",
+                    border_radius=11,
+                    padding=6,
+                    animate_opacity=ft.Animation(140, ft.AnimationCurve.EASE_OUT),
+                )
+                for key, label in LABELS.items()
+            ]
+            left = [ft.Text("当前状态", size=18, weight=ft.FontWeight.W_600, color="#23343D"), *stats]
+
+            event = facts.get("event", {})
+            center = [
+                ft.Row(
+                    [
+                        ft.Column(
+                            [
+                                ft.Text(
+                                    "本局完成" if controller.phase == "ENDED" else event.get("title", "事件"),
+                                    size=25,
+                                    weight=ft.FontWeight.W_600,
+                                    color="#23343D",
+                                ),
+                                ft.Text("当前事件与公开反馈", size=13, color="#647780"),
+                            ],
+                            spacing=4,
+                            expand=True,
+                        ),
+                    ],
+                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                )
+            ]
+            if controller.phase != "ENDED" and event.get("description"):
+                center.append(ft.Text(event["description"], size=16, color="#354951", selectable=True))
             if facts.get("warning"):
                 center.append(
                     ft.Container(
-                        content=ft.Text(facts["warning"], size=15), padding=16, bgcolor="#FFF4D6", border_radius=12
+                        content=ft.Row(
+                            [
+                                ft.Text("公开反馈", size=13, weight=ft.FontWeight.W_600, color="#765820"),
+                                ft.Text(facts["warning"], size=14, color="#594B2F", selectable=True, expand=True),
+                            ],
+                            vertical_alignment=ft.CrossAxisAlignment.START,
+                        ),
+                        bgcolor="#FFF7E5",
+                        border_radius=12,
+                        padding=14,
+                    )
+                )
+            if controller.error:
+                center.append(
+                    ft.Container(
+                        content=ft.Text(controller.error, size=14, color="#9E3F38"),
+                        bgcolor="#FFF0EE",
+                        border_radius=11,
+                        padding=12,
                     )
                 )
             if controller.phase == "ENDED":
+                center.append(ft.Divider(height=12, color="#E7ECEA"))
+                center.append(ft.Text("本局完成", size=24, weight=ft.FontWeight.W_600, color="#315F57"))
+                center.append(ft.Text(f"最终职级 · {state.get('level', 'LNA')}", size=17, color="#315F57"))
                 center.extend(
-                    [ft.Text("本局结束", size=28, weight=ft.FontWeight.BOLD)]
-                    + [
-                        ft.Text(f"{RESULT_LABELS[key]}: {value}", size=18)
-                        for key, value in facts.get("final_result", {}).items()
-                    ]
+                    ft.Row(
+                        [
+                            ft.Text(RESULT_LABELS[key], size=14, color="#647780"),
+                            ft.Container(expand=True),
+                            ft.Text(str(value), size=17, weight=ft.FontWeight.W_600, color="#23343D"),
+                        ]
+                    )
+                    for key, value in facts.get("final_result", {}).items()
                 )
-            else:
-                event = facts.get("event", {})
+                if controller.finalization_status == "EXPORTING":
+                    center.append(ft.ProgressBar())
+                if controller.export_message:
+                    center.append(ft.Text(controller.export_message, size=14, color="#315F57"))
+                if controller.export_path:
+                    center.append(ft.Text(str(controller.export_path), size=13, selectable=True, color="#354951"))
+                if message:
+                    center.append(ft.Text(message, selectable=True, color="#354951"))
+            elif controller.phase == "TECHNICAL_FAILURE":
                 center.extend(
                     [
-                        ft.Text(event.get("title", "本局已停止"), size=26, weight=ft.FontWeight.BOLD),
-                        ft.Text(event.get("description", ""), size=17, selectable=True),
+                        ft.Text("本局资料已保留，技术失败局不会自动清理。", size=14, color="#765820"),
+                        ft.Text(str(controller.recorder.root), size=13, selectable=True, color="#354951")
+                        if controller.recorder
+                        else ft.Text("本局尚未建立运行目录。"),
+                        ft.Button(content="开始新游戏", on_click=start, disabled=pending or controller.busy),
                     ]
                 )
-                for choice in facts.get("choices", []):
+
+            choices = [ft.Text("当前选择", size=18, weight=ft.FontWeight.W_600, color="#23343D")]
+            if controller.rejection:
+                choices.append(ft.Text(controller.rejection, size=13, color="#9B5146", selectable=True))
+            if pending or controller.busy:
+                choices.append(ft.ProgressBar())
+            if controller.phase == "ACTIVE":
+                for index, choice in enumerate(facts.get("choices", []), start=1):
 
                     async def select(_, value=choice["choice"], revision=view.revision, run_id=view.run_id):
                         await action(value, revision, run_id)
 
-                    cost = f"  ·  精力 {choice['energy_cost']}" if "energy_cost" in choice else ""
-                    center.append(
-                        ft.Button(
-                            content=ft.Text(choice["action"] + cost, size=16),
-                            on_click=select,
-                            disabled=pending or controller.phase != "ACTIVE",
+                    choices.append(
+                        choice_card(
+                            choice, state.get("energy"), select, disabled=pending or controller.busy, index=index
                         )
                     )
-            if pending:
-                center.append(ft.ProgressBar())
-            if controller.phase in ("ENDED", "TECHNICAL_FAILURE"):
-                center.extend(
-                    [
-                        ft.Button(content="导出本局数据", on_click=export),
-                        ft.Button(content="开始新游戏", on_click=start, disabled=pending),
-                    ]
+            if controller.phase == "ENDED":
+                if controller.finalization_status != "SUCCESSFULLY_FINALIZED_AND_EXPORTED":
+                    choices.append(
+                        ft.TextButton(content="导出本局数据", on_click=finalize, disabled=pending or controller.busy)
+                    )
+                choices.append(ft.TextButton(content="重新开始", on_click=start, disabled=pending or controller.busy))
+            if controller.phase == "TECHNICAL_FAILURE":
+                choices.append(ft.Text("技术失败资料已留存", size=13, color="#765820"))
+            if controller.phase == "ACTIVE":
+                choices.append(ft.Divider(height=8, color="#E7ECEA"))
+                choices.append(
+                    ft.TextButton(
+                        content=f"最近选择 · {len(controller.history)}",
+                        on_click=lambda _: set_show_history(not show_history),
+                    )
                 )
-            if message:
-                center.append(ft.Text(message, selectable=True))
-            right = panel(
-                [
-                    ft.Text("入职手册", size=18, weight=ft.FontWeight.BOLD),
-                    ft.Text(facts.get("handbook", ""), size=14, selectable=True),
-                    ft.Text("最近选择", size=18, weight=ft.FontWeight.BOLD),
-                ]
-                + [ft.Text(item["action"], size=14) for item in controller.history]
-                + [ft.Text("Run · " + view.run_id, size=11, selectable=True)],
-                scroll=ft.ScrollMode.AUTO,
-            )
+                if show_history:
+                    choices.extend(
+                        ft.Text(item["action"], size=13, color="#586B78", selectable=True)
+                        for item in reversed(controller.history)
+                    )
+            choices.append(ft.Text("Local · No LLM · HPL", size=12, color="#647780"))
             return ft.Column(
                 [
                     header,
                     ft.Text(title, size=18, color="#526480"),
-                    ft.Row(
-                        [
-                            ft.Container(content=left, width=205),
-                            ft.Container(content=panel(center, scroll=ft.ScrollMode.AUTO), expand=True),
-                            ft.Container(content=right, width=255),
-                        ],
-                        expand=True,
-                        vertical_alignment=ft.CrossAxisAlignment.STRETCH,
-                    ),
-                    footer,
+                    game_columns(left, center, choices),
+                    ft.Row([ft.TextButton(content="查看入职手册", on_click=open_handbook), footer]),
                 ],
                 expand=True,
             )
 
         page.render(Client)
+        if fixture and fixture_screen == "handbook":
+            handbook_dialog(page, controller.view.facts.get("handbook", ""))
         if smoke_report:
             await asyncio.sleep(1)
             Path(smoke_report).write_text(
@@ -253,7 +412,9 @@ def launch(*, fixture=False, fixture_screen="active", smoke_seconds=0, smoke_rep
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--fixture", action="store_true")
-    parser.add_argument("--fixture-screen", choices=("start", "active", "ended"), default="active")
+    parser.add_argument(
+        "--fixture-screen", choices=("start", "active", "energy", "ended", "handbook"), default="active"
+    )
     parser.add_argument("--smoke-seconds", type=int, default=0)
     parser.add_argument("--smoke-report")
     args = parser.parse_args()

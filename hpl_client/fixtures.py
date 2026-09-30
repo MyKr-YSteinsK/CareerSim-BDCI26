@@ -7,8 +7,10 @@ from hpl_client.game_adapter import PublicGameAdapter
 
 
 class FixtureEngine:
-    def __init__(self, ending=False):
+    def __init__(self, ending=False, energy=8):
         self.ending = ending
+        self.energy = energy
+        self.action_calls = 0
 
     async def new_game(self):
         return SimpleNamespace(session_id="fixture-session", error="")
@@ -29,7 +31,7 @@ class FixtureEngine:
                     "network": 36,
                     "output": 55,
                     "wealth": 12000,
-                    "energy": 8,
+                    "energy": self.energy,
                 },
             },
             current_event={
@@ -55,6 +57,7 @@ class FixtureEngine:
         )
 
     async def take_action(self, session_id, choice, notes=""):
+        self.action_calls += 1
         return SimpleNamespace(success=True, error=None)
 
 
@@ -74,7 +77,7 @@ class FixtureRecorder:
         pass
 
 
-def fixture_controller(ending=False):
+def fixture_controller(ending=False, energy=8):
     return HumanGameController(
-        lambda tag: (PublicGameAdapter(FixtureEngine(ending), "fixture-no-game"), FixtureRecorder())
+        lambda tag: (PublicGameAdapter(FixtureEngine(ending, energy), "fixture-no-game"), FixtureRecorder())
     )

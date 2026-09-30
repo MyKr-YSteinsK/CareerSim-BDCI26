@@ -3,13 +3,13 @@
 import json
 import os
 import traceback
-from datetime import datetime, timezone
+from datetime import datetime
 
 from scripts.hpl_evidence_writer import write_run_evidence
 
 
 def now():
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now().astimezone().isoformat()
 
 
 class RunRecorder:
@@ -49,6 +49,12 @@ class RunRecorder:
         self.manifest.update(ended_at=now(), run_status=status)
         if unknown:
             self.manifest["action_outcome"] = "UNKNOWN_AFTER_TECHNICAL_FAILURE"
+        staged = self.root / "staging" / "manifest.json"
+        with staged.open("w", encoding="utf-8") as stream:
+            json.dump(self.manifest, stream, ensure_ascii=False, sort_keys=True)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
         write_run_evidence(self.root, self.manifest, self.frames)
         self.finalized = True
 
