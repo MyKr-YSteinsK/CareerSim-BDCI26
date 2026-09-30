@@ -161,6 +161,20 @@ def test_delivery_marker_accepts_current_session_item_identity(tmp_path: Path) -
     assert [item["state"]["item_id"] for item in states] == ["NONE", "D1", "UNKNOWN"]
 
 
+def test_delivery_marker_accepts_contract_ordered_markers_on_separate_lines(tmp_path: Path) -> None:
+    events, transcript, score, runner, _ = _fixtures(tmp_path)
+    prefix = "[CTRL G=? P=A R=PASS X=-]\n"
+    _replace_action_notes(events, [
+        prefix + "[DL i=NONE n=0 focus=NONE evidence=NA checkpoint=0 recognition=0]",
+        prefix + "[DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=1 recognition=0]",
+        prefix + "[DL i=D2 n=1 focus=COMMITTED evidence=UNVERIFIED checkpoint=2 recognition=1]",
+    ])
+
+    coverage = audit(events, transcript, score, runner)["adherence_evidence"]["delivery_marker_coverage"]
+
+    assert (coverage["valid"], coverage["missing"], coverage["malformed_or_duplicate"]) == (2, 0, 1)
+
+
 def test_delivery_missing_malformed_duplicate_unknown_and_internal_redaction(tmp_path: Path) -> None:
     events, transcript, score, runner, _ = _fixtures(tmp_path)
     prefix = "[CTRL G=? P=A R=PASS X=-] "

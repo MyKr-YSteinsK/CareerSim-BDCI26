@@ -372,7 +372,7 @@ def audit(
                     )
                     valid_dl = bool(
                         dl_match and ctrl_match and not contaminated
-                        and notes[ctrl_match.end():dl_match.start()] == " "
+                        and notes[ctrl_match.end():dl_match.start()] in (" ", "\n", "\r\n")
                         and dl_match[0] == "[DL" + marker_text.split("[DL", 1)[-1] + "]"
                         and valid_identity
                         and ((dl_n == 0 and dl_match["focus"] == "NONE" and dl_match["evidence"] == "NA" and dl_match["checkpoint"] == "0" and dl_match["recognition"] == "0")
