@@ -85,6 +85,8 @@ try {
     foreach ($group in ($native | Group-Object classification)) { $byClass[$group.Name] = $group.Count }
     $byOrigin = @{}
     foreach ($group in ($native | Group-Object origin)) { $byOrigin[$group.Name] = $group.Count }
+    $byStatus = @{}
+    foreach ($group in ($native | Group-Object authenticode_status)) { $byStatus[$group.Name] = $group.Count }
     $nativeInventory = [ordered]@{
         schema = 'hpl-native-signature-inventory/v1'
         artifact_sha256 = $static.sha256
@@ -96,6 +98,7 @@ try {
         }
         classification_counts = $byClass
         origin_counts = $byOrigin
+        authenticode_status_counts = $byStatus
         python312 = [ordered]@{ path = '_internal/python312.dll'; sha256 = $pythonDllHash; authenticode_status = [string]$pythonSignature.Status; signer_subject = $pythonSigner }
         generated_exe = [ordered]@{ path = 'CareerSim Human.exe'; authenticode_status = [string]$mainSignature.Status; signer_subject = '' }
         files = $native

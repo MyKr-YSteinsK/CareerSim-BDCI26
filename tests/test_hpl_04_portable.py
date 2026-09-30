@@ -166,6 +166,8 @@ def test_build_contract_uses_hpl_only_runtime_and_onedir():
     assert "VIRTUAL_ENV = $packageVenv" in source
     assert ".local\\runtime\\human-play-lab" in source
     assert "career_emulator/data/dataset" in source
+    assert "ef3b02b22f9d00ef35775930e33807f19380a0455999f452b058f00e104c4d09" in source
+    assert "flet-runtime\\1.0.1\\flet-windows.zip" in source
     assert "runtime 'venv\\Scripts\\python.exe'" not in source
     assert "uv run" not in source
     assert "root .venv" not in source

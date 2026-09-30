@@ -7,6 +7,12 @@ accepted python.org CPython 3.12.10 environment at
 requires the bundled DLL to match its SHA256, Valid status and Python Software
 Foundation signer.
 
+Flet's wheel does not contain the Windows desktop archive; the build reuses the
+previously statically checked Flet 1.0.1 archive at
+`.local/runtime/human-play-lab/flet-runtime/1.0.1/flet-windows.zip` and pins it
+to SHA256 `ef3b02b22f9d00ef35775930e33807f19380a0455999f452b058f00e104c4d09`.
+It does not download the desktop runtime.
+
 The complete 194-file Dev dataset comes from the installed
 `career_emulator_bdci26/dev/dataset` and is bound to its distribution RECORD.
 The same bytes are packaged at the official `career_emulator/data/dataset`

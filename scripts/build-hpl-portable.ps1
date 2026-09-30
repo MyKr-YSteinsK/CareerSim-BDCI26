@@ -19,6 +19,8 @@ $packagingPython = Join-Path $packageVenv 'Scripts\python.exe'
 $flet = Join-Path $packageVenv 'Scripts\flet.exe'
 $sitePackages = Join-Path $packageVenv 'Lib\site-packages'
 $datasetSource = Join-Path $sitePackages 'career_emulator_bdci26\dev\dataset'
+$fletArchiveSource = Join-Path $runtime 'flet-runtime\1.0.1\flet-windows.zip'
+$expectedFletArchiveHash = 'ef3b02b22f9d00ef35775930e33807f19380a0455999f452b058f00e104c4d09'
 $entry = Join-Path $worktree 'hpl_client\app.py'
 $dist = Join-Path $runtime 'package-build\dist'
 $release = Join-Path $runtime 'package-build\release'
@@ -28,13 +30,14 @@ $payload = Join-Path $release 'CareerSim-Human-v1'
 $zip = Join-Path $release 'CareerSim-Human-v1-Windows-x64.zip'
 $basePythonDll = Join-Path $packagingRoot 'cpython-3.12.10\python312.dll'
 
-foreach ($target in @($packagingPython, $flet, $entry, $basePythonDll, $datasetSource)) {
+foreach ($target in @($packagingPython, $flet, $entry, $basePythonDll, $datasetSource, $fletArchiveSource)) {
     if (-not (Test-Path -LiteralPath $target)) {
         throw "Required signed-CPython packaging input is missing: $target"
     }
 }
-if (-not (Test-Path -LiteralPath (Join-Path $sitePackages 'flet_desktop\app\flet-windows.zip') -PathType Leaf)) {
-    throw 'The installed Flet Windows runtime archive is missing; release builds must not download it.'
+$fletSourceHash = (Get-FileHash -LiteralPath $fletArchiveSource -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($fletSourceHash -ne $expectedFletArchiveHash) {
+    throw "Previously verified Flet 1.0.1 Windows archive identity changed: $fletSourceHash"
 }
 
 if (-not $SkipBuild) {
@@ -49,6 +52,11 @@ if (-not $SkipBuild) {
     $pythonIdentity = @(& $packagingPython -c "import platform,sys; print(platform.python_implementation()); print('.'.join(map(str,sys.version_info[:3])))")
     if ($LASTEXITCODE -ne 0 -or $pythonIdentity[0] -ne 'CPython' -or $pythonIdentity[1] -ne '3.12.10') {
         throw "Release packaging requires official CPython 3.12.10; found $($pythonIdentity -join ' ')"
+    }
+    $pythonRoots = @(& $packagingPython -c "import sys; print(sys.prefix); print(sys.base_prefix)")
+    $expectedBase = Join-Path $packagingRoot 'cpython-3.12.10'
+    if ([IO.Path]::GetFullPath($pythonRoots[0]) -ne [IO.Path]::GetFullPath($packageVenv) -or [IO.Path]::GetFullPath($pythonRoots[1]) -ne [IO.Path]::GetFullPath($expectedBase)) {
+        throw "Packaging interpreter is not isolated on the accepted CPython base: $($pythonRoots -join ' | ')"
     }
     $signature = Get-AuthenticodeSignature -LiteralPath $basePythonDll
     $signer = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { '' }
@@ -81,9 +89,10 @@ if (-not $SkipBuild) {
     $env:PATH = (Join-Path $packageVenv 'Scripts') + ';' + (Join-Path $env:SystemRoot 'System32') + ';' + $env:SystemRoot
 
     $datasetArgument = $datasetSource + ';career_emulator/data/dataset'
+    $fletArchiveArgument = $fletArchiveSource + ';flet_desktop/app'
     $packArgs = @(
         'pack', $entry, '--onedir', '--name', 'CareerSim Human', '--distpath', $dist,
-        '--add-data', $datasetArgument,
+        '--add-data', $datasetArgument, '--add-data', $fletArchiveArgument,
         '--hidden-import', 'career_emulator.game',
         '--hidden-import', 'scripts.hpl_evidence_writer',
         '--hidden-import', 'scripts.hpl_public_evidence',
@@ -121,13 +130,17 @@ if (-not $SkipBuild) {
     if ($actualPythonDllHash -ne $expectedPythonDllHash -or $packagedSignature.Status -ne 'Valid' -or $packagedSigner -notmatch 'Python Software Foundation') {
         throw "Bundled _internal\python312.dll differs from the signed CPython runtime: SHA256=$actualPythonDllHash; signature=$($packagedSignature.Status); signer='$packagedSigner'"
     }
+    $packagedFletArchive = Join-Path $payload '_internal\flet_desktop\app\flet-windows.zip'
+    if (-not (Test-Path -LiteralPath $packagedFletArchive -PathType Leaf)) { throw 'The bundled Flet archive is missing.' }
+    $packagedFletHash = (Get-FileHash -LiteralPath $packagedFletArchive -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($packagedFletHash -ne $expectedFletArchiveHash) { throw "Bundled Flet archive hash mismatch: $packagedFletHash" }
 
     & $packagingPython (Join-Path $worktree 'packaging\windows\package_manifest.py') create `
         '--bundle-root' $payload `
         '--dataset-source' $datasetSource `
         '--site-packages' $sitePackages `
         '--source-commit' $sourceCommit `
-        '--build-command' 'flet pack --onedir --add-data <career_emulator_bdci26/dev/dataset>;career_emulator/data/dataset'
+        '--build-command' ('flet pack --onedir --add-data <career_emulator_bdci26/dev/dataset>;career_emulator/data/dataset --add-data <verified-flet-windows.zip>;flet_desktop/app sha256=' + $expectedFletArchiveHash)
     if ($LASTEXITCODE -ne 0) { throw "Portable BUILD_MANIFEST generation failed with exit code $LASTEXITCODE" }
     Compress-Archive -Path $payload -DestinationPath $zip -CompressionLevel Optimal
 }
