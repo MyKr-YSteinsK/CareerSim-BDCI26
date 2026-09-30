@@ -216,9 +216,9 @@ def configure_packaged_flet(layout: RuntimeLayout) -> None:
 
     Flet normally uses ``%USERPROFILE%\\.flet`` and downloads its client when
     the bundled archive is not found. A portable bundle must use its own
-    immutable archive and keep the unpacked client under the HPL LocalAppData
-    sandbox, so a developer cache or network cannot silently become a runtime
-    dependency.
+    immutable archive and keep the unpacked client under
+    ``UserData/Diagnostics``, so a developer cache or network cannot silently
+    become a runtime dependency.
     """
     import flet_desktop
 

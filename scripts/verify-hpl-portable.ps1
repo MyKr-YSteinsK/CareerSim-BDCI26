@@ -45,7 +45,7 @@ try {
             } else {
                 'AUTHENTICODE_VALID_OTHER'
             }
-            $rows += [ordered]@{
+            $rows += [PSCustomObject]@{
                 path = ($Prefix + $relative)
                 extension = $file.Extension.ToLowerInvariant()
                 bytes = $file.Length
@@ -87,10 +87,13 @@ try {
     foreach ($group in ($native | Group-Object origin)) { $byOrigin[$group.Name] = $group.Count }
     $byStatus = @{}
     foreach ($group in ($native | Group-Object authenticode_status)) { $byStatus[$group.Name] = $group.Count }
+    $invalidSignatureCount = @($native | Where-Object authenticode_status -eq 'Invalid').Count
     $nativeInventory = [ordered]@{
         schema = 'hpl-native-signature-inventory/v1'
         artifact_sha256 = $static.sha256
         native_file_count = $native.Count
+        system_managed_file_count = 0
+        invalid_signature_file_count = $invalidSignatureCount
         extension_counts = [ordered]@{
             exe = @($native | Where-Object extension -eq '.exe').Count
             dll = @($native | Where-Object extension -eq '.dll').Count
@@ -127,6 +130,7 @@ try {
             $psi.Environment['PATH'] = (Join-Path $env:SystemRoot 'System32') + ';' + $env:SystemRoot
             $psi.Environment['USERPROFILE'] = $profile
             $psi.Environment['LOCALAPPDATA'] = $localAppData
+            $psi.Environment['APPDATA'] = $localAppData
             $psi.Environment['TEMP'] = $temp
             $psi.Environment['TMP'] = $temp
             foreach ($arg in @('--fixture', '--fixture-screen', $Screen, '--smoke-seconds', '3', '--smoke-report', $ReportPath)) {
@@ -138,7 +142,16 @@ try {
             if ($psi.Environment['PATH'] -match 'python|uv|human-play-lab|CareerSim') {
                 throw 'Smoke PATH includes Python, uv, the HPL runtime or the repository.'
             }
-            $process = [Diagnostics.Process]::Start($psi)
+            try {
+                $process = [Diagnostics.Process]::Start($psi)
+            }
+            catch {
+                $startError = $_.Exception.GetBaseException().Message
+                if ($startError -match '应用程序控制策略已阻止|application control policy has blocked|signing level|Code Integrity|AppLocker') {
+                    throw "Windows Application Control blocked the unsigned packaged launcher during the $Screen fixture smoke. No security setting was changed. Run this gate in a policy-compatible Windows environment or obtain approved signing; raw error: $startError"
+                }
+                throw
+            }
             if (-not $process.WaitForExit(45000)) {
                 $process.Kill($true)
                 throw "Portable $Screen fixture smoke exceeded the 45 second bound."
@@ -197,10 +210,20 @@ try {
         $psi.Environment['PATH'] = (Join-Path $env:SystemRoot 'System32') + ';' + $env:SystemRoot
         $psi.Environment['USERPROFILE'] = $profile
         $psi.Environment['LOCALAPPDATA'] = $localAppData
+        $psi.Environment['APPDATA'] = $localAppData
         $psi.Environment['TEMP'] = $temp
         $psi.Environment['TMP'] = $temp
         foreach ($arg in @('--fixture', '--fixture-screen', 'start', '--smoke-report', $readonlyReport)) { $psi.ArgumentList.Add($arg) }
-        $process = [Diagnostics.Process]::Start($psi)
+        try {
+            $process = [Diagnostics.Process]::Start($psi)
+        }
+        catch {
+            $startError = $_.Exception.GetBaseException().Message
+            if ($startError -match '应用程序控制策略已阻止|application control policy has blocked|signing level|Code Integrity|AppLocker') {
+                throw "Windows Application Control blocked the unsigned packaged launcher during the unwritable-directory fixture smoke. No security setting was changed. Raw error: $startError"
+            }
+            throw
+        }
         if (-not $process.WaitForExit(20000)) { $process.Kill($true); throw 'Unwritable application-directory smoke timed out.' }
         if ($process.ExitCode -ne 0) { throw "Unwritable application-directory smoke exited $($process.ExitCode)." }
         $readonlyResult = Get-Content -LiteralPath $readonlyReport -Raw | ConvertFrom-Json
@@ -220,13 +243,14 @@ try {
         static_package_verify = 'PASS'
         isolated_unpack = 'PASS'
         smoke_skipped = [bool]$SkipSmoke
+        packaged_fixture_smoke = if ($SkipSmoke) { 'NOT_RUN' } else { 'PASS' }
         smoke_results = $smokeResults
         user_data = [ordered]@{ expected_root = 'CareerSim-Human-v1/UserData'; directories = @('Runs', 'Exports', 'Diagnostics'); writable_smoke = if ($SkipSmoke) { 'NOT_RUN' } else { 'PASS' }; unwritable_fail_closed_smoke = if ($SkipSmoke) { 'NOT_RUN' } else { 'PASS' } }
         native_inventory = [IO.Path]::GetFileName($inventoryPath)
         python312 = $nativeInventory.python312
         generated_exe = $nativeInventory.generated_exe
         source_path_leak_scan = 'PASS'
-        local_python_flet_repo_dependency = 'NOT_REQUIRED_IN_ISOLATED_SMOKE'
+        local_python_flet_repo_dependency = if ($SkipSmoke) { 'NOT_RUN' } else { 'NOT_REQUIRED_IN_ISOLATED_SMOKE' }
     }
     $validation | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path (Split-Path $resolvedArtifact -Parent) 'PORTABLE_VALIDATION.json') -Encoding utf8
     Write-Output "NATIVE_FILES=$($native.Count)"

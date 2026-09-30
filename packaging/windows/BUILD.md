@@ -32,12 +32,17 @@ Generated payload, signature inventory and release ZIP stay under the ignored
 `.local/runtime/human-play-lab/package-build/` directory. The repository does
 not track the executable, Python runtime, copied dataset, user data or ZIP.
 The verifier checks the archive, bundled native signatures and source-path
-markers, then performs isolated start-screen and in-memory fixture smoke tests
+markers, then attempts isolated start-screen and in-memory fixture smoke tests
 with no Python, Flet, uv or repository path available. A temporary denied-write
-ACL checks fail-closed startup without creating a game.
+ACL checks fail-closed startup without creating a game. `-SkipSmoke` produces
+only `HPL04_STATIC_PORTABLE_BUILD_ONLY_SMOKE_PENDING`; it cannot mark the
+artifact ready.
 
-The release state is
-`HPL04_PORTABLE_ARTIFACT_READY_FOR_CLEAN_MACHINE_VALIDATION`. A user-controlled
-run on an independent Windows 10/11 x64 machine remains pending. The generated
-CareerSim Human executable is unsigned; trusted code signing is recommended for
-broad external distribution. Do not disable Windows security or add exclusions.
+During the current HPL-04 validation, Windows Application Control rejected the
+unsigned generated launcher before app code ran, citing the Enterprise signing
+level policy. The verifier reports this as an environment blocker; it does not
+change security settings or claim a packaged smoke pass. The generated
+CareerSim Human executable remains unsigned; trusted code signing is
+recommended for broad external distribution. Do not disable Windows security
+or add exclusions. See [HPL-04 review](../../docs/project/reviews/HPL-04_WINDOWS_PORTABLE_PACKAGING.md)
+for the exact artifact and validation boundary.

@@ -164,13 +164,15 @@ if ($LASTEXITCODE -ne 0) { throw "Portable artifact verification failed with exi
 $hash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
 $bytes = (Get-Item -LiteralPath $zip).Length
 Set-Content -LiteralPath ($zip + '.sha256') -Value "$hash  $([IO.Path]::GetFileName($zip))" -Encoding ascii
+$status = if ($SkipSmoke) { 'HPL04_STATIC_PORTABLE_BUILD_ONLY_SMOKE_PENDING' } else { 'HPL04_PORTABLE_ARTIFACT_READY_FOR_CLEAN_MACHINE_VALIDATION' }
 $releaseSidecar = [ordered]@{
     artifact = [ordered]@{ path = [IO.Path]::GetFileName($zip); bytes = $bytes; sha256 = $hash }
-    package_status = 'HPL04_PORTABLE_ARTIFACT_READY_FOR_CLEAN_MACHINE_VALIDATION'
+    package_status = $status
+    packaged_fixture_smoke = if ($SkipSmoke) { 'NOT_RUN' } else { 'PASS' }
     clean_machine_status = 'CLEAN_MACHINE_VALIDATION_PENDING_USER_SMOKE'
 }
 $releaseSidecar | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $release 'BUILD_MANIFEST.release.json') -Encoding utf8
 Write-Output "ARTIFACT=$zip"
 Write-Output "BYTES=$bytes"
 Write-Output "SHA256=$hash"
-Write-Output "STATUS=HPL04_PORTABLE_ARTIFACT_READY_FOR_CLEAN_MACHINE_VALIDATION"
+Write-Output "STATUS=$status"
