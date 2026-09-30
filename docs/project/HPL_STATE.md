@@ -5,9 +5,9 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-04 Windows portable build and independent launch`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL04_STATIC_PACKAGE_PASS_PACKAGED_SMOKE_BLOCKED_BY_APPLICATION_CONTROL`.
-- Decision: final portable build and static archive checks pass. The local Windows Enterprise signing-level policy blocked an earlier unsigned launcher fixture attempt; the final rebuild remains unsigned and was not launched again. Packaged fixture smoke, writable UserData launch and read-only application-directory fail-closed launch remain unverified. Return this boundary for Main/Planner review; do not claim HPL-04 acceptance or clean-machine validation. Never resume HPL-RUN01.
+- Current task: `HPL-04B Local Web Runtime Gate`.
+- Status: `IN_FLIGHT_EVIDENCE / HPL_LOCAL_WEB_RUNTIME_GATE_BLOCKED`.
+- Decision: official signed CPython runs, but one default GameEngine import triggered Code Integrity 3033/3077/3118 for unsigned `msgpack/_cmsgpack.cp312-win_amd64.pyd`. The import exited 0 because upstream msgpack catches ImportError and falls back; this does not satisfy the no-block acceptance criterion. Stop before loaded-module inventory, constructor probe and localhost launch; return to Main/Planner without workaround or HPL-05 implementation. HPL-04 remains unaccepted and its packaged smokes unverified. Never resume HPL-RUN01.
 - Human Run authorization: `NOT_AUTHORIZED`; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 
 ## Lineage
@@ -29,6 +29,14 @@
 - Human dataset: the HPL venv's installed `career_emulator_bdci26\dev\dataset`, split `dev`; the complete 194-file tree is copied into the same venv's `career_emulator\data\dataset`. Preflight validates source bytes against the pinned distribution RECORD, full mirror file/directory equivalence, and required configuration files including `performance_score/config.data`. Dataset bytes are hashed/copied without decoding rules.
 - Local environment manifest: `.local\runtime\human-play-lab\sandbox\environment_manifest.json`; it records the full 22-distribution closure after HPL-only `flet[desktop]==1.0.1`, and the 65-file Windows desktop installation identity. Explicit refresh retains each prior manifest by SHA256. JiuwenSwarm, FastMCP/MCP, and LLM provider packages are absent. `gitcode-api` is an upstream optional sharing dependency: disabled by the CLI wrapper, never invoked by the direct GUI path.
 - Formal Agent root `.venv`, Candidate, Skills, Runner, config, provider configuration, and runtime are not used by the Human launcher.
+
+## HPL-04B runtime gate boundary
+
+- Base: HPL branch `a42548ab49cd4938453042f7d21f62f3ba46dd4f`; fetched `origin/main` observed at `a6881ff296c2a3f017082e73bf21d7f5161c2b24`, without merge/rebase.
+- Isolated gate: `D:\CS\CareerSim\.local\runtime\human-play-lab\local-web-gate`; fresh venv from accepted official CPython 3.12.10. Base python.exe/pythonw.exe/python312.dll and venv launchers are Authenticode Valid / Python Software Foundation.
+- Copied 13 installed distributions with RECORD hash verification and source-wheel identity retention; `pip check` passes. Flet/PyInstaller/Jiuwen/MCP/provider packages are absent. Only the BDCI26 Dev files were copied; no test/dev_final/test_final resource was read. No dataset load or mirror probe was necessary for import.
+- Default GameEngine import: one attempt, exit 0, stdout `CareerSim GameEngine import OK`, empty stderr; native-load block confirmed by correlated Code Integrity records 1506–1510. Popup visibility is UNKNOWN, not a claimed NO. `_cmsgpack` is NotSigned, SHA256 `0f750d717d6a2ddd61b7d2c376d0cb28fc468347cbc0c1a46aa59126a2fb18c0`. No fallback flag or simulator patch was applied.
+- Local gate evidence is on `FORENSIC_HOLD` pending Main/Planner review. Preserve scripts, environment, stdout/stderr, package identities, signatures and event XML; see [HPL-04B review](reviews/HPL-04B_LOCAL_WEB_RUNTIME_GATE.md). No real game, engine construction, action, provider, MCP, Jiuwen, security change or localhost listener occurred. Existing HPL-RUN01 hold is unchanged.
 
 ## HPL-04 portable package boundary
 
