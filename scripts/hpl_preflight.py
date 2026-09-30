@@ -100,6 +100,10 @@ def build_preflight(runtime_root: Path | str) -> dict[str, Any]:
             "career-emulator": emulator_version,
             "career-emulator-bdci26": data_version,
         },
+        "package_roots": {
+            "career-emulator": str(emulator_root),
+            "career-emulator-bdci26": str(data_package_root),
+        },
         "runtime": {
             "root": str(root),
             "db_path": str(db_path),
