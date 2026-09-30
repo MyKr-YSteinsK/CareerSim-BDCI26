@@ -151,6 +151,14 @@ def _environment_identity(layout: HPLLayout) -> dict[str, Any]:
             raise RuntimeError(f"{name} resolves outside the dedicated HPL venv: {root}")
 
     resolved = _installed_distributions()
+    desktop_identity = None
+    if any(item["name"] == "flet" for item in resolved):
+        from scripts.hpl_desktop_runtime import desktop_runtime_identity
+
+        for name in ("flet", "flet-desktop"):
+            if metadata.version(name) != "1.0.1" or not _is_within(_module_root(name.replace("-", "_")), active_venv):
+                raise RuntimeError("Flet 1.0.1 must resolve inside the HPL venv")
+        desktop_identity = desktop_runtime_identity(active_venv)
     forbidden = [
         item["name"] for item in resolved if item["name"].replace("_", "-").casefold() in _FORBIDDEN_PACKAGE_NAMES
     ]
@@ -173,6 +181,7 @@ def _environment_identity(layout: HPLLayout) -> dict[str, Any]:
         },
         "package_roots": {name: str(path) for name, path in package_roots.items()},
         "resolved_distributions": resolved,
+        "desktop_runtime": desktop_identity,
         "forbidden_agent_provider_packages": forbidden,
         "dataset": probe["dataset"],
         "optional_external_share_dependency": (
@@ -190,7 +199,7 @@ def _uv_version() -> str:
     return subprocess.run([executable, "--version"], check=True, capture_output=True, text=True, timeout=10).stdout.strip()
 
 
-def write_environment_manifest(layout: HPLLayout) -> dict[str, Any]:
+def write_environment_manifest(layout: HPLLayout, *, refresh: bool = False) -> dict[str, Any]:
     """Create the local, non-secret package/sandbox identity record once."""
     identity = _environment_identity(layout)
     manifest = {
@@ -217,6 +226,7 @@ def write_environment_manifest(layout: HPLLayout) -> dict[str, Any]:
         "package_identity": identity["package_identity"],
         "package_roots": identity["package_roots"],
         "resolved_distributions": identity["resolved_distributions"],
+        "desktop_runtime": identity["desktop_runtime"],
         "forbidden_agent_provider_packages": identity["forbidden_agent_provider_packages"],
         "optional_external_share_dependency": identity["optional_external_share_dependency"],
         "dataset": identity["dataset"],
@@ -237,7 +247,16 @@ def write_environment_manifest(layout: HPLLayout) -> dict[str, Any]:
             "package_roots"
         ]:
             raise RuntimeError("Existing HPL environment manifest does not match the installed environment")
-        return existing
+        if not refresh:
+            return existing
+        import hashlib
+
+        previous = path.read_bytes()
+        digest = hashlib.sha256(previous).hexdigest()
+        backup = path.with_name(f"environment_manifest.{digest}.json")
+        if not backup.exists():
+            backup.write_bytes(previous)
+        manifest["previous_manifest_sha256"] = digest
     path.write_text(json.dumps(manifest, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     return manifest
 
@@ -253,6 +272,7 @@ def _load_environment_manifest(layout: HPLLayout) -> tuple[dict[str, Any], dict[
         (manifest.get("package_identity"), identity["package_identity"]),
         (manifest.get("package_roots"), identity["package_roots"]),
         (manifest.get("resolved_distributions"), identity["resolved_distributions"]),
+        (manifest.get("desktop_runtime"), identity["desktop_runtime"]),
         (manifest.get("dataset", {}).get("root"), identity["dataset"]["root"]),
         (manifest.get("python", {}).get("executable"), identity["python_executable"]),
         (manifest.get("python", {}).get("prefix"), identity["python_prefix"]),
@@ -736,6 +756,10 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--live", action="store_true", help="Explicit live intent; requires a Main authorization ID.")
     parser.add_argument("--authorization-id", default=None, help="Non-empty Main gate identity required with --live.")
+    parser.add_argument(
+        "--refresh-environment-manifest", action="store_true",
+        help="Explicitly record an authorized HPL dependency change; preserve the old manifest.",
+    )
     parser.add_argument("--tag", default="manual", help="Human research tag recorded in a future authorized run.")
     parser.add_argument(
         "--write-environment-manifest",
@@ -749,10 +773,10 @@ def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
         layout = resolve_layout()
-        if args.write_environment_manifest:
+        if args.write_environment_manifest or args.refresh_environment_manifest:
             if args.live or args.authorization_id:
                 raise ValueError("environment setup cannot be combined with live arguments")
-            manifest = write_environment_manifest(layout)
+            manifest = write_environment_manifest(layout, refresh=args.refresh_environment_manifest)
             print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
             return 0
         if not live_gate_allows(args.live, args.authorization_id):
