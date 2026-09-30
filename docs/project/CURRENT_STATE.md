@@ -7,6 +7,7 @@
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
 - Branch: main
 - Current Stage: `S09-Lab｜稳定高分策略冲刺与候选赛跑` ACTIVE；S08 COMPLETE
+- Parallel Research Track: `Human Play Lab｜人工游玩策略实验线` ACTIVE_FEASIBILITY. This track is isolated from Candidate evolution. Official `career-emulator` documentation exposes a participant-facing local CLI for direct play and a separate MCP entry for Agent use; local zero-provider behavior, public-only rendering, and isolated DB/log routing still require HPL-01 verification before any human game. `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
 - S07-01: `COMPLETE / QUARANTINE_FOR_MAIN_REVIEW`; Main disposition=`SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`. S07-02 Main review=`PASS`; descendant `candidate-v6c-compliance-cleanup` was accepted as the static candidate before S07-23. W1 compliance quarantine is resolved for the identified narrow clauses; W2 Cheap Probe Feasibility and W3 Mid-70 Basin Diagnosis are now UNBLOCKED but NOT_STARTED.
