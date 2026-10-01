@@ -1,0 +1,116 @@
+{
+  "task": "S09-11",
+  "base": "01c9f7c7cd6495e9ea635eeeae8afa3bdc6b2e84",
+  "decision": "S09_11_FIDELITY_PASS_LOCAL_DEFECT_RETURN_TO_STAGE",
+  "candidate_changed": false,
+  "live_operations": 0,
+  "source_windows": {
+    "v7o": {
+      "events": "D:/CS/CareerSim/artifacts/dev-runs/s08-run01-v7o/events.jsonl",
+      "first_observe_seq": 27,
+      "first_review_seq": 187,
+      "last_line_read": 187,
+      "actions": 20,
+      "observes": 21,
+      "first_action_utc": "2026-09-29T11:54:51.610014+00:00",
+      "last_action_utc": "2026-09-29T11:56:31.602854+00:00",
+      "last_pre_review_public_state": {
+        "health": 5,
+        "dignity": 9,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "first_review_public_state": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "transcript_lines_used": [
+        1,
+        561
+      ]
+    },
+    "v8a": {
+      "events": "D:/CS/CareerSim/.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20261001T104410Z/events-20261001T104410Z.jsonl",
+      "first_observe_seq": 27,
+      "first_review_seq": 187,
+      "last_line_read": 187,
+      "actions": 20,
+      "observes": 21,
+      "first_action_utc": "2026-10-01T10:44:27.428405+00:00",
+      "last_action_utc": "2026-10-01T10:47:24.193778+00:00",
+      "last_pre_review_public_state": {
+        "health": 2,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "first_review_public_state": {
+        "health": 2,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 1,
+        "wealth": 3,
+        "energy": 0
+      },
+      "transcript_lines_used": [
+        1,
+        701
+      ]
+    }
+  },
+  "exact_public_context_pairs": [
+    {
+      "type": "compliance",
+      "v7o_action": 2,
+      "v8a_action": 19,
+      "description_and_choices_equal": true,
+      "submitted_choice_equal": true
+    },
+    {
+      "type": "CI",
+      "v7o_action": 10,
+      "v8a_action": 20,
+      "description_and_choices_equal": true,
+      "submitted_choice_equal": true
+    },
+    {
+      "type": "printer",
+      "v7o_action": 17,
+      "v8a_action": 16,
+      "description_and_choices_equal": true,
+      "submitted_choice_equal": true
+    }
+  ],
+  "axes": {
+    "A": "MATCH",
+    "B": "MATCH",
+    "C": "MATCH",
+    "D": "INSUFFICIENT_EXPOSURE",
+    "E": "MATERIAL_DRIFT_GATE_CLASSIFICATION_ONLY",
+    "F": "MATCH"
+  },
+  "shell": "SHELL_INTERACTION_UNKNOWN",
+  "material_ranking_drift": "NONE_CONFIRMED",
+  "minimal_correction": "NONE",
+  "next_game_authorized": false
+}
