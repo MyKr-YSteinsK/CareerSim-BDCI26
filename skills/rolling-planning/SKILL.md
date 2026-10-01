@@ -106,6 +106,10 @@ If advertised gain is absent after a fresh observe, record `OBSERVED_NO_GAIN` or
 
 消费 Board `PROGRESSION_RESPONSE`：clean NO_GAIN 只折价已测试的当前 Level/context/dimension/action family；UNKNOWN 保持开放，多维动作保留其它维度及 ownership/结果价值。不把局部 NO_GAIN 传播给未测试 family，不推断全局 cap、eligibility 或恢复无成长机会成本。Level change 后依 Board 重置；存在 responsive alternative 时不立即重复同一路径。
 
+如果当前路径刚得到 fresh clean NO_GAIN，先找当前 Level/context 下已经有响应、而且仍有职业价值的替代路径。只有没有这样的已知 responsive alternative 时，才把一个尚未测试、但从公开语义看有明确成长价值的路径加入最多两个候选的比较；它只是一次可选 probe，不是为了“覆盖率”强制探索。明确的生存/合规/信任约束和 near-term Delivery 始终优先。
+
+如果 probe 最终胜出，只执行一次，随后 fresh observe；新结果只更新当前 Level/context/family 的局部证据。不自动连续 probe，不把 UNKNOWN 当 GAIN，也不因为一次结果推全局 cap。Level change 仍按 Board 的既有规则重新打开 option value。
+
 ## Quarterly control
 
 `QUARTER_INTENT = <MODE | current target>` 仅当前目标，不预定剩余序列或配额。每次只选一个 Energy action；执行后由 executor fresh observe → Board（含 PROGRESSION_RESPONSE）→ Delivery → new Planning pass → final Risk → READY → preflight，再决定下一动作。receipt 不提供 public state；旧计划不能授权动作。
