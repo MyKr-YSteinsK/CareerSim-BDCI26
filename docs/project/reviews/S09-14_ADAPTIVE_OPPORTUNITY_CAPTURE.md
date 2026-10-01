@@ -7,3 +7,9 @@
 我刻意没有动 Board、Delivery 和 Risk，也没有增加新的 MODE、计数器或 Skill。健康、合规、信任和临近交付仍然可以直接压过这次 probe。Level 变化后的重新判断、NO_GAIN 只做局部降权这些 v8a 已经有的规则也都保留。
 
 这个版本的目的不是“保证更高分”，而是让 Agent 在外部机会和反馈比较随机的时候，少一点卡在已经停滞的路径上的惯性。它目前只有静态设计依据，没有真实对局结果，所以 v8a 仍然是更可靠的提交 fallback。S09-14 不授权 live run，也不据此声称 v9a 已经优于 v8a。
+
+## 静态检查
+
+这次没有跑游戏。实现后做了 40 项离线检查，身份、manifest hash、三个受保护 Skill、NO_GAIN 边界、一次性 probe、约束优先级和 frontmatter 都通过。Planning 比 v8a 增加 378 个字符，没有引入探索配额、新 MODE 或额外 Skill。
+
+因此我把它记为 static pass，但不会把“静态上合理”写成“成绩已经更好”。在有真实对局证据之前，v9a 只是一个值得继续试的分支，v8a 仍然更适合作为提交 fallback。
