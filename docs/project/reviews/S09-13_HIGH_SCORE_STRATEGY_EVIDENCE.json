@@ -1,0 +1,717 @@
+{
+  "schema_version": 1,
+  "task": "S09-13",
+  "base": "589725ac2db0d62d2da53353cb5680f971fb88fb",
+  "candidate": "candidate-v8a-v7o-donor-core-transplant",
+  "evidence_policy": "PUBLIC_STATUS_LEGAL_CHOICES_EXISTING_LEGAL_DEV_REPORT_COMPONENT_POINTS; OFFLINE_DESCRIPTIVE_ONLY",
+  "limitations": [
+    "No hidden field values or exact score weights",
+    "Null means UNKNOWN, not zero",
+    "Tier B not eligible for clean action attribution",
+    "No controlled causal comparison; survivor selection and history/exposure confounds",
+    "Before/after response not proof of action effect; M48 GAIN not known at M42",
+    "Original holds retained; hashes reused, no new raw rehash"
+  ],
+  "cohort": [
+    {
+      "run": "v1#1",
+      "group": "high",
+      "core": true,
+      "tier": "B",
+      "quantitative_score": 76.04,
+      "survival_months": 48,
+      "grade": "A",
+      "final_public_state": {
+        "level": "L6",
+        "skill": 139,
+        "network": 52,
+        "output": 42,
+        "wealth": 40,
+        "health": 9,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [
+        6,
+        12,
+        18,
+        36,
+        48
+      ],
+      "source": {
+        "git_object": "8a93378a8d9ef5598e925048db39ee931e207bab:experiments/S04-04-high-score-confirmation/candidate_run1_trajectory.json",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md",
+        "raw_availability": "UNAVAILABLE; summary only"
+      }
+    },
+    {
+      "run": "v6",
+      "group": "high",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 75.29,
+      "survival_months": 48,
+      "grade": "A",
+      "final_public_state": {
+        "level": "L6",
+        "skill": 142,
+        "network": 58,
+        "output": 42,
+        "wealth": 39,
+        "health": 7,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 10,
+      "promotions": [
+        6,
+        12,
+        18,
+        36,
+        48
+      ],
+      "source": {
+        "events": ".career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260925T094419Z\\events-20260925T094419Z.jsonl",
+        "sha256_reused": "2cce87eb6afd8aea5a9651f75621ae7c2b303e8c00c7f2ac417dc65c030371d8",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      },
+      "dev_component_points": {
+        "level": 18,
+        "wealth": 9.88,
+        "resilience": 12.75,
+        "skill": 15,
+        "risk_control": 10,
+        "network": 9.67
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v7o",
+      "group": "high",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 71.83,
+      "survival_months": 48,
+      "grade": "A",
+      "final_public_state": {
+        "level": "L5",
+        "skill": 130,
+        "network": 53,
+        "output": 37,
+        "wealth": 43,
+        "health": 9,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 8,
+      "promotions": [
+        6,
+        12,
+        18,
+        36
+      ],
+      "source": {
+        "events": "artifacts\\dev-runs\\s08-run01-v7o\\events.jsonl",
+        "sha256_reused": "b6eb500f9e8ad3966e595e65a5d558c2c8b50097bf908fd8b93a1b5f14567df4",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      },
+      "dev_component_points": {
+        "level": 15,
+        "wealth": 10.75,
+        "resilience": 14.25,
+        "skill": 15,
+        "risk_control": 8,
+        "network": 8.83
+      },
+      "component_source": "Exact final participant-visible observe ending_score; archived score_report ending section empty"
+    },
+    {
+      "run": "v8a RUN07",
+      "group": "high",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 72.65,
+      "survival_months": 48,
+      "grade": "A",
+      "final_public_state": {
+        "level": "L5",
+        "skill": 119,
+        "network": 54,
+        "output": 35,
+        "wealth": 35,
+        "health": 10,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 10,
+      "promotions": [
+        6,
+        12,
+        24,
+        42
+      ],
+      "source": {
+        "events": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261001T114001Z\\events-20261001T114001Z.jsonl",
+        "sha256_reused": "977f19aa89dbc12d4c1482ceff440ca98d28946737632e9c547b7d04dedb095d",
+        "identity_reference": "S09-12_V8A_TWO_SAMPLE_TRAJECTORY_DIVERGENCE_EVIDENCE.json"
+      },
+      "dev_component_points": {
+        "level": 15,
+        "wealth": 8.78,
+        "resilience": 15,
+        "skill": 14.88,
+        "risk_control": 10,
+        "network": 9
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v1#2",
+      "group": "same_policy_lower",
+      "core": true,
+      "tier": "B",
+      "quantitative_score": 35.31,
+      "survival_months": 25,
+      "grade": "D",
+      "final_public_state": {
+        "level": "L4",
+        "skill": 44,
+        "network": 20,
+        "output": 14,
+        "wealth": 3,
+        "health": 10,
+        "dignity": 8
+      },
+      "dev_risk_control_component_points": 0,
+      "promotions": [
+        6,
+        12,
+        24
+      ],
+      "source": {
+        "git_object": "8a93378a8d9ef5598e925048db39ee931e207bab:experiments/S04-04-high-score-confirmation/candidate_run2_trajectory.json",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md",
+        "raw_availability": "UNAVAILABLE; summary only"
+      },
+      "dev_component_points": {
+        "level": 12,
+        "wealth": 0.98,
+        "resilience": 13.5,
+        "skill": 5.5,
+        "risk_control": 0,
+        "network": 3.33
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v8a RUN08",
+      "group": "same_policy_lower",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 59.0,
+      "survival_months": 48,
+      "grade": "C",
+      "final_public_state": {
+        "level": "L4",
+        "skill": 82,
+        "network": 36,
+        "output": 26,
+        "wealth": 29,
+        "health": 8,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 10,
+      "promotions": [
+        12,
+        18,
+        36
+      ],
+      "source": {
+        "events": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261001T132230Z\\events-20261001T132230Z.jsonl",
+        "sha256_reused": "32cab0dbf9a5f10741ebff29db0fba5aa743e177b6211319d024fb05368229d0",
+        "identity_reference": "S09-12_V8A_TWO_SAMPLE_TRAJECTORY_DIVERGENCE_EVIDENCE.json"
+      },
+      "dev_component_points": {
+        "level": 12,
+        "wealth": 7.25,
+        "resilience": 13.5,
+        "skill": 10.25,
+        "risk_control": 10,
+        "network": 6
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v7t",
+      "group": "medium_survivor",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 65.71,
+      "survival_months": 48,
+      "grade": "B",
+      "final_public_state": {
+        "level": "L5",
+        "skill": 101,
+        "network": 38,
+        "output": 30,
+        "wealth": 27,
+        "health": 10,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 10,
+      "promotions": [
+        6,
+        12,
+        30,
+        48
+      ],
+      "source": {
+        "events": "artifacts\\dev-runs\\s08-run03-v7t\\events.jsonl",
+        "sha256_reused": "c630579d5ebbcdbcecf9f6eee1104434b75cb92a9f3915cdbf4a5c1084e21fdb",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      },
+      "dev_component_points": {
+        "level": 15,
+        "wealth": 6.75,
+        "resilience": 15,
+        "skill": 12.62,
+        "risk_control": 10,
+        "network": 6.33
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v7v",
+      "group": "medium_survivor",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 58.97,
+      "survival_months": 48,
+      "grade": "C",
+      "final_public_state": {
+        "level": "L5",
+        "skill": 100,
+        "network": 37,
+        "output": 33,
+        "wealth": 25,
+        "health": 10,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 4,
+      "promotions": [
+        6,
+        18,
+        30,
+        48
+      ],
+      "source": {
+        "events": "artifacts\\dev-runs\\s08-run04-v7v\\events.jsonl",
+        "sha256_reused": "646af2df08655410bd0aa3b046983ac1be5797d2332682f7669c9756c55780b4",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      },
+      "dev_component_points": {
+        "level": 15,
+        "wealth": 6.3,
+        "resilience": 15,
+        "skill": 12.5,
+        "risk_control": 4,
+        "network": 6.17
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v7g",
+      "group": "medium_survivor",
+      "core": true,
+      "tier": "A events plus formal report",
+      "quantitative_score": 54.52,
+      "survival_months": 48,
+      "grade": "C",
+      "final_public_state": {
+        "level": "L5",
+        "skill": 102,
+        "network": 36,
+        "output": 32,
+        "wealth": 19,
+        "health": 6,
+        "dignity": 10
+      },
+      "dev_risk_control_component_points": 4,
+      "promotions": [
+        12,
+        18,
+        30,
+        48
+      ],
+      "source": {
+        "events": ".career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260928T055416Z\\events-20260928T055416Z.jsonl",
+        "sha256_reused": "73cb4de9f2568e343be252630a64dbef289e92aec121bae07ef8fbd3a6cff3c4",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      },
+      "dev_component_points": {
+        "level": 15,
+        "wealth": 4.78,
+        "resilience": 12,
+        "skill": 12.75,
+        "risk_control": 4,
+        "network": 6
+      },
+      "component_source": "Existing legal run score_report; v1#2 historical trajectory score_dimensions weighted fields"
+    },
+    {
+      "run": "v4",
+      "group": "failure_control",
+      "core": false,
+      "tier": "A events plus formal report",
+      "quantitative_score": 25.84,
+      "survival_months": 6,
+      "grade": "E",
+      "final_public_state": {
+        "level": "L2",
+        "skill": 11,
+        "network": 7,
+        "output": 6,
+        "wealth": 2,
+        "health": 0,
+        "dignity": 9
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [
+        6
+      ],
+      "source": {
+        "events": ".career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260924T160806Z\\events-20260924T160806Z.jsonl",
+        "sha256_reused": "9bf8bed1d02435047df40300ff306231dfa938b91cb87d3ef5b082e35d7359e5",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      }
+    },
+    {
+      "run": "v7d",
+      "group": "failure_control",
+      "core": false,
+      "tier": "A events plus formal report",
+      "quantitative_score": 17.02,
+      "survival_months": 15,
+      "grade": "E",
+      "final_public_state": {
+        "level": "L1",
+        "skill": 9,
+        "network": 3,
+        "output": 2,
+        "wealth": 0,
+        "health": 6,
+        "dignity": 9
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [],
+      "source": {
+        "events": ".career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260927T143425Z\\events-20260927T143425Z.jsonl",
+        "sha256_reused": "e4e388517aff115747fabe068a76b1bc3d960b43900373d4eca804097348be78",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      }
+    },
+    {
+      "run": "v7q",
+      "group": "failure_control",
+      "core": false,
+      "tier": "A events plus formal report",
+      "quantitative_score": 26.8,
+      "survival_months": 24,
+      "grade": "E",
+      "final_public_state": {
+        "level": "L1",
+        "skill": 9,
+        "network": 0,
+        "output": 3,
+        "wealth": 5,
+        "health": 8,
+        "dignity": 7
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [],
+      "source": {
+        "events": "artifacts\\dev-runs\\s08-run02-v7q\\events.jsonl",
+        "sha256_reused": "a183ac4167b21b4afe817698e9d3d431a516934d22ab8191fce8bd56b2573ae9",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      }
+    },
+    {
+      "run": "v7w",
+      "group": "failure_control",
+      "core": false,
+      "tier": "A events plus formal report",
+      "quantitative_score": 30.31,
+      "survival_months": 24,
+      "grade": "D",
+      "final_public_state": {
+        "level": "L2",
+        "skill": 9,
+        "network": 2,
+        "output": 3,
+        "wealth": 6,
+        "health": 8,
+        "dignity": 7
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [
+        24
+      ],
+      "source": {
+        "events": "artifacts\\dev-runs\\s09-run01-v7w\\events.jsonl",
+        "sha256_reused": "62b4ad52660b0a8fc937aeab2f51c62063d108d4775f90ff253a1ff3c974561e",
+        "identity_reference": "S09-02_FAILURE_FLOOR_HIGH_SCORE_JOINT_FORENSICS.md"
+      }
+    },
+    {
+      "run": "v7x",
+      "group": "failure_control",
+      "core": false,
+      "tier": "A events plus formal report",
+      "quantitative_score": 19.82,
+      "survival_months": 8,
+      "grade": "E",
+      "final_public_state": {
+        "level": "L1",
+        "skill": 9,
+        "network": 3,
+        "output": 3,
+        "wealth": 3,
+        "health": 0,
+        "dignity": 7
+      },
+      "dev_risk_control_component_points": null,
+      "promotions": [],
+      "source": {
+        "run_report": "../runs/v7x-run1-validation.md",
+        "identity_reference": "S09-04_RESOURCE_TRAJECTORY_INTERVENTION_FORENSICS.md"
+      }
+    }
+  ],
+  "v8a_late_public": {
+    "RUN07": {
+      "events": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261001T114001Z\\events-20261001T114001Z.jsonl",
+      "checkpoint_timing": "last public observe within month; not formal Review instant or final settlement",
+      "checkpoints": {
+        "24": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 45,
+          "network": 21,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 19,
+          "wealth": 9,
+          "energy": 0
+        },
+        "30": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 64,
+          "network": 27,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 26,
+          "wealth": 14,
+          "energy": 0
+        },
+        "36": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 85,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 25,
+          "wealth": 19,
+          "energy": 0
+        },
+        "42": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 102,
+          "network": 43,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 26,
+          "wealth": 25,
+          "energy": 0
+        },
+        "48": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 118,
+          "network": 54,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 33,
+          "wealth": 34,
+          "energy": 0
+        }
+      },
+      "M25_M48_energy_choice_counts": {
+        "准备汇报材料": 9,
+        "处理历史埋雷": 2,
+        "健康恢复": 5,
+        "人脉维护": 4,
+        "技能学习": 1
+      },
+      "M25_M48_main_choice_counts": {
+        "申请关键项目": 5,
+        "建立导师关系": 1,
+        "低调避险": 1,
+        "申请岗位轮岗": 1
+      },
+      "selected_clean_response_refs": [
+        {
+          "action": 162,
+          "month": 39,
+          "level": "L4",
+          "choice": "技能学习",
+          "lines": [
+            1329,
+            1331,
+            1337
+          ],
+          "response": {
+            "skill": "GAIN"
+          }
+        }
+      ]
+    },
+    "RUN08": {
+      "events": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261001T132230Z\\events-20261001T132230Z.jsonl",
+      "checkpoint_timing": "last public observe within month; not formal Review instant or final settlement",
+      "checkpoints": {
+        "24": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 42,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 9,
+          "wealth": 8,
+          "energy": 0
+        },
+        "30": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 42,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 13,
+          "output": 13,
+          "wealth": 12,
+          "energy": 0
+        },
+        "36": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 45,
+          "network": 21,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 17,
+          "wealth": 15,
+          "energy": 0
+        },
+        "42": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 62,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 26,
+          "wealth": 23,
+          "energy": 0
+        },
+        "48": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 28,
+          "energy": 0
+        }
+      },
+      "M25_M48_energy_choice_counts": {
+        "准备汇报材料": 12,
+        "处理历史埋雷": 1,
+        "健康恢复": 5,
+        "人脉维护": 3,
+        "技能学习": 1
+      },
+      "M25_M48_main_choice_counts": {
+        "申请关键项目": 8
+      },
+      "selected_clean_response_refs": [
+        {
+          "action": 177,
+          "month": 42,
+          "level": "L4",
+          "choice": "准备汇报材料",
+          "lines": [
+            1435,
+            1437,
+            1443
+          ],
+          "response": {
+            "output": "NO_GAIN"
+          }
+        },
+        {
+          "action": 178,
+          "month": 42,
+          "level": "L4",
+          "choice": "准备汇报材料",
+          "lines": [
+            1443,
+            1445,
+            1451
+          ],
+          "response": {
+            "output": "NO_GAIN"
+          }
+        },
+        {
+          "action": 179,
+          "month": 42,
+          "level": "L4",
+          "choice": "人脉维护",
+          "lines": [
+            1451,
+            1453,
+            1459
+          ],
+          "response": {
+            "network": "GAIN"
+          }
+        },
+        {
+          "action": 203,
+          "month": 48,
+          "level": "L4",
+          "choice": "技能学习",
+          "lines": [
+            1643,
+            1645,
+            1651
+          ],
+          "response": {
+            "skill": "GAIN"
+          }
+        }
+      ]
+    }
+  },
+  "current_bottleneck": "GROWTH_EXPLORATION",
+  "next_strategy_hypothesis": "ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE",
+  "direction": "SUPPORTED_DIRECTION",
+  "expected_score_benefit": "PLAUSIBLE_NOT_VALIDATED",
+  "submission_implication": "INSUFFICIENT_EVIDENCE_TO_REPLACE_V8A",
+  "decision": "S09_13_ADAPTIVE_OPPORTUNITY_CAPTURE_READY_RETURN_TO_STAGE",
+  "candidate_changed": false,
+  "live_operations": 0,
+  "next_game": "NOT_AUTHORIZED"
+}
