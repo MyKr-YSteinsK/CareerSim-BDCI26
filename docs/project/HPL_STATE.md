@@ -5,10 +5,12 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-05 local Web Human Client`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL05_LOCAL_WEB_FIXTURE_PASS`.
-- Decision: dedicated signed CPython + msgpack fallback starts a stdlib loopback Web client with local three-column UI and existing controller/public-evidence/lifecycle seams. HTTP and browser fixture E2E pass, including action gating, ending/verified ZIP/cleanup and shutdown; 57 targeted tests pass. No real game or GameEngine construction occurred; future Human factory is only fake-constructor tested. Return `READY_FOR_HPL_05A_REAL_HUMAN_SMOKE_REVIEW`, not live authorization. HPL-04B's original default import remains blocked and HPL-04 remains unaccepted. Never resume HPL-RUN01.
-- Human Run authorization: `NOT_AUTHORIZED`; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
+- Current task: `HPL-06 local Web portable distribution`.
+- Status: `IN_FLIGHT_EVIDENCE / HPL06_PORTABLE_CANDIDATE_BUILT_WAITING_FOR_HPL05A`.
+- Decision: official PSF CPython 3.12.10 x64 embeddable runtime, relative isolated search paths, frozen pure-Python dependency closure and complete 194-file Dev mirror produce a relocatable Web candidate. Relocated fixture UI/action/export/cleanup/shutdown and unwritable fail-closed checks pass on this strict Windows host. This is not READY_TO_SEND or clean-machine validation.
+- Release gate: HPL-05A has no accepted PASS. Its sole user-started run stopped by manual shutdown while ACTIVE after 5 successful actions; source journal confirms Month 2 / L1. Run/session are retained; no normal ending/result ZIP and no score/strategy conclusion. Do not resume/replay or open a replacement game.
+- Human Run authorization: HPL-05A's single fresh-game budget is spent. HPL-06 authorizes no new real game; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
+- Delivery/evidence: [HPL-06 review](reviews/HPL-06_LOCAL_WEB_PORTABLE_DISTRIBUTION.md); [HPL-05A checkpoint](reviews/HPL-05A_REAL_HUMAN_WEB_SMOKE.md).
 
 ## Lineage
 

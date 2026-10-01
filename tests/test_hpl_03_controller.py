@@ -98,13 +98,13 @@ def test_fresh_run_constructor_routes_db_and_logs_before_io(tmp_path, monkeypatc
     layout = HPLLayout(
         tmp_path, tmp_path / ".local/worktrees/human-play-lab", tmp_path / ".local/runtime/human-play-lab"
     )
-    monkeypatch.setattr(module, "resolve_layout", lambda: layout)
+    monkeypatch.setattr("scripts.hpl_play.resolve_layout", lambda: layout)
     identity = {
         "python_version": "fixture",
         "dataset": {"engine_paths": {key: str(tmp_path / key) for key in DATASET_PATHS}},
     }
-    monkeypatch.setattr(module, "_load_environment_manifest", lambda value: ({}, identity))
-    monkeypatch.setattr(module, "_git_value", lambda *args: "fixture-commit")
+    monkeypatch.setattr("scripts.hpl_play._load_environment_manifest", lambda value: ({}, identity))
+    monkeypatch.setattr("scripts.hpl_play._git_value", lambda *args: "fixture-commit")
     monkeypatch.setattr(module.metadata, "version", lambda name: "1.0.1")
     monkeypatch.setenv("CAREER_EMULATOR_DB", "fixture-old-db")
     monkeypatch.setenv("CAREER_EMULATOR_LOG_DIR", "fixture-old-log")

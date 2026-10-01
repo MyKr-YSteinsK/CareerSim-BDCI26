@@ -16,7 +16,7 @@ function render(next) {
   const fixture = state.mode === "FIXTURE / NON_GAME";
   text("start-copy", fixture ? "FIXTURE / NON_GAME：演示选项不会创建真实游戏，合成数据包单独保存。" : "仅在获得 Human Run 授权后开始。启动页面本身不会创建游戏。请保留技术失败资料。");
   text("start", fixture ? "开始离线演示" : "开始人工对局");
-  $("start").disabled = pending;
+  $("start").disabled = pending || state.start_available === false;
   $("stats").replaceChildren(...stats.map(([key,label]) => {
     const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
     dt.textContent = label; dd.textContent = current[key] ?? "—"; row.append(dt,dd); return row;

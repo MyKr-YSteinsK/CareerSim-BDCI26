@@ -7,29 +7,25 @@ import re
 import uuid
 
 from scripts.hpl_evidence_writer import _KNOWN_SECRET_PATTERNS
-from scripts.hpl_play import (
-    _git_value,
-    _load_environment_manifest,
-    assert_isolated_run_root,
-    engine_constructor_kwargs,
-    resolve_layout,
-)
+from hpl_client.path_contract import assert_isolated_run_root, engine_constructor_kwargs
 from scripts.hpl_public_evidence import SCHEMA_VERSION
 
 from hpl_client.game_adapter import PublicGameAdapter
 from hpl_client.export import finalize_success
 from hpl_client.presentation import choice_disabled_reason
 from hpl_client.recorder import RunRecorder, now
-from hpl_client.runtime_paths import (
-    is_packaged_mode,
-    packaged_identity,
-    packaged_startup_self_check,
-    resolve_packaged_layout,
-)
 
 
 def create_human_run(tag):
     """Called only by the user's GUI Start action, never at app startup."""
+    from scripts.hpl_play import _git_value, _load_environment_manifest, resolve_layout
+    from hpl_client.runtime_paths import (
+        is_packaged_mode,
+        packaged_identity,
+        packaged_startup_self_check,
+        resolve_packaged_layout,
+    )
+
     if is_packaged_mode():
         layout = resolve_packaged_layout()
         self_check = packaged_startup_self_check(layout)
@@ -91,9 +87,7 @@ def create_human_run(tag):
     try:
         from career_emulator.game import GameEngine
 
-        engine = GameEngine(
-            **engine_constructor_kwargs(engine_paths, runtime / "career_emulator.sqlite3")
-        )
+        engine = GameEngine(**engine_constructor_kwargs(engine_paths, runtime / "career_emulator.sqlite3"))
         # Storage defaults freeze on first import. Explicitly route every fresh run's
         # existing store before any engine IO, including subsequent games in this process.
         engine.store.log_dir = logs
@@ -256,4 +250,7 @@ class HumanGameController:
 
     @staticmethod
     def _active_layout():
+        from scripts.hpl_play import resolve_layout
+        from hpl_client.runtime_paths import is_packaged_mode, resolve_packaged_layout
+
         return resolve_packaged_layout() if is_packaged_mode() else resolve_layout()

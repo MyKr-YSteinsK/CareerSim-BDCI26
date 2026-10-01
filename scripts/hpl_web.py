@@ -12,15 +12,19 @@ sys.path.insert(0, str(WORKTREE))
 
 from hpl_client.controller import HumanGameController  # noqa: E402
 from hpl_client.web import LocalWebServer, WebApplication, fixture_controller, web_human_factory  # noqa: E402
+from hpl_client.web_smoke import SingleRunWebApplication  # noqa: E402
 from scripts.hpl_web_runtime import loaded_native_modules, runtime_root, startup_check  # noqa: E402
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--human", action="store_true", help="Future explicitly authorized user Start only")
+    parser.add_argument("--one-human-smoke", action="store_true", help="HPL-05A durable single-start budget")
     parser.add_argument("--no-browser", action="store_true")
     parser.add_argument("--ready-file", type=Path, help="Trusted local smoke evidence path")
     args = parser.parse_args()
+    if args.one_human_smoke and not args.human:
+        parser.error("--one-human-smoke requires --human")
     root = runtime_root()
     app = server = None
     try:
@@ -29,7 +33,11 @@ def main():
         from career_emulator.game import GameEngine  # noqa: F401
 
         controller = HumanGameController(web_human_factory) if args.human else fixture_controller(root)
-        app = WebApplication(controller, fixture=not args.human)
+        app = (
+            SingleRunWebApplication(controller, root / "HPL-05A", web_human_factory)
+            if args.one_human_smoke
+            else WebApplication(controller, fixture=not args.human)
+        )
         server = LocalWebServer(app)
         if args.ready_file:
             target = args.ready_file.absolute()

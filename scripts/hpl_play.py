@@ -15,7 +15,6 @@ import shutil
 import subprocess
 import sys
 import uuid
-from dataclasses import dataclass
 from datetime import datetime, timezone
 from io import StringIO
 from pathlib import Path
@@ -28,12 +27,20 @@ if str(WORKTREE_ROOT) not in sys.path:
 
 from scripts.hpl_evidence_writer import write_run_evidence  # noqa: E402
 from scripts.hpl_preflight import (  # noqa: E402
-    DATASET_PATHS,
     EXPECTED_DATA_VERSION,
     EXPECTED_EMULATOR_VERSION,
     build_preflight,
 )
 from scripts.hpl_public_evidence import SCHEMA_VERSION  # noqa: E402
+from hpl_client.path_contract import (  # noqa: E402, F401
+    HPLLayout,
+    _path_key,
+    _is_within,
+    _paths_overlap,
+    protected_agent_paths,
+    assert_isolated_run_root,
+    engine_constructor_kwargs,
+)
 
 
 LAUNCHER_VERSION = "hpl-02/v1"
@@ -53,37 +60,6 @@ _FORBIDDEN_PACKAGE_NAMES = frozenset(
         "jiuwenswarm",
     }
 )
-
-
-@dataclass(frozen=True)
-class HPLLayout:
-    workspace_root: Path
-    worktree_root: Path
-    sandbox_root: Path
-
-    @property
-    def runs_root(self) -> Path:
-        return self.sandbox_root / "runs"
-
-    @property
-    def environment_manifest_path(self) -> Path:
-        return self.sandbox_root / "sandbox" / "environment_manifest.json"
-
-
-def _path_key(path: Path) -> str:
-    return os.path.normcase(str(path.resolve(strict=False)))
-
-
-def _is_within(path: Path, parent: Path) -> bool:
-    try:
-        path.resolve(strict=False).relative_to(parent.resolve(strict=False))
-    except ValueError:
-        return False
-    return True
-
-
-def _paths_overlap(left: Path, right: Path) -> bool:
-    return _is_within(left, right) or _is_within(right, left)
 
 
 def resolve_layout(script_path: Path | str = __file__) -> HPLLayout:
@@ -196,7 +172,9 @@ def _uv_version() -> str:
     executable = shutil.which("uv")
     if executable is None:
         return "UNKNOWN"
-    return subprocess.run([executable, "--version"], check=True, capture_output=True, text=True, timeout=10).stdout.strip()
+    return subprocess.run(
+        [executable, "--version"], check=True, capture_output=True, text=True, timeout=10
+    ).stdout.strip()
 
 
 def write_environment_manifest(layout: HPLLayout, *, refresh: bool = False) -> dict[str, Any]:
@@ -243,9 +221,10 @@ def write_environment_manifest(layout: HPLLayout, *, refresh: bool = False) -> d
     layout.runs_root.mkdir(parents=True, exist_ok=True)
     if path.exists():
         existing = json.loads(path.read_text(encoding="utf-8"))
-        if existing.get("package_identity") != manifest["package_identity"] or existing.get("package_roots") != manifest[
-            "package_roots"
-        ]:
+        if (
+            existing.get("package_identity") != manifest["package_identity"]
+            or existing.get("package_roots") != manifest["package_roots"]
+        ):
             raise RuntimeError("Existing HPL environment manifest does not match the installed environment")
         if not refresh:
             return existing
@@ -282,43 +261,9 @@ def _load_environment_manifest(layout: HPLLayout) -> tuple[dict[str, Any], dict[
     return manifest, identity
 
 
-def protected_agent_paths(workspace_root: Path) -> list[Path]:
-    paths = [
-        workspace_root / ".venv",
-        workspace_root / "configs" / "current_candidate.json",
-        workspace_root / "configs" / "runtime_manifest.json",
-        workspace_root / "skills",
-        workspace_root / "career_sim_runner",
-        workspace_root / ".career_sim_runner",
-        Path.home() / ".jiuwenswarm-instances" / "career_emu",
-    ]
-    sibling_runtime_root = workspace_root / ".local" / "runtime"
-    if sibling_runtime_root.is_dir():
-        paths.extend(
-            child for child in sibling_runtime_root.iterdir() if child.name.casefold() != "human-play-lab"
-        )
-    return paths
-
-
-def assert_isolated_run_root(run_root: Path, layout: HPLLayout) -> None:
-    candidate = run_root.absolute()
-    current = candidate
-    while current != current.parent:
-        if current.exists() and current.is_symlink():
-            raise ValueError(f"run_root path contains a symlink: {current}")
-        current = current.parent
-    runs_root = layout.runs_root.resolve(strict=False)
-    resolved_run = candidate.resolve(strict=False)
-    for protected in protected_agent_paths(layout.workspace_root):
-        if _paths_overlap(resolved_run, protected):
-            raise ValueError(f"run_root overlaps protected Agent path: {protected}")
-    if not _is_within(resolved_run, runs_root) or _path_key(resolved_run) == _path_key(runs_root):
-        raise ValueError("run_root must be a child of the HPL runs root")
-    if _paths_overlap(resolved_run, layout.sandbox_root / "venv"):
-        raise ValueError("run_root overlaps the dedicated HPL venv")
-
-
-def build_dry_run_plan(layout: HPLLayout, run_id: str | None = None, authorization_id: str | None = None) -> dict[str, Any]:
+def build_dry_run_plan(
+    layout: HPLLayout, run_id: str | None = None, authorization_id: str | None = None
+) -> dict[str, Any]:
     """Validate the dedicated environment and show a prospective run without writes."""
     environment, _identity = _load_environment_manifest(layout)
     identifier = run_id or uuid.uuid4().hex
@@ -369,6 +314,7 @@ def make_input_interceptor(
     on_blocked: Callable[[str], None] | None = None,
 ) -> Callable[[str], str]:
     """Block the raw logs command at the participant input boundary."""
+
     def guarded_input(prompt: str = "") -> str:
         while True:
             value = reader(prompt)
@@ -392,12 +338,6 @@ def wire_official_cli(cli_module: Any, engine: Any) -> None:
     """Patch only the official CLI's engine factory and optional share callback."""
     cli_module.get_default_engine = lambda: engine
     cli_module.offer_share = _disabled_share_callback
-
-
-def engine_constructor_kwargs(engine_paths: dict[str, str], db_path: Path) -> dict[str, Any]:
-    if set(engine_paths) != set(DATASET_PATHS):
-        raise ValueError("pinned HPL dataset must provide exactly the seven official GameEngine directories")
-    return {**{name: Path(value) for name, value in engine_paths.items()}, "db_path": db_path}
 
 
 class _TeeTextIO:
@@ -465,7 +405,9 @@ def parse_cli_transcript(transcript: str) -> list[dict[str, Any]]:
     session_pattern = re.compile(r"\bSession:\s*(\S+)")
     time_pattern = re.compile(r"(?P<level>.*?)\bMonth\s+(\d+)\s*\|\s*Quarter\s+(\d+)\s*\|\s*Year\s+(\d+)")
     energy_pattern = re.compile(r"Energy\s+(-?\d+)\s*\|\s*Output\s+(-?\d+)\s*\|\s*Wealth\s+(-?\d+)")
-    status_pattern = re.compile(r"Dignity\s+(-?\d+)\s*\|\s*Health\s+(-?\d+)\s*\|\s*Network\s+(-?\d+)\s*\|\s*Skill\s+(-?\d+)")
+    status_pattern = re.compile(
+        r"Dignity\s+(-?\d+)\s*\|\s*Health\s+(-?\d+)\s*\|\s*Network\s+(-?\d+)\s*\|\s*Skill\s+(-?\d+)"
+    )
     choice_pattern = re.compile(r"^(\d+)\.\s+(.*?)(?:\s+\((\d+)\))?$")
 
     index = 0
@@ -587,7 +529,9 @@ def parse_cli_transcript(transcript: str) -> list[dict[str, Any]]:
         while end < len(lines) and "Press ENTER to continue" not in lines[end]:
             end += 1
         handbook = "\n".join(part.strip() for part in lines[heading_index + 1 : end] if part.strip())
-        prior = [frame_index for frame_index, source_line in enumerate(frame_line_indexes) if source_line < heading_index]
+        prior = [
+            frame_index for frame_index, source_line in enumerate(frame_line_indexes) if source_line < heading_index
+        ]
         if prior and handbook:
             frames[prior[-1]]["handbook"] = handbook
 
@@ -657,7 +601,9 @@ def _write_noop_message(message: str) -> None:
     print(message)
 
 
-def _record_run(layout: HPLLayout, run_root: Path, authorization_id: str, human_tag: str, identity: dict[str, Any]) -> None:
+def _record_run(
+    layout: HPLLayout, run_root: Path, authorization_id: str, human_tag: str, identity: dict[str, Any]
+) -> None:
     runtime = run_root / "runtime"
     db_path = runtime / "career_emulator.sqlite3"
     log_dir = runtime / "logs"
@@ -722,9 +668,7 @@ def _record_run(layout: HPLLayout, run_root: Path, authorization_id: str, human_
         if frame_index < len(frames):
             frames[frame_index]["human_selection"] = selection
     session_ids = [
-        frame["state"]["session_id"]
-        for frame in frames
-        if isinstance(frame.get("state", {}).get("session_id"), str)
+        frame["state"]["session_id"] for frame in frames if isinstance(frame.get("state", {}).get("session_id"), str)
     ]
     manifest = {
         "run_id": run_root.name,
@@ -757,7 +701,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--live", action="store_true", help="Explicit live intent; requires a Main authorization ID.")
     parser.add_argument("--authorization-id", default=None, help="Non-empty Main gate identity required with --live.")
     parser.add_argument(
-        "--refresh-environment-manifest", action="store_true",
+        "--refresh-environment-manifest",
+        action="store_true",
         help="Explicitly record an authorized HPL dependency change; preserve the old manifest.",
     )
     parser.add_argument("--tag", default="manual", help="Human research tag recorded in a future authorized run.")
@@ -780,7 +725,11 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
             return 0
         if not live_gate_allows(args.live, args.authorization_id):
-            print(json.dumps(build_dry_run_plan(layout, authorization_id=args.authorization_id), ensure_ascii=False, indent=2))
+            print(
+                json.dumps(
+                    build_dry_run_plan(layout, authorization_id=args.authorization_id), ensure_ascii=False, indent=2
+                )
+            )
             return 0
         _environment, identity = _load_environment_manifest(layout)
         run_id = uuid.uuid4().hex

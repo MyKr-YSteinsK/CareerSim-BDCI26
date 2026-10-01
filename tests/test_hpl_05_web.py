@@ -242,7 +242,7 @@ def test_future_human_factory_routes_every_run_using_only_fake_constructor(tmp_p
     from scripts.hpl_play import HPLLayout
 
     layout = HPLLayout(tmp_path, tmp_path / "worktree", tmp_path / "sandbox")
-    monkeypatch.setattr("hpl_client.web.resolve_layout", lambda: layout)
+    monkeypatch.setattr("scripts.hpl_play.resolve_layout", lambda: layout)
     monkeypatch.setattr("scripts.hpl_web_runtime.startup_check", lambda: {})
     monkeypatch.setattr("scripts.hpl_web_runtime.runtime_root", lambda: tmp_path / "web")
     monkeypatch.setattr("subprocess.check_output", lambda *args, **kwargs: "fixture-commit\n")

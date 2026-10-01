@@ -15,8 +15,7 @@ from hpl_client.fixtures import FixtureEngine
 from hpl_client.game_adapter import PublicGameAdapter
 from hpl_client.presentation import choice_disabled_reason
 from hpl_client.recorder import RunRecorder, now
-from scripts.hpl_play import HPLLayout, assert_isolated_run_root, engine_constructor_kwargs, resolve_layout
-from scripts.hpl_preflight import DATASET_PATHS
+from hpl_client.path_contract import HPLLayout, assert_isolated_run_root, engine_constructor_kwargs, DATASET_PATHS
 from scripts.hpl_public_evidence import SCHEMA_VERSION, project_cli_frame
 
 ASSETS = Path(__file__).with_name("web_assets")
@@ -85,6 +84,7 @@ def web_human_factory(tag):
     import subprocess
 
     from scripts.hpl_web_runtime import runtime_root, startup_check
+    from scripts.hpl_play import resolve_layout
 
     startup_check()
     layout = resolve_layout()

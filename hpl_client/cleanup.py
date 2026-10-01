@@ -3,7 +3,7 @@
 import shutil
 from pathlib import Path
 
-from scripts.hpl_play import assert_isolated_run_root
+from hpl_client.path_contract import assert_isolated_run_root
 
 from hpl_client.export import ARTIFACTS, verify_zip
 
