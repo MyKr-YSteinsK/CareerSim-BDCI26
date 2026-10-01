@@ -1,7 +1,7 @@
 {
   "candidate_id": "candidate-v9a-adaptive-opportunity-capture",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S09_14_ADAPTIVE_OPPORTUNITY_CAPTURE_STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+  "decision": "S09_14_ADAPTIVE_OPPORTUNITY_CAPTURE_STATIC_PASS_RETURN_TO_STAGE",
   "design_freeze": "ACTIVE",
   "strategy_delta": "V8A_PLUS_ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE",
   "parent_candidate_id": "candidate-v8a-v7o-donor-core-transplant",
