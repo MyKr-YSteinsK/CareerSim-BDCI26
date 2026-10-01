@@ -106,6 +106,14 @@ If advertised gain is absent after a fresh observe, record `OBSERVED_NO_GAIN` or
 
 消费 Board `PROGRESSION_RESPONSE`：clean NO_GAIN 只折价已测试的当前 Level/context/dimension/action family；UNKNOWN 保持开放，多维动作保留其它维度及 ownership/结果价值。不把局部 NO_GAIN 传播给未测试 family，不推断全局 cap、eligibility 或恢复无成长机会成本。Level change 后依 Board 重置；存在 responsive alternative 时不立即重复同一路径。
 
+### Bounded untested probe
+
+仅当拟继续路径有 fresh clean local NO_GAIN/stagnation，当前 Level/context 无更高价值的 known responsive 合法替代，且有合法未测试、公开语义支持高价值的 growth family 时，将一次 bounded untested probe 加入 top candidate comparison。生存/合规/信任有重大 binding 约束，或 probe 会明显破坏近期 binding 交付义务时，禁止加入。与当前最佳候选比较职业价值、ownership/visible result、多维价值、普通成本、交付成本及生存/合规约束；不自动选择，仍最多两个候选、比较一次。
+
+局部顺序：binding 保护 → exploit 已知高价值响应路径 → 比较 bounded probe；stalled path 仅凭仍有强独立多维/交付价值可胜出。UNKNOWN 不当 GAIN，不为覆盖率探索，不固定 Skill 偏好。
+
+probe 胜出只选一次 action，executor 随后 fresh observe；响应只更新 current Level/context/local family/dimension。GAIN 不证明该 family 最好；NO_GAIN 仅局部折价，不永久放弃，不推全局 cap、隐藏阈值或永久偏好。结果不授权下一次 probe，不连续 probe 两个未知 family；不新增 S/N/O 或 exploration quota、budget、ledger、state machine。
+
 ## Quarterly control
 
 `QUARTER_INTENT = <MODE | current target>` 仅当前目标，不预定剩余序列或配额。每次只选一个 Energy action；执行后由 executor fresh observe → Board（含 PROGRESSION_RESPONSE）→ Delivery → new Planning pass → final Risk → READY → preflight，再决定下一动作。receipt 不提供 public state；旧计划不能授权动作。
