@@ -261,3 +261,9 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 ## S09-RUN03R v7y — user-censored development evidence
 
 - `DEVELOPMENT_CENSORED_BY_USER_AT_M12`; actual stop M15/L1 after M6 C/L1 and M12 C/L1, no promotion. One fresh play, authorization consumed; 60 actions / 61 observes. No final score, natural terminal or survival-failure claim. Runner stopped; one graceful service stop exit0, manager stopped and ports released; no replacement. [Minimal run note](runs/v7y-run03r-user-censored.md) records M9 recovery, unsupported hidden-cap assertions and exact local evidence hold; return to Stage, `NEXT_GAME=NOT_AUTHORIZED`.
+
+## S09-RUN04 v7z — M6 screening censor
+
+- One authorized fresh game; base `b92e834`; M6 C / L1→L1 / no promotion; M12/M18 NOT_REACHED. `DEVELOPMENT_CENSORED_M6_PROMOTION_GATE_FAIL`; final score/survival NOT_VALIDATED.
+- World-model narrow adherence PASS through M6; promotion not restored. 20 actions/21 observes; automatic immediate stop, no post-gate action, stop exit0/manager stopped/four ports released; no replacement. Raw local FORENSIC_HOLD ACTIVE.
+- Decision=`S09_RUN04_M6_PROMOTION_GATE_FAIL_RETURN_TO_STAGE`; `NEXT_GAME=NOT_AUTHORIZED`. See [minimal run note](runs/v7z-run1-screening.md).
