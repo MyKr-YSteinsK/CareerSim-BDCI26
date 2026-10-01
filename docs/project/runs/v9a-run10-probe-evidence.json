@@ -1,0 +1,513 @@
+{
+  "run": "S09-RUN10",
+  "candidate": "candidate-v9a-adaptive-opportunity-capture",
+  "execution_commit": "1cc20d7a09b8ac8e34c963ae1016f64e25d99d00",
+  "events_identity": {
+    "bytes": 2041964,
+    "name": "events-20261001T161805Z.jsonl",
+    "sha256": "10fe7d3bc50f115a1bca02abed1afab2c63b605bc04a807a93a7f780b7710702"
+  },
+  "probe_eligible_count": "UNKNOWN",
+  "confirmed_eligible_count": 0,
+  "probe_compared_count": "UNKNOWN",
+  "documented_qualifying_comparisons": 0,
+  "probe_selected_count": "UNKNOWN",
+  "confirmed_qualifying_selections": 0,
+  "probe_GAIN_count": "UNKNOWN",
+  "probe_NO_GAIN_count": "UNKNOWN",
+  "probe_UNKNOWN_count": "UNKNOWN",
+  "consecutive_probe_violations": "UNKNOWN",
+  "observed_confirmed_probe_chain_violations": 0,
+  "probe_blocked_by_binding_constraint_count": "UNKNOWN",
+  "conclusion": "QUALIFYING_DELTA_EXECUTION_NOT_ESTABLISHED",
+  "limitation": "Ordinary comparison, local NO_GAIN and trial wording do not jointly prove all five eligibility conditions. Missing Delivery semantics and known-responsive alternative ranking prevent exhaustive eligibility counts. No qualifying probe ledger is exposed. Zero confirmed traces is not proof of zero eligible opportunities.",
+  "fresh_observe_boundaries": {
+    "passed": 201,
+    "actions": 201,
+    "status": "PASS"
+  },
+  "trace_scope": "Selected public Energy action receipts; same month/Level clean numeric progression pairs only. No internal effects used.",
+  "cases": [
+    {
+      "action": 38,
+      "seq": 325,
+      "month": 9,
+      "before": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 2,
+        "energy": 1
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] H恢复至6解除约束回MODE=A；最后1能量选准备汇报材料(O+1)直接指向Output gap。",
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 2,
+        "energy": 0
+      },
+      "after_seq": 331,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 49,
+      "seq": 413,
+      "month": 12,
+      "before": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 3
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] Gap=Output，首个Energy选准备汇报材料(O+1)直接指向gap且零副作用；Dignity已满故D+1浪费、高强度工作的忙正是批评点故暂不选。",
+      "after": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 2,
+        "energy": 2
+      },
+      "after_seq": 419,
+      "response": "GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 88,
+      "seq": 725,
+      "month": 21,
+      "before": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 16,
+        "wealth": 6,
+        "energy": 1
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 准备汇报材料(1体力)：剩 1 体力，整理可见成果材料 Output+1，直击\"只会忙不会赢\"的 Gap。",
+      "after": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 16,
+        "wealth": 6,
+        "energy": 0
+      },
+      "after_seq": 731,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 135,
+      "seq": 1101,
+      "month": 33,
+      "before": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 77,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 15,
+        "energy": 3
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "高强度工作",
+      "choice": 1,
+      "advertised": {
+        "output": 2,
+        "health": -1,
+        "dignity": -1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 高强度工作(2体力)：Health=7 可承受，Output+2直击\"亮点不突出\"的 Gap；随后以剩余体力健康恢复，兼顾产出与生存底线。一次一个，随后 fresh observe。",
+      "after": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 77,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 15,
+        "energy": 1
+      },
+      "after_seq": 1107,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 149,
+      "seq": 1213,
+      "month": 36,
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 84,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 18,
+        "energy": 1
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=S R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 健康已回安全底（H=6），剩余 1 体力投入 Gap=Output：准备汇报材料（Output+1），提前整理可见成果，服务\"亮点/可见度\"缺口。",
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 84,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 18,
+        "energy": 0
+      },
+      "after_seq": 1219,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 160,
+      "seq": 1301,
+      "month": 39,
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 90,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 23,
+        "energy": 3
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 本季计划 准备汇报材料×2 + 健康恢复×1。首个：准备汇报材料（Output+1，无健康/风险代价），服务 Output/亮点 Gap；其性价比严格优于高强度工作。",
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 90,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 23,
+        "energy": 2
+      },
+      "after_seq": 1307,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 162,
+      "seq": 1317,
+      "month": 39,
+      "before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 90,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 23,
+        "energy": 1
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "人脉维护",
+      "choice": 3,
+      "advertised": {
+        "network": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 最后 1 体力：人脉维护（Network+1），补齐相对偏低的 N 维度以支撑晋升；健康已达 8，无需再恢复。",
+      "after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 90,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 23,
+        "energy": 0
+      },
+      "after_seq": 1323,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 173,
+      "seq": 1405,
+      "month": 42,
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 96,
+        "network": 36,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 26,
+        "wealth": 27,
+        "energy": 3
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] Gap=Output。先投 1 点准备汇报材料（Output+1，无健康/风险代价）试探结算，再决定后续分配；其性价比严格优于高强度工作。",
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 96,
+        "network": 36,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 27,
+        "wealth": 27,
+        "energy": 2
+      },
+      "after_seq": 1411,
+      "response": "GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "NOT_ESTABLISHED_AFTER_LEVEL_RESET",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "high-intensity work, as stated in ordinary comparison; no hidden counterfactual"
+    },
+    {
+      "action": 186,
+      "seq": 1509,
+      "month": 45,
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 105,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 38,
+        "wealth": 27,
+        "energy": 3
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "准备汇报材料",
+      "choice": 7,
+      "advertised": {
+        "output": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 本季计划 准备汇报材料×2 + 健康恢复×1。首个：准备汇报材料（Output+1，无健康/风险代价），服务 Output/亮点 Gap。",
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 105,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 38,
+        "wealth": 27,
+        "energy": 2
+      },
+      "after_seq": 1515,
+      "response": "NO_GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    },
+    {
+      "action": 188,
+      "seq": 1525,
+      "month": 45,
+      "before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 105,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 38,
+        "wealth": 27,
+        "energy": 1
+      },
+      "event": "季度体力行动分配",
+      "selected_family": "人脉维护",
+      "choice": 3,
+      "advertised": {
+        "network": 1,
+        "dignity": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE][DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] 最后 1 体力：人脉维护（Network+1），投入仍有增益的 N 维度，支撑后续晋升；健康已达 8 无需再恢复。",
+      "after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 105,
+        "network": 42,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 38,
+        "wealth": 27,
+        "energy": 0
+      },
+      "after_seq": 1531,
+      "response": "GAIN",
+      "eligibility_before_action": {
+        "fresh_local_NO_GAIN": "UNKNOWN",
+        "known_responsive_alternative": "UNKNOWN",
+        "legal_untested_high_value_family": "UNKNOWN",
+        "survival_compliance_trust_binding": "UNKNOWN",
+        "delivery_binding": "UNKNOWN",
+        "eligible": "UNKNOWN"
+      },
+      "qualifying_probe_compared": "NOT_ESTABLISHED",
+      "qualifying_probe_selected": "NOT_ESTABLISHED",
+      "immediate_displacement": "UNKNOWN"
+    }
+  ]
+}
