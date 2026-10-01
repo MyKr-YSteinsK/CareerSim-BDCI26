@@ -267,3 +267,9 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 - One authorized fresh game; base `b92e834`; M6 C / L1→L1 / no promotion; M12/M18 NOT_REACHED. `DEVELOPMENT_CENSORED_M6_PROMOTION_GATE_FAIL`; final score/survival NOT_VALIDATED.
 - World-model narrow adherence PASS through M6; promotion not restored. 20 actions/21 observes; automatic immediate stop, no post-gate action, stop exit0/manager stopped/four ports released; no replacement. Raw local FORENSIC_HOLD ACTIVE.
 - Decision=`S09_RUN04_M6_PROMOTION_GATE_FAIL_RETURN_TO_STAGE`; `NEXT_GAME=NOT_AUTHORIZED`. See [minimal run note](runs/v7z-run1-screening.md).
+
+## S09-RUN07 v8a — full-horizon distribution sample #1
+
+- One authorized fresh game completed naturally at 48 months: 72.65 quantitative / 50.86 partial / grade A / final L5. Promotions at M6, M12, M24, M42. Public H/W/S/N/O at M6→M48 and exact raw hashes are in the [run note](runs/v8a-full-horizon-sample1.md).
+- 203/203 actions succeeded and had fresh-observe pairs; 204 observes total. Input/output/total tokens: 43,044,759 / 273,063 / 43,317,822; wall time 71m12s; billed cost UNKNOWN. Service stopped and all four ports were released; no replacement run.
+- Marker audit: A194/S9; Delivery `0/203` accepted because all markers are adjacent; the manifest illustrates a separator but does not define whether adjacency is invalid, so parser/format compliance is unresolved and lifecycle UNKNOWN. Three numeric `HiddenRisk-1` references contradict the evidence firewall; an M36 repeat risk response remains for review. Compression and Skill reread counts UNKNOWN. Runtime/long-horizon validation and improvement/transfer flags remain false; gameplay/provider flags are true for this session only. Local raw evidence remains on `FORENSIC_HOLD=ACTIVE` pending Stage/Main review. Decision=`S09_RUN07_V8A_FULL_HORIZON_SAMPLE1_COMPLETE_RETURN_TO_STAGE`; `NEXT_GAME=NOT_AUTHORIZED`.
