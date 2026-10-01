@@ -1,7 +1,7 @@
 {
   "candidate_id": "candidate-v8a-v7o-donor-core-transplant",
-  "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S09_10_DIRECT_DONOR_CORE_TRANSPLANT_PASS_READY_FOR_M6_GATE",
+  "status": "FINAL_FROZEN_FOR_SUBMISSION",
+  "decision": "FINAL_SUBMISSION_FREEZE_V8A",
   "design_freeze": "ACTIVE",
   "strategy_delta": "CURRENT_RUNTIME_SHELL_PLUS_DIRECT_V7O_STRATEGY_CORE",
   "parent_candidate_id": "candidate-v7z-world-model-correction",
