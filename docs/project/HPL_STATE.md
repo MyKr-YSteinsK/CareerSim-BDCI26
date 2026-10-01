@@ -5,9 +5,9 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-04C msgpack native extension avoidance probe`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL_MSGPACK_NATIVE_AVOIDANCE_PASS`.
-- Decision: a fresh signed-CPython probe venv omitting only msgpack's native PYD imports CareerSim with no Code Integrity events and uses the unchanged upstream pure Python fallback. Synthetic serialization checks pass; all 45 observed loaded native modules have valid signatures. This validates only import/fallback feasibility, not gameplay, full performance, localhost or a released client. Return to Main/Planner; do not implement HPL-05 or authorize a Human Run. HPL-04B's original default import remains blocked and HPL-04 remains unaccepted. Never resume HPL-RUN01.
+- Current task: `HPL-05 local Web Human Client`.
+- Status: `IN_FLIGHT_EVIDENCE / HPL05_LOCAL_WEB_FIXTURE_PASS`.
+- Decision: dedicated signed CPython + msgpack fallback starts a stdlib loopback Web client with local three-column UI and existing controller/public-evidence/lifecycle seams. HTTP and browser fixture E2E pass, including action gating, ending/verified ZIP/cleanup and shutdown; 57 targeted tests pass. No real game or GameEngine construction occurred; future Human factory is only fake-constructor tested. Return `READY_FOR_HPL_05A_REAL_HUMAN_SMOKE_REVIEW`, not live authorization. HPL-04B's original default import remains blocked and HPL-04 remains unaccepted. Never resume HPL-RUN01.
 - Human Run authorization: `NOT_AUTHORIZED`; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 
 ## Lineage
@@ -46,6 +46,17 @@
 - Actual loaded inventory: 45 modules (1 EXE / 32 DLL / 12 PYD), 19 PSF and 26 Microsoft Valid, zero unsigned/invalid loaded binaries. Bootstrap pip's six unsigned distlib launcher templates are present but not loaded and are not CareerSim runtime dependencies.
 - Synthetic 800-byte payload, 3 × 1,000 encode/decode samples: medians 101.75 / 175.12 µs per operation; msgpack import 9.49 ms, subsequent CareerSim import 172.41 ms. No native performance baseline was run under the blocking host policy; no gameplay or dataset decoding was performed.
 - Review: [HPL-04C native avoidance](reviews/HPL-04C_MSGPACK_NATIVE_AVOIDANCE.md). Local scripts, identities, measurements and signature inventory remain ignored under `msgpack-probe`; preserve pending Main/Planner review. Existing HPL-RUN01 and HPL-04B FORENSIC_HOLDs remain unchanged. No DB/session/game/local web listener was created.
+
+## HPL-05 local Web boundary
+
+- Parent/base: `ee2b8eaff01b7589579cd875e59e1d1d87cf1948`; existing HPL branch/worktree, no main merge/rebase.
+- New mutable runtime only: `D:\CS\CareerSim\.local\runtime\human-play-lab\local-web-client`; dedicated official CPython 3.12.10 venv, pinned 13-distribution closure, no Flet/PyInstaller/MCP/Provider. Rebuilt by copying HPL-04C's verified file identities and omitting native msgpack, with complete 194-file BDCI26 Dev dataset mirror including performance_score/config.data. HPL-04C environment and manifest-listed evidence bytes were verified unchanged.
+- Entry: `scripts/hpl-web.cmd` defaults to `FIXTURE / NON_GAME`. Exact dedicated Python, startup identity/data/writability checks, ephemeral `127.0.0.1` listener and current URL browser launch. Optional `--human` is a future authorized user entry only; it was not launched here. Server startup never creates a game.
+- Web routes reuse HumanGameController, PublicGameAdapter, public projector, RunRecorder and existing finalize/export/cleanup. Fixture storage is solely `local-web-client/fixtures`; fixture ZIPs carry FIXTURE participant/launcher/authorization markers. Future real storage remains `human-play-lab/runs/<run-id>`; no resume/replay route.
+- Action requests enforce exact schema, run/revision/choice checks, request IDs, random per-launch token, expected Host and same-origin POST. No automatic mutation retry. Static assets are fixed local files, with CSP/no directory listing/no DB or raw static serving.
+- 57 targeted tests PASS (26 HPL-05 + 31 existing controller/lifecycle/adapter). Browser fixture at 1281px: three aligned columns/no horizontal overflow, disabled energy choice, handbook/history, ending and shutdown pass in in-app Chromium; Edge extension connection was unavailable, so Edge/Chrome external-browser behavior is not claimed.
+- Latest signed-runtime HTTP fixture smoke PASS, exit 0, empty stderr, fallback asserted, verified ZIP and fixture run cleanup, port released. No Code Integrity event in startup-to-shutdown or final smoke windows. Final loaded inventory: 57 Valid modules, 21 PSF / 36 Microsoft, zero unsigned/invalid loaded modules. Real gameplay/performance and portable packaging/distribution remain unvalidated.
+- Review and usage: [HPL-05 local Web client](reviews/HPL-05_LOCAL_WEB_CLIENT.md). No HPL-05A was started; HPL-RUN01 and HPL-04B FORENSIC_HOLDs are not released.
 
 ## HPL-04 portable package boundary
 
