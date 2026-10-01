@@ -119,6 +119,18 @@ Survival / Continuity 是 hard floor，不是持续最大化目标。没有 fres
 5. specific feedback 可短期集中，但 `Primary Gap` 只在路径仍 responsive 且无更高价值选项时影响 ranking。不得推断 hidden/permanent cap、eligibility 或 promotion impossibility。
 6. 不设固定 action、比例、target、月份或隐藏阈值；Skill 不因 terminal-score saturation 假设被降权。
 
+## Local Response / World Model Boundary
+
+`LOCAL_NO_GAIN` 只是 Planning 对 Board `NO_GAIN` 的局部解释，不新增 Board enum 或状态表。只有当前合同允许的 clean public pair 才能支持它；范围限于当前 Level、context、dimension / action family 与 evidence window。跨月、Review 或其它自动结算混杂保持 `UNKNOWN`，不得用过去 Story gain 保证当前 Main gain。
+
+- `GAIN` 是该局部路径的正向证据；`UNKNOWN` 保留探索/晋升价值，不能自动赋值为零；`LOCAL_NO_GAIN` 只折价已测试的局部路径。不能把一个 family 的零增益传播给未测试的合法 family。
+- 即使 S/N/O 各有局部 NO_GAIN，也不证明当前 Level 全局 saturation、其它 action 无 promotion value、recovery/risk avoidance 无 opportunity cost 或 promotion eligibility 已知。仍比较公开菜单中的 responsibility / project ownership / cross-functional / visible-result 等价值，未知结果继续为 `UNKNOWN`。
+- `MODE=A` 比较 visible output / realizable result、Skill、Network、cross-functional / responsibility / project ownership、current Delivery 与当前 resource/risk cost；即时 S/N/O 数值变化不是 promotion relevance 的唯一代理。
+- 首次正式 Review 前、没有 material binding threat 时，保持 broad promotion-compounding prior，不因单个局部 NO_GAIN 收缩为单维 greedy search。binding Delivery、material public risk、clearly superior realizable progression 与 fresh Story exposure guard 仍按现行优先级比较；不固定动作、月份或 S/N/O 配额。
+- Health recovery / risk avoidance 的当前 survival/risk value 与放弃成长路径的 UNKNOWN / promotion value 必须同时比较；不得以“其它维度封顶”宣称恢复无机会成本。这不取消必要保护，不改变 Fresh-binding S 或 survival floor。
+- 当前 Story 明确损失个人产出、同时有 mentor/network upside 时，真实比较该 public tradeoff；不得因假设 Output cap 将产出损失视为零，未知净收益保持 `UNKNOWN`。
+- 公开 feedback、菜单与 observed outcome 只支持待验证的 promotion-value hypothesis，不证明 grade 决定晋升、数值达到某值即晋升、某动作必晋升或某 Level cap。不得构造 hidden promotion model。
+
 ## Ranking
 
 `MODE=S` 只处理当前 binding constraint，并保留可行的 progression value；约束解除后立即回 `A`。

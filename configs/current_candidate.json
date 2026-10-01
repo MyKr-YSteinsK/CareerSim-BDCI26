@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v7y-story-exposure-guard",
+  "candidate_id": "candidate-v7z-world-model-correction",
   "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
-  "decision": "S09_05_STATIC_STORY_EXPOSURE_GUARD",
+  "decision": "S09_08_WORLD_MODEL_CORRECTION_STATIC_PASS_READY_FOR_M6_VALIDATION_GATE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
-  "parent_candidate_id": "candidate-v7x-fresh-binding-reauthorization",
-  "base_main_sha": "da5359d2d9a978475484300cf1f4a75013393329",
+  "strategy_delta": "LOCAL_RESPONSE_DOES_NOT_IMPLY_GLOBAL_CAP",
+  "parent_candidate_id": "candidate-v7y-story-exposure-guard",
+  "base_main_sha": "f5dc8454269933efc6f4d31869d7edcbd3bcdc28",
   "parent_identity": {
-    "runtime_manifest_sha256": "882c979821375393988ee0e989e2a503b8528562605618d7ab5c1bf5699f1804",
-    "instruction_sha256": "fef598a0a6903418400e91e651934ba9f48988110b02155cec92060452c419c9",
+    "runtime_manifest_sha256": "0f3b44466e0f16fd21a3d3724ffe890a9f4114dcc69088d20b238bbea115489d",
+    "instruction_sha256": "3e382913dbcbe0a936726cd8aa5a2e61c32bdff107f3622fedd55326179e517b",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "cc84c28f64831f8588f1b92e3027ed222234ebbf"
+        "git_blob": "90573097588d63e5182d0b7a509b2580e10ca009"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "0f3b44466e0f16fd21a3d3724ffe890a9f4114dcc69088d20b238bbea115489d",
-    "instruction_sha256": "3e382913dbcbe0a936726cd8aa5a2e61c32bdff107f3622fedd55326179e517b"
+    "sha256": "fb4b258dbd82bc88c4c32aa8f50a624c735d840377d029d1e3aa4b78e8ce96c5",
+    "instruction_sha256": "fd9e8f9c413033841d6d1b8c89ff809bd3487da6a35e50bfd422325a5d807c4b"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "90573097588d63e5182d0b7a509b2580e10ca009"
+      "git_blob": "08af9bd5e1d10cff63f2c705d371ab62747204e3"
     },
     {
       "name": "delivery-progress",
@@ -91,7 +91,8 @@
     "TERMINAL_HORIZON_DIRECT_REALIZATION",
     "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING",
     "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION",
-    "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR"
+    "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
+    "LOCAL_RESPONSE_DOES_NOT_IMPLY_GLOBAL_CAP"
   ],
   "runtime_contract_delta": [
     "FRESH_OBSERVE_CONTROL_STATE",
@@ -145,5 +146,5 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_BOUNDED_STORY_EXPOSURE_GUARD"
+  "design_intent": "PROMOTION_COMPOUNDING_WITH_LOCAL_RESPONSE_WORLD_MODEL_BOUNDARY"
 }
