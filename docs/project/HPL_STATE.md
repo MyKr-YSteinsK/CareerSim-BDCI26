@@ -5,12 +5,13 @@
 ## Current task
 
 - Track: `Human Play Lab｜人工游玩策略实验线`, independent of the formal Agent Candidate line.
-- Current task: `HPL-06 local Web portable distribution`.
-- Status: `IN_FLIGHT_EVIDENCE / HPL06_PORTABLE_CANDIDATE_BUILT_WAITING_FOR_HPL05A`.
-- Decision: official PSF CPython 3.12.10 x64 embeddable runtime, relative isolated search paths, frozen pure-Python dependency closure and complete 194-file Dev mirror produce a relocatable Web candidate. Relocated fixture UI/action/export/cleanup/shutdown and unwritable fail-closed checks pass on this strict Windows host. This is not READY_TO_SEND or clean-machine validation.
-- Release gate: HPL-05A has no accepted PASS. Its sole user-started run stopped by manual shutdown while ACTIVE after 5 successful actions; source journal confirms Month 2 / L1. Run/session are retained; no normal ending/result ZIP and no score/strategy conclusion. Do not resume/replay or open a replacement game.
-- Human Run authorization: HPL-05A's single fresh-game budget is spent. HPL-06 authorizes no new real game; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
-- Delivery/evidence: [HPL-06 review](reviews/HPL-06_LOCAL_WEB_PORTABLE_DISTRIBUTION.md); [HPL-05A checkpoint](reviews/HPL-05A_REAL_HUMAN_WEB_SMOKE.md).
+- Current task: `HPL-06B quarter multi-action forensics and repair`, with the user-authorized two-step quick-restart UI addition.
+- Status: `IN_FLIGHT_EVIDENCE / HPL06B_QUARTER_MULTI_ACTION_FIX_BLOCKED`.
+- Decision: offline `QuarterMultiActionFixture` covers same-quarter 3→1→0 and 3→2→0 sequences, insufficient-energy/stale revision/duplicate rejection, and unknown second-action no-retry. The available stored real failure is different from the Plan trigger: its second submitted action cost 2 at public Energy 1; installed Career Emulator 1.0.1 rejects that request before mutation. No matching legal cost-1 failure evidence was located, so the claimed valid-action root cause is not accepted as resolved.
+- Quick restart: UI requires opening a confirmation dialog and a second destructive confirmation. For an ACTIVE run, the server deletes only the exact current run after receipt/path/identity checks and closing its session log. For a normally ENDED/exported run, it verifies and deletes only that run ID's matching ZIP. Other exports remain. Technical failure, unknown outcome, export failure, hold, stale run ID, or cleanup failure cannot start a replacement game.
+- Portable release: source changes obsolete the v1 candidate for distribution. Original archive identity remains recorded; do not send it. No v2 build or real game was run here. HPL-06A's user-reported normal ending produced a verified export, but its `Runs/<run-id>` residual still contains DB/log/staging evidence, so cleanup and READY_TO_SEND remain unaccepted.
+- Human Run authorization: `HPL-06B` authorizes no new real game; `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
+- Delivery/evidence: [HPL-06B review](reviews/HPL-06B_QUARTER_MULTI_ACTION_AND_QUICK_RESTART.md); [HPL-06 review](reviews/HPL-06_LOCAL_WEB_PORTABLE_DISTRIBUTION.md); [HPL-05A checkpoint](reviews/HPL-05A_REAL_HUMAN_WEB_SMOKE.md).
 
 ## Lineage
 

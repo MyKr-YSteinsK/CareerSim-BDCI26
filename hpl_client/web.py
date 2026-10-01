@@ -142,6 +142,7 @@ class WebApplication:
                 "token": self.token,
                 "phase": controller.phase,
                 "busy": controller.busy,
+                "restart_available": controller.can_quick_restart(),
                 "run_id": controller.view.run_id if controller.view else None,
                 "revision": controller.view.revision if controller.view else 0,
                 "facts": facts,
@@ -168,11 +169,16 @@ class WebApplication:
                 "start": {"request_id", "participant"},
                 "choose": {"request_id", "choice", "revision", "run_id"},
                 "export": {"request_id"},
+                "restart": {"request_id", "participant", "run_id"},
                 "shutdown": {"request_id"},
             }
             if name not in expected or set(body) != expected[name]:
                 return False, "INVALID_ACTION / NO_MUTATION"
             if name == "start" and (type(body["participant"]) is not str or len(body["participant"]) > 64):
+                return False, "INVALID_ACTION / NO_MUTATION"
+            if name == "restart" and (
+                type(body["participant"]) is not str or len(body["participant"]) > 64 or type(body["run_id"]) is not str
+            ):
                 return False, "INVALID_ACTION / NO_MUTATION"
             if name == "choose" and (
                 type(body["choice"]) is not int or type(body["revision"]) is not int or type(body["run_id"]) is not str
@@ -183,6 +189,8 @@ class WebApplication:
                 return True, "SHUTDOWN"
             if name == "start":
                 task = self.controller.start(body["participant"])
+            elif name == "restart":
+                task = self.controller.quick_restart(body["participant"], body["run_id"])
             elif name == "export":
                 task = self.controller.finish_export()
             else:

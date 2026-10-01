@@ -17,6 +17,9 @@ function render(next) {
   text("start-copy", fixture ? "FIXTURE / NON_GAME：演示选项不会创建真实游戏，合成数据包单独保存。" : "仅在获得 Human Run 授权后开始。启动页面本身不会创建游戏。请保留技术失败资料。");
   text("start", fixture ? "开始离线演示" : "开始人工对局");
   $("start").disabled = pending || state.start_available === false;
+  $("restart-open").hidden = !state.restart_available;
+  $("restart-open").disabled = pending || !state.restart_available;
+  $("restart-confirm-go").disabled = pending;
   $("stats").replaceChildren(...stats.map(([key,label]) => {
     const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
     dt.textContent = label; dd.textContent = current[key] ?? "—"; row.append(dt,dd); return row;
@@ -62,6 +65,16 @@ async function operation(name, body={}) {
   if (name === "shutdown") { pending=true; text("notice","客户端已关闭，可以关闭此页面。"); }
 }
 $("start").addEventListener("click", () => operation("start", {participant:$("participant").value}));
+$("restart-open").addEventListener("click", () => {
+  if (!pending && state?.restart_available) $("restart-confirm").showModal();
+});
+$("restart-cancel").addEventListener("click", () => $("restart-confirm").close());
+$("restart-confirm-go").addEventListener("click", () => {
+  if (!pending && state?.restart_available) {
+    $("restart-confirm").close();
+    operation("restart", {participant:$("participant").value, run_id:state.run_id});
+  }
+});
 $("shutdown").addEventListener("click", () => operation("shutdown"));
 $("retry-export").addEventListener("click", () => operation("export"));
 $("handbook-open").addEventListener("click", () => $("handbook").showModal());

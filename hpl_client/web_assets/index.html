@@ -3,7 +3,7 @@
 <title>CareerSim · Human Play Lab</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
 <body>
 <header><div><small>HUMAN PLAY LAB</small><h1>CareerSim</h1></div><div id="timeline">准备开始</div><span id="mode"></span></header>
-<nav><button id="handbook-open">入职手册</button><button id="history-open">最近选择</button><button id="shutdown">退出客户端</button></nav>
+<nav><button id="handbook-open">入职手册</button><button id="history-open">最近选择</button><button id="restart-open" hidden>快速重开</button><button id="shutdown">退出客户端</button></nav>
 <div id="notice" role="status" aria-live="polite"></div>
 <section id="start-panel" class="panel"><h2>从你的选择开始</h2><p id="start-copy">离线演示不会创建真实游戏。</p>
 <label for="participant">参与者 ID / 昵称</label><input id="participant" maxlength="64" value="local" autocomplete="off">
@@ -16,5 +16,6 @@
 </main>
 <dialog id="handbook"><h2>入职手册</h2><pre id="handbook-text"></pre><button id="handbook-close">关闭</button></dialog>
 <dialog id="history"><h2>最近选择</h2><ol id="history-list"></ol><button id="history-close">关闭</button></dialog>
+<dialog id="restart-confirm"><h2>确认放弃当前对局？</h2><p>继续后会删除本局运行资料；如果已经导出结果，也会删除对应的公共 ZIP，然后立即开始新一局。其他局的导出文件不会删除。此操作无法撤销。技术失败、结果未知或取证保留中的对局不能快速重开。</p><button id="restart-cancel">保留本局</button><button id="restart-confirm-go" class="danger">抛弃本局并开始新一局</button></dialog>
 <footer>本地运行 · 公开观察与人工选择 · 无 Provider / MCP</footer>
 </body></html>

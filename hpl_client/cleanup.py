@@ -1,5 +1,6 @@
 """Narrow success-only deletion after a verified external public ZIP exists."""
 
+import json
 import shutil
 from pathlib import Path
 
@@ -38,6 +39,56 @@ def assert_cleanup_target(root, layout, *, exports=None):
             raise ValueError("run contains linked material")
         if "FORENSIC_HOLD" in entry.name.upper():
             raise ValueError("run has an independent forensic hold")
+
+
+def assert_discardable_active_run(root, layout, *, run_id):
+    """Authorize deletion only for the current, still-active Human run."""
+    root = Path(root)
+    if root.name != run_id:
+        raise ValueError("restart run identity does not match its storage root")
+    assert_cleanup_target(root, layout)
+    staged = root / "staging" / "manifest.json"
+    if not staged.is_file():
+        raise ValueError("active run receipt is missing")
+    receipt = json.loads(staged.read_text(encoding="utf-8"))
+    if receipt.get("run_id") != run_id:
+        raise ValueError("active run receipt identity mismatch")
+    if receipt.get("authorization_id") not in {
+        "USER_GUI_START_CLICK",
+        "USER_WEB_START_CLICK",
+        "FIXTURE_NON_GAME",
+    }:
+        raise ValueError("only a user-started Human or synthetic fixture run can be discarded")
+    if "run_status" in receipt or "action_outcome" in receipt:
+        raise ValueError("ended or uncertain runs must be retained")
+    if receipt.get("FORENSIC_HOLD") or receipt.get("forensic_hold"):
+        raise ValueError("forensic-held runs must be retained")
+
+
+def discard_active_run(root, layout, *, run_id):
+    """Delete the exact current active run after explicit user confirmation."""
+    root = Path(root)
+    assert_discardable_active_run(root, layout, run_id=run_id)
+    shutil.rmtree(root.resolve(strict=True))
+
+
+def assert_discardable_export(path, layout, *, run_id):
+    """Authorize deleting only the verified export for this ended run."""
+    archive = Path(path)
+    exports = _stable_exports(layout)
+    if not archive.is_absolute() or archive.parent.resolve() != exports.resolve():
+        raise ValueError("restart export must be a direct child of the HPL exports directory")
+    _reject_links(archive)
+    manifest, _, _ = verify_zip(archive, run_id)
+    if manifest.get("run_status") != "ENDED" or "action_outcome" in manifest:
+        raise ValueError("only this run's verified normal export can be discarded")
+
+
+def discard_finalized_export(path, layout, *, run_id):
+    """Delete this run's verified ZIP after the explicit restart confirmation."""
+    archive = Path(path)
+    assert_discardable_export(archive, layout, run_id=run_id)
+    archive.unlink()
 
 
 def cleanup_success(root, archive, layout):

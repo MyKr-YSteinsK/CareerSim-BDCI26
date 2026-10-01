@@ -10,6 +10,12 @@ from scripts.hpl_evidence_writer import _KNOWN_SECRET_PATTERNS
 from hpl_client.path_contract import assert_isolated_run_root, engine_constructor_kwargs
 from scripts.hpl_public_evidence import SCHEMA_VERSION
 
+from hpl_client.cleanup import (
+    assert_discardable_active_run,
+    assert_discardable_export,
+    discard_active_run,
+    discard_finalized_export,
+)
 from hpl_client.game_adapter import PublicGameAdapter
 from hpl_client.export import finalize_success
 from hpl_client.presentation import choice_disabled_reason
@@ -129,6 +135,7 @@ class HumanGameController:
         self.export_path = None
         self.export_message = ""
         self.finalization_status = "NOT_STARTED"
+        self.action_status = "IDLE"
         self.view = None
         self.history = []
         self._submitted.clear()
@@ -146,6 +153,83 @@ class HumanGameController:
             return False
         finally:
             self.busy = False
+
+    def can_quick_restart(self):
+        """Whether the current run can be explicitly discarded and replaced."""
+        if self.busy or not self.view or not self.recorder:
+            return False
+        if self.phase == "ACTIVE":
+            if getattr(self.recorder, "finalized", False):
+                return False
+            if self.recorder.root is None:
+                return self._adapter is not None and not type(self._adapter._engine).__module__.startswith(
+                    "career_emulator."
+                )
+            try:
+                layout = self._layout or self._active_layout()
+                assert_discardable_active_run(self.recorder.root, layout, run_id=self.view.run_id)
+            except (OSError, RuntimeError, TypeError, ValueError):
+                return False
+            return True
+        if self.phase == "ENDED" and self.finalization_status == "SUCCESSFULLY_FINALIZED_AND_EXPORTED":
+            if self.recorder.root is not None and self.recorder.root.exists():
+                return False
+            try:
+                layout = self._layout or self._active_layout()
+                assert_discardable_export(self.export_path, layout, run_id=self.view.run_id)
+            except (OSError, RuntimeError, TypeError, ValueError):
+                return False
+            return True
+        return False
+
+    async def quick_restart(self, tag, run_id):
+        """Discard this confirmed active run, then create one fresh run."""
+        if self.busy:
+            return self._reject("该操作正在处理中，请等待当前操作完成。")
+        if not self.view or run_id != self.view.run_id:
+            return self._reject("当前对局已变化，请刷新后重新确认。")
+        if not isinstance(tag, str):
+            return self._reject("参与者标签无效，上一局未删除，也未启动新局。")
+        tag = tag.strip() or "local"
+        if len(tag) > 64 or _KNOWN_SECRET_PATTERNS.search(tag) or re.search(r"[\x00-\x1f]", tag):
+            return self._reject("参与者标签无效，上一局未删除，也未启动新局。")
+        if not self.can_quick_restart():
+            return self._reject("本局资料需要保留，无法快速丢弃；请保留现有对局并返回 review。")
+
+        if self.phase == "ACTIVE" and self.recorder.root is not None:
+            try:
+                layout = self._layout or self._active_layout()
+                assert_discardable_active_run(self.recorder.root, layout, run_id=run_id)
+                if self._adapter is not None:
+                    self._adapter.close_for_discard()
+                discard_active_run(self.recorder.root, layout, run_id=run_id)
+            except (OSError, RuntimeError, TypeError, ValueError):
+                self.error = "未能安全清理上一局，未启动新局；请保留现有资料并返回 review。"
+                self.action_status = "RESTART_FAILED / NO_NEW_RUN"
+                return False
+        elif self.phase == "ENDED":
+            try:
+                layout = self._layout or self._active_layout()
+                discard_finalized_export(self.export_path, layout, run_id=run_id)
+            except (OSError, RuntimeError, TypeError, ValueError):
+                self.error = "未能安全删除上一局的导出包，未启动新局；请保留现有资料并返回 review。"
+                self.action_status = "RESTART_FAILED / NO_NEW_RUN"
+                return False
+
+        self._adapter = None
+        self.recorder = None
+        self.view = None
+        self.phase = "START"
+        self.busy = False
+        self.error = ""
+        self.history = []
+        self._submitted.clear()
+        self.rejection = ""
+        self.action_status = "IDLE"
+        self.export_path = None
+        self.export_message = ""
+        self.finalization_status = "NOT_STARTED"
+        return await self.start(tag)
 
     async def choose(self, choice, revision, run_id=None):
         if self.busy:

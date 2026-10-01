@@ -38,6 +38,16 @@ class PublicGameAdapter:
             raise RuntimeError("take_action did not return success")
         return await self._observe()
 
+    def close_for_discard(self) -> None:
+        """Release the installed engine's per-session file logger before run deletion."""
+        if self._session_id is None or not type(self._engine).__module__.startswith("career_emulator."):
+            return
+        # career-emulator 1.0.1 opens SQLite connections per operation. Its cached
+        # session logger is the only long-lived run file handle and has this close hook.
+        from career_emulator.storage import _close_session_logger
+
+        _close_session_logger(self._session_id)
+
     async def _observe(self) -> PublicGameView:
         raw = await self._engine.observe(self._session_id)
         current = raw.current_state
