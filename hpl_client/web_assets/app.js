@@ -14,7 +14,7 @@ function render(next) {
   $("start-panel").hidden = state.phase !== "START";
   $("game-panel").hidden = state.phase === "START";
   const fixture = state.mode === "FIXTURE / NON_GAME";
-  text("start-copy", fixture ? "FIXTURE / NON_GAME：演示选项不会创建真实游戏，合成数据包单独保存。" : "仅在获得 Human Run 授权后开始。启动页面本身不会创建游戏。请保留技术失败资料。");
+  text("start-copy", fixture ? "FIXTURE / NON_GAME：演示选项不会创建真实游戏，合成数据包单独保存。" : "输入昵称，开始你的职业生涯。结果包会自动保存到 UserData/Exports。");
   text("start", fixture ? "开始离线演示" : "开始人工对局");
   $("start").disabled = pending || state.start_available === false;
   $("restart-open").hidden = !state.restart_available;
@@ -34,7 +34,8 @@ function render(next) {
     detail.textContent = choice.disabled_reason || `精力成本 ${choice.energy_cost ?? "未公开"}`;
     button.append(detail);
     button.disabled = pending || state.phase !== "ACTIVE" || Boolean(choice.disabled_reason);
-    button.addEventListener("click", () => operation("choose", {choice:choice.choice, revision:state.revision, run_id:state.run_id}));
+    const selection = {choice:choice.choice, revision:next.revision, run_id:next.run_id};
+    button.addEventListener("click", () => operation("choose", selection));
     return button;
   }));
   $("ending").hidden = state.phase !== "ENDED";
@@ -55,10 +56,18 @@ async function operation(name, body={}) {
     else throw Error(result.error || result.status);
     if (name === "shutdown" && result.accepted) text("notice","客户端已关闭，可以关闭此页面。");
   } catch (_) {
-    text("notice", "连接或操作结果未知：不要重复提交动作。保留本局资料，返回 review。");
-    // Freeze this page after an uncertain response; never auto-retry a mutation.
-    $("choices").querySelectorAll("button").forEach(button => button.disabled=true);
-    $("start").disabled=true;
+    // Read the latest cached state without repeating the failed action.
+    try {
+      const response = await fetch("/api/state");
+      if (!response.ok) throw Error("state unavailable");
+      pending = false;
+      render(await response.json());
+      text("notice", "未收到操作回执，未自动重试。请查看当前状态，或确认后快速重开。");
+    } catch (_) {
+      text("notice", "无法连接客户端。请刷新页面或重新启动客户端；不要重复提交动作。");
+      $("choices").querySelectorAll("button").forEach(button => button.disabled=true);
+      $("start").disabled=true;
+    }
     return;
   }
   pending = false; render(state);
@@ -87,6 +96,6 @@ $("download").addEventListener("click", async () => {
     if (!response.ok) throw Error("export unavailable");
     const url=URL.createObjectURL(await response.blob()), link=document.createElement("a");
     link.href=url; link.download=state.export_name; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
-  } catch (_) { text("notice","数据包暂不可下载，已保存的数据仍保留。请返回 review。"); }
+  } catch (_) { text("notice","数据包暂不可下载，已保存的数据仍保留。请查看 UserData/Exports。"); }
 });
 fetch("/api/state").then(response=>response.json()).then(render).catch(()=>text("notice","无法连接本地客户端，请检查启动窗口。"));

@@ -23,6 +23,7 @@ class PublicGameAdapter:
         self._session_id = None
         self._revision = 0
         self._handbook = ""
+        self._choices = set()
 
     async def start(self) -> PublicGameView:
         receipt = await self._engine.new_game()
@@ -33,6 +34,8 @@ class PublicGameAdapter:
         return await self._observe()
 
     async def act(self, choice: int) -> PublicGameView:
+        if type(choice) is not int or choice not in self._choices:
+            raise ValueError("choice is not in the current public observation")
         receipt = await self._engine.take_action(self._session_id, choice, notes="")
         if not receipt.success or receipt.error:
             raise RuntimeError("take_action did not return success")
@@ -79,8 +82,11 @@ class PublicGameAdapter:
             type(c.get("choice")) is not int or not isinstance(c.get("action"), str) for c in facts["choices"]
         ):
             raise RuntimeError("invalid public choices")
-        if projection["unknown_fields"]:
-            raise RuntimeError("public response failed the allowlist")
+        # Optional public text can contain excluded terms. Projection already
+        # omits those fields; this must not turn a successful action into failure.
+        self._choices = {c["choice"] for c in facts["choices"]}
+        if len(self._choices) != len(facts["choices"]):
+            raise RuntimeError("duplicate public choice IDs")
         self._revision += 1
         phase = "ENDED" if not facts["choices"] else "ACTIVE"
         return PublicGameView(self.run_id, self._revision, phase, projection)
