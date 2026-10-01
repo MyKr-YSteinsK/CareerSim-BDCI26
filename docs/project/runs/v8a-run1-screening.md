@@ -1,0 +1,24 @@
+# S09-RUN06 v8a — M6 donor-core screening
+
+- Classification: `DEVELOPMENT_CENSORED_M6_DONOR_CORE_GATE_FAIL`. First formal M6 Review **C / L1→L1 / no promotion / FAIL**, events seq187; automatic stop at that observation, **zero post-gate actions**. M12/M18 NOT_REACHED. This is development censoring, not natural terminal, Candidate survival failure, full completion or final-score validation.
+- Frozen Candidate `candidate-v8a-v7o-donor-core-transplant`, base `e13236b23d26879dc92ae30206cfdc7611037041`, strategy donor v7o `b2e7ea6441da9c314d8a0ffbf29b9d5800ced10d`. Candidate/manifest/four Skills match S09-10; Runner/dependencies/model/provider/retry2 unchanged. Reused18 static PASS; canonical offline four-Skill package valid. Candidate and all validation flags remain unchanged.
+- One service start / one Runner play / one fresh game / one graceful stop. Readiness **17.985s / 120s**; play UTC `2026-10-01T10:44:06.315049+00:00` → `2026-10-01T10:47:28.089524+00:00`, **201.774s**. Interactive progress reported from existing Runner output only, extra reporting queries0. No manual action, continue, replacement, provider probe, DB query or strategy patch.
+
+## Minimal trajectory / donor adherence
+
+- Before M6 the only quarterly Main was M3 **申请关键项目**, explicitly justified by ownership and multidimensional O/S/N value. Energy was **准备汇报材料 → 人脉维护 → 准备汇报材料** (Output2 / Network1 / Health0). Public Energy pairs: O-1→0, N3→3, O0→1. Local Network NO_GAIN did not close the responsive Output or different-family Main path. Following Main observation: S8→9, O1→3, N3→3; month transition prevents claiming a clean whole-delta causal effect.
+- A20 / S0. Ordinary costs did not automatically displace advancement: non-critical technical exploration and CI ownership were selected. No post-Review Planning pass occurred after censoring, so directional Review adaptation was not exercised; acute resource recovery/exit was also not exercised. Low Health alone did not trigger S.
+- **Donor-core adherence: UNKNOWN overall.** Promotion-first/broad progression/Main prior/local routing are supported by action notes, but complete minimum-protection adherence cannot be certified from this window. The M4 orange-warning storm choice notes assert shared-umbrella walking has “无健康/财富代价”; public choice text does not establish zero Health cost, and the following observations show H4→3→2 (month/Story associations, not isolated effects). The M5 explicit company-red-line/confidentiality-adjacent compliance scenario chose a constructive refusal but marked Risk **PASS / no material risk**; this conflicts with candidate-specific Full Review for a directly engaged material compliance risk, which requires ALLOW/WARN/RECONSIDER/UNKNOWN even for a constructive candidate. These are protective/risk reasoning anomalies, not evidence that they caused M6 rejection.
+- CI notes acknowledge two scheduled projects delayed but classify that as ordinary cost. This is a fidelity-review lead about delivery tradeoffs, not a confirmed failure cause or a new ranking rule.
+- At M6: **H2/D10/S9/N2/O1/W3/E0**, L1 tenure6. Formal feedback mentions progress, collaboration and risk awareness, and warns against being seen as “只会忙、不会赢”. No hidden eligibility/threshold inferred.
+- 20 distinct action calls /21 observes /20 action→fresh-observe pairs, none unmatched. No selected Traceback/ConnectionError/RateLimitError/TimeoutError/max_continuations category in exact Runner stdout; comprehensive provider audit not performed. Tokens/cost UNKNOWN; no final score produced or queried.
+
+## Cleanup / retained evidence / decision
+
+- Runner deliberately terminated, exit1; graceful stop exit0. Manager logged stopped and deleted `.instance.pid`, confirmed absent; ports19092/20000/20001/6173 released. Service launcher exit1 after graceful stop is the known runtime tail limitation. No restart.
+- Exact raw events/transcript remain local under `D:/CS/CareerSim/.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20261001T104410Z/`; receipt, lifecycle stdout and `minimal-public-evidence.json` under `D:/CS/CareerSim/.local/runtime/s09-run06-v8a/`. No full archive or historical re-audit. `FORENSIC_HOLD=ACTIVE`, owner S09 Stage, reason pending transplant-fidelity review; release requires Stage acceptance and closure of raw-analysis/child dependencies followed by explicit cleanup authorization. Existing holds unchanged.
+- Finding: `V8A_DONOR_CORE_DID_NOT_RESTORE_M6_IN_THIS_RUN`; interpretation `DONOR_CORE_NOT_YET_VALIDATED`. Decision: `S09_RUN06_M6_DONOR_CORE_GATE_FAIL_RETURN_TO_STAGE`. Next direction **TRANSPLANT_FIDELITY_REVIEW**: inspect executed donor semantics, shell/ranking interactions and trajectory variance before proposing changes. No stability/impossibility claim or immediate new rule.
+
+`S09_RUN06_GAME_AUTHORIZATION=CONSUMED`
+`NEXT_GAME=NOT_AUTHORIZED`
+`NO_REPLACEMENT_RUN_AUTHORIZED`
