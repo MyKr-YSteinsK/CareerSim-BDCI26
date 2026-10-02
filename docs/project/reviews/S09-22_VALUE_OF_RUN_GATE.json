@@ -1,0 +1,195 @@
+{
+  "schema_version": 4,
+  "header_schema_version": 3,
+  "task": "S09-22",
+  "candidate": "candidate-v10e-explicit-basis-preflight",
+  "candidate_parent": "candidate-v10d-anchored-five-marker-preflight",
+  "candidate_implementation_commit": "758e441192e99d3b5336bd7e91a27c043dede676",
+  "parent_evidence_commit": "787d2b051cc8bb106a9355748a6f20edb8a4a188",
+  "branch": "codex/s09-14-v9a-static",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "main_submission_freeze": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+  "classification": "OFFLINE_STATIC_READINESS_NOT_LIVE_AUTHORIZATION",
+  "strategy_delta": "NONE",
+  "runtime_delta": "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+  "candidate_identity": {
+    "manifest": {
+      "path": "configs/runtime_manifest.json",
+      "bytes": 7655,
+      "physical_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+      "lf_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+      "git_blob": "32528932ded02df9da478ea8973d721d1660fe84"
+    },
+    "metadata": {
+      "path": "configs/current_candidate.json",
+      "bytes": 7504,
+      "physical_sha256": "e830c4723ac0f2c7079c62ff9bb31b702107e6518ff05fe64983ffe6823ff761",
+      "lf_sha256": "e830c4723ac0f2c7079c62ff9bb31b702107e6518ff05fe64983ffe6823ff761",
+      "git_blob": "fa4bac5bd2f8b8a5944e3a4c541030bbe3ff357c"
+    },
+    "instruction_sha256": "8ef0f4b1986e25037e81cc449e5bf6d4c7dda1411b78d15e99e2d580bbc2838d",
+    "skills": [
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "bytes": 5252,
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "bytes": 11607,
+        "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+        "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "bytes": 4189,
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      }
+    ],
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "tools_and_fixtures": [
+    {
+      "path": "scripts/basis_preflight_audit.py",
+      "bytes": 8673,
+      "physical_sha256": "aa5fe5b7cacf36615e0ec2e56876c927fc285a7c1e241bfe314d33db87017296",
+      "lf_sha256": "aa5fe5b7cacf36615e0ec2e56876c927fc285a7c1e241bfe314d33db87017296",
+      "git_blob": "b6d7159788046540d8cdc17fd7cce54c9cafc333"
+    },
+    {
+      "path": "tests/test_s09_22_explicit_basis.py",
+      "bytes": 6724,
+      "physical_sha256": "fd33afc044939ea7ac4870493cb33f943a2135194e6fb1f1e3c7f59b4a255c90",
+      "lf_sha256": "fd33afc044939ea7ac4870493cb33f943a2135194e6fb1f1e3c7f59b4a255c90",
+      "git_blob": "900b6421b547197d88472ac6e9c44e3cb39930bd"
+    },
+    {
+      "path": "tests/fixtures/v10e_explicit_basis_cases.json",
+      "bytes": 29113,
+      "physical_sha256": "aba0b576a8b30f7b64177f819f4104ee97c63333ad27012a37d3ebab4b134d91",
+      "lf_sha256": "aba0b576a8b30f7b64177f819f4104ee97c63333ad27012a37d3ebab4b134d91",
+      "git_blob": "f5730a8a7a9e8eb021256f584328fdf93a9dab2b"
+    },
+    {
+      "path": "docs/project/reviews/S09-22_RUN13_SEMANTIC_REPLAY.json",
+      "bytes": 8148,
+      "physical_sha256": "9d4ecc12ab700a8629c7cbce232a3b85ab54ab0d1127c3b56272985858e5c7c8",
+      "lf_sha256": "9d4ecc12ab700a8629c7cbce232a3b85ab54ab0d1127c3b56272985858e5c7c8",
+      "git_blob": "8021c46d134cec00dcee4b2fd11c9e6fbca06fec"
+    }
+  ],
+  "verification": {
+    "targeted_passed": 143,
+    "explicit_basis_scenarios": 36,
+    "prior_header_layout_projections": 23,
+    "layout_negative": 18,
+    "layout_positive": 5,
+    "preserved_kernel_annotations": 28,
+    "run11_annotated_projections": 8,
+    "additional_contract_tests": 4,
+    "strict_trace_regressions": 17,
+    "strict_trace_deselected": 23,
+    "post_run_regressions": 27,
+    "RUN13_SEMANTIC_REPLAY": "4/4 EXPECTED",
+    "RUN12_HEADER_REPLAY": "3/3 CORRECTLY_BLOCKED",
+    "package": "VALID skill_bundle exactly four Skills",
+    "protected_assets": "UNCHANGED",
+    "secret_scan": "PASS_SELECTED_DELIVERY_FILES",
+    "diff_check": "PASS",
+    "instruction_size": {
+      "manifest_before": 5119,
+      "manifest_after": 5368,
+      "planning_before": 7787,
+      "planning_after": 7787,
+      "combined_before": 12906,
+      "combined_after": 13155,
+      "manifest_delta": 249,
+      "manifest_growth_percent": 4.8642
+    }
+  },
+  "package_local_path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-22-v10e\\submission",
+  "package_identity": [
+    {
+      "path": ".local/runtime/s09-22-v10e/submission/manifest.json",
+      "bytes": 7655,
+      "physical_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+      "lf_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+      "git_blob": "32528932ded02df9da478ea8973d721d1660fe84"
+    },
+    {
+      "path": ".local/runtime/s09-22-v10e/submission/skills/delivery-progress/SKILL.md",
+      "bytes": 5041,
+      "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+      "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+      "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+    },
+    {
+      "path": ".local/runtime/s09-22-v10e/submission/skills/risk-review/SKILL.md",
+      "bytes": 4189,
+      "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+      "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+      "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+    },
+    {
+      "path": ".local/runtime/s09-22-v10e/submission/skills/rolling-planning/SKILL.md",
+      "bytes": 11607,
+      "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+      "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+      "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+    },
+    {
+      "path": ".local/runtime/s09-22-v10e/submission/skills/structured-state-board/SKILL.md",
+      "bytes": 5252,
+      "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+      "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+      "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+    }
+  ],
+  "certificate_schema": "[BC=PASS S=<NONE|ACUTE|TRUST|JOB|AFFORDABILITY|OTHER_PUBLIC_BINDING> CAP=<NONE|PUBLIC_SCOPED>]",
+  "deterministic_invariants": [
+    "P=S requires S!=NONE and matching current fresh explicit public binding annotation.",
+    "Explicit numeric-only S rationale annotation blocks regardless certificate claim.",
+    "Cap claim requires PUBLIC_SCOPED, explicit public completion/cap, and exact nonempty scope match.",
+    "No cap claim requires CAP=NONE.",
+    "Certificate cannot override failed semantic annotations."
+  ],
+  "semantic_annotation_contract": "Explicit reviewer public-evidence annotations only; no arbitrary prose classifier, provider call or live hook.",
+  "historical_schema_boundary": "Current v3 parser rejects bare legacy BC=PASS; v2 reports/fixtures/notes remain unchanged historical evidence, not revalidated as v3.",
+  "future_live_requirements": [
+    "A later explicit Main Run Plan supplies bounded authorization; per S09-22 no separate user balance confirmation or additional user run-authorization gate.",
+    "Freeze exact clean execution HEAD and match candidate/package/frozen Runner/dependencies; confirm shared-runtime exclusivity under the future Plan.",
+    "H1/H2 require character-zero contiguous full five-marker header and complete v3 certificate, not presence-only BC counts.",
+    "H1/H2 audit P=S implies matching explicit fresh public S binding; no numeric-only S and no unsupported cap claim; BC/header/semantic agreement.",
+    "P=A does not create a new mandatory-S rule when binding exists; Risk/K3 retain their separate review per Plan section 6 I1.",
+    "RUN13 four-action replay, RUN12 three original negatives and preserved layout/trace regressions remain passing."
+  ],
+  "limitations": [
+    "Offline annotated oracle does not prove model adherence or enforce tool interception.",
+    "a37 PASS is a certificate/K2/K3 counterfactual only, not full historical rationale/strategy approval.",
+    "No replacement actions, gameplay outcomes, scores or live robustness inferred."
+  ],
+  "implementation_to_execution": "Report-only descendants preserve implementation assets; later Main Run Plan freezes exact execution HEAD.",
+  "framework_modified": false,
+  "runner_modified": false,
+  "live_operations": 0,
+  "provider_operations": 0,
+  "service_operations": 0,
+  "game_operations": 0,
+  "prior_FORENSIC_HOLD": "ACTIVE_UNCHANGED",
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE": "UNCHANGED",
+  "decision": "S09_22_V10E_EXPLICIT_BASIS_STATIC_PASS_RETURN_TO_STAGE"
+}
