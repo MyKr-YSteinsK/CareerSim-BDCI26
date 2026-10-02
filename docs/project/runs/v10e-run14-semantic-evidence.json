@@ -1,0 +1,880 @@
+{
+  "task": "S09-RUN14",
+  "classification": "DEVELOPMENT_CENSORED_EARLY_SEMANTIC_PREFLIGHT_ABORT",
+  "decision": "S09_RUN14_EARLY_SEMANTIC_PREFLIGHT_ABORT_RETURN_TO_STAGE",
+  "execution_HEAD": "495fc59a60347d7483070e6270b2795f460c69af",
+  "candidate": "candidate-v10e-explicit-basis-preflight",
+  "implementation": "758e441192e99d3b5336bd7e91a27c043dede676",
+  "parent": "candidate-v10d-anchored-five-marker-preflight",
+  "branch": "codex/s09-14-v9a-static",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "session": "756af097433f4f4b8968b979c10a8227",
+  "run_window": {
+    "start": "2026-10-02T13:12:32.973727+00:00",
+    "end": "2026-10-02T13:15:18.903720+00:00",
+    "timezone": "Asia/Shanghai"
+  },
+  "preflight": {
+    "gates": {
+      "T1": "PASS_EXACT_IDENTITY",
+      "T2": "PASS_99_BASIS_HEADER_REPLAY_AND_17_TRACE_RECHECKS_PACKAGE",
+      "T3": "PASS_MEASUREMENT_FROZEN",
+      "T4": "PASS_RUNTIME_EXCLUSIVE_PATH_RETRY",
+      "T5": "PASS_NO_EPOCH_DEPENDENCY"
+    },
+    "identity": {
+      "manifest": {
+        "path": "configs/runtime_manifest.json",
+        "bytes": 7655,
+        "physical_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+        "lf_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+        "git_blob": "32528932ded02df9da478ea8973d721d1660fe84"
+      },
+      "metadata": {
+        "path": "configs/current_candidate.json",
+        "bytes": 7504,
+        "physical_sha256": "e830c4723ac0f2c7079c62ff9bb31b702107e6518ff05fe64983ffe6823ff761",
+        "lf_sha256": "e830c4723ac0f2c7079c62ff9bb31b702107e6518ff05fe64983ffe6823ff761",
+        "git_blob": "fa4bac5bd2f8b8a5944e3a4c541030bbe3ff357c"
+      },
+      "instruction_sha256": "8ef0f4b1986e25037e81cc449e5bf6d4c7dda1411b78d15e99e2d580bbc2838d",
+      "skills": [
+        {
+          "path": "skills/structured-state-board/SKILL.md",
+          "bytes": 5252,
+          "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+        },
+        {
+          "path": "skills/rolling-planning/SKILL.md",
+          "bytes": 11607,
+          "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+          "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+          "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+        },
+        {
+          "path": "skills/delivery-progress/SKILL.md",
+          "bytes": 5041,
+          "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+          "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+          "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+        },
+        {
+          "path": "skills/risk-review/SKILL.md",
+          "bytes": 4189,
+          "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+          "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+          "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+        }
+      ],
+      "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+    },
+    "tools": [
+      {
+        "path": "scripts/basis_preflight_audit.py",
+        "bytes": 8673,
+        "physical_sha256": "aa5fe5b7cacf36615e0ec2e56876c927fc285a7c1e241bfe314d33db87017296",
+        "lf_sha256": "aa5fe5b7cacf36615e0ec2e56876c927fc285a7c1e241bfe314d33db87017296",
+        "git_blob": "b6d7159788046540d8cdc17fd7cce54c9cafc333"
+      },
+      {
+        "path": "tests/test_s09_22_explicit_basis.py",
+        "bytes": 6724,
+        "physical_sha256": "fd33afc044939ea7ac4870493cb33f943a2135194e6fb1f1e3c7f59b4a255c90",
+        "lf_sha256": "fd33afc044939ea7ac4870493cb33f943a2135194e6fb1f1e3c7f59b4a255c90",
+        "git_blob": "900b6421b547197d88472ac6e9c44e3cb39930bd"
+      },
+      {
+        "path": "tests/fixtures/v10e_explicit_basis_cases.json",
+        "bytes": 29113,
+        "physical_sha256": "aba0b576a8b30f7b64177f819f4104ee97c63333ad27012a37d3ebab4b134d91",
+        "lf_sha256": "aba0b576a8b30f7b64177f819f4104ee97c63333ad27012a37d3ebab4b134d91",
+        "git_blob": "f5730a8a7a9e8eb021256f584328fdf93a9dab2b"
+      },
+      {
+        "path": "docs/project/reviews/S09-22_RUN13_SEMANTIC_REPLAY.json",
+        "bytes": 8148,
+        "physical_sha256": "9d4ecc12ab700a8629c7cbce232a3b85ab54ab0d1127c3b56272985858e5c7c8",
+        "lf_sha256": "9d4ecc12ab700a8629c7cbce232a3b85ab54ab0d1127c3b56272985858e5c7c8",
+        "git_blob": "8021c46d134cec00dcee4b2fd11c9e6fbca06fec"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "pyproject.toml",
+        "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+        "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+        "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+      },
+      {
+        "path": "uv.lock",
+        "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+        "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+        "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+      }
+    ],
+    "package": [
+      {
+        "path": ".local/runtime/s09-22-v10e/submission/manifest.json",
+        "bytes": 7655,
+        "physical_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+        "lf_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+        "git_blob": "32528932ded02df9da478ea8973d721d1660fe84"
+      },
+      {
+        "path": ".local/runtime/s09-22-v10e/submission/skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": ".local/runtime/s09-22-v10e/submission/skills/risk-review/SKILL.md",
+        "bytes": 4189,
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      },
+      {
+        "path": ".local/runtime/s09-22-v10e/submission/skills/rolling-planning/SKILL.md",
+        "bytes": 11607,
+        "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+        "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+      },
+      {
+        "path": ".local/runtime/s09-22-v10e/submission/skills/structured-state-board/SKILL.md",
+        "bytes": 5252,
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      }
+    ],
+    "retry": 2,
+    "static_rechecks": 116
+  },
+  "heartbeats": {
+    "H1": "PASS",
+    "H2_structural": "PASS",
+    "H2_semantic": "FAIL",
+    "H3": "NOT_REACHED",
+    "H1_counts": {
+      "header": 3,
+      "certificate": 3,
+      "fresh": 3
+    },
+    "H2_counts": {
+      "header": 12,
+      "certificate": 12,
+      "fresh": 12
+    },
+    "abort_basis": "a12 supported Dignity range used to discount gain, but CAP=NONE contradicts frozen I3.",
+    "non_pausing_semantic_review": true,
+    "actions_after_H2_snapshot": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "review_latency_actions": 6,
+    "stop_month": 5
+  },
+  "successful_actions": 18,
+  "failed_actions": 0,
+  "unknown_action_results": 0,
+  "observes": 19,
+  "action_fresh_observe": 18,
+  "sequence_errors": 0,
+  "header": {
+    "basis_check_present": 18,
+    "basis_check_valid": 18,
+    "basis_check_pass": 18,
+    "submitted_BC_certificate_coverage": 18,
+    "S_basis": {
+      "NONE": 18
+    },
+    "CAP_basis": {
+      "NONE": 18
+    },
+    "MODE_S_inconsistent_claims": 0,
+    "semantic_consistency": "UNKNOWN_WITHOUT_EXPLICIT_PUBLIC_ANNOTATIONS",
+    "restricted_basis_blocked": null,
+    "saturation_basis_blocked": null,
+    "numeric_S_blocked": null,
+    "stale_cleanup_blocked": null,
+    "action_submitted_despite_BLOCKED": 0,
+    "CTRL_coverage": 18,
+    "DL_coverage": 18,
+    "POL_coverage": 18,
+    "PROBE_coverage": 18,
+    "POL_PROBE_coverage": 18,
+    "full_five_marker_coverage": 18,
+    "submitted_BC_PASS_with_invalid_header": 0,
+    "header_schema_version": 3,
+    "basis_receipt_coverage_status": "PASS",
+    "receipt_interpretation": "EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF"
+  },
+  "mode": {
+    "A": 18
+  },
+  "semantic": {
+    "SEMANTIC_PREFLIGHT_ADHERENCE": "FAIL",
+    "numeric_only_S": 0,
+    "stale_S_continuation": 0,
+    "forged_S_basis": 0,
+    "cap_claims": 2,
+    "public_scoped_cap_supported": 2,
+    "CAP_PUBLIC_SCOPED": 0,
+    "cap_certificate_disagreement": 2,
+    "unsupported_Level_family_cap": 0,
+    "forged_PUBLIC_SCOPED": 0,
+    "submitted_despite_explicit_BLOCKED": 0,
+    "submitted_that_frozen_annotated_oracle_would_BLOCK": 2,
+    "restricted_private_basis_in_submitted_notes": "NONE_CONFIRMED",
+    "stale_cleanup_in_submitted_notes": 0,
+    "summary_authority": "NOT_OBSERVED_IN_SUBMITTED_NOTES_PRIVATE_REASONING_NOT_FULLY_AUDITED",
+    "scope": "Submitted notes plus exact participant-public observe/context/Handbook; not complete private reasoning or long-horizon adherence."
+  },
+  "public_cap_support": {
+    "excerpt": "| Dignity | 尊严 | 0–10 | 尊严 / 组织认可，长期过低会触发心理危机 |",
+    "source": "Exact current-session show_employee_handbook",
+    "handbook": {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\public-handbook.txt",
+      "bytes": 6881,
+      "sha256": "037f995a5c3165181529688d835b7c4ea8d98bfd03d0a4a85c6734a5d83af006"
+    },
+    "finding": "The Dignity cap is explicit and scoped; the violation is CAP certificate omission, not invented saturation."
+  },
+  "cap_replay": [
+    {
+      "action": 12,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配2/3：人脉维护，Network+1。Network=3 偏低，低成本补人脉资本（Dignity 已满，其增益浪费）。MODE=A，无 binding 风险。",
+      "public_status": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 2
+      },
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": true,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "explicit_public_completion": true,
+        "claim_scope": "Dignity-public-range",
+        "public_completion_scope": "Dignity-public-range"
+      },
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "certificate_only_counterfactual": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=PUBLIC_SCOPED]",
+        "S_basis": "NONE",
+        "CAP_basis": "PUBLIC_SCOPED",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "historical_notes_changed": false
+    },
+    {
+      "action": 13,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配3/3：准备汇报材料，Output+1。Output=1 偏低，取可见绩效资本（Dignity 已满其增益浪费）。MODE=A，无 binding 风险。",
+      "public_status": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 1
+      },
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": true,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "explicit_public_completion": true,
+        "claim_scope": "Dignity-public-range",
+        "public_completion_scope": "Dignity-public-range"
+      },
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "certificate_only_counterfactual": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=PUBLIC_SCOPED]",
+        "S_basis": "NONE",
+        "CAP_basis": "PUBLIC_SCOPED",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "historical_notes_changed": false
+    }
+  ],
+  "selected_public_evidence": [
+    {
+      "action": 9,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 保密场景：闭门会纪要属未公开内幕信息，选择不透露内幕（仅泛泛回应），避免触发保密/信任红线；不暗示、不私下告知方向。内幕信息为 private，不用于策略。MODE=A，无 fresh public binding。",
+      "public_context": "你在管理层闭门会纪要抄送名单里看到「Q2 组织优化草案」：你们「灵犀」组可能并入「猎隼推荐」，编制缩减 15%，尚未官宣。好友同事苏妍昨晚聚餐说想订房，首付已凑齐，问你：「你们组稳不稳？我想签认购书。」 她母亲生病，这套房是刚需。",
+      "before": {
+        "session_id": "756af097433f4f4b8968b979c10a8227",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 9,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        },
+        "month": 3
+      },
+      "assessment": "RISK_FULL_REVIEW_LABEL_CONCERN_NOT_ABORT_BASIS"
+    },
+    {
+      "action": 11,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配1/3：健康恢复，Health+2。当前 Health=3 偏低，优先补健康防出局；MODE=A 允许按普通价值选健康恢复。无 binding 风险。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "before": {
+        "session_id": "756af097433f4f4b8968b979c10a8227",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        },
+        "month": 3
+      },
+      "assessment": "HEALTH_RECOVERY_UNDER_A_WITH_NO_NUMERIC_S"
+    },
+    {
+      "action": 12,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配2/3：人脉维护，Network+1。Network=3 偏低，低成本补人脉资本（Dignity 已满，其增益浪费）。MODE=A，无 binding 风险。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "before": {
+        "session_id": "756af097433f4f4b8968b979c10a8227",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        },
+        "month": 3
+      },
+      "assessment": "SUPPORTED_DIGNITY_CAP_CLAIM_BUT_CAP_NONE_ABORT_BASIS"
+    },
+    {
+      "action": 13,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配3/3：准备汇报材料，Output+1。Output=1 偏低，取可见绩效资本（Dignity 已满其增益浪费）。MODE=A，无 binding 风险。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "before": {
+        "session_id": "756af097433f4f4b8968b979c10a8227",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        },
+        "month": 3
+      },
+      "assessment": "SAME_SUPPORTED_CAP_CERTIFICATE_OMISSION_DURING_REVIEW_LATENCY"
+    }
+  ],
+  "quantitative_score": "UNKNOWN",
+  "competition_partial_score": "UNKNOWN",
+  "survival_months": "NOT_VALIDATED_CENSORED_RUN",
+  "grade": "UNKNOWN_NO_FORMAL_REVIEW",
+  "final_level": "L1_AT_CUTOFF_NOT_FULL_GAME_RESULT",
+  "promotions": [],
+  "review_timeline": {
+    "6": "NOT_REACHED",
+    "12": "NOT_REACHED",
+    "18": "NOT_REACHED",
+    "24": "NOT_REACHED",
+    "30": "NOT_REACHED",
+    "36": "NOT_REACHED",
+    "42": "NOT_REACHED",
+    "48": "NOT_REACHED"
+  },
+  "final_public_state": {
+    "session_id": "756af097433f4f4b8968b979c10a8227",
+    "status": {
+      "dignity": 10,
+      "duration_in_level": 5,
+      "energy": 0,
+      "health": 6,
+      "level": "L1",
+      "network": 3,
+      "output": 3,
+      "skill": 9,
+      "wealth": 2
+    },
+    "time": {
+      "current_month": 5,
+      "current_quarter": 2,
+      "current_year": 1
+    }
+  },
+  "structured_game_end": false,
+  "alive_at_cutoff": true,
+  "failed_at_cutoff": false,
+  "parser_classification_preserved": "PARTIAL_GAMEPLAY_TECHNICAL_FAILURE",
+  "parser_window_limitation": "Frozen auditor marks window_source explicit but start/end UNKNOWN; exact supplied UTC window retained in controller receipt and this record, parser unchanged.",
+  "strategy": {
+    "main_counts": {
+      "申请关键项目": 1
+    },
+    "energy_counts": {
+      "健康恢复": 1,
+      "人脉维护": 1,
+      "准备汇报材料": 1
+    },
+    "quarterly_rows": [
+      {
+        "action": 11,
+        "seq": 109,
+        "month": 3,
+        "selected_family": "健康恢复",
+        "advertised_dimensions": [],
+        "before": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        },
+        "after": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        },
+        "after_month": 3,
+        "trace": {
+          "status": "VALID",
+          "basis": "PROTECT",
+          "family": "RESOURCE",
+          "response_prior": "NA",
+          "conditions": "0????",
+          "eligible": "0",
+          "compared": "0",
+          "selected": "0",
+          "probe_family": "NONE"
+        }
+      },
+      {
+        "action": 12,
+        "seq": 117,
+        "month": 3,
+        "selected_family": "人脉维护",
+        "advertised_dimensions": [
+          "network"
+        ],
+        "before": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        },
+        "after": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        },
+        "after_month": 3,
+        "trace": {
+          "status": "VALID",
+          "basis": "OTHER",
+          "family": "N",
+          "response_prior": "NA",
+          "conditions": "0????",
+          "eligible": "0",
+          "compared": "0",
+          "selected": "0",
+          "probe_family": "NONE"
+        }
+      },
+      {
+        "action": 13,
+        "seq": 125,
+        "month": 3,
+        "selected_family": "准备汇报材料",
+        "advertised_dimensions": [
+          "output"
+        ],
+        "before": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        },
+        "after": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 0
+        },
+        "after_month": 3,
+        "trace": {
+          "status": "VALID",
+          "basis": "OTHER",
+          "family": "O",
+          "response_prior": "NA",
+          "conditions": "0????",
+          "eligible": "0",
+          "compared": "0",
+          "selected": "0",
+          "probe_family": "NONE"
+        }
+      },
+      {
+        "action": 14,
+        "seq": 133,
+        "month": 3,
+        "selected_family": "申请关键项目",
+        "advertised_dimensions": [
+          "output",
+          "skill",
+          "network"
+        ],
+        "before": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 0
+        },
+        "after": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 8,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "after_month": 4,
+        "trace": {
+          "status": "VALID",
+          "basis": "OWNERSHIP",
+          "family": "O",
+          "response_prior": "NA",
+          "conditions": "0????",
+          "eligible": "0",
+          "compared": "0",
+          "selected": "0",
+          "probe_family": "NONE"
+        }
+      }
+    ],
+    "energy_responses": {
+      "health_GAIN": 1,
+      "network_NO_GAIN": 1,
+      "preparation_Output_GAIN": 1
+    },
+    "main_response": "MIXED_OR_UNATTRIBUTABLE_NEXT_MONTH_FEED",
+    "immediate_same_family_NO_GAIN_repeats": 0,
+    "later_same_context_NO_GAIN_repeat": 0,
+    "switch_after_NO_GAIN": "a12 Network NO_GAIN -> a13 Preparation Output GAIN; prior-known-responsive switch NOT_PROVEN",
+    "probe": {
+      "probe_eligible_count": 0,
+      "probe_compared_count": 0,
+      "probe_selected_count": 0,
+      "probe_GAIN_count": 0,
+      "probe_NO_GAIN_count": 0,
+      "probe_UNKNOWN_count": 0,
+      "probe_blocked_by_binding_constraint_count": 0,
+      "consecutive_probe_violations": 0
+    },
+    "cleanup": 0,
+    "RP_interpretation": "All notes RP=NA; Board local response tracking/probe eligibility semantics not fully verified.",
+    "delivery": "D1 COMMITTED/UNVERIFIED from a14 through a18; no claimed verified result. a16 near-term module test deadline may be undertracked (NOT_NEAR); no broad lifecycle conclusion.",
+    "risk": "All submitted final R=PASS. a9 explicitly handles confidentiality threat but uses PASS rather than Full Review label; separate regression concern.",
+    "conversion": "a8->a15 customer confirmation/process improvement is a partial public fragment, not a verified ownership-realization-recognition chain."
+  },
+  "runway": {
+    "M36": "NOT_REACHED",
+    "M42": "NOT_REACHED",
+    "M48": "NOT_REACHED",
+    "M36_L5_OR_NEAR_L5_RUNWAY": "INCONCLUSIVE_NOT_REACHED",
+    "M36_to_M48_deltas": "NOT_EXERCISED",
+    "PROMOTION_RUNWAY_EVIDENCE": "INCONCLUSIVE",
+    "complete_public_chains_in_a1_to_a18": 0,
+    "v11_justified": "NO_FROM_THIS_CENSORED_SAMPLE"
+  },
+  "runtime": {
+    "wall_seconds": 165.93,
+    "reported_usage": {
+      "actual_billed_cost": "UNKNOWN",
+      "binding": "RUNNER_REPORT_DIAGNOSTIC_ONLY",
+      "input_tokens": "UNKNOWN",
+      "output_tokens": "UNKNOWN",
+      "total_tokens": "UNKNOWN"
+    },
+    "execution_boundaries": "UNKNOWN",
+    "continuations": "UNKNOWN",
+    "compression_count": "UNKNOWN",
+    "startup_skill_reads": [],
+    "skill_rereads_after_startup": 0,
+    "provider_anomaly": "NONE_OBSERVED_BEFORE_POLICY_ABORT",
+    "runner_exit": 1,
+    "cleanup": {
+      "stop_exit": 0,
+      "manager_pid_absent": true,
+      "listeners_remaining": [],
+      "wrapper_exit": 1,
+      "readiness_seconds": 15.593
+    }
+  },
+  "live_reporting": {
+    "preflight": true,
+    "session_start": true,
+    "H1": true,
+    "H2_abort": true,
+    "H3": "NOT_REACHED",
+    "formal_checkpoint_reports": [],
+    "terminal_cleanup": true,
+    "interactive": true,
+    "extra_queries": 0
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S09 Stage/Main",
+    "reason": "CAP claim/certificate mismatch, frozen oracle replay and non-pausing review latency require independent Stage review.",
+    "sources": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T131236Z\\events-20261002T131236Z.jsonl",
+        "bytes": 265992,
+        "sha256": "fe239d49c29330f5834f18025cc675452c106f67544ac9f3776dddd9bd81e7e6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T131236Z\\transcript-20261002T131236Z.log",
+        "bytes": 73710,
+        "sha256": "b48993ab57001555d3639ef95e6b8b3bb5eb3e9c73b907c091887c5ae4973902"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\runner-result.json",
+        "bytes": 2330,
+        "sha256": "846d82deb0bca1ad60354cbbbd32e1f8e13aea518e0475fe57d7296c58399c7a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\preflight.json",
+        "bytes": 7559,
+        "sha256": "956d5c05409afd0e6735c4fa4c9407f67f598b631266dcb363100aff1f913962"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\controller.py",
+        "bytes": 16284,
+        "sha256": "2d00b26d84d0b41ff7a4f9787843972f67ae0669187e650e1c88009acd781456"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\h1.json",
+        "bytes": 7171,
+        "sha256": "537f4063c2b5cef725f335bbe6fda05d3bb17be57d1d6b79ede5b753bd6eb824"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\h2.json",
+        "bytes": 21550,
+        "sha256": "d2aadd6c03b16e63c0c5de665bbfe0e419f134a2b8adb93de0e12b9b5c823de8"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\h1-review.json",
+        "bytes": 358,
+        "sha256": "758290b9546c90d1b61e998315bb52e364931e3a7ae9c9415af7144ec788b966"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\h2-review.json",
+        "bytes": 714,
+        "sha256": "d054c101004d1ef1a2b0166e2fbcebfd23d51995a71061feff3c788af718dff6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\stop-request.json",
+        "bytes": 189,
+        "sha256": "4313f0792fcdaa7adbabc4bd5c50a85953440091b3186d881ec9e5b844e7bc0a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\action-contexts.json",
+        "bytes": 34294,
+        "sha256": "4674b680e78f1d08e56838cd5820908187c76beab9396bfceac14b2724267b62"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\public-handbook.txt",
+        "bytes": 6881,
+        "sha256": "037f995a5c3165181529688d835b7c4ea8d98bfd03d0a4a85c6734a5d83af006"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\post_run_summary.json",
+        "bytes": 33178,
+        "sha256": "912d50c1d2a30e52daa7f304cb2c01e62e18eb30451e18581048a9df335b8674"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\policy-summary.json",
+        "bytes": 28927,
+        "sha256": "cc9f579370cde6f956dbd88cce0aa90686c3ced9119769fd55355d321c8b69cb"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\cap-certificate-replay.json",
+        "bytes": 3991,
+        "sha256": "048b49f6600de35f26644b3003fcccba86895272c66c34d87bc7e6a799eea261"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\runner-stdout.log",
+        "bytes": 32771,
+        "sha256": "3372ce9f463626cda24b53aaf91b90395a018b036650a0c4caaaaeb4c53e05eb"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\service-stdout.log",
+        "bytes": 534372,
+        "sha256": "5ee9ac25f163c636832253a349cd62eea40c32ce3bab6a52f3268ba69da4aa21"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\stop-stdout.log",
+        "bytes": 493,
+        "sha256": "3cf8db42c053988a1d16e0a93785fc83257b0c22af01d37756161a34220f3407"
+      }
+    ],
+    "release_condition": "Stage/Main accepts diagnosis, resolves child dependencies, confirms raw recoverability and explicitly authorizes exact cleanup."
+  },
+  "candidate_flags": "UNCHANGED_ALL_FALSE",
+  "protected_assets": "BYTE_MATCH_FROZEN_PRE_RUN",
+  "authorization": "CONSUMED",
+  "fresh_games": 1,
+  "runner_play": 1,
+  "service_lifecycles": 1,
+  "standalone_provider_probes": 0,
+  "replacements": 0,
+  "continues": 0,
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE": "UNCHANGED"
+}

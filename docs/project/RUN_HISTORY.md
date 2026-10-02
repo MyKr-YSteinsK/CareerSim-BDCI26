@@ -288,3 +288,8 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 
 - One fresh game at `ff539a5`; H1/H2 passed, H3 header36/36 but semantic numeric-S failure(a35/a36) mandated stop. Actual cutoffM10/L1;39success/40observe/all39 full headers+BC agreement+fresh. M6 C/no promotion; final score/survival NOT_VALIDATED.
 - `DEVELOPMENT_CENSORED_EARLY_PREFLIGHT_ABORT`; not natural/Provider/survival failure. One graceful stop0,manager stopped/four ports released; no replacement. TokensUNKNOWN;452.184s. RawFORENSIC_HOLD ACTIVE, flags unchanged; [run record](runs/v10d-run13-first-validation.md). Decision=`S09_RUN13_EARLY_PREFLIGHT_ABORT_RETURN_TO_STAGE`; authorizationCONSUMED, NEXT_GAME=NOT_AUTHORIZED.
+
+## S09-RUN14 v10e — H2 cap-certificate semantic abort
+
+- One fresh game at `495fc59`; H1 PASS/H2 header+certificate+fresh12/12 but a12 public Dignity cap discount submitted CAP=NONE, frozen I3 rejection. a13 repeats during review; actual cutoffM5/L1,18success/19observe/all18 full v3/fresh,A18/S0. Supported scoped cap mismatch, not invented cap; numeric-S0 in scoped notes. No Review/final score/survival validation.
+- `DEVELOPMENT_CENSORED_EARLY_SEMANTIC_PREFLIGHT_ABORT`; wall165.93s,tokensUNKNOWN,stop0/manager stopped/four ports released,wrapper1 tail limitation. Candidate/flags unchanged, raw FORENSIC_HOLD ACTIVE, no replacement. [Run note](runs/v10e-run14-first-semantic-validation.md); `S09_RUN14_EARLY_SEMANTIC_PREFLIGHT_ABORT_RETURN_TO_STAGE`, authorizationCONSUMED, NEXT_GAME=NOT_AUTHORIZED.
