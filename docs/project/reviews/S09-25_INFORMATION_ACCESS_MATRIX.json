@@ -1,0 +1,1852 @@
+{
+  "task": "S09-25",
+  "base": "2d40cd1ccecdc7ed353e26f3346d9647de13d969",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "schema_version": 1,
+  "created_utc": "2026-10-02T16:56:54.813989+00:00",
+  "definitions": {
+    "test_access": "YES/NO describe verified locked1.0.1 submitted-Agent interface; exact hosted Test version and filesystem unverified. No live Test probe.",
+    "model_received_in_dev": "Specific RUN16 model input/trace unless qualification states otherwise; raw Codex carrier access is not Agent receipt.",
+    "official_prohibition": "NO means no specific use prohibition identified in inspected official README/package/returned Handbook; not proof of absence from unavailable full current rules. UNKNOWN retains unresolved private-data/decode/legal scope.",
+    "same_session_only": "YES means current-session payload/strategy scope. Logs query supplied session ID; no active-session authentication gate, marked NO with per-ID scope explained.",
+    "policy_conflict": "YES identifies proven/probable restriction versus eligible official surface or documented inference; recommendation does not edit current policy."
+  },
+  "sources": {
+    "LOCK": "docs/project/OFFICIAL_SOURCE_LOCK.md:70",
+    "OFFICIAL_README": {
+      "url": "https://github.com/openJiuwen-ai/CareerSim-BDCI26/blob/f61c738c72e51b77298cc1c14c7c6ebf4b6c527d/README.md",
+      "sections": [
+        "交付件",
+        "比赛交互方式"
+      ],
+      "verified": "2026-10-03 Asia/Shanghai"
+    },
+    "PUBLISHED_WHEEL": {
+      "url": "https://files.pythonhosted.org/packages/1b/d3/acd16c945c305b0deca78142d375f97c4701703b47286ab145aa94e67057/career_emulator-1.0.1-py3-none-any.whl",
+      "sha256": "56669c425a920fe0fa6c933671ccbce1c841399e3d78609403dfccbd96d23a37",
+      "files": [
+        {
+          "path": "career_emulator/server/models.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "a956ec5ef491b92236b868ddb0b17e50a6b228f74d3b93be3b1cc2650c3b9134"
+        },
+        {
+          "path": "career_emulator/server/tools.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "9b54453c1a2f625649f71e875839cdeb1e75f23216dd8368aafbfe3be561a3cc"
+        },
+        {
+          "path": "career_emulator/game.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "9812019fcb982c65eb6f2d29fabc1719227989c798dadc667342d6459f31fda4"
+        },
+        {
+          "path": "career_emulator/action_log.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "b95f4761969a952d7d2df91ac9532c293ea62739d78507b204f0dd7717dbbf73"
+        },
+        {
+          "path": "career_emulator/display_handbook.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "670145bd30c08df0ecc17dd237dde8807f226ae4f2883c389442f6a140590a14"
+        },
+        {
+          "path": "career_emulator/storage.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "40e4c4960eeaf3cfe1206f24c999b8597beeade20ff5c72a35cb82eb7498f181"
+        },
+        {
+          "path": "career_emulator/server/resources.py",
+          "installed_matches_published_wheel": true,
+          "sha256": "100d30febfcb7fa1656422ea65804948ef60a811c897b44058aef189be6d753d"
+        }
+      ]
+    },
+    "TOOLS": ".venv/Lib/site-packages/career_emulator/server/tools.py:20",
+    "FILTER": ".venv/Lib/site-packages/career_emulator/server/models.py:72",
+    "OBSERVE": ".venv/Lib/site-packages/career_emulator/server/models.py:163",
+    "REGULAR_CHOICE": ".venv/Lib/site-packages/career_emulator/server/models.py:386",
+    "STORY_CHOICE": ".venv/Lib/site-packages/career_emulator/server/models.py:233",
+    "LOGS": ".venv/Lib/site-packages/career_emulator/game.py:271",
+    "LOG_STORE": ".venv/Lib/site-packages/career_emulator/storage.py:333",
+    "LOG_ENTRY": ".venv/Lib/site-packages/career_emulator/server/models.py:709",
+    "LOG_FORMAT": ".venv/Lib/site-packages/career_emulator/action_log.py:6",
+    "HANDBOOK": ".venv/Lib/site-packages/career_emulator/display_handbook.py:193",
+    "ENDING": ".venv/Lib/site-packages/career_emulator/game.py:678",
+    "INSTALL": "career_sim_runner/install.py:43",
+    "IDENTITY": "career_sim_runner/prompts/identity.md:29",
+    "RESOURCE": ".venv/Lib/site-packages/career_emulator/server/resources.py:8",
+    "REVIEWER_PROJECTION": "scripts/live_review_packet.py:81",
+    "KERNEL": "configs/runtime_manifest.json:5",
+    "BOARD": "skills/structured-state-board/SKILL.md:20",
+    "PLANNING": "skills/rolling-planning/SKILL.md:24",
+    "RISK": "skills/risk-review/SKILL.md:23",
+    "AD007": "docs/project/ARCHITECTURE_DECISIONS.md:52",
+    "PUBLIC_DEV_PACKAGE": {
+      "url": "https://pypi.org/project/career-emulator-bdci26/1.0.0/",
+      "scope": "Officially distributed Dev authoring dataset; installation/update commands were read, not executed."
+    }
+  },
+  "official_web_limitations": [
+    "ReadTheDocs Handbook/MCP pages inaccessible (403 via direct fetch).",
+    "XIR1165 current dataware/full rules inaccessible; Source Lock dated2026-09-22 reused only as historical official fact record.",
+    "No unrelated competition-year rules substituted."
+  ],
+  "information_matrix": [
+    {
+      "information_item": "current_state.status.health",
+      "example": 4,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.health",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.dignity",
+      "example": 10,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.dignity",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.skill",
+      "example": 9,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.skill",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.network",
+      "example": 2,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.network",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.output",
+      "example": 0,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.output",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.wealth",
+      "example": 1,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.wealth",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.level",
+      "example": "L1",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.level",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.energy",
+      "example": 3,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.energy",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.status.duration_in_level",
+      "example": 3,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.status.duration_in_level",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.time",
+      "example": "M3/Q1/Y1",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.time",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.simulation_flags",
+      "example": "alive/failed/failure_reason",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.simulation_flags",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_state.available_choice_count",
+      "example": 8,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_state.available_choice_count",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.title",
+      "example": "季度体力行动分配",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.title",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.description",
+      "example": "current participant event",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.description",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.rules",
+      "example": "quarter budget/settlement rules",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.rules",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.remaining_energy",
+      "example": 3,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.remaining_energy",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.energy_budget",
+      "example": 3,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.energy_budget",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "current_event.max_selections",
+      "example": 3,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).current_event.max_selections",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OBSERVE",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "choices[].choice",
+      "example": 1,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[].choice",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "choices[].action",
+      "example": "高强度工作",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[].action",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "choices[].description",
+      "example": "qualitative costs and risk",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[].description",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "choices[].energy_cost",
+      "example": 2,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[].energy_cost",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "regular choices[].status_updates public dimensions",
+      "example": {
+        "Output": 2,
+        "Health": -1,
+        "Dignity": -1
+      },
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[].status_updates",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": "Verified direct official delivery resolves public-status uncertainty; configured effect is not guaranteed realized delta."
+    },
+    {
+      "information_item": "regular choices[].status_updates.HiddenRisk positive delta",
+      "example": 1,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[choice=1].status_updates.HiddenRisk",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "BAN",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": "Known effect delta, not current hidden-risk stock or a hidden trigger threshold; scoped to verified1.0.1 surface."
+    },
+    {
+      "information_item": "regular choices[].status_updates.HiddenRisk cleanup delta",
+      "example": -1,
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(session_id).choices[choice=4].status_updates.HiddenRisk",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "BAN",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "REGULAR_CHOICE",
+        "FILTER",
+        "RUN16:seq107"
+      ],
+      "qualification": "Does not prove existing risk, need to clean now, actual post-clamp reduction, or safety."
+    },
+    {
+      "information_item": "story choices[].status_updates pre-choice",
+      "example": "configured Skill+2",
+      "source_surface": "raw dataset",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE in1.0.1 EventChoice.to_choice",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "STORY_CHOICE",
+        "FILTER"
+      ],
+      "qualification": "Different serializer from quarterly menus; no future-consequence object in returned Story choices."
+    },
+    {
+      "information_item": "handbook action effects",
+      "example": "Output + (not +2)",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() effect tables",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "HANDBOOK",
+        "RUN16:seq11"
+      ],
+      "qualification": "Hidden keys removed, public effects rendered as direction only."
+    },
+    {
+      "information_item": "hidden_risk current stock",
+      "example": 99,
+      "source_surface": "raw state / DB",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE in1.0.1 observe; _strip_mcp_state removes hidden keys",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "FILTER"
+      ],
+      "qualification": "Not inferable exactly from fixed action deltas when initial stock and Story effects are unobserved."
+    },
+    {
+      "information_item": "qualitative potential risk",
+      "example": "累积潜在风险",
+      "source_surface": "event text / observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).choices[].description",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq107"
+      ],
+      "qualification": "Text is available; project allowance of qualitative warning conflicts with blanket HiddenRisk terminology restriction."
+    },
+    {
+      "information_item": "historical risk warning",
+      "example": "risk accumulating / needs handling",
+      "source_surface": "observe.events / logs",
+      "model_received_in_dev": "UNKNOWN",
+      "official_test_agent_path": "observe(...).events; check_latest_logs(...).entries[].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "LOGS",
+        "TOOLS"
+      ],
+      "qualification": "Not exercised by RUN16; source path established, exact future warning payload dataset dependent."
+    },
+    {
+      "information_item": "check_latest_logs entries",
+      "example": "{session_id,entry_type,message}",
+      "source_surface": "logs",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "check_latest_logs(session_id,count=10).entries[]",
+      "test_access": "YES",
+      "same_session_only": "NO",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "LOGS",
+        "LOG_ENTRY",
+        "LOG_STORE",
+        "OFFICIAL_README"
+      ],
+      "qualification": "RUN16 did not call it. Query is scoped to supplied ID; no binding to currently active Agent session. Strategy must use its own session only."
+    },
+    {
+      "information_item": "log configured public action effects",
+      "example": "Skill +2, Network +1",
+      "source_surface": "logs",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "check_latest_logs(...).entries[action].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "LOG_FORMAT",
+        "LOGS"
+      ],
+      "qualification": "Exact configured changes, not guaranteed actual growth after clamp, salary, Review or settlement; prior public effects must be verified by fresh observe."
+    },
+    {
+      "information_item": "log generated HiddenRisk numeric effects",
+      "example": "hidden delta omitted",
+      "source_surface": "logs",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE in format_status_updates",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "MEDIUM",
+      "recommended_status": "BAN",
+      "evidence": [
+        "LOG_FORMAT"
+      ],
+      "qualification": "No HiddenRisk stock or delta is added by action formatter. Notes may separately echo one."
+    },
+    {
+      "information_item": "log Notes echo",
+      "example": "agent earlier wrote HiddenRisk+1",
+      "source_surface": "logs",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "check_latest_logs(...).entries[].message Notes",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "LOG_FORMAT",
+        "LOGS"
+      ],
+      "qualification": "Agent-authored rationale, not independent simulator effect evidence; cannot launder unsupported inference."
+    },
+    {
+      "information_item": "log_file path",
+      "example": "server-side per-session log path",
+      "source_surface": "logs",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "check_latest_logs(...).log_file",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "LOW",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "LOGS"
+      ],
+      "qualification": "Path metadata is returned; direct file readability from cloud Agent is UNKNOWN and cannot replace official log tool."
+    },
+    {
+      "information_item": "logs:// resource full history",
+      "example": "same-session log text",
+      "source_surface": "MCP resource",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "MCP resource logs://{session_id}",
+      "test_access": "UNKNOWN",
+      "same_session_only": "NO",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "LOW",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "RESOURCE"
+      ],
+      "qualification": "Server resource registered; locked Agent resource discover/read adapter and cloud permissions not independently verified. Tool logs already available."
+    },
+    {
+      "information_item": "Handbook public ranges",
+      "example": "H/D0–10; S/N/O0–unbounded",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() explicit-state table",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "HANDBOOK",
+        "RUN16:seq11"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "Handbook public schedule",
+      "example": "48m; quarterly3E; six-month Review",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() time structure",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq11"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "Handbook public terminal descriptions",
+      "example": "Health failure; two consecutive D grades",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() risk/failure prose",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq11"
+      ],
+      "qualification": "Published descriptions distinguish fixed assertions from rumors; no missing numeric hidden threshold supplied."
+    },
+    {
+      "information_item": "Handbook salary/bonus table",
+      "example": "L1=0.3 monthly; C=-1 salary multiplier",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() salary/performance tables",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq11"
+      ],
+      "qualification": "Exact stated table, not an undisclosed promotion/performance formula."
+    },
+    {
+      "information_item": "Handbook inferred-mechanics permission",
+      "example": "hidden information inferred from feedback",
+      "source_surface": "handbook",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "show_employee_handbook() transparency note",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "MEDIUM",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "RUN16:seq11"
+      ],
+      "qualification": "Supports uncertainty-aware inference; not fabricated certainty or decoded private Test facts."
+    },
+    {
+      "information_item": "formal grade",
+      "example": "C",
+      "source_surface": "observe.events / logs",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).events; logs[].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq187",
+        "LOGS"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "promotion/no-promotion",
+      "example": "L1→L2 notice",
+      "source_surface": "observe.events / logs",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).events; logs[].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq187",
+        "LOGS"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "public feedback",
+      "example": "next window needs clearer results",
+      "source_surface": "observe.events / logs",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).events; logs[].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq187",
+        "LOGS"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "bonus/salary changes",
+      "example": "C -0.3; base salary +0.3",
+      "source_surface": "observe.events / logs",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).events; logs[].message",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq187",
+        "LOGS"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "formal Review structured grade/threshold",
+      "example": "grade/threshold object",
+      "source_surface": "observe",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE in demonstrated1.0.1 observe schema",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "LOW",
+      "recommended_status": "BAN",
+      "evidence": [
+        "RUN16:seq187",
+        "OBSERVE"
+      ],
+      "qualification": "Grade/bonus/notice are prose; Level/state structured fields independently available. Parse prose with uncertainty."
+    },
+    {
+      "information_item": "post-Review structured Level/state",
+      "example": "L2/H6/D10/S9/N3/O3",
+      "source_surface": "observe",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "observe(...).current_state.status",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "RUN16:seq187",
+        "OBSERVE"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "event_id/node_id/graph identifiers",
+      "example": "dataset graph id",
+      "source_surface": "raw event / source",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE after1.0.1 MCP filters",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "FILTER",
+        "STORY_CHOICE"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "event_type/decision_type/category",
+      "example": "internal family labels",
+      "source_surface": "raw event / dataset",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE for hidden event_type/decision_type; category not serialized",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "FILTER",
+        "STORY_CHOICE"
+      ],
+      "qualification": "Semantic quarterly family may be inferred from visible title/menu. No returned internal category assumed."
+    },
+    {
+      "information_item": "dataset filename/index/raw labels",
+      "example": "sc_evt*.data",
+      "source_surface": "raw dataset",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "UNKNOWN cloud filesystem; not returned by game MCP",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "FILTER",
+        "OFFICIAL_README"
+      ],
+      "qualification": "Do not require or query as a Test strategy dependency. Public Dev distribution is a separate authoring source."
+    },
+    {
+      "information_item": "ending_score after natural terminal",
+      "example": "quantitative score/dimensions/grade",
+      "source_surface": "observe",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "observe(...).ending_score after game ends",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "ENDING",
+        "OBSERVE"
+      ],
+      "qualification": "Not exercised in RUN16; terminal scoring payload is emitted by official serializer, no further current-game choice remains."
+    },
+    {
+      "information_item": "intermediate quantitative score/private components",
+      "example": "running score/weights",
+      "source_surface": "raw source / DB",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE in active observe/log schema",
+      "test_access": "NO",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "OBSERVE",
+        "LOGS"
+      ],
+      "qualification": "Do not infer source existence implies Agent delivery. Final dimensions are distinct."
+    },
+    {
+      "information_item": "post-run score_report.json",
+      "example": "Runner artifact",
+      "source_surface": "runner file",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "UNKNOWN cloud evaluator file access; no game tool path",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "OFFICIAL_README"
+      ],
+      "qualification": "Codex artifact access is not Test Agent access; not needed during game."
+    },
+    {
+      "information_item": "same-session empirical promotion inference",
+      "example": "feedback suggests capital gap",
+      "source_surface": "observe history / legal logs",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "own-session observations and check_latest_logs",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "MEDIUM",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "RUN16:seq11",
+        "LOGS"
+      ],
+      "qualification": "Inference/prior only, calibrated uncertainty; no unobserved exact threshold asserted as fact."
+    },
+    {
+      "information_item": "legal Dev trajectory learned prior",
+      "example": "ownership/broad capital tends to help",
+      "source_surface": "offline authoring / packaged Skill",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "manifest instruction and installed SKILL.md",
+      "test_access": "YES",
+      "same_session_only": "NO",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "MEDIUM",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OFFICIAL_README",
+        "INSTALL",
+        "PLANNING"
+      ],
+      "qualification": "Authoring prior, not external runtime cross-game memory. Current C5 already recognizes donor prior; no guarantee of Test transfer."
+    },
+    {
+      "information_item": "public Dev dataset learned mechanics",
+      "example": "distributed dev rule/config prior",
+      "source_surface": "offline Dev dataset",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "packaged knowledge only; direct runtime dataset path UNKNOWN",
+      "test_access": "UNKNOWN",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "YES",
+      "strategy_value": "HIGH",
+      "transfer_risk": "HIGH",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "LOCK",
+        "PUBLIC_DEV_PACKAGE"
+      ],
+      "qualification": "Distribution/development access proven; permission to decode obfuscated rules/use exact event answer memorization is not explicitly resolved by audited published rules. No data decoded here."
+    },
+    {
+      "information_item": "private Test dataset contents",
+      "example": "undistributed hidden event corpus",
+      "source_surface": "private Test dataset",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE established",
+      "test_access": "NO",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "UNKNOWN",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "LOCK"
+      ],
+      "qualification": "Conservative privacy/integrity boundary retained; no explicit current full-rule text fetched, no access attempted."
+    },
+    {
+      "information_item": "event-ID→answer from private Test",
+      "example": "memorized private Test answers",
+      "source_surface": "private Test data",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE established",
+      "test_access": "NO",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "UNKNOWN",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "LOCK",
+        "FILTER"
+      ],
+      "qualification": ""
+    },
+    {
+      "information_item": "packaged Skill/manifest strategic knowledge",
+      "example": "authored rule/prior",
+      "source_surface": "installed skills / instruction",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "official install→IDENTITY/instruction→skill_tool read",
+      "test_access": "YES",
+      "same_session_only": "NO",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "OFFICIAL_README",
+        "INSTALL",
+        "RUN16:skill_tool"
+      ],
+      "qualification": "Explicit submission transfer mechanism; separate from dynamic memory."
+    },
+    {
+      "information_item": "same-game passive memory",
+      "example": "game facts within Agent session",
+      "source_surface": "framework memory",
+      "model_received_in_dev": "UNKNOWN",
+      "official_test_agent_path": "agent mode memory on demand; same-game passive context",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "MEDIUM",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "OFFICIAL_README",
+        "IDENTITY"
+      ],
+      "qualification": "Summary cannot override fresh state; exact cloud retention/compression unknown."
+    },
+    {
+      "information_item": "dynamic cross-game persistent memory",
+      "example": "previous game memory after install",
+      "source_surface": "framework files",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "locked install clears memory/*.md and sessions",
+      "test_access": "NO",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "INSTALL"
+      ],
+      "qualification": "No dependable fresh-run persistence; cloud multi-game lifecycle UNKNOWN, not an official global ban on authored knowledge."
+    },
+    {
+      "information_item": "external DB/previous Test results",
+      "example": "other-game trajectory database",
+      "source_surface": "external/shared DB",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "UNKNOWN cloud tool/filesystem permissions; no game MCP for external DB",
+      "test_access": "UNKNOWN",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "OFFICIAL_README",
+        "INSTALL"
+      ],
+      "qualification": "Keep unavailable external intervention/data out of submitted runtime; do not assume general tools grant this access."
+    },
+    {
+      "information_item": "raw hidden shared simulator state",
+      "example": "SQLite session payload",
+      "source_surface": "shared DB",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "UNKNOWN filesystem; NONE through declared public state MCP",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "MEDIUM",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "FILTER",
+        "OFFICIAL_README"
+      ],
+      "qualification": "Codex forensic availability is not a legitimate Test strategy dependency; no DB accessed in audit."
+    },
+    {
+      "information_item": "raw Runner events/transcript",
+      "example": "local forensic carrier",
+      "source_surface": "runner file",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "UNKNOWN cloud filesystem; NO contractual game MCP path",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "OFFICIAL_README"
+      ],
+      "qualification": "Their tool-result content can independently have official provenance; the file itself is not automatically Agent input."
+    },
+    {
+      "information_item": "session_id/action success/error",
+      "example": "current identity; success/error receipt",
+      "source_surface": "MCP tool",
+      "model_received_in_dev": "YES",
+      "official_test_agent_path": "new_game.session_id; take_action.success/error",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "ALLOW",
+      "evidence": [
+        "TOOLS",
+        "RUN16:seq111"
+      ],
+      "qualification": "Identity/sequence/errors are useful control evidence, not career result verification."
+    },
+    {
+      "information_item": "call IDs/timestamps",
+      "example": "tool_call_id and event ts",
+      "source_surface": "framework stream / runner",
+      "model_received_in_dev": "UNKNOWN",
+      "official_test_agent_path": "UNKNOWN exact model delivery of timestamps/call IDs",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "CONDITIONAL",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "LOW",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "RUN16:seq107"
+      ],
+      "qualification": "Stream metadata seen by Codex does not prove exact fields reach the model. Framework pairing is a control function."
+    },
+    {
+      "information_item": "MCP error messages",
+      "example": "Unknown session / Invalid choice",
+      "source_surface": "MCP tool",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "observe.error; take_action.error",
+      "test_access": "YES",
+      "same_session_only": "YES",
+      "official_prohibition": "NO",
+      "current_project_policy": "ALLOW",
+      "policy_conflict": "NO",
+      "strategy_value": "HIGH",
+      "transfer_risk": "LOW",
+      "recommended_status": "CONDITIONAL",
+      "evidence": [
+        "TOOLS"
+      ],
+      "qualification": "Error may be Agent-visible, but retry scope and unknown side effects still bounded; do not probe other sessions."
+    },
+    {
+      "information_item": "model/provider usage metadata",
+      "example": "token counts/provider headers",
+      "source_surface": "provider / runner infrastructure",
+      "model_received_in_dev": "UNKNOWN",
+      "official_test_agent_path": "UNKNOWN; not in game MCP",
+      "test_access": "UNKNOWN",
+      "same_session_only": "YES",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "INVESTIGATE",
+      "evidence": [
+        "OFFICIAL_README"
+      ],
+      "qualification": "No credential/config/log route assumed; some runtime budget/error signal could be delivered, not verified here."
+    },
+    {
+      "information_item": "credentials/provider/private infrastructure",
+      "example": "API key/private config",
+      "source_surface": "private infrastructure",
+      "model_received_in_dev": "NO",
+      "official_test_agent_path": "NONE authorized",
+      "test_access": "UNKNOWN",
+      "same_session_only": "NO",
+      "official_prohibition": "UNKNOWN",
+      "current_project_policy": "BAN",
+      "policy_conflict": "NO",
+      "strategy_value": "LOW",
+      "transfer_risk": "HIGH",
+      "recommended_status": "BAN",
+      "evidence": [
+        "LOCK"
+      ],
+      "qualification": ""
+    }
+  ],
+  "restriction_inventory": [
+    {
+      "id": "R01",
+      "restriction": "PUBLIC_INTERFACE_ONLY",
+      "introduction": "4372921 AD-007; label aebd599 S07-03",
+      "candidates_affected": "S07 onward",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Dev leakage/transfer firewall; official interface itself sensible, project whitelist narrower",
+      "likely_scoring_impact": "POSSIBLE",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "AD007",
+        "aebd599:docs/project/reviews/S07-03_CHEAP_PROBE_AND_MID70_REVIEW.md"
+      ]
+    },
+    {
+      "id": "R02",
+      "restriction": "HiddenRisk name/delta blanket exclusion even when tool returns it",
+      "introduction": "8f14064 S07-36",
+      "candidates_affected": "v7h→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Response to numeric HiddenRisk evidence discipline findings; no direct official prohibition established",
+      "likely_scoring_impact": "MATERIAL_PLAUSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "KERNEL",
+        "BOARD",
+        "RISK",
+        "8f14064:configs/runtime_manifest.json"
+      ]
+    },
+    {
+      "id": "R03",
+      "restriction": "hidden counters/statistics exclusion",
+      "introduction": "8f14064 explicit exclusions",
+      "candidates_affected": "v7h→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Counter/threshold leakage prevention; actual MCP filter withholds these",
+      "likely_scoring_impact": "NONE",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "FILTER",
+        "8f14064"
+      ]
+    },
+    {
+      "id": "R04",
+      "restriction": "internal score blanket exclusion",
+      "introduction": "8f14064 explicit exclusions",
+      "candidates_affected": "v7h→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Avoid private scorer optimization; active-game components inaccessible, final score separately public",
+      "likely_scoring_impact": "UNKNOWN",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "OBSERVE",
+        "ENDING",
+        "8f14064"
+      ]
+    },
+    {
+      "id": "R05",
+      "restriction": "internal event id/effect bundled exclusion",
+      "introduction": "4372921 lookup boundary;8f14064 explicit effects",
+      "candidates_affected": "S07 / v7h→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "ID answer lookup prevention; conflates stripped graph IDs with returned regular action effects",
+      "likely_scoring_impact": "MATERIAL_PLAUSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "FILTER",
+        "REGULAR_CHOICE",
+        "8f14064"
+      ]
+    },
+    {
+      "id": "R06",
+      "restriction": "public-status-unclear numeric status_updates: exclude until verified",
+      "introduction": "8f14064 S07-36",
+      "candidates_affected": "v7h→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Unclear carrier trust becomes field ban when proper verification is omitted",
+      "likely_scoring_impact": "MATERIAL_PLAUSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "REGULAR_CHOICE",
+        "KERNEL",
+        "8f14064"
+      ]
+    },
+    {
+      "id": "R07",
+      "restriction": "decoded public Dev rule/config priors NON_DEPLOYABLE",
+      "introduction": "4372921 AD-007",
+      "candidates_affected": "S07 onward",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Quarantine S06-09 source-derived knowledge; distribution is official but precise reuse conditions unverified",
+      "likely_scoring_impact": "UNKNOWN",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "AD007",
+        "LOCK",
+        "PUBLIC_DEV_PACKAGE"
+      ]
+    },
+    {
+      "id": "R08",
+      "restriction": "hidden thresholds/weights/formulas: no inference",
+      "introduction": "existing v6b 8b6696a;formalized4372921;0cecffd",
+      "candidates_affected": "v6b/S07→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Prevent fabricated threshold certainty; Handbook explicitly permits feedback-based inference",
+      "likely_scoring_impact": "MATERIAL_PLAUSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "RUN16:seq11",
+        "AD007",
+        "PLANNING"
+      ]
+    },
+    {
+      "id": "R09",
+      "restriction": "event/title→answer lookup prohibition",
+      "introduction": "existing v6b;4372921 AD-007",
+      "candidates_affected": "v6b/S07 onward",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Integrity/generalization choice; private Test lookup remains unavailable, blanket public Dev scope unresolved",
+      "likely_scoring_impact": "UNKNOWN",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "AD007",
+        "FILTER",
+        "PUBLIC_DEV_PACKAGE"
+      ]
+    },
+    {
+      "id": "R10",
+      "restriction": "runtime cross-game memory ban",
+      "introduction": "8b6696a v6b;21b5153 v7;8f14064",
+      "candidates_affected": "v6b→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Fresh/session isolation; install resets dynamic memory so dependency is unsound",
+      "likely_scoring_impact": "NONE",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "INSTALL",
+        "IDENTITY"
+      ]
+    },
+    {
+      "id": "R11",
+      "restriction": "Dev/private evidence phrase may include all authored Dev priors",
+      "introduction": "0cecffd Evidence/interfaces",
+      "candidates_affected": "v10a→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Broad wording coexists with C5 donor prior; inference versus direct runtime data conflated",
+      "likely_scoring_impact": "MATERIAL_PLAUSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "PLANNING",
+        "OFFICIAL_README"
+      ]
+    },
+    {
+      "id": "R12",
+      "restriction": "Board log input limited mainly to recovery",
+      "introduction": "v7 Board21b5153;8f14064;current3060c63 Board",
+      "candidates_affected": "v7→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Keep concise state and reduce requery cost; not a blanket official log ban",
+      "likely_scoring_impact": "POSSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "BOARD",
+        "LOGS",
+        "IDENTITY"
+      ]
+    },
+    {
+      "id": "R13",
+      "restriction": "K2: cap/completion only explicit same-scope public evidence",
+      "introduction": "b92e834 scoped response;0cecffd C6;55157f5 K2;7895515 narrowing",
+      "candidates_affected": "v7z/v10a→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Strong protection against local NO_GAIN becoming certainty; may disallow calibrated lawful empirical cap hypotheses",
+      "likely_scoring_impact": "POSSIBLE",
+      "potentially_overrestrictive": true,
+      "evidence": [
+        "PLANNING",
+        "KERNEL"
+      ]
+    },
+    {
+      "id": "R14",
+      "restriction": "K3: numeric-only MODE=S prohibited",
+      "introduction": "43258d4 fresh reauthorization;55157f5 explicit kernel",
+      "candidates_affected": "v7x onward / v10c→v10f",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Observed over-stabilization guard; current binding text/log warnings still admissible",
+      "likely_scoring_impact": "UNKNOWN",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "KERNEL",
+        "BOARD",
+        "LOGS"
+      ]
+    },
+    {
+      "id": "R15",
+      "restriction": "shared DB/raw forensic state excluded",
+      "introduction": "4372921 AD-007;AGENTS evidence lifecycle",
+      "candidates_affected": "S07 onward",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Test availability/credential/session integrity boundary; no official tool path established",
+      "likely_scoring_impact": "NONE",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "AD007",
+        "FILTER",
+        "LOCK"
+      ]
+    },
+    {
+      "id": "R16",
+      "restriction": "private Test/credential/external intervention ban",
+      "introduction": "Source Lock public Dev/private Test;AGENTS",
+      "candidates_affected": "all governed Candidates",
+      "origin": "SELF_IMPOSED",
+      "official_rule_proof": "NONE_IDENTIFIED_IN_AUDITED_SOURCES",
+      "reason": "Conservative integrity/security restriction supported by distribution separation; no complete published prohibition text independently refreshed",
+      "likely_scoring_impact": "NONE",
+      "potentially_overrestrictive": false,
+      "evidence": [
+        "LOCK",
+        "OFFICIAL_README"
+      ]
+    }
+  ],
+  "restriction_counts": {
+    "total": 16,
+    "confirmed_explicit_official_prohibition_driven": 0,
+    "self_imposed": 16,
+    "potentially_overrestrictive": 9
+  },
+  "RUN16_provenance": {
+    "classification": "OFFICIAL_RUNTIME_VISIBLE",
+    "scope": "Verified locked1.0.1 MCP path, not direct hosted Test observation.",
+    "events": {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T160103Z\\events-20261002T160103Z.jsonl",
+      "bytes": 343982,
+      "sha256": "4115aa6d118c29fca4b5be6f051bb21e6c630c9043cbd1b0b7087d6bcc96e75e"
+    },
+    "transcript": {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T160103Z\\transcript-20261002T160103Z.log",
+      "bytes": 88313,
+      "sha256": "81a4af9116809b88448ff9e8d7059dba39f76876a896c884227b4af08ee54e05"
+    },
+    "a11": {
+      "observe_seq": 107,
+      "observe_utc": "2026-10-02T16:02:24.332961+00:00",
+      "tool": "mcp_career-emulator_observe",
+      "official_field": "choices[0].status_updates.HiddenRisk",
+      "exact_value": 1,
+      "high_intensity_choice": {
+        "choice": 1,
+        "action": "高强度工作",
+        "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+        "energy_cost": 2,
+        "status_updates": {
+          "Output": 2,
+          "Health": -1,
+          "Dignity": -1,
+          "HiddenRisk": 1
+        }
+      },
+      "cleanup_choice": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "current_state_has_hidden_stock": false,
+      "submit_seq": 109,
+      "submitted_utc": "2026-10-02T16:02:41.909462+00:00",
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力：当前O=0/N=2偏低为晋升缺口，D=10封顶故避开含Dignity代价的高强度工作(还带HiddenRisk+1)；选准备汇报材料(有跨组评审真实成果可包装)O+1起步。",
+      "transcript_lines": [
+        378,
+        386,
+        428,
+        485,
+        518
+      ],
+      "packet_projection_omitted": [
+        "status_updates",
+        "rules",
+        "remaining_energy",
+        "energy_budget",
+        "max_selections"
+      ],
+      "logs_called_before_a11": false,
+      "handbook_contains_exact_hidden_delta": false,
+      "skill_context_provenance_required": false,
+      "dev_only_or_hallucination_claim": "NOT_SUPPORTED_VALUE_ALREADY_IN_OFFICIAL_TOOL_RESPONSE"
+    },
+    "a24": {
+      "classification": "OFFICIAL_RUNTIME_VISIBLE_QUALITATIVE_USE",
+      "observe_seq": 212,
+      "submit_seq": 213,
+      "menu_risk_description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+      "menu_hidden_delta": 1,
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q2体力：缺口O=5(Leader要更清晰成果)/H=6，D=10封顶；避开带HiddenRisk与Dignity代价的高强度工作；选准备汇报材料(O+1,有真实成果可包装)起步。",
+      "exact_stock_inferred": false
+    },
+    "RUN16_correction": "Historical controller stop and K1 conflict preserved; claim that numeric value was absent from official Agent input is refuted. No official-rules violation established; current K1 bans an accessible delta.",
+    "immutable_receipts_preserved": true
+  },
+  "static_validation": {
+    "pure_checks": {
+      "state_hidden_risk_removed": true,
+      "state_health_preserved": true,
+      "statistics_removed": true,
+      "active_nodes_removed": true,
+      "event_internal_ids_removed": true,
+      "event_semantics_preserved": true,
+      "remaining_energy_preserved": true,
+      "choice_graph_ids_removed": true,
+      "choice_hiddenrisk_delta_preserved": true,
+      "choice_public_effect_preserved": true,
+      "warning_returned_as_events": true,
+      "log_entry_exact_schema": true,
+      "action_receipt_has_no_state": true,
+      "raw_run16_a11_delta_present": true,
+      "reviewer_packet_projection_loss": true,
+      "logs_emit_exact_public_effects": true,
+      "logs_filter_hidden_effects": true,
+      "handbook_only_effect_direction": true,
+      "notes_not_independent_evidence": true
+    },
+    "passed": 19,
+    "engine_or_tools_called": false,
+    "published_source_matches_installed": true
+  },
+  "candidate_impact": {
+    "K1": "PARTIALLY_OVERRESTRICTIVE",
+    "K2": "ANTI_FALSE_FACT_GUARD_SOUND_EMPIRICAL_PRIOR_SCOPE_TOO_NARROW",
+    "K3": "NO_DIRECT_LOG_BAN_K1_ADMISSION_LIMITATION",
+    "Board": "PARTIALLY_OVERRESTRICTIVE_RISK_DELTA_AND_LOG_FACT_ADMISSION",
+    "Planning": "PARTIALLY_OVERRESTRICTIVE_EFFECTS_AND_AMBIGUOUS_DEV_PRIORS",
+    "Risk": "PARTIALLY_OVERRESTRICTIVE_KNOWN_EFFECT_DELTA"
+  },
+  "opportunity": "HIGH",
+  "opportunity_scope": "Hypothesis classification, no causal point estimate or permission to patch/run.",
+  "decision": "S09_25_K1_OVERRESTRICTION_CONFIRMED_RETURN_TO_STAGE",
+  "live_operations": 0,
+  "candidate_changed": false,
+  "skills_changed": false,
+  "manifest_changed": false,
+  "next_game": "NOT_AUTHORIZED",
+  "main_v8a": "UNCHANGED"
+}
