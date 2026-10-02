@@ -293,3 +293,7 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 
 - One fresh game at `495fc59`; H1 PASS/H2 header+certificate+fresh12/12 but a12 public Dignity cap discount submitted CAP=NONE, frozen I3 rejection. a13 repeats during review; actual cutoffM5/L1,18success/19observe/all18 full v3/fresh,A18/S0. Supported scoped cap mismatch, not invented cap; numeric-S0 in scoped notes. No Review/final score/survival validation.
 - `DEVELOPMENT_CENSORED_EARLY_SEMANTIC_PREFLIGHT_ABORT`; wall165.93s,tokensUNKNOWN,stop0/manager stopped/four ports released,wrapper1 tail limitation. Candidate/flags unchanged, raw FORENSIC_HOLD ACTIVE, no replacement. [Run note](runs/v10e-run14-first-semantic-validation.md); `S09_RUN14_EARLY_SEMANTIC_PREFLIGHT_ABORT_RETURN_TO_STAGE`, authorizationCONSUMED, NEXT_GAME=NOT_AUTHORIZED.
+
+## S09-RUN15 v10f — reviewer-censored semantic validation
+
+- S09-RUN15 v10f: `DEVELOPMENT_CENSORED_BY_REVIEWER_FALSE_POSITIVE`, actual M6/C/L1,26 actions/27 observes. H1 stop wrongly inferred Full Review from event-level compliance; transcript supports candidate-specific Quick Gate PASS, so no confirmed Candidate Risk violation. Five-marker/BC/fresh26/26; final score/survival/full-horizon UNKNOWN. One run consumed, cleanup PASS, flags unchanged, raw hold ACTIVE; Stage review required before any new game. See [run record](runs/v10f-run15-first-semantic-validation.md). `NEXT_GAME=NOT_AUTHORIZED`; main v8a freeze unchanged.

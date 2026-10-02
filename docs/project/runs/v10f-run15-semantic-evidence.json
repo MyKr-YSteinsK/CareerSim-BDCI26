@@ -1,0 +1,515 @@
+{
+  "run": "S09-RUN15",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "execution_HEAD": "6d9bcd2b154e3f3f4e63bed58a8df4c993feb384",
+  "candidate": "candidate-v10f-cap-scope-correction",
+  "identity": {
+    "manifest": {
+      "path": "configs/runtime_manifest.json",
+      "bytes": 7801,
+      "physical_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+      "lf_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+      "git_blob": "db74ce289095d7b81ab5408ffeea5e3e49e941ed"
+    },
+    "metadata": {
+      "path": "configs/current_candidate.json",
+      "bytes": 7636,
+      "physical_sha256": "d8ab77cb3ebd2889caf7491d972110ca5ab7fb232f11f0d7a90fe1ccd7200f35",
+      "lf_sha256": "d8ab77cb3ebd2889caf7491d972110ca5ab7fb232f11f0d7a90fe1ccd7200f35",
+      "git_blob": "bf580f1a1d455f64df9084f3e22f2444a18b3ea9"
+    },
+    "instruction_sha256": "88e7a08849d3b60c2b564a59ed9697b234363000b74abd3171d20fd24c68aa8b",
+    "skills": [
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "bytes": 5252,
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "bytes": 11607,
+        "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+        "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "bytes": 4189,
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      }
+    ],
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "measurement_freeze": "See preflight.json",
+  "session": "504be3ab6a224b31ad945d963c83d718",
+  "window_utc": [
+    "2026-10-02T15:06:35.161860+00:00",
+    "2026-10-02T15:10:21.345664+00:00"
+  ],
+  "timezone": "Asia/Shanghai (+08:00)",
+  "correction": {
+    "classification": "DEVELOPMENT_CENSORED_BY_REVIEWER_FALSE_POSITIVE",
+    "original_abort": "S09_RUN15_EARLY_CONTRACT_ABORT",
+    "original_stop_receipt_retained": true,
+    "confirmed_candidate_Risk_drift": false,
+    "reason": "Reviewer inferred mandatory Full Review from event-level compliance risk rather than risk of the selected final candidate. Risk contract gates the final candidate; transcript explicitly chose Quick Gate PASS for a2 because the candidate avoids compliance risk. a3 also chose legitimate authorship. The original stop rationale is not established.",
+    "candidate_semantic_adherence": "PASS_WITH_LIMITATIONS_SHORT_WINDOW",
+    "stage_disposition": "REVIEW_OPERATOR_GATE_INTERPRETATION_BEFORE_ANY_FUTURE_GAME",
+    "extra_actions_after_H1_snapshot": 23,
+    "decision": "S09_RUN15_EARLY_CONTRACT_ABORT_RETURN_TO_STAGE",
+    "decision_interpretation": "Controller termination route only; not confirmation of Candidate contract failure."
+  },
+  "outcome": {
+    "quantitative_score": "UNKNOWN",
+    "competition_partial_score": "UNKNOWN",
+    "survival_months": "NOT_VALIDATED",
+    "observed_month": 6,
+    "latest_review_grade": "C",
+    "final_Level": "L1",
+    "promotions": [],
+    "last_public_state": {
+      "health": 6,
+      "dignity": 10,
+      "skill": 9,
+      "network": 3,
+      "level": "L1",
+      "duration_in_level": 6,
+      "output": 3,
+      "wealth": 2,
+      "energy": 0
+    }
+  },
+  "runtime": {
+    "successful_actions": 26,
+    "failed_actions": 0,
+    "observes": 27,
+    "fresh_pairs": 26,
+    "sequence_errors": 0,
+    "wall_seconds": 226.183804,
+    "tokens": "UNKNOWN",
+    "provider_error_observed": false,
+    "service_starts": 1,
+    "runner_play": 1,
+    "fresh_game": 1,
+    "stop_exit": 0,
+    "manager_stopped": true,
+    "listeners_remaining": [],
+    "service_wrapper_exit": 1,
+    "extra_reporting_queries": 0,
+    "replacement": 0
+  },
+  "trace": {
+    "schema_version": 1,
+    "source": {
+      "events_sha256": "1ddd021b8f1490c0ba33989f35005abb7399e93191f6fdc6f4fc6d8b8397e434",
+      "run_start": "2026-10-02T15:06:35.161860+00:00",
+      "run_end": "2026-10-02T15:10:21.345664+00:00"
+    },
+    "measurement_status": "PASS",
+    "interpretation": "Public trace claims and attributable numeric responses; not LLM semantic correctness or causal value.",
+    "actions": 26,
+    "trace_covered": 26,
+    "trace_statuses": {
+      "VALID": 26
+    },
+    "action_fresh_observe": 26,
+    "sequence_errors": 0,
+    "metrics": {
+      "probe_eligible_count": 0,
+      "probe_compared_count": 0,
+      "probe_selected_count": 0,
+      "probe_GAIN_count": 0,
+      "probe_NO_GAIN_count": 0,
+      "probe_UNKNOWN_count": 0,
+      "probe_blocked_by_binding_constraint_count": 0,
+      "consecutive_probe_violations": 0
+    },
+    "confirmed_lower_bounds": {
+      "probe_eligible_count": 0,
+      "probe_compared_count": 0,
+      "probe_selected_count": 0,
+      "probe_GAIN_count": 0,
+      "probe_NO_GAIN_count": 0,
+      "probe_UNKNOWN_count": 0,
+      "probe_blocked_by_binding_constraint_count": 0
+    },
+    "basis_counts": {
+      "OTHER": 17,
+      "PROTECT": 3,
+      "OWNERSHIP": 3,
+      "DELIVER": 1,
+      "VISIBILITY": 2
+    },
+    "level_reset_events": 0,
+    "mode_counts": {
+      "A": 26
+    },
+    "valid_delivery_headers": 26,
+    "immediate_local_NO_GAIN_repeats": 0,
+    "basis_preflight": {
+      "basis_check_present": 26,
+      "basis_check_valid": 26,
+      "basis_check_pass": 26,
+      "submitted_BC_certificate_coverage": 26,
+      "S_basis": {
+        "NONE": 26
+      },
+      "CAP_basis": {
+        "NONE": 26
+      },
+      "MODE_S_inconsistent_claims": 0,
+      "semantic_consistency": "UNKNOWN_WITHOUT_EXPLICIT_PUBLIC_ANNOTATIONS",
+      "restricted_basis_blocked": null,
+      "saturation_basis_blocked": null,
+      "numeric_S_blocked": null,
+      "stale_cleanup_blocked": null,
+      "action_submitted_despite_BLOCKED": 0,
+      "CTRL_coverage": 26,
+      "DL_coverage": 26,
+      "POL_coverage": 26,
+      "PROBE_coverage": 26,
+      "POL_PROBE_coverage": 26,
+      "full_five_marker_coverage": 26,
+      "submitted_BC_PASS_with_invalid_header": 0,
+      "header_schema_version": 3,
+      "basis_receipt_coverage_status": "PASS",
+      "receipt_interpretation": "EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF"
+    }
+  },
+  "public_samples": [
+    {
+      "action": 2,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 事件为合规/红线场景：choice2 触及公司红线且做假账，可能触发信任危机/爆雷；choice3 当场训斥会重创客户关系。choice1 以得体方式婉拒续场，规避绑定合规风险同时以最小机会成本维护关系与尊严，故选1。",
+      "context": "陪客户吃完饭，对方负责人兴致很高，提议『换个地方继续』——要去一个明显不合规、消费敏感的娱乐场所，还暗示费用可以让你『想办法报销』。客户是重要合作方，但这既触公司红线、也碰你的底线。其他陪同的人在看你怎么表态。",
+      "selected_choice": 1,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "用得体的理由婉拒续场，把局面圆回到正常的招待范围内"
+        },
+        {
+          "choice": 2,
+          "action": "碍于面子跟着去了，还盘算着怎么把账做平报销"
+        },
+        {
+          "choice": 3,
+          "action": "当场义正词严地训斥客户『这不合适』，场面僵住"
+        }
+      ]
+    },
+    {
+      "action": 3,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 事件为诚信/合规场景：choice2 默许虚假挂名签署属申报造假，可能触发信任/合规爆雷；choice1 仅拒绝但放弃机会。choice3 以自己实际参与的灵犀支付项目申报并担任主笔，既规避虚假挂名风险，又将局面转化为真实成果与 ownership/可见度，符合先真实价值再可见度，故选3。",
+      "context": "部门年度「创新突破奖」申报截止今晚。Leader 把「极光数据中台」项目材料发你过目——你全程在做「灵犀支付」，极光项目由隔壁小组完成，你只在启动会露过面。Leader 微信说：「名单里给你加一位，凑够梯队，评委好看，你签个字就行。」",
+      "selected_choice": 3,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "提出异议，拒绝挂名"
+        },
+        {
+          "choice": 2,
+          "action": "默许签字，当作 Leader 人情"
+        },
+        {
+          "choice": 3,
+          "action": "建议改为以灵犀支付项目申报，你担任主笔"
+        }
+      ]
+    },
+    {
+      "action": 14,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度主行动：选申请关键项目(O+2,S+1,N+1)。总增益最大(+4)且同时覆盖 M6 评审的 Output/Skill/Network 三大维度，并对应真实项目 ownership（MAIN-1），优于仅+3的建立导师关系/申请岗位轮岗；Dignity 已满故含 Dignity 的选项收益浪费。",
+      "context": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "selected_choice": 1,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "申请关键项目",
+          "description": "争取进入关键项目，绩效资本、专业能力与人脉同步增益。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 2,
+          "action": "向领导汇报成果",
+          "description": "主动向领导汇报已有成果，提升可见度与组织认可。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 3,
+          "action": "主动争取资源",
+          "description": "为自己的工作争取更多资源与支持。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 4,
+          "action": "申请岗位轮岗",
+          "description": "通过轮岗拓宽技能边界，专业能力大幅提升。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 5,
+          "action": "主动曝光成果",
+          "description": "在更大范围内展示成果，提升绩效资本与尊严。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 6,
+          "action": "建立导师关系",
+          "description": "建立与资深前辈的导师关系，显著拓展人脉并提升能力。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 7,
+          "action": "修复关键关系",
+          "description": "主动修复出现裂痕的关键关系，回补人脉与尊严。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 8,
+          "action": "低调避险",
+          "description": "暂时收敛锋芒、规避风险，恢复健康并降低潜在风险。",
+          "energy_cost": 0
+        },
+        {
+          "choice": 9,
+          "action": "不行动",
+          "description": "本季度不执行主行动，不产生任何状态更新。",
+          "energy_cost": 0
+        }
+      ]
+    },
+    {
+      "action": 21,
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 首次半年评审 C，产出不足、需更清晰成果（Primary Gap=Output）。本事件：choice2 硬答应核心+完整均按原计划属不可行超承诺、失信风险；choice1 评估后给可行的分阶段交付（先交核心再补完整），务实兑现承诺、维护客户信任并产生真实成果，故选1。",
+      "context": "你提前坦诚沟通，客户虽然不太高兴，但认可你的专业和担当：「至少你没瞒着我，让我好在内部交代。」他追问：能不能先交付一个可用的核心功能，剩下的下周补？",
+      "selected_choice": 1,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "评估后给出可行的「分阶段交付」方案，先交核心、再补完整"
+        },
+        {
+          "choice": 2,
+          "action": "为讨好客户，硬答应「核心和完整都按原计划」"
+        }
+      ]
+    },
+    {
+      "action": 25,
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=D1 n=2 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=VISIBILITY F=O RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配第2点：再选准备汇报材料(O+1,D+1)，继续补 Primary Gap=Output；上一步已观察到 O+1 的干净响应，故继续该 responsive 路径。剩余1点计划人脉维护补 Network。",
+      "context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "selected_choice": 7,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "高强度工作",
+          "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 2,
+          "action": "技能学习",
+          "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 3,
+          "action": "人脉维护",
+          "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 4,
+          "action": "处理历史埋雷",
+          "description": "主动清理过往遗留隐患，降低潜在风险值。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 5,
+          "action": "心理修复",
+          "description": "进行心理调整与自我修复，明显回补尊严。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 6,
+          "action": "健康恢复",
+          "description": "休整作息、恢复体力，明显回补健康。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 7,
+          "action": "准备汇报材料",
+          "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 8,
+          "action": "保留体力（不行动）",
+          "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+          "energy_cost": 0
+        }
+      ]
+    },
+    {
+      "action": 26,
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=D1 n=2 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=OTHER F=N RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力分配第3点（最后1点）：第2次准备汇报材料后 Output 无增长（clean local NO_GAIN），按 C6 不因 Primary Gap=Output 立即重复刷分；改投已知 responsive 的人脉维护(N+1)，补最弱维度 Network。仅折价当前准备汇报材料路径，不推断 cap。",
+      "context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "selected_choice": 3,
+      "choices": [
+        {
+          "choice": 1,
+          "action": "高强度工作",
+          "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 2,
+          "action": "技能学习",
+          "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 3,
+          "action": "人脉维护",
+          "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 4,
+          "action": "处理历史埋雷",
+          "description": "主动清理过往遗留隐患，降低潜在风险值。",
+          "energy_cost": 2
+        },
+        {
+          "choice": 5,
+          "action": "心理修复",
+          "description": "进行心理调整与自我修复，明显回补尊严。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 6,
+          "action": "健康恢复",
+          "description": "休整作息、恢复体力，明显回补健康。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 7,
+          "action": "准备汇报材料",
+          "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+          "energy_cost": 1
+        },
+        {
+          "choice": 8,
+          "action": "保留体力（不行动）",
+          "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+          "energy_cost": 0
+        }
+      ]
+    }
+  ],
+  "transcript_counterevidence": {
+    "line_62": "Actually, per risk-review: \"候选直接涉及以下重大公开风险时才执行 Full Review: ... compliance / confidentiality\". But choice1 is the option that AVOIDS the compliance risk. So the candidate itself doesn't involve material risk. PASS is appropriate.",
+    "line_86": "Risk: 候选本身不涉重大风险，PASS提交动作。"
+  },
+  "sources": [
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T150638Z\\events-20261002T150638Z.jsonl",
+      "bytes": 361760,
+      "sha256": "1ddd021b8f1490c0ba33989f35005abb7399e93191f6fdc6f4fc6d8b8397e434"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T150638Z\\transcript-20261002T150638Z.log",
+      "bytes": 103934,
+      "sha256": "f7a7934e3fcb081d4b1283c1f6278c67e9f02b51a2257c7ee38029148269420f"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\preflight.json",
+      "bytes": 10337,
+      "sha256": "f15039e226a56d0897ff3d8c8b0e3fd17410973fcac5677bf29f6610e89f88df"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\controller.py",
+      "bytes": 16924,
+      "sha256": "e4375ce250e93ab58cc66f10aacca97b8aae18ece965c40081513e73ad211930"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\runner-result.json",
+      "bytes": 2845,
+      "sha256": "ed92f799546e94ffac2df923258b5e8a9b81aa118527d3ef55eb03d87727e321"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\post_run_summary.json",
+      "bytes": 48831,
+      "sha256": "6d1dbadff997dac01bcba9e39bec2f5d8e2f6ecf0f532c465fe88af53fdfd50a"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\policy-summary.json",
+      "bytes": 40833,
+      "sha256": "72713b71ada0ccbc0770a53704b9a2cd97b4d45dab55e3880bfe2e4291372333"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\action-contexts.json",
+      "bytes": 52991,
+      "sha256": "b99a8e1096d2db47c530919b1dd9fa6c774f14a07de8df04080fc909445556f3"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\h1-context.json",
+      "bytes": 4794,
+      "sha256": "8eb1119aa0564bd624472c53d11cfd63810cf59c4c8d0da3bb5bb46e68de68fe"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\h1.json",
+      "bytes": 7249,
+      "sha256": "da0669f5864cd8dfa8d6d1540a6a57328a7cec33741415a3c1ca73170db3a9ef"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\h1-review.json",
+      "bytes": 233,
+      "sha256": "4e7dd61967593b744e3267700bde8f7c0af496ffdf7557ff2789538371bebb50"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\h1-review-correction.json",
+      "bytes": 963,
+      "sha256": "52dab4a635a8d9ebf2be93dff0ab6f1ce5730cdbbd04aad5f681a5c9c772275a"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\runner-stdout.log",
+      "bytes": 50215,
+      "sha256": "c988c675df406baaa3d08832e0ca16fa46c8f30859ea55163380b96d7c5195b7"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\service-stdout.log",
+      "bytes": 648074,
+      "sha256": "2dabbdd86811801d1528ce3ddbfd38e5d725a94bb911f9653afefbbf8941e381"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run15-v10f\\stop-stdout.log",
+      "bytes": 495,
+      "sha256": "e76c8158b415bfff7fa54cffb961e1f9e6fdfc37b53446fb4dc807962dfd68e6"
+    }
+  ],
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S09 Stage/Main",
+    "reason": "Unique censored-run evidence and reviewer false-positive correction need independent acceptance.",
+    "release_condition": "Stage/Main accepts compact conclusions and confirms dependencies resolved; separate explicit cleanup authorization required."
+  },
+  "limitations": [
+    "post_run_audit executed once: PowerShell date coercion invalidated CLI window; frozen report retained, exact UTC restored only in policy extract and this receipt.",
+    "Generic frozen post-run classification PARTIAL_GAMEPLAY_TECHNICAL_FAILURE reflects forced exit, not causal provider/runtime failure.",
+    "No full-horizon score, survival or policy validation; no Candidate flag promoted."
+  ],
+  "next_game": "NOT_AUTHORIZED"
+}
