@@ -11,14 +11,16 @@ import re
 from scripts.policy_trace_audit import POL, PROBE, parse_header, parse_trace
 from scripts.post_run_audit import CTRL, DL
 
-BC = re.compile(r"\[BC=(?:PASS|BLOCKED WHY=(?:PUBLIC|SATURATION|NUMERIC_S|STALE_CLEANUP|SCHEMA|CONTROL))\]")
+S_CLASSES = ('NONE', 'ACUTE', 'TRUST', 'JOB', 'AFFORDABILITY', 'OTHER_PUBLIC_BINDING')
+PASS_CERTIFICATE = r'\[BC=PASS S=(?P<s_basis>' + '|'.join(S_CLASSES) + r') CAP=(?P<cap_basis>NONE|PUBLIC_SCOPED)\]'
+BC = re.compile(PASS_CERTIFICATE + r'|\[BC=BLOCKED WHY=(?P<why>PUBLIC|SATURATION|NUMERIC_S|STALE_CLEANUP|SCHEMA|CONTROL)\]')
 REASONS = ("PUBLIC", "SATURATION", "NUMERIC_S", "STALE_CLEANUP", "SCHEMA", "CONTROL")
-HEADER_SCHEMA_VERSION = 2
-FIVE_MARKER = re.compile(CTRL.pattern + ' ' + DL.pattern + ' ' + POL.pattern + ' ' + PROBE.pattern + r' \[BC=PASS\]')
+HEADER_SCHEMA_VERSION = 3
+FIVE_MARKER = re.compile(CTRL.pattern + ' ' + DL.pattern + ' ' + POL.pattern + ' ' + PROBE.pattern + ' ' + PASS_CERTIFICATE)
 
 
 def parse_five_marker_header(notes: str) -> dict:
-    """Submitted v10d notes only; non-submitted BLOCKED receipts are separate.
+    """Submitted v10e notes only; non-submitted BLOCKED receipts are separate.
 
     Compose frozen parsers at character zero, with one ASCII space per marker
     boundary. Never trim prefixes or rewrite historical notes to obtain a PASS.
@@ -41,8 +43,9 @@ def parse_basis_receipt(text: str) -> dict:
     if len(matches) != 1 or text.count('[BC=') != 1:
         return dict(status='UNKNOWN', reason=None, valid=False)
     marker = matches[0][0]
-    return dict(status='PASS' if marker == '[BC=PASS]' else 'BLOCKED',
-                reason=None if marker == '[BC=PASS]' else marker.split('WHY=')[1][:-1], valid=True)
+    match = matches[0]
+    return dict(status='BLOCKED' if match['why'] else 'PASS', reason=match['why'], valid=True,
+                S_basis=match['s_basis'], CAP_basis=match['cap_basis'], marker=marker)
 
 
 def check_basis(notes: str, evidence: dict) -> dict:
@@ -57,14 +60,32 @@ def check_basis(notes: str, evidence: dict) -> dict:
         failures.append('PUBLIC')
     elif evidence.get('public_basis') is not True or evidence.get('restricted_basis') is not False:
         failures.append('CONTROL')
-    if evidence.get('saturation_claim') is not False and not (
+    certificate = parse_basis_receipt(notes)
+    cap_claim = evidence.get('saturation_claim')
+    cap_consistent = (
+        cap_claim is True and certificate.get('CAP_basis') == 'PUBLIC_SCOPED'
+        and evidence.get('explicit_public_completion') is True
+        and evidence.get('claim_scope') == evidence.get('public_completion_scope')
+        and bool(evidence.get('claim_scope'))
+    ) or (cap_claim is False and certificate.get('CAP_basis') == 'NONE')
+    # Missing/malformed certificate is SCHEMA, but cannot hide a semantic failure.
+    if (certificate['valid'] and not cap_consistent) or (cap_claim is not False and not (
         evidence.get('explicit_public_completion') is True
         and evidence.get('claim_scope') == evidence.get('public_completion_scope')
         and bool(evidence.get('claim_scope'))
-    ):
+    )):
         failures.append('SATURATION')
     header = parse_header(notes)
-    if header.get('mode') == 'S' and evidence.get('fresh_material_binding') is not True:
+    s_basis = certificate.get('S_basis')
+    binding_consistent = (s_basis == 'NONE') or (
+        s_basis in S_CLASSES[1:] and evidence.get('fresh_material_binding') is True
+        and evidence.get('public_binding_class') == s_basis
+    )
+    numeric_only = evidence.get('fresh_material_binding') is False and evidence.get('only_numeric_basis') is True
+    mode_s_consistent = header.get('mode') != 'S' or (
+        s_basis in S_CLASSES[1:] and evidence.get('fresh_material_binding') is True
+    )
+    if numeric_only or (certificate['valid'] and not binding_consistent) or not mode_s_consistent:
         failures.append('NUMERIC_S')
     if evidence.get('cleanup') is not False and evidence.get('fresh_cleanup_authorization') is not True:
         failures.append('STALE_CLEANUP')
@@ -80,7 +101,10 @@ def check_basis(notes: str, evidence: dict) -> dict:
     failures = list(dict.fromkeys(failures))
     status = 'BLOCKED' if failures else 'PASS'
     return dict(status=status, reasons=failures,
-                receipt='[BC=PASS]' if not failures else f'[BC=BLOCKED WHY={failures[0]}]',
+                receipt=certificate['marker'] if not failures else f'[BC=BLOCKED WHY={failures[0]}]',
+                S_basis=s_basis, CAP_basis=certificate.get('CAP_basis'),
+                MODE_S_consistent=mode_s_consistent, binding_consistent=binding_consistent,
+                cap_claim_consistent=cap_consistent,
                 control_state='BLOCKED' if failures else 'READY', may_submit=not failures)
 
 
@@ -99,6 +123,12 @@ def measure_receipts(action_notes: list[str], decision_receipts: list[str] | Non
         basis_check_present=sum('[BC=' in n for n in action_notes),
         basis_check_valid=sum(p['valid'] for p in actions),
         basis_check_pass=sum(p['status'] == 'PASS' for p in actions),
+        submitted_BC_certificate_coverage=sum(p['status'] == 'PASS' and valid for p, valid in zip(actions, layouts)),
+        S_basis=dict(Counter(p.get('S_basis') for p in actions if p['status'] == 'PASS')),
+        CAP_basis=dict(Counter(p.get('CAP_basis') for p in actions if p['status'] == 'PASS')),
+        MODE_S_inconsistent_claims=sum(parse_header(n).get('mode') == 'S' and p.get('S_basis') == 'NONE'
+                                       for n, p in zip(action_notes, actions)),
+        semantic_consistency='UNKNOWN_WITHOUT_EXPLICIT_PUBLIC_ANNOTATIONS',
         restricted_basis_blocked=None if blocked is None else blocked['PUBLIC'],
         saturation_basis_blocked=None if blocked is None else blocked['SATURATION'],
         numeric_S_blocked=None if blocked is None else blocked['NUMERIC_S'],

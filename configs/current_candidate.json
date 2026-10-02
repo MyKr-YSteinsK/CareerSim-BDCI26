@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v10d-anchored-five-marker-preflight",
+  "candidate_id": "candidate-v10e-explicit-basis-preflight",
   "status": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
-  "decision": "S09_21_V10D_ANCHORED_HEADER_STATIC_PASS_RETURN_TO_STAGE",
+  "decision": "S09_22_V10E_EXPLICIT_BASIS_STATIC_PASS_RETURN_TO_STAGE",
   "design_freeze": "ACTIVE",
   "strategy_delta": "NONE",
-  "parent_candidate_id": "candidate-v10c-compaction-agnostic-kernel",
+  "parent_candidate_id": "candidate-v10d-anchored-five-marker-preflight",
   "base_main_sha": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
   "parent_identity": {
-    "runtime_manifest_sha256": "336ac19dd645a20434bb494a8f1e6d77acc5e0482454cb287c05a6ae6f158e74",
-    "instruction_sha256": "0c22b1ebc0f2249cd03952eef53114495cc9f72e196303d4d1f8442d43a16f32",
+    "runtime_manifest_sha256": "f9f76f3b868c9611a1c9f3418009161079d45405802bce2eea50e6b396028610",
+    "instruction_sha256": "9c24d40fa3e3e0b572b8eb030f950c8278ea6af5afa66f4493c921c4a48ddcc1",
     "skills": [
       {
         "name": "structured-state-board",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "f9f76f3b868c9611a1c9f3418009161079d45405802bce2eea50e6b396028610",
-    "instruction_sha256": "9c24d40fa3e3e0b572b8eb030f950c8278ea6af5afa66f4493c921c4a48ddcc1"
+    "sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+    "instruction_sha256": "8ef0f4b1986e25037e81cc449e5bf6d4c7dda1411b78d15e99e2d580bbc2838d"
   },
   "skills": [
     {
@@ -89,7 +89,8 @@
     "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
     "SYSTEM_OWNED_POL_PROBE_SCHEMA",
     "FINAL_BASIS_CHECK",
-    "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX"
+    "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+    "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT"
   ],
   "deferred_mechanisms": [
     "DURABLE_OR_CROSS_GAME_MEMORY",
@@ -187,10 +188,13 @@
     "v10a_submission_replacement": "NOT_AUTHORIZED",
     "v10b_submission_replacement": "NOT_AUTHORIZED",
     "v10c_submission_replacement": "NOT_AUTHORIZED",
-    "v10d_submission_replacement": "NOT_AUTHORIZED"
+    "v10d_submission_replacement": "NOT_AUTHORIZED",
+    "v10e_submission_replacement": "NOT_AUTHORIZED"
   },
-  "base_evidence_sha": "554acbc3ec0cb75ea9f76087d65dc48ed41986a2",
+  "base_evidence_sha": "787d2b051cc8bb106a9355748a6f20edb8a4a188",
   "parent_strategy_implementation_sha": "55157f53031c284e2e569944e4aff6adbf64c48f",
-  "strategy_classification": "NARROW_RUNTIME_CONTRACT_FIX",
-  "runtime_delta": "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX"
+  "strategy_classification": "SEMANTIC_PREFLIGHT_OPERATIONALIZATION",
+  "runtime_delta": "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+  "parent_runtime_implementation_sha": "8e0b22ef0e555ab5cbdf47f5738952e50670a295",
+  "header_schema_version": 3
 }

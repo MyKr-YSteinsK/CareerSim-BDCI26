@@ -1,0 +1,238 @@
+{
+  "task": "S09-22",
+  "schema_version": 3,
+  "run13_session": "47498743fb2144c8914620dff706f97c",
+  "source": [
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\action-contexts.json",
+      "bytes": 75391,
+      "sha256": "c7325a7eb1433d164a6ebe11f9ca3d4fc32afccfb7c9962d2b24830b62b65b02"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\h1-context.json",
+      "bytes": 4792,
+      "sha256": "e3b76e8c49ce36f307c0c9135b2ae866bcbf6b726958b87fe661b4f2ae97a362"
+    }
+  ],
+  "annotation_method": "Explicit reviewer annotations from exact current participant-public context and Handbook; no free-text truth parser.",
+  "historical_notes_changed": false,
+  "raw_or_private_logs_archived": false,
+  "RUN13_SEMANTIC_REPLAY": "4/4 EXPECTED",
+  "actions": [
+    {
+      "action": 35,
+      "public_annotation": "Numeric Health=2 interpreted as acute crisis; no current explicit public acute/binding warning.",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": true
+      },
+      "original_notes_sha256": "31811565979f0a85664fee837ba30c0bd48e28aa31e814271713b237dc4b116f",
+      "projected_certificate": "[BC=PASS S=ACUTE CAP=NONE]",
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL_NO_REPLACEMENT_ACTION",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "NUMERIC_S"
+        ],
+        "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+        "S_basis": "ACUTE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": false,
+        "binding_consistent": false,
+        "cap_claim_consistent": true,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "expected": "NUMERIC_S",
+      "interpretation": "ANNOTATED_SEMANTIC_REJECTION"
+    },
+    {
+      "action": 36,
+      "public_annotation": "S continued for numeric recovery target/buffer; fresh context does not renew material binding.",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": true
+      },
+      "original_notes_sha256": "bbf4641a55e95728e1de2c0e03955fd609d2f92d1f098f05f2ee771189b08e08",
+      "projected_certificate": "[BC=PASS S=ACUTE CAP=NONE]",
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL_NO_REPLACEMENT_ACTION",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "NUMERIC_S"
+        ],
+        "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+        "S_basis": "ACUTE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": false,
+        "binding_consistent": false,
+        "cap_claim_consistent": true,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "expected": "NUMERIC_S",
+      "interpretation": "ANNOTATED_SEMANTIC_REJECTION"
+    },
+    {
+      "action": 37,
+      "public_annotation": "Return A can be represented by S=NONE/CAP=NONE; no new forced-S requirement.",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false
+      },
+      "original_notes_sha256": "a117b7e9e51cc5fb844192dc626757ddb7b05e54f65b875e97f329602df99b83",
+      "projected_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL_NO_REPLACEMENT_ACTION",
+      "result": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=NONE]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "expected": "PASS",
+      "interpretation": "K2_K3_AND_SERIALIZATION_ONLY_NOT_FULL_STRATEGY_VALIDATION"
+    },
+    {
+      "action": 38,
+      "public_annotation": "Claimed current-Level Output cap; public Handbook supplies no such cap (Output open/unbounded).",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": true,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "explicit_public_completion": false,
+        "claim_scope": "Output-current-Level",
+        "public_completion_scope": null
+      },
+      "original_notes_sha256": "2ad8a8170ce6778d220d8d9a41081adfb3086095b48fba826ff105bc5791ed3b",
+      "projected_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL_NO_REPLACEMENT_ACTION",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "expected": "SATURATION",
+      "interpretation": "ANNOTATED_SEMANTIC_REJECTION"
+    }
+  ],
+  "RUN12_HEADER_REPLAY": "3/3 CORRECTLY_BLOCKED",
+  "run12_original_negative": [
+    {
+      "action": 1,
+      "original_notes_sha256": "225c846575514df50aa44e8d979259cb738e4c14bfb64331339a38efa8d1d87f",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    },
+    {
+      "action": 2,
+      "original_notes_sha256": "cc6abb3791460ef13c2bf1724b7c30955c1a06af8c16a59cb8271dba94fd3eb9",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    },
+    {
+      "action": 3,
+      "original_notes_sha256": "4fee68adb85b02a98dba37a296350b5348186c4f22b5f5fa266170a27ae831e6",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    }
+  ],
+  "limitations": [
+    "No replacement action, score effect or runtime enforcement proven.",
+    "New certificate is a counterfactual projection, not a historical receipt.",
+    "a37 PASS covers scoped operational checks only; numeric threat-resolution prose is not validated."
+  ],
+  "FORENSIC_HOLD": "ACTIVE_UNCHANGED"
+}
