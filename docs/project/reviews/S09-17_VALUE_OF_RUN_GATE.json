@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "task": "S09-17",
+  "candidate": "candidate-v10b-policy-constitution-anti-saturation",
+  "candidate_implementation_commit": "92fb4323c8db2e03fa3c12d0c2969ffdca6f6a4f",
+  "parent_evidence_commit": "678c161f70e8e7d01839d10de9868156c430ffec",
+  "main_submission_freeze": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+  "classification": "OFFLINE_STATIC_READINESS_NOT_LIVE_AUTHORIZATION",
+  "candidate_identity": {
+    "manifest": {
+      "path": "configs/runtime_manifest.json",
+      "physical_sha256": "35ab8a5e3fa4daee4b63c11d24c0df9baa21adfcebc82c32a74c502ce8c4d8a7",
+      "lf_sha256": "e3f3b6190b03380f603be5986b7f71d4d414556dbda2104d1e34e86fd7c21e17",
+      "git_blob": "c3b826f1aced9e2bbb0850d52cf5ac9737ae3316"
+    },
+    "metadata": {
+      "path": "configs/current_candidate.json",
+      "physical_sha256": "ee909f08afca5c863a8d878757b16a7240cea5a8510998afe20ecb4ac2580c13",
+      "lf_sha256": "b67a7bc275e17265384eab359c9b86a908c1263fdb5f0a429bb2b6f37a22b165",
+      "git_blob": "bcb6ed80802a2b0e38d812627cf8184cdefc2029"
+    },
+    "skills": [
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "physical_sha256": "3c19218a0d119c7e91cf58879d02973e0722e7c322eec9feb0f34eeb625467b7",
+        "lf_sha256": "d7cc78563fe398be46713389c9d92a8e82c0aaef0df04d814caa9fce167c5085",
+        "git_blob": "bd235f9e7a8b277bc976fb9608c78c17fc7ce519"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      }
+    ],
+    "planning_blob": "bd235f9e7a8b277bc976fb9608c78c17fc7ce519",
+    "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7",
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "measurement_tools": [
+    {
+      "path": "scripts/post_run_audit.py",
+      "physical_sha256": "d53cd2ee25edf67283ca78d9d5ab690b84b26edce45a2ac4177756a7fb15d75d",
+      "lf_sha256": "496231857d4bc7e47ea7ad94329e5c665b527774cbfceb355931366015de8e23",
+      "git_blob": "8c95e38c979587595595b9d045abb1031b3e7a8c"
+    },
+    {
+      "path": "scripts/policy_trace_audit.py",
+      "physical_sha256": "1e90450d5eb22390f79d1af9cb6fc453d39b5f4e4abfe1eccda6f67fe42f42f8",
+      "lf_sha256": "1e90450d5eb22390f79d1af9cb6fc453d39b5f4e4abfe1eccda6f67fe42f42f8",
+      "git_blob": "147697a9db2c56cd041abd7f525503f5c1781cf4"
+    },
+    {
+      "path": "tests/test_s09_15r_policy_constitution.py",
+      "physical_sha256": "53ec8305e5e4cf70d3bca0a20eec112adb619bc874868a345d078586beb5cdec",
+      "lf_sha256": "5c26b8b6688858a263304ea438d9d9d735d70086743ff58c02745b8b110eb34b",
+      "git_blob": "3ab80904e723f41805ad194d7e589186c78758ce"
+    },
+    {
+      "path": "tests/fixtures/v10a_policy_traces.json",
+      "physical_sha256": "dd1773aa7545aa62fc76e4026e847020b0e74d96ab3b6be35df6dac64e5ecfdb",
+      "lf_sha256": "dd1773aa7545aa62fc76e4026e847020b0e74d96ab3b6be35df6dac64e5ecfdb",
+      "git_blob": "cde89d37cbbc06e74f3c5ea1cf97634f22b72034"
+    },
+    {
+      "path": "tests/test_s09_17_anti_saturation.py",
+      "physical_sha256": "f0971943fcc79fa9e7ffb7424139ddba159e476f0a5c7ab74b75ad067b00d95f",
+      "lf_sha256": "f0971943fcc79fa9e7ffb7424139ddba159e476f0a5c7ab74b75ad067b00d95f",
+      "git_blob": "9c3e641d6213a1d81475587e98c212555f95442e"
+    }
+  ],
+  "expected_policy_schema_version": 1,
+  "expected_post_run_schema_version": 1,
+  "G1": {
+    "status": "PASS_AT_IMPLEMENTATION_COMMIT",
+    "working_tree": "CLEAN_AT_SOURCE_COMMIT",
+    "package": "D:/CS/CareerSim/.local/scratch/s09-17/submission",
+    "submission_mode": "skill_bundle",
+    "skill_count": 4,
+    "before_live": "Freeze exact execution HEAD and package/tool bytes; require clean branch and source identity match. Report-only descendants must preserve all candidate/tool blobs.",
+    "candidate_source_commit": "92fb4323c8db2e03fa3c12d0c2969ffdca6f6a4f",
+    "instruction": "Exact manifest instruction identical to parent; only manifest name changed."
+  },
+  "G2": {
+    "status": "OFFLINE_CAPABILITY_PASS",
+    "metrics": [
+      "basis_counts",
+      "mode_counts",
+      "level_reset_events",
+      "immediate_local_NO_GAIN_repeats",
+      "valid_delivery_headers",
+      "probe_eligible_count",
+      "probe_compared_count",
+      "probe_selected_count",
+      "probe_GAIN_count",
+      "probe_NO_GAIN_count",
+      "probe_UNKNOWN_count",
+      "consecutive_probe_violations",
+      "probe_blocked_by_binding_constraint_count"
+    ],
+    "source": "Exact same-session run-window events: take_action notes POL/PROBE; same-observe choices; successful receipt; next fresh public observe. No prose guessing or hidden fields.",
+    "parser": "scripts.policy_trace_audit.extract / parse_trace / parse_header",
+    "positive_fixture": "positive: E=1 C=1 S=1; clean GAIN/NO_GAIN and mixed fresh responses counted separately",
+    "negative_fixture": "negative: known responsive alternative, E=0 C=0 S=0; binding-blocked trace counted",
+    "ambiguous_fixture": "ambiguous E=?; missing/duplicate/inconsistent/header-broken traces trigger STOP_BEFORE_PROVIDER and null totals, never zero",
+    "interpretation": "Eligibility and decision-basis counts are public self-report claims; numeric response and coverage are replayed. No offline fixture proves LLM honesty/emission or semantic correctness.",
+    "before_live": "Synthetic complete-trace measurement must PASS with all core totals numeric; every supplied ambiguous/missing case must fail closed. Required output contract and hashes must match. Runtime omissions are measurement failures, not evidence of absent opportunities.",
+    "anti_saturation_measurement_limit": "Typed offline assertion fixtures test evidence scope/certainty, not free-text LLM behavior. Existing trace tools are unchanged and do not automatically establish C6 adherence; live reasoning would require bounded public-context review."
+  },
+  "G3": {
+    "status": "PASS",
+    "identity_rule": "Verify physical snapshot bytes OR explicitly freeze execution bytes from the identical normalized Git blobs before provider; no silent tool drift.",
+    "protected_physical_bytes": "Board/Delivery/Risk and both measurement tools/old trace fixtures/test physically unchanged against before-task snapshot; no Runner/dependency change."
+  },
+  "G4": {
+    "status": "PASS_REPLAY_WITH_EXPECTED_LEGACY_REJECTION",
+    "run": "S09-RUN10",
+    "events_sha256": "10fe7d3bc50f115a1bca02abed1afab2c63b605bc04a807a93a7f780b7710702",
+    "run_start": "2026-10-01T16:17:59.610375+00:00",
+    "run_end": "2026-10-01T16:41:13.594450+00:00",
+    "actions": 201,
+    "trace_covered": 0,
+    "measurement_status": "STOP_BEFORE_PROVIDER",
+    "meaning": "Old uninstrumented evidence cannot prove the new delta. All schema fields emitted, core totals null, structural fields measured. No historical POL/PROBE markers fabricated.",
+    "replay_output": "D:/CS/CareerSim/.local/scratch/s09-17/run10-policy-replay.json"
+  },
+  "G5": {
+    "status": "VALUE_STATEMENT_WRITTEN_PENDING_MAIN_REVIEW",
+    "statement": "如果未来单局消耗约40M tokens，无论分数，至少检查 v10b 是否依据公开 evidence 保持 saturation/enough/useless 为 UNKNOWN、是否保留真实 local NO_GAIN 折价与 responsive 路由、是否维持 bounded probe/Delivery/最小保护；旧 trace 只度量claims，世界模型须有界人工上下文审查。不能由 n=1 声称优于 v8a。"
+  },
+  "validation": {
+    "new_targeted_checks": 48,
+    "total_targeted_passed": 86,
+    "written_scenarios": 12,
+    "vocabulary_semantic_cases": 33,
+    "deselected": {
+      "count": 2,
+      "reason": "Old v10a identity pin and 7500-char ceiling superseded by exact v10b identity and C6-only whole-body equality regression; old tests unchanged."
+    },
+    "protected_skill_bytes": "UNCHANGED",
+    "runtime_instruction": "UNCHANGED",
+    "tests": "WRITTEN_CONTRACT_AND_TYPED_OFFLINE_ASSERTION_ORACLE_NOT_MODEL_BEHAVIOR",
+    "same_context_discount": "PRESERVED",
+    "public_cap_completion_exception": "SCOPED_PRESERVED",
+    "fixture_trace_positive_negative_ambiguous": "PASS",
+    "package": "skill_bundle / exactly four Skills / manifest valid / no install",
+    "policy_schema_version": 1,
+    "post_run_schema_version": 1
+  },
+  "run10_delivery_root_cause": {
+    "classification": "ADJACENT_CTRL_DL_SEPARATOR_MISMATCH_REPRODUCED",
+    "actions": 201,
+    "NOT_NEAR_regex_matches": 201,
+    "empty_separator_count": 201,
+    "space_only_counterfactual_header_valid": 201,
+    "auditor_blob_at_10734f0": "8c95e38c979587595595b9d045abb1031b3e7a8c",
+    "auditor_git_lf_sha256": "496231857d4bc7e47ea7ad94329e5c665b527774cbfceb355931366015de8e23",
+    "historical_exact_executed_physical_sha": "NOT_RECORDED_IN_RUN10_RECEIPT",
+    "current_physical_lf_matches_git": true,
+    "stale_worktree_execution": "NO_EVIDENCE_FOUND_NOT_ABSOLUTELY_EXCLUDED",
+    "parser_changed": false,
+    "delivery_skill_changed": false,
+    "actual_valid_headers": 0,
+    "full_auditor_replay": "D:/CS/CareerSim/.local/scratch/s09-17/run10-auditor-replay.json",
+    "compact_header_replay": "D:/CS/CareerSim/.local/scratch/s09-17/delivery-header-replay.json"
+  },
+  "live": "NOT_AUTHORIZED",
+  "next_game": "NOT_AUTHORIZED",
+  "main_v8a_freeze": "UNCHANGED",
+  "prior_FORENSIC_HOLD": "ACTIVE_UNCHANGED",
+  "candidate_parent": "candidate-v10a-policy-constitution",
+  "strategy_delta": "ANTI_UNSUPPORTED_SATURATION_WORLD_MODEL_GUARD",
+  "canonical_packager": {
+    "path": "scripts/package_candidate.py",
+    "physical_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+    "lf_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+    "git_blob": "a3bf7b1bc5ae4e4755bea995c0f53e2aa3099950"
+  },
+  "dependencies": [
+    {
+      "path": "pyproject.toml",
+      "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+      "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+      "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+    },
+    {
+      "path": "uv.lock",
+      "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+      "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+      "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+    }
+  ],
+  "validation_flags": {
+    "runtime_validated": false,
+    "gameplay_validated": false,
+    "provider_validated": false,
+    "survival_improvement_proven": false,
+    "score_improvement_proven": false,
+    "long_horizon_adherence": false,
+    "stable_80_plus_proven": false,
+    "hidden_test_transfer_proven": false,
+    "next_game_authorized": false
+  },
+  "S09_RUN11": "HOLD",
+  "decision": "S09_17_V10B_ANTI_SATURATION_STATIC_PASS_RETURN_TO_STAGE",
+  "implementation_to_execution": "Implementation commit freezes candidate/test/tool blobs; report-only descendants must preserve all candidate/test/tool blobs. Any future live Plan must freeze its exact clean execution HEAD and recheck package/tool execution bytes; this manifest is not authorization.",
+  "package_identity": [
+    {
+      "relative_path": "manifest.json",
+      "bytes": 6193,
+      "sha256": "35ab8a5e3fa4daee4b63c11d24c0df9baa21adfcebc82c32a74c502ce8c4d8a7"
+    },
+    {
+      "relative_path": "skills/delivery-progress/SKILL.md",
+      "bytes": 5041,
+      "sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528"
+    },
+    {
+      "relative_path": "skills/risk-review/SKILL.md",
+      "bytes": 4189,
+      "sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd"
+    },
+    {
+      "relative_path": "skills/rolling-planning/SKILL.md",
+      "bytes": 11673,
+      "sha256": "3c19218a0d119c7e91cf58879d02973e0722e7c322eec9feb0f34eeb625467b7"
+    },
+    {
+      "relative_path": "skills/structured-state-board/SKILL.md",
+      "bytes": 5252,
+      "sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c"
+    }
+  ]
+}
