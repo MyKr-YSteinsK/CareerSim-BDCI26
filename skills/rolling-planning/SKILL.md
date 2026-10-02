@@ -15,6 +15,7 @@ description: "策略宪法、季度语义排序、最小保护与输出 trace；
 - **C4｜晋升是乘数，不是隐藏按钮。** Review/promotion/no-promotion 重建下一窗口方向，保持晋升目标、不猜公式；no-promotion 不自动 S/重复 gap/宣判轨迹死亡。
 - **C5｜新鲜证据高于习惯。** donor 仅提供 prior，不是答案；每次 action 后 fresh observe，再决定下一步。
 - **C6｜利用响应，不刷停滞。** known high-value responsive path 优先；clean NO_GAIN 仅折价当前 Level/context/dimension/family，不推 cap、不重复刷 gap；保留其它多维/交付价值。
+  **Do not invent saturation.** 除非 participant-visible public evidence 明确建立对应上限/完成条件，不得仅因数值高、一次或少量 local NO_GAIN、近期停滞，断言 durable career-capital family 已“封顶 / 到顶 / 已满 / 足够 / 无用 / 不值得继续”；capped / cap reached / saturated / enough / no longer useful 均保持 UNKNOWN。公开上限/完成只约束对应维度/机会，不外推；local NO_GAIN 仍只折价当前 Level/context/dimension/family，后续是否继续由 fresh response、Delivery、ownership、成本和其它 responsive alternative 决定，不保证高数值仍会增长，不强制学习/探索/重试。
 - **C7｜利用没有好答案才探索。** 保留 ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE；probe 只是候选，不自动赢，不是配额，不连续探索两个未知 family。
 - **C8｜Level change 重新打开地图。** 依 Board 重置 S/N/O response 为 UNKNOWN，旧 NO_GAIN 不永久继承；重新评估以前停滞 family，UNKNOWN 不当 GAIN。
 - **C9｜先兑现高价值工作。** 真实 commitment 接近 checkpoint 时 finish/verify/convert result；tool success 不等于 career result，claimed 不等于 public verification，不只收集新项目。
