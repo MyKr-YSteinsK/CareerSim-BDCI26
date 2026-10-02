@@ -1,13 +1,13 @@
 {
-  "candidate_id": "candidate-v9a-adaptive-opportunity-capture",
+  "candidate_id": "candidate-v10a-policy-constitution",
   "status": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
-  "decision": "S09_14_ADAPTIVE_OPPORTUNITY_CAPTURE_STATIC_PASS_RETURN_TO_STAGE",
+  "decision": "S09_15R_V10A_POLICY_CONSTITUTION_STATIC_PASS_RETURN_TO_STAGE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE",
-  "parent_candidate_id": "candidate-v8a-v7o-donor-core-transplant",
-  "base_main_sha": "a2bf214b6f4c6923399f80ada03b4d61d97f6eaa",
+  "strategy_delta": "POLICY_CONSTITUTION_AND_SEMANTIC_QUARTERLY_CONTROL",
+  "parent_candidate_id": "candidate-v9a-adaptive-opportunity-capture",
+  "base_main_sha": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
   "parent_identity": {
-    "runtime_manifest_sha256": "beb072a63a6c6b859dc3e5dc09fbcb0d170dac15ff16c6403c99f7e9581d7c5e",
+    "runtime_manifest_sha256": "ecc010d997b3e8b3a28d54a00b9aa74f14ecb7c53765ba653055474bfb190cd4",
     "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7",
     "skills": [
       {
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "cd2520ae2e3b927e0d7df67a7e0f1032d9283d86"
+        "git_blob": "1e7a7d12bfa8075eb4a77bbf25017447c6d61c52"
       },
       {
         "name": "delivery-progress",
@@ -34,7 +34,7 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "ecc010d997b3e8b3a28d54a00b9aa74f14ecb7c53765ba653055474bfb190cd4",
+    "sha256": "d33346ded3b7130c4a79d7e3ab5e9de5be040e7e41842c89d068405793c4cb7e",
     "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7"
   },
   "skills": [
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "1e7a7d12bfa8075eb4a77bbf25017447c6d61c52"
+      "git_blob": "4c30873b88670a2f957ca3780749e5d5211ae547"
     },
     {
       "name": "delivery-progress",
@@ -63,11 +63,8 @@
     "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
     "CURRENT_SESSION_PUBLIC_EVIDENCE_ONLY",
     "SINGLE_AGENT_FOUR_SKILL_OWNERSHIP",
-    "DIRECT_V7O_STRATEGY_CORE",
     "BROAD_EARLY_COMPOUNDING",
     "OWNERSHIP_MULTIDIMENSION_MAIN_PRIOR",
-    "DIRECTIONAL_REVIEW_PLAN",
-    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
     "MINIMUM_NECESSARY_PROTECTION",
     "LOCAL_RESPONSE_DOES_NOT_IMPLY_GLOBAL_CAP",
     "ONE_OBSERVE_ONE_PLANNING_PASS",
@@ -75,7 +72,11 @@
     "WHOLE_GAME_EXECUTION_PERSISTENCE",
     "OBSERVABLE_CONTEXT_RECOVERY",
     "RECOVERY_LABEL_INTERFACE_COMPATIBILITY",
-    "ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE"
+    "ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE",
+    "POLICY_CONSTITUTION_C1_C10",
+    "ONE_MASTER_RANKING",
+    "SEMANTIC_MAIN_ENERGY_CONTROLLERS",
+    "PUBLIC_OUTPUT_ONLY_POLICY_TRACE"
   ],
   "runtime_contract_delta": [
     "FRESH_OBSERVE_CONTROL_STATE",
@@ -129,7 +130,7 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "PROMOTION_FIRST_BROAD_COMPOUNDING_WITH_BOUNDED_UNTESTED_PROBE",
+  "design_intent": "DURABLE_CAREER_CAPITAL_COMPOUNDING_WITH_MINIMUM_PROTECTION",
   "strategy_donor": {
     "candidate_id": "candidate-v7o-execution-persistence-convergence",
     "source_commit": "b2e7ea6441da9c314d8a0ffbf29b9d5800ced10d",
@@ -142,7 +143,9 @@
     "NO_GAIN_COVERAGE_PORTFOLIO_MACHINERY",
     "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
     "EXTENDED_V7Z_WORLD_MODEL_PROSE",
-    "ACCUMULATED_REVIEW_WINDOW_RANKING_EXCEPTIONS"
+    "ACCUMULATED_REVIEW_WINDOW_RANKING_EXCEPTIONS",
+    "GAP_FIRST_PARALLEL_RANKING",
+    "PRE_FIRST_REVIEW_ONLY_RESULT_REALIZATION_EXCEPTION"
   ],
   "submission_fallback": {
     "candidate_id": "candidate-v8a-v7o-donor-core-transplant",
@@ -174,6 +177,10 @@
         "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
       }
     ],
-    "v9a_submission_replacement": "NOT_AUTHORIZED"
-  }
+    "v9a_submission_replacement": "NOT_AUTHORIZED",
+    "v10a_submission_replacement": "NOT_AUTHORIZED"
+  },
+  "base_evidence_sha": "10734f0d23b015e0e686bd87a9dd2b8660c8760e",
+  "parent_strategy_implementation_sha": "1cc20d7a09b8ac8e34c963ae1016f64e25d99d00",
+  "strategy_classification": "OVERALL_POLICY_RECONSTRUCTION_NOT_BEHAVIOR_EQUIVALENT"
 }

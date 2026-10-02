@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "positive": {
+    "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROBE F=S RP=UNKNOWN] [PROBE K=11111 E=1 C=1 S=1 F=S] 当前公开停滞且无更高响应路径，比较未测试专业成长与停滞路径，选一次专业成长。",
+    "expected_status": "VALID",
+    "selected": 1
+  },
+  "negative": {
+    "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=N RP=GAIN] [PROBE K=10111 E=0 C=0 S=0 F=NONE] 当前存在已知高价值响应的人脉路径，不探索。",
+    "expected_status": "VALID",
+    "selected": 0
+  },
+  "ambiguous": {
+    "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=UNKNOWN n=1 focus=UNKNOWN evidence=UNKNOWN checkpoint=UNKNOWN recognition=?] [POL B=OTHER F=MAIN RP=UNKNOWN] [PROBE K=1111? E=? C=? S=0 F=?] 当前交付是否 binding 未知，不把未知标 clear。",
+    "expected_status": "AMBIGUOUS",
+    "selected": 0
+  }
+}

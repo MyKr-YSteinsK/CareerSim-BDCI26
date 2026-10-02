@@ -1,136 +1,88 @@
 ---
 name: rolling-planning
-description: "每次 fresh Board/Delivery 后应用；晋升优先、广义成长与 ownership，最小必要保护；维护 Review Plan，比较当前合法候选，不提交动作。"
+description: "策略宪法、季度语义排序、最小保护与输出 trace；不提交。"
 ---
 
-# Rolling Planning｜晋升优先与广义成长
+# Rolling Planning｜策略宪法与职业资本复利
 
-## Objective / State
+## CONSTITUTION（C1–C10）
 
-Maximize long-horizon progression while preserving a survival floor.
+总则高于后续解释性 prose，不越过 evidence firewall、binding safety、Delivery。目标：职业资本复利与生存底线；中文判断。Single Agent + Four Skills，Planning 拥有目标/排序。
 
-判断与输出用中文；以下策略条款同样约束中文判断。
+- **C1｜先真实价值，再可见度。** ownership、真实成果、长期资本/责任先于可见度；汇报须真实成果/里程碑/commitment basis，不是通用成长按钮。
+- **C2｜默认进攻，必要防守。** 无 fresh material binding threat → MODE=A；acute Health/safety、trust/compliance/confidentiality、job/affordability/income continuity → minimum necessary protection。fresh evidence 证明解除 → 立即回 A；不补满资源。
+- **C3｜优化职业资本组合。** 比较 Skill/Network/Wealth/Level、交付/ownership 与期权价值；不为单一 Output 或 Review gap 牺牲组合。Output/visibility 是 instrumental signal/value conversion，公开语义可支持更强理由，隐藏计分地位 UNKNOWN。
+- **C4｜晋升是乘数，不是隐藏按钮。** Review/promotion/no-promotion 重建下一窗口方向，保持晋升目标、不猜公式；no-promotion 不自动 S/重复 gap/宣判轨迹死亡。
+- **C5｜新鲜证据高于习惯。** donor 仅提供 prior，不是答案；每次 action 后 fresh observe，再决定下一步。
+- **C6｜利用响应，不刷停滞。** known high-value responsive path 优先；clean NO_GAIN 仅折价当前 Level/context/dimension/family，不推 cap、不重复刷 gap；保留其它多维/交付价值。
+- **C7｜利用没有好答案才探索。** 保留 ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE；probe 只是候选，不自动赢，不是配额，不连续探索两个未知 family。
+- **C8｜Level change 重新打开地图。** 依 Board 重置 S/N/O response 为 UNKNOWN，旧 NO_GAIN 不永久继承；重新评估以前停滞 family，UNKNOWN 不当 GAIN。
+- **C9｜先兑现高价值工作。** 真实 commitment 接近 checkpoint 时 finish/verify/convert result；tool success 不等于 career result，claimed 不等于 public verification，不只收集新项目。
+- **C10｜普通成本可接受，不对称下行不可。** workload、轻微 Health cost/friction 可换长期价值；明确 compliance/trust crisis、severe Health/job-continuity 不冒不可逆风险。
 
-```text
-REVIEW_PLAN = <Objective | Primary Gap | Next Observable Checkpoint>
-MODE = A | S
-```
+## Evidence / interfaces
 
-`A=Advance` 默认；`S=Stabilize` 仅用于当前重大公开生存/资源约束。Single Agent 执行；Planning 唯一拥有目标与排序。
+只消费同 session fresh Board、Delivery、当前 participant-visible event description 与 legal choice semantics、公开 Handbook、正式反馈和已确认公开结果。`HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear fields 均 `EXCLUDE_FROM_STRATEGY until verified public`；禁止跨局记忆、Dev/private evidence、隐藏 threshold/cap/weight/formula、event answer lookup。
 
-## Evidence / Recovery interface
+正式反馈/已观察结果校正 advertised hint；hint 非 confirmed requirement。缺失增益记 OBSERVED_NO_GAIN/OBSERVED_COST，原因 UNKNOWN，不保证 advertised 收益。
 
-只消费同 session fresh Board、Delivery、当前 participant-visible event description 与 legal choice semantics、公开 Handbook、正式反馈与已确认公开结果。`HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear fields 一律 `EXCLUDE_FROM_STRATEGY until verified public`。禁止跨局记忆、hidden/private/Dev evidence、隐藏阈值/公式、事件答案映射。
+Board=facts/PROGRESSION_RESPONSE；Delivery=commitment lifecycle；Planning=ranking；Risk=final gate；executor=CONTROL_STATE/READY/preflight/submit，不越权。
 
-先判断 fresh binding constraint，再以正式 Review/promotion/no-advance → fresh observed result → 当前 public state/warning → Delivery → advertised effect/hint 更新计划；低优先级不能覆盖明确冲突。
+## Review Plan / MODE / recovery
 
-`RECOVERY=NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN` 仅作现有接口标签，不新增排序树：绩效不足是 A 下调整方向；重大资源约束才 S；公开 warning 或交付修复由相应公开证据支持，完成后回主线。Risk 只 gate 最终候选，Delivery 只报告 lifecycle。明确 public warning 且有 reparative legal option 时可一次 bounded cleanup；fresh observe 后默认回主线，仅持续/再次/新的同类 warning 才允许再次 cleanup。
+`REVIEW_PLAN = Objective | Primary Gap | Next Observable Checkpoint`。Primary Gap 是 attention cue，不是 action gating key。首评前 Gap=UNKNOWN 可接受，追求 broad capital 与真实 delivery；正式 Review/promotion/no-advance 后问“下一窗口什么真实职业资本和成果最值得增长”，而非哪个数最低。正式反馈、公开完成或 fresh evidence 使路径/目标失效才改方向；普通波动不改 gap。无未来公开 checkpoint 时只算剩余 horizon，不虚构 Review。
 
-context recovery 由 executor 按 manifest 完成同 session fresh observe、四 Skills 重读、Board/Delivery 重建后恢复 `REVIEW_PLAN / RECOVERY`；缺失字段 UNKNOWN，未完成不排序。
+每次 fresh observe 从 MODE=A 重新判断；旧 S/理由不续期。公开 H/D/W 数字、普通下降、疲劳、workload、weak S/N/O、poor grade/no-promotion 单独不证明 binding，不设数值阈值。acute symptoms 即使显示资源充足也可 bind；资源枯竭须公开证据证明正常活动不可行。仅 unresolved material survival/safety/job-continuity/resource constraint 才 S；采取最小机会成本保护，fresh evidence 证明 threat 已解除/风险情境结束才回 A，无关反馈/数字上升不证明解除。经济压力修收入能力，不永久低调。
 
-## Maintain the Review Plan
+`RECOVERY=NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN` 保留接口：绩效修复通常 A；RESOURCE binding 才 S；RISK/DELIVERY 由公开 warning/真实交付证据支持，不另建排序树。explicit public warning 且有 reparative legal option 可一次 bounded cleanup，fresh observe 后默认回主线；仅同一风险持续/再次 elevated 或新的同类 warning 允许再 cleanup，无关 fresh evidence 不授权重复。
 
-- Before the first formal review, allow `Primary Gap=UNKNOWN`. Pursue visible delivery and broad Skill / Network / Output progression.
-- After formal feedback, anchor the gap to the clearest public progression deficit.
-- Revise the plan only when:
-  - formal review / promotion / no-advance changes the evidence;
-  - the objective is publicly completed;
-  - fresh evidence invalidates the current gap/path; or
-  - the current objective is no longer feasible.
-- Do not change the gap because of an ordinary Story or one transient state fluctuation.
+context recovery 由 executor 按 manifest：RECOVERY_PENDING → 同 session fresh observe → 顺序重读四 Skills → rebuild Board/Delivery → restore REVIEW_PLAN/RECOVERY → RECOVERY_READY；缺失 UNKNOWN，未完不排序，不伪造 compression。
 
-Review 是方向性反馈；gap 不构成硬 gating tree，也不取消其它更强 ownership、多维成长或可兑现结果。无未来公开 checkpoint 时只比较剩余 horizon 内可实现的价值，不虚构未来 Review。
+## One Master Ranking
 
-## Select MODE
+每次 fresh Board/Delivery，删去非法/dominated 项；最多两个 genuinely competitive candidates，比较一次，唯一 CANDIDATE。Main/Energy/Story 共用，无 parallel hierarchy：
 
-Before progression ranking, evaluate the current whitelisted Board and participant-visible event/choice semantics for an unresolved binding constraint. Do not inspect prohibited raw numeric fields, and do not use a numeric threshold.
-
-A displayed H/D/W number or an ordinary one-step decrease alone does not establish a binding constraint and does not justify `MODE=S`. Use `MODE=S` only when current public evidence establishes a material survival, safety, job-continuity, affordability, or income-continuity constraint. A clearly depleted public resource may bind when public evidence establishes that normal activity is infeasible.
-
-Set `MODE=S` while fresh public evidence shows a current, unresolved constraint that materially threatens survival, safety, or job continuity, including explicit acute physical symptoms, explicit psychological/safety danger, explicit job-continuity warning, an active trust/compliance/confidentiality crisis, or a direct affordability/income-continuity crisis. An acute symptom remains binding even if the displayed Health/Dignity/Wealth value appears adequate. Choose the smallest reasonable action that addresses or avoids worsening the binding condition while preserving progression where possible.
-
-Return to `MODE=A` when fresh public evidence indicates that binding condition is resolved or the risk-bearing situation has ended. A numeric state change or unrelated positive feedback alone does not establish resolution. Ordinary workload, mild fatigue without an explicit material symptom/warning, soft relationship friction, generic uncertainty, and ordinary opportunity cost do not by themselves require `MODE=S`.
-
-When no unresolved binding constraint is present, use `A` and continue promotion-first progression.
-
-In `S`, keep the constraint visible in the current plan, remove or contain it with the smallest reasonable opportunity cost, and return to `A` once fresh public evidence resolves it.
-
-Wealth stress is an income-recovery problem, not a reason for permanent low-profile play: avoid discretionary cost while continuing to repair performance, promotion, and income capacity.
-
-每次 fresh observe 从 A 重新判断；旧 S/旧理由不续期，只有当前 fresh evidence 仍证明 unresolved material constraint 才重新 S。只做 minimum necessary protection；不为补满资源延长 S。poor grade / no-promotion / weak S/N/O 单独不触发 S。
-
-## Rank legal candidates
-
-### MODE=A
-
-Prefer, in order:
-
-1. direct progress on the current review gap;
-2. visible delivery / ownership likely to matter at the next checkpoint;
-3. options that publicly improve multiple progression dimensions among Skill / Network / Output;
-4. long-horizon compounding and future option value.
-
-Accept ordinary soft costs when the progression upside is materially stronger.
-
-#### Pre-first-review result realization prior
-
-Apply `PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR` only before the first formal review, in `MODE=A` with no binding public survival/resource constraint. Require current-session whitelisted Board/Delivery evidence of an existing high-value commitment with a concrete public result/checkpoint opportunity (including work in progress or near completion), or `DELIVERY_CLAIMED + UNVERIFIED`; also require a legal action that can finish/validate it, present an actual result, or obtain a public receipt. Check `stage`, `evidence_status`, `recognition_link`, and `next_checkpoint`; a report-like menu label, pure information gathering, or a claim without an underlying result is insufficient.
-
-When triggered, prefer that result-realization action over another generic workload push with no stronger current result evidence. Do not displace a clearly superior time-sensitive progression opportunity. If no such delivery basis exists, use the ordinary broad Skill / Network / Output ranking. If the result is already `DELIVERED + PUBLICLY_VERIFIED`, do not repeat a presentation merely to repackage it.
-
-Exit this prior at the first formal review, when the result becomes publicly verified, when the commitment becomes invalid or blocked, or when a material constraint requires `MODE=S`. After formal review, its feedback-anchored `REVIEW_PLAN` owns the objective. This is neither a fixed report action nor a promotion threshold; do not infer hidden eligibility from it.
-
-### MODE=S
-
-Prefer candidates that:
-1. do not worsen the binding constraint;
-2. directly relieve it or protect job continuity;
-3. preserve as much review/progression value as possible.
-
-Do not convert `S` into permanent risk avoidance.
-
-### Delivery constraint
-
-If an active high-value commitment is near a public result, prefer finishing/validating it over opening a weaker speculative commitment. Do not block a clearly superior new opportunity merely because an old item exists.
-
-## Public-hint / local response discipline
-
-Treat statements such as “this may help performance/promotion” as soft evidence only.
-
-Never convert them into:
-- a confirmed hidden requirement;
-- a hidden threshold/cap;
-- a fixed optimal action.
-
-If advertised gain is absent after a fresh observe, record `OBSERVED_NO_GAIN` or `OBSERVED_COST`; keep the cause `UNKNOWN`. Do not infer a cap or formula.
-
-消费 Board `PROGRESSION_RESPONSE`：clean NO_GAIN 只折价已测试的当前 Level/context/dimension/action family；UNKNOWN 保持开放，多维动作保留其它维度及 ownership/结果价值。不把局部 NO_GAIN 传播给未测试 family，不推断全局 cap、eligibility 或恢复无成长机会成本。Level change 后依 Board 重置；存在 responsive alternative 时不立即重复同一路径。
+1. **Binding? PROTECT/CONTAIN**：最小必要保护，最小机会成本，保留可行成长。
+2. **Near valuable realization? FINISH/VERIFY/CONVERT**：高价值 Delivery 近 checkpoint 优先兑现；旧 item 不挡明显更强时效机会。
+3. **Known responsive capital? EXPLOIT**：当前 Level/context 有 fresh positive evidence 的高价值路径。
+4. **New ownership? CREATE**：无更强上述项时，ownership/真实结果/多维资本/期权价值。
+5. **Fresh local stagnation? FALLBACK**：拟继续路径 clean NO_GAIN → known responsive alternative 优先；否则合法未测试高价值 family 加入一次 bounded probe comparison；均无时 stalled path 仅因强独立 Delivery/多维价值可胜出。
+6. **Ordinary tie-break**：durable capital、real result、option value、普通成本、reversibility；不按最低数字、固定菜单、S/N/O 比例或频次决定。
 
 ### Bounded untested probe
 
-仅当拟继续路径有 fresh clean local NO_GAIN/stagnation，当前 Level/context 无更高价值的 known responsive 合法替代，且有合法未测试、公开语义支持高价值的 growth family 时，将一次 bounded untested probe 加入 top candidate comparison。生存/合规/信任有重大 binding 约束，或 probe 会明显破坏近期 binding 交付义务时，禁止加入。与当前最佳候选比较职业价值、ownership/visible result、多维价值、普通成本、交付成本及生存/合规约束；不自动选择，仍最多两个候选、比较一次。
+仅拟继续路径 fresh clean local NO_GAIN/stagnation，且当前 Level/context 无更高价值 known responsive 合法替代、存在合法未测试且公开语义支持高价值 growth family、生存/合规/信任无重大 binding、不会破坏近期 binding Delivery 时，加入 top candidate comparison。按统一排序比较；不自动选择，UNKNOWN 不臆造 eligibility。
 
-局部顺序：binding 保护 → exploit 已知高价值响应路径 → 比较 bounded probe；stalled path 仅凭仍有强独立多维/交付价值可胜出。UNKNOWN 不当 GAIN，不为覆盖率探索，不固定 Skill 偏好。
+胜出只选一次 action → fresh observe → 更新 current Level/context/local family/dimension。GAIN 不证明最好；NO_GAIN 不永久放弃、不推 cap；结果不授权下一 probe，不连续 probe 两个未知 family。无 exploration quota、budget、ledger、新 state machine 或固定 Skill 偏好。
 
-probe 胜出只选一次 action，executor 随后 fresh observe；响应只更新 current Level/context/local family/dimension。GAIN 不证明该 family 最好；NO_GAIN 仅局部折价，不永久放弃，不推全局 cap、隐藏阈值或永久偏好。结果不授权下一次 probe，不连续 probe 两个未知 family；不新增 S/N/O 或 exploration quota、budget、ledger、state machine。
+## Quarterly Main Controller（语义选择）
 
-## Quarterly control
+- **MAIN-1 Ownership/new responsibility**：实质项目/责任有 strong prior, not a fixed answer；commitment 未兑现、ownership 已重、重复 workload 或更强结果兑现/响应路径时可输。
+- **MAIN-2 Result visibility/reporting**：strong priority 必须有 real-result basis（completed/near-completed result、public milestone、真实 DELIVERY_CLAIMED 未获recognition）。Review visibility 缺口仍须真实结果，不能仅标签/反馈就泛化汇报。REAL RESULT → VISIBILITY/RECOGNITION 可赢普通新 Apply；已 PUBLICLY_VERIFIED 不重复包装。
+- **MAIN-3 Mentor/Network/rotation**：新机会集/Network、Skill/role diversification、stalled-path escape/期权价值可赢 generic Apply；无更强 near Delivery/binding，非均衡配额。
+- **MAIN-4 Avoid/no-action**：仅 binding material risk 或所有 active alternatives 明确 dominated/harmful 时优先，ordinary uncertainty 不自动赢。
 
-`QUARTER_INTENT = <MODE | current target>` 仅当前目标，不预定剩余序列或配额。每次只选一个 Energy action；执行后由 executor fresh observe → Board（含 PROGRESSION_RESPONSE）→ Delivery → new Planning pass → final Risk → READY → preflight，再决定下一动作。receipt 不提供 public state；旧计划不能授权动作。
+## Quarterly Energy Controller
 
-For the quarterly Main Action, apply the same ranking. When no material constraint exists, give a strong prior to broad-growth options that combine visible ownership with multiple public progression gains; this is a prior, not a fixed menu answer.
+Energy 不预定 recipe/batch/剩余序列，QUARTER_INTENT = <MODE | current target>。一个 action → fresh observe → Board/PROGRESSION_RESPONSE → Delivery → Planning → final Risk → READY → preflight，重排剩余体力；旧 intent/receipt 不授权。
 
-## Decision budget / output
+仍用 One Master Ranking，stalled single-dimension farming 最弱。responsive Output 可继续，Skill GAIN 不等于 always Skill；存在 responsive path 不为覆盖率探索。
 
-`ONE FRESH OBSERVE = ONE PLANNING PASS`：确认 MODE/REVIEW_PLAN，删掉明显不可接受或被支配选项；最多两个 genuinely competitive candidates，比较一次，输出唯一 CANDIDATE。无 genuinely new public evidence 不重开。
+准备汇报材料/visibility Energy 高优先级须公开 basis：real result 待包装、近公开 checkpoint 有结果、recent clean positive response 或独立多维/Delivery value。无 real result + repeated preparation NO_GAIN 不继续刷；fresh clean NO_GAIN 后不能仅因 Primary Gap=Output 立即重复。其它更强 value 仍可赢。
 
-Risk=RECONSIDER 仅允许一次直接相关替代项比较，再取得所选候选自己的最终 Risk；使用当前 CTRL `RB=NONE|DONE|BLOCKED`，最终仍 RECONSIDER/未闭合则 BLOCKED，不提交。UNKNOWN 最多一次 fresh observe/rebuild，仍不明则一次 bounded legal decision，不反复规划。executor 独占 CONTROL_STATE/READY/preflight。
+## Decision closure / trace（只作输出）
 
-只返回：
+`ONE FRESH OBSERVE = ONE PLANNING PASS`，无新 public evidence 不重开。Risk=RECONSIDER 最多一次直接相关替代比较，再取得该候选自己的 final Risk；CTRL RB=NONE|DONE|BLOCKED，仍未闭合则 BLOCKED，不提交。UNKNOWN 最多一次 fresh observe/rebuild，仍不明一次 bounded legal decision，不反复 deliberation。
+
+输出 PLAN/CANDIDATE 只结束 action selection。structured game active 时 executor 继续 whole-game loop；DECISION_CLOSED 不结束 assistant execution，只有 game.ended/unrecoverable failure 终止。
+
+返回 PLAN: G=<gap|?> P=<A|S|?> F=<RECOVERY> checkpoint=<public checkpoint>；CANDIDATE: choice=<one legal integer> reason=<public basis>。trace 原样附既有 CTRL/DL 后 notes（CTRL/DL 间一个空格）；不改 preflight/合法性、不作策略输入、不读回、不建 durable ledger：
 
 ```text
-PLAN: G=<gap|?> P=<A|S|?> F=<NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN> checkpoint=<short checkpoint>
-CANDIDATE: choice=<one legal integer> reason=<one concise public-evidence reason>
+[POL B=<PROTECT|DELIVER|RESPONSIVE|OWNERSHIP|VISIBILITY|PROBE|OTHER> F=<S|N|O|MAIN|STORY|RESOURCE|OTHER> RP=<GAIN|NO_GAIN|UNKNOWN|NA>]
+[PROBE K=<五个0/1/?> E=<0|1|?> C=<0|1|?> S=<0|1|?> F=<S|N|O|OTHER|NONE|?>]
 ```
 
-**Can Submit Action: No.** 不调用 `new_game`、`observe` 或 `take_action`。
+POL：B=最终候选依据，F=主要资本维度或 Main/Story/Resource，RP=local family 选择前 response。K 五位顺序：fresh local NG；无更高 known responsive alt；合法未测试 high-value family；无重大 protection binding；不破坏 binding Delivery。1=公开证据支持，0=公开反证，?=不可判。全部1才 E=1；有0则 E=0；否则 E=?。未满足 stagnation 时 K=0???? E=0 C=0 S=0 F=NONE 即可；已评估时如实逐项写，未知不写 clear。E=1 必须比较 C=1，S=是否选 probe，F=比较的维度（未选仍留）；E=? 用 C=? S=0 F=?，不据未知授权 probe；E=0 用 C=0 S=0 F=NONE。B=PROBE iff S=1，RP=UNKNOWN；reason 写公开 trigger/替代/value；fresh observe 才提供 response，不提前写 RP，不额外调用。
+
+**Can Submit Action: No.** 不调用 new_game、observe、take_action。
