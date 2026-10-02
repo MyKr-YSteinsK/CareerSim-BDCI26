@@ -1,5 +1,10 @@
 # RUN_HISTORY
 
+## S09-RUN17 v10g — natural M6 elimination, confirmed Planning drift
+
+- One authorized fresh game at execution `40ad458`; **EARLY_NATURAL_TERMINAL**, 24.47 / 17.13 / 6 months / E / L2. M6 Review C promoted L1→L2; terminal H0/D10/S10/N7/O3/W2/E3 after a23. Natural terminal seq211 preceded H2 stop request; not a development-censored result. Score from fresh ending_score; score-report file absent.
+- Official HiddenRisk delta use clean; validated H2 HIGH receipt confirms a12 lowest-number ranking/old Energy recipe carryover. Semantic adherence FAIL; headers/BC/fresh23/23, actions23 successful/0 failed, observes24, A23/S0. H1/H2 overruns11/11, reviewer PASS_WITH_LIMITATIONS; M6 relayed during run. Play332.916s, tokens/compression UNKNOWN. Cleanup stop0/manager stopped/ports released; Runner1 controlled after terminal, service wrapper1 tail limitation. No patch/retry/replacement, flags unchanged. Raw hold ACTIVE. [Run record](runs/v10g-run17-official-information-validation.md) / [compact evidence](runs/v10g-run17-official-information-evidence.json). `IN_FLIGHT_EVIDENCE`; decision `S09_RUN17_V10G_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE`; authorization CONSUMED, next game NOT_AUTHORIZED, main v8a freeze unchanged.
+
 ## S09-RUN16 v10f — H2 confirmed K1 Candidate abort
 
 - One authorized fresh game at execution `32e0e6b`; `DEVELOPMENT_ABORT_CANDIDATE_VIOLATION`, HIGH validated Planning/K1 receipt for a11 numeric `HiddenRisk+1` ranking/notes. Cutoff25 successes/0 failures/26 canonical observes, alive M6 C/promoted L1→L2; latest H6/D10/S13/N7/O6/W2/E1. Score/final grade/survival/75+ NOT_VALIDATED. Header/BC/fresh25/25; semantic preflight FAIL. No numeric-S/growth-cap/false-positive class observed in bounded notes.

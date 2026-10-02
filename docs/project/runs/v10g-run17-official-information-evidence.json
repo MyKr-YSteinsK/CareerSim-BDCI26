@@ -1,0 +1,1186 @@
+{
+  "schema_version": 1,
+  "run_id": "S09-RUN17",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "execution_HEAD": "40ad458b0de8c993b11bc7ae9eb7bf4e6fe3efe0",
+  "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+  "session": "12cf06ab735f43da9066fa27231dc827",
+  "identity": {
+    "execution_HEAD": "40ad458b0de8c993b11bc7ae9eb7bf4e6fe3efe0",
+    "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+    "phase": "P1_PASS",
+    "T1": "PASS_EXACT_S09_26_GATE",
+    "T2": "PASS_287_TARGETED_CHECKS",
+    "T3": "PASS_EXCLUSIVE_PORTS_PATH_SINGLE_LIST",
+    "T4": "PASS_FROZEN_V2_PACKETS_AND_PROVENANCE",
+    "T5": "PASS_EXACT_NEW_RUN_PATHS_AND_RUNNER_JSON_WINDOW",
+    "tooling": [
+      {
+        "path": "scripts/live_review_packet.py",
+        "sha256": "bde24f39a36dc71e0151e4a502e693db112d28055ec88857d8412613c632b963"
+      },
+      {
+        "path": "scripts/reviewer_gate.py",
+        "sha256": "559af65244187ebf54974e13b92760648a2df554b6ff066e652e5136a0eeca9b"
+      },
+      {
+        "path": "scripts/basis_preflight_audit.py",
+        "sha256": "16015d1d0722e39060b5c1e784fbcc349ba5ca2d31c66351422c4c8d4ac1419a"
+      },
+      {
+        "path": "scripts/policy_trace_audit.py",
+        "sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3"
+      },
+      {
+        "path": "scripts/post_run_audit.py",
+        "sha256": "85738758cc7e9b0b0bc1b41b96f33adff742e11f61bfe0c4ae5340f7cdde97cb"
+      },
+      {
+        "path": "scripts/package_candidate.py",
+        "sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483"
+      },
+      {
+        "path": "tests/test_s09_26_official_access.py",
+        "sha256": "118b2b88457f8c94056c6e7542f7d0456423fd0519df81c2feabb25e452f5f6a"
+      },
+      {
+        "path": "tests/fixtures/v10g_official_access_cases.json",
+        "sha256": "c5cfa16c060bfed37efd3938048c2424dd15f0a396de6551690566d02f2ad06b"
+      },
+      {
+        "path": "tests/test_s09_24_reviewer_reliability.py",
+        "sha256": "cde3a7fad9163f3ddb3eadd9f05fde314e09a838e44238af985551d0d4edcca1"
+      },
+      {
+        "path": "tests/test_s09_23_cap_scope.py",
+        "sha256": "35c820b63767292cf9edbdcf1894b3eb5275780611a8fa72dc70bb5a7e82b471"
+      },
+      {
+        "path": "docs/project/AGENT_RUNTIME_CONTRACT.md",
+        "sha256": "db40649b73d7f4b93af12e773a82e1c9a6a212b8f7722a8d62426d0e38201a90"
+      },
+      {
+        "path": "docs/project/REVIEWER_GATE_CONTRACT.md",
+        "sha256": "7e19b987a12d6879a4b7635acc800be92a1a052de4c845ce42bf231b2d55935d"
+      },
+      {
+        "path": "docs/project/reviews/S09-25_INFORMATION_ACCESS_MATRIX.json",
+        "sha256": "2ba7e1f65d9a6b9e3e6a46851015128dc5bc9b92492f68a911fe758b464c0175"
+      }
+    ],
+    "candidate_identity": [
+      {
+        "path": "configs/runtime_manifest.json",
+        "bytes": 8180,
+        "physical_sha256": "167cf18c1c30df1f658190c7f5ad1c1af0bcf6f7ea4c34e1b785843794953c1d",
+        "lf_sha256": "356d50da72e2915f5bccecc599e329e4208e996c8276e815f77af0594c587470",
+        "git_blob": "220e870608e67fe615bd2373a5fb303a0e0aedb8"
+      },
+      {
+        "path": "configs/current_candidate.json",
+        "bytes": 8041,
+        "physical_sha256": "bb4731941bcdee84ad5aff26f4502cd09ace13a449f7c8bb9ad0f787e601276c",
+        "lf_sha256": "60110227eef393f3e0ec98a7257510a0eeed233f3a18c4d7e8343390b1a34e5a",
+        "git_blob": "3a05e0a5961a5ce354cefbb2e23b72d16278de81"
+      },
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "bytes": 5678,
+        "physical_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+        "lf_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+        "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "bytes": 11883,
+        "physical_sha256": "b06a4484760d62eac915f9fbc15dd32a993f284aad72f7d76b788a9635948ff4",
+        "lf_sha256": "29d9fedde48cf060d0682360d6deb2a2f913627e20deef77b5aecc547988cab3",
+        "git_blob": "33b30e67ad040bfa70515ff0fd68dd3d8926d8d4"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "bytes": 4542,
+        "physical_sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8",
+        "lf_sha256": "47029fd4715c584137ece25591b6b7bc3df58af7866fad536b45ef3c704bd6a9",
+        "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "pyproject.toml",
+        "bytes": 2827,
+        "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+        "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+        "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+      },
+      {
+        "path": "uv.lock",
+        "bytes": 1111404,
+        "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+        "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+        "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+      }
+    ],
+    "package": "D:\\CS\\CareerSim\\.local\\runtime\\s09-26-v10g\\submission",
+    "package_identity": [
+      {
+        "path": ".local/runtime/s09-26-v10g/submission/manifest.json",
+        "bytes": 8180,
+        "physical_sha256": "167cf18c1c30df1f658190c7f5ad1c1af0bcf6f7ea4c34e1b785843794953c1d",
+        "lf_sha256": "356d50da72e2915f5bccecc599e329e4208e996c8276e815f77af0594c587470",
+        "git_blob": "220e870608e67fe615bd2373a5fb303a0e0aedb8"
+      },
+      {
+        "path": ".local/runtime/s09-26-v10g/submission/skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": ".local/runtime/s09-26-v10g/submission/skills/risk-review/SKILL.md",
+        "bytes": 4542,
+        "physical_sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8",
+        "lf_sha256": "47029fd4715c584137ece25591b6b7bc3df58af7866fad536b45ef3c704bd6a9",
+        "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+      },
+      {
+        "path": ".local/runtime/s09-26-v10g/submission/skills/rolling-planning/SKILL.md",
+        "bytes": 11883,
+        "physical_sha256": "b06a4484760d62eac915f9fbc15dd32a993f284aad72f7d76b788a9635948ff4",
+        "lf_sha256": "29d9fedde48cf060d0682360d6deb2a2f913627e20deef77b5aecc547988cab3",
+        "git_blob": "33b30e67ad040bfa70515ff0fd68dd3d8926d8d4"
+      },
+      {
+        "path": ".local/runtime/s09-26-v10g/submission/skills/structured-state-board/SKILL.md",
+        "bytes": 5678,
+        "physical_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+        "lf_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+        "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+      }
+    ],
+    "installed_versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3"
+    },
+    "max_retries": 2,
+    "controller_sha256": "ce89659e6d104066fc4bb67792eea60ad74f17ead5fc22ec1665a00f7897ff5c",
+    "service_lifecycles": 1,
+    "runner_play_budget": 1,
+    "fresh_game_budget": 1,
+    "replacement_budget": 0,
+    "standalone_probes": 0
+  },
+  "classification": "EARLY_NATURAL_TERMINAL",
+  "outcome": {
+    "classification": "EARLY_NATURAL_TERMINAL",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 6,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MISSING",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 17.13,
+      "completed": false,
+      "grade": "E",
+      "outcome": "eliminated",
+      "quantitative_score": 24.47,
+      "survival_months": 6
+    },
+    "terminal_public_state": {
+      "session_id": "12cf06ab735f43da9066fa27231dc827",
+      "status": {
+        "dignity": 10,
+        "duration_in_level": 1,
+        "energy": 3,
+        "health": 0,
+        "level": "L2",
+        "network": 7,
+        "output": 3,
+        "skill": 10,
+        "wealth": 2
+      },
+      "time": {
+        "current_month": 6,
+        "current_quarter": 2,
+        "current_year": 1
+      }
+    }
+  },
+  "termination_resolution": {
+    "natural_terminal_observe_utc": "2026-10-02T18:17:13.534750+00:00",
+    "natural_terminal_observe_seq": 211,
+    "validated_H2_stop_request_utc": "2026-10-02T18:17:21.360559+00:00",
+    "resolution": "NATURAL_TERMINAL_PRECEDED_CONTROLLED_STOP_REQUEST",
+    "original_controller_stop_metadata_preserved": true,
+    "controller_limitation": "checked game.ended but did not recognize simulation_flags/ending_score terminal",
+    "post_run_development_stop_argument_used": false,
+    "score_report": "ABSENT; attributable ending_score from fresh final observe"
+  },
+  "reviewer": {
+    "H1": {
+      "stage": "H1",
+      "snapshot_action": 3,
+      "packet_emitted_utc": "2026-10-02T18:12:29.311908+00:00",
+      "review_started_utc": "2026-10-02T18:12:57.375410+00:00",
+      "decision_utc": "2026-10-02T18:14:28.764464+00:00",
+      "result": "PASS_NO_VIOLATION",
+      "receipts": [
+        {
+          "review_object": "HEADER_BC",
+          "owner": "manifest/frozen-parser",
+          "clause_id": "Header/BC/Fresh",
+          "action_index": 3,
+          "public_evidence": "Exact anchored headers and BC valid 3/3; successful receipts followed by same-session fresh observe 3/3.",
+          "selected_candidate": "Exact H1 rows a1-a3",
+          "direct_candidate_violation_link": null,
+          "counterexample_check": {
+            "checked": true,
+            "result": "COUNTEREXAMPLE_FOUND",
+            "basis": "Exact anchored headers and BC valid 3/3; successful receipts followed by same-session fresh observe 3/3.",
+            "selected_candidate_material_risk": false
+          },
+          "verdict": "NO_VIOLATION",
+          "confidence": "HIGH",
+          "stop_class": "NO_VIOLATION",
+          "information_boundary_version": 2
+        },
+        {
+          "review_object": "PLANNING_RANKING",
+          "owner": "rolling-planning",
+          "clause_id": "Planning/OfficialBasis/K2K3",
+          "action_index": 3,
+          "public_evidence": "Official Story menus retained; no inaccessible stock, invented threshold, growth-cap or numeric-only S claim; all MODE=A.",
+          "selected_candidate": "Exact H1 rows a1-a3",
+          "direct_candidate_violation_link": null,
+          "counterexample_check": {
+            "checked": true,
+            "result": "COUNTEREXAMPLE_FOUND",
+            "basis": "Official Story menus retained; no inaccessible stock, invented threshold, growth-cap or numeric-only S claim; all MODE=A.",
+            "selected_candidate_material_risk": false
+          },
+          "verdict": "NO_VIOLATION",
+          "confidence": "HIGH",
+          "stop_class": "NO_VIOLATION",
+          "information_boundary_version": 2
+        },
+        {
+          "review_object": "RISK_FINAL_GATE",
+          "owner": "risk-review",
+          "clause_id": "Risk/SelectedCandidate",
+          "action_index": 3,
+          "public_evidence": "Selected helper and acknowledgment choices have no explicit material candidate risk; event topic alone does not require Full Review; no Delivery overclaim.",
+          "selected_candidate": "Exact H1 rows a1-a3",
+          "direct_candidate_violation_link": null,
+          "counterexample_check": {
+            "checked": true,
+            "result": "COUNTEREXAMPLE_FOUND",
+            "basis": "Selected helper and acknowledgment choices have no explicit material candidate risk; event topic alone does not require Full Review; no Delivery overclaim.",
+            "selected_candidate_material_risk": false
+          },
+          "verdict": "NO_VIOLATION",
+          "confidence": "HIGH",
+          "stop_class": "NO_VIOLATION",
+          "information_boundary_version": 2
+        }
+      ],
+      "limitations": [
+        "Observe packet is not full internal Skill state; English notes recorded as nonmaterial language deviation."
+      ],
+      "controller_seen_utc": "2026-10-02T18:14:28.905238+00:00",
+      "validation": "PASS",
+      "actual_action_on_decision": 14
+    },
+    "H2": {
+      "stage": "H2",
+      "snapshot_action": 12,
+      "packet_emitted_utc": "2026-10-02T18:14:10.627993+00:00",
+      "review_started_utc": "2026-10-02T18:15:03.257939+00:00",
+      "decision_utc": "2026-10-02T18:17:21.239598+00:00",
+      "result": "CONFIRMED_PLANNING_RANKING_CONTROLLER_DRIFT_K1_DELTA_CLEAN",
+      "receipts": [
+        {
+          "review_object": "PLANNING_RANKING",
+          "owner": "rolling-planning",
+          "clause_id": "K1/OFFICIAL-ACCESS",
+          "action_index": 11,
+          "public_evidence": "Official menu contains advertised HiddenRisk+1 before a11; no stock/threshold claim.",
+          "selected_candidate": {
+            "choice": 6,
+            "action": "健康恢复",
+            "description": "休整作息、恢复体力，明显回补健康。",
+            "energy_cost": 1,
+            "status_updates": {
+              "Health": 2
+            }
+          },
+          "direct_candidate_violation_link": null,
+          "counterexample_check": {
+            "checked": true,
+            "result": "COUNTEREXAMPLE_FOUND",
+            "basis": "Exact official input contains delta1; notes call it effect cost, not current stock."
+          },
+          "verdict": "NO_VIOLATION",
+          "confidence": "HIGH",
+          "stop_class": "NO_VIOLATION",
+          "information_boundary_version": 2,
+          "information_access": {
+            "information_used": "option advertises HiddenRisk+1",
+            "model_context_location": "RUN17 observe seq107 choices[0].status_updates.HiddenRisk",
+            "source_evidence": "Exact official observe payload retained in H2; locked1.0.1 official serializer verified by S09-26",
+            "official_path": "VERIFIED_TEST_EQUIVALENT",
+            "official_prohibition": "NO",
+            "claim_type": "DELTA_EFFECT",
+            "support_type": "DELTA_EFFECT",
+            "accessibility": "YES",
+            "context_complete": false,
+            "session_id": "12cf06ab735f43da9066fa27231dc827",
+            "context_session": "12cf06ab735f43da9066fa27231dc827",
+            "context_source_seq": 107,
+            "submission_seq": 109,
+            "official_agent_input": {
+              "current_state": {
+                "time": {
+                  "current_month": 3,
+                  "current_quarter": 1,
+                  "current_year": 1
+                },
+                "status": {
+                  "health": 3,
+                  "dignity": 10,
+                  "skill": 7,
+                  "network": 3,
+                  "level": "L1",
+                  "duration_in_level": 3,
+                  "output": 3,
+                  "wealth": 1,
+                  "energy": 3
+                },
+                "simulation_flags": {
+                  "alive": true,
+                  "failed": false,
+                  "failure_reason": null
+                },
+                "session_id": "12cf06ab735f43da9066fa27231dc827",
+                "available_choice_count": 8
+              },
+              "current_event": {
+                "title": "季度体力行动分配",
+                "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+                "rules": [
+                  "本季度体力预算为 3 点，超出预算的组合无效。",
+                  "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+                  "未使用的体力不会累计到下个季度。",
+                  "状态更新按所选行动的 status_updates 逐项累加结算。"
+                ],
+                "max_selections": 3,
+                "remaining_energy": 3,
+                "energy_budget": 3
+              },
+              "choices": [
+                {
+                  "choice": 1,
+                  "action": "高强度工作",
+                  "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+                  "energy_cost": 2,
+                  "status_updates": {
+                    "Output": 2,
+                    "Health": -1,
+                    "Dignity": -1,
+                    "HiddenRisk": 1
+                  }
+                },
+                {
+                  "choice": 2,
+                  "action": "技能学习",
+                  "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+                  "energy_cost": 2,
+                  "status_updates": {
+                    "Skill": 1,
+                    "Health": -1
+                  }
+                },
+                {
+                  "choice": 3,
+                  "action": "人脉维护",
+                  "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+                  "energy_cost": 1,
+                  "status_updates": {
+                    "Network": 1,
+                    "Dignity": 1
+                  }
+                },
+                {
+                  "choice": 4,
+                  "action": "处理历史埋雷",
+                  "description": "主动清理过往遗留隐患，降低潜在风险值。",
+                  "energy_cost": 2,
+                  "status_updates": {
+                    "HiddenRisk": -1
+                  }
+                },
+                {
+                  "choice": 5,
+                  "action": "心理修复",
+                  "description": "进行心理调整与自我修复，明显回补尊严。",
+                  "energy_cost": 1,
+                  "status_updates": {
+                    "Dignity": 2
+                  }
+                },
+                {
+                  "choice": 6,
+                  "action": "健康恢复",
+                  "description": "休整作息、恢复体力，明显回补健康。",
+                  "energy_cost": 1,
+                  "status_updates": {
+                    "Health": 2
+                  }
+                },
+                {
+                  "choice": 7,
+                  "action": "准备汇报材料",
+                  "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+                  "energy_cost": 1,
+                  "status_updates": {
+                    "Output": 1,
+                    "Dignity": 1
+                  }
+                },
+                {
+                  "choice": 8,
+                  "action": "保留体力（不行动）",
+                  "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+                  "energy_cost": 0,
+                  "status_updates": {}
+                }
+              ],
+              "events": ""
+            },
+            "context_path": [
+              "choices",
+              0,
+              "status_updates",
+              "HiddenRisk"
+            ],
+            "context_value": 1
+          }
+        },
+        {
+          "review_object": "PLANNING_RANKING",
+          "owner": "rolling-planning",
+          "clause_id": "Planning/OneMasterRanking6/NoLowestNumberAndQuarterlyEnergyNoRecipe",
+          "action_index": 12,
+          "public_evidence": {
+            "observe_seq": 115,
+            "submit_seq": 117,
+            "public_before": {
+              "session_id": "12cf06ab735f43da9066fa27231dc827",
+              "time": {
+                "current_month": 3,
+                "current_quarter": 1,
+                "current_year": 1
+              },
+              "status": {
+                "health": 5,
+                "dignity": 10,
+                "skill": 7,
+                "network": 3,
+                "level": "L1",
+                "duration_in_level": 3,
+                "output": 3,
+                "wealth": 1,
+                "energy": 2
+              }
+            },
+            "selected_choice": {
+              "choice": 3,
+              "action": "人脉维护",
+              "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Network": 1,
+                "Dignity": 1
+              }
+            },
+            "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OTHER F=N RP=NO_GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 energy: choice3 人脉维护 (E1, Network+1) to raise the lowest stat N=3. MODE=A.",
+            "transcript_lines": [
+              625,
+              701,
+              717,
+              797,
+              813,
+              817,
+              818,
+              819,
+              821,
+              826
+            ],
+            "source_scope": "Exact current RUN17 a11-a12 transcript, read to resolve whether abbreviated notes hid a fresh semantic ranking."
+          },
+          "selected_candidate": {
+            "choice": 3,
+            "action": "人脉维护",
+            "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+            "energy_cost": 1,
+            "status_updates": {
+              "Network": 1,
+              "Dignity": 1
+            }
+          },
+          "direct_candidate_violation_link": "Frozen One Master Ranking6 forbids deciding by lowest numeric stat; Quarterly Energy forbids a preselected remaining recipe. a12 explicitly chooses Network maintenance to raise the lowest stat N=3 and continues the pre-a11 health -> Network -> Output sequence. After a11 fresh observe, transcript carries S=GAIN,N/O=NO_GAIN and says next N then O rather than rebuilding the value comparison. This confirms a ranking/controller-policy breach, not merely a low score or use of official delta.",
+          "counterexample_check": {
+            "checked": true,
+            "result": "NO_COUNTEREXAMPLE",
+            "basis": "Checked official E=2/menu costs and actual deliberation: legal/cheap advertised N+1 is allowed information; broader portfolio and value-per-Energy discussion before a11 is acknowledged. It does not authorize a fixed remaining sequence or choosing a12 by the lowest number. No new post-a11 ownership/Delivery/response-based comparison supports that selected action. Health recovery in MODE=A and D=10 bounded arithmetic are separately legal, not stop grounds."
+          },
+          "verdict": "VIOLATION",
+          "confidence": "HIGH",
+          "stop_class": "CONFIRMED_CANDIDATE_VIOLATION",
+          "information_boundary_version": 2
+        }
+      ],
+      "controller_seen_utc": "2026-10-02T18:17:21.349319+00:00",
+      "validation": "PASS",
+      "actual_action_on_decision": 23
+    }
+  },
+  "formal_review": {
+    "6": {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "12cf06ab735f43da9066fa27231dc827",
+      "source_seq": 187,
+      "observed_utc": "2026-10-02T18:15:42.008112+00:00",
+      "month": 6,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L2",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n组里的老大哥拍了拍你的肩膀：“别太紧张，这季度评审我替你说了几句好话，下次注意就行”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-02T18:15:42.262045+00:00"
+    }
+  },
+  "formal_review_user_relay": {
+    "emitted_during_live_run_before_H2_decision": true,
+    "exact_user_relay_timestamp": "UNKNOWN",
+    "extra_query": false
+  },
+  "reviewer_reliability": "PASS_WITH_LIMITATIONS",
+  "counts": {
+    "successful_actions": 23,
+    "failed_actions": 0,
+    "canonical_observes": 24,
+    "transport_observe_entries": 48,
+    "action_fresh_pairs": 23,
+    "valid_header_BC": 23,
+    "MODE_A": 23,
+    "MODE_S": 0,
+    "S_percentage": 0,
+    "RISK_PASS": 23,
+    "unique_tool_calls": {
+      "mcp_career-emulator_show_employee_handbook": 1,
+      "skill_tool": 4,
+      "mcp_career-emulator_new_game": 1,
+      "mcp_career-emulator_observe": 24,
+      "mcp_career-emulator_take_action": 23
+    },
+    "Agent_log_calls": 0,
+    "Main_actions": 1,
+    "Energy_actions": 3
+  },
+  "information_use": {
+    "classification": "EXERCISED_CLEANLY",
+    "HiddenRisk_delta_notes": 1,
+    "confirmed_hidden_stock_threshold_private_basis_violations": 0,
+    "empirical_prior_example": "a16 prior pattern; hypothesis calibration not independently proven",
+    "bounded_notes_review_not_full_internal_state_proof": true
+  },
+  "semantic_preflight_adherence": "FAIL",
+  "promotion_runway_evidence": "WEAK",
+  "compact_action_trace": [
+    {
+      "action_index": 11,
+      "source_seq": 109,
+      "before_source": {
+        "seq": 107,
+        "utc": "2026-10-02T18:13:38.674056+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_GxiMAo2iuPwU52q4baWG3544",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:14:04.842323+00:00",
+      "selected_candidate": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Health": 2
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OTHER F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 energy: choice6 健康恢复 (E1, Health+2) first to fix low H=3. D=10 max so dignity-gain actions waste; avoid 高强度工作 (HiddenRisk+1, D-1) and inefficient 技能学习. MODE=A.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0]",
+        "POL": "[POL B=OTHER F=RESOURCE RP=NA]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 2
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 115,
+      "observed_utc": "2026-10-02T18:14:06.244004+00:00"
+    },
+    {
+      "action_index": 12,
+      "source_seq": 117,
+      "before_source": {
+        "seq": 115,
+        "utc": "2026-10-02T18:14:06.244004+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_FcEgS3nEMWSNSvA2iiGX4814",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:14:08.763508+00:00",
+      "selected_candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OTHER F=N RP=NO_GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 energy: choice3 人脉维护 (E1, Network+1) to raise the lowest stat N=3. MODE=A.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0]",
+        "POL": "[POL B=OTHER F=N RP=NO_GAIN]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 2
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 1
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 123,
+      "observed_utc": "2026-10-02T18:14:10.514696+00:00"
+    },
+    {
+      "action_index": 13,
+      "source_seq": 125,
+      "before_source": {
+        "seq": 123,
+        "utc": "2026-10-02T18:14:10.514696+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_ILqUe9dZJWOV2kojpYur9896",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:14:17.320553+00:00",
+      "selected_candidate": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OTHER F=O RP=NO_GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 energy final: choice7 准备汇报材料 (E1, Output+1) to raise low O=3. MODE=A.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0]",
+        "POL": "[POL B=OTHER F=O RP=NO_GAIN]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 1
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 131,
+      "observed_utc": "2026-10-02T18:14:19.168226+00:00"
+    },
+    {
+      "action_index": 14,
+      "source_seq": 133,
+      "before_source": {
+        "seq": 131,
+        "utc": "2026-10-02T18:14:19.168226+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_nNQ09pYgFmCCEz7Ojuxg3123",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:14:25.895574+00:00",
+      "selected_candidate": {
+        "choice": 1,
+        "action": "申请关键项目",
+        "description": "争取进入关键项目，绩效资本、专业能力与人脉同步增益。",
+        "energy_cost": 0,
+        "status_updates": {
+          "Output": 2,
+          "Skill": 1,
+          "Network": 1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NO_GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 main action: choice1 申请关键项目 (Output+2, Skill+1, Network+1) - highest total value, targets low Output and adds real ownership/responsibility (C1). Dignity already max so dignity options waste. MODE=A, no binding risk.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0]",
+        "POL": "[POL B=OWNERSHIP F=O RP=NO_GAIN]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 8,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 139,
+      "observed_utc": "2026-10-02T18:14:27.846681+00:00"
+    },
+    {
+      "action_index": 16,
+      "source_seq": 149,
+      "before_source": {
+        "seq": 147,
+        "utc": "2026-10-02T18:14:38.207128+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_ZN5dwZOF9MWVe0JtD5Mc3770",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:15:10.286416+00:00",
+      "selected_candidate": {
+        "choice": 2,
+        "action": "会上沉默承受，会后单独找 Leader 沟通"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D3 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Choice2: don't confront publicly; after the meeting talk to the Leader one-on-one with the SLA/impact data to correct the low-value characterization. Preserves the review-critical relationship; prior pattern shows public leader-facing assertiveness penalized. Choice1 risks public friction, choice3 leaves the Leader's view unfixed. MODE=A, no binding risk.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D3 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NOT_NEAR recognition=0]",
+        "POL": "[POL B=OTHER F=OTHER RP=NA]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 9,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 155,
+      "observed_utc": "2026-10-02T18:15:12.314161+00:00"
+    },
+    {
+      "action_index": 22,
+      "source_seq": 197,
+      "before_source": {
+        "seq": 195,
+        "utc": "2026-10-02T18:15:59.024487+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_Whp7rOOwZZMyRAQoodlU6354",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:16:15.247989+00:00",
+      "selected_candidate": {
+        "choice": 1,
+        "action": "高密度带教，确保两周内独立上手"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D4 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OWNERSHIP F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Choice1: high-density mentoring of the assigned intern (daily 1on1, code reviews, meetings) to ensure he ramps in two weeks - fulfills a mandatory duty, builds durable leadership/human capital for L2->L3, and produces a real outcome; output dip is transient. MODE=A, no binding risk.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D4 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NEAR recognition=0]",
+        "POL": "[POL B=OWNERSHIP F=OTHER RP=NA]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 10,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 1,
+          "dignity": 10,
+          "skill": 11,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 1,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 203,
+      "observed_utc": "2026-10-02T18:16:17.056194+00:00"
+    },
+    {
+      "action_index": 23,
+      "source_seq": 205,
+      "before_source": {
+        "seq": 203,
+        "utc": "2026-10-02T18:16:17.056194+00:00",
+        "tool": "mcp_career-emulator_observe",
+        "tool_call_id": "call_00_cOLl5dMHIFPHZE2m9Hzr2723",
+        "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+      },
+      "submitted_utc": "2026-10-02T18:17:11.157831+00:00",
+      "selected_candidate": {
+        "choice": 2,
+        "action": "维持手动 Review，新人按既有方式跟进"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D3 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Choice2: decline the 2-week CI build. H=1 is critically low (near collapse); the prior work-intensive 2-week choice cost H-2, so taking on another intense block risks irreversible health failure (C10). Survival first; keep manual review. MODE=A.",
+      "markers": {
+        "CTRL": "[CTRL G=? P=A R=PASS RB=NONE]",
+        "DL": "[DL i=D3 n=2 focus=COMMITTED evidence=UNKNOWN checkpoint=NOT_NEAR recognition=0]",
+        "POL": "[POL B=OTHER F=RESOURCE RP=NA]",
+        "PROBE": "[PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+        "BC": "[BC=PASS S=NONE CAP=NONE]"
+      },
+      "public_before": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 1,
+          "dignity": 10,
+          "skill": 11,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 1,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "12cf06ab735f43da9066fa27231dc827",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 0,
+          "dignity": 10,
+          "skill": 10,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 2,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 211,
+      "observed_utc": "2026-10-02T18:17:13.534750+00:00"
+    }
+  ],
+  "runtime": {
+    "play_start_utc": "2026-10-02T18:11:48.449967+00:00",
+    "play_end_utc": "2026-10-02T18:17:21.366316+00:00",
+    "exit_code": 1,
+    "abort_reason": "S09_RUN17_H2_ABORT",
+    "stop_exit_code": 0,
+    "listeners_remaining": [],
+    "manager_pid_file_absent": true,
+    "service_start_exit_code": 1
+  },
+  "wall_seconds": 332.916,
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "RUNNER_REPORT_DIAGNOSTIC_ONLY",
+    "input_tokens": "UNKNOWN",
+    "output_tokens": "UNKNOWN",
+    "total_tokens": "UNKNOWN"
+  },
+  "compression": {
+    "count": "UNKNOWN",
+    "events_utc": [],
+    "recovery": [],
+    "status": "UNKNOWN"
+  },
+  "next_game": "NOT_AUTHORIZED",
+  "replacement_authorized": false,
+  "decision": "S09_RUN17_V10G_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE",
+  "raw_hold": {
+    "status": "ACTIVE",
+    "owner": "S09 Stage/Main",
+    "release_authority": "Stage/Main",
+    "reason": "Planning attribution, reviewer latency and natural-terminal/controller ordering need independent review",
+    "release_conditions": "Stage accepts compact conclusions, required raw remains recoverable and downstream dependencies closed; explicit cleanup authorization still required",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T181152Z\\events-20261002T181152Z.jsonl",
+        "bytes": 317548,
+        "sha256": "7c69c2d54cd9243e90663d5faf46810bf8c53206f498ebef164e533a07ca9f11"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T181152Z\\transcript-20261002T181152Z.log",
+        "bytes": 196744,
+        "sha256": "da744b609e6a379e66497cfb092787e91892863f7045ae41447c256e52483df9"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\runner-result.json",
+        "bytes": 18822,
+        "sha256": "f198b20017b4485aa38b0a8107d57a377cff8c9ff86416ccec85561532327ebf"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\post_run_summary.json",
+        "bytes": 45896,
+        "sha256": "e9a878e2912b4bd19e1205cea49cf1c0fde8d0415292e32cefeaa0d64616e769"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\action-contexts.json",
+        "bytes": 192982,
+        "sha256": "3b44f95fcd6c8bcb228f97ce45a94aa6dff63a74a6be69d1b90842f8fdd56889"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\h1-packet.json",
+        "bytes": 22259,
+        "sha256": "8e8eb1ed1ddc65f599258043a6dcdf8d5d1c9005e7095e37e8d947a5395d7e55"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\h2-packet.json",
+        "bytes": 104299,
+        "sha256": "008344ea7680f4f84390647b84205f79d8ffe7d6dcc4097eebe0557e6cba0b23"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\h1-decision.json",
+        "bytes": 3041,
+        "sha256": "60b8c4f38a4d52331e673aa342dfe45086f8d61b522abf6b8655a730c0a55e35"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\h2-decision.json",
+        "bytes": 10156,
+        "sha256": "e1d9deccf1586f94c6030ba26dc449224e0e8a4f789a2118cb4a7505270a189c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\development-stop.json",
+        "bytes": 3458,
+        "sha256": "77c16d25cb25186ce0e0942728b9a151edbb6189d0db3819368ef934905c5165"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\runner-stdout.log",
+        "bytes": 43736,
+        "sha256": "ca5ea183cac5cd44430adc1e97bfdf166284e85aa1a1ba5e77c4d22d72f903bd"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run17-v10g\\preflight.json",
+        "bytes": 7403,
+        "sha256": "d9138d97c4fcde0fa1fcb74ad1f645bf31df55c9e455d9370eab93dbe7931080"
+      }
+    ]
+  }
+}
