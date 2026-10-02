@@ -4,6 +4,8 @@
 
 ## Project
 
+- S09-24: development reviewer/live-audit hardening implemented on the authorized branch (`IN_FLIGHT_EVIDENCE`). Canonical owner/receipt contract prevents event-theme-only Risk failure attribution; read-only JSONL packets emit at heartbeat boundaries and expose Review progress immediately; post-run exact-string windows and Candidate/telemetry/uncertainty/reviewer-defect censors are separate from raw exit. 202 targeted checks PASS; no live operations, v10f/Skills/submission/retry/main v8a unchanged. Future controllers must use the new receipt/packet path; actual live review latency remains unvalidated. See [review](reviews/S09-24_REVIEWER_LIVE_AUDIT_HARDENING.md). `NEXT_GAME=NOT_AUTHORIZED`.
+
 - S09-RUN15 v10f: `DEVELOPMENT_CENSORED_BY_REVIEWER_FALSE_POSITIVE`, actual M6/C/L1,26 actions/27 observes. H1 stop wrongly inferred Full Review from event-level compliance; transcript supports candidate-specific Quick Gate PASS, so no confirmed Candidate Risk violation. Five-marker/BC/fresh26/26; final score/survival/full-horizon UNKNOWN. One run consumed, cleanup PASS, flags unchanged, raw hold ACTIVE; Stage review required before any new game. See [run record](runs/v10f-run15-first-semantic-validation.md). `NEXT_GAME=NOT_AUTHORIZED`; main v8a freeze unchanged.
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26

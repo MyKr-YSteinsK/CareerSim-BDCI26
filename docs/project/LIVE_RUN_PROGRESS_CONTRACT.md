@@ -38,6 +38,12 @@ Run continues; no user action required.
 
 长 Run 应使用可持续读取已有 stdout/stderr 的 interactive process/session，使 Codex 能在不中断 Runner 的情况下输出更新。
 
+开发 Run 可复用 `scripts.live_review_packet.ReviewStream` 或独立 follower，读取
+精确 Runner JSONL。Formal Review 必须在暴露它的 observe 到达时立即生成通知，
+不等待 heartbeat semantic verdict 或最终 stop report。Codex 读取该通知后应优先
+向用户转述；记录 packet/notification 时间与实际 user report，不能把两者混为一谈。
+具体回执、证据包及延迟边界见 [Reviewer Gate Contract](REVIEWER_GATE_CONTRACT.md)。
+
 进度汇报：
 
 - 不暂停 Runner；

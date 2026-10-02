@@ -435,7 +435,8 @@ def test_partial_without_score_deduplicates_and_preserves_audits(tmp_path: Path)
     assert summary["actions"]["attempts"] == 3
     assert summary["actions"]["ctrl_closure"]["valid"] == 3
     assert summary["adherence_evidence"]["delivery_marker_coverage"]["valid"] == 3
-    assert summary["outcome"]["classification"] == "PARTIAL_GAMEPLAY_TECHNICAL_FAILURE"
+    # S09-24: nonzero exit alone cannot establish a technical root cause.
+    assert summary["outcome"]["classification"] == "PARTIAL_EXECUTION_EXIT_CAUSE_UNKNOWN"
     assert summary["outcome"]["max_month"] == 20
     assert summary["outcome"]["natural_terminal_observed"] is False
     assert summary["outcome"]["last_observe_alive"] is True

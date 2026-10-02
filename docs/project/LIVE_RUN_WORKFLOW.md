@@ -68,6 +68,14 @@ operation and adds no Runner hook or free-text semantic classifier; current publ
 arithmetic alone is not a career-growth cap violation. This is development evidence censoring,
 separate from the provisional M24 score-screening protocol below.
 
+Semantic censoring follows [REVIEWER_GATE_CONTRACT](REVIEWER_GATE_CONTRACT.md):
+write a canonical object/owner receipt with direct selected-candidate violation link
+and counterexample check before Candidate failure attribution. Material uncertainty
+may stop but is not Candidate failure; event risk theme alone is insufficient.
+The read-only `scripts.live_review_packet` follower emits bounded heartbeat context
+and immediate formal Review notifications from exact existing events, without live
+queries. Review pending must not delay user-facing checkpoint reporting.
+
 ## One-pass offline audit
 
 `scripts/post_run_audit.py` accepts explicit `--events`, `--transcript`, `--score-report`, `--runner-result`, and `--output` paths. Optional inputs are `--llm-log`, `--run-start`, `--run-end`, `--log-utc-offset`, `--evidence-manifest`, and `--screening-metadata`. It never locates the latest run, queries a DB, imports a provider, or starts a service.
@@ -83,6 +91,15 @@ The deterministic `post_run_summary.json` has schema version 1 and top-level `in
 Score from a final observe is valid when that observe belongs to the single fresh session, even if `score_report.session_id` is blank; the blank field remains a defect. Missing usage is `UNKNOWN`, and reported cost 0.0 never means billed cost zero. Only allowlisted participant-visible status and scalar score fields enter the summary; numeric hidden values never enter strategy facts.
 
 The parser uses an explicit run window when supplied. Otherwise it may derive one from a single consistent fresh event session. A cumulative `llm.log` is counted only within that window; naive timestamps require an explicit UTC offset. Unscoped compressor lines make the count `UNKNOWN`, not zero. The S07-40 historical contamination (23 cumulative records versus 2 in the run) has a synthetic regression test. Report writing reads this summary first; reopen raw only for one identified acceptance gap, and stop after the no-progress rule.
+
+Prefer `--run-window-from-runner` over transporting date values through PowerShell
+`ConvertFrom-Json`: Python consumes exact `play_start_utc`/`play_end_utc` strings
+and retains the exact inputs in the summary. For Plan-authorized censors pass
+`--development-stop <session-bound-reviewer-metadata.json>` per Reviewer Gate Contract.
+Raw Runner exit is retained separately; nonzero exit alone means
+`PARTIAL_EXECUTION_EXIT_CAUSE_UNKNOWN`, not a proven technical/provider root cause.
+Development Candidate/telemetry/uncertainty/reviewer-defect classifications stay
+distinct. These options are offline only and never rewrite historical reports.
 
 ## M24 development screening
 

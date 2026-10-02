@@ -150,7 +150,8 @@ def test_schema_not_relaxed():
 def test_frozen_K3_Skills_measurement_and_identity():
     paths = ['skills/'+n+'/SKILL.md' for n in
              ('structured-state-board', 'delivery-progress', 'rolling-planning', 'risk-review')]
-    paths += ['scripts/policy_trace_audit.py', 'scripts/post_run_audit.py',
+    # S09-24 explicitly authorizes post-run transport/classification hardening.
+    paths += ['scripts/policy_trace_audit.py',
               'scripts/package_candidate.py', 'pyproject.toml', 'uv.lock',
               'tests/fixtures/v10e_explicit_basis_cases.json',
               'docs/project/reviews/S09-22_RUN13_SEMANTIC_REPLAY.json',
