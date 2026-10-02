@@ -1,0 +1,133 @@
+{
+  "task": "S09-21",
+  "session": "278f650a19fb40789454c7dc79ee7fd0",
+  "source_local_path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\h1-context.json",
+  "source_sha256": "e3b76e8c49ce36f307c0c9135b2ae866bcbf6b726958b87fe661b4f2ae97a362",
+  "semantic_annotation_boundary": "Explicit all-semantic-pass counterfactual annotations; not an automatic semantic audit or historical behavior claim.",
+  "replay": "3/3 CORRECTLY_BLOCKED",
+  "actions": [
+    {
+      "action": 1,
+      "source_notes_sha256": "225c846575514df50aa44e8d979259cb738e4c14bfb64331339a38efa8d1d87f",
+      "historical_model_claim": "BC=PASS / submitted",
+      "old_offline_oracle": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "old_receipt_coverage": "PASS",
+      "new_original": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "corrected_projection": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS]",
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "sanitized_corrected_header": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]"
+    },
+    {
+      "action": 2,
+      "source_notes_sha256": "cc6abb3791460ef13c2bf1724b7c30955c1a06af8c16a59cb8271dba94fd3eb9",
+      "historical_model_claim": "BC=PASS / submitted",
+      "old_offline_oracle": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "old_receipt_coverage": "PASS",
+      "new_original": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "corrected_projection": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS]",
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "sanitized_corrected_header": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]"
+    },
+    {
+      "action": 3,
+      "source_notes_sha256": "4fee68adb85b02a98dba37a296350b5348186c4f22b5f5fa266170a27ae831e6",
+      "historical_model_claim": "BC=PASS / submitted",
+      "old_offline_oracle": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "old_receipt_coverage": "PASS",
+      "new_original": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "corrected_projection": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS]",
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "sanitized_corrected_header": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]"
+    }
+  ],
+  "new_receipt_measurement": {
+    "basis_check_present": 3,
+    "basis_check_valid": 3,
+    "basis_check_pass": 3,
+    "restricted_basis_blocked": null,
+    "saturation_basis_blocked": null,
+    "numeric_S_blocked": null,
+    "stale_cleanup_blocked": null,
+    "action_submitted_despite_BLOCKED": 0,
+    "CTRL_coverage": 0,
+    "DL_coverage": 0,
+    "POL_coverage": 3,
+    "PROBE_coverage": 3,
+    "POL_PROBE_coverage": 3,
+    "full_five_marker_coverage": 0,
+    "submitted_BC_PASS_with_invalid_header": 3,
+    "header_schema_version": 2,
+    "basis_receipt_coverage_status": "FAIL",
+    "receipt_interpretation": "EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF"
+  },
+  "FORENSIC_HOLD": "ACTIVE_UNCHANGED"
+}

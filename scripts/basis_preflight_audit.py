@@ -13,6 +13,27 @@ from scripts.post_run_audit import CTRL, DL
 
 BC = re.compile(r"\[BC=(?:PASS|BLOCKED WHY=(?:PUBLIC|SATURATION|NUMERIC_S|STALE_CLEANUP|SCHEMA|CONTROL))\]")
 REASONS = ("PUBLIC", "SATURATION", "NUMERIC_S", "STALE_CLEANUP", "SCHEMA", "CONTROL")
+HEADER_SCHEMA_VERSION = 2
+FIVE_MARKER = re.compile(CTRL.pattern + ' ' + DL.pattern + ' ' + POL.pattern + ' ' + PROBE.pattern + r' \[BC=PASS\]')
+
+
+def parse_five_marker_header(notes: str) -> dict:
+    """Submitted v10d notes only; non-submitted BLOCKED receipts are separate.
+
+    Compose frozen parsers at character zero, with one ASCII space per marker
+    boundary. Never trim prefixes or rewrite historical notes to obtain a PASS.
+    """
+    match = FIVE_MARKER.match(notes)
+    once = all(notes.count(prefix) == 1 for prefix in ('[CTRL', '[DL', '[POL', '[PROBE', '[BC'))
+    if not match or not once:
+        return dict(valid=False, reason='SCHEMA', header_end=None)
+    c, d = CTRL.match(notes), DL.search(notes)
+    tail = notes[match.end():]
+    suffix_valid = not tail or tail.startswith((' ', '\n', '\r\n'))
+    current_enums = c['rb'] is not None and d['item_id'] is not None and d['checkpoint'] in ('NEAR', 'NOT_NEAR', 'UNKNOWN')
+    valid = bool(suffix_valid and current_enums and parse_header(notes)['valid']
+                 and parse_trace(notes)['status'] in ('VALID', 'AMBIGUOUS'))
+    return dict(valid=valid, reason=None if valid else 'SCHEMA', header_end=match.end() if valid else None)
 
 
 def parse_basis_receipt(text: str) -> dict:
@@ -42,15 +63,12 @@ def check_basis(notes: str, evidence: dict) -> dict:
         and bool(evidence.get('claim_scope'))
     ):
         failures.append('SATURATION')
-    header, trace = parse_header(notes), parse_trace(notes)
+    header = parse_header(notes)
     if header.get('mode') == 'S' and evidence.get('fresh_material_binding') is not True:
         failures.append('NUMERIC_S')
     if evidence.get('cleanup') is not False and evidence.get('fresh_cleanup_authorization') is not True:
         failures.append('STALE_CLEANUP')
-    if not header['valid'] or trace['status'] not in ('VALID', 'AMBIGUOUS'):
-        failures.append('SCHEMA')
-    markers = [regex.search(notes) for regex in (CTRL, DL, POL, PROBE)]
-    if not all(markers) or any(a.end() >= b.start() for a, b in zip(markers, markers[1:]) if a and b):
+    if not parse_five_marker_header(notes)['valid']:
         failures.append('SCHEMA')
     c = re.match(r'^\[CTRL .*? R=(\w+) RB=(\w+)\]', notes)
     if not c or c[1] == 'RECONSIDER' or c[2] not in ('NONE', 'DONE'):
@@ -73,6 +91,7 @@ def measure_receipts(action_notes: list[str], decision_receipts: list[str] | Non
     never tool echoes or compressed summaries. No inference from historical prose.
     """
     actions = [parse_basis_receipt(n) for n in action_notes]
+    layouts = [parse_five_marker_header(n)['valid'] for n in action_notes]
     blocked = None if decision_receipts is None else Counter(
         p['reason'] for p in map(parse_basis_receipt, decision_receipts) if p['status'] == 'BLOCKED'
     )
@@ -90,6 +109,9 @@ def measure_receipts(action_notes: list[str], decision_receipts: list[str] | Non
         POL_coverage=sum(bool(POL.search(n)) and n.count('[POL') == 1 for n in action_notes),
         PROBE_coverage=sum(bool(PROBE.search(n)) and n.count('[PROBE') == 1 for n in action_notes),
         POL_PROBE_coverage=sum(parse_trace(n)['status'] in ('VALID', 'AMBIGUOUS') for n in action_notes),
-        basis_receipt_coverage_status=('UNKNOWN' if not actions else 'PASS' if all(p['status'] == 'PASS' for p in actions) else 'FAIL'),
+        full_five_marker_coverage=sum(layouts),
+        submitted_BC_PASS_with_invalid_header=sum(p['status'] == 'PASS' and not valid for p, valid in zip(actions, layouts)),
+        header_schema_version=HEADER_SCHEMA_VERSION,
+        basis_receipt_coverage_status=('UNKNOWN' if not actions else 'PASS' if all(p['status'] == 'PASS' and valid for p, valid in zip(actions, layouts)) else 'FAIL'),
         receipt_interpretation='EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF',
     )

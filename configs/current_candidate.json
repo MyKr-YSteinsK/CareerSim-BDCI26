@@ -1,14 +1,14 @@
 {
-  "candidate_id": "candidate-v10c-compaction-agnostic-kernel",
+  "candidate_id": "candidate-v10d-anchored-five-marker-preflight",
   "status": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
-  "decision": "S09_20_V10C_COMPACTION_AGNOSTIC_KERNEL_STATIC_PASS_RETURN_TO_STAGE",
+  "decision": "S09_21_V10D_ANCHORED_HEADER_STATIC_PASS_RETURN_TO_STAGE",
   "design_freeze": "ACTIVE",
   "strategy_delta": "NONE",
-  "parent_candidate_id": "candidate-v10b-policy-constitution-anti-saturation",
+  "parent_candidate_id": "candidate-v10c-compaction-agnostic-kernel",
   "base_main_sha": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
   "parent_identity": {
-    "runtime_manifest_sha256": "35ab8a5e3fa4daee4b63c11d24c0df9baa21adfcebc82c32a74c502ce8c4d8a7",
-    "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7",
+    "runtime_manifest_sha256": "336ac19dd645a20434bb494a8f1e6d77acc5e0482454cb287c05a6ae6f158e74",
+    "instruction_sha256": "0c22b1ebc0f2249cd03952eef53114495cc9f72e196303d4d1f8442d43a16f32",
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +18,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "bd235f9e7a8b277bc976fb9608c78c17fc7ce519"
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
       },
       {
         "name": "delivery-progress",
@@ -34,8 +34,8 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "336ac19dd645a20434bb494a8f1e6d77acc5e0482454cb287c05a6ae6f158e74",
-    "instruction_sha256": "0c22b1ebc0f2249cd03952eef53114495cc9f72e196303d4d1f8442d43a16f32"
+    "sha256": "f9f76f3b868c9611a1c9f3418009161079d45405802bce2eea50e6b396028610",
+    "instruction_sha256": "9c24d40fa3e3e0b572b8eb030f950c8278ea6af5afa66f4493c921c4a48ddcc1"
   },
   "skills": [
     {
@@ -88,7 +88,8 @@
     "ACYCLIC_PREFLIGHT_ORDERING",
     "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
     "SYSTEM_OWNED_POL_PROBE_SCHEMA",
-    "FINAL_BASIS_CHECK"
+    "FINAL_BASIS_CHECK",
+    "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX"
   ],
   "deferred_mechanisms": [
     "DURABLE_OR_CROSS_GAME_MEMORY",
@@ -185,10 +186,11 @@
     "v9a_submission_replacement": "NOT_AUTHORIZED",
     "v10a_submission_replacement": "NOT_AUTHORIZED",
     "v10b_submission_replacement": "NOT_AUTHORIZED",
-    "v10c_submission_replacement": "NOT_AUTHORIZED"
+    "v10c_submission_replacement": "NOT_AUTHORIZED",
+    "v10d_submission_replacement": "NOT_AUTHORIZED"
   },
-  "base_evidence_sha": "63c703f8979a4bebf7d1bc72249019a56343550e",
-  "parent_strategy_implementation_sha": "92fb4323c8db2e03fa3c12d0c2969ffdca6f6a4f",
-  "strategy_classification": "RUNTIME_CONTRACT_HARDENING_NOT_NEW_STRATEGY",
-  "runtime_delta": "COMPACTION_AGNOSTIC_ALWAYS_ON_KERNEL_AND_BASIS_PREFLIGHT"
+  "base_evidence_sha": "554acbc3ec0cb75ea9f76087d65dc48ed41986a2",
+  "parent_strategy_implementation_sha": "55157f53031c284e2e569944e4aff6adbf64c48f",
+  "strategy_classification": "NARROW_RUNTIME_CONTRACT_FIX",
+  "runtime_delta": "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX"
 }

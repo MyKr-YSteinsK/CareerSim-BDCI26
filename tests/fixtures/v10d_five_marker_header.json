@@ -1,0 +1,117 @@
+[
+  {
+    "name": "N1",
+    "notes": "public reason PLAN...\n[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N2",
+    "notes": " [CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N3",
+    "notes": "\n[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N4",
+    "notes": "PLAN: [CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N5",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] prose [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N6",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0]\n[POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N7",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [BC=PASS] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N8",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] [POL B=OTHER F=OTHER RP=NA]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N9",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "N10",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=SAFETY F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "P1",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "PASS"
+  },
+  {
+    "name": "P2",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] public rationale",
+    "expected": "PASS"
+  },
+  {
+    "name": "P3",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]\nPLAN: public rationale",
+    "expected": "PASS"
+  },
+  {
+    "name": "P4",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "PASS"
+  },
+  {
+    "name": "P5",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=????? E=? C=? S=0 F=?] [BC=PASS]",
+    "expected": "PASS"
+  },
+  {
+    "name": "X_double_space",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE]  [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_tab",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE]\t[DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_BLOCKED",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=BLOCKED WHY=SCHEMA]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_suffix_without_separator",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]prose",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_duplicate_CTRL",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] [CTRL]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_duplicate_DL",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] [DL]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_duplicate_PROBE",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] [PROBE]",
+    "expected": "BLOCKED"
+  },
+  {
+    "name": "X_duplicate_BC",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] [BC=PASS]",
+    "expected": "BLOCKED"
+  }
+]
