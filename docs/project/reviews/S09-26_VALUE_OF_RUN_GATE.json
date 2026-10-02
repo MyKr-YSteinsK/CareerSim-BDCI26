@@ -1,0 +1,269 @@
+{
+  "task": "S09-26",
+  "schema_version": 6,
+  "information_boundary_version": 2,
+  "header_schema_version": 3,
+  "basis_annotation_schema_version": 2,
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "branch": "codex/s09-14-v9a-static",
+  "parent_evidence_commit": "6efb27128ed1727d7def7ae21d64d9b67e512495",
+  "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+  "candidate_parent": "candidate-v10f-cap-scope-correction",
+  "classification": "OFFLINE_STATIC_READINESS_NOT_LIVE_AUTHORIZATION",
+  "main_submission_freeze": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+  "strategy_delta": "NONE",
+  "information_policy_delta": "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY",
+  "candidate_identity": [
+    {
+      "path": "configs/runtime_manifest.json",
+      "bytes": 8180,
+      "physical_sha256": "167cf18c1c30df1f658190c7f5ad1c1af0bcf6f7ea4c34e1b785843794953c1d",
+      "lf_sha256": "356d50da72e2915f5bccecc599e329e4208e996c8276e815f77af0594c587470",
+      "git_blob": "220e870608e67fe615bd2373a5fb303a0e0aedb8"
+    },
+    {
+      "path": "configs/current_candidate.json",
+      "bytes": 8041,
+      "physical_sha256": "bb4731941bcdee84ad5aff26f4502cd09ace13a449f7c8bb9ad0f787e601276c",
+      "lf_sha256": "60110227eef393f3e0ec98a7257510a0eeed233f3a18c4d7e8343390b1a34e5a",
+      "git_blob": "3a05e0a5961a5ce354cefbb2e23b72d16278de81"
+    },
+    {
+      "path": "skills/structured-state-board/SKILL.md",
+      "bytes": 5678,
+      "physical_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+      "lf_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+      "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+    },
+    {
+      "path": "skills/delivery-progress/SKILL.md",
+      "bytes": 5041,
+      "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+      "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+      "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+    },
+    {
+      "path": "skills/rolling-planning/SKILL.md",
+      "bytes": 11883,
+      "physical_sha256": "b06a4484760d62eac915f9fbc15dd32a993f284aad72f7d76b788a9635948ff4",
+      "lf_sha256": "29d9fedde48cf060d0682360d6deb2a2f913627e20deef77b5aecc547988cab3",
+      "git_blob": "33b30e67ad040bfa70515ff0fd68dd3d8926d8d4"
+    },
+    {
+      "path": "skills/risk-review/SKILL.md",
+      "bytes": 4542,
+      "physical_sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8",
+      "lf_sha256": "47029fd4715c584137ece25591b6b7bc3df58af7866fad536b45ef3c704bd6a9",
+      "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+    }
+  ],
+  "instruction_sha256": "10148e00e78f174e111f19d16b73709c37657cf98cb5c46f2fec77e3dd6f9964",
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "dependencies": [
+    {
+      "path": "pyproject.toml",
+      "bytes": 2827,
+      "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+      "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+      "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+    },
+    {
+      "path": "uv.lock",
+      "bytes": 1111404,
+      "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+      "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+      "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+    }
+  ],
+  "tools_and_fixtures": [
+    {
+      "path": "scripts/live_review_packet.py",
+      "bytes": 10033,
+      "physical_sha256": "bde24f39a36dc71e0151e4a502e693db112d28055ec88857d8412613c632b963",
+      "lf_sha256": "bde24f39a36dc71e0151e4a502e693db112d28055ec88857d8412613c632b963",
+      "git_blob": "51bf5e8c3f73c5599a2ccd38d12e1a37967774da"
+    },
+    {
+      "path": "scripts/reviewer_gate.py",
+      "bytes": 10734,
+      "physical_sha256": "559af65244187ebf54974e13b92760648a2df554b6ff066e652e5136a0eeca9b",
+      "lf_sha256": "559af65244187ebf54974e13b92760648a2df554b6ff066e652e5136a0eeca9b",
+      "git_blob": "06237d5ecae5c9709fe78fca04d29a985cd79005"
+    },
+    {
+      "path": "scripts/basis_preflight_audit.py",
+      "bytes": 9119,
+      "physical_sha256": "16015d1d0722e39060b5c1e784fbcc349ba5ca2d31c66351422c4c8d4ac1419a",
+      "lf_sha256": "16015d1d0722e39060b5c1e784fbcc349ba5ca2d31c66351422c4c8d4ac1419a",
+      "git_blob": "87b3271948404dbd022afa61fc0672409a9c0119"
+    },
+    {
+      "path": "scripts/policy_trace_audit.py",
+      "bytes": 11621,
+      "physical_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+      "lf_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+      "git_blob": "f91807ad33c27620df4b453c68244a7fae45f2b7"
+    },
+    {
+      "path": "scripts/post_run_audit.py",
+      "bytes": 43654,
+      "physical_sha256": "85738758cc7e9b0b0bc1b41b96f33adff742e11f61bfe0c4ae5340f7cdde97cb",
+      "lf_sha256": "af415c69c8931493db3aed589cd60ddb824a7c9390af48807c2f240eee1ab716",
+      "git_blob": "72c24a66a21854e0b5aab080aa6c9fdb472d64a5"
+    },
+    {
+      "path": "scripts/package_candidate.py",
+      "bytes": 2895,
+      "physical_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+      "lf_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+      "git_blob": "a3bf7b1bc5ae4e4755bea995c0f53e2aa3099950"
+    },
+    {
+      "path": "tests/test_s09_26_official_access.py",
+      "bytes": 15833,
+      "physical_sha256": "118b2b88457f8c94056c6e7542f7d0456423fd0519df81c2feabb25e452f5f6a",
+      "lf_sha256": "118b2b88457f8c94056c6e7542f7d0456423fd0519df81c2feabb25e452f5f6a",
+      "git_blob": "551d921c66d10778737fe3004b5e973869dbe987"
+    },
+    {
+      "path": "tests/fixtures/v10g_official_access_cases.json",
+      "bytes": 4714,
+      "physical_sha256": "c5cfa16c060bfed37efd3938048c2424dd15f0a396de6551690566d02f2ad06b",
+      "lf_sha256": "3dba38cc875e3e90114bc5697151deaa082b1ce1c6512f1e537ae39b92006211",
+      "git_blob": "1d859da0cb817c481c06c7d3b3a9fa20ea815927"
+    },
+    {
+      "path": "tests/test_s09_24_reviewer_reliability.py",
+      "bytes": 15913,
+      "physical_sha256": "cde3a7fad9163f3ddb3eadd9f05fde314e09a838e44238af985551d0d4edcca1",
+      "lf_sha256": "cde3a7fad9163f3ddb3eadd9f05fde314e09a838e44238af985551d0d4edcca1",
+      "git_blob": "f072b139a2566cda7c1d4fdf6c86659030b09f72"
+    },
+    {
+      "path": "tests/test_s09_23_cap_scope.py",
+      "bytes": 9399,
+      "physical_sha256": "35c820b63767292cf9edbdcf1894b3eb5275780611a8fa72dc70bb5a7e82b471",
+      "lf_sha256": "35c820b63767292cf9edbdcf1894b3eb5275780611a8fa72dc70bb5a7e82b471",
+      "git_blob": "a10fd0298e711bfe467869fa9f19cda72c8eb589"
+    },
+    {
+      "path": "docs/project/AGENT_RUNTIME_CONTRACT.md",
+      "bytes": 9303,
+      "physical_sha256": "db40649b73d7f4b93af12e773a82e1c9a6a212b8f7722a8d62426d0e38201a90",
+      "lf_sha256": "216ec199246209c86378094d7b0c117b54e113d144797e9ac1940344270170a7",
+      "git_blob": "5a50fab0e6eee29fdce1650b027c29a69d9f27b0"
+    },
+    {
+      "path": "docs/project/REVIEWER_GATE_CONTRACT.md",
+      "bytes": 10754,
+      "physical_sha256": "7e19b987a12d6879a4b7635acc800be92a1a052de4c845ce42bf231b2d55935d",
+      "lf_sha256": "7e19b987a12d6879a4b7635acc800be92a1a052de4c845ce42bf231b2d55935d",
+      "git_blob": "f1e85ebf77b3b51598d40281a9e58b8517513a5f"
+    },
+    {
+      "path": "docs/project/reviews/S09-25_INFORMATION_ACCESS_MATRIX.json",
+      "bytes": 68522,
+      "physical_sha256": "2ba7e1f65d9a6b9e3e6a46851015128dc5bc9b92492f68a911fe758b464c0175",
+      "lf_sha256": "2ba7e1f65d9a6b9e3e6a46851015128dc5bc9b92492f68a911fe758b464c0175",
+      "git_blob": "a27b13ab6c08f712f3f2955617074634639e8dea"
+    }
+  ],
+  "verification": {
+    "targeted_passed": 287,
+    "targeted_deselected": 2,
+    "deselection_reason": "Historical v10f-only identity/unchanged-Skills assertions deliberately inapplicable to v10g; current identity/protected strategy assertions in test_s09_26 replace them.",
+    "matrix_items": 69,
+    "explicit_access_contrasts": 13,
+    "RUN16_a11": "NO_K1_ACCESS_VIOLATION_ACCESS_ONLY",
+    "RUN12": "3/3 ORIGINAL HEADER NEGATIVES BLOCKED",
+    "RUN13": "4/4 EXPECTED: numeric-only S and unsupported Level cap still blocked",
+    "RUN14": "2/2 BOUNDED-STATE CASES PASS",
+    "RUN15": "2/2 SELECTED SAFE CANDIDATES NO_VIOLATION",
+    "serializer": "PURE LOCKED1.0.1 FILTER PARITY; models.py hash matches S09-25 published source",
+    "package": "VALID skill_bundle exactly four Skills",
+    "prompt_size": {
+      "manifest_instruction_chars_before": 5402,
+      "manifest_instruction_chars_after": 5500,
+      "manifest_bytes_before": 7801,
+      "manifest_bytes_after": 8180,
+      "planning_chars_before": 7787,
+      "planning_chars_after": 7862,
+      "manifest_instruction_growth_percent": 1.8141,
+      "manifest_bytes_growth_percent": 4.8584
+    },
+    "secret_scan": "PASS_SELECTED_DELIVERY_FILES",
+    "diff_check": "PASS"
+  },
+  "package_local_path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-26-v10g\\submission",
+  "package_identity": [
+    {
+      "path": ".local/runtime/s09-26-v10g/submission/manifest.json",
+      "bytes": 8180,
+      "physical_sha256": "167cf18c1c30df1f658190c7f5ad1c1af0bcf6f7ea4c34e1b785843794953c1d",
+      "lf_sha256": "356d50da72e2915f5bccecc599e329e4208e996c8276e815f77af0594c587470",
+      "git_blob": "220e870608e67fe615bd2373a5fb303a0e0aedb8"
+    },
+    {
+      "path": ".local/runtime/s09-26-v10g/submission/skills/delivery-progress/SKILL.md",
+      "bytes": 5041,
+      "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+      "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+      "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+    },
+    {
+      "path": ".local/runtime/s09-26-v10g/submission/skills/risk-review/SKILL.md",
+      "bytes": 4542,
+      "physical_sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8",
+      "lf_sha256": "47029fd4715c584137ece25591b6b7bc3df58af7866fad536b45ef3c704bd6a9",
+      "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+    },
+    {
+      "path": ".local/runtime/s09-26-v10g/submission/skills/rolling-planning/SKILL.md",
+      "bytes": 11883,
+      "physical_sha256": "b06a4484760d62eac915f9fbc15dd32a993f284aad72f7d76b788a9635948ff4",
+      "lf_sha256": "29d9fedde48cf060d0682360d6deb2a2f913627e20deef77b5aecc547988cab3",
+      "git_blob": "33b30e67ad040bfa70515ff0fd68dd3d8926d8d4"
+    },
+    {
+      "path": ".local/runtime/s09-26-v10g/submission/skills/structured-state-board/SKILL.md",
+      "bytes": 5678,
+      "physical_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+      "lf_sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162",
+      "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+    }
+  ],
+  "protected": {
+    "Delivery": "BYTE_IDENTICAL",
+    "Planning_constitution_ranking_controllers_probes": "UNCHANGED",
+    "K2_growth_cap_guard": "PRESERVED_WITH_PRIOR_CLARIFICATION",
+    "K3_MODE": "PRESERVED_WITH_RISK_COST_CLARIFICATION",
+    "K4_K5_control_header_BC": "UNCHANGED",
+    "Runner_framework_dependencies_retry": "UNCHANGED",
+    "RUN16_original_stop_and_raw_hold": "ACTIVE_UNCHANGED"
+  },
+  "reviewer_provenance": "Before unavailable-input failure: exact used information, actual pre-action same-session model context, official path/prohibition, delta/stock/threshold/prior scope. Incomplete absence proof => REVIEW_UNCERTAIN_MATERIAL, not Candidate failure.",
+  "strict_early_abort": "CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT; no continue-for-score override; uncertainty is separate from Candidate failure; record exact extra actions/cutoff.",
+  "future_live_requirements": [
+    "Stage/Main accepts correction and supplies a separate explicit bounded Run authorization.",
+    "Freeze clean execution HEAD and exact Candidate/package/Runner/dependency/reviewer identities; shared runtime exclusive.",
+    "Use complete official observation packets/version2 provenance for K1; lexical HiddenRisk count alone is not a violation.",
+    "Preserve numeric-only S/cap/header/cleanup/fresh-observe gates and immediate public Review reporting.",
+    "Full earlier model context may need a specific exact raw artifact read if material evidence is missing; no reporting queries.",
+    "No mandatory logs polling, hidden-stock reconstruction, event-answer lookup or replacement run."
+  ],
+  "limits": [
+    "Static source/schema/fixture checks do not prove future model adherence or score improvement.",
+    "Locked1.0.1 official Agent serializer verified; exact hosted Test deployment/full current prohibitions remain UNKNOWN.",
+    "Reviewer annotations remain human-supplied; no NLP semantic oracle or live interceptor."
+  ],
+  "live_operations": 0,
+  "provider_operations": 0,
+  "service_operations": 0,
+  "game_operations": 0,
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE": "UNCHANGED",
+  "decision": "S09_26_V10G_INFORMATION_BOUNDARY_STATIC_PASS_RETURN_TO_STAGE",
+  "candidate_implementation_commit": "c9a9d914481c4d2a3221719b1ae90871be057c8a",
+  "implementation_to_execution": "Report-only descendant preserves these assets; future Main Run Plan freezes exact clean execution HEAD. Final report commit is returned in TASK_RESULT."
+}
