@@ -1,0 +1,391 @@
+{
+  "task": "S09-23",
+  "header_schema_version": 3,
+  "annotation_schema_version": 2,
+  "root_cause": "CAP_CERTIFICATE_SCOPE_OVERBROAD_FOR_PUBLIC_BOUNDED_STATE",
+  "RUN14_CAP_SCOPE_REPLAY": "2/2 PASS",
+  "run14": [
+    {
+      "action": 12,
+      "notes_sha256": "c641c60801bedfdf194d9d07755db58a91d2f7f87c81a5fe92aeecd150578c0a",
+      "submitted_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "public_status": {
+        "dignity": 10
+      },
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "explicit_public_growth_cap": false,
+        "growth_cap_scope": null,
+        "public_growth_cap_scope": null
+      },
+      "new_result": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=NONE]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "annotation_schema_version": 2,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "frozen_v10e_result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "interpretation": "K2_CAP_SCOPE_PASS_ONLY_NOT_WHOLE_ACTION_OPTIMALITY",
+      "historical_notes_changed": false
+    },
+    {
+      "action": 13,
+      "notes_sha256": "67c33bfd5561b0ea863001a191f183de8d555604a39b5b571cd4db984129622e",
+      "submitted_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "public_status": {
+        "dignity": 10
+      },
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "explicit_public_growth_cap": false,
+        "growth_cap_scope": null,
+        "public_growth_cap_scope": null
+      },
+      "new_result": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=NONE]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "annotation_schema_version": 2,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "frozen_v10e_result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "interpretation": "K2_CAP_SCOPE_PASS_ONLY_NOT_WHOLE_ACTION_OPTIMALITY",
+      "historical_notes_changed": false
+    }
+  ],
+  "RUN13_SEMANTIC_REPLAY": "4/4 EXPECTED",
+  "run13": [
+    {
+      "action": 35,
+      "original_notes_sha256": "31811565979f0a85664fee837ba30c0bd48e28aa31e814271713b237dc4b116f",
+      "projected_certificate": "[BC=PASS S=ACUTE CAP=NONE]",
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "explicit_public_growth_cap": null,
+        "growth_cap_scope": null,
+        "public_growth_cap_scope": null
+      },
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "NUMERIC_S"
+        ],
+        "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+        "S_basis": "ACUTE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": false,
+        "binding_consistent": false,
+        "cap_claim_consistent": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL",
+      "historical_notes_changed": false
+    },
+    {
+      "action": 36,
+      "original_notes_sha256": "bbf4641a55e95728e1de2c0e03955fd609d2f92d1f098f05f2ee771189b08e08",
+      "projected_certificate": "[BC=PASS S=ACUTE CAP=NONE]",
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "explicit_public_growth_cap": null,
+        "growth_cap_scope": null,
+        "public_growth_cap_scope": null
+      },
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "NUMERIC_S"
+        ],
+        "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+        "S_basis": "ACUTE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": false,
+        "binding_consistent": false,
+        "cap_claim_consistent": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL",
+      "historical_notes_changed": false
+    },
+    {
+      "action": 37,
+      "original_notes_sha256": "a117b7e9e51cc5fb844192dc626757ddb7b05e54f65b875e97f329602df99b83",
+      "projected_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "explicit_public_growth_cap": null,
+        "growth_cap_scope": null,
+        "public_growth_cap_scope": null
+      },
+      "result": {
+        "status": "PASS",
+        "reasons": [],
+        "receipt": "[BC=PASS S=NONE CAP=NONE]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": true,
+        "growth_cap_claim": false,
+        "bounded_state_fact": false,
+        "annotation_schema_version": 2,
+        "control_state": "READY",
+        "may_submit": true
+      },
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL",
+      "historical_notes_changed": false
+    },
+    {
+      "action": 38,
+      "original_notes_sha256": "2ad8a8170ce6778d220d8d9a41081adfb3086095b48fba826ff105bc5791ed3b",
+      "projected_certificate": "[BC=PASS S=NONE CAP=NONE]",
+      "annotation": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false,
+        "public_binding_class": "NONE",
+        "only_numeric_basis": false,
+        "growth_cap_claim": true,
+        "bounded_state_fact": false,
+        "explicit_public_growth_cap": false,
+        "growth_cap_scope": "Output-current-Level",
+        "public_growth_cap_scope": null
+      },
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SATURATION"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SATURATION]",
+        "S_basis": "NONE",
+        "CAP_basis": "NONE",
+        "MODE_S_consistent": true,
+        "binding_consistent": true,
+        "cap_claim_consistent": false,
+        "growth_cap_claim": true,
+        "bounded_state_fact": false,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      },
+      "projection": "CERTIFICATE_ONLY_COUNTERFACTUAL",
+      "historical_notes_changed": false
+    }
+  ],
+  "RUN12_HEADER_REPLAY": "3/3 CORRECTLY_BLOCKED",
+  "run12": [
+    {
+      "action": 1,
+      "notes_sha256": "225c846575514df50aa44e8d979259cb738e4c14bfb64331339a38efa8d1d87f",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    },
+    {
+      "action": 2,
+      "notes_sha256": "cc6abb3791460ef13c2bf1724b7c30955c1a06af8c16a59cb8271dba94fd3eb9",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    },
+    {
+      "action": 3,
+      "notes_sha256": "4fee68adb85b02a98dba37a296350b5348186c4f22b5f5fa266170a27ae831e6",
+      "result": {
+        "status": "BLOCKED",
+        "reasons": [
+          "SCHEMA",
+          "CONTROL"
+        ],
+        "receipt": "[BC=BLOCKED WHY=SCHEMA]",
+        "S_basis": null,
+        "CAP_basis": null,
+        "MODE_S_consistent": true,
+        "binding_consistent": false,
+        "cap_claim_consistent": false,
+        "growth_cap_claim": false,
+        "bounded_state_fact": true,
+        "annotation_schema_version": 2,
+        "control_state": "BLOCKED",
+        "may_submit": false
+      }
+    }
+  ],
+  "public_handbook_excerpt": "| Dignity | 尊严 | 0–10 |",
+  "sources": [
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\action-contexts.json",
+      "bytes": 34294,
+      "sha256": "4674b680e78f1d08e56838cd5820908187c76beab9396bfceac14b2724267b62"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run14-v10e\\public-handbook.txt",
+      "bytes": 6881,
+      "sha256": "037f995a5c3165181529688d835b7c4ea8d98bfd03d0a4a85c6734a5d83af006"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\action-contexts.json",
+      "bytes": 75391,
+      "sha256": "c7325a7eb1433d164a6ebe11f9ca3d4fc32afccfb7c9962d2b24830b62b65b02"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\h1-context.json",
+      "bytes": 4792,
+      "sha256": "e3b76e8c49ce36f307c0c9135b2ae866bcbf6b726958b87fe661b4f2ae97a362"
+    }
+  ],
+  "method": "Exact local held public contexts; explicit reviewer growth-vs-bounded-state annotations; no free-text semantic classifier.",
+  "historical_records": "RUN14 original notes and frozen v10e oracle results remain unchanged; this is a retrospective scope correction, not reversal of the consumed authorization or censored outcome.",
+  "limitations": [
+    "Scope PASS does not prove whole-action optimality, adherence or score benefit.",
+    "RUN13 projection only changes certificate serialization, never actions.",
+    "No raw/private logs committed; prior FORENSIC_HOLDs ACTIVE unchanged."
+  ]
+}

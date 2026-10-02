@@ -53,6 +53,21 @@ The operator builds the absolute CLI/Python path from the verified repository ro
 
 The frozen Runner invokes `jiuwenswarm-start --list` by bare name while resolving its instance WebSocket URL. Before any authorized P2 START, launch the Runner-facing process with a **process-local child environment** whose `PATH` begins with the verified repository `.venv\Scripts`, followed by the inherited `PATH` unchanged; preserve the proxy variables. The preflight launcher itself must run with that prefixed `PATH`. In that exact environment, verify `shutil.which("jiuwenswarm-start")` resolves to the repository `.venv\Scripts\jiuwenswarm-start.exe`, then execute the bounded, read-only bare `jiuwenswarm-start --list` exactly once and require successful launch and exit 0. `which` success alone is insufficient: on Windows the process performing executable lookup must itself have the prefixed `PATH`; passing a different `env` only to a nested `subprocess.run` may not reproduce the Runner's lookup context. A helper setup failure before the CLI child is created is a tooling error to record and correct before the single actual CLI invocation; a `FileNotFoundError` or nonzero result from that invocation is a P1 failure, so do not start the service or game. Reuse the same constructed child environment for the one authorized Runner play. Never modify user/system PATH or frozen Runner source.
 
+## S09 development early-abort contract
+
+Future S09 Main Run Plans must explicitly authorize strict development censoring:
+`CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT`. Stop on header/certificate failure,
+certificate/evidence disagreement under the frozen scope, numeric-only S, unsupported
+career-growth cap, restricted ranking basis, stale cleanup, action→fresh-observe failure,
+Skill strategy drift, summary overriding kernel, a submitted action marked BLOCKED by
+the frozen explicitly annotated oracle, or measurement uncertainty that makes high-score
+interpretation unreliable. Promising trajectory, promotion or possible 75+ is no override.
+Minimize asynchronous audit latency, record exact extra actions and actual cutoff, and
+never claim zero-delay stopping. No replacement run follows. This contract grants no live
+operation and adds no Runner hook or free-text semantic classifier; current public bounded-state
+arithmetic alone is not a career-growth cap violation. This is development evidence censoring,
+separate from the provisional M24 score-screening protocol below.
+
 ## One-pass offline audit
 
 `scripts/post_run_audit.py` accepts explicit `--events`, `--transcript`, `--score-report`, `--runner-result`, and `--output` paths. Optional inputs are `--llm-log`, `--run-start`, `--run-end`, `--log-utc-offset`, `--evidence-manifest`, and `--screening-metadata`. It never locates the latest run, queries a DB, imports a provider, or starts a service.

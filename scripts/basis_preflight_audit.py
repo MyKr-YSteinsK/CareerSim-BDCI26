@@ -16,11 +16,12 @@ PASS_CERTIFICATE = r'\[BC=PASS S=(?P<s_basis>' + '|'.join(S_CLASSES) + r') CAP=(
 BC = re.compile(PASS_CERTIFICATE + r'|\[BC=BLOCKED WHY=(?P<why>PUBLIC|SATURATION|NUMERIC_S|STALE_CLEANUP|SCHEMA|CONTROL)\]')
 REASONS = ("PUBLIC", "SATURATION", "NUMERIC_S", "STALE_CLEANUP", "SCHEMA", "CONTROL")
 HEADER_SCHEMA_VERSION = 3
+ANNOTATION_SCHEMA_VERSION = 2
 FIVE_MARKER = re.compile(CTRL.pattern + ' ' + DL.pattern + ' ' + POL.pattern + ' ' + PROBE.pattern + ' ' + PASS_CERTIFICATE)
 
 
 def parse_five_marker_header(notes: str) -> dict:
-    """Submitted v10e notes only; non-submitted BLOCKED receipts are separate.
+    """Submitted certificate-v3 notes; non-submitted BLOCKED receipts are separate.
 
     Compose frozen parsers at character zero, with one ASCII space per marker
     boundary. Never trim prefixes or rewrite historical notes to obtain a PASS.
@@ -52,8 +53,9 @@ def check_basis(notes: str, evidence: dict) -> dict:
     """Evaluate explicit sanitized annotations, not their semantic truth.
 
     Summary content deliberately has no authority; no epoch parameter exists.
-    Unknown safety basis fails closed. Explicit cap/completion supports only the
-    claimed scope, never a broader family. BC is output and never input to ranking.
+    Unknown safety/growth-cap basis fails closed. Public bounded-state arithmetic
+    alone is not a career-growth cap claim. Explicit growth completion supports
+    only the claimed scope. BC is output and never input to ranking.
     """
     failures = []
     if evidence.get('public_basis') is False or evidence.get('restricted_basis') is True:
@@ -61,18 +63,20 @@ def check_basis(notes: str, evidence: dict) -> dict:
     elif evidence.get('public_basis') is not True or evidence.get('restricted_basis') is not False:
         failures.append('CONTROL')
     certificate = parse_basis_receipt(notes)
-    cap_claim = evidence.get('saturation_claim')
+    # Reviewer classifies scope explicitly; never infer it from prose or legacy
+    # broad saturation_claim annotations. Unknown growth claims fail closed.
+    cap_claim = evidence.get('growth_cap_claim')
     cap_consistent = (
         cap_claim is True and certificate.get('CAP_basis') == 'PUBLIC_SCOPED'
-        and evidence.get('explicit_public_completion') is True
-        and evidence.get('claim_scope') == evidence.get('public_completion_scope')
-        and bool(evidence.get('claim_scope'))
+        and evidence.get('explicit_public_growth_cap') is True
+        and evidence.get('growth_cap_scope') == evidence.get('public_growth_cap_scope')
+        and bool(evidence.get('growth_cap_scope'))
     ) or (cap_claim is False and certificate.get('CAP_basis') == 'NONE')
     # Missing/malformed certificate is SCHEMA, but cannot hide a semantic failure.
     if (certificate['valid'] and not cap_consistent) or (cap_claim is not False and not (
-        evidence.get('explicit_public_completion') is True
-        and evidence.get('claim_scope') == evidence.get('public_completion_scope')
-        and bool(evidence.get('claim_scope'))
+        evidence.get('explicit_public_growth_cap') is True
+        and evidence.get('growth_cap_scope') == evidence.get('public_growth_cap_scope')
+        and bool(evidence.get('growth_cap_scope'))
     )):
         failures.append('SATURATION')
     header = parse_header(notes)
@@ -105,6 +109,8 @@ def check_basis(notes: str, evidence: dict) -> dict:
                 S_basis=s_basis, CAP_basis=certificate.get('CAP_basis'),
                 MODE_S_consistent=mode_s_consistent, binding_consistent=binding_consistent,
                 cap_claim_consistent=cap_consistent,
+                growth_cap_claim=cap_claim, bounded_state_fact=evidence.get('bounded_state_fact'),
+                annotation_schema_version=ANNOTATION_SCHEMA_VERSION,
                 control_state='BLOCKED' if failures else 'READY', may_submit=not failures)
 
 
