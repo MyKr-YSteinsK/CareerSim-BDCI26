@@ -23,9 +23,9 @@ description: "策略宪法、季度语义排序、最小保护与输出 trace；
 
 ## Evidence / interfaces
 
-只消费同 session fresh Board、Delivery、当前 participant-visible event description 与 legal choice semantics、公开 Handbook、正式反馈和已确认公开结果。`HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear fields 均 `EXCLUDE_FROM_STRATEGY until verified public`；禁止跨局记忆、Dev/private evidence、隐藏 threshold/cap/weight/formula、event answer lookup。
+消费同 session fresh Board、Delivery、当前官方 event description/legal choices、Handbook、正式反馈/结果及合法取得的同局官方日志；准入按 manifest K1 OFFICIAL-ACCESS。官方 choices[].status_updates 的精确 delta（含 HiddenRisk ±N）可比较收益/风险成本，是 ADVERTISED_EFFECT，不是 realized gain、当前隐藏stock或未来阈值/概率。fresh observe REALIZED_PUBLIC_RESPONSE 高于广告预期；缺失增益记 OBSERVED_NO_GAIN/OBSERVED_COST，原因 UNKNOWN。
 
-正式反馈/已观察结果校正 advertised hint；hint 非 confirmed requirement。缺失增益记 OBSERVED_NO_GAIN/OBSERVED_COST，原因 UNKNOWN，不保证 advertised 收益。
+合法 Dev 一般prior、Review-window关联/机制推断仅作 hypothesis，不当已知隐藏fact/精确保证阈值；不新增prior库。不可达raw DB/对象、Runner取证、private Test/答案映射、internal graph IDs、跨局动态记忆不得依赖；未知可达性保持 UNKNOWN，不按字段名禁用。风险delta单独不授权 MODE=S/cleanup，不轮询日志。
 
 Board=facts/PROGRESSION_RESPONSE；Delivery=commitment lifecycle；Planning=ranking；Risk=final gate；executor=CONTROL_STATE/READY/preflight/submit，不越权。
 

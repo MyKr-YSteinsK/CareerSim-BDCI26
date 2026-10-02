@@ -56,6 +56,29 @@ Single Agent 是唯一 action submitter。
 
 ## 3. Evidence
 
+### S09-26 v10g experimental information boundary
+
+`candidate-v10g-official-runtime-evidence-boundary` explicitly replaces the
+historical blanket exclusion below with **K1 OFFICIAL-ACCESS**. This is an
+information-policy behavior delta (`SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY`),
+strategy delta NONE; frozen v8a and historical Candidate contracts stay intact.
+Verified official Test-equivalent Agent paths are eligible unless an official rule
+specifically prohibits use. Current observe state/event/choices, official effect
+metadata (including `status_updates.HiddenRisk` delta), Handbook, feedback and
+legitimately obtained same-session official logs are allowed. Advertised effects
+are expectations; fresh realized public response prevails. Deltas never establish
+inaccessible current hidden stock, threshold or guaranteed future event.
+Unavailable hidden state/counters/graph IDs, raw DB/objects, local Runner artifacts,
+private Test/answer mappings, credentials/provider internals and unavailable external
+interventions remain forbidden runtime dependencies. Unknown access stays UNKNOWN.
+Legal Dev general priors and empirical mechanism associations are hypotheses, not
+exact hidden facts. No new prior library, mandatory logs strategy or cross-game
+dynamic memory. K2/K3 protections, K4/K5, ownership and decision budget remain.
+See [S09-26 review](reviews/S09-26_OFFICIAL_RUNTIME_EVIDENCE_BOUNDARY.md) and the
+[canonical S09-25 matrix](reviews/S09-25_INFORMATION_ACCESS_MATRIX.json).
+
+### Historical/default evidence boundary
+
 只用 current-session participant-visible public evidence。
 
 `HiddenRisk`、hidden counters、internal scores、internal event ids/effects、public-status-unclear numeric fields：`EXCLUDE_FROM_STRATEGY`。

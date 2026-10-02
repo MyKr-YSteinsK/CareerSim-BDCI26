@@ -18,9 +18,7 @@ description: "Use immediately before every take_action on Planning's final candi
 - 当前 `MODE`；
 - 候选的 participant-visible consequences。
 
-只使用 current-session public evidence。
-
-禁止使用 `HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear numeric fields。
+使用同局官方 Agent 可达 evidence，准入服从 manifest K1 OFFICIAL-ACCESS。官方 choice status_updates（含 HiddenRisk ±N）可作为广告风险成本；不可达隐藏stock/counters/graph IDs、raw DB/对象、private Test/取证不得依赖。来源或可达性不明保持 UNKNOWN；合法prior仅不确定假设，非确认事实。
 
 ## 输出
 
@@ -45,7 +43,7 @@ REASON: <one concise public-evidence reason>
 
 `PASS`
 
-不要仅因为另一个选项更安全就拦截高价值成长路径。
+不要仅因为另一个选项更安全就拦截高价值成长路径。官方risk delta本身不证明material binding，不自动触发Full Review、MODE=S或cleanup。
 
 ## Full Review
 
@@ -92,7 +90,7 @@ Planning 的 `RECOVERY=RISK` 是战略恢复状态；Risk Review 仍然只 gate 
 
 Risk 给出最终结果后，本次 decision closed；除非出现 genuinely new public evidence。
 
-禁止编造 numeric threshold、hidden count、failure probability 或 hidden-risk value。
+不得把官方广告delta变成当前隐藏stock、numeric threshold或确定未来事件/概率；fresh observe 实际公开结果优先，不由delta累计重建存量。
 
 **Can Submit Action: No.**
 不调用 `new_game`、`observe` 或 `take_action`。

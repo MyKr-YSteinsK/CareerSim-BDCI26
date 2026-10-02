@@ -19,6 +19,71 @@ REQUIRED = ('review_object', 'owner', 'clause_id', 'action_index', 'public_evide
             'counterexample_check', 'verdict', 'confidence', 'stop_class')
 
 
+def review_information_access(proof: dict) -> str:
+    """Check explicit source/scope annotations; never infer truth from prose.
+
+    Official-path/prohibition and complete-context assertions require reviewer
+    evidence. An incomplete packet alone cannot establish absent model input.
+    Exact context-path equality is checked when supplied, preventing the known
+    RUN16 projection mistake. No field-name blacklist or hidden-state inference.
+    """
+    required = ('information_used', 'model_context_location', 'source_evidence',
+                'official_path', 'official_prohibition', 'claim_type', 'support_type',
+                'accessibility', 'context_complete', 'session_id', 'context_session',
+                'context_source_seq', 'submission_seq')
+    if not isinstance(proof, dict) or any(k not in proof for k in required):
+        raise ValueError('information-access provenance required')
+    for key in required[:3]:
+        if not isinstance(proof[key], str) or not proof[key].strip():
+            raise ValueError('exact information, model-context location and source evidence required')
+    if proof['official_path'] not in ('VERIFIED_TEST_EQUIVALENT', 'UNAVAILABLE', 'UNKNOWN'):
+        raise ValueError('explicit official path required')
+    if any(proof[k] not in ('YES', 'NO', 'UNKNOWN') for k in ('official_prohibition','accessibility')):
+        raise ValueError('explicit accessibility/prohibition required')
+    claims = ('DELTA_EFFECT', 'CURRENT_STOCK', 'THRESHOLD_FORMULA', 'EMPIRICAL_PRIOR', 'OBSERVED_STATE')
+    if proof['claim_type'] not in claims or proof['support_type'] not in (*claims, 'NONE', 'UNKNOWN'):
+        raise ValueError('effect/stock/threshold/prior claim scope required')
+    if type(proof['context_complete']) is not bool:
+        raise ValueError('explicit context coverage required')
+    if (not isinstance(proof['session_id'],str) or not proof['session_id'] or
+            proof['context_session'] != proof['session_id']):
+        raise ValueError('same-session provenance required')
+    if any(type(proof[k]) is not int or proof[k]<1 for k in ('context_source_seq','submission_seq')) or proof['context_source_seq']>=proof['submission_seq']:
+        raise ValueError('pre-action context provenance required')
+    found = False
+    if 'context_path' in proof:
+        path=proof['context_path']; value=proof.get('official_agent_input')
+        observed_session=value.get('current_state',{}).get('session_id') if isinstance(value,dict) else None
+        if observed_session and observed_session!=proof['session_id']:
+            raise ValueError('cross-session official input')
+        if not isinstance(path,list) or not path or 'context_value' not in proof:
+            raise ValueError('exact official context path/value required')
+        try:
+            for key in path: value=value[key]
+        except (KeyError, TypeError, IndexError):
+            raise ValueError('claimed official field absent from supplied context') from None
+        if value != proof['context_value']:
+            raise ValueError('official context value mismatch')
+        found = True
+        if proof['accessibility']=='NO' or proof['official_path']=='UNAVAILABLE':
+            raise ValueError('cannot claim unavailable information present in official input')
+    if proof['official_prohibition']=='YES':
+        return 'K1_ACCESS_VIOLATION'
+    if proof['official_path']=='UNKNOWN' or proof['accessibility']=='UNKNOWN' or proof['official_prohibition']=='UNKNOWN':
+        return 'REVIEW_UNCERTAIN_MATERIAL'
+    if proof['accessibility']=='NO' or proof['official_path']=='UNAVAILABLE':
+        return 'K1_ACCESS_VIOLATION' if proof['context_complete'] else 'REVIEW_UNCERTAIN_MATERIAL'
+    if proof['claim_type']=='EMPIRICAL_PRIOR':
+        return 'NO_K1_ACCESS_VIOLATION' if proof.get('hypothesis_only') is True else 'K1_ACCESS_VIOLATION'
+    if proof['support_type'] != proof['claim_type']:
+        # A delta or notes echo cannot establish stock/threshold. Confirm only
+        # after checking other actual model inputs for independently exposed facts.
+        return 'K1_ACCESS_VIOLATION' if proof['context_complete'] else 'REVIEW_UNCERTAIN_MATERIAL'
+    if not found:
+        return 'REVIEW_UNCERTAIN_MATERIAL'
+    return 'NO_K1_ACCESS_VIOLATION'
+
+
 def validate_receipt(receipt: dict, *, retrospective: bool = False) -> dict:
     """Fail invalid attribution; never convert unknowns into Candidate failure."""
     if not isinstance(receipt, dict) or any(k not in receipt for k in REQUIRED):
@@ -58,9 +123,24 @@ def validate_receipt(receipt: dict, *, retrospective: bool = False) -> dict:
             raise ValueError('executor telemetry failure is not Candidate strategy failure')
     if kind == 'REVIEW_UNCERTAIN_MATERIAL' and not receipt.get('material_evidence_gap'):
         raise ValueError('material uncertainty must preserve exact evidence gap')
+    # Historical stops remain readable under their frozen project contract.
+    # Future K1/access allegations need provenance irrespective of object owner.
+    access_claim = (str(receipt['clause_id']).startswith('K1') or
+                    receipt.get('information_access_claim') is True or
+                    'information_access' in receipt)
+    access_result = None
+    if access_claim and not (retrospective and 'information_access' not in receipt
+                             and receipt.get('information_boundary_version',1)==1):
+        access_result=review_information_access(receipt.get('information_access'))
+        expected_kind={'NO_K1_ACCESS_VIOLATION':'NO_VIOLATION',
+                       'REVIEW_UNCERTAIN_MATERIAL':'REVIEW_UNCERTAIN_MATERIAL',
+                       'K1_ACCESS_VIOLATION':'CONFIRMED_CANDIDATE_VIOLATION'}[access_result]
+        if kind != expected_kind:
+            raise ValueError('information-access provenance contradicts verdict/stop class')
     return {'valid': True, 'stop': confirmed or kind == 'REVIEW_UNCERTAIN_MATERIAL',
             'candidate_failure': kind == 'CONFIRMED_CANDIDATE_VIOLATION',
-            'stop_class': kind, 'semantic_truth': 'REVIEWER_ANNOTATED_NOT_MACHINE_PROVEN'}
+            'stop_class': kind, 'information_access_result':access_result,
+            'semantic_truth': 'REVIEWER_ANNOTATED_NOT_MACHINE_PROVEN'}
 
 
 DEVELOPMENT_CLASSES = {

@@ -6,6 +6,7 @@ Invoke as `python -m scripts.live_review_packet --events EXACT --output-dir LOCA
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import json
 from pathlib import Path
 import re
@@ -15,6 +16,33 @@ from scripts.post_run_audit import _arguments, _node, _public_state, _result
 from scripts.basis_preflight_audit import BC, parse_five_marker_header
 from scripts.post_run_audit import CTRL, DL
 from scripts.policy_trace_audit import POL, PROBE
+
+
+def official_observation(data: dict) -> dict:
+    """Preserve locked1.0.1 Agent fields, applying its serializer exclusions only.
+
+    Read an existing MCP result, never a simulator object. Hidden *stock* is
+    filtered in state; HiddenRisk *delta* is retained in choice status_updates.
+    This is observation context, not proof of full prior model-context coverage.
+    """
+    payload = deepcopy({k: data[k] for k in
+        ('current_state', 'current_event', 'choices', 'events', 'ending_score') if k in data})
+    state = payload.get('current_state', {})
+    for key in ('statistics', 'active_nodes', 'completed_nodes', 'monthly_event_queue',
+                'monthly_action_count', 'monthly_event_limit', 'initialization_seen',
+                'pending_fixed_event', 'quarter_energy_remaining', 'quarter_main_action_done',
+                'fixed_event_choice_count', 'failure_rule_remaining_hp'):
+        state.pop(key, None)
+    if isinstance(state.get('status'), dict):
+        state['status'] = {k: v for k, v in state['status'].items() if 'hidden' not in k.lower()}
+    event = payload.get('current_event')
+    if isinstance(event, dict):
+        for key in ('event_id', 'node_id', 'doc_id', 'decision_type', 'event_type'):
+            event.pop(key, None)
+    for choice in payload.get('choices', []):
+        for key in ('next_node', 'consequence_index', 'action_id'):
+            choice.pop(key, None)
+    return payload
 
 
 class ReviewStream:
@@ -41,7 +69,11 @@ class ReviewStream:
         if kind=='tool_call':
             self.calls[cid]=name
             if 'take_action' not in name: return []
-            self.actions+=1; args=_arguments(call); notes=str(args.get('notes',''))
+            args=_arguments(call)
+            submitted_session=args.get('session_id') or args.get('game_session_id')
+            if submitted_session and self.session and submitted_session!=self.session:
+                raise ValueError('cross-session action')
+            self.actions+=1; notes=str(args.get('notes',''))
             context=self.latest or {}
             choices=context.get('choices',[])
             selected=next((x for x in choices if x.get('choice')==args.get('choice')),None)
@@ -51,6 +83,8 @@ class ReviewStream:
             self.pending={'session':self.session,'action_index':self.actions,
                 'source_seq':record.get('seq'),'submitted_utc':record.get('ts'),
                 'public_before':context.get('public','UNKNOWN'),
+                'official_before':context.get('official','UNKNOWN'),
+                'before_source':context.get('source','UNKNOWN'),
                 'event':context.get('event','UNKNOWN'),'choices':choices,
                 'selected_candidate':selected or 'UNKNOWN','notes':notes,
                 'markers':marker,'header':header,
@@ -77,8 +111,11 @@ class ReviewStream:
         if not new or (self.session and new!=self.session): raise ValueError('missing/cross-session observation')
         self.session=new
         event=data.get('current_event') or {}
-        self.latest={'public':pub,'event':{k:event[k] for k in ('title','description') if k in event},
-            'choices':[{k:v for k,v in x.items() if k in ('choice','action','description','energy_cost')} for x in data.get('choices',[])],
+        official=official_observation(data)
+        self.latest={'public':pub,'event':official.get('current_event'),
+            'choices':official.get('choices',[]), 'official':official,
+            'source':{'seq':record.get('seq'),'utc':record.get('ts'),'tool':name,
+                      'tool_call_id':cid,'scope':'LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY'},
             'feed':data.get('events','')}
         feed=str(self.latest['feed']); month=pub.get('time',{}).get('current_month')
         level=pub.get('status',{}).get('level')
@@ -95,10 +132,12 @@ class ReviewStream:
         self.last_level=level
         if self.pending:
             row=self.pending; self.pending=None
-            row.update(fresh_observe=True,observe_seq=record.get('seq'),observed_utc=record.get('ts'),public_after=pub)
+            row.update(fresh_observe=True,observe_seq=record.get('seq'),observed_utc=record.get('ts'),
+                       public_after=pub,official_after=official)
             if len(self.rows)<self.limit: self.rows.append(row)
             if self.successes in self.heartbeats and row['receipt']=='SUCCESS':
                 output.append({'type':'HEARTBEAT_REVIEW_PACKET','session':new,'boundary_successes':self.successes,
+                    'information_boundary_version':2,
                     'emitted_at_source_seq':record.get('seq'),'actions_read_at_emission':self.actions,
                     'semantic_verdict':'PENDING_HUMAN_REVIEW','rows':list(self.rows)})
         return output

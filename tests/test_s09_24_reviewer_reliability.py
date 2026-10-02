@@ -103,8 +103,8 @@ def observe(month=1,feed=''):
     return {'current_state':{'session_id':SESSION,'time':{'current_month':month},
         'status':{'level':'L1','health':5,'dignity':10,'skill':3,'network':2,'output':1,'wealth':2,'energy':1,'HiddenRisk':999},
         'simulation_flags':{'alive':True,'failed':False}},
-        'current_event':{'title':'公开事件','description':'公开语义','hidden_effect':999},
-        'events':feed,'choices':[{'choice':1,'action':'合法选项','description':'公开描述','hidden_effect':999}]}
+        'current_event':{'title':'公开事件','description':'公开语义','event_id':'filtered-id'},
+        'events':feed,'choices':[{'choice':1,'action':'合法选项','description':'公开描述','next_node':'filtered-id'}]}
 
 
 def stream(actions=40):
@@ -126,7 +126,7 @@ def test_packet_emits_at_each_boundary_before_next_action():
                 assert packet['actions_read_at_emission']==packet['boundary_successes']
                 assert all(x['fresh_observe'] for x in packet['rows'])
                 assert packet['rows'][-1]['selected_candidate']['choice']==1
-                assert 'hidden_effect' not in json.dumps(packet) and 'hiddenrisk' not in json.dumps(packet).lower()
+                assert 'filtered-id' not in json.dumps(packet) and 'hiddenrisk' not in json.dumps(packet).lower()
     heartbeats=[x for x in packets if x['type']=='HEARTBEAT_REVIEW_PACKET']
     assert [x['boundary_successes'] for x in heartbeats]==[3,12,40]
     assert all(x['semantic_verdict']=='PENDING_HUMAN_REVIEW' for x in heartbeats)

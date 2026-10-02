@@ -24,9 +24,9 @@ description: "Use after every fresh observe and during same-session recovery. �
 - 最新 fresh `observe`；
 - 紧邻前一动作的已确认公开结果；
 - 当前 session 的上一版 Board；
-- recovery 必要时的少量同局公开日志。
+- 合法取得的少量同局官方日志（仅实际取得，不新增轮询）。
 
-禁止使用其他 game、隐藏字段、数据库、局后取证结论或跨局记忆。
+准入服从 manifest K1 OFFICIAL-ACCESS；官方返回的 choice 效果元数据可记为 ADVERTISED_EFFECT，同局官方日志已取得事实可记 LOG_FACT，保留来源/观察序号与freshness。不得把广告效果或日志notes回声当实际结果。禁止其它局动态记忆、不可达隐藏stock、raw数据库/对象、局后取证作为运行输入。
 
 ## 输出
 
@@ -40,6 +40,7 @@ REVIEW: <latest formal grade/feedback/promotion/no-advance | none>
 PROGRESSION_RESPONSE: S=<GAIN|NO_GAIN|UNKNOWN> N=<GAIN|NO_GAIN|UNKNOWN> O=<GAIN|NO_GAIN|UNKNOWN> LEVEL=<Level>
 STICKY: <unresolved binding public warning(s) | none>
 EFFECTS: <up to 2 attributable recent effects | none>
+EVIDENCE: <decision-relevant ADVERTISED_EFFECT / LOG_FACT with source/freshness | none>
 UNKNOWN: <decision-relevant unresolved facts | none>
 ```
 
@@ -122,7 +123,7 @@ acute physical / psychological / safety warning 必须进入 `STICKY`，即使�
 ## 不变量
 
 - observed fact 与 `UNKNOWN` 必须分开。
-- `HiddenRisk`、hidden counters、internal score、internal event id/effect、public-status-unclear numeric fields 一律 `EXCLUDE_FROM_STRATEGY`。
-- 不引用、不比较、不总结、不记忆上述受限值。
+- 官方 `status_updates.HiddenRisk` delta 可记录为广告效果；不可见当前stock/threshold保持 UNKNOWN，不累计delta合成存量。
+- 可达性不明写 UNKNOWN；经验prior不是 STATE/确认事实，Board不自行推断。
 - 不累积完整 transcript。
 - **Can Submit Action: No.**

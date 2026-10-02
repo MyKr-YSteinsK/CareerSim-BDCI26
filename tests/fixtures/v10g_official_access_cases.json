@@ -1,0 +1,158 @@
+{
+  "task": "S09-26",
+  "matrix_source": "docs/project/reviews/S09-25_INFORMATION_ACCESS_MATRIX.json",
+  "required_matrix_items": [
+    "current_state.status.health",
+    "current_event.title",
+    "current_event.description",
+    "choices[].choice",
+    "choices[].energy_cost",
+    "regular choices[].status_updates public dimensions",
+    "regular choices[].status_updates.HiddenRisk positive delta",
+    "hidden_risk current stock",
+    "event_id/node_id/graph identifiers",
+    "handbook action effects",
+    "promotion/no-promotion",
+    "check_latest_logs entries",
+    "raw hidden shared simulator state",
+    "legal Dev trajectory learned prior",
+    "private Test dataset contents"
+  ],
+  "historical_source": "S09-25 RUN16_provenance.a11",
+  "scope": "Access-only reclassification, not action optimality/score; original run artifacts unchanged.",
+  "cases": [
+    {
+      "name": "RUN16_a11_official_delta",
+      "changes": {},
+      "expected": "NO_K1_ACCESS_VIOLATION",
+      "remove_context": false
+    },
+    {
+      "name": "stock8_not_established_by_delta",
+      "changes": {
+        "information_used": "current HiddenRisk=8",
+        "claim_type": "CURRENT_STOCK",
+        "context_complete": true
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": false
+    },
+    {
+      "name": "threshold10_not_established_by_delta",
+      "changes": {
+        "information_used": "HiddenRisk>=10 guarantees termination",
+        "claim_type": "THRESHOLD_FORMULA",
+        "context_complete": true
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": false
+    },
+    {
+      "name": "raw_DB_stock",
+      "changes": {
+        "information_used": "direct raw DB hidden risk",
+        "official_path": "UNAVAILABLE",
+        "accessibility": "NO",
+        "context_complete": true,
+        "support_type": "NONE"
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": true
+    },
+    {
+      "name": "internal_event_ID_lookup",
+      "changes": {
+        "information_used": "internal graph ID to answer lookup",
+        "official_path": "UNAVAILABLE",
+        "accessibility": "NO",
+        "context_complete": true,
+        "support_type": "NONE"
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": true
+    },
+    {
+      "name": "private_Test_answer_mapping",
+      "changes": {
+        "information_used": "private Test exact answer",
+        "official_path": "UNAVAILABLE",
+        "accessibility": "NO",
+        "context_complete": true,
+        "support_type": "NONE"
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": true
+    },
+    {
+      "name": "official_explicit_prohibition_overrides_access",
+      "changes": {
+        "official_prohibition": "YES"
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": false
+    },
+    {
+      "name": "unknown_hosted_access",
+      "changes": {
+        "official_path": "UNKNOWN",
+        "accessibility": "UNKNOWN"
+      },
+      "expected": "REVIEW_UNCERTAIN_MATERIAL",
+      "remove_context": false
+    },
+    {
+      "name": "unknown_applicable_prohibition",
+      "changes": {
+        "official_prohibition": "UNKNOWN"
+      },
+      "expected": "REVIEW_UNCERTAIN_MATERIAL",
+      "remove_context": false
+    },
+    {
+      "name": "legal_Dev_general_prior",
+      "changes": {
+        "claim_type": "EMPIRICAL_PRIOR",
+        "support_type": "EMPIRICAL_PRIOR",
+        "hypothesis_only": true
+      },
+      "expected": "NO_K1_ACCESS_VIOLATION",
+      "remove_context": true
+    },
+    {
+      "name": "prior_as_known_hidden_fact",
+      "changes": {
+        "claim_type": "EMPIRICAL_PRIOR",
+        "support_type": "EMPIRICAL_PRIOR",
+        "hypothesis_only": false
+      },
+      "expected": "K1_ACCESS_VIOLATION",
+      "remove_context": true
+    },
+    {
+      "name": "missing_projected_input_not_proof",
+      "changes": {
+        "official_path": "UNAVAILABLE",
+        "accessibility": "NO",
+        "context_complete": false
+      },
+      "expected": "REVIEW_UNCERTAIN_MATERIAL",
+      "remove_context": true
+    },
+    {
+      "name": "independently_exposed_stock_allowed",
+      "changes": {
+        "claim_type": "CURRENT_STOCK",
+        "support_type": "CURRENT_STOCK",
+        "context_path": [
+          "official_exposed_stock"
+        ],
+        "context_value": 8,
+        "official_agent_input": {
+          "official_exposed_stock": 8
+        }
+      },
+      "expected": "NO_K1_ACCESS_VIOLATION",
+      "remove_context": false
+    }
+  ]
+}
