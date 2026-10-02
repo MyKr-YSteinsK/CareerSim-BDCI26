@@ -88,6 +88,8 @@
 - Architecture: Single Agent is the only action submitter; Board owns current public facts, Planning owns the long-horizon strategy, Delivery owns a bounded current-session public lifecycle, and Risk gates the current candidate
 - Memory: NOT_IMPLEMENTED；fifth Skill: DEFERRED；Team/Swarm: DEFERRED
 
+- S09-18 completed offline RUN11 layered forensics (`IN_FLIGHT_EVIDENCE` at base `38c968f`): a39 material C6 drift predates compression with the full Planning contract present; two actual summaries made required POL/PROBE optional and retained unsupported cap beliefs. Model-visible memory wrappers existed, but neither triggered four-Skill recovery; model-generated notes match events183/183, excluding external rewrite as the observed trace-loss boundary. Firewall violations also predate compression; late cleanup explicitly combines cap devaluation and restricted-risk reasoning; a98–99 is material C2 drift. Primary recommendation=`OBSERVABLE_COMPACTION_RECOVERY_AND_PLANNING_CONTRACT_RELOAD`, next=`STATIC_RUNTIME_RECOVERY_REPAIR_RECOMMENDED`, disposition=`KEEP_V10B_FOR_REPAIR`; no patch/live/validation upgrade. HTTP402 remains an independent technical truncation; future game also requires balance-restoration confirmation and refreshed gates. Raw holds ACTIVE, `NEXT_GAME=NOT_AUTHORIZED`, no replacement, main v8a freeze unchanged. See [layered review](reviews/S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md) and [compact evidence](reviews/S09-18_RUN11_LAYERED_EVIDENCE.json).
+
 ## Environment
 
 - Frozen Runner SHA and dependency/source identity: [OFFICIAL_SOURCE_LOCK](OFFICIAL_SOURCE_LOCK.md)

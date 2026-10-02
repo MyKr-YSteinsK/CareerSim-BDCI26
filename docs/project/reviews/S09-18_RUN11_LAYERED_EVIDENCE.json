@@ -1,0 +1,892 @@
+{
+  "schema_version": 1,
+  "task": "S09-18",
+  "run": "S09-RUN11",
+  "candidate": "candidate-v10b-policy-constitution-anti-saturation",
+  "evidence_head": "38c968fd86704721ed9214bc51b203196290c12d",
+  "execution_head": "6dea7bab3ca0d57ee1e37af81439eed4e21a8eb8",
+  "run_window": {
+    "start": "2026-10-02T06:51:35.265851+00:00",
+    "end": "2026-10-02T07:25:03.476221+00:00",
+    "timezone": "+08:00"
+  },
+  "raw_copied": false,
+  "live_operations": 0,
+  "sources": [
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T065143Z\\events-20261002T065143Z.jsonl",
+      "bytes": 1848521,
+      "sha256": "008b8993ad758f917e373c71653f3690e77e011f6302cde989de5f93a5629108"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T065143Z\\transcript-20261002T065143Z.log",
+      "bytes": 916016,
+      "sha256": "0f41f0592e71a8e7721bb1a4ee451de7a2c259ef602eda61c78d0bacbe320891"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run11-v10b\\service-stdout.log",
+      "bytes": 9451641,
+      "sha256": "0695541e213c760ebf5571ddcb54e863e21315143da543bfab664c7158413fc4"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run11-v10b\\public-context-pairs.json",
+      "bytes": 510983,
+      "sha256": "f9f2d88fe7c2910aa3bc6264dcd9748b2b2ddb7c6371c811a84d2749f8c269c5"
+    }
+  ],
+  "action_alignment": [
+    {
+      "action": 39,
+      "month": 9,
+      "call_seq": 333,
+      "call_utc": "2026-10-02T06:59:54.396167+00:00",
+      "before_observe_result_seq": 331,
+      "before_observe_result_utc": "2026-10-02T06:59:21.048945+00:00",
+      "after_observe_result_seq": 339,
+      "after_observe_result_utc": "2026-10-02T06:59:56.289968+00:00",
+      "emitted_markers": [
+        "[POL B=RESPONSIVE F=S RP=GAIN]",
+        "[PROBE K=0???? E=0 C=0 S=0 F=NONE]"
+      ],
+      "parser": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "S",
+        "response_prior": "GAIN",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "header_valid": true,
+      "model_capture_line": 3545,
+      "model_message_index": 164,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 47,
+      "month": 12,
+      "call_seq": 397,
+      "call_utc": "2026-10-02T07:00:56.619885+00:00",
+      "before_observe_result_seq": 395,
+      "before_observe_result_utc": "2026-10-02T07:00:51.084657+00:00",
+      "after_observe_result_seq": 403,
+      "after_observe_result_utc": "2026-10-02T07:01:20.694250+00:00",
+      "emitted_markers": [
+        "[POL B=RESPONSIVE F=S RP=NA]",
+        "[PROBE K=0???? E=0 C=0 S=0 F=NONE]"
+      ],
+      "parser": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "S",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 6,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 48,
+      "month": 12,
+      "call_seq": 405,
+      "call_utc": "2026-10-02T07:01:26.391708+00:00",
+      "before_observe_result_seq": 403,
+      "before_observe_result_utc": "2026-10-02T07:01:20.694250+00:00",
+      "after_observe_result_seq": 411,
+      "after_observe_result_utc": "2026-10-02T07:01:28.184458+00:00",
+      "emitted_markers": [
+        "[POL B=COMPLIANCE F=S RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 10,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 49,
+      "month": 12,
+      "call_seq": 413,
+      "call_utc": "2026-10-02T07:01:41.687684+00:00",
+      "before_observe_result_seq": 411,
+      "before_observe_result_utc": "2026-10-02T07:01:28.184458+00:00",
+      "after_observe_result_seq": 419,
+      "after_observe_result_utc": "2026-10-02T07:01:42.951692+00:00",
+      "emitted_markers": [
+        "[POL B=RESPONSIVE F=O RP=NA]",
+        "[PROBE K=0???? E=0 C=0 S=0 F=NONE]"
+      ],
+      "parser": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "O",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 14,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 50,
+      "month": 12,
+      "call_seq": 421,
+      "call_utc": "2026-10-02T07:01:44.735075+00:00",
+      "before_observe_result_seq": 419,
+      "before_observe_result_utc": "2026-10-02T07:01:42.951692+00:00",
+      "after_observe_result_seq": 427,
+      "after_observe_result_utc": "2026-10-02T07:01:45.987367+00:00",
+      "emitted_markers": [
+        "[POL B=RESPONSIVE F=O RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 18,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 98,
+      "month": 24,
+      "call_seq": 805,
+      "call_utc": "2026-10-02T07:06:44.129304+00:00",
+      "before_observe_result_seq": 803,
+      "before_observe_result_utc": "2026-10-02T07:06:39.089988+00:00",
+      "after_observe_result_seq": 811,
+      "after_observe_result_utc": "2026-10-02T07:06:46.436021+00:00",
+      "emitted_markers": [
+        "[POL B=SAFETY F=H RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 210,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 99,
+      "month": 24,
+      "call_seq": 813,
+      "call_utc": "2026-10-02T07:06:48.494317+00:00",
+      "before_observe_result_seq": 811,
+      "before_observe_result_utc": "2026-10-02T07:06:46.436021+00:00",
+      "after_observe_result_seq": 819,
+      "after_observe_result_utc": "2026-10-02T07:06:50.554894+00:00",
+      "emitted_markers": [
+        "[POL B=SAFETY F=H RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 214,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 100,
+      "month": 24,
+      "call_seq": 821,
+      "call_utc": "2026-10-02T07:06:53.088939+00:00",
+      "before_observe_result_seq": 819,
+      "before_observe_result_utc": "2026-10-02T07:06:50.554894+00:00",
+      "after_observe_result_seq": 827,
+      "after_observe_result_utc": "2026-10-02T07:06:55.052052+00:00",
+      "emitted_markers": [
+        "[POL B=RESPONSIVE F=O RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 6846,
+      "model_message_index": 218,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 129,
+      "month": 32,
+      "call_seq": 1053,
+      "call_utc": "2026-10-02T07:10:51.777117+00:00",
+      "before_observe_result_seq": 1051,
+      "before_observe_result_utc": "2026-10-02T07:10:38.362476+00:00",
+      "after_observe_result_seq": 1059,
+      "after_observe_result_utc": "2026-10-02T07:10:54.277793+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=W RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 3,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 130,
+      "month": 32,
+      "call_seq": 1061,
+      "call_utc": "2026-10-02T07:11:24.850826+00:00",
+      "before_observe_result_seq": 1059,
+      "before_observe_result_utc": "2026-10-02T07:10:54.277793+00:00",
+      "after_observe_result_seq": 1067,
+      "after_observe_result_utc": "2026-10-02T07:11:26.166071+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=H RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 7,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 135,
+      "month": 33,
+      "call_seq": 1101,
+      "call_utc": "2026-10-02T07:12:12.942559+00:00",
+      "before_observe_result_seq": 1099,
+      "before_observe_result_utc": "2026-10-02T07:11:50.390765+00:00",
+      "after_observe_result_seq": 1107,
+      "after_observe_result_utc": "2026-10-02T07:12:14.223010+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=RISK RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 27,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 137,
+      "month": 33,
+      "call_seq": 1117,
+      "call_utc": "2026-10-02T07:12:29.214706+00:00",
+      "before_observe_result_seq": 1115,
+      "before_observe_result_utc": "2026-10-02T07:12:18.638091+00:00",
+      "after_observe_result_seq": 1123,
+      "after_observe_result_utc": "2026-10-02T07:12:30.564371+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=N RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 35,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 147,
+      "month": 36,
+      "call_seq": 1197,
+      "call_utc": "2026-10-02T07:13:46.944932+00:00",
+      "before_observe_result_seq": 1195,
+      "before_observe_result_utc": "2026-10-02T07:13:37.166684+00:00",
+      "after_observe_result_seq": 1203,
+      "after_observe_result_utc": "2026-10-02T07:13:48.385836+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=RISK RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 75,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 149,
+      "month": 36,
+      "call_seq": 1213,
+      "call_utc": "2026-10-02T07:14:11.206885+00:00",
+      "before_observe_result_seq": 1211,
+      "before_observe_result_utc": "2026-10-02T07:13:51.986099+00:00",
+      "after_observe_result_seq": 1219,
+      "after_observe_result_utc": "2026-10-02T07:14:13.416843+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=O RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 83,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 159,
+      "month": 39,
+      "call_seq": 1293,
+      "call_utc": "2026-10-02T07:15:19.420200+00:00",
+      "before_observe_result_seq": 1291,
+      "before_observe_result_utc": "2026-10-02T07:15:12.992733+00:00",
+      "after_observe_result_seq": 1299,
+      "after_observe_result_utc": "2026-10-02T07:15:21.827195+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=RISK RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 123,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 161,
+      "month": 39,
+      "call_seq": 1309,
+      "call_utc": "2026-10-02T07:15:29.834032+00:00",
+      "before_observe_result_seq": 1307,
+      "before_observe_result_utc": "2026-10-02T07:15:26.010797+00:00",
+      "after_observe_result_seq": 1315,
+      "after_observe_result_utc": "2026-10-02T07:15:32.311596+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=N RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 131,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 171,
+      "month": 42,
+      "call_seq": 1389,
+      "call_utc": "2026-10-02T07:17:20.002838+00:00",
+      "before_observe_result_seq": 1387,
+      "before_observe_result_utc": "2026-10-02T07:17:02.542051+00:00",
+      "after_observe_result_seq": 1395,
+      "after_observe_result_utc": "2026-10-02T07:17:22.101594+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=O RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 171,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 174,
+      "month": 42,
+      "call_seq": 1413,
+      "call_utc": "2026-10-02T07:17:36.177488+00:00",
+      "before_observe_result_seq": 1411,
+      "before_observe_result_utc": "2026-10-02T07:17:31.748317+00:00",
+      "after_observe_result_seq": 1419,
+      "after_observe_result_utc": "2026-10-02T07:17:38.585839+00:00",
+      "emitted_markers": [
+        "[POL B=ADAPTIVE F=O RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 183,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    },
+    {
+      "action": 183,
+      "month": 45,
+      "call_seq": 1489,
+      "call_utc": "2026-10-02T07:19:43.323081+00:00",
+      "before_observe_result_seq": 1483,
+      "before_observe_result_utc": "2026-10-02T07:19:10.579183+00:00",
+      "after_observe_result_seq": 1495,
+      "after_observe_result_utc": "2026-10-02T07:19:46.128288+00:00",
+      "emitted_markers": [
+        "[POL B=PRINCIPLE F=COMPLIANCE RP=NA]"
+      ],
+      "parser": {
+        "status": "MISSING_OR_MALFORMED"
+      },
+      "header_valid": true,
+      "model_capture_line": 11676,
+      "model_message_index": 220,
+      "model_call_notes_identical": true,
+      "canonical_probe_in_planning_content": false,
+      "canonical_probe_in_reasoning": false
+    }
+  ],
+  "compressions": [
+    {
+      "epoch": 1,
+      "started": "2026-10-02T15:00:56.854+08:00",
+      "completed": "2026-10-02T15:01:18.369+08:00",
+      "log_start_line": 3541,
+      "log_end_line": 3549,
+      "summary_log_line": 3547,
+      "full_planning_before": true,
+      "system_recovery_contract_present": true,
+      "summary_trace_optional": true,
+      "summary_wrong_cap_present": true,
+      "summary_says_no_reread": false,
+      "observable_wrapper": "<memory_block_current>",
+      "wrapper_in_next_capture": true,
+      "next_action": 48,
+      "skill_rereads": 0,
+      "recovery_pending_recorded": false,
+      "recovery_ready_recorded": false,
+      "root_boundary": "SIGNAL_OBSERVED_NOT_ROUTED",
+      "observed_means": "delivered in model-visible context; conscious recognition UNKNOWN"
+    },
+    {
+      "epoch": 2,
+      "started": "2026-10-02T15:10:53.746+08:00",
+      "completed": "2026-10-02T15:11:16.122+08:00",
+      "log_start_line": 6842,
+      "log_end_line": 6850,
+      "summary_log_line": 6848,
+      "full_planning_before": false,
+      "system_recovery_contract_present": true,
+      "summary_trace_optional": true,
+      "summary_wrong_cap_present": true,
+      "summary_says_no_reread": true,
+      "observable_wrapper": "<memory_block_current>",
+      "wrapper_in_next_capture": true,
+      "next_action": 130,
+      "skill_rereads": 0,
+      "recovery_pending_recorded": false,
+      "recovery_ready_recorded": false,
+      "root_boundary": "SIGNAL_OBSERVED_NOT_ROUTED",
+      "observed_means": "delivered in model-visible context; conscious recognition UNKNOWN"
+    }
+  ],
+  "firewall": [
+    {
+      "action": 11,
+      "month": 3,
+      "phase": "P0",
+      "source_capture_line": 3545,
+      "source_message_index": 52,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "TRANSIENT_ENUMERATION_THEN_EXPLICIT_EXCLUSION",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 14,
+      "month": 3,
+      "phase": "P1",
+      "source_capture_line": 3545,
+      "source_message_index": 64,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "RESTRICTED_EFFECT_ENUMERATION",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 25,
+      "month": 6,
+      "phase": "P1",
+      "source_capture_line": 3545,
+      "source_message_index": 108,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "RESTRICTED_EFFECT_ENUMERATION",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 27,
+      "month": 6,
+      "phase": "P1",
+      "source_capture_line": 3545,
+      "source_message_index": 116,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 39,
+      "month": 9,
+      "phase": "P2",
+      "source_capture_line": 3545,
+      "source_message_index": 164,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 49,
+      "month": 12,
+      "phase": "P3",
+      "source_capture_line": 6846,
+      "source_message_index": 14,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 50,
+      "month": 12,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 18,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "POST_RESULT_ATTRIBUTION",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 55,
+      "month": 14,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 38,
+      "prohibited_field_in_current_tool_context": false,
+      "category": "STICKY_OR_SPECULATIVE_MAPPING",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 56,
+      "month": 14,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 42,
+      "prohibited_field_in_current_tool_context": false,
+      "category": "STICKY_OR_SPECULATIVE_MAPPING",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 57,
+      "month": 14,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 46,
+      "prohibited_field_in_current_tool_context": false,
+      "category": "STICKY_OR_SPECULATIVE_MAPPING",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 58,
+      "month": 15,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 50,
+      "prohibited_field_in_current_tool_context": false,
+      "category": "STICKY_OR_SPECULATIVE_MAPPING",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 61,
+      "month": 15,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 62,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 63,
+      "month": 15,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 70,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 67,
+      "month": 17,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 86,
+      "prohibited_field_in_current_tool_context": false,
+      "category": "STICKY_OR_SPECULATIVE_MAPPING",
+      "material_ranking_effect": false,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": "NOT_ESTABLISHED",
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 73,
+      "month": 18,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 110,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 86,
+      "month": 21,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 162,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 111,
+      "month": 27,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 262,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 123,
+      "month": 30,
+      "phase": "P4",
+      "source_capture_line": 6846,
+      "source_message_index": 310,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 135,
+      "month": 33,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 27,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 137,
+      "month": 33,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 35,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 147,
+      "month": 36,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 75,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 149,
+      "month": 36,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 83,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 159,
+      "month": 39,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 123,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 161,
+      "month": 39,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 131,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    },
+    {
+      "action": 171,
+      "month": 42,
+      "phase": "P5",
+      "source_capture_line": 11676,
+      "source_message_index": 171,
+      "prohibited_field_in_current_tool_context": true,
+      "category": "COUNTER_EFFECT_COMPARISON_OR_INFERENCE",
+      "material_ranking_effect": true,
+      "final_choice_causal_effect": "UNKNOWN",
+      "risk_caught": false,
+      "no_hidden_values_recorded": true
+    }
+  ],
+  "checks": {
+    "all_actions_mapped": 183,
+    "model_notes_match_events": 183,
+    "successful_actions": 183,
+    "fresh_action_observe_pairs": 183,
+    "valid_ctrl_dl": 183,
+    "valid_pol_probe": 48,
+    "first_trace_failure": 48,
+    "continuous_failure_from": 50,
+    "canonical_planning_contract_after_epoch1": false,
+    "canonical_planning_contract_after_epoch2": false,
+    "skill_reads_total": 4,
+    "skill_rereads_after_compression": 0,
+    "protected_files_not_written": true
+  },
+  "firewall_counts": {
+    "precompression_reference_violation_windows": 5,
+    "precompression_self_corrected": 1,
+    "precompression_without_explicit_purge": 4,
+    "postcompression_violation_windows": 20,
+    "material_ranking_windows": 16,
+    "material_selected_cleanup_windows": 7,
+    "pending_M45_not_counted": true,
+    "action_note_references": 4,
+    "numeric_action_note_references": 3
+  },
+  "decisions": {
+    "c6": "C6_DRIFT_COMPRESSION_AMPLIFIED",
+    "trace": "MIXED",
+    "firewall": "MIXED",
+    "protection": "C2_MATERIAL_VIOLATION",
+    "complexity": "COMPLEXITY_OVERLOAD_PLAUSIBLE",
+    "primary_repair_target": "OBSERVABLE_COMPACTION_RECOVERY_AND_PLANNING_CONTRACT_RELOAD",
+    "candidate": "KEEP_V10B_FOR_REPAIR",
+    "next_static": "STATIC_RUNTIME_RECOVERY_REPAIR_RECOMMENDED",
+    "next_game": "NOT_AUTHORIZED"
+  }
+}
