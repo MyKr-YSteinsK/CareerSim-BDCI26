@@ -283,3 +283,8 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 
 - Frozen RUN07-identical Candidate completed one fresh game: 59.00 / 41.30 / 48m / C / L4; promotions M12/M18/M36. 205 successful/0 failed/0 unknown actions, 206 observes, all205 action→fresh-observe pairs; A201/S4. Delivery parser205/205, numeric HiddenRisk action-note reference1. Runner exit0; stop exit0/manager stopped/four ports free; service wrapper tail exit1/cause UNKNOWN, no replacement.
 - Two samples: range59.00–72.65, descriptive mean65.825, survival2/2, 70+1/2, natural early terminal0/2. `V8A_HIGH_VARIANCE_OR_LOWER_TAIL_OBSERVED`; no causal/stable claim or Candidate change. Decision=`S09_RUN08_V8A_HIGH_VARIANCE_OR_LOWER_TAIL_RETURN_TO_STAGE`; raw local FORENSIC_HOLD ACTIVE, NEXT_GAME=NOT_AUTHORIZED. [Run note/checkpoints/usage/hashes](runs/v8a-full-horizon-sample2.md).
+
+## S09-RUN13 v10d — H3 preflight adherence abort
+
+- One fresh game at `ff539a5`; H1/H2 passed, H3 header36/36 but semantic numeric-S failure(a35/a36) mandated stop. Actual cutoffM10/L1;39success/40observe/all39 full headers+BC agreement+fresh. M6 C/no promotion; final score/survival NOT_VALIDATED.
+- `DEVELOPMENT_CENSORED_EARLY_PREFLIGHT_ABORT`; not natural/Provider/survival failure. One graceful stop0,manager stopped/four ports released; no replacement. TokensUNKNOWN;452.184s. RawFORENSIC_HOLD ACTIVE, flags unchanged; [run record](runs/v10d-run13-first-validation.md). Decision=`S09_RUN13_EARLY_PREFLIGHT_ABORT_RETURN_TO_STAGE`; authorizationCONSUMED, NEXT_GAME=NOT_AUTHORIZED.

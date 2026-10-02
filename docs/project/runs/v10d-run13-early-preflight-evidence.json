@@ -1,0 +1,1099 @@
+{
+  "task": "S09-RUN13",
+  "classification": "DEVELOPMENT_CENSORED_EARLY_PREFLIGHT_ABORT",
+  "decision": "S09_RUN13_EARLY_PREFLIGHT_ABORT_RETURN_TO_STAGE",
+  "execution_HEAD": "ff539a548f789ca2b87d6041b6c00bad1fbce962",
+  "branch": "codex/s09-14-v9a-static",
+  "candidate": "candidate-v10d-anchored-five-marker-preflight",
+  "parent": "candidate-v10c-compaction-agnostic-kernel",
+  "session": "47498743fb2144c8914620dff706f97c",
+  "run_window": {
+    "start": "2026-10-02T12:29:58.024039+00:00",
+    "end": "2026-10-02T12:37:30.207679+00:00",
+    "timezone": "Asia/Shanghai"
+  },
+  "preprovider": {
+    "P0": "USER_CURRENTLY_CONFIRMED_DEEPSEEK_BALANCE_AND_RUN_AUTHORIZATION",
+    "G1": "PASS",
+    "G2": "PASS_62_HEADER_KERNEL_AND_17_TRACE_CHECKS_PLUS_EXACT_LOCAL_REPLAY_AND_PACKAGE",
+    "G3": "PASS_MEASUREMENT_FROZEN",
+    "G4": "PASS_NO_COMPRESSION_EPOCH_DEPENDENCY",
+    "G5": "PASS_VALUE_STATEMENT",
+    "identity": {
+      "manifest": {
+        "path": "configs/runtime_manifest.json",
+        "physical_sha256": "f9f76f3b868c9611a1c9f3418009161079d45405802bce2eea50e6b396028610",
+        "lf_sha256": "ccb5f779434eca12573dfc674685c6939b0fff84a1006a4a53f3dfb0ac41db95",
+        "git_blob": "507c40084125af2a97f54a1894f11a9fa729c0ef"
+      },
+      "metadata": {
+        "path": "configs/current_candidate.json",
+        "physical_sha256": "7ae47486d51d02d703c7f97d634752beb1a3d40a6a85a54431aeb21d1473fdda",
+        "lf_sha256": "16fbe4318c114cc137387094c243906dad73e5548f5bb493c9651df97531a55e",
+        "git_blob": "db0610ba8af8917bd2870af1beeb5c6a026b9d2b"
+      },
+      "instruction_sha256": "9c24d40fa3e3e0b572b8eb030f950c8278ea6af5afa66f4493c921c4a48ddcc1",
+      "skills": [
+        {
+          "path": "skills/structured-state-board/SKILL.md",
+          "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+        },
+        {
+          "path": "skills/rolling-planning/SKILL.md",
+          "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+          "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+          "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+        },
+        {
+          "path": "skills/delivery-progress/SKILL.md",
+          "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+          "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+          "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+        },
+        {
+          "path": "skills/risk-review/SKILL.md",
+          "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+          "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+          "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+        }
+      ],
+      "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+    },
+    "tools": [
+      {
+        "path": "scripts/basis_preflight_audit.py",
+        "physical_sha256": "41fc724c9661df3de528b8046f38a76485f47a2ab4617579a5ba66db3fe61f54",
+        "lf_sha256": "41fc724c9661df3de528b8046f38a76485f47a2ab4617579a5ba66db3fe61f54",
+        "git_blob": "d65c10f7cd5a4a4276d0547335be9ba74ba8c744"
+      },
+      {
+        "path": "scripts/policy_trace_audit.py",
+        "physical_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+        "lf_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+        "git_blob": "f91807ad33c27620df4b453c68244a7fae45f2b7"
+      },
+      {
+        "path": "scripts/post_run_audit.py",
+        "physical_sha256": "d53cd2ee25edf67283ca78d9d5ab690b84b26edce45a2ac4177756a7fb15d75d",
+        "lf_sha256": "496231857d4bc7e47ea7ad94329e5c665b527774cbfceb355931366015de8e23",
+        "git_blob": "8c95e38c979587595595b9d045abb1031b3e7a8c"
+      },
+      {
+        "path": "scripts/package_candidate.py",
+        "physical_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+        "lf_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+        "git_blob": "a3bf7b1bc5ae4e4755bea995c0f53e2aa3099950"
+      },
+      {
+        "path": "tests/test_s09_21_five_marker_header.py",
+        "physical_sha256": "a9d6046aa462001bf2aeeb9f3c9af96a9f57a709c0daac77585fce53bdad4664",
+        "lf_sha256": "a9d6046aa462001bf2aeeb9f3c9af96a9f57a709c0daac77585fce53bdad4664",
+        "git_blob": "53cb5555e5393ea073045baebb8394fa1b8c0043"
+      },
+      {
+        "path": "tests/fixtures/v10d_five_marker_header.json",
+        "physical_sha256": "0d0b2e7eeb3494c81a50d3a14e5b4a914633637e53b7a0d37f427dd50772c3e5",
+        "lf_sha256": "ffc5daedad55d4123088bc554ba8a6ba121774ed6b4dd24453cc0fd40ca1f213",
+        "git_blob": "0b7470a8474b9c0230dd8ea7b620ffb442f14676"
+      },
+      {
+        "path": "tests/fixtures/v10c_kernel_cases.json",
+        "physical_sha256": "8ece3a0baf5e9b2f3ad3fdb57e5aa1d02789b3b662d607108b3de09e6d8fdff7",
+        "lf_sha256": "53f8aab2b3c26637d8b1c60a8d85d692b7d6389f3e3186d63ad9a67fe9c347d3",
+        "git_blob": "d617b36384575147f5af50b070d8ff86e736723f"
+      },
+      {
+        "path": "tests/fixtures/v10c_run11_contract_replay.json",
+        "physical_sha256": "d5e58e27f6264022147ec0b3dfe34b2a6adb546f2a95f32eabb26a662e6c07c2",
+        "lf_sha256": "dec387cb37290e9a67bc26ce8d5002f496dc19220701d533993f4a287be68d6a",
+        "git_blob": "8ee918c9edbfbd36ea404d95db01c2edbbaf034f"
+      },
+      {
+        "path": "docs/project/reviews/S09-21_RUN12_HEADER_REPLAY.json",
+        "physical_sha256": "82076f67c9d50f6e6f4ca17255d903227108787ee422ef1bd125d26f137a592e",
+        "lf_sha256": "b059bb8cf69128d76609d06a9763cd7822132e07c470814c0c923dffce09c171",
+        "git_blob": "1da8bb35a8d59d19c30fb17abe8f65d98b78065d"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "pyproject.toml",
+        "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+        "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+        "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+      },
+      {
+        "path": "uv.lock",
+        "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+        "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+        "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+      }
+    ],
+    "package": [
+      {
+        "relative_path": "manifest.json",
+        "bytes": 7291,
+        "sha256": "f9f76f3b868c9611a1c9f3418009161079d45405802bce2eea50e6b396028610"
+      },
+      {
+        "relative_path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528"
+      },
+      {
+        "relative_path": "skills/risk-review/SKILL.md",
+        "bytes": 4189,
+        "sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd"
+      },
+      {
+        "relative_path": "skills/rolling-planning/SKILL.md",
+        "bytes": 11607,
+        "sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe"
+      },
+      {
+        "relative_path": "skills/structured-state-board/SKILL.md",
+        "bytes": 5252,
+        "sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c"
+      }
+    ],
+    "max_retries": 2
+  },
+  "heartbeats": {
+    "H1": "PASS",
+    "H2": "PASS_WITH_LIMITATIONS",
+    "H3_header": "PASS",
+    "H3_kernel": "FAIL",
+    "abort_basis": "a35/a36 numeric-only S; repeated K3 drift",
+    "review_latency_actions_after_h3_snapshot": [
+      37,
+      38,
+      39
+    ],
+    "notes": "Runner continued naturally during non-pausing bounded semantic audit; no gameplay choices injected."
+  },
+  "actions": 39,
+  "successful_actions": 39,
+  "failed_actions": 0,
+  "observes": 40,
+  "action_fresh_observe": 39,
+  "header": {
+    "basis_check_present": 39,
+    "basis_check_valid": 39,
+    "basis_check_pass": 39,
+    "restricted_basis_blocked": null,
+    "saturation_basis_blocked": null,
+    "numeric_S_blocked": null,
+    "stale_cleanup_blocked": null,
+    "action_submitted_despite_BLOCKED": 0,
+    "CTRL_coverage": 39,
+    "DL_coverage": 39,
+    "POL_coverage": 39,
+    "PROBE_coverage": 39,
+    "POL_PROBE_coverage": 39,
+    "full_five_marker_coverage": 39,
+    "submitted_BC_PASS_with_invalid_header": 0,
+    "header_schema_version": 2,
+    "basis_receipt_coverage_status": "PASS",
+    "receipt_interpretation": "EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF"
+  },
+  "kernel": {
+    "classification": "FAIL",
+    "numeric_only_S": 2,
+    "unsupported_saturation_or_scope_cap": 1,
+    "restricted_private_basis": "NONE_CONFIRMED_IN_SUBMITTED_NOTES",
+    "stale_cleanup": "a23 QUESTIONABLE; no repeated cleanup",
+    "summary_authority": "NOT_OBSERVED_IN_SUBMITTED_NOTES; full private reasoning not audited",
+    "confirmed_BC_semantic_disagreement": 3
+  },
+  "mode": {
+    "A": 37,
+    "S": 2
+  },
+  "review": {
+    "6": {
+      "grade": "C",
+      "before": "L1",
+      "after": "L1",
+      "promotion": false,
+      "gate": "FAIL",
+      "observed_utc": "2026-10-02T12:33:30.416832+00:00",
+      "seq": 179,
+      "public_state": {
+        "health": 3,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      }
+    }
+  },
+  "last_public_state": {
+    "session_id": "47498743fb2144c8914620dff706f97c",
+    "status": {
+      "dignity": 10,
+      "duration_in_level": 10,
+      "energy": 0,
+      "health": 5,
+      "level": "L1",
+      "network": 3,
+      "output": 3,
+      "skill": 9,
+      "wealth": 3
+    },
+    "time": {
+      "current_month": 10,
+      "current_quarter": 4,
+      "current_year": 1
+    }
+  },
+  "score": "UNKNOWN",
+  "partial_score": "UNKNOWN",
+  "survival_months": "NOT_VALIDATED_CENSORED_RUN",
+  "natural_terminal": false,
+  "parser_outcome_preserved": "PARTIAL_GAMEPLAY_TECHNICAL_FAILURE",
+  "quarterly_main_counts": {
+    "申请关键项目": 2,
+    "向领导汇报成果": 1
+  },
+  "energy_counts": {
+    "高强度工作": 1,
+    "人脉维护": 2,
+    "处理历史埋雷": 1,
+    "健康恢复": 3
+  },
+  "energy_response": {
+    "clean_capital_NO_GAIN": 3,
+    "health_GAIN": 3,
+    "cleanup_UNKNOWN": 1
+  },
+  "quarterly_rows": [
+    {
+      "action": 13,
+      "seq": 125,
+      "month": 3,
+      "selected_family": "申请关键项目",
+      "advertised_dimensions": [
+        "output",
+        "skill",
+        "network"
+      ],
+      "before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 4,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "after_month": 4,
+      "new_feed": true,
+      "trace": {
+        "status": "VALID",
+        "basis": "OWNERSHIP",
+        "family": "MAIN",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 25,
+      "seq": 221,
+      "month": 6,
+      "selected_family": "向领导汇报成果",
+      "advertised_dimensions": [
+        "output",
+        "network"
+      ],
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 7,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "after_month": 7,
+      "new_feed": true,
+      "trace": {
+        "status": "VALID",
+        "basis": "VISIBILITY",
+        "family": "O",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 38,
+      "seq": 325,
+      "month": 9,
+      "selected_family": "申请关键项目",
+      "advertised_dimensions": [
+        "output",
+        "skill",
+        "network"
+      ],
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 0
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 10,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "after_month": 10,
+      "new_feed": true,
+      "trace": {
+        "status": "VALID",
+        "basis": "OWNERSHIP",
+        "family": "O",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 11,
+      "seq": 109,
+      "month": 3,
+      "selected_family": "高强度工作",
+      "advertised_dimensions": [
+        "output"
+      ],
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 3
+      },
+      "after": {
+        "health": 4,
+        "dignity": 9,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 1
+      },
+      "after_month": 3,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "O",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 12,
+      "seq": 117,
+      "month": 3,
+      "selected_family": "人脉维护",
+      "advertised_dimensions": [
+        "network"
+      ],
+      "before": {
+        "health": 4,
+        "dignity": 9,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 1
+      },
+      "after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "after_month": 3,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "N",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 23,
+      "seq": 205,
+      "month": 6,
+      "selected_family": "处理历史埋雷",
+      "advertised_dimensions": [],
+      "before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 3
+      },
+      "after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "after_month": 6,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "PROTECT",
+        "family": "OTHER",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 24,
+      "seq": 213,
+      "month": 6,
+      "selected_family": "健康恢复",
+      "advertised_dimensions": [],
+      "before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "after_month": 6,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "PROTECT",
+        "family": "OTHER",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 35,
+      "seq": 301,
+      "month": 9,
+      "selected_family": "健康恢复",
+      "advertised_dimensions": [],
+      "before": {
+        "health": 2,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 3
+      },
+      "after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 2
+      },
+      "after_month": 9,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "PROTECT",
+        "family": "RESOURCE",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 36,
+      "seq": 309,
+      "month": 9,
+      "selected_family": "健康恢复",
+      "advertised_dimensions": [],
+      "before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 2
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 1
+      },
+      "after_month": 9,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "PROTECT",
+        "family": "RESOURCE",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    },
+    {
+      "action": 37,
+      "seq": 317,
+      "month": 9,
+      "selected_family": "人脉维护",
+      "advertised_dimensions": [
+        "network"
+      ],
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 1
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 3,
+        "energy": 0
+      },
+      "after_month": 9,
+      "new_feed": false,
+      "trace": {
+        "status": "VALID",
+        "basis": "RESPONSIVE",
+        "family": "N",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      }
+    }
+  ],
+  "NG_routing": {
+    "immediate_repeats": 0,
+    "later_same_level_family_repeat_actions": [
+      37
+    ],
+    "high_intensity_to_network_switch_action": 12,
+    "responsive_switch_proven": false,
+    "main_responses": "MIXED_OR_UNATTRIBUTABLE_NEXT_MONTH_PUBLIC_FEED",
+    "level_resets": 0
+  },
+  "probe": {
+    "probe_eligible_count": 0,
+    "probe_compared_count": 0,
+    "probe_selected_count": 0,
+    "probe_GAIN_count": 0,
+    "probe_NO_GAIN_count": 0,
+    "probe_UNKNOWN_count": 0,
+    "probe_blocked_by_binding_constraint_count": 0,
+    "consecutive_probe_violations": 0
+  },
+  "selected_public_evidence": [
+    {
+      "action": 23,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] Q2体力第一步：处理历史埋雷(2点)。依据K4，存在两个独立公开风险提醒(HR\"有点风险\"+前辈\"搞砸的事情有点多\")且有合法补救选项，授权一次bounded cleanup，防\"第二次爆雷=信任危机\"终局。MODE=A。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "public_feed": "",
+      "before": {
+        "session_id": "47498743fb2144c8914620dff706f97c",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 3
+        },
+        "month": 6
+      },
+      "assessment": "QUESTIONABLE_STALE_CLEANUP_NOT_ABORT_BASIS"
+    },
+    {
+      "action": 35,
+      "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] 健康危机H=2触发MODE=S：Q3体力优先健康恢复(H+2)以脱离\"眼前一黑\"生存威胁，最小必要保护。MODE=S。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "public_feed": "",
+      "before": {
+        "session_id": "47498743fb2144c8914620dff706f97c",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 2,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 1,
+          "wealth": 3,
+          "energy": 3
+        },
+        "month": 9
+      },
+      "assessment": "CONFIRMED_NUMERIC_ONLY_S"
+    },
+    {
+      "action": 36,
+      "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] 继续MODE=S保护：第二次健康恢复(H+2)巩固生存缓冲，脱离H=2临界。MODE=S。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "public_feed": "",
+      "before": {
+        "session_id": "47498743fb2144c8914620dff706f97c",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 1,
+          "wealth": 3,
+          "energy": 2
+        },
+        "month": 9
+      },
+      "assessment": "CONFIRMED_NUMERIC_ONLY_S_CONTINUATION"
+    },
+    {
+      "action": 37,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] Q3最后1点体力：健康已回至6、急性威胁解除，按C2回MODE=A，用人脉维护补最弱晋升因子Network(N+1,D+1)，不补满资源。MODE=A。",
+      "public_context": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "public_feed": "",
+      "before": {
+        "session_id": "47498743fb2144c8914620dff706f97c",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 1,
+          "wealth": 3,
+          "energy": 1
+        },
+        "month": 9
+      },
+      "assessment": "NUMBER_ONLY_EXIT_PLUS_LATER_NETWORK_NO_GAIN_REPEAT"
+    },
+    {
+      "action": 38,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS] Q3主行动：申请关键项目(O+2,S+1,N+1)。Output已跌至1为最缺且驱动评审，O低于当前Level上限有增长空间，此动作以ownership/真实项目恢复可见绩效资本(MAIN-1)。MODE=A。",
+      "public_context": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "public_feed": "",
+      "before": {
+        "session_id": "47498743fb2144c8914620dff706f97c",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 1,
+          "wealth": 3,
+          "energy": 0
+        },
+        "month": 9
+      },
+      "assessment": "UNSUPPORTED_CURRENT_LEVEL_OUTPUT_CAP_CLAIM_AFTER_H3_SNAPSHOT"
+    }
+  ],
+  "public_handbook_boundary": {
+    "scope": "Exactly this session show_employee_handbook result",
+    "sha256": "ffc85664f63b7eb477ee6a2ef2ba771aa3ceeb4d23988f0261507fddb0373afc",
+    "source_excerpt": "| Output | 可见绩效资本 | 0–不限 | 累计可见绩效资本 |",
+    "finding": "No public current-Level Output cap or H=2 binding threshold in this Handbook; Dignity 0–10 is explicit public range."
+  },
+  "runway": {
+    "M36": "NOT_REACHED",
+    "M42": "NOT_REACHED",
+    "M48": "NOT_REACHED",
+    "M36_L5_OR_NEAR_L5_RUNWAY": "INCONCLUSIVE_NOT_REACHED",
+    "M36_to_M48": "NOT_EXERCISED",
+    "PROMOTION_RUNWAY_EVIDENCE": "INCONCLUSIVE",
+    "v11_strategy_delta": "NOT_JUSTIFIED_BY_CENSORED_EXECUTION_DRIFT_SAMPLE"
+  },
+  "runtime": {
+    "wall_seconds": 452.184,
+    "input_tokens": "UNKNOWN",
+    "output_tokens": "UNKNOWN",
+    "total_tokens": "UNKNOWN",
+    "billed_cost": "UNKNOWN",
+    "execution_boundaries": "UNKNOWN",
+    "continuations": "UNKNOWN",
+    "compressions": "UNKNOWN",
+    "startup_skill_reads": [
+      "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\agent\\workspace\\skills\\structured-state-board\\SKILL.md",
+      "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\agent\\workspace\\skills\\delivery-progress\\SKILL.md",
+      "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\agent\\workspace\\skills\\rolling-planning\\SKILL.md",
+      "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\agent\\workspace\\skills\\risk-review\\SKILL.md"
+    ],
+    "skill_rereads_after_startup": 0,
+    "provider_anomaly": "NONE_OBSERVED_BEFORE_PRESCRIBED_ABORT",
+    "cleanup": {
+      "stop_exit": 0,
+      "manager_pid_absent": true,
+      "listeners_remaining": [],
+      "wrapper_exit": 1
+    }
+  },
+  "progress": {
+    "preflight": true,
+    "session_start": true,
+    "formal_checkpoints": [
+      6
+    ],
+    "H1_H2_H3": true,
+    "mode_entry_exit": true,
+    "terminal_cleanup": true,
+    "interactive": true,
+    "extra_queries": 0
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S09 Stage/Main",
+    "reason": "H3 numeric-S/BC semantic discrepancy, a38 cap claim, and audit-to-stop latency require independent review; preserve exact raw.",
+    "release_condition": "Stage/Main accepts compact diagnosis, resolves child dependencies, confirms required raw recoverability and explicitly authorizes exact cleanup.",
+    "sources": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T123001Z\\events-20261002T123001Z.jsonl",
+        "bytes": 478684,
+        "sha256": "663257cac2bfddc6808b054123f90106e4d764798a22e84c605f88e499e0057a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T123001Z\\transcript-20261002T123001Z.log",
+        "bytes": 223712,
+        "sha256": "d27d5788dddf136b697ca27a5ca43fcbc1ebf847efb5065a1ea7637c1243820d"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\runner-result.json",
+        "bytes": 2806,
+        "sha256": "ee3d31f30a17ef51744b3446bcf556bd513049d2e1f242a001158530aa62d1ef"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\preflight.json",
+        "bytes": 9779,
+        "sha256": "77afa96c960151e4cdd3fd5da6ab8a1a0626f57d0985472a874e0aaebb64dc67"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\controller.py",
+        "bytes": 15779,
+        "sha256": "0848d9b196f1928ba0b969c464e41f1908331716b65568dd096f1c961c56967e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\h1.json",
+        "bytes": 6973,
+        "sha256": "dff3f08218bedf458a4abdc46a91a80e7614dc9fa86ddb40e4a20ffc1a89c92c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\h2.json",
+        "bytes": 21413,
+        "sha256": "dee318c1b88b26e1d2e633ee44616594a2fb6907a8ae3fc1e8d9fcd9e272ab4d"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\h3.json",
+        "bytes": 59812,
+        "sha256": "eeb74b31ebd1a71bd67add2c97b21ba9287c6d47e6097aceaab755d8f44097e2"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\h2-review.json",
+        "bytes": 700,
+        "sha256": "9e7d4effd1a99f13c8129d4a47910ea02838fbb664d2cf0dee1f3f6046059bc7"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\h3-review.json",
+        "bytes": 858,
+        "sha256": "560253833a25e3fefdeb8b61002cea74d06feea0c7e46e9ba032ca2e9dffa796"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\action-contexts.json",
+        "bytes": 75391,
+        "sha256": "c7325a7eb1433d164a6ebe11f9ca3d4fc32afccfb7c9962d2b24830b62b65b02"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\post_run_summary.json",
+        "bytes": 63262,
+        "sha256": "8420c3e410f0d225dafd438f35b2f857de6313868a2ffa518602781ce69401a2"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\policy-summary.json",
+        "bytes": 59727,
+        "sha256": "7d62173be4cb532d39f07d90773e3a9a20b7eca5f39d79b456ed795d4b290fd2"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\runner-stdout.log",
+        "bytes": 71761,
+        "sha256": "c16e93f0c1dfc74701e23e1739d2d18879f5056a06b0541bac7e29554524d90b"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\service-stdout.log",
+        "bytes": 904883,
+        "sha256": "40ededfd42ee60ff5dd920e65f2494728d100755fcee9f46946872afad4d867a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run13-v10d\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "b6c2a7f95a016bc92c24c85eb077980d4682dee5e8118c03a4c8f12c27739e3a"
+      }
+    ]
+  },
+  "authorization": "CONSUMED",
+  "fresh_games": 1,
+  "runner_play": 1,
+  "service_lifecycles": 1,
+  "replacements": 0,
+  "continues": 0,
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE": "UNCHANGED",
+  "protected_assets_after_run": "BYTE_MATCH_PRE_RUN",
+  "validation_flags": "UNCHANGED_ALL_FALSE",
+  "semantic_counterfactual_oracle": {
+    "boundary": "Explicit reviewer annotations from scoped public evidence; does not prove live interception occurred.",
+    "results": [
+      {
+        "action": 35,
+        "annotations": {
+          "public_basis": true,
+          "restricted_basis": false,
+          "saturation_claim": false,
+          "cleanup": false,
+          "same_session": true,
+          "fresh_observe": true,
+          "rebuilt_passes": true,
+          "legal_integer_choice": true,
+          "current_candidate": true,
+          "fresh_material_binding": false
+        },
+        "frozen_oracle": {
+          "status": "BLOCKED",
+          "reasons": [
+            "NUMERIC_S"
+          ],
+          "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+          "control_state": "BLOCKED",
+          "may_submit": false
+        }
+      },
+      {
+        "action": 36,
+        "annotations": {
+          "public_basis": true,
+          "restricted_basis": false,
+          "saturation_claim": false,
+          "cleanup": false,
+          "same_session": true,
+          "fresh_observe": true,
+          "rebuilt_passes": true,
+          "legal_integer_choice": true,
+          "current_candidate": true,
+          "fresh_material_binding": false
+        },
+        "frozen_oracle": {
+          "status": "BLOCKED",
+          "reasons": [
+            "NUMERIC_S"
+          ],
+          "receipt": "[BC=BLOCKED WHY=NUMERIC_S]",
+          "control_state": "BLOCKED",
+          "may_submit": false
+        }
+      },
+      {
+        "action": 38,
+        "annotations": {
+          "public_basis": true,
+          "restricted_basis": false,
+          "saturation_claim": true,
+          "cleanup": false,
+          "same_session": true,
+          "fresh_observe": true,
+          "rebuilt_passes": true,
+          "legal_integer_choice": true,
+          "current_candidate": true,
+          "fresh_material_binding": false,
+          "explicit_public_completion": false
+        },
+        "frozen_oracle": {
+          "status": "BLOCKED",
+          "reasons": [
+            "SATURATION"
+          ],
+          "receipt": "[BC=BLOCKED WHY=SATURATION]",
+          "control_state": "BLOCKED",
+          "may_submit": false
+        }
+      }
+    ]
+  }
+}
