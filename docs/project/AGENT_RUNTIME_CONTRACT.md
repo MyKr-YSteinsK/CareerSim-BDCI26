@@ -114,6 +114,12 @@ active game 必须持续执行。一次 action closure 不是 assistant executio
 
 ## 9. Context Recovery
 
+### S09-20 Candidate-specific experimental profile
+
+`candidate-v10c-compaction-agnostic-kernel` explicitly changes runtime-contract ownership, not strategy ranking: its canonical manifest owns an always-on public-basis kernel, required CTRL/DL/POL/PROBE schema, and `BASIS_CHECK` before every action. Compression summaries never authorize decisions or override that contract. This profile retires mandatory once-per-compression-epoch rereads; it does not detect or deduplicate epochs. Startup still reads four Skills in order. Missing detailed semantics are UNKNOWN; one bounded voluntary reread of the affected Skill may clarify them, otherwise unsafe/unsupported decisions stay BLOCKED. Fresh observe, all four passes, READY, and one-use preflight remain required. A failed basis check permits at most one repair sharing the existing Risk closure budget, then STOP_BEFORE_ACTION. BC receipts are output claims, not strategy inputs or external enforcement proof. This experimental profile is static-only, does not authorize a live game, and does not change frozen v8a or historical v10b contracts below.
+
+### Historical/default recovery profile
+
 只有 observable recovery signal 才触发 recovery。顺序固定：
 
 `same session → fresh observe → reread 4 Skills → rebuild Board → rebuild Delivery → restore Planning → RECOVERY_READY → fresh observe → rebuild Board/Delivery/Planning/final Risk → READY → new preflight`

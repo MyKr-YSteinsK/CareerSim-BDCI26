@@ -1,0 +1,197 @@
+{
+  "classification": "CONTRACT_COUNTERFACTUAL_REPLAY",
+  "raw_copied": false,
+  "legacy_BC": "ABSENT_NOT_BACKFILLED",
+  "cases": [
+    {
+      "action": 47,
+      "month": 12,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=BLOCKED evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=RESPONSIVE F=S RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true
+      },
+      "expected": "PASS",
+      "reasons": [],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 48,
+      "month": 12,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=BLOCKED evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=COMPLIANCE F=S RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 50,
+      "month": 12,
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=BLOCKED evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=RESPONSIVE F=O RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 98,
+      "month": 24,
+      "notes": "[CTRL G=Health P=S R=PASS RB=NONE] [DL i=D2 n=2 focus=BLOCKED evidence=UNVERIFIED checkpoint=NEAR recognition=0] [POL B=SAFETY F=H RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": false,
+        "saturation_claim": false,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_material_binding": false
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "NUMERIC_S",
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 135,
+      "month": 33,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=1] [POL B=ADAPTIVE F=RISK RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": true,
+        "saturation_claim": true,
+        "cleanup": true,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_cleanup_authorization": false
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "PUBLIC",
+        "SATURATION",
+        "STALE_CLEANUP",
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 147,
+      "month": 36,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=1] [POL B=ADAPTIVE F=RISK RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": true,
+        "saturation_claim": true,
+        "cleanup": true,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_cleanup_authorization": null
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "PUBLIC",
+        "SATURATION",
+        "STALE_CLEANUP",
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "a147 had a new minor warning: sufficient cleanup authorization UNKNOWN, not absence of any fresh warning."
+    },
+    {
+      "action": 159,
+      "month": 39,
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=1] [POL B=ADAPTIVE F=RISK RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": true,
+        "saturation_claim": true,
+        "cleanup": true,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true,
+        "fresh_cleanup_authorization": false
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "PUBLIC",
+        "SATURATION",
+        "STALE_CLEANUP",
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    },
+    {
+      "action": 161,
+      "month": 39,
+      "notes": "[CTRL G=Network P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=1] [POL B=ADAPTIVE F=N RP=NA]",
+      "evidence": {
+        "public_basis": true,
+        "restricted_basis": true,
+        "saturation_claim": true,
+        "cleanup": false,
+        "same_session": true,
+        "fresh_observe": true,
+        "rebuilt_passes": true,
+        "legal_integer_choice": true,
+        "current_candidate": true
+      },
+      "expected": "BLOCKED",
+      "reasons": [
+        "PUBLIC",
+        "SATURATION",
+        "SCHEMA"
+      ],
+      "source": "S09-18_RUN11_LAYERED_FAILURE_FORENSICS.md sections B/D/E/F; paired structural markers",
+      "caveat": "No replacement choice or score counterfactual."
+    }
+  ]
+}

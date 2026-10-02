@@ -1,0 +1,519 @@
+[
+  {
+    "name": "01_no_summary",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "02_summary_no_epoch",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "<memory_block_current>historical</memory_block_current>",
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "03_same_summary_no_loop",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "<memory_block_current>historical</memory_block_current>",
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "04_new_summary_same_kernel",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "<memory_block_current>new history</memory_block_current>",
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "05_optional_summary_cannot_excuse_missing_probe",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "POL/PROBE optional",
+    "expected": "BLOCKED",
+    "reason": "SCHEMA"
+  },
+  {
+    "name": "06_summary_read_claim_cannot_establish_semantics",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": false,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "Skill already read",
+    "expected": "BLOCKED",
+    "reason": "CONTROL"
+  },
+  {
+    "name": "07_summary_cap_not_evidence",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": true,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": "Output capped",
+    "expected": "BLOCKED",
+    "reason": "SATURATION"
+  },
+  {
+    "name": "08_old_candidate_not_authority",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": false
+    },
+    "summary": "Reuse old candidate",
+    "expected": "BLOCKED",
+    "reason": "CONTROL"
+  },
+  {
+    "name": "09_restricted_ranking_basis",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": true,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "PUBLIC"
+  },
+  {
+    "name": "10_public_warning_legal_cleanup",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": true,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_cleanup_authorization": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "11_high_skill_local_ng_not_family_cap",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": true,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "explicit_public_completion": false
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SATURATION"
+  },
+  {
+    "name": "12_scoped_public_completion",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": true,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "explicit_public_completion": true,
+      "claim_scope": "opportunity-A",
+      "public_completion_scope": "opportunity-A"
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "13_numeric_h3_not_binding",
+    "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_material_binding": false
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "NUMERIC_S"
+  },
+  {
+    "name": "14_acute_public_warning",
+    "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_material_binding": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "15_old_cleanup_warning",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": true,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_cleanup_authorization": false
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "STALE_CLEANUP"
+  },
+  {
+    "name": "16_fresh_same_class_warning",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": true,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_cleanup_authorization": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "17_canonical_schema",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "18_missing_probe",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SCHEMA"
+  },
+  {
+    "name": "19_schema_external_safety",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=SAFETY F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SCHEMA"
+  },
+  {
+    "name": "20_probe_inconsistent",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=1 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SCHEMA"
+  },
+  {
+    "name": "21_local_discount_without_cap",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "22_completion_cannot_expand_scope",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": true,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "explicit_public_completion": true,
+      "claim_scope": "family-S",
+      "public_completion_scope": "opportunity-A"
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SATURATION"
+  },
+  {
+    "name": "23_unknown_probe_no_selection",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=????? E=? C=? S=0 F=?]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "PASS",
+    "reason": null
+  },
+  {
+    "name": "24_failed_observe",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": false,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "CONTROL"
+  },
+  {
+    "name": "25_unclosed_risk",
+    "notes": "[CTRL G=? P=A R=RECONSIDER RB=BLOCKED] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "CONTROL"
+  },
+  {
+    "name": "26_unknown_public_basis",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": null,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "CONTROL"
+  },
+  {
+    "name": "27_duplicate_trace",
+    "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [POL B=OTHER F=OTHER RP=NA]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "SCHEMA"
+  },
+  {
+    "name": "28_unknown_binding",
+    "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=S RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE]",
+    "evidence": {
+      "public_basis": true,
+      "restricted_basis": false,
+      "saturation_claim": false,
+      "cleanup": false,
+      "same_session": true,
+      "fresh_observe": true,
+      "rebuilt_passes": true,
+      "legal_integer_choice": true,
+      "current_candidate": true,
+      "fresh_material_binding": null
+    },
+    "summary": null,
+    "expected": "BLOCKED",
+    "reason": "NUMERIC_S"
+  }
+]

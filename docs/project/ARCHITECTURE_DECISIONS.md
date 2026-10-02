@@ -189,3 +189,10 @@
 - Human strategy input may use participant-visible public evidence only; no hidden/internal state, simulator-rule decoding, private/test evidence, or event-to-answer lookup.
 - Shared CareerSim resources remain serialized; branch/worktree isolation alone does not prove runtime isolation.
 - `HUMAN_PLAY_NEXT_GAME = NOT_AUTHORIZED`.
+
+## AD-011 — S09-20 experimental always-on kernel ownership
+
+- Evidence: RUN11 system-owned CTRL/DL survived 183/183; Planning-owned POL/PROBE validated 48/183. S09-19 established a partial-recovery epoch dedup ambiguity on the allowed model-visible surface.
+- Hypothesis: keeping compact public-basis guards and required schema in manifest/system may resist summary degradation better than mandatory once-per-compaction-epoch Skill reloads.
+- Experiment: `candidate-v10c-compaction-agnostic-kernel`, parent v10b, strategy delta NONE; system owns final basis legality and output format, Skills retain detailed strategy. The old epoch gate is retired for this experimental profile; startup four-Skill reads and per-action fresh-observe discipline remain.
+- Decision boundary: static annotated scenario/replay checks and offline packaging only. Prompt preflight is not an external interceptor; BC receipts do not prove correct reasoning or blocking. Runtime adherence, C6 repair, score improvement and competition transfer remain unvalidated pending separate Stage review/authorization. Historical profiles and main v8a freeze remain unchanged. `NEXT_GAME=NOT_AUTHORIZED`.

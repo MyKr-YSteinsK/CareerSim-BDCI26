@@ -80,6 +80,7 @@ def extract(events: Path, run_start: str, run_end: str) -> dict:
         raise ValueError("explicit timezone-aware run window required")
     latest, session, pending = None, None, None
     seen_calls, seen_results, rows, by_id = set(), set(), [], {}
+    action_notes = []
     sequence_errors = 0
     for line in events.read_text(encoding="utf-8").splitlines():
         record = json.loads(line)
@@ -116,6 +117,7 @@ def extract(events: Path, run_start: str, run_end: str) -> dict:
                        trace=parse_trace(str(args.get("notes", ""))),
                        header=parse_header(str(args.get("notes", ""))), receipt="UNKNOWN", fresh_after=False)
             rows.append(row); by_id[cid] = row
+            action_notes.append(str(args.get('notes', '')))
             pending = row
         elif record.get("kind") == "tool_result":
             cid = n.get("tool_call_id")
@@ -163,6 +165,9 @@ def extract(events: Path, run_start: str, run_end: str) -> dict:
                 repeats += 1
         previous = row
     metric_names = ("probe_eligible_count", "probe_compared_count", "probe_selected_count", "probe_GAIN_count", "probe_NO_GAIN_count", "probe_UNKNOWN_count", "probe_blocked_by_binding_constraint_count")
+    # Optional v10c receipts do not change historical trace parsing/readiness.
+    from scripts.basis_preflight_audit import measure_receipts
+    basis_preflight = measure_receipts(action_notes)
     metrics = {name: counts[name] if usable else None for name in metric_names}
     metrics["consecutive_probe_violations"] = chains if usable else None
     return dict(schema_version=SCHEMA_VERSION,
@@ -175,7 +180,7 @@ def extract(events: Path, run_start: str, run_end: str) -> dict:
                 basis_counts=dict(basis), level_reset_events=level_resets,
                 mode_counts=dict(Counter(r['header']['mode'] for r in rows)),
                 valid_delivery_headers=sum(r['header']['valid'] for r in rows),
-                immediate_local_NO_GAIN_repeats=repeats, rows=rows)
+                immediate_local_NO_GAIN_repeats=repeats, basis_preflight=basis_preflight, rows=rows)
 
 
 def main() -> int:

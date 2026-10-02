@@ -37,7 +37,7 @@ Board=facts/PROGRESSION_RESPONSE；Delivery=commitment lifecycle；Planning=rank
 
 `RECOVERY=NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN` 保留接口：绩效修复通常 A；RESOURCE binding 才 S；RISK/DELIVERY 由公开 warning/真实交付证据支持，不另建排序树。explicit public warning 且有 reparative legal option 可一次 bounded cleanup，fresh observe 后默认回主线；仅同一风险持续/再次 elevated 或新的同类 warning 允许再 cleanup，无关 fresh evidence 不授权重复。
 
-context recovery 由 executor 按 manifest：RECOVERY_PENDING → 同 session fresh observe → 顺序重读四 Skills → rebuild Board/Delivery → restore REVIEW_PLAN/RECOVERY → RECOVERY_READY；缺失 UNKNOWN，未完不排序，不伪造 compression。
+context recovery 的执行/输出合同由 executor 按当前 manifest 拥有；不自行识别 compression epoch。详细策略缺失记 UNKNOWN，不从 summary 编造；具体 Startup、bounded voluntary reread、fresh observe 与 preflight 服从 manifest。
 
 ## One Master Ranking
 
@@ -79,10 +79,7 @@ Energy 不预定 recipe/batch/剩余序列，QUARTER_INTENT = <MODE | current ta
 
 返回 PLAN: G=<gap|?> P=<A|S|?> F=<RECOVERY> checkpoint=<public checkpoint>；CANDIDATE: choice=<one legal integer> reason=<public basis>。trace 原样附既有 CTRL/DL 后 notes（CTRL/DL 间一个空格）；不改 preflight/合法性、不作策略输入、不读回、不建 durable ledger：
 
-```text
-[POL B=<PROTECT|DELIVER|RESPONSIVE|OWNERSHIP|VISIBILITY|PROBE|OTHER> F=<S|N|O|MAIN|STORY|RESOURCE|OTHER> RP=<GAIN|NO_GAIN|UNKNOWN|NA>]
-[PROBE K=<五个0/1/?> E=<0|1|?> C=<0|1|?> S=<0|1|?> F=<S|N|O|OTHER|NONE|?>]
-```
+精确 POL/PROBE 格式与 required presence 由 manifest/system preflight 拥有；Planning 提供下列原有语义字段，summary 不得改写格式。
 
 POL：B=最终候选依据，F=主要资本维度或 Main/Story/Resource，RP=local family 选择前 response。K 五位顺序：fresh local NG；无更高 known responsive alt；合法未测试 high-value family；无重大 protection binding；不破坏 binding Delivery。1=公开证据支持，0=公开反证，?=不可判。全部1才 E=1；有0则 E=0；否则 E=?。未满足 stagnation 时 K=0???? E=0 C=0 S=0 F=NONE 即可；已评估时如实逐项写，未知不写 clear。E=1 必须比较 C=1，S=是否选 probe，F=比较的维度（未选仍留）；E=? 用 C=? S=0 F=?，不据未知授权 probe；E=0 用 C=0 S=0 F=NONE。B=PROBE iff S=1，RP=UNKNOWN；reason 写公开 trigger/替代/value；fresh observe 才提供 response，不提前写 RP，不额外调用。
 
