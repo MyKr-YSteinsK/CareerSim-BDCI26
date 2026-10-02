@@ -1,5 +1,10 @@
 # RUN_HISTORY
 
+## S09-RUN12 v10c — M1 H1 contract abort
+
+- One authorized fresh game at `0678e3c`; `DEVELOPMENT_CENSORED_EARLY_CONTRACT_ABORT`. 3 successful actions/4 observes/fresh pairs3/3; POL/PROBE/BC3/3 but anchored CTRL/full five-marker0/3 because prose precedes CTRL. BC=PASS did not catch placement; H2/H3/Reviews/runway NOT_REACHED. No final score, natural terminal, survival regression or strategy-ceiling conclusion.
+- One service/play/game; play43.708s, usage UNKNOWN; stop exit0/manager stopped/four ports released, no restart/replacement. Frozen Candidate/tools/validation flags unchanged; new local raw FORENSIC_HOLD ACTIVE. [Run review](runs/v10c-run12-first-validation.md) / [compact evidence](runs/v10c-run12-early-contract-evidence.json). Decision=`S09_RUN12_EARLY_CONTRACT_ABORT_RETURN_TO_STAGE`; authorization CONSUMED, `NEXT_GAME=NOT_AUTHORIZED`, main v8a freeze unchanged.
+
 本文件是当前树中的紧凑真实对局索引，不代表因果归因或未来成绩。原实验过程文件保存在 Git 历史中；可用 git show c4dbe0ebc4e27aafc22c94050c69547113cdc8eb:<historical-path> 查看。缺失或未可靠记录的字段标为 UNKNOWN。
 
 ## Key runs

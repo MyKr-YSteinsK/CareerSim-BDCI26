@@ -1,0 +1,401 @@
+{
+  "task": "S09-RUN12",
+  "classification": "DEVELOPMENT_CENSORED_EARLY_CONTRACT_ABORT",
+  "decision": "S09_RUN12_EARLY_CONTRACT_ABORT_RETURN_TO_STAGE",
+  "session": "278f650a19fb40789454c7dc79ee7fd0",
+  "execution_HEAD": "0678e3c4fd7f30e52e52a016216ad2607c3df172",
+  "candidate": "candidate-v10c-compaction-agnostic-kernel",
+  "P0": "USER_CONFIRMED_BALANCE_RESTORED_AND_SUFFICIENT",
+  "G1": "PASS",
+  "G2": "PASS_43_KERNEL_17_TRACE_PACKAGE",
+  "G3": "PASS_BEFORE_AND_AFTER",
+  "G4": "即使最终分数不高，本局至少回答：always-on kernel 是否真实持续；BC/CTRL/DL/POL/PROBE 是否长期可测；unsupported saturation、numeric-only S、stale cleanup、restricted basis 是否仍进入已提交动作；M36–M48 晋升跑道与资本转化是否支持下一阶段75+实验。未覆盖窗口记INCONCLUSIVE。",
+  "G5": "PASS_NO_EPOCH_DEPENDENCY",
+  "run_window": {
+    "start": "2026-10-02T11:09:35.952550+00:00",
+    "end": "2026-10-02T11:10:19.660578+00:00",
+    "timezone": "+08:00"
+  },
+  "H1": "FAIL_LAYOUT",
+  "H2": "NOT_REACHED",
+  "H3": "NOT_REACHED",
+  "successful_actions": 3,
+  "failed_actions": 0,
+  "observes": 4,
+  "fresh_action_observe": 3,
+  "mode_claims": {
+    "A": 3
+  },
+  "parser_mode_counts": {
+    "UNKNOWN": 3
+  },
+  "metrics": {
+    "CTRL_anchored_valid": 0,
+    "CTRL_present": 3,
+    "DL_regex_valid": 3,
+    "DL_full_header_accepted": 0,
+    "POL_valid": 3,
+    "PROBE_valid": 3,
+    "BC_PASS_valid": 3,
+    "full_five_marker_valid": 0,
+    "duplicates": 0,
+    "submitted_despite_BC_BLOCKED": 0
+  },
+  "checkpoints": {
+    "M6": "NOT_REACHED",
+    "M12": "NOT_REACHED",
+    "M18": "NOT_REACHED",
+    "M24": "NOT_REACHED",
+    "M30": "NOT_REACHED",
+    "M36": "NOT_REACHED",
+    "M42": "NOT_REACHED",
+    "M48": "NOT_REACHED"
+  },
+  "quantitative_score": "UNKNOWN",
+  "competition_partial_score": "UNKNOWN",
+  "survival_months": "NOT_VALIDATED",
+  "final_grade": "UNKNOWN",
+  "final_Level": "L1_AT_CENSOR",
+  "last_public_state": {
+    "session_id": "278f650a19fb40789454c7dc79ee7fd0",
+    "status": {
+      "dignity": 8,
+      "duration_in_level": 1,
+      "energy": 3,
+      "health": 4,
+      "level": "L1",
+      "network": 4,
+      "output": 0,
+      "skill": 3,
+      "wealth": 1
+    },
+    "time": {
+      "current_month": 1,
+      "current_quarter": 1,
+      "current_year": 1
+    }
+  },
+  "promotions": [],
+  "structured_ended_observed": false,
+  "structured_end_sequences": [],
+  "game_alive_at_last_observe": true,
+  "game_failed_at_last_observe": false,
+  "kernel_adherence": "FAIL_PREFLIGHT_LAYOUT_ONLY",
+  "semantic_kernel": "NOT_FULLY_EVALUATED_DUE_TO_H1_ABORT",
+  "main_actions": 0,
+  "energy_actions": 0,
+  "story_other_actions": 3,
+  "local_NO_GAIN_routing": "NOT_EXERCISED",
+  "probe_metrics": {
+    "probe_eligible_count": null,
+    "probe_compared_count": null,
+    "probe_selected_count": null,
+    "probe_GAIN_count": null,
+    "probe_NO_GAIN_count": null,
+    "probe_UNKNOWN_count": null,
+    "probe_blocked_by_binding_constraint_count": null,
+    "consecutive_probe_violations": null
+  },
+  "protection": "NOT_EXERCISED",
+  "cleanup_strategy": "NOT_EXERCISED",
+  "promotion_runway_evidence": "INCONCLUSIVE",
+  "capital_deltas_M36_M48": "NOT_REACHED",
+  "conversion_chains": "NOT_FULLY_EVALUATED",
+  "score_ceiling_evidence": "NOT_EXERCISED",
+  "failure_floor_evidence": "NOT_EXERCISED_NOT_SURVIVAL_FAILURE",
+  "skill_activation_order": [
+    "structured-state-board",
+    "delivery-progress",
+    "rolling-planning",
+    "risk-review"
+  ],
+  "skill_reread_count": 0,
+  "compression_recovery": "NOT_EXERCISED",
+  "tokens": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "RUNNER_REPORT_DIAGNOSTIC_ONLY",
+    "input_tokens": "UNKNOWN",
+    "output_tokens": "UNKNOWN",
+    "total_tokens": "UNKNOWN"
+  },
+  "wall_seconds": 43.708028,
+  "startup_readiness_seconds": 17.25,
+  "provider_anomalies": "NONE_OBSERVED_BEFORE_OPERATOR_ABORT",
+  "cleanup": {
+    "stop_exit_code": 0,
+    "manager_pid_file_absent": true,
+    "listeners_remaining": [],
+    "service_start_exit_code": 1
+  },
+  "generic_auditor_classification": "PARTIAL_GAMEPLAY_TECHNICAL_FAILURE",
+  "generic_auditor_limitation": "Frozen schema labels nonterminal nonzero exits PARTIAL_GAMEPLAY_TECHNICAL_FAILURE; actual controlled stop is H1 contract censor, not provider failure. Parser not patched.",
+  "cases": [
+    {
+      "action": 1,
+      "month": 1,
+      "notes": "开局介绍事件，唯一合法选项「继续」。PLAN: G=? P=A F=NONE checkpoint=none；CANDIDATE: choice=1 reason=仅合法选项 [CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+      "leading_prose_chars": 88,
+      "accepted_header": false,
+      "policy_trace": {
+        "status": "VALID",
+        "basis": "OTHER",
+        "family": "MAIN",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "BC": {
+        "status": "PASS",
+        "reason": null,
+        "valid": true
+      },
+      "layout_only_counterfactual_header": true,
+      "interpretation": "Prefix-only in-memory diagnostic. Original notes and frozen parser unchanged; not a valid historical header."
+    },
+    {
+      "action": 2,
+      "month": 1,
+      "notes": "年会社交事件，选项1大方接下且选简单不出错形式，正向建立Network/Dignity，风险低。PLAN: G=? P=A F=NONE checkpoint=none；CANDIDATE: choice=1 reason=无binding threat，社交曝光正向、可逆 [CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+      "leading_prose_chars": 138,
+      "accepted_header": false,
+      "policy_trace": {
+        "status": "VALID",
+        "basis": "VISIBILITY",
+        "family": "MAIN",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "BC": {
+        "status": "PASS",
+        "reason": null,
+        "valid": true
+      },
+      "layout_only_counterfactual_header": true,
+      "interpretation": "Prefix-only in-memory diagnostic. Original notes and frozen parser unchanged; not a valid historical header."
+    },
+    {
+      "action": 3,
+      "month": 1,
+      "notes": "组会贬低事件：手握SLA业务影响证据，当场用数据礼貌澄清，捍卫真实成果与尊严，符合C1先真实价值。普通关系摩擦，非material risk。PLAN: G=? P=A F=NONE checkpoint=none；CANDIDATE: choice=1 reason=真实结果basis+数据可支撑，可逆 [CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=MAIN RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS]",
+      "leading_prose_chars": 154,
+      "accepted_header": false,
+      "policy_trace": {
+        "status": "VALID",
+        "basis": "OWNERSHIP",
+        "family": "MAIN",
+        "response_prior": "NA",
+        "conditions": "0????",
+        "eligible": "0",
+        "compared": "0",
+        "selected": "0",
+        "probe_family": "NONE"
+      },
+      "BC": {
+        "status": "PASS",
+        "reason": null,
+        "valid": true
+      },
+      "layout_only_counterfactual_header": true,
+      "interpretation": "Prefix-only in-memory diagnostic. Original notes and frozen parser unchanged; not a valid historical header."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T110939Z\\events-20261002T110939Z.jsonl",
+      "name": "events-20261002T110939Z.jsonl",
+      "bytes": 120993,
+      "sha256": "9862782379cb48100fbc357cb35d3e9a97af4f42343bdf63e50dac8ddbf6bcd8"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T110939Z\\transcript-20261002T110939Z.log",
+      "name": "transcript-20261002T110939Z.log",
+      "bytes": 17641,
+      "sha256": "7a58b5665f078ae08b6d0b92f512408fd453ecd607796e3abcea0c4bb5a3d0c1"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\runner-result.json",
+      "name": "runner-result.json",
+      "bytes": 2672,
+      "sha256": "5d271b0af6bc912fbe721b1bb495bbd91ad67fe9b2141b29c5782abae3bc4733"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\post_run_summary.json",
+      "name": "post_run_summary.json",
+      "bytes": 9570,
+      "sha256": "d21f851723389bce219b8534eceedd2f66585f78fd1b309d1be96e0b545b8160"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\preflight.json",
+      "name": "preflight.json",
+      "bytes": 8241,
+      "sha256": "a6d264d6f611a8c739332aca139b98af0750fcdfb6ed192510d3bf8c199b894e"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\h1.json",
+      "name": "h1.json",
+      "bytes": 6375,
+      "sha256": "f05d4949ac74b178ae43e62d1e9db363a5cee59bbb4f7840db292b0abe376570"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\h1-context.json",
+      "name": "h1-context.json",
+      "bytes": 4792,
+      "sha256": "e3b76e8c49ce36f307c0c9135b2ae866bcbf6b726958b87fe661b4f2ae97a362"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\controller.py",
+      "name": "controller.py",
+      "bytes": 15947,
+      "sha256": "0d4daee854ddd5ea37b0eaddf88c2ec6ade3211d23075c35802baf3ad88244f9"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\service-stdout.log",
+      "name": "service-stdout.log",
+      "bytes": 333394,
+      "sha256": "b76d23dab6d954b4e522ed889cfa310a0b3dd81fa70c88ddf58c2364409f7789"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\runner-stdout.log",
+      "name": "runner-stdout.log",
+      "bytes": 5121,
+      "sha256": "fcf65630b1dd5b75cf06bcf0823d0ce3f0768bc3e718078a8ee10355d271cc0a"
+    },
+    {
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run12-v10c\\stop-stdout.log",
+      "name": "stop-stdout.log",
+      "bytes": 495,
+      "sha256": "7fd437dff6e25c3bc9902d21a5c76c988aca3d4724655a3c0324f36169d8ccb0"
+    }
+  ],
+  "candidate_tool_identity": {
+    "manifest": {
+      "path": "configs/runtime_manifest.json",
+      "physical_sha256": "336ac19dd645a20434bb494a8f1e6d77acc5e0482454cb287c05a6ae6f158e74",
+      "lf_sha256": "1a1cf73b1c8586d71f0da4dab10a51907e1415dbde4c5bc8c849db6b15f1a4d7",
+      "git_blob": "1b4faae167efd5d4fcfe6389ff4cbbdf000032ce"
+    },
+    "metadata": {
+      "path": "configs/current_candidate.json",
+      "physical_sha256": "6086eae1ff853005cf871b9af0d90b02d7840fe9aaf678c187c91ef8d3606cbf",
+      "lf_sha256": "03a685a5902f567b36b81747de1fc9e4a818c673bfed7872b1262dba5bd62a38",
+      "git_blob": "5333243c15de74c1dad0b2038f549a9799915579"
+    },
+    "instruction_sha256": "0c22b1ebc0f2249cd03952eef53114495cc9f72e196303d4d1f8442d43a16f32",
+    "skills": [
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+        "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      }
+    ],
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+  },
+  "measurement_tools": [
+    {
+      "path": "scripts/basis_preflight_audit.py",
+      "physical_sha256": "29750fd255f5733d67ab3f84eff41ab21122fccba62320913b7015b9c2fa5fb2",
+      "lf_sha256": "29750fd255f5733d67ab3f84eff41ab21122fccba62320913b7015b9c2fa5fb2",
+      "git_blob": "b2436c5d2be1774a40e80e2ab38d81c5937c67d8"
+    },
+    {
+      "path": "scripts/policy_trace_audit.py",
+      "physical_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+      "lf_sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+      "git_blob": "f91807ad33c27620df4b453c68244a7fae45f2b7"
+    },
+    {
+      "path": "scripts/post_run_audit.py",
+      "physical_sha256": "d53cd2ee25edf67283ca78d9d5ab690b84b26edce45a2ac4177756a7fb15d75d",
+      "lf_sha256": "496231857d4bc7e47ea7ad94329e5c665b527774cbfceb355931366015de8e23",
+      "git_blob": "8c95e38c979587595595b9d045abb1031b3e7a8c"
+    },
+    {
+      "path": "scripts/package_candidate.py",
+      "physical_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+      "lf_sha256": "48efdd4e4f58545c1ca6c55f76f5969fc8590a710dbd59591761adef2a7c9483",
+      "git_blob": "a3bf7b1bc5ae4e4755bea995c0f53e2aa3099950"
+    },
+    {
+      "path": "tests/test_s09_20_kernel.py",
+      "physical_sha256": "e0b2936f7cc0736b275df9931985f55ecd75382bfa4ea7478c30ef3f1d8ae301",
+      "lf_sha256": "e0b2936f7cc0736b275df9931985f55ecd75382bfa4ea7478c30ef3f1d8ae301",
+      "git_blob": "01fe394716318820899279aeeb88c4608cc1aac4"
+    },
+    {
+      "path": "tests/fixtures/v10c_kernel_cases.json",
+      "physical_sha256": "8ece3a0baf5e9b2f3ad3fdb57e5aa1d02789b3b662d607108b3de09e6d8fdff7",
+      "lf_sha256": "53f8aab2b3c26637d8b1c60a8d85d692b7d6389f3e3186d63ad9a67fe9c347d3",
+      "git_blob": "d617b36384575147f5af50b070d8ff86e736723f"
+    },
+    {
+      "path": "tests/fixtures/v10c_run11_contract_replay.json",
+      "physical_sha256": "d5e58e27f6264022147ec0b3dfe34b2a6adb546f2a95f32eabb26a662e6c07c2",
+      "lf_sha256": "dec387cb37290e9a67bc26ce8d5002f496dc19220701d533993f4a287be68d6a",
+      "git_blob": "8ee918c9edbfbd36ea404d95db01c2edbbaf034f"
+    },
+    {
+      "path": "tests/fixtures/v10a_policy_traces.json",
+      "physical_sha256": "dd1773aa7545aa62fc76e4026e847020b0e74d96ab3b6be35df6dac64e5ecfdb",
+      "lf_sha256": "dd1773aa7545aa62fc76e4026e847020b0e74d96ab3b6be35df6dac64e5ecfdb",
+      "git_blob": "cde89d37cbbc06e74f3c5ea1cf97634f22b72034"
+    },
+    {
+      "path": "docs/project/AGENT_RUNTIME_CONTRACT.md",
+      "physical_sha256": "1903f207a249b1a407c2fac3a153eac3783c07de75a87c0b05c229a45dce9885",
+      "lf_sha256": "ce484f7982e2658150b76293d5b15b56812771808f31e28fde3f5f5e9ffb2931",
+      "git_blob": "0aa9e5bd4bd0d58ff04470500bbc828a60423105"
+    }
+  ],
+  "candidate_tool_bytes_unchanged": true,
+  "live_counts": {
+    "service": 1,
+    "play": 1,
+    "fresh_game": 1,
+    "standalone_probe": 0,
+    "restart": 0,
+    "replacement": 0,
+    "reporting_extra_query": 0
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "reason": "H1 prefix placement and BC false-positive require Stage acceptance; retain exact events/transcript plus local receipts/controller/service/runner logs.",
+    "authority": "S09 Stage/Main",
+    "release_condition": "Independent acceptance, unresolved context/measurement questions closed, no child/raw dependency, then explicit cleanup authorization."
+  },
+  "proposed_next_boundary": "Review explicit notes-leading contract and its static negative-prefix fixture before any separately authorized repair/run. No v11 score strategy evidence.",
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE_UNCHANGED": true,
+  "layout_contract_fact": {
+    "parent_explicit_notes_start": true,
+    "v10c_explicit_notes_start": false,
+    "parser_CTRL_anchored": true,
+    "format_salience_cause": "INFERENCE_NOT_CONTROLLED_MODEL_PROOF"
+  }
+}
