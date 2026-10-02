@@ -1,0 +1,2075 @@
+{
+  "schema_version": 1,
+  "run_id": "S09-RUN16",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "execution_HEAD": "32e0e6b94dc394cee110bb1c27dabb212c256daf",
+  "candidate": "candidate-v10f-cap-scope-correction",
+  "session": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+  "identity": {
+    "execution_HEAD": "32e0e6b94dc394cee110bb1c27dabb212c256daf",
+    "candidate": "candidate-v10f-cap-scope-correction",
+    "phase": "P1_PASS",
+    "T1": "PASS",
+    "T2": "PASS_46_FRESH_REVIEWER_REGRESSIONS_STABLE_202_REUSED",
+    "T3": "PASS",
+    "T4": "PASS_NEW_REVIEW_STREAM_3_12_40_EXACT_NEW_PATH_BIND_AT_RUNNER_CREATION",
+    "T5": "PASS_VALIDATED_RECEIPT_STOP_AND_RUNNER_JSON_WINDOW",
+    "candidate_identity": {
+      "manifest": {
+        "path": "configs/runtime_manifest.json",
+        "bytes": 7801,
+        "physical_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+        "lf_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+        "git_blob": "db74ce289095d7b81ab5408ffeea5e3e49e941ed"
+      },
+      "metadata": {
+        "path": "configs/current_candidate.json",
+        "bytes": 7636,
+        "physical_sha256": "d8ab77cb3ebd2889caf7491d972110ca5ab7fb232f11f0d7a90fe1ccd7200f35",
+        "lf_sha256": "d8ab77cb3ebd2889caf7491d972110ca5ab7fb232f11f0d7a90fe1ccd7200f35",
+        "git_blob": "bf580f1a1d455f64df9084f3e22f2444a18b3ea9"
+      },
+      "instruction_sha256": "88e7a08849d3b60c2b564a59ed9697b234363000b74abd3171d20fd24c68aa8b",
+      "skills": [
+        {
+          "path": "skills/structured-state-board/SKILL.md",
+          "bytes": 5252,
+          "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+          "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+        },
+        {
+          "path": "skills/rolling-planning/SKILL.md",
+          "bytes": 11607,
+          "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+          "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+          "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+        },
+        {
+          "path": "skills/delivery-progress/SKILL.md",
+          "bytes": 5041,
+          "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+          "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+          "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+        },
+        {
+          "path": "skills/risk-review/SKILL.md",
+          "bytes": 4189,
+          "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+          "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+          "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+        }
+      ],
+      "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
+    },
+    "tooling": [
+      {
+        "path": "docs/project/REVIEWER_GATE_CONTRACT.md",
+        "sha256": "643566a83f2c803b5a50b5ea659fde56c8ee36086b3a9db544ed011603ab16a3",
+        "git_blob": "c924a1fae0aceeed623200e61858c85c3ee07349"
+      },
+      {
+        "path": "scripts/reviewer_gate.py",
+        "sha256": "832d5be9e3c9f2951f7cf969b11a65a4535bdc76425861140100692b5560274d",
+        "git_blob": "bb233ee095cae6dc68adc0f1b9715ce1290eb352"
+      },
+      {
+        "path": "scripts/live_review_packet.py",
+        "sha256": "e183e61927bd2eb79c0df0d86765649efa5f74348ee74ad7cca2c7e413c9e4ba",
+        "git_blob": "2bc0705e647094b3dbe0581df9ca44214583504f"
+      },
+      {
+        "path": "scripts/basis_preflight_audit.py",
+        "sha256": "16015d1d0722e39060b5c1e784fbcc349ba5ca2d31c66351422c4c8d4ac1419a",
+        "git_blob": "87b3271948404dbd022afa61fc0672409a9c0119"
+      },
+      {
+        "path": "scripts/policy_trace_audit.py",
+        "sha256": "a457513b23c5feec95930383acd55d8ecde1b9f98c2ddc69ed4815aa5502aba3",
+        "git_blob": "f91807ad33c27620df4b453c68244a7fae45f2b7"
+      },
+      {
+        "path": "scripts/post_run_audit.py",
+        "sha256": "85738758cc7e9b0b0bc1b41b96f33adff742e11f61bfe0c4ae5340f7cdde97cb",
+        "git_blob": "72c24a66a21854e0b5aab080aa6c9fdb472d64a5"
+      },
+      {
+        "path": "tests/test_s09_24_reviewer_reliability.py",
+        "sha256": "239214b988931de5656179c65329435cb2a50aa09f18ed0e07f6654e4a5b62ec",
+        "git_blob": "74015205836612a2044baf5f567c88776912c672"
+      },
+      {
+        "path": "tests/fixtures/reviewer_gate_cases.json",
+        "sha256": "b9e2911f07e569eb9c894f62550cccf9319adbf947f6b06ac0d3116e95a1004d",
+        "git_blob": "2aff17018d2719caee2b2afb85f3a63e5889e1dd"
+      }
+    ],
+    "package": "D:\\CS\\CareerSim\\.local\\runtime\\s09-23-v10f\\submission",
+    "package_identity": [
+      {
+        "path": ".local/runtime/s09-23-v10f/submission/manifest.json",
+        "bytes": 7801,
+        "physical_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+        "lf_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+        "git_blob": "db74ce289095d7b81ab5408ffeea5e3e49e941ed"
+      },
+      {
+        "path": ".local/runtime/s09-23-v10f/submission/skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "physical_sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+        "lf_sha256": "201c2e7e9a7ec4075e9b71b2df6f7def868ce0b8cc5ef105b61e46fc9b1ca2b6",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "path": ".local/runtime/s09-23-v10f/submission/skills/risk-review/SKILL.md",
+        "bytes": 4189,
+        "physical_sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd",
+        "lf_sha256": "19cf8a8ae88fc4281e999e7228f41a3a9b0035680fe332d6d7968944ae69399b",
+        "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      },
+      {
+        "path": ".local/runtime/s09-23-v10f/submission/skills/rolling-planning/SKILL.md",
+        "bytes": 11607,
+        "physical_sha256": "d2c0f37485e4bf1a7993b290b895825975e0abf6591d269f81c49fcd28c009fe",
+        "lf_sha256": "ea1dcb64274df1c8fe0d9845701840abd32581fbd02c287e98300eba766bac00",
+        "git_blob": "f2f1f527453bc7f9c646ee8c9ca622ffa90f2cb5"
+      },
+      {
+        "path": ".local/runtime/s09-23-v10f/submission/skills/structured-state-board/SKILL.md",
+        "bytes": 5252,
+        "physical_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "lf_sha256": "e2f31a83b357f2f75b1e2c0e8285fba440a17d3c4c4c8d6587b4f2e5fa9f366c",
+        "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      }
+    ],
+    "dependencies": [
+      {
+        "path": "pyproject.toml",
+        "physical_sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+        "lf_sha256": "dd4f272695d4270bc565d3798522821559b4c8becedb1dd3e7eb461b5a016063",
+        "git_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b"
+      },
+      {
+        "path": "uv.lock",
+        "physical_sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+        "lf_sha256": "9793a93dc6e617406cbc22225fb0012cb525dd6deb53b35e4e61893f7dd0aa5c",
+        "git_blob": "1970860329f3b2b97708b87806d8572a051803fd"
+      }
+    ],
+    "installed_versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3"
+    },
+    "max_retries": 2,
+    "controller_sha256": "ef58eec87f7ad517fa9f2a6540ac7f32200e35f78b63c2702de2701556d24e8f",
+    "service_lifecycles": 1,
+    "runner_play_budget": 1,
+    "fresh_game_budget": 1,
+    "replacement_budget": 0,
+    "standalone_probes": 0
+  },
+  "outcome": {
+    "classification": "DEVELOPMENT_ABORT_CANDIDATE_VIOLATION",
+    "last_observe_alive": true,
+    "last_observe_failed": false,
+    "max_month": 6,
+    "natural_terminal_observed": false,
+    "score_report_session_field": "MISSING",
+    "score_source": "UNKNOWN",
+    "terminal_fresh_score": "UNKNOWN",
+    "terminal_public_state": {
+      "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+      "status": {
+        "dignity": 10,
+        "duration_in_level": 1,
+        "energy": 1,
+        "health": 6,
+        "level": "L2",
+        "network": 7,
+        "output": 6,
+        "skill": 13,
+        "wealth": 2
+      },
+      "time": {
+        "current_month": 6,
+        "current_quarter": 2,
+        "current_year": 1
+      }
+    }
+  },
+  "run": {
+    "end_utc": "2026-10-02T16:04:20.487061+00:00",
+    "events_identity": "PASS",
+    "input_end_exact": "2026-10-02T16:04:20.487061+00:00",
+    "input_start_exact": "2026-10-02T16:00:59.610924+00:00",
+    "new_game_count": 1,
+    "observe_count": 26,
+    "runner_exit_code": 1,
+    "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+    "start_utc": "2026-10-02T16:00:59.610924+00:00",
+    "transcript_identity": "PASS",
+    "transcript_session_ids": [
+      "4a2d8eb77db944ebbd1bb44e0c806dd1"
+    ],
+    "window_source": "runner_json_exact_strings"
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "RUNNER_REPORT_DIAGNOSTIC_ONLY",
+    "input_tokens": "UNKNOWN",
+    "output_tokens": "UNKNOWN",
+    "total_tokens": "UNKNOWN"
+  },
+  "reviewer_timings": {
+    "H1": {
+      "snapshot_action": 3,
+      "packet_emitted_utc": "2026-10-02T16:01:32.412603+00:00",
+      "review_started_utc": "UNKNOWN_FIRST_READ_NOT_TIMESTAMPED",
+      "decision_utc": "2026-10-02T16:02:45.470200+00:00",
+      "controller_seen_utc": "2026-10-02T16:02:45.485076+00:00",
+      "validation": "PASS",
+      "result": "PASS_WITH_LIMITATIONS_INTERNAL_SKILL_STATES_UNOBSERVED",
+      "actual_action_on_decision": 11,
+      "emission_to_decision_seconds": 73.057597,
+      "extra_actions_after_snapshot": 8
+    },
+    "H2": {
+      "snapshot_action": 12,
+      "packet_emitted_utc": "2026-10-02T16:02:48.263051+00:00",
+      "review_started_utc": "2026-10-02T16:03:47.144166+00:00",
+      "decision_utc": "2026-10-02T16:04:20.389506+00:00",
+      "controller_seen_utc": "2026-10-02T16:04:20.478034+00:00",
+      "validation": "PASS",
+      "result": "CONFIRMED_CANDIDATE_VIOLATION",
+      "actual_action_on_decision": 25,
+      "emission_to_decision_seconds": 92.126455,
+      "extra_actions_after_snapshot": 13,
+      "emission_to_review_start_seconds": 58.881115,
+      "review_duration_seconds": 33.24534,
+      "emission_to_stop_seconds": 92.218991,
+      "decision_to_stop_seconds": 0.092536,
+      "stop_to_play_end_seconds": 0.005019
+    }
+  },
+  "reviewer_reliability": "FAIL",
+  "reviewer_reliability_scope": "Valid H1/H2 adjudication; mandatory immediate formal Review relay failed and human review remains delayed. Not a false-positive Candidate stop.",
+  "semantic_preflight_adherence": "FAIL",
+  "canonical_stop": {
+    "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+    "controller_authorized_stop": true,
+    "reviewer_receipt": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "Manifest/K1 PUBLIC; Planning/current-session-public-evidence",
+      "action_index": 11,
+      "public_evidence": {
+        "event": {
+          "title": "季度体力行动分配",
+          "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+        },
+        "choices": [
+          {
+            "choice": 1,
+            "action": "高强度工作",
+            "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+            "energy_cost": 2
+          },
+          {
+            "choice": 2,
+            "action": "技能学习",
+            "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+            "energy_cost": 2
+          },
+          {
+            "choice": 3,
+            "action": "人脉维护",
+            "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+            "energy_cost": 1
+          },
+          {
+            "choice": 4,
+            "action": "处理历史埋雷",
+            "description": "主动清理过往遗留隐患，降低潜在风险值。",
+            "energy_cost": 2
+          },
+          {
+            "choice": 5,
+            "action": "心理修复",
+            "description": "进行心理调整与自我修复，明显回补尊严。",
+            "energy_cost": 1
+          },
+          {
+            "choice": 6,
+            "action": "健康恢复",
+            "description": "休整作息、恢复体力，明显回补健康。",
+            "energy_cost": 1
+          },
+          {
+            "choice": 7,
+            "action": "准备汇报材料",
+            "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+            "energy_cost": 1
+          },
+          {
+            "choice": 8,
+            "action": "保留体力（不行动）",
+            "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+            "energy_cost": 0
+          }
+        ],
+        "public_status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        },
+        "submitted_notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力：当前O=0/N=2偏低为晋升缺口，D=10封顶故避开含Dignity代价的高强度工作(还带HiddenRisk+1)；选准备汇报材料(有跨组评审真实成果可包装)O+1起步。"
+      },
+      "selected_candidate": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1
+      },
+      "direct_candidate_violation_link": "K1 excludes numeric HiddenRisk from ranking and notes. a11 explicitly discounts high-intensity work with the numeric hidden-effect assertion HiddenRisk+1 while choosing preparation. The submitted numeric risk claim is absent from participant-visible menu; even a legal safe selected action does not authorize hidden ranking input.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Dignity=10 is permitted bounded-state arithmetic and is not the violation. This is Planning evidence-basis attribution, not event-theme Risk-label attribution. The exact public high-intensity description says risk accumulates qualitatively; it does not state HiddenRisk+1. Correct legal choice does not exempt K1 ranking/notes discipline."
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+    },
+    "stage": "H2",
+    "stop_request_utc": "2026-10-02T16:04:20.480066+00:00",
+    "actual_actions_read": 25
+  },
+  "metrics": {
+    "successful_actions": 25,
+    "failed_actions": 0,
+    "observes": 26,
+    "controller_observe_records": 52,
+    "controller_observe_records_note": "52 raw duplicate feed records; exact event audit deduplicates to 26. Use 26 canonical observes.",
+    "five_marker_coverage": 25,
+    "fresh_coverage": 25,
+    "BC_receipt_count": 25,
+    "BC_receipts_semantic_proof": false,
+    "mode_counts": {
+      "A": 25
+    },
+    "risk_counts": {
+      "PASS": 25
+    },
+    "numeric_only_S_observed": 0,
+    "unsupported_growth_cap_observed": 0,
+    "bounded_state_fact_actions": [
+      11,
+      14,
+      24
+    ],
+    "bounded_state_false_positives": 0,
+    "numeric_HiddenRisk_ranking_confirmed_actions": [
+      11
+    ],
+    "nonnumeric_HiddenRisk_reference_actions": [
+      24
+    ],
+    "stale_cleanup_observed": 0,
+    "delivery_overclaim_observed": 0,
+    "delivery_n_zero_actions": 25,
+    "internal_skill_state_fidelity": "UNKNOWN",
+    "false_positive_corrections": 0
+  },
+  "strategy": {
+    "main_actions": [
+      {
+        "action": "申请关键项目",
+        "month": 3,
+        "source": "public_choice"
+      }
+    ],
+    "energy_count": 5,
+    "energy_counts": {
+      "准备汇报材料": 2,
+      "人脉维护": 2,
+      "健康恢复": 1
+    },
+    "energy_pairs": [
+      {
+        "action": 11,
+        "choice": "准备汇报材料",
+        "before": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        },
+        "after": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        }
+      },
+      {
+        "action": 12,
+        "choice": "人脉维护",
+        "before": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        },
+        "after": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        }
+      },
+      {
+        "action": 13,
+        "choice": "健康恢复",
+        "before": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        },
+        "after": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      {
+        "action": 24,
+        "choice": "准备汇报材料",
+        "before": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 3
+        },
+        "after": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        }
+      },
+      {
+        "action": 25,
+        "choice": "人脉维护",
+        "before": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        },
+        "after": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 1
+        }
+      }
+    ],
+    "policy_metrics": {
+      "probe_eligible_count": 0,
+      "probe_compared_count": 0,
+      "probe_selected_count": 0,
+      "probe_GAIN_count": 0,
+      "probe_NO_GAIN_count": 0,
+      "probe_UNKNOWN_count": 0,
+      "probe_blocked_by_binding_constraint_count": 0,
+      "consecutive_probe_violations": 0
+    },
+    "policy_basis_counts": {
+      "OTHER": 19,
+      "PROTECT": 1,
+      "OWNERSHIP": 3,
+      "VISIBILITY": 2
+    },
+    "immediate_local_NO_GAIN_repeats": 0,
+    "level_reset_events": 1,
+    "conversion_chain": "PARTIAL_CHAIN",
+    "promotion_runway_evidence": "INCONCLUSIVE",
+    "M36_L5_OR_NEAR_L5_RUNWAY": "NOT_REACHED",
+    "M36_to_M48": "NOT_EXERCISED"
+  },
+  "progress_reporting": {
+    "preflight_emitted": true,
+    "session_start_emitted": true,
+    "formal_review_M6": "RELAYED_AFTER_CLEANUP_PRIORITY_CONTRACT_FAILED",
+    "user_report_timestamp": "UNKNOWN_NOT_CAPTURED",
+    "delay_lower_bound_seconds": 42.324371,
+    "extra_queries": 0,
+    "interactive_session": true
+  },
+  "runtime": {
+    "service_lifecycles": 1,
+    "runner_plays": 1,
+    "fresh_games": 1,
+    "replacements": 0,
+    "continues": 0,
+    "play_seconds": 200.876137,
+    "service_to_cleanup_seconds": 222.01081,
+    "raw_runner_exit": 1,
+    "service_wrapper_exit": 1,
+    "stop_exit": 0,
+    "listeners": [],
+    "manager_stopped": true,
+    "provider_anomalies": "NONE_OBSERVED_IN_EXISTING_STREAM",
+    "compressions": "UNKNOWN",
+    "execution_boundaries": "UNKNOWN",
+    "continuation_sends": "UNKNOWN",
+    "skill_rereads": "UNKNOWN"
+  },
+  "frozen_audit_limitations": [
+    "Direct script invocation import failure; module invocation succeeded without source modification.",
+    "Frozen regex reported 0 numeric hidden-risk action-note matches; canonical semantic receipt confirms HiddenRisk+1 at a11. Do not interpret regex zero as adherence.",
+    "H1 review start and user progress timestamps were not captured.",
+    "No llm.log/provider/DB queries; usage and compression remain UNKNOWN."
+  ],
+  "public_action_rows": [
+    {
+      "action_index": 1,
+      "source_seq": 29,
+      "submitted_utc": "2026-10-02T16:01:17.025310+00:00",
+      "event": {
+        "title": "新员工手册",
+        "description": "欢迎加入业务研发组。本手册用于在你正式开始职业生涯前，把组织运转的公开规则一次性透明地告诉你。手册中列出的所有信息都是可以公开透明给你的比赛设定；你可以基于这些规则进行长期规划。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "继续",
+        "description": "开始职业模拟。"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 开局介绍事件仅唯一合法选项\"继续\"，无风险、无候选比较，直接提交进入职业模拟。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 5,
+          "skill": 1,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 5,
+          "skill": 1,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 35,
+      "observed_utc": "2026-10-02T16:01:18.270925+00:00"
+    },
+    {
+      "action_index": 2,
+      "source_seq": 37,
+      "submitted_utc": "2026-10-02T16:01:22.524046+00:00",
+      "event": {
+        "title": "应酬中客户提议去敏感场所长链",
+        "description": "陪客户吃完饭，对方负责人兴致很高，提议『换个地方继续』——要去一个明显不合规、消费敏感的娱乐场所，还暗示费用可以让你『想办法报销』。客户是重要合作方，但这既触公司红线、也碰你的底线。其他陪同的人在看你怎么表态。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "用得体的理由婉拒续场，把局面圆回到正常的招待范围内"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 合规事件：选项2碰报销红线属不可逆信任风险，选项3过度激化伤客户关系；选项1婉拒续场既守合规又保关系，最小机会成本保护。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 5,
+          "skill": 1,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 6,
+          "skill": 3,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 43,
+      "observed_utc": "2026-10-02T16:01:24.017489+00:00"
+    },
+    {
+      "action_index": 3,
+      "source_seq": 45,
+      "submitted_utc": "2026-10-02T16:01:31.076777+00:00",
+      "event": {
+        "title": "长假大促期间的 on-call 换班请求",
+        "description": "长假 on-call 值班表排出来了，组里老王家里临时有事，希望和你换班——这样你会连续值守覆盖假期里风险最高的三天（电商大促叠加，告警概率显著偏高）。顶下来是对团队实打实的帮忙，老王会承你的情；但连续值守意味着你假期没法离城、精力消耗很大。你也可以婉拒，请 Leader 按规则另行协调。今晚就要在排班群里回复。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "接下连班，覆盖大促关键三天"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] on-call换班：选项1顶下大促关键三天，积累关系资本(老王承情)且为真实团队交付，代价仅普通workload/精力消耗，属C10可接受普通成本；无重大绑定风险。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 6,
+          "skill": 3,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 7,
+          "skill": 3,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 51,
+      "observed_utc": "2026-10-02T16:01:32.384573+00:00"
+    },
+    {
+      "action_index": 4,
+      "source_seq": 53,
+      "submitted_utc": "2026-10-02T16:01:40.185989+00:00",
+      "event": {
+        "title": "午饭跟同事吃还是回家吃",
+        "description": "公司园区食堂人多，组里同事习惯中午 12:00 在工区附近小餐馆聚餐，聊项目八卦和 Leader 动向——这是非正式情报网。你家住地铁 40 分钟外，回家吃午饭来回紧张，但能午睡 20 分钟、吃妈妈做的菜，下午精力更稳。入职三个月来你多数回家，同事开始叫你「独行侠」。Leader 上周团建说「多和团队融一融」。"
+      },
+      "selected_candidate": {
+        "choice": 3,
+        "action": "折中：周二周四跟同事吃，其余回家"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 午饭事件：公开信号(独行侠/Leader建议融合)指向网络孤立风险；选项2继续孤立风险高，选项1网络最大但H=3偏低牺牲休息；选项3折中兼顾网络建设与健康恢复，最合C3组合优化。选3。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 1,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 3,
+          "dignity": 7,
+          "skill": 3,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 8,
+          "skill": 3,
+          "network": 5,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 59,
+      "observed_utc": "2026-10-02T16:01:41.397904+00:00"
+    },
+    {
+      "action_index": 5,
+      "source_seq": 61,
+      "submitted_utc": "2026-10-02T16:01:47.878724+00:00",
+      "event": {
+        "title": "午饭跟同事吃还是回家吃",
+        "description": "折中运行一个月，Leader 没再提「融入」。你在饭局得知老吴的项目要合并到你模块，提前有了准备。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "保持当前节奏"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 折中节奏一月内H+1/D+1/N+2且获关键情报，路径有效；选项2加密饭局挤压最低资源Health(=4)且边际递减；选1保持已验证均衡节奏。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 8,
+          "skill": 3,
+          "network": 5,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 3,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 67,
+      "observed_utc": "2026-10-02T16:01:49.263575+00:00"
+    },
+    {
+      "action_index": 6,
+      "source_seq": 69,
+      "submitted_utc": "2026-10-02T16:01:55.360111+00:00",
+      "event": {
+        "title": "应酬中客户提议去敏感场所长链",
+        "description": "你笑着以『明天还有早会、得让大家好好休息』为由把续场圆了过去，又安排送客户回酒店，既没扫兴也没越界。客户没再坚持。事后你在想，要不要把这位客户的『偏好』跟领导提一句。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "私下向领导客观同步，便于以后招待安排得当、守住合规底线"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 合规收尾事件：选项1主动客观向领导同步客户敏感偏好，便于后续招待合规安排、构建信任/合规资本；选项2省事但错失合规判断展示。公开语义下选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 3,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 4,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 75,
+      "observed_utc": "2026-10-02T16:01:56.831070+00:00"
+    },
+    {
+      "action_index": 7,
+      "source_seq": 77,
+      "submitted_utc": "2026-10-02T16:02:02.662910+00:00",
+      "event": {
+        "title": "带咖啡同事积累人情选组长",
+        "description": "同事贺帆每天给组里带 Manner 咖啡，从不收钱。你发现他在笔记本写「人情账本：老周+2，袁野+1……」；组里将选代理组长，贺帆竞选。他今天给你双倍奶：「晚上帮我在评审会上说两句？」"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "拒绝站台，评审只讲事实"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 办公室政治：选项2站台换人情卷入派系损客观性，选项3打小报告政治风险高，选项4人情战琐碎耗资源；选项1拒绝站台、评审只讲事实，符合C1守专业信誉与Dignity。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 2,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 4,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 2,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 4,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 83,
+      "observed_utc": "2026-10-02T16:02:04.062392+00:00"
+    },
+    {
+      "action_index": 8,
+      "source_seq": 85,
+      "submitted_utc": "2026-10-02T16:02:09.172108+00:00",
+      "event": {
+        "title": "出差名额唯一与小乔评价长链",
+        "description": "公司有一个行业技术大会的出差名额，组里只能去一人，差旅和曝光都不错。小道消息说大概率在你和同组同事小乔之间二选一。Leader 把你叫到茶水间，看似随意地问：「小乔最近状态怎么样？你觉得她适不适合代表组里去开会？」 你清楚这是在试探你对竞争的态度。下周就要定名单。"
+      },
+      "selected_candidate": {
+        "choice": 2,
+        "action": "在肯定小乔的同时，简要补充自己近期的相关成果"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 出差竞争：选项4贬低竞争者损信誉，选项1过度谦让弃曝光，选项3放弃自我主张；选项2客观肯定小乔同时补充自身真实成果，符合C1与MAIN-2基于真实结果的可见度。选2。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 4,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 5,
+          "network": 0,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 91,
+      "observed_utc": "2026-10-02T16:02:11.261915+00:00"
+    },
+    {
+      "action_index": 9,
+      "source_seq": 93,
+      "submitted_utc": "2026-10-02T16:02:16.464201+00:00",
+      "event": {
+        "title": "跨组架构评审的参与与坚持决策",
+        "description": "部门技术委员会下周开一次跨组架构评审会议，主题是几个核心服务下季度的重构方案，参会代表对方案有投票权和后续追责权。你被点名邀请作为跨组评审代表参加（你在接口性能与稳定性方向上有较多实践积累）。如果接下，你需要花 3-4 天通读对方组的几份方案文档、准备意见；如果不接，对方组会自己评审，你少了一个跨组影响力的机会，但本组排期不受影响。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "接下评审邀请，深度通读并准备意见"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 跨组评审邀请：当前N=0孤立风险累积，此机会为高价值跨组影响力且匹配自身实践；选项2延续网络赤字；选项1以3-4天普通workload换跨组影响力与Skill/Network，合C3/MAIN-3。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 5,
+          "network": 0,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 99,
+      "observed_utc": "2026-10-02T16:02:17.785860+00:00"
+    },
+    {
+      "action_index": 10,
+      "source_seq": 101,
+      "submitted_utc": "2026-10-02T16:02:22.872836+00:00",
+      "event": {
+        "title": "跨组架构评审的参与与坚持决策",
+        "description": "你深度参与了评审，对其中一个方案提出了核心质疑：对方组打算引入一套尚未在公司内部规模化使用的新框架，存在维护风险。对方组 owner 在会上明确不同意你的判断，态度有点强硬。会议主持者建议双方会后再继续沟通。你需要决定下一步行动。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "整理一份完整的风险评估文档，正式提交技术委员会"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 评审后续：选项1整理完整风险评估正式提交技委会，以真实技术判断与证据推进属高ownership真实成果，合C1/MAIN-1；选项2备案等于放弃已识别真实风险。专业分歧走正式流程非绑定信任危机。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 107,
+      "observed_utc": "2026-10-02T16:02:24.332961+00:00"
+    },
+    {
+      "action_index": 11,
+      "source_seq": 109,
+      "submitted_utc": "2026-10-02T16:02:41.909462+00:00",
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力：当前O=0/N=2偏低为晋升缺口，D=10封顶故避开含Dignity代价的高强度工作(还带HiddenRisk+1)；选准备汇报材料(有跨组评审真实成果可包装)O+1起步。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 115,
+      "observed_utc": "2026-10-02T16:02:43.112393+00:00"
+    },
+    {
+      "action_index": 12,
+      "source_seq": 117,
+      "submitted_utc": "2026-10-02T16:02:46.384190+00:00",
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力续：剩余2点，选人脉维护补低值Network(N+1)并保留1点给健康恢复；无绑定风险。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 2
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 123,
+      "observed_utc": "2026-10-02T16:02:48.021676+00:00"
+    },
+    {
+      "action_index": 13,
+      "source_seq": 125,
+      "submitted_utc": "2026-10-02T16:02:50.937346+00:00",
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度体力末点：剩余1点，补当前最低资源Health(=4)，选健康恢复(H+2)；无绑定风险。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 131,
+      "observed_utc": "2026-10-02T16:02:52.773283+00:00"
+    },
+    {
+      "action_index": 14,
+      "source_seq": 133,
+      "submitted_utc": "2026-10-02T16:02:57.360343+00:00",
+      "event": {
+        "title": "季度主行动选择",
+        "description": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "申请关键项目",
+        "description": "争取进入关键项目，绩效资本、专业能力与人脉同步增益。",
+        "energy_cost": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 季度主行动：缺口O=1/N=3，S=9已高、D=10封顶；选项1申请关键项目O+2/S+1/N+1最大补最低O且增N，属真实ownership(MAIN-1/C1)，优于无O的选项6及带浪费的2/5/7。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 139,
+      "observed_utc": "2026-10-02T16:02:59.097693+00:00"
+    },
+    {
+      "action_index": 15,
+      "source_seq": 141,
+      "submitted_utc": "2026-10-02T16:03:06.436187+00:00",
+      "event": {
+        "title": "出差名额唯一与小乔评价长链",
+        "description": "Leader 听完后说：「心里有数。」 名单公布：你入选。小乔当天请假，之后对你明显冷淡。出差回来你要做分享，Leader 让你准备 30 分钟组内分享。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "分享中公开感谢小乔的前期铺垫，并私下找她聊一次"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 出差后续：小乔冷淡形成关系摩擦且N偏低；选项1公开感谢并私下沟通修复关系、回补Network降低孤立风险，选项2放任裂痕。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 147,
+      "observed_utc": "2026-10-02T16:03:08.037523+00:00"
+    },
+    {
+      "action_index": 16,
+      "source_seq": 149,
+      "submitted_utc": "2026-10-02T16:03:21.170783+00:00",
+      "event": {
+        "title": "跨部门重大事故是否主动支援",
+        "description": "支付清算中心昨晚 P0：与「星瀚科技」无关的底层账务服务数据错乱，责任在基础平台部。你的「灵犀支付」组未被问责。但平台总监在高管群 @ 所有支付相关 TL：「懂账务的快来。」 若你去，至少连续一周凌晨 on-call，你本周还要交「会员权益」方案。"
+      },
+      "selected_candidate": {
+        "choice": 2,
+        "action": "在群里表示可远程答疑两小时，不现场驻场"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 跨部门P0：选项3沉默伤网络/声誉；选项1全情救火须连续一周凌晨on-call且威胁本周近checkpoint交付(会员权益方案,C9)与本组Health；选项2远程2h专家答疑为有界高价值贡献，兼顾跨部门网络与自身交付。选2。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 155,
+      "observed_utc": "2026-10-02T16:03:22.721358+00:00"
+    },
+    {
+      "action_index": 17,
+      "source_seq": 157,
+      "submitted_utc": "2026-10-02T16:03:26.290870+00:00",
+      "event": {
+        "title": "健康检查返回错误状态",
+        "description": "负载均衡健康检查端点你返回了 200 但 body 里 status 是 degraded，导致流量仍打入异常实例。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "立即修 endpoint 并检查其他服务"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 健康检查缺陷：选项3等on-call属被动失责，选项2只修当前治标；选项1立即修复并排查其他服务，体现真实ownership与工程质量、防扩散。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 4,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 163,
+      "observed_utc": "2026-10-02T16:03:27.830911+00:00"
+    },
+    {
+      "action_index": 18,
+      "source_seq": 165,
+      "submitted_utc": "2026-10-02T16:03:31.225474+00:00",
+      "event": {
+        "title": "项目延期如何向客户汇报长链",
+        "description": "你负责的项目因为一个上游依赖出了问题，确定要延期一周，原定交付日就在三天后。客户对这个项目很看重，之前还在他们公司内部立了军令状。你需要决定怎么把延期这件事告诉客户。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "第一时间主动同步，带上原因分析、补救方案和新时间表"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 延期汇报：选项3谎报按时属信任红线；选项2拖延赌博风险不可控；选项1第一时间主动同步附原因/补救/新时间表，最专业且守信任。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 171,
+      "observed_utc": "2026-10-02T16:03:32.473005+00:00"
+    },
+    {
+      "action_index": 19,
+      "source_seq": 173,
+      "submitted_utc": "2026-10-02T16:03:36.088727+00:00",
+      "event": {
+        "title": "下班后健身还是加班赶进度",
+        "description": "你给自己定了下班后规律健身的计划,已经坚持了一阵,体感和精力都好了不少。但今晚手头有个不紧急的活,做完能让明天轻松些。健身还是加班,只能选一个。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "按计划去健身,保持身体节奏,工作明天高效处理"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 健身vs加班：活不紧急且H=4偏低；选项3熬夜两头最伤健康，选项2牺牲健康换非紧急活；选项1保健康节奏明天高效，合C10不以健康代价换非必要产出。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 179,
+      "observed_utc": "2026-10-02T16:03:37.619517+00:00"
+    },
+    {
+      "action_index": 20,
+      "source_seq": 181,
+      "submitted_utc": "2026-10-02T16:03:41.121414+00:00",
+      "event": {
+        "title": "同事总迟交拖累你的进度",
+        "description": "你和同事小吴是上下游，你的活要等他的产出才能开工。可他总在最后一刻才交，这次又拖到了 deadline 当天下午，害你只能熬夜赶工。他一脸轻松地说「就晚了一会儿嘛」。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "平和地和他对齐交接时间点，必要时拉上排期一起明确"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 同事迟交：选项3大群点名损关系/Dignity，选项2默默兜底伤健康且纵容；选项1平和对齐交接时间点必要时拉排期，建设性解决且护自身利益。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 5,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 187,
+      "observed_utc": "2026-10-02T16:03:42.730458+00:00"
+    },
+    {
+      "action_index": 21,
+      "source_seq": 189,
+      "submitted_utc": "2026-10-02T16:03:48.679809+00:00",
+      "event": {
+        "title": "项目延期如何向客户汇报长链",
+        "description": "你提前坦诚沟通，客户虽然不太高兴，但认可你的专业和担当：「至少你没瞒着我，让我好在内部交代。」他追问：能不能先交付一个可用的核心功能，剩下的下周补？"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "评估后给出可行的「分阶段交付」方案，先交核心、再补完整"
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 延期后续：选项2为讨好硬答应超承诺不可信且埋雷；选项1评估后给可行分阶段交付(先核心后完整)，务实且守信任。新Level L2按C8重置响应，聚焦更清晰真实成果。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 195,
+      "observed_utc": "2026-10-02T16:03:50.107564+00:00"
+    },
+    {
+      "action_index": 22,
+      "source_seq": 197,
+      "submitted_utc": "2026-10-02T16:03:53.579085+00:00",
+      "event": {
+        "title": "办公室绿植轮值忘记浇水",
+        "description": "行政排你本周给公共区绿植浇水，你忙忘了，周三行政提醒「植物快枯了」。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "当天补救并设日历提醒"
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 绿植轮值：选项3敷衍失责，选项2转嫁责任；选项1当天补救+设提醒，负责任防复发且成本极低。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 203,
+      "observed_utc": "2026-10-02T16:03:55.605883+00:00"
+    },
+    {
+      "action_index": 23,
+      "source_seq": 205,
+      "submitted_utc": "2026-10-02T16:04:00.037284+00:00",
+      "event": {
+        "title": "匿名反馈是否透露身份",
+        "description": "季度团队匿名调研中，你反馈了关于Leader管理风格的具体建议，包括一些批评意见。调研后Leader在团队会上表示'匿名反馈是懦夫行为，有问题应该当面说'。几天后他私下找你：'虽然不知道是谁，但我觉得你最有可能提出那些具体意见，我想听听你的真实想法'。"
+      },
+      "selected_candidate": {
+        "choice": 1,
+        "action": "承认并当面详细阐述你的反馈，提供建设性改进建议"
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 匿名反馈身份：选项2向Leader撒谎否认，被识破即信任危机；选项1坦诚承认并当面给建设性建议，以诚实担当直面Leader，合C1且经营Leader关系。选1。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 3
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 211,
+      "observed_utc": "2026-10-02T16:04:01.502426+00:00"
+    },
+    {
+      "action_index": 24,
+      "source_seq": 213,
+      "submitted_utc": "2026-10-02T16:04:13.841378+00:00",
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=VISIBILITY F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q2体力：缺口O=5(Leader要更清晰成果)/H=6，D=10封顶；避开带HiddenRisk与Dignity代价的高强度工作；选准备汇报材料(O+1,有真实成果可包装)起步。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 3
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 219,
+      "observed_utc": "2026-10-02T16:04:15.173470+00:00"
+    },
+    {
+      "action_index": 25,
+      "source_seq": 221,
+      "submitted_utc": "2026-10-02T16:04:18.365895+00:00",
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。"
+      },
+      "selected_candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1
+      },
+      "notes": "[CTRL G=O P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=OTHER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q2体力续：剩2点，选人脉维护补Network(N+1)并留1点给健康恢复；无绑定风险。",
+      "public_before": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        }
+      },
+      "public_after": {
+        "session_id": "4a2d8eb77db944ebbd1bb44e0c806dd1",
+        "time": {
+          "current_month": 6,
+          "current_quarter": 2,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 13,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 2,
+          "energy": 1
+        }
+      },
+      "fresh_observe": true,
+      "observe_seq": 227,
+      "observed_utc": "2026-10-02T16:04:19.783107+00:00"
+    }
+  ],
+  "foreensic_hold": {
+    "status": "ACTIVE",
+    "owner": "S09 Stage/Main",
+    "reason": "Preserve exact Candidate drift, validated stop and reviewer/report latency sources for independent acceptance.",
+    "release_condition": "Stage/Main accepts compact result and explicitly releases forensic/dependent review hold; cleanup requires separate authorization.",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T160103Z\\events-20261002T160103Z.jsonl",
+        "bytes": 343982,
+        "sha256": "4115aa6d118c29fca4b5be6f051bb21e6c630c9043cbd1b0b7087d6bcc96e75e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261002T160103Z\\transcript-20261002T160103Z.log",
+        "bytes": 88313,
+        "sha256": "81a4af9116809b88448ff9e8d7059dba39f76876a896c884227b4af08ee54e05"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\runner-result.json",
+        "bytes": 29487,
+        "sha256": "9f8ae68ddc00a901d179e30ebae076e6ddb8d062ae139ea9bb34b19e45a9876e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\preflight.json",
+        "bytes": 7333,
+        "sha256": "f144dbba638f9ff8d8ed9e5e95e35368379ccf2b657549f1f1cfcd57758b643a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\runner-stdout.log",
+        "bytes": 46422,
+        "sha256": "366c09556023e3a445c235b6b6da205dd0bcc1fb3bd00fe2c85daeb087634e73"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\service-stdout.log",
+        "bytes": 615151,
+        "sha256": "c5f71b9c820c29394c66f03b3579fd1d89be1ecb9b0d9d7ebe761071836d9403"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\action-contexts.json",
+        "bytes": 97513,
+        "sha256": "69b7885deeb5621feb1b618f49774d2d1cdd0421de53dcdada47189d398a1034"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\h1-packet.json",
+        "bytes": 10487,
+        "sha256": "173f8277f15b6f2aaf9e6da6c38db65bfcb6389475b84611c8b07f5ac25423a3"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\h1-decision.json",
+        "bytes": 18025,
+        "sha256": "81929790677e2fe5064cd43c5a546ab812bee38a87e59b4489a5ef31336135ec"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\h2-packet.json",
+        "bytes": 45478,
+        "sha256": "51189f4d0761a2abb8c1d7c5c8b40524832f36cabfd856533f5cbc9b623117d1"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\h2-review-start.json",
+        "bytes": 58,
+        "sha256": "d1fc98e204a88d406839e251b8203222454f3c6e45298e127dff07c1e83b31d0"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\h2-decision.json",
+        "bytes": 4764,
+        "sha256": "522e266a641b353690dbc4b2fe63cf1df428ccd1fa56f87f693ca933e802cbcf"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\development-stop.json",
+        "bytes": 4516,
+        "sha256": "dc6ccce012f5b1dd9e9ec43306a19c0709033928cd241423189e036c9007bc34"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\review-6.json",
+        "bytes": 1142,
+        "sha256": "d4df8d5fcedc634bd4614debc1c53eb3414a67884f5095958ceed132825ab08b"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\post_run_summary.json",
+        "bytes": 52658,
+        "sha256": "a4d0d7d7277a165ffae8d6762ea51ffe94815b8395012497b1fc36d3a2c9b479"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run16-v10f\\policy-summary.json",
+        "bytes": 37525,
+        "sha256": "ef1fb0685f7a907ecd8dab9bef729f5fac557c232338df62663d7cdbbbcce39a"
+      }
+    ]
+  },
+  "decision": "S09_RUN16_V10F_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE",
+  "next_game": "NOT_AUTHORIZED",
+  "replacement": "NOT_AUTHORIZED",
+  "main_v8a": "UNCHANGED"
+}

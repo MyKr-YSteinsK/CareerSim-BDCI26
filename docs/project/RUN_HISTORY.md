@@ -1,5 +1,10 @@
 # RUN_HISTORY
 
+## S09-RUN16 v10f — H2 confirmed K1 Candidate abort
+
+- One authorized fresh game at execution `32e0e6b`; `DEVELOPMENT_ABORT_CANDIDATE_VIOLATION`, HIGH validated Planning/K1 receipt for a11 numeric `HiddenRisk+1` ranking/notes. Cutoff25 successes/0 failures/26 canonical observes, alive M6 C/promoted L1→L2; latest H6/D10/S13/N7/O6/W2/E1. Score/final grade/survival/75+ NOT_VALIDATED. Header/BC/fresh25/25; semantic preflight FAIL. No numeric-S/growth-cap/false-positive class observed in bounded notes.
+- H1/H2 packet→decision73.058/92.126s, snapshot overruns8/13 actions; M6 immediate relay failed (reported after cleanup), so reviewer workflow reliability FAIL despite supported canonical stop. Play200.876s; usage/compression UNKNOWN. Cleanup stop0/manager stopped/all ports released; Runner1 controlled abort, wrapper1 tail limitation; no restart/replacement or Candidate/tooling/flags patch. Local raw FORENSIC_HOLD ACTIVE. [Run record](runs/v10f-run16-reviewer-validation.md) / [compact evidence](runs/v10f-run16-reviewer-evidence.json); `IN_FLIGHT_EVIDENCE`. Decision `S09_RUN16_V10F_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE`; authorization CONSUMED, next gameNOT_AUTHORIZED, main v8a freeze unchanged.
+
 ## S09-RUN12 v10c — M1 H1 contract abort
 
 - One authorized fresh game at `0678e3c`; `DEVELOPMENT_CENSORED_EARLY_CONTRACT_ABORT`. 3 successful actions/4 observes/fresh pairs3/3; POL/PROBE/BC3/3 but anchored CTRL/full five-marker0/3 because prose precedes CTRL. BC=PASS did not catch placement; H2/H3/Reviews/runway NOT_REACHED. No final score, natural terminal, survival regression or strategy-ceiling conclusion.
