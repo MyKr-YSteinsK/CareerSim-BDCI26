@@ -1,0 +1,868 @@
+{
+  "schema_version": 1,
+  "task": "S10-06",
+  "status": "Complete",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "classification": "NEGATIVE_POLICY_SIGNAL",
+  "classification_basis": "Natural early terminal AND concrete R5/R6/R7/R8/R9 execution failures; low score alone is not sufficient.",
+  "branch": "codex/s10-06-v13-run01",
+  "parent_sha": "eed75f580fef865f28a566a15113d8eab8a8e1d8",
+  "main_fallback_sha": "8267d420da29888d0a05403991f8980e251aaa0c",
+  "candidate": "candidate-v13-empirical-promotion-playbook",
+  "package_hashes": {
+    "manifest.json": "7378e943988bc7d28e0fd595e4baccb1d698a4b93c2784c73d39aae6e84178e1",
+    "skills/rolling-planning/SKILL.md": "cd7e7434baf04ff38dbbfcf2a15727fc3c5d535dc22e9de29dc0ac23e5703a38",
+    "skills/structured-state-board/SKILL.md": "da76071dd035fcbb9073d69173db9a629f2404189709d39ea950dfd78bcd1cae",
+    "skills/delivery-progress/SKILL.md": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528",
+    "skills/risk-review/SKILL.md": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd"
+  },
+  "protected_hashes_after_equal_preflight": true,
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "live_budget": {
+    "installs": 1,
+    "service_starts": 1,
+    "runner_play_attempts": 1,
+    "fresh_game_count": 1,
+    "replacement": 0,
+    "manual_intervention": 0,
+    "provider_completion_probes": 0,
+    "extra_reporting_queries": 0
+  },
+  "provider_budget_gate": "PASS_AVAILABILITY; initial available CNY9.34; full-run funding UNKNOWN",
+  "run": {
+    "session_id": "97990a12bbd94419abdbf2011e2db159",
+    "play_start_utc": "2026-10-03T18:04:35.219112+00:00",
+    "play_end_utc": "2026-10-03T18:21:40.516466+00:00",
+    "exit_code": 0,
+    "stop_exit_code": 0,
+    "listeners_remaining": [],
+    "manager_pid_file_absent": true,
+    "service_wrapper_exit": 1
+  },
+  "outcome": {
+    "outcome": "eliminated",
+    "survival_months": 36,
+    "completed": false,
+    "quantitative_score": 34.01,
+    "competition_partial_score": 23.81,
+    "grade": "D",
+    "terminal": "NATURAL_TRUST_CRISIS",
+    "final_public_state": {
+      "H": 7,
+      "D": 7,
+      "S": 43,
+      "N": 20,
+      "O": 16,
+      "W": 11,
+      "E": 1,
+      "level": "L4",
+      "tenure": 1
+    },
+    "promotions": [
+      6,
+      24,
+      36
+    ]
+  },
+  "reviews": [
+    {
+      "month": 6,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L2",
+      "promoted": true,
+      "pre": {
+        "H": 3,
+        "D": 10,
+        "S": 9,
+        "N": 2,
+        "O": 3,
+        "W": 2,
+        "E": 0,
+        "level": "L1",
+        "tenure": 5
+      },
+      "first_review_state": {
+        "H": 3,
+        "D": 10,
+        "S": 9,
+        "N": 3,
+        "O": 3,
+        "W": 2,
+        "E": 0,
+        "level": "L2",
+        "tenure": 1
+      },
+      "pre_observe_line": 171,
+      "trigger_action_line": 173,
+      "post_observe_line": 179
+    },
+    {
+      "month": 12,
+      "grade": "C",
+      "level_before": "L2",
+      "level_after": "L2",
+      "promoted": false,
+      "pre": {
+        "H": 8,
+        "D": 10,
+        "S": 21,
+        "N": 6,
+        "O": 5,
+        "W": 4,
+        "E": 0,
+        "level": "L2",
+        "tenure": 6
+      },
+      "first_review_state": {
+        "H": 7,
+        "D": 10,
+        "S": 21,
+        "N": 7,
+        "O": 4,
+        "W": 4,
+        "E": 0,
+        "level": "L2",
+        "tenure": 7
+      },
+      "pre_observe_line": 371,
+      "trigger_action_line": 373,
+      "post_observe_line": 379
+    },
+    {
+      "month": 18,
+      "grade": "C",
+      "level_before": "L2",
+      "level_after": "L2",
+      "promoted": false,
+      "pre": {
+        "H": 9,
+        "D": 10,
+        "S": 21,
+        "N": 7,
+        "O": 4,
+        "W": 4,
+        "E": 0,
+        "level": "L2",
+        "tenure": 12
+      },
+      "first_review_state": {
+        "H": 10,
+        "D": 10,
+        "S": 21,
+        "N": 7,
+        "O": 4,
+        "W": 4,
+        "E": 0,
+        "level": "L2",
+        "tenure": 13
+      },
+      "pre_observe_line": 563,
+      "trigger_action_line": 565,
+      "post_observe_line": 571
+    },
+    {
+      "month": 24,
+      "grade": "B",
+      "level_before": "L2",
+      "level_after": "L3",
+      "promoted": true,
+      "pre": {
+        "H": 7,
+        "D": 10,
+        "S": 21,
+        "N": 6,
+        "O": 6,
+        "W": 6,
+        "E": 0,
+        "level": "L2",
+        "tenure": 18
+      },
+      "first_review_state": {
+        "H": 7,
+        "D": 10,
+        "S": 21,
+        "N": 7,
+        "O": 6,
+        "W": 6,
+        "E": 0,
+        "level": "L3",
+        "tenure": 1
+      },
+      "pre_observe_line": 755,
+      "trigger_action_line": 757,
+      "post_observe_line": 763
+    },
+    {
+      "month": 30,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L3",
+      "promoted": false,
+      "pre": {
+        "H": 9,
+        "D": 10,
+        "S": 36,
+        "N": 16,
+        "O": 10,
+        "W": 9,
+        "E": 0,
+        "level": "L3",
+        "tenure": 6
+      },
+      "first_review_state": {
+        "H": 10,
+        "D": 10,
+        "S": 36,
+        "N": 16,
+        "O": 9,
+        "W": 10,
+        "E": 0,
+        "level": "L3",
+        "tenure": 7
+      },
+      "pre_observe_line": 955,
+      "trigger_action_line": 957,
+      "post_observe_line": 963
+    },
+    {
+      "month": 36,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L4",
+      "promoted": true,
+      "pre": {
+        "H": 9,
+        "D": 10,
+        "S": 42,
+        "N": 20,
+        "O": 16,
+        "W": 12,
+        "E": 0,
+        "level": "L3",
+        "tenure": 12
+      },
+      "first_review_state": {
+        "H": 9,
+        "D": 10,
+        "S": 42,
+        "N": 16,
+        "O": 16,
+        "W": 13,
+        "E": 0,
+        "level": "L4",
+        "tenure": 1
+      },
+      "pre_observe_line": 1147,
+      "trigger_action_line": 1149,
+      "post_observe_line": 1155
+    }
+  ],
+  "actions": {
+    "attempts": 145,
+    "success": 144,
+    "rejected": 1,
+    "unknown": 0,
+    "fresh_observes": 146,
+    "successful_action_first_fresh_pairs": 144,
+    "legal_integer_choices": 145,
+    "phase_counts_success": {
+      "HANDBOOK": 1,
+      "STORY": 108,
+      "ENERGY": 24,
+      "MAIN": 11
+    },
+    "wire_duplicate_calls_excluded": 297,
+    "wire_duplicate_results_excluded": 297
+  },
+  "main_choices": [
+    {
+      "month": 3,
+      "level": "L1",
+      "action_raw_line": 125,
+      "pre_observe_raw_line": 123,
+      "post_observe_raw_line": 131,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output/Network P=A R=PASS RB=NONE] [DL i=D3 n=2 focus=DELIVERY_CLAIMED evidence=UNVERIFIED checkpoint=NEAR recognition=0] Q1主行动选申请关键项目：O+2/S+1/N+1为最高总增益，具实际ownership、负荷可承受、无material danger，直接强化半年评审可见绩效。"
+    },
+    {
+      "month": 6,
+      "level": "L2",
+      "action_raw_line": 229,
+      "pre_observe_raw_line": 227,
+      "post_observe_raw_line": 235,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D4 n=3 focus=DELIVERY_CLAIMED evidence=UNVERIFIED checkpoint=NEAR recognition=0] Q3主行动选申请关键项目：O+2/S+1/N+1总增益最高，为不同family的ownership路径，直接补Primary Gap=Output。R5：准备汇报材料→Output clean NO_GAIN，改用responsive alternative。"
+    },
+    {
+      "month": 9,
+      "level": "L2",
+      "action_raw_line": 325,
+      "pre_observe_raw_line": 323,
+      "post_observe_raw_line": 331,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D4 n=3 focus=DELIVERY_CLAIMED evidence=UNVERIFIED checkpoint=NEAR recognition=0] Q4主行动选申请关键项目：O+2/S+1/N+1总增益最高且直补Primary Gap=Output；D=10满使向领导汇报/曝光成果的Dignity增益浪费。"
+    },
+    {
+      "month": 12,
+      "level": "L2",
+      "action_raw_line": 421,
+      "pre_observe_raw_line": 419,
+      "post_observe_raw_line": 427,
+      "selected_choice_text": "向领导汇报成果",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] 主行动选向领导汇报成果：直接提升领导可见度与组织认可(O+1/N+1/D+1)，回应Leader\"只会忙、不会赢\"的反馈；D=9未满故Dignity增益有效。"
+    },
+    {
+      "month": 15,
+      "level": "L2",
+      "action_raw_line": 517,
+      "pre_observe_raw_line": 515,
+      "post_observe_raw_line": 523,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|提升Output。主行动选申请关键项目：广告O+2/S+1/N+1，广义成长最优且直击Output缺口。"
+    },
+    {
+      "month": 18,
+      "level": "L2",
+      "action_raw_line": 613,
+      "pre_observe_raw_line": 611,
+      "post_observe_raw_line": 619,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|提升Output。Q7主行动选申请关键项目(O+2,S+1,N+1)，广告收益最高、广义成长最优，直击Output缺口。"
+    },
+    {
+      "month": 21,
+      "level": "L2",
+      "action_raw_line": 709,
+      "pre_observe_raw_line": 707,
+      "post_observe_raw_line": 715,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q8主行动选申请关键项目(O+2,S+1,N+1)，广告收益最高且广义成长，Output本季已回升继续加固。"
+    },
+    {
+      "month": 24,
+      "level": "L3",
+      "action_raw_line": 805,
+      "pre_observe_raw_line": 803,
+      "post_observe_raw_line": 811,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q9主行动选申请关键项目(O+2,S+1,N+1)，广告收益最高且广义成长，Output为缺口继续加固。"
+    },
+    {
+      "month": 27,
+      "level": "L3",
+      "action_raw_line": 909,
+      "pre_observe_raw_line": 907,
+      "post_observe_raw_line": 915,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q10主行动选申请关键项目(O+2,S+1,N+1)，广告收益最高且广义成长，隐患引爆后重建Output。"
+    },
+    {
+      "month": 30,
+      "level": "L3",
+      "action_raw_line": 1005,
+      "pre_observe_raw_line": 1003,
+      "post_observe_raw_line": 1011,
+      "selected_choice_text": "申请关键项目",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q11主行动选申请关键项目(O+2,S+1,N+1)，广告收益最高且广义成长，Output为缺口继续加固。"
+    },
+    {
+      "month": 33,
+      "level": "L3",
+      "action_raw_line": 1101,
+      "pre_observe_raw_line": 1099,
+      "post_observe_raw_line": 1107,
+      "selected_choice_text": "向领导汇报成果",
+      "response_scope": "MIXED_CROSS_MONTH_REVIEW_OR_LEVEL",
+      "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|Output已触顶(16)。Q12主行动转向巩固：向领导汇报成果(O+1,N+1,D+1)，强化可见度与领导关系为晋升铺路。"
+    }
+  ],
+  "clean_energy_no_gain_cases": [
+    {
+      "family": "准备汇报材料",
+      "dimension": "O",
+      "month": 6,
+      "level": "L2",
+      "pre": 6,
+      "post": 6,
+      "action_line": 205,
+      "post_observe_line": 211,
+      "next_same_family": {
+        "month": 6,
+        "level": "L2",
+        "action_raw_line": 213,
+        "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D4 n=3 focus=DELIVERY_CLAIMED evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|提升Output。继续准备汇报材料：Output为评审Primary Gap，D=10下无下行增厚可见绩效。单次一个Energy action。"
+      },
+      "interpretation": "LOCAL_SAME_MONTH_LEVEL_RESPONSE; NOT_HIDDEN_CAP"
+    },
+    {
+      "family": "准备汇报材料",
+      "dimension": "O",
+      "month": 6,
+      "level": "L2",
+      "pre": 6,
+      "post": 6,
+      "action_line": 213,
+      "post_observe_line": 219,
+      "next_same_family": {
+        "month": 21,
+        "level": "L2",
+        "action_raw_line": 701,
+        "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q8体力第2步：准备汇报材料(O+1,D+1)，Output(5)仍为关键缺口，当前Output偏低，历史NO_GAIN或因触顶，再试一次。"
+      },
+      "interpretation": "LOCAL_SAME_MONTH_LEVEL_RESPONSE; NOT_HIDDEN_CAP"
+    },
+    {
+      "family": "人脉维护",
+      "dimension": "N",
+      "month": 9,
+      "level": "L2",
+      "pre": 7,
+      "post": 7,
+      "action_line": 317,
+      "post_observe_line": 323,
+      "next_same_family": null,
+      "interpretation": "LOCAL_SAME_MONTH_LEVEL_RESPONSE; NOT_HIDDEN_CAP"
+    },
+    {
+      "family": "高强度工作",
+      "dimension": "O",
+      "month": 33,
+      "level": "L3",
+      "pre": 16,
+      "post": 16,
+      "action_line": 1085,
+      "post_observe_line": 1091,
+      "next_same_family": {
+        "month": 36,
+        "level": "L4",
+        "action_raw_line": 1181,
+        "notes": "[CTRL G=Output P=A R=PASS RB=NONE] [DL i=D5 n=3 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NEAR recognition=0] QUARTER_INTENT=A|补Output。Q13体力第1步：高强度工作(O+2,H-1,D-1)，D满值代价近无损，Output为缺口；后续准备汇报材料续补。"
+      },
+      "interpretation": "LOCAL_SAME_MONTH_LEVEL_RESPONSE; NOT_HIDDEN_CAP"
+    },
+    {
+      "family": "准备汇报材料",
+      "dimension": "O",
+      "month": 33,
+      "level": "L3",
+      "pre": 16,
+      "post": 16,
+      "action_line": 1093,
+      "post_observe_line": 1099,
+      "next_same_family": null,
+      "interpretation": "LOCAL_SAME_MONTH_LEVEL_RESPONSE; NOT_HIDDEN_CAP"
+    }
+  ],
+  "empirical_policy": {
+    "review_window_deliverability": {
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence": [
+        "M11 action373 compares the timely normal Tuesday delivery with Monday acceleration, and chooses a two-day architecture course; the normal delivery remains publicly on time, so this is a qualified R3 exception, not proof of window neglect.",
+        "M12 action381 seeks to implement the office-temperature solution; completion remains unverified. Output dominates subsequent allocation and higher-value window realization is not established."
+      ],
+      "locators": {
+        "events": [
+          371,
+          373,
+          379,
+          381
+        ],
+        "transcript": [
+          2386,
+          2617,
+          2629
+        ]
+      }
+    },
+    "result_ladder": {
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence": [
+        "Action DL evidence stays UNVERIFIED rather than treating tool success as public verification.",
+        "D5/IN_PROGRESS/UNVERIFIED/NEAR persists for 105 action markers; full delivery realization and recognition-link maintenance cannot be credited."
+      ],
+      "locators": {
+        "events": [
+          381,
+          1181
+        ]
+      }
+    },
+    "local_response_discount": {
+      "status": "FAIL",
+      "evidence": [
+        "M6 report action205 produces O6→6; action213 immediately repeats the same family at the same Level and state, without an independent non-Output benefit.",
+        "M9 changes to intensive work; M33 switches from intensive work to report after fresh O NO_GAIN. These positive cases do not erase the M6 violation.",
+        "M33 main action1101 turns two flat observations into the explicit forbidden cap claim Output已触顶(16)."
+      ],
+      "locators": {
+        "events": [
+          203,
+          205,
+          211,
+          213,
+          219,
+          309,
+          1085,
+          1091,
+          1093,
+          1099,
+          1101
+        ],
+        "transcript": [
+          4320,
+          4324
+        ]
+      }
+    },
+    "energy_one_step": {
+      "status": "FAIL",
+      "evidence": [
+        "24 successful Energy actions each have a fresh post-observe; action-observe mechanics pass.",
+        "M18 action597 says 后续留1体力健康恢复; M24 action789 and M33 action1085 prescribe the later report action. These are retained multi-step recipes, despite one integer call at a time."
+      ],
+      "locators": {
+        "events": [
+          597,
+          603,
+          605,
+          789,
+          795,
+          797,
+          1085,
+          1091,
+          1093
+        ],
+        "transcript": [
+          1227
+        ]
+      }
+    },
+    "conditional_main": {
+      "status": "FAIL",
+      "evidence": [
+        "9/11 Main choices apply for key projects; M12/M33 report to the leader.",
+        "M18 transcript repeatedly reopens alternatives, then maximizes advertised Output despite known previous lack of realized Output. M27 action909 resumes advertised-highest ownership after the failed cleanup, with no public clearance of the work-continuity danger.",
+        "Main transitions are cross-month MIXED; their net public changes cannot establish the project family effect."
+      ],
+      "locators": {
+        "events": [
+          613,
+          909
+        ],
+        "transcript": [
+          3477,
+          3509
+        ]
+      }
+    },
+    "no_advance_reroute": {
+      "status": "FAIL",
+      "evidence": [
+        "M12: explicit objective/checkpoint rebuild to M18 and a different Main report family; partial positive evidence.",
+        "M18: acknowledges C/no promotion but keeps Output and the same intensive-work→health recipe plus project Main; no tested-path reroute.",
+        "M30: acknowledges B/no promotion but keeps Output and intensive-work→report plus project Main. Generic goal restatement is not a real reroute."
+      ],
+      "locators": {
+        "events": [
+          379,
+          381,
+          421,
+          571,
+          573,
+          597,
+          613,
+          963,
+          965,
+          989,
+          1005
+        ],
+        "transcript": [
+          2617,
+          2629,
+          3384,
+          3398,
+          4114,
+          4124
+        ]
+      }
+    },
+    "material_danger": {
+      "status": "FAIL",
+      "evidence": [
+        "M19 transcript3520 explicitly discards public HR accumulated-risk warning because it maps the concept to excluded HiddenRisk. This confuses a public warning with forbidden hidden stock.",
+        "M27 public explosion reduces O15→6; the only legacy-risk cleanup attempt893 costs2 with E1 and is rejected. After fresh recovery, report action901 and project909 proceed without public danger-clearance evidence. No successful legacy-risk cleanup occurs in this run.",
+        "M36 final intensive work1181 follows renewed public HR warning and a mentor incident; natural trust-crisis terminal follows. This is temporal evidence, not identification of the single causal action."
+      ],
+      "locators": {
+        "events": [
+          619,
+          715,
+          811,
+          891,
+          893,
+          899,
+          901,
+          909,
+          1131,
+          1155,
+          1163,
+          1181,
+          1187
+        ],
+        "transcript": [
+          3520,
+          4009,
+          4029,
+          4049
+        ]
+      }
+    },
+    "ordinary_cost_behavior": {
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence": [
+        "Intensive-work choices accept real H/D costs while MODE=A; M12 client dinner397 accepts an ordinary time cost for a compliant client relationship.",
+        "MODE=S occurs only twice, one acute physical-danger action and the rejected M27 cleanup. Health-buffer recovery under MODE=A still consumes several Energy points; its opportunity cost is unproven."
+      ],
+      "locators": {
+        "events": [
+          109,
+          397,
+          413,
+          509,
+          597,
+          605
+        ]
+      }
+    }
+  },
+  "runtime": {
+    "action_observe": "PASS_144_OF_144",
+    "session_identity": "PASS",
+    "startup_skill_load": "PASS_WITH_LIMITATIONS: requests Board→Delivery→Planning→Risk; parallel results complete in Planning→Risk→Delivery→Board order, all before new_game",
+    "skill_reads": [
+      {
+        "skill": "rolling-planning",
+        "request_line": 5,
+        "result_line": 13,
+        "success": true,
+        "content_present": true,
+        "shape": "NATIVE_STRING_RESULT"
+      },
+      {
+        "skill": "risk-review",
+        "request_line": 7,
+        "result_line": 15,
+        "success": true,
+        "content_present": true,
+        "shape": "NATIVE_STRING_RESULT"
+      },
+      {
+        "skill": "delivery-progress",
+        "request_line": 3,
+        "result_line": 17,
+        "success": true,
+        "content_present": true,
+        "shape": "NATIVE_STRING_RESULT"
+      },
+      {
+        "skill": "structured-state-board",
+        "request_line": 1,
+        "result_line": 19,
+        "success": true,
+        "content_present": true,
+        "shape": "NATIVE_STRING_RESULT"
+      }
+    ],
+    "CTRL": "PASS_MARKER_SYNTAX_145_OF_145; semantic readiness FAIL on unaffordable cleanup",
+    "DL": "PASS_MARKER_SYNTAX_145_OF_145; lifecycle PASS_WITH_LIMITATIONS, stale D5",
+    "risk_semantics": "FAIL_PUBLIC_WARNING_DISCARDED_AND_NO_CLEARANCE",
+    "failed_action_recovery": "PASS_WITH_LIMITATIONS: rejected cost-infeasible action, then fresh same-session observe and replan; no unknown side effect, no harness retry",
+    "compression_count": 0,
+    "compression_scope": "SCOPED_RUN_WINDOW",
+    "compression_recovery": "NOT_EXERCISED",
+    "whole_game_persistence": "PASS_WITH_LIMITATIONS: one final completion frame, natural end M36; M37–48 NOT_EXERCISED",
+    "strategy_evidence_firewall": "FAIL: hidden-cap inference and excluded advertised hidden-risk reasoning appear in model decisions; no hidden stock used by this report",
+    "observer": "READ_ONLY_NO_PROCESS_CONTROL; null current_event supported",
+    "audit_shape_gap": "Native Skill result string manually inspected (success/content), old JSON helper yields {}; no runtime or durable adapter modified"
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 27687531,
+    "output_tokens": 135762,
+    "total_tokens": 27823293,
+    "wall_seconds": 1025.297354,
+    "compression_count": 0,
+    "continuation_count": "UNKNOWN",
+    "observed_final_frames": 1,
+    "cache_tokens_reported": 27363968,
+    "cache_hit_rate_reported": "98.8%",
+    "cost_note": "Reported cost 0.0 is not reliable billed cost; no post-run provider query or invented tariff."
+  },
+  "descriptive_comparison": [
+    {
+      "run": "v6",
+      "quantitative": 75.29,
+      "months": 48,
+      "level": "L6"
+    },
+    {
+      "run": "v7o",
+      "quantitative": 71.83,
+      "months": 48,
+      "level": "L5"
+    },
+    {
+      "run": "v8a RUN07",
+      "quantitative": 72.65,
+      "months": 48,
+      "level": "L5"
+    },
+    {
+      "run": "v8a RUN08",
+      "quantitative": 59.0,
+      "months": 48,
+      "level": "L4"
+    },
+    {
+      "run": "RUN10",
+      "quantitative": 68.4,
+      "months": 48,
+      "level": "L5"
+    },
+    {
+      "run": "v12RUN01",
+      "quantitative": 23.48,
+      "months": 24,
+      "level": "L1"
+    },
+    {
+      "run": "v13RUN01",
+      "quantitative": 34.01,
+      "months": 36,
+      "level": "L4"
+    }
+  ],
+  "comparison_source": "docs/project/research/S10_PROMOTION_FRONTIER_REPORT.md:19-28; historical differences are uncontrolled",
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S10-06 / Main",
+    "reason": "Policy-failure conclusions depend on exact public transitions, model reasoning, and bounded lifecycle/usage source; raw not archived or removed.",
+    "release_authority": "Main/Stage explicit acceptance",
+    "release_conditions": "Independent compact review accepted, source recovery verified, all child/reanalysis dependencies released, explicit hold release then separately authorized cleanup.",
+    "review_point": "RETURN_FOR_V13_GAME_GATE",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T180440Z\\events-20261003T180440Z.jsonl",
+        "bytes": 1457178,
+        "sha256": "e10402d3217aae471485176f941e589f856a138e8746afb4df7d02d0fe0283be"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T180440Z\\transcript-20261003T180440Z.log",
+        "bytes": 366036,
+        "sha256": "4d36ae04bcca0aeff7f365cda1cc70a769ec09238227e4c0ce2445b897fe0b82"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T180440Z\\score_report.json",
+        "bytes": 2749,
+        "sha256": "7fa7043b93a8d471f30e54a72df77df2ed23b7d4811dd87af49d1db530ff9cc6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\preflight.json",
+        "bytes": 2157,
+        "sha256": "53a4576d94e547d38b2e93a6f753e4decacd69506df4874cd2fbb7b4a5054d1f"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\provider-budget.json",
+        "bytes": 787,
+        "sha256": "656b051e27d5cc1c1af095d92e59c70558e74dab34b506ef50299b2970f7df81"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\preflight-list.log",
+        "bytes": 359,
+        "sha256": "e49371b14644de5d2fef27f473550130f0ec21d4d1e72c143f954030fad1ef5d"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\launcher.py",
+        "bytes": 5079,
+        "sha256": "099dacc29801b6890269fd7abc2cda3190cb5c2ecd046a3a75d16bb06cda8bf5"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\runner-result.json",
+        "bytes": 2061,
+        "sha256": "3ca773ba8b2b8831d0895fe11a3cecb8d099c3e65277812773e66d1e7d8b4728"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\post_run_summary.json",
+        "bytes": 193136,
+        "sha256": "527b30984319d3d17be7490088b28dc14affbd8ae3d444ff81aba9000ec50c27"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\llm-run-window.log",
+        "bytes": 811476,
+        "sha256": "168a2f9812f11c5761d973fdda4b3f4c51dc69a288a7a0579046a88f70cbe1fa"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\install-stdout.log",
+        "bytes": 6940,
+        "sha256": "82779b50a2d05b9c0252c15ea8c5cd7b41243419e75ea9c7c42b19cb16788330"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\service-stdout.log",
+        "bytes": 2501687,
+        "sha256": "820f48c126b116cd37e6bd04952cf66b653ea1cc85bbbf5f571525c0b03b85d6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\runner-stdout.log",
+        "bytes": 2009,
+        "sha256": "78d2fc0ce9e7300a28b977abbd5d03494b2557af36568d4c7727bf75b314084e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "64af32ade63f42d5940c9176f2dbce848968fb66b35285c9740a3cca080cb7d6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\progress.json",
+        "bytes": 3468,
+        "sha256": "157640e7c06048e42ac7610253456174798cd69b3d51931f42d2f5ba1cb4a80c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\read_progress.py",
+        "bytes": 2743,
+        "sha256": "78e231e93f5e9d7780060d848390f1777d6129cf4ccfe0c067349dabfbcba36e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\review-boundaries.json",
+        "bytes": 11422,
+        "sha256": "305b2e116016674ab0ca60ebb7532c03a21114a30e8f8e5d154011d1261321e3"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-06-v13-run01\\transitions-public.json",
+        "bytes": 569716,
+        "sha256": "36eeafcb4b5d6de408eaf3d5b37c57febcd01fd165050f83f125a71fee055910"
+      }
+    ]
+  },
+  "validation_flags": "All Candidate validation flags remain frozen false; this session evidence does not rewrite candidate metadata.",
+  "non_claims": [
+    "stable75+",
+    "stable80+",
+    "superiority",
+    "causal optimality",
+    "hidden-test transfer"
+  ],
+  "return": "RETURN_FOR_V13_GAME_GATE",
+  "next_game": "NOT_AUTHORIZED"
+}
