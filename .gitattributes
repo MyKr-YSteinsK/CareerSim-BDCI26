@@ -1,1 +1,6 @@
 /artifacts/dev-runs/** -text
+
+# Canonical Family A runtime bytes must retain their recorded hashes on Windows.
+/configs/runtime_manifest.json text eol=lf
+/skills/career-state-brief/SKILL.md text eol=lf
+/skills/career-decision/SKILL.md text eol=lf

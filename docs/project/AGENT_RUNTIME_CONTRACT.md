@@ -1,125 +1,68 @@
-# Agent Runtime Contract｜运行时总合同
+# Agent Runtime Contract｜S10 Family A
 
-## 1. 优先级
+`S10 FAMILY A STATIC ARCHITECTURE / NOT RUNTIME VALIDATED`
 
-本合同面向运行模型与 Codex。优先级：
+此branch按S10-02授权实现两职责架构，属于 `IN_FLIGHT_EVIDENCE`。Main submission fallback仍为 frozen `candidate-v8a-v7o-donor-core-transplant`，没有替换。旧架构合同可从accepted parent `18241435da3728e64318f6072aabaaba2766e8b2` 恢复；本合同显式改变Skill decomposition、证据准入、摘要/recovery和ordinary输出，不以格式重构掩盖行为delta。
 
-`执行语义正确 > 无冲突 > 关键规则显著 > Token 成本 > 人类可读性`
-
-中文用于 CareerSim 自然语言判断；以下 machine-facing tokens 固定英文，不翻译：
-
-`MODE / REVIEW_PLAN / RECOVERY / PROGRESSION_RESPONSE / GAIN / NO_GAIN / UNKNOWN / PASS / ALLOW / WARN / RECONSIDER / CONTROL_STATE / READY / OBSERVE_REQUIRED / BLOCKED / PREFLIGHT / CTRL / RB / NONE / DONE / NEAR / NOT_NEAR / RECOVERY_PENDING / RECOVERY_READY`
-
-关键规则允许在 manifest 与所属 Skill 中重复，用于 compression 后保留和显著性强化；重复不得产生不同触发条件、不同 owner 或不同退出规则。
-
-## 2. 架构
+## 1. Architecture / authority
 
 ```text
-fresh observe
-  → structured-state-board
-  → delivery-progress
-  → rolling-planning
-  → risk-review
-  → CONTROL_STATE=READY
-  → preflight
-  → PREFLIGHT=PASS
-  → exactly one take_action
-  → CONTROL_STATE=OBSERVE_REQUIRED
-  → fresh observe
+same-session fresh observe
+  → career-state-brief: current public facts + current Career Brief
+  → career-decision: bounded value comparison + final selected-candidate safety
+  → Single Executor: fresh/session/legal check → exactly one take_action
+  → immediate fresh observe
+material checkpoint → same-agent Deep Review → replace current Brief → ordinary loop
 ```
 
-### Executor Control State
+两份Skill均 `Can Submit Action: No`；Single Agent是唯一action submitter。State & Brief管理事实与摘要写入，不rank/select/gate；Decision提出目标/更新建议、比较和final safety，不改写事实。Executor独占实际游戏工具提交。没有Team/Reviewer Agent、第五Skill或跨局learned memory。
 
-The executor owns `CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED`; no Skill may declare `READY` on its behalf.
+## 2. Evidence admission
 
-- `READY` is established after a same-session fresh observe, rebuilt Board and Delivery, one new Planning pass, and final Risk. Preflight is not part of `READY` creation.
-- Preflight consumes that existing `READY`. It checks the same `game_session_id`, one legal integer choice, and Board/Delivery/Planning/final Risk from the same fresh observe; final `R!=RECONSIDER`; CTRL `RB in {NONE,DONE}`; and valid CTRL/DL markers.
-- On success, `PREFLIGHT=PASS` authorizes exactly one submission of the current choice. It does not create `READY` or a reusable authorization. Any failed check sets `BLOCKED` and forbids `take_action`.
-- A successful `take_action` consumes the `READY` decision and one-use preflight, then sets `OBSERVE_REQUIRED`. Its `{success,error}` receipt has no fresh public state and cannot update Board/Delivery, return `READY`, or authorize another action.
-- While `OBSERVE_REQUIRED`, reuse no candidate or prior state and submit no action. The only next gameplay call is a same-session fresh `observe`.
-- After that observe, rebuild Board (including current-Level `PROGRESSION_RESPONSE`), Delivery, Planning, and final Risk; then establish `READY`. Only afterward may a new preflight run.
-- Failed/unknown action outcome, failed observe, session mismatch, or preflight failure sets `BLOCKED`. Submit no action; use only the existing bounded same-session recovery contract.
-- `RECOVERY_PENDING` keeps the state blocked. `RECOVERY_READY` alone authorizes no action; restart with a same-session fresh observe, rebuild Board/Delivery/Planning/final Risk, establish `READY`, then run a new preflight.
+最新participant-visible fresh observe是实时public state权威，public Handbook/Review/result与必要同局官方logs提供补充事实。工具success不证career result，notes不是独立证据。
 
-`RB=BLOCKED` always forbids submission.
+Main本任务接受官方 MCP 当前tool response合法choice直接返回的 `status_updates / effects`（包括 `HiddenRisk` delta）为 `ADVERTISED_CONFIGURED_DELTA`。此类metadata可比较；`advertised/configured delta != realized effect != hidden stock`。动作后以fresh observe验证；差异记 `ADVERTISED != REALIZED / CAUSE UNKNOWN`。不把advertised delta写成current state。Hosted缺字段时用现有公开语义正常决定，不猜值、不为此阻断整局。
 
-Single Agent 是唯一 action submitter。
+禁止hidden stock/counter reconstruction、累积deltas估算存量、private DB/raw Test、internal IDs、decoded private Test mapping、hidden formula/exact threshold/cap reconstruction、field缺失猜值、不可见Story内部effect和event→answer lookup。此为锁定接口准入修正，不宣称官方身份/比赛规则变更，不修改Source Lock。
 
-四个 Skill：
+## 3. Career / failure floor
 
-| Skill | 唯一 owner | 明确禁止 |
-|---|---|---|
-| Board | public facts、Review、STICKY、PROGRESSION_RESPONSE | planning、risk gate、submit |
-| Delivery | current-session delivery lifecycle | Objective/Gap、candidate ranking、risk gate、submit |
-| Planning | long horizon、Review Window、failure recovery、candidate ranking | 修改事实、提交 |
-| Risk | final candidate risk gate | 重做长期规划、提交 |
+目标是剩余horizon的晋升、broad visible成长、ownership与现实成果兑现。普通成本可接受；动态比较public余量、advertised代价、当前负荷、不确定下行及真正可达恢复，避免material survival/safety/trust/job/income failure。无固定Health buffer、risk count、晋升阈值或菜单答案。
 
-## 3. Evidence
+Same-scope约束持续，只有相关公开解除或风险承载场景结束才清除；generic praise、silent warning与一次cleanup不证明clearance。低绩效/no-advance本身不等生存危机。最小必要保护仍保成长，威胁解除后回主线，不补满资源。真实commitment/result优先于弱新承诺，但不挡更强时限机会；claim/receipt/report标签不证成果，stale item须重验可兑现性。
 
-只用 current-session participant-visible public evidence。
+## 4. Career Brief lifecycle / storage decision
 
-`HiddenRisk`、hidden counters、internal scores、internal event ids/effects、public-status-unclear numeric fields：`EXCLUDE_FROM_STRATEGY`。
+`CONVERSATION_RESIDENT`，不是file-backed/durable状态。静态路径依据：Runner `install._write_identity_md` 将manifest写入IDENTITY；host ContextAssembleRail在model call装配；SkillUseRail提供Skill描述，正文由read_file进入dialogue。已存在dialogue输出即可承载逻辑当前摘要，无新host primitive。官方solution只需manifest/两份Skill即可表达此规则；实际加载/执行/compression恢复未验证。
 
-任何 Skill 都不得根据 unavailable/hidden evidence 推断 threshold、cap、weight、eligibility、failure probability 或固定最优 action。
+五组仅为 `SESSION_BASIS / REVIEW_OBJECTIVE / RESULT_COMMITMENT / UNRESOLVED_CONSTRAINT / PATH_UPDATE_STOP`。State & Brief为唯一历史摘要写入责任；Decision只提更新。同局初始化、material checkpoint和recovery输出完整新版本supersedes旧版；ordinary observe仅替换有变化事实和核验basis。逻辑当前版本是最近完整块加后来有效字段替换，不声称旧conversation物理删除。bounded future-relevant，不append历史，不复制全Board、不建parallel plan/cursor/阶段账本，不静默删真实未履行义务。
 
-## 4. Long Horizon
+新session全部reset；Level/context变化重验局部path，fresh事实覆盖stale摘要；无法恢复字段UNKNOWN。result验证与constraint解除都要求same-scope独立公开basis。storage不依赖本机绝对路径、MEMORY.md残留、私有DB/S09 raw或跨局state。Hosted文件权限/持久化UNKNOWN，不作本Candidate依赖。
 
-默认主线：
+## 5. Bounded decisions / deep checkpoints
 
-`SURVIVE → PROMOTE → COMPOUND`
+one fresh observe = one bounded decision，最多两个competitive options、一次直接相关替代比较；选中替代仍需最终安全检查。无新公开证据不重开。Energy每个单integer动作后fresh重新决定，无batch/配方/配额。local clean NO_GAIN只折该Level/context/dimension/已测family，其他路径/多维价值仍开放；混杂UNKNOWN，不推global cap。
 
-正式 Review 是长期控制 checkpoint。坏局面只能暂时改变短期路径，不得无依据覆盖长期主线。
+material正式Review/no-advance/promotion、新/升级major trust/job/compliance warning、major Health/safety shock或活动不可行、major result/failed commitment/blocker、repeated clean NO_GAIN使高值path失效、机会/目标重大失效，才触发same-agent Deep Review。用公开basis去重，同一Review+promotion/多trigger合并一次；普通Story/一次drop/重复旧warning不反复深评。
 
-poor grade / no-promotion 属于 progression failure；本身不等于 survival crisis。
+三问：什么真实改变/奖励/失败及假设失效？下一目标/path和停止事项？什么结果/风险持续、哪种公开证据使它失效？完整新Brief后退出ordinary loop，不做48个月刚性计划。无因果依据UNKNOWN，不以高分单局证明机制。
 
-## 5. Failure Recovery
+## 6. Action safety / recovery / whole-game
 
-统一分类：
+提交前检查同session fresh menu、single legal integer和final selected-candidate safety闭合。successful action后立即fresh observe，receipt无fresh state，不连续stale action。已有session禁止第二new_game。
 
-- `PROGRESSION`：MODE=A，修复绩效/晋升 gap；
-- `RESOURCE`：明确重大 Health/Dignity/Wealth/continuity 约束时 MODE=S，最小必要稳定化；
-- `RISK`：明确 public warning 时 bounded cleanup；只有升级为 material crisis 才可能 S；
-- `DELIVERY`：修复 near-checkpoint commitment/result，不自动 S；
-- `UNKNOWN`：证据不足，不猜测。
+失败/unknown action outcome、session mismatch、observe失败或最终选择未闭合时停止提交；只能在既有授权内核对同局公开状态/日志，不盲重发。仍unknown/不可恢复工具错误停止留证。策略收益未知不妨碍事实合法的bounded决定，但不绕过身份/动作未知hard stop。
 
-任何 recovery 必须有退出条件。`MODE=S` 解除 binding constraint 后立即退出。
+可见resume/compaction/recovery或当前摘要不可核验时：同session→fresh observe→两Skill重读→最小同局官方logs与当前事实重建Brief（缺字段UNKNOWN）→新的fresh合法决定/final safety。旧摘要不能自证恢复；不虚构host compression detector。身份/fresh/read失败不action；丢失历史目标可UNKNOWN重新决定，不无限logs。
 
-若明确的 job-continuity threat 本身由绩效或交付失败造成，直接修复绩效、完成关键交付或恢复晋升成长可以是 `MODE=S` 下最直接的 constraint-relief action；不得把 `S` 机械理解为低调、停止成长或选择最保守动作。
+structured game active时持续whole-game loop，不在action/month/Review/Brief输出处自愿终止；自然结束只认structured `game.ended`，技术失败独立记录。任务live权限始终由Task定义，静态Candidate不授权游戏。
 
-## 6. Progression Response
+## 7. External observability / verification boundary
 
-Board 维护当前 Level 的 `S/N/O = GAIN|NO_GAIN|UNKNOWN`。
+Runtime不要求CTRL/DL/BC/certificate、分支枚举或协议状态自报，不将marker格式作为action gate。notes保留简短公开选择理由；必要fresh/session/legality/final safety/unknown-stop规则仍在模型上下文，不能仅外移为局后audit。
 
-Planning 使用这些事实做 marginal routing：
+Frozen Runner不改：tool events/transcript仍保存session、observe/action顺序、choice/notes；score与runner termination用于horizon/Level/technical failure。Brief更新仅在输出可见时可以审核，缺失不能推断为已执行。
 
-- `NO_GAIN` 只折价该维度；
-- 不立即重复无增益路径；
-- 多维 action 保留其它维度价值；
-- Level change 后全部重置；
-- 不推断 cap。
+`scripts/post_run_audit.py` 的旧marker coverage、历史Skill recovery与numeric-HiddenRisk分类仍服务历史Candidate，不能作为本Candidate adherence verdict。未来S10 live audit需窄适配：将旧marker缺失视为不适用、recovery按本metadata两Skill核对、delta provenance区分advertised与stock、按可见Brief/公开basis审查checkpoint；复用session/fresh pairing/score extraction，不新增marker。本次未修改该历史pipeline或Reviewer controller，未开展live验证。正式submission builder/materials仍锁定v8a，拒绝静态Candidate；本任务只构建Runner-compatible验证包，不是正式submission。
 
-## 7. Decision Budget
-
-`ONE FRESH OBSERVE = ONE PLANNING PASS`
-
-Planning 最多比较两个 genuinely competitive candidates。Risk 只有一次 bounded `RECONSIDER` 分支。没有 genuinely new public evidence 不得重新规划。
-
-Quarterly Energy is strictly sequential: each cycle selects one Energy action, takes it only after Risk/preflight, obtains a same-session fresh observe, rebuilds Board and `PROGRESSION_RESPONSE`, updates Delivery, and runs a new Planning pass for remaining Energy. The prior remaining-action sequence is discarded; it never authorizes a batch.
-
-## 8. Whole-game Persistence
-
-active game 必须持续执行。一次 action closure 不是 assistant execution terminal。
-
-自然结束只认 structured `game.ended`；技术终止必须有明确 runtime/tool failure。
-
-## 9. Context Recovery
-
-只有 observable recovery signal 才触发 recovery。顺序固定：
-
-`same session → fresh observe → reread 4 Skills → rebuild Board → rebuild Delivery → restore Planning → RECOVERY_READY → fresh observe → rebuild Board/Delivery/Planning/final Risk → READY → new preflight`
-
-未完成时禁止 action。
-
-## 10. 修改合同
-
-后续 Candidate 若改变上述 owner、MODE 语义、failure taxonomy、evidence firewall、decision budget 或 action preflight，必须明确标为 behavior/architecture delta，不得以语言/格式重构名义静默修改。
+`runtime_validated=false / gameplay_validated=false / NEXT_GAME=NOT_AUTHORIZED`。

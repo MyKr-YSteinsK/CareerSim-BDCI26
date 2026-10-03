@@ -1,14 +1,22 @@
 {
-  "candidate_id": "candidate-v8a-v7o-donor-core-transplant",
-  "status": "FINAL_FROZEN_FOR_SUBMISSION",
-  "decision": "FINAL_SUBMISSION_FREEZE_V8A",
+  "candidate_id": "candidate-v12-lean-career-brief",
+  "status": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+  "decision": "S10_02_FAMILY_A_STATIC_IMPLEMENTATION",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "CURRENT_RUNTIME_SHELL_PLUS_DIRECT_V7O_STRATEGY_CORE",
-  "parent_candidate_id": "candidate-v7z-world-model-correction",
-  "base_main_sha": "9376b11d7a65231dc2c20fc910b7313bec36187c",
-  "parent_identity": {
-    "runtime_manifest_sha256": "fb4b258dbd82bc88c4c32aa8f50a624c735d840377d029d1e3aa4b78e8ce96c5",
-    "instruction_sha256": "fd9e8f9c413033841d6d1b8c89ff809bd3487da6a35e50bfd422325a5d807c4b",
+  "strategy_delta": "LEAN_SINGLE_AGENT_CAREER_BRIEF_CHECKPOINT_REVIEW",
+  "parent_candidate_id": "candidate-v8a-v7o-donor-core-transplant",
+  "base_main_sha": "9edf73de552ce91af9d9eecf2dbbe6f5def9461d",
+  "parent_sha": "18241435da3728e64318f6072aabaaba2766e8b2",
+  "fallback": {
+    "candidate_id": "candidate-v8a-v7o-donor-core-transplant",
+    "main_sha": "9edf73de552ce91af9d9eecf2dbbe6f5def9461d",
+    "accepted_parent_sha": "18241435da3728e64318f6072aabaaba2766e8b2",
+    "current_candidate_git_blob": "91d533ca5a128e509798a2972fc6bcd5d2129a3f",
+    "runtime_manifest": {
+      "path": "configs/runtime_manifest.json",
+      "sha256": "beb072a63a6c6b859dc3e5dc09fbcb0d170dac15ff16c6403c99f7e9581d7c5e",
+      "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7"
+    },
     "skills": [
       {
         "name": "structured-state-board",
@@ -18,7 +26,7 @@
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "08af9bd5e1d10cff63f2c705d371ab62747204e3"
+        "git_blob": "cd2520ae2e3b927e0d7df67a7e0f1032d9283d86"
       },
       {
         "name": "delivery-progress",
@@ -34,113 +42,111 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "beb072a63a6c6b859dc3e5dc09fbcb0d170dac15ff16c6403c99f7e9581d7c5e",
-    "instruction_sha256": "79de9c4892311104967411d24b2a36597a7deaec4c42ada53b55c7173c8ea8f7"
+    "sha256": "262c115fe3a44963969ce99d308051d87f5940778128473de09be460be8a1ddd",
+    "instruction_sha256": "4a57eb857f58b6eecff3a9a9fa5f18c9a16152de257690fa4b3329c265f0f775"
   },
   "skills": [
     {
-      "name": "structured-state-board",
-      "path": "skills/structured-state-board/SKILL.md",
-      "git_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef"
+      "name": "career-state-brief",
+      "path": "skills/career-state-brief/SKILL.md",
+      "git_blob": "8a4b9c4cc7df0ceeb6c7eba345a8a4d94260c85e",
+      "sha256": "5ad35ed781eba7149a3ce878bf9540de5d310a7cb824a58b313ff74e7501231f"
     },
     {
-      "name": "rolling-planning",
-      "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "cd2520ae2e3b927e0d7df67a7e0f1032d9283d86"
-    },
-    {
-      "name": "delivery-progress",
-      "path": "skills/delivery-progress/SKILL.md",
-      "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
-    },
-    {
-      "name": "risk-review",
-      "path": "skills/risk-review/SKILL.md",
-      "git_blob": "e602fe1a3343a28b472259ae46cfca780e780e48"
+      "name": "career-decision",
+      "path": "skills/career-decision/SKILL.md",
+      "git_blob": "7f96ca8ec90d081e0b5a2ecf35c7d2606fd27479",
+      "sha256": "a7afe9b8e1b6a68c1299b279b7f186b93bf8aebdde2079039d8d8371e241a40b"
     }
-  ],
-  "adopted_mechanisms": [
-    "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
-    "CURRENT_SESSION_PUBLIC_EVIDENCE_ONLY",
-    "SINGLE_AGENT_FOUR_SKILL_OWNERSHIP",
-    "DIRECT_V7O_STRATEGY_CORE",
-    "BROAD_EARLY_COMPOUNDING",
-    "OWNERSHIP_MULTIDIMENSION_MAIN_PRIOR",
-    "DIRECTIONAL_REVIEW_PLAN",
-    "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
-    "MINIMUM_NECESSARY_PROTECTION",
-    "LOCAL_RESPONSE_DOES_NOT_IMPLY_GLOBAL_CAP",
-    "ONE_OBSERVE_ONE_PLANNING_PASS",
-    "RISK_ONLY_BOUNDED_RECONSIDER",
-    "WHOLE_GAME_EXECUTION_PERSISTENCE",
-    "OBSERVABLE_CONTEXT_RECOVERY",
-    "RECOVERY_LABEL_INTERFACE_COMPATIBILITY"
-  ],
-  "runtime_contract_delta": [
-    "FRESH_OBSERVE_CONTROL_STATE",
-    "EXPLICIT_RECONSIDER_BRANCH_ENUM",
-    "NAMED_DELIVERY_CHECKPOINT_ENUM",
-    "PER_ACTION_ENERGY_REPLAN",
-    "ACYCLIC_PREFLIGHT_ORDERING"
-  ],
-  "deferred_mechanisms": [
-    "DURABLE_OR_CROSS_GAME_MEMORY",
-    "FIFTH_SKILL",
-    "TEAM_OR_SWARM"
-  ],
-  "rejected_mechanisms": [
-    "EXACT_DEV_SCORE_WEIGHTS_IN_RUNTIME",
-    "EXACT_PROMOTION_OR_HIDDEN_RISK_THRESHOLDS",
-    "EVENT_ID_OR_TITLE_TO_CHOICE_LOOKUP",
-    "HIDDEN_STATE_RECONSTRUCTION",
-    "FIXED_PROMOTION_MONTH",
-    "FIXED_STORY_ANSWER",
-    "NUMERIC_SURVIVAL_THRESHOLD",
-    "HIDDEN_CAP_INFERENCE_FROM_NO_GAIN"
   ],
   "architecture": {
     "action_submitter": "Single Agent",
-    "skill_count": 4,
-    "retired_skills": {
-      "career-action-trace": "RETIRED"
-    },
-    "memory": "NOT_IMPLEMENTED",
-    "fifth_skill": "DEFERRED",
-    "team_swarm": "DEFERRED",
+    "skill_count": 2,
     "active_skills": [
+      "career-state-brief",
+      "career-decision"
+    ],
+    "memory": "CONVERSATION_RESIDENT_SAME_SESSION_CAREER_BRIEF",
+    "team_swarm": "NOT_IMPLEMENTED",
+    "fifth_skill": "NOT_IMPLEMENTED",
+    "family": "A",
+    "retired_skills": [
       "structured-state-board",
-      "rolling-planning",
       "delivery-progress",
+      "rolling-planning",
       "risk-review"
     ]
   },
-  "compliance_review": "docs/project/reviews/S07-01_COMPLIANCE_PROVENANCE_AND_PROBE_REVIEW.md",
+  "career_brief": {
+    "mechanism": "CONVERSATION_RESIDENT",
+    "fields": [
+      "SESSION_BASIS",
+      "REVIEW_OBJECTIVE",
+      "RESULT_COMMITMENT",
+      "UNRESOLVED_CONSTRAINT",
+      "PATH_UPDATE_STOP"
+    ],
+    "writer": "career-state-brief",
+    "strategic_update_owner": "career-decision",
+    "reset": "NEW_SESSION_DISCARD_ALL",
+    "update": "INITIALIZE_CHECKPOINT_RECOVERY_FULL_REPLACEMENT_ORDINARY_CHANGED_FACTS_ONLY",
+    "recovery": "FRESH_OBSERVE_TWO_SKILL_READS_MINIMAL_SAME_SESSION_OFFICIAL_LOGS_UNKNOWN_FALLBACK",
+    "physical_context_deletion": false,
+    "durable_persistence_proven": false
+  },
+  "deep_review": {
+    "agent": "SAME_SINGLE_AGENT",
+    "cadence": "MATERIAL_CHECKPOINT_ONLY",
+    "deduplication": "PUBLIC_BASIS_IN_CURRENT_BRIEF",
+    "exit": "ONE_CURRENT_OBJECTIVE_CHECKPOINT_PERSISTING_RESULT_CONSTRAINT_STOP"
+  },
+  "evidence_admission": "OFFICIAL_PARTICIPANT_VISIBLE_ADVERTISED_CONFIGURED_DELTA_NOT_REALIZED_OR_HIDDEN_STOCK",
+  "adopted_mechanisms": [
+    "V8A_V7O_PROMOTION_COMPOUNDING_CORE",
+    "BROAD_VISIBLE_GROWTH_OWNERSHIP",
+    "CONDITIONAL_EARLY_RESULT_FEASIBILITY",
+    "DYNAMIC_DOWNSIDE_REACHABLE_RECOVERY",
+    "SAME_SCOPE_UNRESOLVED_CONSTRAINT_CONTINUITY",
+    "LOCAL_CLEAN_RESPONSE_SCOPE",
+    "ONE_FRESH_OBSERVE_ONE_BOUNDED_DECISION",
+    "FINAL_SELECTED_CANDIDATE_SAFETY",
+    "ONE_LEGAL_INTEGER_ACTION_THEN_FRESH_OBSERVE",
+    "OBSERVABLE_RECOVERY",
+    "WHOLE_GAME_EXECUTION"
+  ],
+  "runtime_contract_delta": [
+    "TWO_RESPONSIBILITY_SKILLS",
+    "ONE_LOGICAL_CURRENT_CAREER_BRIEF",
+    "SAME_AGENT_CHECKPOINT_DEEP_REVIEW",
+    "OFFICIAL_VISIBLE_ADVERTISED_DELTA_ADMISSION",
+    "NO_MANDATORY_PER_ACTION_OBSERVABILITY_MARKERS"
+  ],
+  "rejected_mechanisms": [
+    "HIDDEN_STOCK_COUNTER_RECONSTRUCTION",
+    "DELTA_ACCUMULATION_FOR_HIDDEN_STOCK",
+    "PRIVATE_DB_RAW_TEST_INTERNAL_IDS",
+    "HIDDEN_FORMULA_EXACT_THRESHOLD_CAP",
+    "EVENT_TO_ANSWER_LOOKUP",
+    "CROSS_GAME_LEARNED_MEMORY",
+    "ENERGY_RECIPE_QUOTA",
+    "MULTI_ITEM_DELIVERY_STATE_MACHINE",
+    "ENTIRE_V11_V11B_LINEAGE_TRANSPLANT",
+    "TEAM_REVIEWER_AGENT"
+  ],
   "environment_contract": "docs/project/OFFICIAL_SOURCE_LOCK.md",
+  "runtime_contract": "docs/project/AGENT_RUNTIME_CONTRACT.md",
+  "accepted_architecture_report": "docs/project/reviews/S10-01_ARCHITECTURE_RESET_RECOMMENDATION.md",
   "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
   "validation": {
     "runtime_validated": false,
-    "gameplay_validated": true,
-    "provider_validated": true,
+    "gameplay_validated": false,
+    "provider_validated": false,
     "survival_improvement_proven": false,
     "score_improvement_proven": false,
     "long_horizon_adherence": false,
+    "stable_75_plus_proven": false,
     "stable_80_plus_proven": false,
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
-  },
-  "design_intent": "PROMOTION_FIRST_DIRECT_DONOR_CORE_WITH_MODERN_EXECUTION_SHELL",
-  "strategy_donor": {
-    "candidate_id": "candidate-v7o-execution-persistence-convergence",
-    "source_commit": "b2e7ea6441da9c314d8a0ffbf29b9d5800ced10d",
-    "planning_path": "skills/rolling-planning/SKILL.md",
-    "secondary_cross_check_commit": "1114a04b75548cf52f030d123564e527060fc061"
-  },
-  "retired_strategy_overlays": [
-    "PROMOTION_PORTFOLIO_CONDITIONAL_GAP_WEIGHTING",
-    "LAYERED_FAILURE_RECOVERY_RANKING",
-    "NO_GAIN_COVERAGE_PORTFOLIO_MACHINERY",
-    "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
-    "EXTENDED_V7Z_WORLD_MODEL_PROSE",
-    "ACCUMULATED_REVIEW_WINDOW_RANKING_EXCEPTIONS"
-  ]
+  }
 }

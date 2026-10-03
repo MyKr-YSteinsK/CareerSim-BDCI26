@@ -9,12 +9,9 @@ from career_sim_runner.skill_contract import list_bundle_skill_ids, validate_sub
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_SKILLS = {
-    "structured-state-board",
-    "rolling-planning",
-    "delivery-progress",
-    "risk-review",
-}
+EXPECTED_SKILLS = set(
+    json.loads((ROOT / "configs/current_candidate.json").read_text(encoding="utf-8"))["architecture"]["active_skills"]
+)
 
 
 def _build(output: Path) -> None:

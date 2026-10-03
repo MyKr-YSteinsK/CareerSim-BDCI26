@@ -5,8 +5,10 @@
 ## Project
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
-- Branch: main
+- Branch: `codex/s10-02-family-a-static` (IN_FLIGHT_EVIDENCE; main fallback unchanged)
 - Current Stage: `S10-Lab｜架构重置与高分突破冲刺` ACTIVE；S09 COMPLETE
+
+- Branch-local S10-02 `IN_FLIGHT_EVIDENCE`: accepted S10-01 parent `18241435da3728e64318f6072aabaaba2766e8b2` → `candidate-v12-lean-career-brief`, two active Skills (`career-state-brief`, `career-decision`), conversation-resident same-session logical Career Brief and same-agent material-checkpoint Deep Review. Static implementation only; runtime/gameplay/provider and improvement/stable75+/stable80+/hidden-transfer flags false. The Task explicitly authorizes this static architecture/evidence-admission delta; the S10 opening permissions below are historical opening scope. Main/frozen v8a fallback and all raw holds remain unchanged. `NEXT_GAME=NOT_AUTHORIZED`.
 - Parallel Research Track: `Human Play Lab｜人工游玩策略实验线` ACTIVE_FEASIBILITY. This track is isolated from Candidate evolution. Official `career-emulator` documentation exposes a participant-facing local CLI for direct play and a separate MCP entry for Agent use; local zero-provider behavior, public-only rendering, and isolated DB/log routing still require HPL-01 verification before any human game. `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
 
 - S09 Main closeout: accepted as `COMPLETE_WITHOUT_STABLE_75_PLUS_BREAKTHROUGH`. Canonical compact evidence remains pinned to experimental branch `codex/s09-14-v9a-static@c41a1b7210a02603aa19cc2bab19922a80b6cd77`; the experimental Candidate/runtime lineage is NOT merged into main. S09 established high/low trajectory references and diminishing returns from local prompt hardening, but did not prove stable75+, stable80+, hidden-test transfer, v11/v11b superiority, or an optimal four-Skill architecture. RUN21 remains partial technical evidence only; no replacement run is authorized.
@@ -84,11 +86,10 @@
 - S09-RUN02 consumed one authorized fresh v7x game and one `career_emu` lifecycle; it ended by natural elimination at M8 (`19.82 / 13.88 / 8m / E / L1`). The M6 review was C/no-promotion with Output as Primary Gap; no later review was reached. Two M3 S actions were semantically ambiguous, and the next decision after public Health reached 5 returned to A. Gameplay/provider flags apply only to this session; runtime, long-horizon, improvement, stable-80+, and hidden-transfer remain false. Raw events/transcript are on FORENSIC_HOLD; authorization consumed; `NEXT_GAME=NOT_AUTHORIZED`; no replacement run authorized. See [v7x Run #1 validation](runs/v7x-run1-validation.md).
 - S09-04 completed exact-source, public-only resource/intervention forensics for v7x (29 actions) and v4 (23), both Tier A. v7x had explicit recovery menus again at M6; v4 never reached its next Energy choice before M6 Health=0. Last explicit recovery menus were v7x M6 Main and v4 M3 Main; last proven reduction of current exposure/investment was v7x M7's high-tradeoff reduced-investment option (net Health effect UNKNOWN), and v4 M6's already-selected scheduling support. Both final choices lacked proven immediate Health protection. One bounded Story exposure prior within A is READY_FOR_STATIC_IMPLEMENTATION as a hypothesis only; no persistent FRAGILE state, numeric buffer or recovery quota is recommended. Candidate/runtime/validation flags/holds unchanged; HPL untouched; S09 ACTIVE; NEXT_GAME=NOT_AUTHORIZED. See [S09-04 review](reviews/S09-04_RESOURCE_TRAJECTORY_INTERVENTION_FORENSICS.md).
 - S07-47: missing-score partial audit enabled; public trajectory mixed, stronger than v7g on some resources but behind v1/v6 growth. Board fidelity, Delivery verification and transcript evidence discipline fail; recovery lacks four-Skill reread. Decision closure materially improved with residual long tails. WebSocket initiator INSUFFICIENT_EVIDENCE; read-only status-query causality unsupported. The narrow public-evidence/Delivery correctness patch was implemented statically in S07-48; no strategy patch or additional live permission followed. Necessary local failure/recovery evidence remains on FORENSIC_HOLD.
-- Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
-- Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
-- Four Skills: structured-state-board, rolling-planning, delivery-progress, risk-review
-- Architecture: Single Agent is the only action submitter; Board owns current public facts, Planning owns the long-horizon strategy, Delivery owns a bounded current-session public lifecycle, and Risk gates the current candidate
-- Memory: NOT_IMPLEMENTED；fifth Skill: DEFERRED；Team/Swarm: DEFERRED
+- Branch canonical static identity: [current_candidate.json](../../configs/current_candidate.json)
+- Rebuildable branch runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
+- Active Skills: career-state-brief (facts / Career Brief), career-decision (objective / value / final safety / Deep Review); Single Agent is the only action submitter.
+- Career Brief: CONVERSATION_RESIDENT, same-session, logical overwrite; durable persistence and runtime recovery NOT_VALIDATED. No fifth Skill or Team/Swarm implemented. Frozen v8a's previous architecture remains recoverable at main/accepted-parent identity recorded in Candidate metadata.
 
 ## Environment
 
