@@ -78,6 +78,10 @@ UNKNOWN: <decision-relevant unresolved facts | none>
 
 acute physical / psychological / safety warning 必须进入 `STICKY`，即使公开数值看起来尚可。
 
+公开风险按语义记 early caution / accumulated material / imminent severe；不计hidden numeric counter。early caution不单独成为binding。
+
+material accumulated/escalating/imminent trust warning进入 `STICKY`，保留同局来源与scope，直到后续同scope explicit public de-escalation/解除或risk scenario明确结束。`CLEANUP_ACTION != RISK_CLEARED`；cleanup成功、普通action success、immediate observe未重复warning或无关好消息不移除。降级只改变已公开支持的severity，早期caution不维持material binding；Board只记事实，不自行选MODE或候选。
+
 只有 fresh public evidence 明确表明约束已解除，或对应风险场景已经结束，才移出 `STICKY`。
 
 ## PROGRESSION_RESPONSE

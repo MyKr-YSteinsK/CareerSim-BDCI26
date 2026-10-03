@@ -75,6 +75,12 @@ generic praise、普通 promotion/review、成功沟通、action receipt、未�
 
 `recognition_link=1` 仅在公开证据明确把 recognition 与该 item 的结果关联时使用；否则 `0` 或 `?`。
 
+## Stale item / result conversion evidence
+
+`IN_PROGRESS + UNVERIFIED`跨多个formal Review且无新增public milestone时，在现有proof_basis中标stale与最后已知milestone来源；仅保持待确认事实，ranking authority downgrade，不能无限提供强DELIVER依据。无concrete next_checkpoint记UNKNOWN，不虚构近交付或blocker；真实未解除commitment仍可保留，但不等于兑现机会。公开superseded才retire，不为降低n抹掉义务。
+
+Review要求clearer results/highlights时报告其与item的公开关联，Planning负责RESULT_CONVERSION_GAP；Delivery不发明gap。已有publicly verified result而recognition未建立，保留对应结果供Planning比较visibility；generic reporting/tool receipt不更新成verified。具体finish/verify checkpoint可达性UNKNOWN时如实报告，允许新真实ownership路径竞争，不新建lifecycle框架。
+
 ## 与 Review / Recovery 的关系
 
 如果高价值 active item 接近公开 checkpoint：

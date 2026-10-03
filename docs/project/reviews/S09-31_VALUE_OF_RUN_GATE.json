@@ -1,0 +1,111 @@
+{
+  "task": "S09-31",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "base_evidence_sha": "72b31304936f61386b7cd9fd2ec5630cdb69cf22",
+  "candidate": "candidate-v11-result-conversion-risk-persistence",
+  "parent": "candidate-v10h-dynamic-survival-margin",
+  "implementation_gate": "RESET_JUSTIFIED",
+  "base_decision": "PATCH_V10H",
+  "root_cause_ranking": {
+    "PRIMARY": [
+      "PUBLIC_RISK_PERSISTENCE_FAILURE",
+      "RESULT_CONVERSION_FAILURE"
+    ],
+    "SECONDARY": [
+      "ENERGY_MICRO_POLICY_OVERWEIGHT"
+    ],
+    "TERTIARY": [
+      "Plausible prompt interaction; causal role UNKNOWN"
+    ]
+  },
+  "PROMPT_COMPLEXITY_ROLE": "UNKNOWN",
+  "VALUE_OF_RUN": "HIGH",
+  "hypothesis": "Persistent same-scope public-risk warning survives cleanup/silence and affects accountability; formal result deficit leads to finish/verify/recognition or concrete new result path rather than stale generic reporting, preserving clean aggression and G3.",
+  "run_authorized": false,
+  "live_operations": 0,
+  "verification": {
+    "targeted_tests": 57,
+    "model_execution": "NOT_TESTED",
+    "package_mode": "skill_bundle",
+    "skill_ids": [
+      "delivery-progress",
+      "risk-review",
+      "rolling-planning",
+      "structured-state-board"
+    ],
+    "package_path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-31-v11\\submission-final",
+    "package_files": [
+      {
+        "path": "manifest.json",
+        "bytes": 6690,
+        "sha256": "241cdf9b0762f0a60bee8b03825d8a6f5c36d141fdb343876d430e7b809c4236"
+      },
+      {
+        "path": "skills\\delivery-progress\\SKILL.md",
+        "bytes": 5952,
+        "sha256": "65ad8b5b5d984e3ee9b28891195b12790419e50e4b3c0d55da8a301f10e99a0d"
+      },
+      {
+        "path": "skills\\risk-review\\SKILL.md",
+        "bytes": 5195,
+        "sha256": "0243d351816df80bc3919c9d1d024be13389fb8dc7bdd64c05943c6fdeb93469"
+      },
+      {
+        "path": "skills\\rolling-planning\\SKILL.md",
+        "bytes": 7723,
+        "sha256": "2d738caf722b64c0d9ef27ce02caf56ce14c669d227b56b05e7f67adb16b1d77"
+      },
+      {
+        "path": "skills\\structured-state-board\\SKILL.md",
+        "bytes": 6425,
+        "sha256": "65ab04c36d38bff0a9171bad03f07144814b44a8570499578d48ce72128f9bcc"
+      }
+    ],
+    "protected_scope": "UNCHANGED",
+    "secret_scan": "PASS",
+    "diff_check": "PASS"
+  },
+  "prompt_sizes": {
+    "manifest_instruction": {
+      "parent_chars": 5598,
+      "parent_bytes": 8227,
+      "v11_chars": 4636,
+      "v11_bytes": 6507,
+      "char_percent": -17.18470882458021,
+      "byte_percent": -20.906770390178675
+    },
+    "Planning": {
+      "parent_chars": 8114,
+      "parent_bytes": 12382,
+      "v11_chars": 4871,
+      "v11_bytes": 7669,
+      "char_percent": -39.96795661819078,
+      "byte_percent": -38.063317719269904
+    },
+    "structured-state-board": {
+      "parent_chars": 3598,
+      "parent_bytes": 5678,
+      "v11_chars": 4026,
+      "v11_bytes": 6292
+    },
+    "delivery-progress": {
+      "parent_chars": 3530,
+      "parent_bytes": 4920,
+      "v11_chars": 4127,
+      "v11_bytes": 5825
+    },
+    "risk-review": {
+      "parent_chars": 2979,
+      "parent_bytes": 4446,
+      "v11_chars": 3364,
+      "v11_bytes": 5095
+    }
+  },
+  "limitations": [
+    "Static annotated cases do not predict model adherence, survival or score",
+    "Donor observations are not counterfactual controls",
+    "S09-RUN20 requires new Main authorization"
+  ],
+  "hold": "EXISTING_RAW_HOLDS_REMAIN_ACTIVE_MAIN_STAGE_RELEASE_ONLY",
+  "decision": "S09_31_V11_STRATEGY_RESET_STATIC_PASS_RETURN_TO_STAGE"
+}

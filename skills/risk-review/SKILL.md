@@ -59,6 +59,10 @@ REASON: <one concise public-evidence reason>
 
 Wealth 紧张时区分 discretionary spending 与 performance/promotion/income recovery；不要仅因 Wealth 低就否决直接支持绩效、晋升或工作连续性的动作。
 
+### Active public trust warning
+
+fresh Board保留的未解除accumulated/imminent trust STICKY属于当前依据；cleanup/普通成功/未重显warning不算clearance。当前候选承担额外事故责任、模糊/转嫁责任、隐瞒流程问题或加重高风险workload时必须Full Review。ownership不能waive active trust risk；比较truthful/bounded/process-correct accountability是否处理当前威胁。不是按event title/theme自动拦截：合法纠正流程的候选可ALLOW，普通未关联成本可PASS；不hardcode事件/choice，不声称替代必然存活。明确降级/解除后不沿用旧material风险做门禁。
+
 ## Result
 
 - `ALLOW`：重大风险已审查，候选仍可接受。

@@ -1,0 +1,394 @@
+[
+  {
+    "name": "clean_growth",
+    "source": "Donor v6/RUN07/RUN10 clean growth counterexample",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "allowed_bases": [
+        "GROWTH",
+        "OWNERSHIP"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "GROWTH",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "mode": "S"
+    },
+    "clauses": {
+      "Planning": "clean growth保持进攻"
+    }
+  },
+  {
+    "name": "accumulated_warning_cleanup",
+    "source": "RUN19 M26/M27 HR accumulated material warning + legal cleanup",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "material_warning": true,
+      "allowed_bases": [
+        "CLEANUP",
+        "CONTAIN"
+      ]
+    },
+    "response": {
+      "risk_active": true,
+      "gate": "FULL",
+      "mode": "S",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "CLEANUP",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "risk_active": false
+    },
+    "clauses": {
+      "Planning": "持续warning且有legal reparative option"
+    }
+  },
+  {
+    "name": "cleanup_is_not_clearance",
+    "source": "RUN19 M27 cleanup then no explicit clearance before M28 warning",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "prior_active": true,
+      "cleanup_performed": true,
+      "public_clearance": false,
+      "allowed_bases": [
+        "CONTAIN",
+        "CLEANUP"
+      ]
+    },
+    "response": {
+      "risk_active": true,
+      "gate": "FULL",
+      "mode": "S",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "CONTAIN",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "risk_active": false
+    },
+    "clauses": {
+      "Board": "CLEANUP_ACTION != RISK_CLEARED"
+    }
+  },
+  {
+    "name": "explicit_deescalation",
+    "source": "v7o M22/M23 HR accumulated warning a93/a96 -> M24 recent/minor caution a99; public de-escalation of material binding, not all-risk elimination",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "prior_active": true,
+      "public_clearance": true,
+      "allowed_bases": [
+        "GROWTH",
+        "OWNERSHIP"
+      ],
+      "clearance_kind": "PUBLIC_DE_ESCALATION_TO_CAUTION"
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "GROWTH",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "mode": "S"
+    },
+    "clauses": {
+      "Planning": "降为early caution后不维持material S"
+    }
+  },
+  {
+    "name": "accountability_full_review",
+    "source": "RUN19 M32 a130 and M33 a132 mentoring accountability; no fixed answer",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "prior_active": true,
+      "accountability": true,
+      "allowed_bases": [
+        "TRUTHFUL_BOUNDED_ACCOUNTABILITY",
+        "CONTAIN"
+      ]
+    },
+    "response": {
+      "risk_active": true,
+      "gate": "FULL",
+      "mode": "S",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "TRUTHFUL_BOUNDED_ACCOUNTABILITY",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "gate": "QUICK"
+    },
+    "clauses": {
+      "Risk": "ownership不能waive active trust risk"
+    }
+  },
+  {
+    "name": "review_near_result",
+    "source": "RUN19 M18 result feedback + synthetic reachable near-result option",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "result_gap": true,
+      "near_checkpoint": true,
+      "allowed_bases": [
+        "FINISH_VERIFY",
+        "CONVERT"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "RESULT_CONVERSION_GAP",
+      "delivery_authority": "STRONG",
+      "basis": "FINISH_VERIFY",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "gap": "LOWEST_OUTPUT"
+    },
+    "clauses": {
+      "Planning": "FINISH → VERIFY/publicly establish result → CONVERT recognition"
+    }
+  },
+  {
+    "name": "stale_delivery_no_report_authority",
+    "source": "RUN19 M18/M24 D1 IN_PROGRESS/UNVERIFIED without new milestone",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "result_gap": true,
+      "stale_unverified": true,
+      "result_basis": false,
+      "allowed_bases": [
+        "CREATE_RESULT",
+        "CONCRETE_CHECKPOINT"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "RESULT_CONVERSION_GAP",
+      "delivery_authority": "WEAK",
+      "basis": "CREATE_RESULT",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "delivery_authority": "STRONG"
+    },
+    "clauses": {
+      "Delivery": "ranking authority downgrade"
+    }
+  },
+  {
+    "name": "verified_result_report_allowed",
+    "source": "RUN10 demo a44→46→52 and donor milestone presentation",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "result_basis": true,
+      "recognition_pending": true,
+      "allowed_bases": [
+        "REPORT",
+        "CONVERT"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "REPORT",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "invent_stock": true
+    },
+    "clauses": {
+      "Planning": "公开delivered结果尚未获recognition可汇报"
+    }
+  },
+  {
+    "name": "reporting_no_gain_no_farming",
+    "source": "RUN19 M3 a11/a13 O3→3; a12/a37 recipe contrast",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "result_basis": false,
+      "reporting_no_gain": true,
+      "allowed_bases": [
+        "RESPONSIVE_ALTERNATIVE",
+        "CREATE_RESULT"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "RESPONSIVE_ALTERNATIVE",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "basis": "FARM_NO_GAIN"
+    },
+    "clauses": {
+      "Planning": "无real-result basis且reporting NO_GAIN，不farm"
+    }
+  },
+  {
+    "name": "responsive_capital_exploit",
+    "source": "RUN07/RUN10 clean compounding; no risk/conversion issue",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "allowed_bases": [
+        "GROWTH",
+        "OWNERSHIP"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "GROWTH",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "numeric_lowest_only": true
+    },
+    "clauses": {
+      "Planning": "EXPLOIT responsive durable capital"
+    }
+  },
+  {
+    "name": "G3_thin_margin",
+    "source": "RUN17 a22 H3 intensive mentoring H−2 observed; a23 H1→0 (uncertain prospective cost)",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "thin_health_margin": true,
+      "allowed_bases": [
+        "LOWER_LOAD",
+        "RECOVERY",
+        "SURVIVAL_CRITICAL"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "LOWER_LOAD",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": true,
+      "allows_official_delta": false
+    },
+    "negative": {
+      "compares_downside": false
+    },
+    "clauses": {
+      "Planning": "低H减容错，不自动S"
+    }
+  },
+  {
+    "name": "official_delta_not_stock",
+    "source": "RUN16/RUN17 a11 locked official status_updates.HiddenRisk delta",
+    "evidence_boundary": "HAND_ANNOTATED_CONTRACT_COUNTEREXAMPLE_NOT_MODEL_EXECUTION",
+    "facts": {
+      "official_delta": true,
+      "allowed_bases": [
+        "COMPARE_LEGAL_EFFECTS"
+      ]
+    },
+    "response": {
+      "risk_active": false,
+      "gate": "QUICK",
+      "mode": "A",
+      "gap": "UNKNOWN",
+      "delivery_authority": "WEAK",
+      "basis": "COMPARE_LEGAL_EFFECTS",
+      "future_sequence": [],
+      "numeric_lowest_only": false,
+      "invent_stock": false,
+      "hidden_threshold": false,
+      "compares_downside": false,
+      "allows_official_delta": true
+    },
+    "negative": {
+      "invent_stock": true
+    },
+    "clauses": {
+      "Planning": "官方 status_updates（含 HiddenRisk ±N）可作 ADVERTISED_EFFECT"
+    }
+  }
+]
