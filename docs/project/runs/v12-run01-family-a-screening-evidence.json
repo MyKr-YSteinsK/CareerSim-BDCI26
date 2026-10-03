@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "task": "S10-03",
+  "status": "COMPLETE",
+  "screening_only": true,
+  "decision": "SCREEN_NEGATIVE_ARCHITECTURE_SIGNAL",
+  "return_gate": "RETURN_TO_MAIN_FOR_S10_SCREENING_GATE",
+  "next_game": "NOT_AUTHORIZED",
+  "identity": {
+    "branch": "codex/s10-03-v12-screening",
+    "parent": "e6ddcda68ff60dad0e0676d7ff8c70ecaae556ba",
+    "pre_run_commit": "198a707505e93f5284d841842e65fa8f9e4f339a",
+    "candidate": "candidate-v12-lean-career-brief",
+    "protected_identity_unchanged": true,
+    "manifest_sha256": "262c115fe3a44963969ce99d308051d87f5940778128473de09be460be8a1ddd",
+    "candidate_sha256": "17f425a6dae933f57822168a7fa4c948e4530a61c7f419f6260ccaf482818027",
+    "instruction_sha256": "4a57eb857f58b6eecff3a9a9fa5f18c9a16152de257690fa4b3329c265f0f775",
+    "skills": {
+      "career-state-brief": "5ad35ed781eba7149a3ce878bf9540de5d310a7cb824a58b313ff74e7501231f",
+      "career-decision": "a7afe9b8e1b6a68c1299b279b7f186b93bf8aebdde2079039d8d8371e241a40b"
+    },
+    "protected_source_hashes": {
+      "configs/current_candidate.json": "17f425a6dae933f57822168a7fa4c948e4530a61c7f419f6260ccaf482818027",
+      "configs/runtime_manifest.json": "262c115fe3a44963969ce99d308051d87f5940778128473de09be460be8a1ddd",
+      "skills/career-state-brief/SKILL.md": "5ad35ed781eba7149a3ce878bf9540de5d310a7cb824a58b313ff74e7501231f",
+      "skills/career-decision/SKILL.md": "a7afe9b8e1b6a68c1299b279b7f186b93bf8aebdde2079039d8d8371e241a40b",
+      "pyproject.toml": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73",
+      "uv.lock": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c",
+      "career_sim_runner/__init__.py": "9300e854e170575f2ee620b8a31200b3c32b45621b7bad34c548a05dff929a1c",
+      "career_sim_runner/__main__.py": "c78bdfccbf8232a9273e0201507439a4cbfe3de6c18fe08e9a7b30d59aacfb4e",
+      "career_sim_runner/cli.py": "cb6e27bf38025c6a16d7a9229386d4b9f45b92de45aae5ca3293e160624c139d",
+      "career_sim_runner/constants.py": "60502511258bfaab334665d62b6ab1c5dcdd908efe0ba64c54f7177caef5c156",
+      "career_sim_runner/db.py": "29577f81c03e0d8420694ee4ffcb6fe73cbf5c975f0161813c3664238b4821f0",
+      "career_sim_runner/headless_play.py": "b58ac93b6ea7af100bfa3fd9835002939c7da3cd572886859074fd7f8a723596",
+      "career_sim_runner/install.py": "fa4447c8060a64dff3e8ac42d3a97397a4d06d264ec634c894197a6df5a00468",
+      "career_sim_runner/mcp_config.py": "87e35032726a0cb1aacf2187efe78a51bc3cefc68b9b3db31ed83ef055b93baa",
+      "career_sim_runner/models.py": "b187496417b37a1ad14283aad958eeba0ad0fca2e30e20f8f30bca38dc9accc4",
+      "career_sim_runner/paths.py": "7309c8f13f922b2a34798ca90916cea7c7dac4cbc0dcad52c503097f6ff8e940",
+      "career_sim_runner/replay/__init__.py": "d76ee6e3b73c786a0fc8dd34942297594f9fb922617c10e9f039ff9b07d18373",
+      "career_sim_runner/replay/live.py": "49ea477394ab203dd283910d875ce717dfb61b43c253a365cbcbc199c45d71e1",
+      "career_sim_runner/replay/models.py": "c256d48444f54233a2b6f5ae471ded6069da59f7e8bb90b983bc67a697fbf7a5",
+      "career_sim_runner/replay/parse.py": "7ad4d8000b7ad1cf41ab3168bda9915bd0705c4e01c4721ba662a116a780ea8e",
+      "career_sim_runner/replay/render.py": "0d4f1a934de053502bc693cf8d98c256fac9917ebe4efbae85bad49022099fec",
+      "career_sim_runner/replay/usage.py": "c7664ee0dab25b9ee9d19abd2ae4b836b74bbae0c6b9ecf2b166e83600511cb6",
+      "career_sim_runner/report.py": "fdc262b923fb3c0a9226d0220a97f78b4817786c0005a46ddb9c41b90c5f8aa5",
+      "career_sim_runner/score.py": "25ec3281dbdc94a4d355d6aca04c5101cf6903e58e6a7dccc1c36bbc4ed23e69",
+      "career_sim_runner/setup.py": "81d4a59540b4ab48575caf0e4cb73a6e4a4eeb3c98e32f61e6e9d42a5408f029",
+      "career_sim_runner/skill_contract.py": "432092f1e0331c18a97837f6631e2185f68b12de961f68334c4e00d3ec3f386b",
+      "career_sim_runner/transcript.py": "837e4f95deb6af16ef55e7883ff3d3bf3154ca279f1ee9e1d504c8b818b9ab8e",
+      "career_sim_runner/utils.py": "2cf7b3c0bd0f5a24e4155080dd0037aa949a68a11588135735591c4eaa9e3e2a",
+      "career_sim_runner/validate.py": "6affe7335acb8184bdfddd0895bb2d80b62180a927a7bfcad1f6a026d53b5eb7",
+      "career_sim_runner/ws_client.py": "ea230c9a91e6b8ed4a650c0aeb1b0479e86964ce48a6ac5704c15ba863a6601a"
+    },
+    "main_fallback_unchanged": true
+  },
+  "live_counts": {
+    "installs": 1,
+    "service_starts": 1,
+    "runner_play_attempts": 1,
+    "fresh_game_count": 1,
+    "replacement": 0,
+    "continue_game": 0,
+    "manual_intervention": 0,
+    "extra_reporting_queries": 0
+  },
+  "provider": {
+    "budget_gate": "UNKNOWN",
+    "balance_GET_count": 1,
+    "is_available": true,
+    "full_run_funding": "UNKNOWN",
+    "model": "deepseek-flash",
+    "endpoint_host": "api.deepseek.com",
+    "max_retries": 2,
+    "actual_billed_cost": "UNKNOWN"
+  },
+  "outcome": {
+    "classification": "NATURAL_ELIMINATION_FRESH_PUBLIC_TERMINAL",
+    "session_id": "a245eaa0ef144760b1062a709d446f8c",
+    "event_session_identity": "PASS",
+    "transcript_explicit_SESSION_ID_identity": "PASS_MANUAL_SUPPLEMENT",
+    "score": 23.48,
+    "competition_partial_score": 16.44,
+    "survival_months": 24,
+    "grade": "E",
+    "final_level": "L1",
+    "completed": false,
+    "promotion_count": 0,
+    "review_grades": [
+      "C",
+      "C",
+      "D",
+      "D"
+    ],
+    "review_months": [
+      6,
+      12,
+      18,
+      24
+    ],
+    "successful_actions": 94,
+    "observe_count": 95,
+    "terminal_event_order": 771,
+    "terminal_observe_utc": "2026-10-03T14:04:35.695275+00:00",
+    "score_source": "same fresh session final observe; no score report",
+    "score_position": "BELOW_V8A_RUN08_REFERENCE",
+    "score_difference_v8a_run07": -49.17,
+    "score_difference_v8a_run08": -35.52,
+    "causal_architecture_comparison": "NOT_ESTABLISHED"
+  },
+  "technical": {
+    "monitor_failure": "current_event=null -> AttributeError after natural terminal was already recorded",
+    "monitor_error_utc": "2026-10-03T14:04:35.716409+00:00",
+    "runner_exit_code": "UNKNOWN",
+    "runner_error": "ConnectionClosedError following graceful service stop",
+    "score_report_emitted": false,
+    "final_handshake_interrupted": true,
+    "natural_terminal_not_caused_by_monitor_stop": true,
+    "cleanup_stop_exit_code": 0,
+    "listeners_remaining": [],
+    "manager_pid_file_absent": true,
+    "replacement_authorized": false
+  },
+  "mechanisms": {
+    "two_skill_startup": "EXECUTED_USEFULLY_DIRECT_NATIVE_RESULT_SUPPLEMENT",
+    "native_reads": [
+      {
+        "event_order": 9,
+        "success": true,
+        "skill": "career-state-brief",
+        "skill_content_present": true,
+        "before_first_action": true
+      },
+      {
+        "event_order": 11,
+        "success": true,
+        "skill": "career-decision",
+        "skill_content_present": true,
+        "before_first_action": true
+      }
+    ],
+    "career_brief": "EXECUTED_WITH_LIMITATIONS",
+    "initialization": "MECHANISM_NOT_EXECUTED_IN_VISIBLE_TRANSCRIPT",
+    "full_versions_months": [
+      6,
+      12,
+      18
+    ],
+    "transcript_unicode_character_offsets": [
+      17532,
+      32807,
+      45344
+    ],
+    "superseding": "updated/full version wording and changed facts; explicit supersedes wording absent",
+    "deep_review": "EXECUTED_WITH_LIMITATIONS",
+    "exercised_formal_reviews": [
+      6,
+      12,
+      18
+    ],
+    "promotion_trigger": "NOT_EXERCISED",
+    "recovery": "NOT_EXERCISED",
+    "compression_count": 0,
+    "final_safety": "PASS_WITH_LIMITATIONS",
+    "result_conversion": "EXECUTED_WITH_LIMITATIONS",
+    "ordinary_leanness": "Energy decisions visibly repeated alternatives and precommitted multi-step recipes; most Story decisions shorter; no token-threshold PASS",
+    "local_response": {
+      "paired_action_fresh_observe": 94,
+      "illegal_action_orders": [],
+      "all_same_session": true,
+      "selected_advertised_positive_O_fresh_no_O_change_same_time_level": [
+        {
+          "action_event_order": 109,
+          "observe_event_order": 115,
+          "month": 3,
+          "action": "准备汇报材料",
+          "O_before": 3,
+          "O_after": 3
+        },
+        {
+          "action_event_order": 213,
+          "observe_event_order": 219,
+          "month": 6,
+          "action": "准备汇报材料",
+          "O_before": 3,
+          "O_after": 3
+        },
+        {
+          "action_event_order": 509,
+          "observe_event_order": 515,
+          "month": 15,
+          "action": "准备汇报材料",
+          "O_before": 3,
+          "O_after": 3
+        },
+        {
+          "action_event_order": 597,
+          "observe_event_order": 603,
+          "month": 18,
+          "action": "高强度工作",
+          "O_before": 3,
+          "O_after": 3
+        },
+        {
+          "action_event_order": 605,
+          "observe_event_order": 611,
+          "month": 18,
+          "action": "准备汇报材料",
+          "O_before": 3,
+          "O_after": 3
+        }
+      ],
+      "causality": "Local observed response only; no cap/threshold/hidden stock inference"
+    },
+    "hiddenrisk": {
+      "numeric_action_note_count": 1,
+      "action_37_event_order": 309,
+      "category": "ADVERTISED_CONFIGURED_DELTA",
+      "proof": "Current observe order307 choices[choice4].status_updates.HiddenRisk=-1; not stock or realized effect",
+      "transcript_signed_numeric_mentions": "configured Energy/Main deltas; event alignment reviewed in corresponding quarter menu passages",
+      "numeric_hidden_stock_or_cumulative_stock_estimate_observed": false,
+      "non_numeric_stock_hypothesis": "Earlier I avoided risky choices so HiddenRisk may be low; unsupported hypothesis, no numeric stock reconstruction",
+      "unsupported_clearance": "M12 says HR warning had cleared; M10-M12 only generic positive feedback, no explicit same-scope release; preceding warning was early caution, binding severity uncertain"
+    }
+  },
+  "audit_limits": {
+    "adapter_native_skill_tool_result": "raw_output absent; native success=True data=... not counted automatically; direct event9/11 supplement",
+    "adapter_transcript_SESSION_ID": "legacy regex does not accept SESSION_ID; explicit transcript same unique ID verified",
+    "adapter_structured_delta": "regex over JSON does not admit structured signed integer HiddenRisk field; action37 manually matched",
+    "canonical_outcome_label": "legacy label UNKNOWN for early terminal/no Runner exit; fresh score and natural_terminal_observed=true retained",
+    "no_audit_rerun": true,
+    "no_post_run_code_patch": true
+  },
+  "usage": {
+    "chunks": 191,
+    "input_tokens": 15693221,
+    "output_tokens": 38651,
+    "total_tokens": 15731872,
+    "binding": "service log successful llm_usage chunks within play/cleanup window; pending final request unreported; no billed total",
+    "actual_billed_cost": "UNKNOWN"
+  },
+  "wall_clock_seconds": 425.412,
+  "continuation_count": "UNKNOWN_NO_FINAL_RUNNER_TELEMETRY",
+  "reported_compression_count": 0,
+  "verification": {
+    "pre_run_targeted_tests": 35,
+    "diff_check": "PASS",
+    "frozen_rehash": "PASS",
+    "legal_current_integer_actions": "94/94",
+    "same_session_action_to_fresh_observe": "94/94",
+    "score_oracle_boundary": "fresh public terminal valid; final Runner report/exit completion unverified"
+  },
+  "forensic_hold": {
+    "status": "ACTIVE",
+    "reason": "Natural strategy result and monitor/handshake failure require independently reviewable raw; native tool result and provenance adapter gaps",
+    "owner": "S10-03/Main",
+    "release_authority": "Main/Stage",
+    "release_condition": "Main accepts compact conclusion, resolves further forensic/reproduction dependencies, explicitly releases hold",
+    "review_point": "S10 screening gate",
+    "files": [
+      {
+        "path": "D:/CS/CareerSim/.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20261003T135733Z/events-20261003T135733Z.jsonl",
+        "name": "events-20261003T135733Z.jsonl",
+        "bytes": 929572,
+        "sha256": "2dca5c5b1b7888cf211b53f739f5b68a1b51ad52c6b7fe44d2840ace8655df3f"
+      },
+      {
+        "path": "D:/CS/CareerSim/.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20261003T135733Z/transcript-20261003T135733Z.log",
+        "name": "transcript-20261003T135733Z.log",
+        "bytes": 84412,
+        "sha256": "9c1fd21ef85ef0e6b5c84b77bbf39f0598cd010939cbf0150224307199919f69"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/runner-result.json",
+        "name": "runner-result.json",
+        "bytes": 2445,
+        "sha256": "4bd3742336952cb07fbcfeac51843a980d731129cb137daa2594e9b44ec27905"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/post_run_summary.json",
+        "name": "post_run_summary.json",
+        "bytes": 79695,
+        "sha256": "55aeb7f8aafd2a619179aeb3d5909d076b8adc0732df9ca187d0a0ef55ebead0"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/launcher.py",
+        "name": "launcher.py",
+        "bytes": 8459,
+        "sha256": "15f964a96d47a49185eb08703b8b112f7ce2b0e5937d2ab6607809f6b9095179"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/service-stdout.log",
+        "name": "service-stdout.log",
+        "bytes": 911258,
+        "sha256": "056108c8a6b37b4249423c520035cea6edda69e141fa4d175d90c17bd5b9e315"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/runner-stdout.log",
+        "name": "runner-stdout.log",
+        "bytes": 150714,
+        "sha256": "193335f4be0376ffe6e451fe13211439c8f5eccc8fbdb181cf2213b50e582c05"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/llm-run-window.log",
+        "name": "llm-run-window.log",
+        "bytes": 108055,
+        "sha256": "1fef0ec9feab9b744694d5c287b42359b530279b1b524d13288f35723626c65c"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/preflight.json",
+        "name": "preflight.json",
+        "bytes": 4414,
+        "sha256": "e585fe4f91f6b399663b0f81685cd6e00b6b003ad539c5014237b75280c34d90"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/native-skill-reads.json",
+        "name": "native-skill-reads.json",
+        "bytes": 323,
+        "sha256": "f50244d9aae0c2967274bbf8211e68fb68a87a0bd3f770d888b493da0d80cf5a"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/usage-window.json",
+        "name": "usage-window.json",
+        "bytes": 279,
+        "sha256": "dd196b7b1034cf3c2218641d84f71b0c0caa68adbb9a85f57e6bfbc09de3ed95"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/behavior-checks.json",
+        "name": "behavior-checks.json",
+        "bytes": 1191,
+        "sha256": "75e8a81325fd1589e01366599ad0419523fd957beb1a09b20382a64b48d6a5f1"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/action-contexts.json",
+        "name": "action-contexts.json",
+        "bytes": 145510,
+        "sha256": "e0f8b27b69b8e883194e64c75bef2ced29b778bff2d24b099f6295b94e153f5f"
+      },
+      {
+        "path": "D:/CS/CareerSim/.local/runtime/s10-03-v12-run01/provider-budget.json",
+        "name": "provider-budget.json",
+        "bytes": 823,
+        "sha256": "3d81a587a8d58e571e9c649a2fb770bed59b3521015fc2490d30bb0a7b3ce270"
+      }
+    ]
+  },
+  "non_claims": [
+    "Family A universally worse",
+    "two Skills causally worse than four",
+    "stable75+",
+    "stable80+",
+    "hidden-test transfer",
+    "recovery robustness",
+    "framework/provider runtime validation",
+    "main fallback replacement",
+    "Stage complete"
+  ],
+  "task_metrics": {
+    "task_start_utc": "2026-10-03T13:44:15+00:00",
+    "final_validation_utc": "2026-10-03T14:19:41+00:00",
+    "elapsed_to_final_validation_seconds": 2126,
+    "targeted_test_count": 35,
+    "targeted_test_wall_seconds": 1.2,
+    "critical_monitor_failure_count": 1,
+    "offline_AST_parser_tooling_error_count": 1,
+    "automatic_audit_shape_gaps": 3,
+    "discovery_command_misses": "Several invalid Windows rg glob/path guesses; corrected before live, no side effect",
+    "scope_deviation": "Monitor failure interrupted handshake after natural terminal; no strategic intervention or extra budget",
+    "provider_completion_probes": 0,
+    "raw_committed_files": 0
+  }
+}
