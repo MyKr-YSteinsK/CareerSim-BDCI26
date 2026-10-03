@@ -312,3 +312,8 @@ See [the full S08-RUN02 validation record](runs/v7q-run1-validation.md).
 ## S09-RUN15 v10f — reviewer-censored semantic validation
 
 - S09-RUN15 v10f: `DEVELOPMENT_CENSORED_BY_REVIEWER_FALSE_POSITIVE`, actual M6/C/L1,26 actions/27 observes. H1 stop wrongly inferred Full Review from event-level compliance; transcript supports candidate-specific Quick Gate PASS, so no confirmed Candidate Risk violation. Five-marker/BC/fresh26/26; final score/survival/full-horizon UNKNOWN. One run consumed, cleanup PASS, flags unchanged, raw hold ACTIVE; Stage review required before any new game. See [run record](runs/v10f-run15-first-semantic-validation.md). `NEXT_GAME=NOT_AUTHORIZED`; main v8a freeze unchanged.
+
+
+## S09-RUN19 v10h — natural scored terminal with Reviewer v3
+
+- One fresh FULL_SCORE_EVALUATION run at `d3f127b`: M33 trust-crisis natural elimination, 38.08/26.66/D/L4, promotions M6/M12/M30. S1 Energy warnings2 continued; S2/stop0, score eligible, audit `VALID_NATURAL_TERMINAL_WITH_POLICY_VIOLATIONS`. 132 successful actions/133 observes/fresh132; minH4, G3 low-H NOT_EXERCISED, overall Failure Floor FAIL. Reviewer PASS_WITH_LIMITATIONS; cleanup PASS, wrapper exit1 tail limitation. Raw hold ACTIVE, Candidate/flags unchanged, no replacement; [run record](runs/v10h-run19-full-score-validation.md). Decision `S09_RUN19_V10H_NATURAL_EARLY_TERMINAL_RETURN_TO_STAGE`; authorization CONSUMED, NEXT_GAME NOT_AUTHORIZED, main v8a freeze unchanged.

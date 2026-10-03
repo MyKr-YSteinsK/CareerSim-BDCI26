@@ -1,0 +1,2561 @@
+{
+  "schema_version": 1,
+  "run": "S09-RUN19",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "identity": {
+    "execution_HEAD": "d3f127b9d9d5a5f9180632f0e479ee9e9882a2ca",
+    "branch": "codex/s09-14-v9a-static",
+    "candidate": "candidate-v10h-dynamic-survival-margin",
+    "implementation": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+    "session": "699dad2eef3f4e7b852c629ba5e752c6",
+    "supervisor_blob": "e129feadc388feafaddae3e35afacf3f8315e95b",
+    "instruction_sha256": "43f92942dd94245418369b1ed263f3919f6e2529c81cbbd69a92a326339a1076",
+    "package": [
+      {
+        "path": "manifest.json",
+        "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa"
+      },
+      {
+        "path": "skills\\delivery-progress\\SKILL.md",
+        "sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528"
+      },
+      {
+        "path": "skills\\risk-review\\SKILL.md",
+        "sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8"
+      },
+      {
+        "path": "skills\\rolling-planning\\SKILL.md",
+        "sha256": "6b569972a568fbb6a8efcc5735e181d93890addce15e3918da7d67da01bc3474"
+      },
+      {
+        "path": "skills\\structured-state-board\\SKILL.md",
+        "sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162"
+      }
+    ]
+  },
+  "preflight": {
+    "phase": "P1_PASS",
+    "execution_HEAD": "d3f127b9d9d5a5f9180632f0e479ee9e9882a2ca",
+    "candidate": "candidate-v10h-dynamic-survival-margin",
+    "T1": "PASS_EXACT_V10H_PACKAGE",
+    "T2": "PASS_111_V3_AUTHORITY_CHECKS",
+    "T3": "PASS_EXCLUSIVE_PORTS_PATH_SINGLE_LIST",
+    "T4": "PASS_CANONICAL_SUPERVISOR_FRESH_OUTPUT",
+    "T5": "PASS_NEW_RUN_EXACT_PATH_BINDING",
+    "evaluation_mode": "FULL_SCORE_EVALUATION",
+    "censor_authorization": null,
+    "package": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\submission",
+    "package_identity": [
+      {
+        "path": "manifest.json",
+        "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa"
+      },
+      {
+        "path": "skills\\delivery-progress\\SKILL.md",
+        "sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528"
+      },
+      {
+        "path": "skills\\risk-review\\SKILL.md",
+        "sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8"
+      },
+      {
+        "path": "skills\\rolling-planning\\SKILL.md",
+        "sha256": "6b569972a568fbb6a8efcc5735e181d93890addce15e3918da7d67da01bc3474"
+      },
+      {
+        "path": "skills\\structured-state-board\\SKILL.md",
+        "sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162"
+      }
+    ],
+    "protected_identity": {
+      "manifest": {
+        "path": "configs/runtime_manifest.json",
+        "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa",
+        "instruction_sha256": "43f92942dd94245418369b1ed263f3919f6e2529c81cbbd69a92a326339a1076"
+      },
+      "skills": {
+        "structured-state-board": "fa74b50f603bb8141f590057a58c9daff0568d2e",
+        "rolling-planning": "f60c5e0d93b9803dff79f4bda4b5a9f22489d123",
+        "delivery-progress": "64e060b1febf746a05aa07494755a7f9d6eee600",
+        "risk-review": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+      },
+      "supervisor_blob": "e129feadc388feafaddae3e35afacf3f8315e95b"
+    },
+    "tooling": [
+      {
+        "path": "scripts/live_run_controller.py",
+        "sha256": "f5526547fdd6eea342b6dfea2ba5829a2d018174ed75add5a99bb70db99c969b"
+      },
+      {
+        "path": "scripts/live_review_packet.py",
+        "sha256": "bde24f39a36dc71e0151e4a502e693db112d28055ec88857d8412613c632b963"
+      },
+      {
+        "path": "scripts/reviewer_gate.py",
+        "sha256": "c2a8effcb9bdaa33a9e79b245ca58ca9b9249246cae2483f4639bb3bccbaffd0"
+      },
+      {
+        "path": "scripts/post_run_audit.py",
+        "sha256": "2483912c6075bf5199d708e05ccb40cfc4983e55637dc9b778a7ebe3e31730a4"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73"
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c"
+      }
+    ],
+    "installed_versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3"
+    },
+    "max_retries": 2,
+    "runner_play_budget": 1,
+    "fresh_game_budget": 1,
+    "service_lifecycles": 1,
+    "replacement_budget": 0,
+    "standalone_probes": 0
+  },
+  "outcome": {
+    "classification": "VALID_NATURAL_TERMINAL_WITH_POLICY_VIOLATIONS",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 33,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 26.66,
+      "completed": false,
+      "grade": "D",
+      "outcome": "eliminated",
+      "quantitative_score": 38.08,
+      "survival_months": 33
+    },
+    "terminal_public_state": {
+      "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+      "status": {
+        "dignity": 8,
+        "duration_in_level": 4,
+        "energy": 0,
+        "health": 9,
+        "level": "L4",
+        "network": 26,
+        "output": 16,
+        "skill": 49,
+        "wealth": 11
+      },
+      "time": {
+        "current_month": 33,
+        "current_quarter": 11,
+        "current_year": 3
+      }
+    }
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 25989830,
+    "output_tokens": 117812,
+    "total_tokens": 26107642
+  },
+  "runtime": {
+    "run_id": "S09-RUN19",
+    "execution_HEAD": "d3f127b9d9d5a5f9180632f0e479ee9e9882a2ca",
+    "candidate": "candidate-v10h-dynamic-survival-margin",
+    "evaluation_mode": "FULL_SCORE_EVALUATION",
+    "censor_authorization": null,
+    "authorization": "CONSUMED",
+    "service_starts": 1,
+    "runner_play_attempts": 1,
+    "fresh_game_count": 1,
+    "replacement": 0,
+    "continue_game": 0,
+    "manual_choice_intervention": 0,
+    "extra_reporting_queries": 0,
+    "started_utc": "2026-10-03T06:21:44.412076+00:00",
+    "exit_code": 0,
+    "provider_markers": [],
+    "service_pid": 18320,
+    "service_started_utc": "2026-10-03T06:21:44.424325+00:00",
+    "readiness": "PASS",
+    "readiness_elapsed_seconds": 26.406,
+    "play_start_utc": "2026-10-03T06:22:10.837395+00:00",
+    "runner_pid": 24388,
+    "output_dir": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z",
+    "events": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\events-20261003T062215Z.jsonl",
+    "transcript": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\transcript-20261003T062215Z.log",
+    "score_report": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\score_report.json",
+    "artifact_binding": "Changed exact Runner output pointer from this single play; no latest search",
+    "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+    "controller_state": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\controller-state.json",
+    "reviewer_receipts": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\reviewer-receipts.json",
+    "play_end_utc": "2026-10-03T06:37:19.660404+00:00",
+    "actions_seen": 132,
+    "successful_actions_seen": 132,
+    "natural_terminal": {
+      "source_seq": 1083,
+      "observed_utc": "2026-10-03T06:37:10.116167+00:00",
+      "controller_seen_utc": "2026-10-03T06:37:10.294974+00:00",
+      "source": "exact same-session structured observe"
+    },
+    "stop_request_emitted": false,
+    "controller_end_utc": "2026-10-03T06:37:19.665918+00:00",
+    "stop_exit_code": 0,
+    "listeners_remaining": [],
+    "manager_pid_file_absent": true,
+    "service_start_exit_code": 1,
+    "cleanup_end_utc": "2026-10-03T06:37:24.320201+00:00"
+  },
+  "reviewer_timing": [
+    {
+      "boundary": 3,
+      "packet_utc": "2026-10-03T06:22:42.741881+00:00",
+      "accepted_utc": "2026-10-03T06:23:24.458497+00:00",
+      "elapsed_seconds": 41.716616,
+      "actual_action": 10,
+      "receipt_action": 3,
+      "severity": "S0",
+      "continued": true
+    },
+    {
+      "boundary": 12,
+      "packet_utc": "2026-10-03T06:23:53.247751+00:00",
+      "accepted_utc": "2026-10-03T06:25:58.058379+00:00",
+      "elapsed_seconds": 124.810628,
+      "actual_action": 29,
+      "receipt_action": 12,
+      "severity": "S1",
+      "continued": true
+    },
+    {
+      "boundary": 40,
+      "packet_utc": "2026-10-03T06:26:57.538048+00:00",
+      "accepted_utc": "2026-10-03T06:28:31.213983+00:00",
+      "elapsed_seconds": 93.675935,
+      "actual_action": 56,
+      "receipt_action": 37,
+      "severity": "S1",
+      "continued": true
+    }
+  ],
+  "reviewer_receipts": {
+    "schema_version": 3,
+    "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+    "receipts": [
+      {
+        "review_object": "PLANNING_RANKING",
+        "owner": "rolling-planning",
+        "clause_id": "C2/LegalProtection",
+        "action_index": 3,
+        "public_evidence": {
+          "source_seq": 45,
+          "observe_seq": 51,
+          "event": {
+            "title": "离职同事私下托付工作资料",
+            "description": "即将离职去竞对的同事范磊晚上把 8GB 网盘链接发你：「里面是三年项目脚本、客户联系人笔记，公司网盘我删了，你帮我保管，别上传公司系统。」 其中部分客户合同扫描件标注「保密级：内部」。你知道公司离职协议要求不得带走业务数据。"
+          },
+          "selected": {
+            "choice": 1,
+            "action": "拒绝接收，建议他走合规交接"
+          }
+        },
+        "selected_candidate": "拒绝接收，建议他走合规交接",
+        "direct_candidate_violation_link": null,
+        "counterexample_check": {
+          "checked": true,
+          "result": "COUNTEREXAMPLE_FOUND",
+          "basis": "Refusal of confidential transfer is legal minimal protection; no receipt/session/header or strong ranking fault in bounded H1 rows."
+        },
+        "verdict": "NO_VIOLATION",
+        "confidence": "HIGH",
+        "stop_class": "NO_VIOLATION",
+        "schema_version": 3,
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "issue_type": "NO_VIOLATION",
+        "run_integrity": {
+          "candidate_identity": "VALID",
+          "test_equivalence": "VALID",
+          "state_attribution": "VALID",
+          "measurement": "VALID",
+          "runtime_assets": "VALID"
+        },
+        "evaluation_mode": "FULL_SCORE_EVALUATION",
+        "policy_verdict": "PASS",
+        "severity": "S0",
+        "live_action": "CONTINUE",
+        "run_validity": "VALID",
+        "score_evidence_eligible": "YES"
+      },
+      {
+        "review_object": "PLANNING_RANKING",
+        "owner": "rolling-planning",
+        "clause_id": "Energy/FreshRerank/ExplicitBasis",
+        "action_index": 12,
+        "public_evidence": {
+          "source_seq": 117,
+          "before_source": {
+            "seq": 115,
+            "utc": "2026-10-03T06:23:44.066071+00:00",
+            "tool": "mcp_career-emulator_observe",
+            "tool_call_id": "call_00_mMTWNyNUsi4XIL8jigaL2204",
+            "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+          },
+          "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：人脉维护，Network 为当前最低短板(1)，低成本补人脉(Network+1)。",
+          "current_H": 6,
+          "current_E": 2,
+          "previous_O_before": 3,
+          "previous_O_after": 3,
+          "choices": [
+            {
+              "choice": 1,
+              "action": "高强度工作",
+              "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+              "energy_cost": 2,
+              "status_updates": {
+                "Output": 2,
+                "Health": -1,
+                "Dignity": -1,
+                "HiddenRisk": 1
+              }
+            },
+            {
+              "choice": 2,
+              "action": "技能学习",
+              "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+              "energy_cost": 2,
+              "status_updates": {
+                "Skill": 1,
+                "Health": -1
+              }
+            },
+            {
+              "choice": 3,
+              "action": "人脉维护",
+              "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Network": 1,
+                "Dignity": 1
+              }
+            },
+            {
+              "choice": 4,
+              "action": "处理历史埋雷",
+              "description": "主动清理过往遗留隐患，降低潜在风险值。",
+              "energy_cost": 2,
+              "status_updates": {
+                "HiddenRisk": -1
+              }
+            },
+            {
+              "choice": 5,
+              "action": "心理修复",
+              "description": "进行心理调整与自我修复，明显回补尊严。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Dignity": 2
+              }
+            },
+            {
+              "choice": 6,
+              "action": "健康恢复",
+              "description": "休整作息、恢复体力，明显回补健康。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Health": 2
+              }
+            },
+            {
+              "choice": 7,
+              "action": "准备汇报材料",
+              "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Output": 1,
+                "Dignity": 1
+              }
+            },
+            {
+              "choice": 8,
+              "action": "保留体力（不行动）",
+              "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+              "energy_cost": 0,
+              "status_updates": {}
+            }
+          ],
+          "source_scope": "Exact submitted public rationale; no claim of complete model-context absence"
+        },
+        "selected_candidate": "人脉维护",
+        "direct_candidate_violation_link": "Quarterly Energy requires rationale based on fresh H/E and realized response with alternatives; a12 rationale supplies only second point plus Network lowest(1), without fresh H/E or acknowledging preceding Output NO_GAIN.",
+        "counterexample_check": {
+          "checked": true,
+          "result": "NO_COUNTEREXAMPLE",
+          "basis": "Network maintenance is legal and may have value; fresh observe is present and choice is not alleged wrong. Those do not satisfy explicit fresh-response ranking rationale. Exact prior action kept Output3 while consuming Energy3 to2."
+        },
+        "verdict": "VIOLATION",
+        "confidence": "HIGH",
+        "stop_class": "CONFIRMED_CANDIDATE_VIOLATION",
+        "schema_version": 3,
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "issue_type": "ENERGY_RECIPE",
+        "run_integrity": {
+          "candidate_identity": "VALID",
+          "test_equivalence": "VALID",
+          "state_attribution": "VALID",
+          "measurement": "VALID",
+          "runtime_assets": "VALID"
+        },
+        "evaluation_mode": "FULL_SCORE_EVALUATION",
+        "policy_verdict": "FAIL",
+        "severity": "S1",
+        "live_action": "CONTINUE",
+        "run_validity": "VALID",
+        "score_evidence_eligible": "YES"
+      },
+      {
+        "review_object": "PLANNING_RANKING",
+        "owner": "rolling-planning",
+        "clause_id": "Energy/FreshRerank/ExplicitBasis",
+        "action_index": 37,
+        "public_evidence": {
+          "source_seq": 317,
+          "before_source": {
+            "seq": 315,
+            "utc": "2026-10-03T06:26:39.368358+00:00",
+            "tool": "mcp_career-emulator_observe",
+            "tool_call_id": "call_00_MNDFobV0ZEdzdKJ9VKYC9689",
+            "scope": "LOCKED_1_0_1_OFFICIAL_OBSERVE_NOT_FULL_MODEL_HISTORY"
+          },
+          "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 剩余体力用于准备汇报材料，补可见绩效资本(Output+1)，为半年评审做积累，无健康/隐患代价。",
+          "current_H": 5,
+          "current_E": 1,
+          "choices": [
+            {
+              "choice": 1,
+              "action": "高强度工作",
+              "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+              "energy_cost": 2,
+              "status_updates": {
+                "Output": 2,
+                "Health": -1,
+                "Dignity": -1,
+                "HiddenRisk": 1
+              }
+            },
+            {
+              "choice": 2,
+              "action": "技能学习",
+              "description": "花时间打磨专业能力，长期资本增厚，短期消耗精力。",
+              "energy_cost": 2,
+              "status_updates": {
+                "Skill": 1,
+                "Health": -1
+              }
+            },
+            {
+              "choice": 3,
+              "action": "人脉维护",
+              "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Network": 1,
+                "Dignity": 1
+              }
+            },
+            {
+              "choice": 4,
+              "action": "处理历史埋雷",
+              "description": "主动清理过往遗留隐患，降低潜在风险值。",
+              "energy_cost": 2,
+              "status_updates": {
+                "HiddenRisk": -1
+              }
+            },
+            {
+              "choice": 5,
+              "action": "心理修复",
+              "description": "进行心理调整与自我修复，明显回补尊严。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Dignity": 2
+              }
+            },
+            {
+              "choice": 6,
+              "action": "健康恢复",
+              "description": "休整作息、恢复体力，明显回补健康。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Health": 2
+              }
+            },
+            {
+              "choice": 7,
+              "action": "准备汇报材料",
+              "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+              "energy_cost": 1,
+              "status_updates": {
+                "Output": 1,
+                "Dignity": 1
+              }
+            },
+            {
+              "choice": 8,
+              "action": "保留体力（不行动）",
+              "description": "本季度保留剩余体力不行动；未使用的体力不会累计到下季度。",
+              "energy_cost": 0,
+              "status_updates": {}
+            }
+          ],
+          "source_scope": "Exact submitted public rationale, not a complete-context absence claim"
+        },
+        "selected_candidate": "准备汇报材料",
+        "direct_candidate_violation_link": "Submitted rationale says remaining Energy to prepare reporting for review, but does not state fresh H/E, realized response or current alternative comparison as required by Energy Controller.",
+        "counterexample_check": {
+          "checked": true,
+          "result": "NO_COUNTEREXAMPLE",
+          "basis": "Official advertised Output+1 may be compared and the selected choice is legal; fresh observation happened. This receipt only confirms the submitted explicit-basis omission, not wrong action optimality or missing full internal replan."
+        },
+        "verdict": "VIOLATION",
+        "confidence": "HIGH",
+        "stop_class": "CONFIRMED_CANDIDATE_VIOLATION",
+        "schema_version": 3,
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "issue_type": "ENERGY_RECIPE",
+        "run_integrity": {
+          "candidate_identity": "VALID",
+          "test_equivalence": "VALID",
+          "state_attribution": "VALID",
+          "measurement": "VALID",
+          "runtime_assets": "VALID"
+        },
+        "evaluation_mode": "FULL_SCORE_EVALUATION",
+        "policy_verdict": "FAIL",
+        "severity": "S1",
+        "live_action": "CONTINUE",
+        "run_validity": "VALID",
+        "score_evidence_eligible": "YES"
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "699dad2eef3f4e7b852c629ba5e752c6",
+      "source_seq": 187,
+      "observed_utc": "2026-10-03T06:24:34.382036+00:00",
+      "month": 6,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L2",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n照顾你的前辈把你叫进办公室：“你最近搞砸的事情有点多，但新人嘛也正常，最近的KPI目标我会帮你跟人沟通一下”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-03T06:24:34.495829+00:00"
+    },
+    {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "699dad2eef3f4e7b852c629ba5e752c6",
+      "source_seq": 379,
+      "observed_utc": "2026-10-03T06:27:20.597684+00:00",
+      "month": 12,
+      "grade": "B",
+      "level_before": "L2",
+      "level_after": "L3",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.2\n\n本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L2 晋升至 L3（高级工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-03T06:27:20.831079+00:00"
+    },
+    {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "699dad2eef3f4e7b852c629ba5e752c6",
+      "source_seq": 587,
+      "observed_utc": "2026-10-03T06:30:03.968257+00:00",
+      "month": 18,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L3",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-03T06:30:04.013586+00:00"
+    },
+    {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "699dad2eef3f4e7b852c629ba5e752c6",
+      "source_seq": 787,
+      "observed_utc": "2026-10-03T06:33:26.674657+00:00",
+      "month": 24,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L3",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-03T06:33:26.792090+00:00"
+    },
+    {
+      "type": "FORMAL_REVIEW_PROGRESS",
+      "session": "699dad2eef3f4e7b852c629ba5e752c6",
+      "source_seq": 979,
+      "observed_utc": "2026-10-03T06:35:41.119090+00:00",
+      "month": 30,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L4",
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L3 晋升至 L4（资深工程师）。",
+      "report_required_now": true,
+      "packet_emitted_utc": "2026-10-03T06:35:41.314295+00:00"
+    }
+  ],
+  "energy": [
+    {
+      "action": 11,
+      "month": 3,
+      "source_seq": 109,
+      "observe_seq": 115,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 3
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 2
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第1点体力：准备汇报材料，低成本累积可见绩效资本(Output+1)，为半年评审铺垫，无健康/隐患代价。"
+    },
+    {
+      "action": 12,
+      "month": 3,
+      "source_seq": 117,
+      "observe_seq": 123,
+      "choice": 3,
+      "selected": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 2
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：人脉维护，Network 为当前最低短板(1)，低成本补人脉(Network+1)。"
+    },
+    {
+      "action": 13,
+      "month": 3,
+      "source_seq": 125,
+      "observe_seq": 131,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：准备汇报材料，再补可见绩效资本(Output+1)，无健康/隐患代价。"
+    },
+    {
+      "action": 24,
+      "month": 6,
+      "source_seq": 213,
+      "observe_seq": 219,
+      "choice": 4,
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 1,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 3
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 1,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 公开风险信号（HR\"有点风险\"、前辈\"搞砸的事情有点多\"）+ 存在合法修复选项，做一次 bounded cleanup 处理历史埋雷降低潜在风险，避免第二次爆雷触发信任危机。"
+    },
+    {
+      "action": 25,
+      "month": 6,
+      "source_seq": 221,
+      "observe_seq": 227,
+      "choice": 3,
+      "selected": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 1,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 1
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 2,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 剩余体力用于人脉维护，Network=1 是当前最低短板，低成本补人脉(Network+1)，cleanup 后回主线增长。"
+    },
+    {
+      "action": 36,
+      "month": 9,
+      "source_seq": 309,
+      "observe_seq": 315,
+      "choice": 4,
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 3
+      },
+      "after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第 9 月再次出现公开风险提示（新警告），授权再一次 bounded cleanup 处理历史埋雷，降低潜在隐患以免第二次爆雷。"
+    },
+    {
+      "action": 37,
+      "month": 9,
+      "source_seq": 317,
+      "observe_seq": 323,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 1
+      },
+      "after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 剩余体力用于准备汇报材料，补可见绩效资本(Output+1)，为半年评审做积累，无健康/隐患代价。"
+    },
+    {
+      "action": 48,
+      "month": 12,
+      "source_seq": 405,
+      "observe_seq": 411,
+      "choice": 3,
+      "selected": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 7,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 2
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第1点体力：人脉维护。刚被提示升迁过快致协作摩擦上升、办公室侧目，优先补 Network(Network+1)。"
+    },
+    {
+      "action": 49,
+      "month": 12,
+      "source_seq": 413,
+      "observe_seq": 419,
+      "choice": 3,
+      "selected": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 7,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 2
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：人脉维护。继续缓解升迁带来的协作摩擦、修复人脉(Network+1)。"
+    },
+    {
+      "action": 50,
+      "month": 12,
+      "source_seq": 421,
+      "observe_seq": 427,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 1
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 8,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：准备汇报材料，补可见绩效资本(Output+1)，兼顾人脉与产出平衡。"
+    },
+    {
+      "action": 61,
+      "month": 15,
+      "source_seq": 509,
+      "observe_seq": 515,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 7,
+        "wealth": 6,
+        "energy": 3
+      },
+      "after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 8,
+        "wealth": 6,
+        "energy": 2
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第1点体力：准备汇报材料。Skill 已极高(38)而 Output=7 相对滞后，优先补可见绩效资本(Output+1)。"
+    },
+    {
+      "action": 62,
+      "month": 15,
+      "source_seq": 517,
+      "observe_seq": 523,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 8,
+        "wealth": 6,
+        "energy": 2
+      },
+      "after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 6,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：准备汇报材料，继续补可见绩效资本(Output+1)，缩小与 Skill 的差距。"
+    },
+    {
+      "action": 63,
+      "month": 15,
+      "source_seq": 525,
+      "observe_seq": 531,
+      "choice": 6,
+      "selected": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Health": 2
+        }
+      },
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 6,
+        "energy": 1
+      },
+      "after": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 6,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：健康恢复。Health=5 偏低且多次事件消耗健康，回补健康(Health+2)守住生存底线，属 A 模式下普通价值健康动作。"
+    },
+    {
+      "action": 74,
+      "month": 18,
+      "source_seq": 613,
+      "observe_seq": 619,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 10,
+        "wealth": 8,
+        "energy": 3
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 11,
+        "wealth": 8,
+        "energy": 2
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第1点体力：准备汇报材料。评审反馈要求更清晰的成果，Output 相对滞后，优先补可见绩效资本(Output+1)。"
+    },
+    {
+      "action": 75,
+      "month": 18,
+      "source_seq": 621,
+      "observe_seq": 627,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 11,
+        "wealth": 8,
+        "energy": 2
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 12,
+        "wealth": 8,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：准备汇报材料，继续补可见绩效资本(Output+1)，呼应\"拿出更清晰成果\"的反馈。"
+    },
+    {
+      "action": 76,
+      "month": 18,
+      "source_seq": 629,
+      "observe_seq": 635,
+      "choice": 6,
+      "selected": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Health": 2
+        }
+      },
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 12,
+        "wealth": 8,
+        "energy": 1
+      },
+      "after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 12,
+        "wealth": 8,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：健康恢复。Health=6 且多次事件消耗健康，回补健康(Health+2)守住生存底线，属 A 模式普通价值健康动作。"
+    },
+    {
+      "action": 87,
+      "month": 21,
+      "source_seq": 717,
+      "observe_seq": 723,
+      "choice": 1,
+      "selected": {
+        "choice": 1,
+        "action": "高强度工作",
+        "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+        "energy_cost": 2,
+        "status_updates": {
+          "Output": 2,
+          "Health": -1,
+          "Dignity": -1,
+          "HiddenRisk": 1
+        }
+      },
+      "before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 11,
+        "wealth": 4,
+        "energy": 3
+      },
+      "after": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 13,
+        "wealth": 4,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=MAIN RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Output滞后于Skill且晋升窗口临近，投入高强度工作直接补产出；健康尊严均满有缓冲，可承受小幅代价。"
+    },
+    {
+      "action": 88,
+      "month": 21,
+      "source_seq": 725,
+      "observe_seq": 731,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 13,
+        "wealth": 4,
+        "energy": 1
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 14,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=MAIN RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 用剩余1点体力准备汇报材料，继续补可见产出并小幅回尊严，用满本季度预算不浪费。"
+    },
+    {
+      "action": 99,
+      "month": 24,
+      "source_seq": 813,
+      "observe_seq": 819,
+      "choice": 1,
+      "selected": {
+        "choice": 1,
+        "action": "高强度工作",
+        "description": "投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。",
+        "energy_cost": 2,
+        "status_updates": {
+          "Output": 2,
+          "Health": -1,
+          "Dignity": -1,
+          "HiddenRisk": 1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 13,
+        "output": 12,
+        "wealth": 6,
+        "energy": 3
+      },
+      "after": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 13,
+        "output": 14,
+        "wealth": 6,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Output持续滞后为晋升瓶颈，投入高强度工作直接补产出；健康尊严有余量可承受小幅代价。"
+    },
+    {
+      "action": 100,
+      "month": 24,
+      "source_seq": 821,
+      "observe_seq": 827,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 13,
+        "output": 14,
+        "wealth": 6,
+        "energy": 1
+      },
+      "after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 13,
+        "output": 15,
+        "wealth": 6,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 用剩余1点体力准备汇报材料，继续补可见产出并用满季度预算。"
+    },
+    {
+      "action": 111,
+      "month": 27,
+      "source_seq": 909,
+      "observe_seq": 915,
+      "choice": 4,
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 15,
+        "wealth": 8,
+        "energy": 3
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 15,
+        "wealth": 8,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] HR连续多轮公开提示风险累积，属fresh public warning，主动清理历史埋雷降低HiddenRisk，避免信任危机/爆雷。"
+    },
+    {
+      "action": 112,
+      "month": 27,
+      "source_seq": 917,
+      "observe_seq": 923,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 15,
+        "wealth": 8,
+        "energy": 1
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 16,
+        "wealth": 8,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 用剩余1点体力准备汇报材料，继续补Output并用满季度预算。"
+    },
+    {
+      "action": 123,
+      "month": 30,
+      "source_seq": 1005,
+      "observe_seq": 1011,
+      "choice": 4,
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 11,
+        "energy": 3
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 11,
+        "energy": 1
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 上季度埋雷已爆、HR持续预警风险，主动清理历史埋雷降低HiddenRisk，防止再次爆雷伤及晋升成果。"
+    },
+    {
+      "action": 124,
+      "month": 30,
+      "source_seq": 1013,
+      "observe_seq": 1019,
+      "choice": 7,
+      "selected": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 11,
+        "energy": 1
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 11,
+        "energy": 0
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 用剩余1点体力准备汇报材料，继续补Output并用满季度预算。"
+    }
+  ],
+  "public_warning_chronology": [
+    {
+      "action": 21,
+      "month": 6,
+      "source_seq": null,
+      "feed": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n照顾你的前辈把你叫进办公室：“你最近搞砸的事情有点多，但新人嘛也正常，最近的KPI目标我会帮你跟人沟通一下”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。"
+    },
+    {
+      "action": 33,
+      "month": 9,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。"
+    },
+    {
+      "action": 90,
+      "month": 22,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。"
+    },
+    {
+      "action": 102,
+      "month": 25,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。"
+    },
+    {
+      "action": 105,
+      "month": 26,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。"
+    },
+    {
+      "action": 108,
+      "month": 27,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。"
+    },
+    {
+      "action": 114,
+      "month": 28,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。"
+    },
+    {
+      "action": 117,
+      "month": 29,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR生气地说，你早干啥去了，之前埋的雷全要炸了！"
+    },
+    {
+      "action": 129,
+      "month": 32,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。"
+    },
+    {
+      "action": 132,
+      "month": 33,
+      "source_seq": null,
+      "feed": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR生气地说，你早干啥去了，之前埋的雷全要炸了！"
+    }
+  ],
+  "selected_contexts": [
+    {
+      "action": 12,
+      "source_seq": 117,
+      "observe_seq": 123,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 7,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 2,
+          "energy": 2
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 3,
+          "current_quarter": 1,
+          "current_year": 1
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 7,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        }
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 2,
+        "energy_budget": 3
+      },
+      "candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=N RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第2点体力：人脉维护，Network 为当前最低短板(1)，低成本补人脉(Network+1)。"
+    },
+    {
+      "action": 37,
+      "source_seq": 317,
+      "observe_seq": 323,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 4,
+          "energy": 1
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 9,
+          "current_quarter": 3,
+          "current_year": 1
+        },
+        "status": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 4,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 1,
+        "energy_budget": 3
+      },
+      "candidate": {
+        "choice": 7,
+        "action": "准备汇报材料",
+        "description": "提前整理可见成果材料，绩效资本与尊严小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Output": 1,
+          "Dignity": 1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=DELIVER F=O RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 剩余体力用于准备汇报材料，补可见绩效资本(Output+1)，为半年评审做积累，无健康/隐患代价。"
+    },
+    {
+      "action": 84,
+      "source_seq": 693,
+      "observe_seq": 699,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 21,
+          "current_quarter": 7,
+          "current_year": 2
+        },
+        "status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 14,
+          "wealth": 6,
+          "energy": 0
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 21,
+          "current_quarter": 7,
+          "current_year": 2
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 12,
+          "wealth": 4,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "承认心理压力寻求支持长链",
+        "description": "连续三个月高压项目后，你开始出现失眠、注意力涣散、情绪失控的症状。上周在早会上因为一个技术方案分歧当众对同事发火，事后懊悔不已。EAP（员工帮助计划）心理咨询师建议你考虑短期休假调整，但项目正处于关键里程碑，Leader 曾私下暗示'这个节点谁掉链子，年终评优一票否决'。你该如何选择？"
+      },
+      "candidate": {
+        "choice": 1,
+        "action": "申请两周医疗假期，配合专业心理干预"
+      },
+      "notes": "[CTRL G=? P=S R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=ACUTE CAP=NONE] 出现失眠/注意力涣散/情绪失控等急性心理症状，EAP 建议短期休假，属 fresh 公开 material binding（ACUTE）；MODE=S，采取最小必要保护：申请两周医疗假期配合专业心理干预。"
+    },
+    {
+      "action": 85,
+      "source_seq": 701,
+      "observe_seq": 707,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 21,
+          "current_quarter": 7,
+          "current_year": 2
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 12,
+          "wealth": 4,
+          "energy": 0
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 21,
+          "current_quarter": 7,
+          "current_year": 2
+        },
+        "status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 11,
+          "wealth": 4,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "孩子入学与加班时间的冲突",
+        "description": "孩子刚上学，接送和陪伴都需要时间，可这阵子项目正忙，加班是常态。家庭和工作的时间在硬碰硬。"
+      },
+      "candidate": {
+        "choice": 1,
+        "action": "和家人分工、和团队协商弹性，固定守住几个陪伴时段"
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 和家人分工、与团队协商弹性并固定守住几个陪伴时段，平衡家庭与工作，避免牺牲家庭或两头连轴透支；急性健康威胁已通过休假解除，回到 MODE=A。"
+    },
+    {
+      "action": 130,
+      "source_seq": 1061,
+      "observe_seq": 1067,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 32,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 49,
+          "network": 25,
+          "level": "L4",
+          "duration_in_level": 3,
+          "output": 19,
+          "wealth": 12,
+          "energy": 0
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 32,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 49,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 3,
+          "output": 18,
+          "wealth": 12,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "带新人爆雷追责长链",
+        "description": "你接下 Mentor 没两周，小李便绕过你的 Code Review，直接把一段未充分测试的代码合入预发布分支，导致测试环境整晚崩溃，多个兄弟团队被堵在卡点上。第二天早会，Leader 当众沉着脸问：‘这个事故，谁来说一下？’小李低着头不敢出声，所有人都把目光看向你。"
+      },
+      "candidate": {
+        "choice": 1,
+        "action": "主动揽下主责，称是 Mentor 监督不力"
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=OWNERSHIP F=OTHER RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 作为Mentor主动承担主责，领导者应为团队结果负责、保护新人、维护心理安全，可私下再纠正小李；当众甩锅新人违背带教立场与安全文化。"
+    },
+    {
+      "action": 131,
+      "source_seq": 1069,
+      "observe_seq": 1075,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 32,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 49,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 3,
+          "output": 18,
+          "wealth": 12,
+          "energy": 0
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 33,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 49,
+          "network": 27,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 13,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "同事长时间霸占打印机",
+        "description": "你急着打印一份马上要用的会议材料，结果共用打印机被同事老钱占着，他正在批量打一沓上百页的个人材料，还慢悠悠地一页页检查，丝毫没有让一下的意思。你时间很紧。"
+      },
+      "candidate": {
+        "choice": 1,
+        "action": "礼貌说明自己有份急件，问能否插打两页"
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=RESPONSIVE F=OTHER RP=GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 礼貌说明急件并询问能否插打两页，有分寸地解决冲突；强行取消他人任务失礼，默默干等误事。"
+    },
+    {
+      "action": 132,
+      "source_seq": 1077,
+      "observe_seq": 1083,
+      "before": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 33,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 49,
+          "network": 27,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 13,
+          "energy": 0
+        }
+      },
+      "after": {
+        "session_id": "699dad2eef3f4e7b852c629ba5e752c6",
+        "time": {
+          "current_month": 33,
+          "current_quarter": 11,
+          "current_year": 3
+        },
+        "status": {
+          "health": 9,
+          "dignity": 8,
+          "skill": 49,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 16,
+          "wealth": 11,
+          "energy": 0
+        }
+      },
+      "event": {
+        "title": "带新人爆雷追责长链",
+        "description": "你公开揽责保住了小李的转正机会，小李感激涕零。但当天下午 Leader 把你单独叫进会议室：‘咱们组今年事故指标已经超了，集团要的“追责报告”必须落到具体责任人头上。你揽下来组里可担不起，建议你按草稿把主要责任写到小李头上，转正流程我再帮他想办法。’他递给你一份基本写满的模板。"
+      },
+      "candidate": {
+        "choice": 2,
+        "action": "改写报告，强调流程缺陷与师徒共担"
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 改写报告强调流程缺陷与师徒共担，坚守刚公开作出的保护承诺与诚信，指向系统性改进；按草稿把主责甩给新人违背操守且与公开表态矛盾。"
+    }
+  ],
+  "measurements": {
+    "low_resource": [],
+    "minimum_H": 4,
+    "all_actions": 132,
+    "low_H_negative_outcomes": 0,
+    "public_terminal_reason": "信任危机end —— 第二次爆雷！组织表示「信任额度已用尽」，还请您将天赋带到下家公司",
+    "fresh_pairs": 132,
+    "modes": {
+      "A": 131,
+      "S": 1
+    },
+    "basis_preflight": {
+      "basis_check_present": 132,
+      "basis_check_valid": 132,
+      "basis_check_pass": 132,
+      "submitted_BC_certificate_coverage": 132,
+      "S_basis": {
+        "NONE": 131,
+        "ACUTE": 1
+      },
+      "CAP_basis": {
+        "NONE": 132
+      },
+      "MODE_S_inconsistent_claims": 0,
+      "semantic_consistency": "UNKNOWN_WITHOUT_EXPLICIT_PUBLIC_ANNOTATIONS",
+      "restricted_basis_blocked": null,
+      "saturation_basis_blocked": null,
+      "numeric_S_blocked": null,
+      "stale_cleanup_blocked": null,
+      "action_submitted_despite_BLOCKED": 0,
+      "CTRL_coverage": 132,
+      "DL_coverage": 132,
+      "POL_coverage": 132,
+      "PROBE_coverage": 132,
+      "POL_PROBE_coverage": 132,
+      "full_five_marker_coverage": 132,
+      "submitted_BC_PASS_with_invalid_header": 0,
+      "header_schema_version": 3,
+      "basis_receipt_coverage_status": "PASS",
+      "receipt_interpretation": "EXPLICIT_CLAIMS_NOT_SEMANTIC_OR_ENFORCEMENT_PROOF"
+    },
+    "immediate_NO_GAIN_repeats": 0,
+    "clean_progression_responses": {
+      "NO_GAIN": 3,
+      "GAIN": 15,
+      "UNKNOWN_OR_MIXED": 10
+    },
+    "wall_seconds": 908.823009
+  },
+  "cleanup_actions": [
+    {
+      "action": 24,
+      "seq": 213,
+      "observe_seq": 219,
+      "month": 6,
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 1,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 3
+      },
+      "after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 10,
+        "network": 1,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 4,
+        "wealth": 3,
+        "energy": 1
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 3,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=NONE n=0 focus=NONE evidence=NA checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 公开风险信号（HR\"有点风险\"、前辈\"搞砸的事情有点多\"）+ 存在合法修复选项，做一次 bounded cleanup 处理历史埋雷降低潜在风险，避免第二次爆雷触发信任危机。",
+      "feed": ""
+    },
+    {
+      "action": 36,
+      "seq": 309,
+      "observe_seq": 315,
+      "month": 9,
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 3
+      },
+      "after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 1
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 3,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第 9 月再次出现公开风险提示（新警告），授权再一次 bounded cleanup 处理历史埋雷，降低潜在隐患以免第二次爆雷。",
+      "feed": ""
+    },
+    {
+      "action": 111,
+      "seq": 909,
+      "observe_seq": 915,
+      "month": 27,
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 15,
+        "wealth": 8,
+        "energy": 3
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 16,
+        "output": 15,
+        "wealth": 8,
+        "energy": 1
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 3,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] HR连续多轮公开提示风险累积，属fresh public warning，主动清理历史埋雷降低HiddenRisk，避免信任危机/爆雷。",
+      "feed": ""
+    },
+    {
+      "action": 123,
+      "seq": 1005,
+      "observe_seq": 1011,
+      "month": 30,
+      "before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 11,
+        "energy": 3
+      },
+      "after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 46,
+        "network": 20,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 11,
+        "energy": 1
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 3,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 4,
+        "action": "处理历史埋雷",
+        "description": "主动清理过往遗留隐患，降低潜在风险值。",
+        "energy_cost": 2,
+        "status_updates": {
+          "HiddenRisk": -1
+        }
+      },
+      "notes": "[CTRL G=? P=A R=ALLOW RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=OTHER RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 上季度埋雷已爆、HR持续预警风险，主动清理历史埋雷降低HiddenRisk，防止再次爆雷伤及晋升成果。",
+      "feed": ""
+    }
+  ],
+  "health_recoveries": [
+    {
+      "action": 63,
+      "seq": 525,
+      "observe_seq": 531,
+      "month": 15,
+      "before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 6,
+        "energy": 1
+      },
+      "after": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 38,
+        "network": 11,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 6,
+        "energy": 0
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 1,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Health": 2
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：健康恢复。Health=5 偏低且多次事件消耗健康，回补健康(Health+2)守住生存底线，属 A 模式下普通价值健康动作。",
+      "feed": ""
+    },
+    {
+      "action": 76,
+      "seq": 629,
+      "observe_seq": 635,
+      "month": 18,
+      "before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 12,
+        "wealth": 8,
+        "energy": 1
+      },
+      "after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 20,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 12,
+        "wealth": 8,
+        "energy": 0
+      },
+      "event": {
+        "title": "季度体力行动分配",
+        "description": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "rules": [
+          "本季度体力预算为 3 点，超出预算的组合无效。",
+          "同一行动可以被重复选择（例如两次健康恢复），只要总体力不超预算。",
+          "未使用的体力不会累计到下个季度。",
+          "状态更新按所选行动的 status_updates 逐项累加结算。"
+        ],
+        "max_selections": 3,
+        "remaining_energy": 1,
+        "energy_budget": 3
+      },
+      "selected": {
+        "choice": 6,
+        "action": "健康恢复",
+        "description": "休整作息、恢复体力，明显回补健康。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Health": 2
+        }
+      },
+      "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D1 n=1 focus=IN_PROGRESS evidence=UNVERIFIED checkpoint=NOT_NEAR recognition=0] [POL B=PROTECT F=RESOURCE RP=NA] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] 第3点体力：健康恢复。Health=6 且多次事件消耗健康，回补健康(Health+2)守住生存底线，属 A 模式普通价值健康动作。",
+      "feed": ""
+    }
+  ],
+  "classifications": {
+    "reviewer": "PASS_WITH_LIMITATIONS",
+    "S1_continuation": "PASS",
+    "G3": "NOT_EXERCISED",
+    "energy": "FAIL",
+    "semantic_preflight": "FAIL",
+    "failure_floor": "FAIL"
+  },
+  "hold": {
+    "status": "ACTIVE",
+    "owner": "S09-RUN19",
+    "release_authority": "Main/Stage",
+    "reason": "Natural trust-crisis and semantic/timing conclusions require exact raw context; retain until Stage acceptance and dependent forensic work closure.",
+    "review_point": "Stage review before any v10i/RUN20",
+    "sources": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\events-20261003T062215Z.jsonl",
+        "bytes": 1381842,
+        "sha256": "a8fe3207efa39c03e73cfb014cea450f1215a978638b39edbe1f859a8f7f76fe"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\transcript-20261003T062215Z.log",
+        "bytes": 312923,
+        "sha256": "c85dd0d7f3f509946cff05bed7b45433143d1861ab8613b2dc09a597c3feab34"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T062215Z\\score_report.json",
+        "bytes": 2760,
+        "sha256": "bf1f3e4eae4a13df5859be90aec7a26ad8408aaf127ec0d3f391567f9b04b16b"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\runner-result.json",
+        "bytes": 2393,
+        "sha256": "11b4d62713b08380c3c22bba54f6b0b81b04f07d9cea44df78f168098c85e2b4"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\post_run_summary.json",
+        "bytes": 178732,
+        "sha256": "66635b901c4e64fc975ed39fd65752b76dded91ca32a6096e680da40f9e3df0a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\controller-state.json",
+        "bytes": 1980,
+        "sha256": "232684cad0975b0070759a70c700e843e32be50de96080af65645ef4a3f61dc3"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\reviewer-receipts.json",
+        "bytes": 11988,
+        "sha256": "3dc8c3b60bdfe3ef3fe1dd345f31eb0c4d7bdaf5bcc7a2a8dd2cb10ea1dbe9f9"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\preflight.json",
+        "bytes": 3123,
+        "sha256": "376bcab5cf9c7750b6e34df101aedbe549f03367adafff242b5ebf42922b89a5"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\targeted-tests.log",
+        "bytes": 817,
+        "sha256": "3dbbb5df11deecb496c0292ed5b20cf0f087eb885803da08f562783c38ac314a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\runner-stdout.log",
+        "bytes": 249261,
+        "sha256": "a20bff9dbad2f31bd11349690154660e6a0e2f8f388df04b8eb8a6c9434380e7"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\service-stdout.log",
+        "bytes": 2361510,
+        "sha256": "185832267d5886d090d7c6f511ef42facd3964c7b807b27cadfcbe7dd7f80455"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "a24498be5c87cd12460dc389d668692e0e996e23d2dec4b2dd4de66135109180"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\notifications.jsonl",
+        "bytes": 8713,
+        "sha256": "baea8dfb4293792aa3feb8044cc0bd9dda11d3af9c8f677e1c3cb858f816a8b4"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\user-progress.jsonl",
+        "bytes": 1400,
+        "sha256": "a769671fcf7e4eff175ac7476f595954e0d151ff3a3ff0cdc5a653ad6267b930"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\bounded-analysis.json",
+        "bytes": 67250,
+        "sha256": "2bd99a468910952e761a3873ed757ef557b87e38108956e883cb2c5eb3533fdf"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\policy-trace.json",
+        "bytes": 200461,
+        "sha256": "db701fe0a141bf61d1637dbcd01e8568a49886ed05f90a38ec989c4328b5d01a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\action-contexts.json",
+        "bytes": 1251456,
+        "sha256": "a4e9220efb8ab40368a8ebd4c74b1101e07ba256190aa3af7a5ed91972b19fc8"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\heartbeat-12.json",
+        "bytes": 103377,
+        "sha256": "a493d7646eaefe8cfcd9156687df3394458f418bc4cd1fb0ed21c19268fffc90"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\heartbeat-3.json",
+        "bytes": 21346,
+        "sha256": "712653f046652e29f48803f1575871e2c1bd0786f68f232fa86c51405a5e465e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\heartbeat-40.json",
+        "bytes": 383085,
+        "sha256": "a320f4d902625e662e0ec5b789c97d1730f9c0989ec4de0041bba1ddbc3fc3a4"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\review-12.json",
+        "bytes": 1089,
+        "sha256": "e100776a7eef35d7fb67e6328c66e2acdfea34796f10225f521581910067de82"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\review-18.json",
+        "bytes": 886,
+        "sha256": "560b60e0b5b3d570d493718d5b4bc2936c3dead35410f2ff46a2a5f32a2aad02"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\review-24.json",
+        "bytes": 877,
+        "sha256": "92c3e9cebf3243a51dbe7917bdf96d8322bf43c6e3a0cdc106eafe24b7b7e54a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\review-30.json",
+        "bytes": 981,
+        "sha256": "a2aa42ccd4e50a730412f5f692e3139d2301b20451abf55274c7727c5cca6a4e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\controller-v3\\review-6.json",
+        "bytes": 1133,
+        "sha256": "bcda3818f11b4a7d2f7dba653a3021f35b6fd5cafc64e8fac4884b97f9e0526e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\decisions\\h1-decision.json",
+        "bytes": 2025,
+        "sha256": "43ff0bdbdc350b99112553eaceb991ae69d82f444bb2426d0b28693bb0a6d077"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\decisions\\h2-decision.json",
+        "bytes": 5198,
+        "sha256": "4f290adddfa8f21f517b5b7df35731147f6be76594e202fbc0662b68445d8482"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run19-v10h\\decisions\\h3-decision.json",
+        "bytes": 5144,
+        "sha256": "55d98387ce7e773855ad56d7838b5575d9556ddc9c68f4ee665850dfe602fd78"
+      }
+    ]
+  },
+  "limitations": [
+    "No full model-history absence claim",
+    "No causal proof that a different Energy or Story choice would prevent terminal",
+    "S2 live stop not exercised",
+    "M6 live report delayed during S1 review",
+    "Progress record timestamps are proxies for UI message times",
+    "Compression, recovery sequence, execution boundary and Skill reread counts UNKNOWN without safely scoped provider evidence",
+    "Raw kept local; no shared DB or unrelated provider log archived"
+  ]
+}
