@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "task": "S09-28",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "base_evidence_HEAD": "1f992d7d24c2a39d6cf55147327cdcbb9e6f9f4b",
+  "implementation_commit": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+  "candidate": "candidate-v10h-dynamic-survival-margin",
+  "parent": "candidate-v10g-official-runtime-evidence-boundary",
+  "strategy_delta": "A_MODE_DYNAMIC_SURVIVAL_MARGIN",
+  "execution_clarification": "FRESH_ENERGY_RERANK_OPERATIONALIZATION",
+  "protected_identity": {
+    "runtime_manifest": {
+      "path": "configs/runtime_manifest.json",
+      "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa",
+      "instruction_sha256": "43f92942dd94245418369b1ed263f3919f6e2529c81cbbd69a92a326339a1076"
+    },
+    "skills": [
+      {
+        "name": "structured-state-board",
+        "path": "skills/structured-state-board/SKILL.md",
+        "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+      },
+      {
+        "name": "rolling-planning",
+        "path": "skills/rolling-planning/SKILL.md",
+        "git_blob": "f60c5e0d93b9803dff79f4bda4b5a9f22489d123"
+      },
+      {
+        "name": "delivery-progress",
+        "path": "skills/delivery-progress/SKILL.md",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "name": "risk-review",
+        "path": "skills/risk-review/SKILL.md",
+        "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+      }
+    ],
+    "header_schema_version": 3,
+    "basis_annotation_schema_version": 2
+  },
+  "static_gates": {
+    "a22_downside_penalty_and_lower_load_comparison_without_fixed_cutoff": "PASS_WRITTEN_AND_ANNOTATED_FIXTURE",
+    "donor_no_recovery_menu_and_bounded_recovery_no_numeric_S": "PASS_WRITTEN_AND_ANNOTATED_FIXTURE",
+    "Energy_current_value_and_fresh_response_not_stale_recipe": "PASS_WRITTEN_AND_MUTATION_FIXTURE",
+    "official_access_cap_numeric_S_bounded_state_Risk_header_regressions": "PASS_EXISTING_OFFLINE_ORACLES",
+    "identity_scope_prompt_budget": "PASS",
+    "offline_four_skill_package_diff_secret_scan": "PASS"
+  },
+  "verification": {
+    "targeted_passed": 336,
+    "obsolete_version_freezes_deselected": 3,
+    "annotated_comparisons_are_model_behavior_evidence": false,
+    "future_live_adherence": "UNKNOWN"
+  },
+  "prompt_size": {
+    "planning": {
+      "before_chars": 7862,
+      "after_chars": 8114,
+      "before_utf8_bytes": 11797,
+      "after_utf8_bytes": 12382,
+      "char_growth_percent": 3.2053,
+      "byte_growth_percent": 4.9589
+    },
+    "manifest_instruction": {
+      "before_chars": 5500,
+      "after_chars": 5598,
+      "before_utf8_bytes": 7989,
+      "after_utf8_bytes": 8227,
+      "char_growth_percent": 1.7818,
+      "byte_growth_percent": 2.9791
+    }
+  },
+  "package": {
+    "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-28\\submission",
+    "submission_mode": "skill_bundle",
+    "skill_ids": [
+      "delivery-progress",
+      "risk-review",
+      "rolling-planning",
+      "structured-state-board"
+    ],
+    "files": [
+      {
+        "path": "manifest.json",
+        "bytes": 8407,
+        "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5041,
+        "sha256": "200b6c83aaca43f6dccfe58a30e23e79463e930512ef89cf5b19070a9d5d7528"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "bytes": 4542,
+        "sha256": "b3f5f8e0cac62f0e6bc2223cd232832ad8d09f797cdc6a7af820dc1b7877aaf8"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "bytes": 12467,
+        "sha256": "6b569972a568fbb6a8efcc5735e181d93890addce15e3918da7d67da01bc3474"
+      },
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "bytes": 5678,
+        "sha256": "ff0c1cce56fc991fbf0a410a103fab7e56010510de3cfcf064de7b6373d46162"
+      }
+    ]
+  },
+  "VALUE_OF_RUN": "HIGH",
+  "interpretation": "Expected diagnostic information gain only, not score confidence or authorization",
+  "remaining_uncertainty": [
+    "actual G3 comparison at thin margin",
+    "discarding prior Energy order after each fresh observe",
+    "bounded recovery versus overprotection",
+    "unadvertised Story shocks and legal recovery availability",
+    "survival/score/opportunity cost",
+    "long-horizon and 75+ trajectory"
+  ],
+  "decision": "S09_28_V10H_STATIC_PASS_RETURN_TO_STAGE",
+  "live_provider_service_game_operations": 0,
+  "validation_flags": {
+    "runtime_validated": false,
+    "gameplay_validated": false,
+    "provider_validated": false,
+    "survival_improvement_proven": false,
+    "score_improvement_proven": false,
+    "long_horizon_adherence": false,
+    "stable_80_plus_proven": false,
+    "hidden_test_transfer_proven": false,
+    "next_game_authorized": false
+  },
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "main_v8a_freeze": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+  "MAIN_V8A_FREEZE_UNCHANGED": true
+}
