@@ -1,0 +1,1587 @@
+{
+  "schema_version": 1,
+  "task": "S10-09",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "classification": "NEGATIVE_POLICY_SIGNAL",
+  "classification_basis": [
+    "Natural M18 Health terminal plus observed one-pass reversals, Energy batch recipe, missed local discount, stale Review path and acute constraint deferral.",
+    "Low score alone is not classification basis."
+  ],
+  "branch": "codex/s10-09-v14-run01",
+  "parent_sha": "59a89513096a1e7982dc4a7e896e6d3b3cdd4bf4",
+  "candidate": "candidate-v14-experience-routed-policy",
+  "fallback_main_sha": "8267d420da29888d0a05403991f8980e251aaa0c",
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "session_id": "009beea968ba4d759c3d59680d9d9db0",
+  "drive_session_id": "career-sim-runner-0a1269de5341",
+  "live_budget": {
+    "install": 1,
+    "service_lifecycle": 1,
+    "runner_play": 1,
+    "fresh_game": 1,
+    "replacement": 0,
+    "manual_action": 0,
+    "strategy_intervention": 0,
+    "extra_provider_completion_probe": 0,
+    "non_generative_balance_reads": 1,
+    "provider_gate": "PASS",
+    "available_CNY_at_preflight": "7.91",
+    "full_run_funding_guarantee": "UNKNOWN"
+  },
+  "preflight": {
+    "status": "PASS",
+    "static_evidence_reused": "S10-08 32 tests, unchanged source bytes",
+    "package_hashes": {
+      "manifest.json": "755799f24d70882b4c8054845c2a0eb94a66a63e908f0662b07640fc9a911122",
+      "skills/career-policy-core/SKILL.md": "d660c5fff11f10583b35be520acb8376eb57b1b14a058a0fb4802150eae35bcd",
+      "skills/career-policy-atlas/SKILL.md": "3d225588d0c3e2b7931d4de8ce786ddcee883d78df35642951a9df4334b61a50",
+      "skills/career-policy-atlas/references/energy-resource.md": "48f72f16ac9cf9fe95fd3a0c04202869650261e731dc5cb3f9b011e6d8aace11",
+      "skills/career-policy-atlas/references/health-survival.md": "d1cad10018a01f7537b4d3b0bba1ed71ea581ac4f38b5ce9f1fcaf546326603e",
+      "skills/career-policy-atlas/references/project-delivery.md": "fb1b3d3a426340d22a4f6951dca73b90d3b2424e814ec1de4e3118f3064781ac",
+      "skills/career-policy-atlas/references/review-promotion.md": "cd4f13494868c2381c2c025912692aeb850c91c9674871f6d33ae8c6dc4cb4a1",
+      "skills/career-policy-atlas/references/trust-compliance-conflict.md": "9adb35c94eca7c8d1561bce3c3f4d03205db5734db42a9775f1f06a05308ef00",
+      "skills/career-policy-atlas/references/visibility-network-learning.md": "861c7b916f058eb231517c7dc7739b0e383d9f230ec6f09aff3e947f58d2aaaa",
+      "skills/career-survival-guard/SKILL.md": "95969a97d0c0b489564ee89a2ace455ced885744f01e2ab6b7f99436b953f9cb"
+    },
+    "installed_references": 6,
+    "installed_bytes_verified": true,
+    "PATH_LIST": "ONE_BARE_CALL_EXIT_0",
+    "versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3",
+      "openjiuwen": "0.1.16.post2"
+    },
+    "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+    "max_retries": 2
+  },
+  "outcome": {
+    "classification": "NEGATIVE_POLICY_SIGNAL",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 18,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 11.27,
+      "completed": false,
+      "grade": "E",
+      "outcome": "eliminated",
+      "quantitative_score": 16.1,
+      "survival_months": 18
+    },
+    "terminal_public_state": {
+      "session_id": "009beea968ba4d759c3d59680d9d9db0",
+      "status": {
+        "dignity": 2,
+        "duration_in_level": 18,
+        "energy": 0,
+        "health": 0,
+        "level": "L1",
+        "network": 3,
+        "output": 3,
+        "skill": 9,
+        "wealth": 3
+      },
+      "time": {
+        "current_month": 18,
+        "current_quarter": 6,
+        "current_year": 2
+      }
+    },
+    "canonical_parser_classification": "UNKNOWN",
+    "final_level": "L1",
+    "terminal_type": "NATURAL_HEALTH_ELIMINATION",
+    "promotions": [],
+    "first_promotion_month": null,
+    "level_at_M18": "L1"
+  },
+  "runtime": {
+    "status": "PASS_WITH_LIMITATIONS",
+    "successful_action_fresh_observe_pairs": "71/71",
+    "observes": 72,
+    "all_action_shaped_calls": 72,
+    "legal_integer_choices": "72/72",
+    "same_session_arguments": "72/72",
+    "explicit_energy_affordability": "13/13",
+    "explicit_main_affordability": "5/5",
+    "mutation_outcomes_unknown": 0,
+    "pre_dispatch_route_failure": {
+      "month": 10,
+      "call_line": 357,
+      "result_line": 359,
+      "corrected_call_line": 361,
+      "error": "Ability not found in resource_mgr; bad alias never reached MCP/game mutation",
+      "recovery": "Correct canonical alias used once; same fresh unchanged menu; subsequent fresh observe367"
+    },
+    "canonical_unknown_result_1": "Resolved as explicit native pre-dispatch rejection, not Unknown Side Effect",
+    "canonical_CTRL_DL_failures": "NOT_APPLICABLE_TO_V14; legacy formatting exception accepted S10-08",
+    "events_identity": "PASS",
+    "score_report_session_field": "MATCH",
+    "transcript_identity": "PASS_SCOPED_EXPLICIT_SESSION_ID; canonical parser UNKNOWN corrected by explicit SESSION_ID markers",
+    "compression_count": 0,
+    "compression_recovery": "NOT_EXERCISED",
+    "continuation_count": "UNKNOWN",
+    "observed_final_frames": 1,
+    "whole_game_persistence": "PASS_WITH_LIMITATIONS; natural M18 terminal, M19-M48 not exercised",
+    "runner_exit": 0,
+    "graceful_stop_count": 1,
+    "stop_exit": 0,
+    "remaining_ports": [],
+    "service_wrapper_exit": 1
+  },
+  "retrieval": {
+    "startup_body_reads": [
+      "career-policy-core"
+    ],
+    "skill_body_reads": 3,
+    "reference_reads": 4,
+    "guard_reads": 1,
+    "per_card_counts": {
+      "review-promotion.md": 0,
+      "energy-resource.md": 1,
+      "project-delivery.md": 1,
+      "trust-compliance-conflict.md": 1,
+      "health-survival.md": 0,
+      "visibility-network-learning.md": 1
+    },
+    "full_library_sweep": false,
+    "over_retrieval": false,
+    "max_new_cards_per_decision": 1,
+    "under_retrieval": [
+      "First Energy M3: Energy card absent, batch recipe executed.",
+      "All formal Reviews: Review card never read; no substantive result/checkpoint reroute.",
+      "Serious HR warnings M4/M15: no guard read; warning response only partial/clearance unknown.",
+      "M18 acute physical constraint: guard loaded but Health card absent and survival handling fails."
+    ],
+    "reference_reads_per_100_successful_actions": 5.633802816901409,
+    "unrelated_reference_read_rate": 0.0,
+    "unrelated_rate_basis": "0/4 new card reads judged functionally relevant; does not measure stale resident context",
+    "reads": [
+      {
+        "month": null,
+        "phase": "STARTUP",
+        "target": "career-policy-core",
+        "call_line": 1,
+        "result_line": 7,
+        "success": true,
+        "routing_reason_semantic_audit": "Startup kernel only; handbook separately read.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 2165
+      },
+      {
+        "month": 1,
+        "phase": "STORY",
+        "target": "career-policy-atlas",
+        "call_line": 25,
+        "result_line": 27,
+        "success": true,
+        "routing_reason_semantic_audit": "First normal interpersonal Story; semantic routing needed.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 1211
+      },
+      {
+        "month": 1,
+        "phase": "STORY",
+        "target": "visibility-network-learning.md",
+        "call_line": 29,
+        "result_line": 31,
+        "success": true,
+        "routing_reason_semantic_audit": "Ordinary interpersonal growth; no current material danger.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 768
+      },
+      {
+        "month": 1,
+        "phase": "STORY",
+        "target": "project-delivery.md",
+        "call_line": 41,
+        "result_line": 43,
+        "success": true,
+        "routing_reason_semantic_audit": "New decision: cross-team incident competes with own due deliverable.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 731
+      },
+      {
+        "month": 2,
+        "phase": "STORY",
+        "target": "trust-compliance-conflict.md",
+        "call_line": 69,
+        "result_line": 71,
+        "success": true,
+        "routing_reason_semantic_audit": "Current confidentiality/integrity dilemma; correct functional card.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 668
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "target": "energy-resource.md",
+        "call_line": 217,
+        "result_line": 219,
+        "success": true,
+        "routing_reason_semantic_audit": "Energy/resource procedure before warning-motivated cleanup.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 843
+      },
+      {
+        "month": 18,
+        "phase": "STORY",
+        "target": "career-survival-guard",
+        "call_line": 601,
+        "result_line": 603,
+        "success": true,
+        "routing_reason_semantic_audit": "Acute public Health constraint and explicit job-continuity warning at M18.",
+        "prior_successful_read": false,
+        "actual_model_active_context_presence": "UNKNOWN; first read, no compressor observed",
+        "necessary": "YES_FUNCTIONAL_TRIGGER",
+        "returned_chars_with_frontmatter_or_line_numbers": 1327
+      }
+    ],
+    "missing_reference_read_failures": 0,
+    "exact_returned_body_reads": true
+  },
+  "policy": {
+    "capsule": "PASS_WITH_LIMITATIONS",
+    "all_choice_coverage": "PASS_WITH_LIMITATIONS",
+    "bounded_one_pass_deliberation": "FAIL",
+    "survival": "FAIL",
+    "energy_one_step": "FAIL",
+    "local_NO_GAIN_routing": "FAIL",
+    "no_advance_reroute": "FAIL",
+    "conditional_project": "FAIL",
+    "result_evidence": "PASS_WITH_LIMITATIONS",
+    "shallow_lookahead": "FAIL",
+    "evidence_firewall": "FAIL",
+    "public_warning_admissibility": "PASS_WITH_LIMITATIONS; warnings not discarded as hidden, but forbidden advertised hidden-effect arithmetic used",
+    "ordinary_cost": "PASS_WITH_LIMITATIONS; early Health costs accepted, later numeric buffer habits; causal opportunity cost unknown",
+    "capsule_samples": [
+      {
+        "sample": "first_action",
+        "month": 1,
+        "phase": "HANDBOOK",
+        "action_line": 17,
+        "pre_observe_line": 15,
+        "post_observe_line": 23,
+        "selected_semantics": "继续",
+        "choice_count": 1,
+        "energy_cost": null,
+        "pre": {
+          "health": 5,
+          "dignity": 5,
+          "skill": 1,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 5,
+          "skill": 1,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 1,
+          "output": 0,
+          "wealth": 1,
+          "energy": 3
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Same session/fresh public state; initial single continue menu.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "first_energy",
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 113,
+        "pre_observe_line": 111,
+        "post_observe_line": 119,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Fresh resources and full menu present; local response absent before first action; batch projection violates one-step.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "first_main",
+        "month": 3,
+        "phase": "MAIN",
+        "action_line": 137,
+        "pre_observe_line": 135,
+        "post_observe_line": 143,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "response_scope": "MIXED",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Fresh current numbers and5 choices; owner concern noticed but final ranking follows advertised gains.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "review_M6_aftermath",
+        "month": 6,
+        "phase": "STORY",
+        "action_line": 193,
+        "pre_observe_line": 191,
+        "post_observe_line": 199,
+        "selected_semantics": "分享中公开感谢小乔的前期铺垫，并私下找她聊一次",
+        "choice_count": 2,
+        "energy_cost": null,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Formal feedback recognized; generic Output/Network priority, no substantive route reset.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "review_M12_aftermath",
+        "month": 12,
+        "phase": "STORY",
+        "action_line": 401,
+        "pre_observe_line": 399,
+        "post_observe_line": 407,
+        "selected_semantics": "把协助过的事项简要留痕（如消息/任务备注），让贡献可追溯，并再次明确分工",
+        "choice_count": 2,
+        "energy_cost": null,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Fresh review recognized; later Network state change addressed, no result/window redesign.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "first_material_HR_warning",
+        "month": 4,
+        "phase": "STORY",
+        "action_line": 145,
+        "pre_observe_line": 143,
+        "post_observe_line": 151,
+        "selected_semantics": "坚持原创节奏，主动申请延期并把风险写进汇报",
+        "choice_count": 2,
+        "energy_cost": null,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 2,
+          "wealth": 1,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Current public HR warning recognized in transcript641; guard not loaded, no specific clearance established.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      },
+      {
+        "sample": "review_M18_and_final_warning",
+        "month": 18,
+        "phase": "STORY",
+        "action_line": 605,
+        "pre_observe_line": 599,
+        "post_observe_line": 611,
+        "selected_semantics": "主动承担桥梁角色，促成两边协作、积累跨体系信誉",
+        "choice_count": 2,
+        "energy_cost": null,
+        "pre": {
+          "health": 1,
+          "dignity": 2,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 18,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 0,
+          "dignity": 2,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 18,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "capsule_verdict": "PASS_WITH_LIMITATIONS",
+        "semantic_basis": "Health1/Dignity2 and final job warning explicit; guard ACTIVE; immediate physical constraint deferred.",
+        "local_response_and_deliverable_coverage": "Incomplete/decision-specific; no full-cycle proof"
+      }
+    ],
+    "late_game_capsule": "NOT_EXERCISED",
+    "all_choice_samples": [
+      {
+        "sample": "first Main",
+        "action_line": 137,
+        "legal_count": 5,
+        "transcript_lines": [
+          593,
+          641
+        ],
+        "coverage": "All five surfaced; repeated reconsideration, advertised gains dominate"
+      },
+      {
+        "sample": "first Energy",
+        "action_line": 113,
+        "legal_count": 8,
+        "transcript_lines": [
+          448,
+          578
+        ],
+        "coverage": "Multiple actions plus unused-energy option considered; full batch projection/repeated reversals"
+      },
+      {
+        "sample": "first Review aftermath",
+        "action_line": 193,
+        "legal_count": 2,
+        "transcript_lines": [
+          829,
+          881
+        ],
+        "coverage": "Both options considered; repeated final-choice reversals"
+      },
+      {
+        "sample": "first material warning",
+        "action_line": 145,
+        "legal_count": 2,
+        "transcript_lines": [
+          641,
+          734
+        ],
+        "coverage": "Warning recognized; public customer-integrity options compared, guard absent"
+      },
+      {
+        "sample": "first no-advance reroute",
+        "action_line": 193,
+        "legal_count": 2,
+        "transcript_lines": [
+          829,
+          881
+        ],
+        "coverage": "Acknowledged feedback, generic same growth focus"
+      },
+      {
+        "sample": "ambiguous cross-team vs own delivery",
+        "action_line": 45,
+        "legal_count": 3,
+        "transcript_lines": [
+          71,
+          140
+        ],
+        "coverage": "All options considered; no literal top-two pruning found"
+      },
+      {
+        "sample": "ambiguous personal equipment policy",
+        "action_line": 253,
+        "legal_count": 2,
+        "transcript_lines": [
+          1097,
+          1201
+        ],
+        "coverage": "Both responsible options; prolonged final reversals"
+      },
+      {
+        "sample": "ambiguous relationship vs technical route",
+        "action_line": 585,
+        "legal_count": 4,
+        "transcript_lines": [
+          2700,
+          2864
+        ],
+        "coverage": "All four considered; hidden promotion-threshold style assumptions recur"
+      }
+    ],
+    "failure_witnesses": [
+      {
+        "mechanism": "ENERGY_RECIPE_AND_RECURSIVE_DEBATE",
+        "events_action_line": 113,
+        "transcript_lines": [
+          481,
+          576
+        ],
+        "category_only": "Preassigned whole3-energy sequence and repeatedly reversed final choice; fresh observe does not prove rerank."
+      },
+      {
+        "mechanism": "FORBIDDEN_THRESHOLD_EFFECT_ASSUMPTIONS",
+        "events_action_lines": [
+          221,
+          529
+        ],
+        "transcript_lines": [
+          494,
+          516
+        ],
+        "category_only": "Advertised hidden-effect arithmetic and unverified promotion-eligibility threshold reasoning; no hidden numeric stock adopted by this audit."
+      },
+      {
+        "mechanism": "CAP_SPECULATION",
+        "events_action_line": 121,
+        "transcript_lines": [
+          578,
+          582
+        ],
+        "category_only": "Cap/display-lag speculations after fresh local flat; not an audit fact or proven permanent cap."
+      },
+      {
+        "mechanism": "ACUTE_GUARD_MISAPPLICATION",
+        "events_action_line": 605,
+        "transcript_lines": [
+          2906,
+          3440
+        ],
+        "category_only": "Immediate physical threat explicitly recognized, then future Energy recovery used to justify added bridge-role load; many final reversals."
+      }
+    ],
+    "warning_ledger": [
+      {
+        "month": 4,
+        "domain": "TRUST",
+        "evidence_observe_line": 143,
+        "public_evidence": "HR: 积攒了不少风险，自己好好处理好",
+        "guard_body_loaded": false,
+        "action_lines": [
+          145,
+          221
+        ],
+        "response": "Public warning recognized; later M6 cleanup succeeded, cost2 at E3.",
+        "next_evidence": "Ordinary/generic HR praise; no same-scope explicit clearance.",
+        "clearance": "UNKNOWN_UNRESOLVED",
+        "materiality": "Serious public escalation, recognized by model; no hidden stock inference adopted"
+      },
+      {
+        "month": 6,
+        "domain": "JOB_PROGRESSION",
+        "evidence_observe_line": 191,
+        "public_evidence": "C; still on observation list; next stage needs clearer results",
+        "guard_body_loaded": false,
+        "action_lines": [
+          193,
+          229,
+          237
+        ],
+        "response": "Repeated report/key-project prior; warning alone not an immediate terminal crisis.",
+        "next_evidence": "M12 C/no advance",
+        "clearance": "NO_SUBSTANTIVE_RESULT_PATH_CHANGE",
+        "materiality": "Progression warning, not automatically acute survival"
+      },
+      {
+        "month": 15,
+        "domain": "TRUST",
+        "evidence_observe_line": 503,
+        "public_evidence": "HR again: 积攒了不少风险，自己好好处理好",
+        "guard_body_loaded": false,
+        "action_lines": [
+          505,
+          513,
+          521,
+          529,
+          537,
+          545
+        ],
+        "response": "Transparent Story choices; bounded cleanup at E3/cost2; then Health and key project.",
+        "next_evidence": "Later generic praise/soft risk message is not same-scope clearance.",
+        "clearance": "UNKNOWN_UNRESOLVED",
+        "materiality": "Renewed serious public warning"
+      },
+      {
+        "month": 18,
+        "domain": "HEALTH_SAFETY_AND_JOB_CONTINUITY",
+        "evidence_observe_line": 599,
+        "public_evidence": "Health1/Dignity2; D; Leader gives last adjustment window or cannot protect job.",
+        "guard_body_loaded": true,
+        "guard_call_line": 601,
+        "guard_result_line": 603,
+        "action_lines": [
+          605
+        ],
+        "response": "Bridge/ownership growth chosen; Health recovery deferred to assumed next Energy phase.",
+        "next_evidence_observe_line": 611,
+        "next_evidence": "Public Health0 and 眼前一黑 natural terminal.",
+        "clearance": "NOT_CLEARED_TERMINAL",
+        "materiality": "Acute physical danger explicitly recognized; guard instruction misapplied"
+      }
+    ],
+    "no_gain": [
+      {
+        "family": "人脉维护",
+        "dimension": "network",
+        "month": 3,
+        "action_line": 121,
+        "pre_observe_line": 119,
+        "post_observe_line": 127,
+        "pre_value": 3,
+        "post_value": 3,
+        "next_same_family_same_level_action_line": 425,
+        "next_month": 12,
+        "independent_value_or_context_change": "Public Network fell to1; changed state and later gain"
+      },
+      {
+        "family": "准备汇报材料",
+        "dimension": "output",
+        "month": 6,
+        "action_line": 229,
+        "pre_observe_line": 227,
+        "post_observe_line": 235,
+        "pre_value": 3,
+        "post_value": 3,
+        "next_same_family_same_level_action_line": 333,
+        "next_month": 9,
+        "independent_value_or_context_change": "No specific new independent result or response-discount rationale; advertised Output/feedback repeated"
+      },
+      {
+        "family": "准备汇报材料",
+        "dimension": "output",
+        "month": 9,
+        "action_line": 333,
+        "pre_observe_line": 331,
+        "post_observe_line": 339,
+        "pre_value": 3,
+        "post_value": 3,
+        "next_same_family_same_level_action_line": null,
+        "next_month": null,
+        "independent_value_or_context_change": "NOT_REPEATED_BEFORE_TERMINAL"
+      }
+    ],
+    "no_advance": [
+      {
+        "month": 6,
+        "verdict": "STALE",
+        "basis": "Goal restated Output/Network; report/key-project path repeats."
+      },
+      {
+        "month": 12,
+        "verdict": "PARTIAL",
+        "basis": "Network restored after current public decline, but same Main prior and no result/checkpoint redesign."
+      },
+      {
+        "month": 18,
+        "verdict": "PARTIAL",
+        "basis": "D/last warning recognized and bridge role proposed; immediate terminal prevents testing a window reroute."
+      }
+    ]
+  },
+  "energy": {
+    "segments": 5,
+    "successful_actions": 13,
+    "family_counts": {
+      "健康恢复": 5,
+      "人脉维护": 3,
+      "准备汇报材料": 3,
+      "处理历史埋雷": 2
+    },
+    "clean_growth_target_NO_GAIN_count": 3,
+    "cleanup_visible_flat_count": 2,
+    "cleanup_flat_interpretation": "Visible capital flat does not prove absence of hidden benefit or specific warning clearance",
+    "actions": [
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 113,
+        "pre_observe_line": 111,
+        "post_observe_line": 119,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 121,
+        "pre_observe_line": 119,
+        "post_observe_line": 127,
+        "selected_semantics": "人脉维护",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 1
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 129,
+        "pre_observe_line": 127,
+        "post_observe_line": 135,
+        "selected_semantics": "准备汇报材料",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 221,
+        "pre_observe_line": 215,
+        "post_observe_line": 227,
+        "selected_semantics": "处理历史埋雷",
+        "choice_count": 8,
+        "energy_cost": 2,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 229,
+        "pre_observe_line": 227,
+        "post_observe_line": 235,
+        "selected_semantics": "准备汇报材料",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 317,
+        "pre_observe_line": 315,
+        "post_observe_line": 323,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 2,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 2
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 325,
+        "pre_observe_line": 323,
+        "post_observe_line": 331,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 333,
+        "pre_observe_line": 331,
+        "post_observe_line": 339,
+        "selected_semantics": "准备汇报材料",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 425,
+        "pre_observe_line": 423,
+        "post_observe_line": 431,
+        "selected_semantics": "人脉维护",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 2
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 433,
+        "pre_observe_line": 431,
+        "post_observe_line": 439,
+        "selected_semantics": "人脉维护",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 441,
+        "pre_observe_line": 439,
+        "post_observe_line": 447,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 15,
+        "phase": "ENERGY",
+        "action_line": 529,
+        "pre_observe_line": 527,
+        "post_observe_line": 535,
+        "selected_semantics": "处理历史埋雷",
+        "choice_count": 8,
+        "energy_cost": 2,
+        "pre": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 15,
+          "output": 3,
+          "wealth": 3,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 15,
+          "output": 3,
+          "wealth": 3,
+          "energy": 1
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 15,
+        "phase": "ENERGY",
+        "action_line": 537,
+        "pre_observe_line": 535,
+        "post_observe_line": 543,
+        "selected_semantics": "健康恢复",
+        "choice_count": 8,
+        "energy_cost": 1,
+        "pre": {
+          "health": 3,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 15,
+          "output": 3,
+          "wealth": 3,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 15,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "response_scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      }
+    ]
+  },
+  "main": {
+    "count": 5,
+    "key_project_count": 5,
+    "causal_return_scope": "ALL_CROSS_MONTH_MIXED",
+    "actions": [
+      {
+        "month": 3,
+        "phase": "MAIN",
+        "action_line": 137,
+        "pre_observe_line": 135,
+        "post_observe_line": 143,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "response_scope": "MIXED"
+      },
+      {
+        "month": 6,
+        "phase": "MAIN",
+        "action_line": 237,
+        "pre_observe_line": 235,
+        "post_observe_line": 243,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 6,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 7,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "MIXED"
+      },
+      {
+        "month": 9,
+        "phase": "MAIN",
+        "action_line": 341,
+        "pre_observe_line": 339,
+        "post_observe_line": 347,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 9,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 10,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "response_scope": "MIXED"
+      },
+      {
+        "month": 12,
+        "phase": "MAIN",
+        "action_line": 449,
+        "pre_observe_line": 447,
+        "post_observe_line": 455,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 12,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 13,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "response_scope": "MIXED"
+      },
+      {
+        "month": 15,
+        "phase": "MAIN",
+        "action_line": 545,
+        "pre_observe_line": 543,
+        "post_observe_line": 551,
+        "selected_semantics": "申请关键项目",
+        "choice_count": 9,
+        "energy_cost": 0,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 15,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 16,
+          "output": 3,
+          "wealth": 3,
+          "energy": 0
+        },
+        "response_scope": "MIXED"
+      }
+    ],
+    "semantics": "Advertised S/N/O ranking recurs; owner/blocker/result/window exceptions not established each Main"
+  },
+  "reviews": [
+    {
+      "month": 6,
+      "phase": "STORY",
+      "action_line": 185,
+      "pre_observe_line": 183,
+      "post_observe_line": 191,
+      "selected_semantics": "写一份正式 OA 表扬信，抄送他的 Leader",
+      "choice_count": 3,
+      "energy_cost": null,
+      "pre": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 2,
+        "wealth": 2,
+        "energy": 0
+      },
+      "response_scope": "MIXED",
+      "grade": "C",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n直属leader在周会后单独留下你：“你的产出我看了，确实不太够，不过考虑到你刚来，这次我给你打个保护分，下个季度得靠自己了”",
+      "reroute": "STALE"
+    },
+    {
+      "month": 12,
+      "phase": "STORY",
+      "action_line": 393,
+      "pre_observe_line": 391,
+      "post_observe_line": 399,
+      "selected_semantics": "只聊项目不谈晋升，避免功利",
+      "choice_count": 2,
+      "energy_cost": null,
+      "pre": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 11,
+        "output": 2,
+        "wealth": 2,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 2,
+        "wealth": 2,
+        "energy": 0
+      },
+      "response_scope": "MIXED",
+      "grade": "C",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n带你的mentor发消息说：“上次那个bug客户没追究，我帮你擦屁股了，你欠我一顿饭哈”",
+      "reroute": "PARTIAL"
+    },
+    {
+      "month": 18,
+      "phase": "STORY",
+      "action_line": 593,
+      "pre_observe_line": 591,
+      "post_observe_line": 599,
+      "selected_semantics": "继续经营关系",
+      "choice_count": 2,
+      "energy_cost": null,
+      "pre": {
+        "health": 4,
+        "dignity": 9,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 17,
+        "output": 3,
+        "wealth": 4,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 1,
+        "dignity": 2,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 18,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "response_scope": "MIXED",
+      "grade": "D",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n会议室空气发闷。Leader 开门见山：「这半年我收到的反馈里，你的名字出现得太多次——延期、扯皮、还有人说你态度有问题。我给你最后一次调整窗口，下阶段我要看到实质变化，否则评审会上我很难替你挡。」\n\n半年绩效奖金（D）：-0.6\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n收到了一次不妙的半年绩效，领导的眼神已经不太友善了！！！",
+      "reroute": "PARTIAL"
+    }
+  ],
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 14509853,
+    "output_tokens": 81420,
+    "total_tokens": 14591273,
+    "cache_tokens": 14315136,
+    "cache_hit_rate_percent": 98.65803602558896,
+    "cache_source": "Same run aggregate usage event; input/output match score-report/canonical totals",
+    "wall_seconds": 550.920195,
+    "play_start_utc": "2026-10-03T21:15:19.732287+00:00",
+    "play_end_utc": "2026-10-03T21:24:30.652482+00:00",
+    "audit_window_end_utc": "2026-10-03T21:24:30.653482+00:00",
+    "audit_window_note": "Exit notification was1ms after recorded primary exit; scoped log ends at actual primary exit.",
+    "reported_cost": 0.0,
+    "reported_cost_is_billed_cost": false
+  },
+  "preservation": {
+    "tracked_preflight_files_unchanged": 263,
+    "runner_dependencies_provider_retry_unchanged": true,
+    "candidate_validation_flags_unchanged_all_false": true,
+    "main_fallback_unchanged": true,
+    "historical_holds_unchanged": true
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "reason": "Natural early terminal and concrete v14 mechanism failures require independent forensic review; exact model decisions/receipts are necessary.",
+    "owner_task": "S10-09",
+    "release_authority": "Main/Stage after independent compact review and source recoverability/dependency closure",
+    "release_conditions": "Accept report/compact evidence; verify exact sources recoverable or no further reanalysis required; close child/review dependencies; explicit hold release before separately authorized cleanup.",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T211522Z\\events-20261003T211522Z.jsonl",
+        "bytes": 749845,
+        "sha256": "cb0f6336d0c71f5eb75e97bb42a23bd90861e02fe6062b9ea680cba5e51ba83c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T211522Z\\transcript-20261003T211522Z.log",
+        "bytes": 273432,
+        "sha256": "e0126b4b81ffcad3c13dae8da3e218ad3132d9210f15390269f27998c0d4ceca"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T211522Z\\score_report.json",
+        "bytes": 2718,
+        "sha256": "6f53ebabf09d750da2200653f172cea6ac1f1ffd1af8f3a1256d38bf3891df68"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-09-v14-run01\\runner-result.json",
+        "bytes": 2115,
+        "sha256": "dc68ff19318a11bca66b15c275d7641b9c68492ca12d278174aaf815d58ecade"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-09-v14-run01\\llm-run-window.log",
+        "bytes": 86956,
+        "sha256": "fff7b2a690a3b8b81cd8b5f5285ffedca242a087ed5002565427b2cf97259ea9"
+      }
+    ],
+    "run_window_utc": [
+      "2026-10-03T21:15:19.732287+00:00",
+      "2026-10-03T21:24:30.652482+00:00"
+    ],
+    "raw_committed": false,
+    "hashes_do_not_replace_sources": true
+  },
+  "limitations": [
+    "Single uncontrolled run; no stable75+/80+, superiority, causal optimality or hidden-test transfer proof.",
+    "No explicit active-model-context inventory; selective read count does not establish total context reduction.",
+    "No counterfactual proof that the alternative M18 action would survive.",
+    "No current private/hidden stock, advertised hidden numeric effects, Test data or inferred promotion formula entered audit strategy facts.",
+    "Broad growth/result conversion/risk clearance remain semantic limitations; absent narration alone is not proof of missing internal comparison."
+  ],
+  "return": "RETURN_FOR_V14_GAME_GATE",
+  "next_game": "NOT_AUTHORIZED"
+}
