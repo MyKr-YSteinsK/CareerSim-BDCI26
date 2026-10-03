@@ -178,9 +178,11 @@ def test_frozen_K3_Skills_measurement_and_identity():
     assert old[old.index('STARTUP / NORMAL FLOW'):old.index('SYSTEM ACTION PREFLIGHT')] == m['instruction'][m['instruction'].index('STARTUP / NORMAL FLOW'):m['instruction'].index('SYSTEM ACTION PREFLIGHT')]
 
 
-def test_strict_development_abort_no_score_override():
+def test_severity_default_preserves_only_run_invalidating_stops():
     workflow = (ROOT/'docs/project/LIVE_RUN_WORKFLOW.md').read_text(encoding='utf-8')
-    assert 'CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT' in workflow
-    assert 'Promising trajectory, promotion or possible 75+ is no override.' in workflow
-    assert 'record exact extra actions and actual cutoff' in workflow
-    assert 'measurement uncertainty' in workflow
+    assert 'S1_POLICY_DRIFT => RECORD_AND_CONTINUE' in workflow
+    assert 'S2_RUN_INVALIDATING => STOP' in workflow
+    assert 'FULL_SCORE_EVALUATION' in workflow
+    assert 'unsafe ambiguous side effect' in workflow
+    assert 'MECHANISM_VALIDATION_CENSOR' in workflow
+    assert 'CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT' not in workflow

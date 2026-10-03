@@ -25,8 +25,9 @@ Public bounded D/H/resource arithmetic is not a career-growth CAP claim.
 
 ## Canonical reviewer receipt
 
-Every semantic stop writes JSON with all fields below **before** any Candidate
-failure attribution. `scripts.reviewer_gate.validate_receipt` validates structure
+Every policy judgment preserves the attribution fields below. Policy failure and
+live-stop authority are separate. A stop needs the independent v3 severity decision
+**before** sending its stop request. `scripts.reviewer_gate.validate_receipt` validates structure
 and attribution only; it does not infer semantic truth from free text.
 
 - `review_object`, `owner` (exact map above; HEADER owner=`manifest/frozen-parser`)
@@ -91,11 +92,63 @@ is an independent static regression record.
 | NO_VIOLATION | no | no |
 | REVIEWER_DEFECT | retrospective correction only | no |
 
-`CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT` remains active. Deterministic
-header/BC/sequence rejection can stop promptly on objective evidence; persist an
-object-specific telemetry receipt. No continue-for-score override. Invalid receipt
-cannot become Candidate failure; a material evidence gap may use uncertainty stop.
-Never silently edit the original stop receipt; corrections are separate records.
+## Future severity receipts (schema version 3)
+
+Default `evaluation_mode=FULL_SCORE_EVALUATION`. Ownership/direct link/counterexample
+and information-access provenance checks above remain. `stop_class` is a legacy
+attribution label, **not** future stop authority. `validate_receipt` requires v3
+for new decisions; `retrospective=True` reads legacy receipts under their frozen
+original rules. Originals/reports are immutable. No automatic legacy-to-live coercion.
+
+| Severity | Meaning | live_action | run_validity | score_evidence_eligible |
+|---|---|---|---|---|
+| S0 | no violation / ordinary outcome / legitimate official effect | CONTINUE | VALID | YES |
+| S1 | policy FAIL; identity/Test-equivalence/attribution intact | CONTINUE | VALID | YES |
+| S2 | independently evidenced run-invalidating issue | STOP | INVALID or UNCERTAIN | NO or UNKNOWN |
+
+New fields: `schema_version=3`, exact `session_id`, `policy_verdict=PASS|FAIL|UNKNOWN`,
+`severity=S0|S1|S2`, `live_action=CONTINUE|STOP`, `run_validity=VALID|INVALID|UNCERTAIN`,
+`score_evidence_eligible=YES|NO|UNKNOWN`, `evaluation_mode`, `issue_type`, `run_integrity`.
+The five integrity axes are candidate_identity, test_equivalence, state_attribution,
+measurement and runtime_assets, each explicitly VALID/INVALID/UNCERTAIN. These are
+reviewer source annotations, not machine proof; no prose classifier or game control.
+`severity_receipt` constructs a new object; `validate_receipt` checks field consistency.
+
+S0 issue enums: NO_VIOLATION, ORDINARY_OUTCOME, OFFICIAL_EFFECT; POLICY_UNCERTAINTY
+records an unconfirmed policy judgment as UNKNOWN/CONTINUE while all integrity axes
+remain VALID. It is not a confirmed violation or an attribution gap.
+
+S1 issue enums: ENERGY_RECIPE, LOWEST_STAT, NUMERIC_S, UNSUPPORTED_CAP, STALE_CLEANUP,
+DELIVERY_DRIFT, RISK_DRIFT, SUMMARY_OVERRIDE, PROBE_DRIFT, MARKER_DRIFT,
+FRESH_RERANK_DRIFT, LEGAL_PROTECTION_ERROR. All five integrity axes must remain VALID.
+Attributable malformed headers/BC, missed fresh reranking, legal poor survival choices
+are S1; no automatic stop even with adherence FAIL. Marker/BC errors do not weaken
+canonical official package/manifest/Skill validation. Explicitly linked semantic
+failure remains recorded; Reviewer does not repair choices or rescue the Agent.
+
+S2 issue enums/axes: IDENTITY_CORRUPTION/candidate_identity,
+TEST_CONTAMINATION/test_equivalence, STATE_ATTRIBUTION_CORRUPTION/state_attribution,
+MEASUREMENT_FAILURE/measurement, UNAUTHORIZED_RUNTIME_MUTATION/runtime_assets.
+Corresponding axis must be INVALID/UNCERTAIN with `severity_evidence.source` and
+`direct_link` to the actual loss of trustworthy run evidence. TEST_CONTAMINATION
+additionally requires `dependency_used=true`, `proven_unavailable_to_Test=true`;
+K1 provenance must establish actual unavailability/prohibition in complete context.
+Inventing a hidden threshold/cap or treating a delta as stock does not by itself prove
+that private data was injected: those authored-policy errors can remain S1. An uncertain
+policy optimality judgment or slow Reviewer is not material measurement failure.
+`RUN_INTEGRITY` ownership is development-reviewer, solely for independent runtime/
+measurement receipts, never Planning/choice authority. S2 does not mean Candidate
+failure unless a separate valid Candidate link establishes it.
+
+Optional `MECHANISM_VALIDATION_CENSOR` needs `censor_authorization` with Plan,
+target_mechanism, exact_censor_trigger, issue_type, why_score_unimportant, positive
+budget, `authorized_before_run=true`, `stop_class=MECHANISM_VALIDATION_CENSORED`.
+Only that exact S1 issue can STOP in this mode; unrelated S1 continues. Declaring mode
+without a prior authorization is rejected. Receipt annotations do not grant a live run.
+
+Semantic failure (fresh state not actually used) is S1 if still attributable. A
+successful side effect with unknown state/session and unsafe retry is independent S2.
+No blanket semantic-drift stop remains in future default policy.
 
 ## Prompt read-only heartbeat packets
 
@@ -133,9 +186,9 @@ The follower polls every .25s by default (.05–1s accepted); this bounds pollin
 delay only. Replay proves **zero later actions read before packet emission**, not
 zero wall-clock review latency or guaranteed live stop latency. Human/agent review
 is still asynchronous: consume REVIEW_PACKET notifications immediately, inspect
-only that bounded packet first, validate receipt, and persist decision promptly.
-Record snapshot action and actual cutoff/extra actions. If evidence remains
-materially uncertain, explicit uncertainty stop is available. Never wait for score.
+only that bounded packet first, validate v3 severity receipt, and persist decision promptly; S1 is record-only.
+Record snapshot action and actual cutoff/extra actions. Only evidence uncertainty preventing trustworthy attribution permits S2 stop.
+Policy uncertainty alone continues. Do not wait for score to resolve a genuine S2.
 
 Formal Review notifications have priority and are emitted on the exposing observe
 even while semantic verdict is pending. Relay them to the user before continuing
@@ -150,7 +203,7 @@ naive, reversed or non-string windows fail explicitly. CLI timestamp overrides a
 mutually exclusive. Summary preserves `input_start_exact` / `input_end_exact` and
 normalized UTC window; no PowerShell ConvertFrom-Json date transport is involved.
 
-For an authorized development stop supply `--development-stop <metadata.json>`:
+For an actual authorized S2 stop or exact mechanism censor supply `--development-stop <metadata.json>`:
 
 ```json
 {
@@ -162,7 +215,7 @@ For an authorized development stop supply `--development-stop <metadata.json>`:
 
 This metadata requires consistent events/transcript session and a present reviewed
 action; it is incompatible with separate screening metadata or natural terminal.
-Receipt stop classes map to DEVELOPMENT_ABORT_CANDIDATE_VIOLATION,
+Legacy receipt stop classes (retrospective only) map to DEVELOPMENT_ABORT_CANDIDATE_VIOLATION,
 DEVELOPMENT_ABORT_TELEMETRY_CONTRACT, DEVELOPMENT_ABORT_REVIEW_UNCERTAIN_MATERIAL,
 or DEVELOPMENT_CENSORED_BY_REVIEWER_FALSE_POSITIVE. NO_VIOLATION cannot censor.
 
@@ -176,3 +229,28 @@ Raw `run.runner_exit_code` is always retained. Historical reports are not rewrit
 This is read-only development measurement, not an installed Candidate gate. A
 future live Plan must freeze the current tooling identity and explicitly authorize
 controller stop handling; S09-24 authorizes **zero** live operations.
+
+### V3 offline aggregation / controller integration
+
+`--reviewer-receipts` accepts `{schema_version:3, session_id:<exact>, receipts:[...]}`.
+Every v3 receipt binds the same session and an actually recorded action; duplicate
+(action_index, issue_type) decisions are rejected. Aggregation records S1 count/types,
+S2 events, policy adherence, stop_requested versus actual stopped, natural/technical
+terminal, score_observed versus eligibility. No receipts means no inferred policy PASS.
+
+Only S2 or an exact preauthorized mechanism-censor STOP receipt is valid in new
+`--development-stop` metadata. S1 CONTINUE metadata is rejected. If both inputs are
+supplied, the actual stop receipt must appear in the envelope. New stops classify
+DEVELOPMENT_STOP_RUN_INVALIDATING or MECHANISM_VALIDATION_CENSORED. Natural terminal
+cannot be retroactively converted to a development stop; late S2 discovery instead
+marks run evidence invalid/uncertain with its natural outcome retained.
+
+Scored natural48m plus only S1 may classify VALID_FULL_RUN_WITH_POLICY_VIOLATIONS;
+natural early terminal plus S1 remains VALID_NATURAL_TERMINAL_WITH_POLICY_VIOLATIONS.
+Neither label claims adherence or improvement. Eligibility YES means transferable
+behavior evidence, not an observed score/full-horizon completion. Legacy audit inputs
+without v3 review envelopes preserve original output/stop interpretation.
+
+Future live controllers must validate v3 before START/decisions, act solely on its
+live_action, record S1 without stop/pause/approval, and retain actual S2 timing. This
+static task installs no controller, alters no frozen Runner and authorizes no run.

@@ -1,0 +1,387 @@
+[
+  {
+    "name": "RUN15_a2",
+    "source": "docs/project/runs/v10f-run15-semantic-evidence.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "RISK_FINAL_GATE",
+      "owner": "risk-review",
+      "clause_id": "Risk/FullReview/SelectedCandidate",
+      "action_index": 2,
+      "public_evidence": "陪客户吃完饭，对方负责人兴致很高，提议『换个地方继续』——要去一个明显不合规、消费敏感的娱乐场所，还暗示费用可以让你『想办法报销』。客户是重要合作方，但这既触公司红线、也碰你的底线。其他陪同的人在看你怎么表态。",
+      "selected_candidate": "用得体的理由婉拒续场，把局面圆回到正常的招待范围内",
+      "direct_candidate_violation_link": null,
+      "counterexample_check": {
+        "checked": true,
+        "result": "COUNTEREXAMPLE_FOUND",
+        "basis": "Selected legal candidate avoids the compliance violation; event theme alone is insufficient.",
+        "selected_candidate_material_risk": false
+      },
+      "verdict": "NO_VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "NO_VIOLATION"
+    },
+    "issue_type": "NO_VIOLATION",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S0"
+  },
+  {
+    "name": "RUN15_a3",
+    "source": "docs/project/runs/v10f-run15-semantic-evidence.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "RISK_FINAL_GATE",
+      "owner": "risk-review",
+      "clause_id": "Risk/FullReview/SelectedCandidate",
+      "action_index": 3,
+      "public_evidence": "部门年度「创新突破奖」申报截止今晚。Leader 把「极光数据中台」项目材料发你过目——你全程在做「灵犀支付」，极光项目由隔壁小组完成，你只在启动会露过面。Leader 微信说：「名单里给你加一位，凑够梯队，评委好看，你签个字就行。」",
+      "selected_candidate": "建议改为以灵犀支付项目申报，你担任主笔",
+      "direct_candidate_violation_link": null,
+      "counterexample_check": {
+        "checked": true,
+        "result": "COUNTEREXAMPLE_FOUND",
+        "basis": "Selected legal candidate avoids the compliance violation; event theme alone is insufficient.",
+        "selected_candidate_material_risk": false
+      },
+      "verdict": "NO_VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "NO_VIOLATION"
+    },
+    "issue_type": "NO_VIOLATION",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S0"
+  },
+  {
+    "name": "RUN14_a12",
+    "source": "docs/project/reviews/S09-23_CAP_SCOPE_REPLAY.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "K2/CareerGrowthScope",
+      "action_index": 12,
+      "public_evidence": "Public Dignity=10; bounded-state marginal arithmetic, not career-growth completion.",
+      "selected_candidate": "Quarterly Energy allocation",
+      "direct_candidate_violation_link": null,
+      "counterexample_check": {
+        "checked": true,
+        "result": "COUNTEREXAMPLE_FOUND",
+        "basis": "Only public bounded-state arithmetic; no career-growth CAP claim.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "NO_VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "NO_VIOLATION"
+    },
+    "issue_type": "NO_VIOLATION",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S0"
+  },
+  {
+    "name": "RUN14_a13",
+    "source": "docs/project/reviews/S09-23_CAP_SCOPE_REPLAY.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "K2/CareerGrowthScope",
+      "action_index": 13,
+      "public_evidence": "Public Dignity=10; bounded-state marginal arithmetic, not career-growth completion.",
+      "selected_candidate": "Quarterly Energy allocation",
+      "direct_candidate_violation_link": null,
+      "counterexample_check": {
+        "checked": true,
+        "result": "COUNTEREXAMPLE_FOUND",
+        "basis": "Only public bounded-state arithmetic; no career-growth CAP claim.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "NO_VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "NO_VIOLATION"
+    },
+    "issue_type": "NO_VIOLATION",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S0"
+  },
+  {
+    "name": "RUN13_a35",
+    "source": "docs/project/reviews/S09-23_CAP_SCOPE_REPLAY.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "NUMERIC_S",
+      "action_index": 35,
+      "public_evidence": "Numeric Health only, no fresh explicit binding warning.",
+      "selected_candidate": "Health recovery",
+      "direct_candidate_violation_link": "NUMERIC_S: submitted public reason uses unsupported numeric binding or growth cap.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Accepted exact scoped replay checks fresh public basis; no supporting warning/cap.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+    },
+    "issue_type": "NUMERIC_S",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN13_a36",
+    "source": "docs/project/reviews/S09-23_CAP_SCOPE_REPLAY.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "NUMERIC_S",
+      "action_index": 36,
+      "public_evidence": "Numeric Health only, no fresh explicit binding warning.",
+      "selected_candidate": "Health recovery",
+      "direct_candidate_violation_link": "NUMERIC_S: submitted public reason uses unsupported numeric binding or growth cap.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Accepted exact scoped replay checks fresh public basis; no supporting warning/cap.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+    },
+    "issue_type": "NUMERIC_S",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN13_a38",
+    "source": "docs/project/reviews/S09-23_CAP_SCOPE_REPLAY.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "SATURATION",
+      "action_index": 38,
+      "public_evidence": "No public current-Level Output growth-cap statement.",
+      "selected_candidate": "Quarterly progression allocation",
+      "direct_candidate_violation_link": "SATURATION: submitted public reason uses unsupported numeric binding or growth cap.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Accepted exact scoped replay checks fresh public basis; no supporting warning/cap.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+    },
+    "issue_type": "UNSUPPORTED_CAP",
+    "attribution_basis": "Existing reviewed public-context fixture; synthetic replay session identity for this receipt projection",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN12_a1",
+    "source": "docs/project/runs/v10c-run12-early-contract-evidence.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "HEADER_BC",
+      "owner": "manifest/frozen-parser",
+      "clause_id": "HEADER/Anchored",
+      "action_index": 1,
+      "public_evidence": "Submitted notes begin with prose before CTRL.",
+      "selected_candidate": "Submitted legal choice",
+      "direct_candidate_violation_link": "SCHEMA: notes[0] is not anchored CTRL; frozen parser rejects exact submitted layout.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "No trimming/prefix removal allowed; original string checked.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_TELEMETRY_CONTRACT_VIOLATION"
+    },
+    "issue_type": "MARKER_DRIFT",
+    "attribution_basis": "RUN12 compact record proves one exact session,3 successful actions/4 observes/3 fresh pairs despite header errors",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN12_a2",
+    "source": "docs/project/runs/v10c-run12-early-contract-evidence.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "HEADER_BC",
+      "owner": "manifest/frozen-parser",
+      "clause_id": "HEADER/Anchored",
+      "action_index": 2,
+      "public_evidence": "Submitted notes begin with prose before CTRL.",
+      "selected_candidate": "Submitted legal choice",
+      "direct_candidate_violation_link": "SCHEMA: notes[0] is not anchored CTRL; frozen parser rejects exact submitted layout.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "No trimming/prefix removal allowed; original string checked.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_TELEMETRY_CONTRACT_VIOLATION"
+    },
+    "issue_type": "MARKER_DRIFT",
+    "attribution_basis": "RUN12 compact record proves one exact session,3 successful actions/4 observes/3 fresh pairs despite header errors",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN12_a3",
+    "source": "docs/project/runs/v10c-run12-early-contract-evidence.json",
+    "session": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "legacy": {
+      "review_object": "HEADER_BC",
+      "owner": "manifest/frozen-parser",
+      "clause_id": "HEADER/Anchored",
+      "action_index": 3,
+      "public_evidence": "Submitted notes begin with prose before CTRL.",
+      "selected_candidate": "Submitted legal choice",
+      "direct_candidate_violation_link": "SCHEMA: notes[0] is not anchored CTRL; frozen parser rejects exact submitted layout.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "No trimming/prefix removal allowed; original string checked.",
+        "selected_candidate_material_risk": null
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_TELEMETRY_CONTRACT_VIOLATION"
+    },
+    "issue_type": "MARKER_DRIFT",
+    "attribution_basis": "RUN12 compact record proves one exact session,3 successful actions/4 observes/3 fresh pairs despite header errors",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN17_Energy_lowest_stat",
+    "source": "docs/project/runs/v10g-run17-official-information-evidence.json#/reviewer/H2/receipts",
+    "session": "12cf06ab735f43da9066fa27231dc827",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "Planning/OneMasterRanking6/NoLowestNumberAndQuarterlyEnergyNoRecipe",
+      "action_index": 12,
+      "public_evidence": {
+        "observe_seq": 115,
+        "submit_seq": 117,
+        "public_before": {
+          "session_id": "12cf06ab735f43da9066fa27231dc827",
+          "time": {
+            "current_month": 3,
+            "current_quarter": 1,
+            "current_year": 1
+          },
+          "status": {
+            "health": 5,
+            "dignity": 10,
+            "skill": 7,
+            "network": 3,
+            "level": "L1",
+            "duration_in_level": 3,
+            "output": 3,
+            "wealth": 1,
+            "energy": 2
+          }
+        },
+        "selected_choice": {
+          "choice": 3,
+          "action": "人脉维护",
+          "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+          "energy_cost": 1,
+          "status_updates": {
+            "Network": 1,
+            "Dignity": 1
+          }
+        },
+        "notes": "[CTRL G=? P=A R=PASS RB=NONE] [DL i=D2 n=2 focus=IN_PROGRESS evidence=UNKNOWN checkpoint=NEAR recognition=0] [POL B=OTHER F=N RP=NO_GAIN] [PROBE K=0???? E=0 C=0 S=0 F=NONE] [BC=PASS S=NONE CAP=NONE] Q1 energy: choice3 人脉维护 (E1, Network+1) to raise the lowest stat N=3. MODE=A.",
+        "transcript_lines": [
+          625,
+          701,
+          717,
+          797,
+          813,
+          817,
+          818,
+          819,
+          821,
+          826
+        ],
+        "source_scope": "Exact current RUN17 a11-a12 transcript, read to resolve whether abbreviated notes hid a fresh semantic ranking."
+      },
+      "selected_candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "direct_candidate_violation_link": "Frozen One Master Ranking6 forbids deciding by lowest numeric stat; Quarterly Energy forbids a preselected remaining recipe. a12 explicitly chooses Network maintenance to raise the lowest stat N=3 and continues the pre-a11 health -> Network -> Output sequence. After a11 fresh observe, transcript carries S=GAIN,N/O=NO_GAIN and says next N then O rather than rebuilding the value comparison. This confirms a ranking/controller-policy breach, not merely a low score or use of official delta.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Checked official E=2/menu costs and actual deliberation: legal/cheap advertised N+1 is allowed information; broader portfolio and value-per-Energy discussion before a11 is acknowledged. It does not authorize a fixed remaining sequence or choosing a12 by the lowest number. No new post-a11 ownership/Delivery/response-based comparison supports that selected action. Health recovery in MODE=A and D=10 bounded arithmetic are separately legal, not stop grounds."
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION",
+      "information_boundary_version": 2
+    },
+    "issue_type": "ENERGY_RECIPE",
+    "attribution_basis": "Natural terminal preceded stop;23 same-session successful actions and fresh pairs; legitimate official delta separately reviewed",
+    "expected_severity": "S1"
+  },
+  {
+    "name": "RUN18_a12_remaining_recipe",
+    "source": "docs/project/runs/v10h-run18-dynamic-survival-evidence.json#/stop_receipt",
+    "session": "705db3b2220843edba8f571fbfe27cb5",
+    "legacy": {
+      "review_object": "PLANNING_RANKING",
+      "owner": "rolling-planning",
+      "clause_id": "Energy/FRESH_ENERGY_RERANK_OPERATIONALIZATION",
+      "action_index": 12,
+      "public_evidence": {
+        "session": "705db3b2220843edba8f571fbfe27cb5",
+        "before_seq": 115,
+        "submission_seq": 117,
+        "observe_seq": 123,
+        "H": 4,
+        "E": 2,
+        "previous_realized": "a11 O0→1/E3→2",
+        "legal_alternatives": "Network, Output, Health recovery, Skill learning; full H2 official_before menus",
+        "transcript_excerpt": "Planning: 剩余2E。当前 O=1、N=2（网络仍是低缺口）。分配：人脉维护（N+1）+准备汇报材料（O+1），使 O=2、N=3，兼顾两缺口且无副作用。本步选 Network。"
+      },
+      "selected_candidate": {
+        "choice": 3,
+        "action": "人脉维护",
+        "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+        "energy_cost": 1,
+        "status_updates": {
+          "Network": 1,
+          "Dignity": 1
+        }
+      },
+      "direct_candidate_violation_link": "Energy controller forbids remaining sequence/balanced recipe and requires fresh rerank of ONE action. Actual a12 Planning reauthorizes two-action N+1/O+1 allocation to balance gaps; transcript says do 人脉维护 next then 准备汇报材料. Submitted rationale only 补Network=2缺口，无副作用. Fresh observation and current Board exist, but do not cancel explicit remaining recipe authorization.",
+      "counterexample_check": {
+        "checked": true,
+        "result": "NO_COUNTEREXAMPLE",
+        "basis": "Inspected exact H2 official context and scoped current transcript a11-a12. a11 ends with observe then decide promise; a12 acknowledges O gain/H4/E2, so not stale STATE or missing observe. Nevertheless a12 explicitly commits remaining N/O recipe for balanced gaps; changing order from earlier O/O/N is not one-action rerank and Health recovery is not compared in a12 final Planning. Official additive menu allows repeats but does not supersede Candidate no-recipe contract. No claim that selected Network is illegal or strategically dominated."
+      },
+      "verdict": "VIOLATION",
+      "confidence": "HIGH",
+      "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+    },
+    "issue_type": "ENERGY_RECIPE",
+    "attribution_basis": "Exact current H4/E2, actionseq117/observeseq123,18 attributed pairs and original validated receipt; score eligibility in future policy only, historical censored run has no score",
+    "expected_severity": "S1"
+  }
+]

@@ -53,28 +53,42 @@ The operator builds the absolute CLI/Python path from the verified repository ro
 
 The frozen Runner invokes `jiuwenswarm-start --list` by bare name while resolving its instance WebSocket URL. Before any authorized P2 START, launch the Runner-facing process with a **process-local child environment** whose `PATH` begins with the verified repository `.venv\Scripts`, followed by the inherited `PATH` unchanged; preserve the proxy variables. The preflight launcher itself must run with that prefixed `PATH`. In that exact environment, verify `shutil.which("jiuwenswarm-start")` resolves to the repository `.venv\Scripts\jiuwenswarm-start.exe`, then execute the bounded, read-only bare `jiuwenswarm-start --list` exactly once and require successful launch and exit 0. `which` success alone is insufficient: on Windows the process performing executable lookup must itself have the prefixed `PATH`; passing a different `env` only to a nested `subprocess.run` may not reproduce the Runner's lookup context. A helper setup failure before the CLI child is created is a tooling error to record and correct before the single actual CLI invocation; a `FileNotFoundError` or nonzero result from that invocation is a P1 failure, so do not start the service or game. Reuse the same constructed child environment for the one authorized Runner play. Never modify user/system PATH or frozen Runner source.
 
-## S09 development early-abort contract
+## S09 development severity / continuation contract
 
-Future S09 Main Run Plans must explicitly authorize strict development censoring:
-`CERTIFICATE_OR_SEMANTIC_DRIFT => EARLY_ABORT`. Stop on header/certificate failure,
-certificate/evidence disagreement under the frozen scope, numeric-only S, unsupported
-career-growth cap, restricted ranking basis, stale cleanup, action→fresh-observe failure,
-Skill strategy drift, summary overriding kernel, a submitted action marked BLOCKED by
-the frozen explicitly annotated oracle, or measurement uncertainty that makes high-score
-interpretation unreliable. Promising trajectory, promotion or possible 75+ is no override.
-Minimize asynchronous audit latency, record exact extra actions and actual cutoff, and
-never claim zero-delay stopping. No replacement run follows. This contract grants no live
-operation and adds no Runner hook or free-text semantic classifier; current public bounded-state
-arithmetic alone is not a career-growth cap violation. This is development evidence censoring,
-separate from the provisional M24 score-screening protocol below.
+Default evaluation mode is `FULL_SCORE_EVALUATION`:
+`S1_POLICY_DRIFT => RECORD_AND_CONTINUE`; `S2_RUN_INVALIDATING => STOP`.
+Strategy imperfection is not run invalidity. A score can represent valid official
+Test-equivalent Candidate behavior while authored-policy adherence is FAIL.
 
-Semantic censoring follows [REVIEWER_GATE_CONTRACT](REVIEWER_GATE_CONTRACT.md):
-write a canonical object/owner receipt with direct selected-candidate violation link
-and counterexample check before Candidate failure attribution. Material uncertainty
-may stop but is not Candidate failure; event risk theme alone is insufficient.
-The read-only `scripts.live_review_packet` follower emits bounded heartbeat context
-and immediate formal Review notifications from exact existing events, without live
-queries. Review pending must not delay user-facing checkpoint reporting.
+S0 ordinary outcomes/no violation continue. S1 Energy remaining recipes,
+lowest-stat ranking, numeric-only S, unsupported growth-cap claims, stale cleanup,
+Delivery/Risk/probe/summary drift, attributable marker errors or failure to rerank
+from fresh state are recorded and continue. Legal dangerous/overdefensive choices
+are not rescued; natural elimination remains an outcome. Weak score, missed
+promotion, NO_GAIN, low Health and official effect metadata never alone stop.
+
+S2 is restricted to evidenced Candidate/package/runtime identity corruption,
+proven unavailable-to-Test/private/cross-game dependency or external intervention,
+session/state attribution corruption or unsafe ambiguous side effect, unrecoverable
+material measurement/context loss, or unauthorized runtime asset mutation. Missing
+policy rationale alone is not unusable measurement. Review uncertainty about strategy
+is not S2; uncertainty that prevents exact attribution may be S2. Do not expand these
+categories. New receipts must use v3 per [Reviewer Gate Contract](REVIEWER_GATE_CONTRACT.md).
+
+Only an explicit future Plan may select `MECHANISM_VALIDATION_CENSOR`: state target
+mechanism, exact S1 issue/trigger, why later score is unimportant, budget and censor
+classification before START. Other S1 issues continue; S2 still stops. This contract
+and S09-29 grant zero live operations. Historical RUN12–18 Plans/receipts stay frozen
+under their original mode; never reinterpret their actual cutoff as a full run.
+
+S1 decisions issue no stop request, do not pause Runner or ask for user approval.
+S2 decisions preserve independent source evidence, canonical validated receipt,
+packet/decision/request/cutoff times and extra actions; no zero-delay claim.
+Formal Review notifications retain priority over pending semantic review. The
+read-only `scripts.live_review_packet` follower consumes existing exact events;
+no added live queries or choice intervention. Future launchers must consume v3
+`live_action`/validated `stop`, not old `stop_class` or blanket parser-failure stops.
+Old held local RUN12–18 controllers are historical assets, not reusable future launchers.
 
 ## One-pass offline audit
 
@@ -94,8 +108,11 @@ The parser uses an explicit run window when supplied. Otherwise it may derive on
 
 Prefer `--run-window-from-runner` over transporting date values through PowerShell
 `ConvertFrom-Json`: Python consumes exact `play_start_utc`/`play_end_utc` strings
-and retains the exact inputs in the summary. For Plan-authorized censors pass
+and retains the exact inputs in the summary. For actual Plan-authorized S2 stops or mechanism censors pass
 `--development-stop <session-bound-reviewer-metadata.json>` per Reviewer Gate Contract.
+Use `--reviewer-receipts <exact-session-v3-envelope.json>` to aggregate S1/S2 without
+creating stop metadata. A natural 48m scored run with only S1 warnings can classify
+`VALID_FULL_RUN_WITH_POLICY_VIOLATIONS`; underlying terminal class/score remain separate.
 Raw Runner exit is retained separately; nonzero exit alone means
 `PARTIAL_EXECUTION_EXIT_CAUSE_UNKNOWN`, not a proven technical/provider root cause.
 Development Candidate/telemetry/uncertainty/reviewer-defect classifications stay

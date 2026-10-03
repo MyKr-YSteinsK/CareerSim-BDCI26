@@ -12,7 +12,11 @@ import pytest
 from scripts.basis_preflight_audit import check_basis, parse_five_marker_header
 from scripts.live_review_packet import ReviewStream, drain
 from scripts.post_run_audit import audit
-from scripts.reviewer_gate import OWNERS, validate_receipt
+from scripts.reviewer_gate import OWNERS, validate_receipt as _validate_receipt
+
+def validate_receipt(receipt, *, retrospective=True):
+    return _validate_receipt(receipt, retrospective=retrospective)
+
 
 ROOT=Path(__file__).resolve().parents[1]
 CASES=json.loads((ROOT/'tests/fixtures/reviewer_gate_cases.json').read_text(encoding='utf-8'))
@@ -58,7 +62,7 @@ def test_event_theme_cannot_become_candidate_failure(index):
 @pytest.mark.parametrize('field',['direct_candidate_violation_link','counterexample_check','owner','confidence'])
 def test_incomplete_or_mismatched_receipt_fails(field):
     r=receipt(CASES[4]); r.pop(field)
-    with pytest.raises(ValueError): validate_receipt(r)
+    with pytest.raises(ValueError): validate_receipt(r, retrospective=False)
 
 
 def test_missing_direct_link_cannot_be_confirmed():
@@ -82,7 +86,7 @@ def test_uncertainty_may_stop_but_is_not_candidate_failure():
 def test_no_violation_never_stops_and_retrospective_defect_is_separate():
     r=receipt(CASES[0]); assert not validate_receipt(r)['stop']
     r.update(verdict='REVIEWER_DEFECT',stop_class='REVIEWER_DEFECT')
-    with pytest.raises(ValueError): validate_receipt(r)
+    with pytest.raises(ValueError): validate_receipt(r, retrospective=False)
     result=validate_receipt(r,retrospective=True)
     assert not result['stop'] and not result['candidate_failure']
 

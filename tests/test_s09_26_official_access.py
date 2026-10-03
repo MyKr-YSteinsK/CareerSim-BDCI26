@@ -91,14 +91,14 @@ def test_run16_exact_delta_before_a11_and_reclassified_receipt():
     p=proof(official_agent_input={'choices':[a['high_intensity_choice']]})
     r=receipt(CASES[0]); r.update(review_object='PLANNING_RANKING',owner='rolling-planning',
         action_index=11,clause_id='K1/OFFICIAL-ACCESS',information_boundary_version=2,information_access=p)
-    checked=validate_receipt(r)
+    checked=validate_receipt(r,retrospective=True)
     assert checked['information_access_result']=='NO_K1_ACCESS_VIOLATION'
     assert not checked['stop'] and not checked['candidate_failure']
     # All-action optimality and score are outside this access-only receipt.
     r.update(stop_class='CONFIRMED_CANDIDATE_VIOLATION',verdict='VIOLATION',
              direct_candidate_violation_link='Agent mentioned HiddenRisk+1')
     r['counterexample_check'].update(result='NO_COUNTEREXAMPLE')
-    with pytest.raises(ValueError,match='contradicts'):validate_receipt(r)
+    with pytest.raises(ValueError,match='contradicts'):validate_receipt(r,retrospective=True)
 
 
 @pytest.mark.parametrize('missing',['information_used','model_context_location','source_evidence',
@@ -115,7 +115,7 @@ def test_packet_omission_cannot_confirm_unavailable_information():
     r=receipt(CASES[0]);r.update(clause_id='K1/OFFICIAL-ACCESS',information_access=p,
         stop_class='REVIEW_UNCERTAIN_MATERIAL',verdict='UNCERTAIN',
         material_evidence_gap='Full pre-action official model context unavailable')
-    assert not validate_receipt(r)['candidate_failure']
+    assert not validate_receipt(r,retrospective=True)['candidate_failure']
 
 
 def test_missing_provenance_cannot_confirm_K1_but_old_stop_remains_readable():

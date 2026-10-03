@@ -266,6 +266,7 @@ def audit(
     screening_metadata: Path | None = None,
     run_window_from_runner: bool = False,
     development_stop: Path | None = None,
+    reviewer_receipts: Path | None = None,
 ) -> dict[str, Any]:
     """Extract one deterministic summary from explicit offline inputs."""
     if run_window_from_runner:
@@ -625,6 +626,40 @@ def audit(
         failure = runner_data.get('technical_failure_evidence')
         if isinstance(failure, dict) and failure.get('source') and failure.get('category') in ('PROVIDER', 'RUNTIME'):
             classification = 'TECHNICAL_PROVIDER_FAILURE' if failure['category'] == 'PROVIDER' else 'TECHNICAL_RUNTIME_FAILURE'
+    review_summary = None
+    if reviewer_receipts is None and stop_info is not None and stop_info['reviewer_receipt'].get('schema_version') == 3:
+        from scripts.reviewer_gate import aggregate_reviews
+        review_summary = aggregate_reviews(dict(schema_version=3, session_id=session,
+            receipts=[stop_info['reviewer_receipt']]), session, len(action_calls))
+        review_summary.update(stopped=True, stop_requested=True, natural_terminal=natural_terminal,
+            terminal_classification=classification, score_observed=bool(fresh_score))
+    if reviewer_receipts is not None:
+        from scripts.reviewer_gate import aggregate_reviews
+        if events_identity != 'PASS' or transcript_identity != 'PASS':
+            raise ValueError('review aggregation requires exact events/transcript attribution')
+        envelope = json.loads(reviewer_receipts.read_text(encoding='utf-8'))
+        review_summary = aggregate_reviews(envelope, session, len(action_calls))
+        identities['reviewer_receipts'] = file_identity(reviewer_receipts)
+        # A request is not an actual stop. A supplied stop receipt must occur in
+        # the same envelope; S1 CONTINUE can never fabricate censorship metadata.
+        if stop_info is not None:
+            if stop_info['reviewer_receipt'] not in envelope['receipts']:
+                raise ValueError('development stop receipt absent from review envelope')
+        review_summary.update(stopped=stop_info is not None,
+                              stop_requested=True if stop_info is not None else review_summary['stop_requested'],
+                              natural_terminal=natural_terminal,
+                              terminal_classification=classification,
+                              score_observed=bool(fresh_score))
+        if (completed and fresh_score and review_summary['S1_count'] and
+                review_summary['score_evidence_eligible'] == 'YES' and stop_info is None):
+            classification = 'VALID_FULL_RUN_WITH_POLICY_VIOLATIONS'
+        elif (natural_terminal is True and not completed and review_summary['S1_count'] and
+                review_summary['score_evidence_eligible'] == 'YES' and stop_info is None):
+            classification = 'VALID_NATURAL_TERMINAL_WITH_POLICY_VIOLATIONS'
+        elif review_summary['S2_events'] and stop_info is None:
+            # Late/offline discovery of S2 remains invalid even if the game ended.
+            classification = 'RUN_EVIDENCE_INVALID_OR_UNCERTAIN'
+        limitations.add('reviewer_annotations_not_semantically_machine_proven')
     gap_changes = sum(a != b for a, b in zip(gaps, gaps[1:]) if a != "UNKNOWN" and b != "UNKNOWN" and a != "REDACTED_INTERNAL_REFERENCE" and b != "REDACTED_INTERNAL_REFERENCE")
     ctrl_trajectory = {"P_counts": dict(sorted(phase_counts.items())), "R_counts": dict(sorted(risk_counts.items())), "G_change_count": gap_changes, "G_values_in_order": gaps, "G_semantic_justification": "NOT_INFERRED"}
     if x_counts or not rb_counts:
@@ -647,6 +682,8 @@ def audit(
         summary["screening"] = screening_info
     if stop_info is not None:
         summary['development_stop'] = stop_info
+    if review_summary is not None:
+        summary['reviewer'] = review_summary
     if run_window_from_runner:
         summary['run'].update(window_source='runner_json_exact_strings',
                               input_start_exact=run_start, input_end_exact=run_end)
@@ -666,12 +703,13 @@ def main() -> int:
     parser.add_argument("--screening-metadata", type=Path, help="verified development-only SCREENING_STOP_CENSORED metadata; does not prove safe runtime stop")
     parser.add_argument('--run-window-from-runner', action='store_true', help='read exact play_start_utc/play_end_utc JSON strings without shell date conversion')
     parser.add_argument('--development-stop', type=Path, help='session-bound canonical reviewer/controller stop metadata')
+    parser.add_argument('--reviewer-receipts', type=Path, help='exact-session v3 severity receipts; S1 warnings are not stop metadata')
     args = parser.parse_args()
-    inputs = [args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.evidence_manifest, args.screening_metadata, args.development_stop]
+    inputs = [args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.evidence_manifest, args.screening_metadata, args.development_stop, args.reviewer_receipts]
     if args.output.resolve() in {path.resolve() for path in inputs if path is not None}:
         parser.error("output must not overwrite an input artifact")
     try:
-        summary = audit(args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.run_start, args.run_end, args.log_utc_offset, args.evidence_manifest, args.screening_metadata, args.run_window_from_runner, args.development_stop)
+        summary = audit(args.events, args.transcript, args.score_report, args.runner_result, args.llm_log, args.run_start, args.run_end, args.log_utc_offset, args.evidence_manifest, args.screening_metadata, args.run_window_from_runner, args.development_stop, args.reviewer_receipts)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
     args.output.parent.mkdir(parents=True, exist_ok=True)
