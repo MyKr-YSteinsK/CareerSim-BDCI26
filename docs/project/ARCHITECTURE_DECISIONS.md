@@ -189,3 +189,17 @@
 - Human strategy input may use participant-visible public evidence only; no hidden/internal state, simulator-rule decoding, private/test evidence, or event-to-answer lookup.
 - Shared CareerSim resources remain serialized; branch/worktree isolation alone does not prove runtime isolation.
 - `HUMAN_PLAY_NEXT_GAME = NOT_AUTHORIZED`.
+
+
+## AD-S10-001 — S09 closeout and S10 architecture-reset boundary
+
+- Main accepts S09 as `COMPLETE_WITHOUT_STABLE_75_PLUS_BREAKTHROUGH`. S09 closes the incremental prompt-hardening loop; stable75+, stable80+, hidden-test transfer, v11/v11b superiority, and current four-Skill optimality remain unproven.
+- The S09 compact evidence source is pinned to `codex/s09-14-v9a-static@c41a1b7210a02603aa19cc2bab19922a80b6cd77`. That branch remains an evidence source; its experimental Candidate/runtime state is not merged into main.
+- Main submission fallback remains `candidate-v8a-v7o-donor-core-transplant` and stays frozen unless a later explicit submission decision replaces it.
+- S10 is `S10-Lab｜架构重置与高分突破冲刺`. The optimization target shifts from local policy-clause adherence to actual gameplay cognition: score distribution, survival, early promotion compounding, result conversion, Review adaptation, and avoidance of catastrophic Health/trust failure.
+- First task is offline-only `Runtime Prompt Value Audit + Architecture Reset Design`. Classify current runtime instructions as GAME_SERVING, MODEL_COGNITION, DEV_OBSERVABILITY_ONLY, or LEGACY_GOVERNANCE; identify the minimal high-value runtime context and architecture candidates before implementing a new Candidate.
+- Primary hypothesis to investigate, not adopt by default: `Lean Agent + Strategic Memory + Periodic Deep Review`. Structured memory, fewer/reorganized Skills, and checkpoint-only Reviewer/Team are reopened as hypotheses only; each requires evidence, feasibility, and a bounded experiment before adoption.
+- Default design principle: retain gameplay-serving rules and high-value cognition support; move development-only observability outside runtime when tooling can provide it; remove obsolete governance baggage. `OBSERVABILITY_VALUE != GAMEPLAY_VALUE`.
+- S10 is bounded by time and information gain: no more than two major Candidate families before submission selection without returning to Main. Failure of a Candidate first tests the architecture hypothesis; it does not automatically justify another micro-patch.
+- Existing closed-by-default routes include endless v11 micro-patching, Energy recipe policing as a primary project, marker/certificate optimization, perfect semantic adherence, hidden-threshold search, event-title lookup, and automatic RUN21 replacement.
+- Opening S10 authorizes no Candidate implementation, live Provider/service/game action, Team/Swarm adoption, structured-memory adoption, Runner modification, or submission replacement. `NEXT_GAME=NOT_AUTHORIZED`.
