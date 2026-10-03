@@ -1,0 +1,103 @@
+{
+  "task": "S09-33",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "base_evidence_sha": "a825c2d7463880ef15ee87f57878be66d748fd09",
+  "parent": "candidate-v11-result-conversion-risk-persistence",
+  "candidate": "candidate-v11b-early-result-feasibility",
+  "strategy_delta": "PRE_FIRST_REVIEW_RESULT_FEASIBILITY_COMPARISON",
+  "secondary_strategy_delta": "LOCAL_REALIZED_RESPONSE_REPLAN",
+  "VALUE_OF_RUN": "MEDIUM",
+  "reason": "Narrow public-evidence comparison is testable, but opportunity availability and exact M6 promotion cause remain unknown; existing v11 adherence failures are not fixed by this delta.",
+  "run_authorized": false,
+  "live_operations": 0,
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE_UNCHANGED": true,
+  "hypothesis": "Before first formal Review, competing legal ownership/delivery routes receive a public deadline/completion/resource/downside and delayed-value comparison; public slippage or local advertised-but-unrealized gain updates current ranking without fixed route, permanent cap or Output catch-up. After first Review ordinary v11 ranking continues; default clean aggression, G3 and persistent-risk authority remain applicable.",
+  "future_one_full_score_run_observables": [
+    "Current input exposes competing routes: rationale uses current public feasibility, including safety and long-term value; no event-answer lookup",
+    "Advertised gain absent in fresh response: update local marginal ranking, preserve other dimensions/value, no fixed Output catch-up or global cap",
+    "Missing near-term result opportunity: UNKNOWN/no invented option; after first formal Review early comparison boundary closes",
+    "Record first Review and later promotion/capital/result/risk/Health evidence descriptively; no guarantee of M6 promotion or score improvement"
+  ],
+  "future_not_exercised_rule": "If relevant opportunity/NO_GAIN absent, mark NOT_EXERCISED; one run cannot establish causality or stable score improvement.",
+  "value_of_run_checks": {
+    "no_fixed_M6_threshold": "PASS_WRITTEN_STATIC_CONTRACT",
+    "no_open_source_self_build_hardcode": "PASS_WRITTEN_STATIC_CONTRACT",
+    "no_output_farming_fallback": "PASS_WRITTEN_STATIC_CONTRACT",
+    "long_asset_remains_legal": "PASS_WRITTEN_STATIC_CONTRACT",
+    "historical_contrast_without_answer_lookup": "PASS_WRITTEN_STATIC_CONTRACT",
+    "v11_risk_result_conversion_G3_preserved": "PASS_WRITTEN_STATIC_CONTRACT",
+    "prompt_compact": "PASS_WRITTEN_STATIC_CONTRACT",
+    "one_full_score_hypothesis_observable": "PASS_WRITTEN_STATIC_CONTRACT"
+  },
+  "prompt_sizes": {
+    "Planning": {
+      "parent_chars": 4871,
+      "current_chars": 5158,
+      "net_chars": 287,
+      "char_growth_percent": 5.892013960172449,
+      "char_budget_percent": 6,
+      "parent_normalized_utf8_bytes": 7669,
+      "current_normalized_utf8_bytes": 8312
+    },
+    "manifest_instruction": {
+      "parent_chars": 4636,
+      "current_chars": 4725,
+      "net_chars": 89,
+      "char_growth_percent": 1.9197584124245104,
+      "char_budget_percent": 3,
+      "parent_normalized_utf8_bytes": 6507,
+      "current_normalized_utf8_bytes": 6698
+    }
+  },
+  "verification": {
+    "targeted_tests_passed": 60,
+    "obsolete_parent_identity_test_deselected": 1,
+    "replacement_identity_test": "tests/test_s09_33_early_result_feasibility.py::test_candidate_identity_parent_hashes_flags_and_protected_scope",
+    "annotated_scenario_count": 16,
+    "model_execution": "NOT_TESTED",
+    "runtime_adherence": "NOT_VALIDATED",
+    "package_mode": "skill_bundle",
+    "package_path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-33-v11b\\submission-final",
+    "package_files": [
+      {
+        "path": "manifest.json",
+        "bytes": 6872,
+        "sha256": "6f94a2986bf050ed6d3df96be3285bc20b105b3cac431161195923325d1bb279"
+      },
+      {
+        "path": "skills/delivery-progress/SKILL.md",
+        "bytes": 5952,
+        "sha256": "65ad8b5b5d984e3ee9b28891195b12790419e50e4b3c0d55da8a301f10e99a0d"
+      },
+      {
+        "path": "skills/risk-review/SKILL.md",
+        "bytes": 5195,
+        "sha256": "0243d351816df80bc3919c9d1d024be13389fb8dc7bdd64c05943c6fdeb93469"
+      },
+      {
+        "path": "skills/rolling-planning/SKILL.md",
+        "bytes": 8367,
+        "sha256": "945642aa3ab889c6b25d689c57a4d5dbab96d0e4d6bfd5a69d7b7f4a5e7e948c"
+      },
+      {
+        "path": "skills/structured-state-board/SKILL.md",
+        "bytes": 6425,
+        "sha256": "65ab04c36d38bff0a9171bad03f07144814b44a8570499578d48ce72128f9bcc"
+      }
+    ],
+    "protected_three_skills": "BYTE_IDENTICAL_TO_HELD_PARENT_PACKAGE",
+    "protected_tracked_implementation": "UNCHANGED_FROM_BASE",
+    "exact_marker_preflight_ABI": "UNCHANGED",
+    "secret_scan": "PASS_SCOPED_DELIVERABLES",
+    "diff_check": "PASS"
+  },
+  "protected_skill_hashes": {
+    "structured-state-board": "65ab04c36d38bff0a9171bad03f07144814b44a8570499578d48ce72128f9bcc",
+    "delivery-progress": "65ad8b5b5d984e3ee9b28891195b12790419e50e4b3c0d55da8a301f10e99a0d",
+    "risk-review": "0243d351816df80bc3919c9d1d024be13389fb8dc7bdd64c05943c6fdeb93469"
+  },
+  "existing_holds": "UNCHANGED",
+  "decision": "S09_33_V11B_STATIC_PASS_RETURN_TO_STAGE"
+}

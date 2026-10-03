@@ -1,0 +1,891 @@
+[
+  {
+    "name": "short_reachable_deadline",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "public_comparison_basis": [
+        "deadline"
+      ]
+    },
+    "written_basis": [
+      "短路结果可达、长路有排期风险且资源支持可偏短"
+    ],
+    "public_scenario": "首次Review前；两个owner路线，短路线有公开完成条件且能赶上临近deadline；长路线公开排期风险，资源支持短路线。两者长期价值仍比较，不指定choice。"
+  },
+  {
+    "name": "long_feasible_stronger_asset",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": true,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "long_route_can_compete": false
+    },
+    "written_basis": [
+      "长路窗口内可完且价值强"
+    ],
+    "public_scenario": "首次Review前；长资产路线的公开排期可在窗口内完成且战略价值更强；短路线更快但价值较弱。长路线保留竞争资格。"
+  },
+  {
+    "name": "short_compliance_security_downside",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": true,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "compares_short_downside": false
+    },
+    "written_basis": [
+      "短路有安全/质量下行可偏长"
+    ],
+    "public_scenario": "首次Review前；短路线有明确合规或安全问题，长路线仍合法可行。交付速度不能自动覆盖风险。"
+  },
+  {
+    "name": "public_milestone_slippage",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": true,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": true,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "discount_delay": false
+    },
+    "written_basis": [
+      "公开延期即折价"
+    ],
+    "public_scenario": "首次Review前；长路线原计划有成长价值，fresh事件明确里程碑miss和延期。按新公开事实折价可兑现性，合法替代仍竞争。"
+  },
+  {
+    "name": "no_result_feasible_opportunity",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": false,
+      "feasibility_evidence": false,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": false,
+      "public_comparison_basis": [],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": false,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "invented_opportunity": true
+    },
+    "written_basis": [
+      "无机会不编造"
+    ],
+    "public_scenario": "首次Review前；当前菜单没有可兑现结果路线，完成条件不可知。保留UNKNOWN，继续比较当前合法主线，不虚构任务。"
+  },
+  {
+    "name": "advertised_output_no_gain",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": true,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": true,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "output_catch_up": true
+    },
+    "written_basis": [
+      "不补固定O",
+      "local clean NO_GAIN只折价当前Level/context/dimension/family"
+    ],
+    "public_scenario": "当前广告Output+1；一次action后fresh observe Output未变；没有hidden cap证据。当前响应应折价并重排，不补固定Output。"
+  },
+  {
+    "name": "fresh_real_result_visibility",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": true,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "visibility_can_compete": false
+    },
+    "written_basis": [
+      "Reporting/visibility在real-result basis"
+    ],
+    "public_scenario": "fresh公开事件确认真实成果完成且有未兑现的组织可见性价值。报告/visibility可以竞争，但不保证优先或重复包装。"
+  },
+  {
+    "name": "fragile_resource_g3",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": true,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "preserves_g3": false
+    },
+    "written_basis": [
+      "ownership不抵消下行"
+    ],
+    "public_scenario": "首次Review前；owner机会可形成成果，但fresh Health容错余量薄、公开工作负荷重且有低负荷合法项。G3动态下行比较仍有权改变排序。"
+  },
+  {
+    "name": "active_material_risk",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": true,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "persistent_risk_authority": false
+    },
+    "written_basis": [
+      "ownership不能自动覆盖风险"
+    ],
+    "public_scenario": "首次Review前；已有material accumulated trust warning未获同scope解除，owner路线会加重事故责任。既有风险保护权威不被可兑现性覆盖。"
+  },
+  {
+    "name": "after_first_review",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": false,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": false,
+      "public_comparison_basis": [],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "early_comparison": true
+    },
+    "written_basis": [
+      "首评后按上述v11排序"
+    ],
+    "public_scenario": "已完成首个formal Review；出现result-conversion gap和合法兑现项。不得延续early专用比较作为永久模式；按v11普通排序处理。"
+  },
+  {
+    "name": "RUN07_like_delivered_then_security_warning",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": true,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": true,
+      "public_result": true,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "fixed_route": true
+    },
+    "written_basis": [
+      "同scope explicit public de-escalation",
+      "短路有安全/质量下行可偏长"
+    ],
+    "public_scenario": "RUN07-like公开链：短交付路线形成如期上线/业务满意，后来安全扫描公开CVE候选warning。后来的警告只在实际出现后使用；此前不得预知。"
+  },
+  {
+    "name": "RUN08_like_delay_integrity_constraint",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": true,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": true,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "ignores_integrity": true
+    },
+    "written_basis": [
+      "公开延期即折价，守诚信重评合法项"
+    ],
+    "public_scenario": "RUN08-like公开链：长自研路线启动后公开进度落后/miss；有人提出暗借代码改名上线。既要折价延期，也不能为恢复交付违反诚信。"
+  },
+  {
+    "name": "RUN20_a13_a14_like_fresh_no_gain",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": true,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": true,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "global_cap": true
+    },
+    "written_basis": [
+      "advertised gain未兑现以fresh response重排当前合法ownership/result/capital"
+    ],
+    "public_scenario": "RUN20-like连续不同family：report广告O+1，fresh O0；随后关键项目也无六维durable增益。两次各更新本context/family，不推出所有职业资本封顶或固定补O。"
+  },
+  {
+    "name": "donor_clean_aggression",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": true,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": true
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": true,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "clean_aggression": false
+    },
+    "written_basis": [
+      "clean growth保持进攻"
+    ],
+    "public_scenario": "合法clean growth机会有正向公开依据，无material binding且资源支持。early比较保留进攻，不转永久保守模式或固定交付动作。"
+  },
+  {
+    "name": "ownership_completion_unknown",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": true,
+      "feasibility_evidence": false,
+      "public_delay": false,
+      "fresh_no_gain": false,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": true,
+      "public_comparison_basis": [
+        "deadline",
+        "commitments",
+        "resource_margin",
+        "complexity_workload",
+        "completion_criteria",
+        "result_before_review",
+        "safety_compliance_trust",
+        "delayed_capital_option_value"
+      ],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": false,
+      "discount_delay": false,
+      "local_response_rerank": false,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "feasibility_known": true
+    },
+    "written_basis": [
+      "可兑现性证据不足UNKNOWN"
+    ],
+    "public_scenario": "当前合法ownership路线存在，但没有公开近结果或明确完成条件。可比较其durable/option价值，可兑现性保持UNKNOWN。"
+  },
+  {
+    "name": "no_stronger_alternative_mainline_continues",
+    "evidence_boundary": "HAND_ANNOTATED_PRINCIPLE_FIXTURE_NOT_MODEL_OR_GAME_EXECUTION",
+    "source": "S09-33 synthetic principle; historical contrast only where named",
+    "facts": {
+      "before_first_review": true,
+      "competing_routes": false,
+      "feasibility_evidence": false,
+      "public_delay": false,
+      "fresh_no_gain": true,
+      "short_downside": false,
+      "long_in_window": false,
+      "thin_margin": false,
+      "material_risk": false,
+      "public_result": false,
+      "clean_growth": false
+    },
+    "annotation": {
+      "early_comparison": false,
+      "public_comparison_basis": [],
+      "ordinary_v11_ranking": true,
+      "numeric_promotion_target": null,
+      "hidden_probability": null,
+      "fixed_route": false,
+      "invented_opportunity": false,
+      "output_catch_up": false,
+      "cross_game_memory": false,
+      "global_cap": false,
+      "ignores_integrity": false,
+      "feasibility_known": false,
+      "discount_delay": false,
+      "local_response_rerank": true,
+      "discount_scope": "CURRENT_LEVEL_CONTEXT_DIMENSION_FAMILY",
+      "compares_short_downside": true,
+      "long_route_can_compete": true,
+      "preserves_g3": true,
+      "persistent_risk_authority": true,
+      "visibility_can_compete": true,
+      "clean_aggression": true
+    },
+    "negative": {
+      "ordinary_v11_ranking": false
+    },
+    "written_basis": [
+      "无更强替代时可比较一个合法未测试high-value family"
+    ],
+    "public_scenario": "fresh NO_GAIN后，当前无更强合法可兑现项；可继续比较主线/未测试高价值family，不能强制切换、发明机会或跨局记忆。"
+  }
+]

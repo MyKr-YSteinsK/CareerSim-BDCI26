@@ -34,11 +34,11 @@ active trust risk下，额外事故责任、模糊/转嫁责任、隐瞒流程�
 4. 无更强上述项时，EXPLOIT responsive durable capital或CREATE真实ownership/多维成果/期权价值；clean growth保持进攻，generic workload非固定答案。
 5. Reporting/visibility在real-result basis（完成/near-completed result、public milestone或有底层结果的claimed delivery）或强独立当前价值时可胜出；公开delivered结果尚未获recognition可汇报，不重复已recognized包装。generic reporting不能长期替代真实成果兑现。
 
-local clean NO_GAIN只折价当前Level/context/dimension/family；保留其它多维/Delivery价值。高数/局部停滞不证明career cap；公开D/H有界范围只局部折价，不外推career增长。Level change由Board重置S/N/O UNKNOWN。known responsive alternative优先，不刷停滞；无更强替代时可比较一个合法未测试high-value family，不自动探索/配额、不连续probe两个未知family，不保证未来GAIN。
+advertised gain未兑现以fresh response重排当前合法ownership/result/capital；不补固定O。local clean NO_GAIN只折价当前Level/context/dimension/family；保留其它多维/Delivery价值。高数/局部停滞不证明career cap；公开D/H有界范围只局部折价，不外推career增长。Level change由Board重置S/N/O UNKNOWN。known responsive alternative优先，不刷停滞；无更强替代时可比较一个合法未测试high-value family，不自动探索/配额、不连续probe两个未知family，不保证未来GAIN。
 
 ## Main / Energy
 
-Main用同一排序：ownership是strong prior非固定菜单；近结果兑现/active risk可优先，Mentor/Network/rotation按机会价值而非最低数竞争。
+Main用同一排序：ownership是strong prior非固定菜单；Mentor/Network/rotation按机会价值而非最低数竞争。仅首个formal Review前，竞争ownership/delivery路线比较公开期限/时长、承诺、H/资源余量、复杂度/负荷、完成标准、下次Review前可见结果、安全/合规/信任下行及延期后资本/期权价值；可兑现性证据不足UNKNOWN，不猜概率。期限近、短路结果可达、长路有排期风险且资源支持可偏短；长路窗口内可完且价值强，或短路有安全/质量下行可偏长。公开延期即折价，守诚信重评合法项；无机会不编造。首评后按上述v11排序，近成果/active risk可优先。
 
 `ONE ENERGY STEP = choose best current marginal action only`。读取fresh H/E/realized response，比较当前合法项及机会成本，只选当前action；丢弃旧剩余sequence/recipe，不按numeric lowest-stat单独排序。一个action→fresh observe再重排。无real-result basis且reporting NO_GAIN，不farm；recent positive response/独立多维价值可支持reporting，但不能替代RESULT_CONVERSION_GAP下的真实兑现。Health recovery可在A按动态下行价值胜出，不预订补满；cleanup按持续公开warning竞争，不编新marker/certificate/parser/state machine。
 

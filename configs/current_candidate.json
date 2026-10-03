@@ -1,41 +1,41 @@
 {
-  "candidate_id": "candidate-v11-result-conversion-risk-persistence",
+  "candidate_id": "candidate-v11b-early-result-feasibility",
   "status": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
-  "decision": "S09_31_V11_STRATEGY_RESET_STATIC_PASS_RETURN_TO_STAGE",
+  "decision": "S09_33_V11B_STATIC_PASS_RETURN_TO_STAGE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "RESULT_CONVERSION_AND_PUBLIC_RISK_PERSISTENCE",
-  "parent_candidate_id": "candidate-v10h-dynamic-survival-margin",
+  "strategy_delta": "PRE_FIRST_REVIEW_RESULT_FEASIBILITY_COMPARISON",
+  "parent_candidate_id": "candidate-v11-result-conversion-risk-persistence",
   "base_main_sha": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
   "parent_identity": {
-    "runtime_manifest_sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa",
-    "instruction_sha256": "43f92942dd94245418369b1ed263f3919f6e2529c81cbbd69a92a326339a1076",
+    "runtime_manifest_sha256": "241cdf9b0762f0a60bee8b03825d8a6f5c36d141fdb343876d430e7b809c4236",
+    "instruction_sha256": "ede312b78a365a122ed0350a8945b8eff5038f9b46cca5dfad1aa085a577fbbb",
     "skills": [
       {
         "name": "structured-state-board",
         "path": "skills/structured-state-board/SKILL.md",
-        "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+        "git_blob": "b2f8bcad23a42b738d94e6df8626e32f42504ff1"
       },
       {
         "name": "rolling-planning",
         "path": "skills/rolling-planning/SKILL.md",
-        "git_blob": "f60c5e0d93b9803dff79f4bda4b5a9f22489d123"
+        "git_blob": "01117ffd34bd4ccbc07045da271cc243d784ad82"
       },
       {
         "name": "delivery-progress",
         "path": "skills/delivery-progress/SKILL.md",
-        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+        "git_blob": "1105e45bbd3d629a0c7b8485b43461a2facd137b"
       },
       {
         "name": "risk-review",
         "path": "skills/risk-review/SKILL.md",
-        "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+        "git_blob": "f2ccb01ec47c0e0961adbc65d831feea209c57b9"
       }
     ]
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "241cdf9b0762f0a60bee8b03825d8a6f5c36d141fdb343876d430e7b809c4236",
-    "instruction_sha256": "ede312b78a365a122ed0350a8945b8eff5038f9b46cca5dfad1aa085a577fbbb"
+    "sha256": "6f94a2986bf050ed6d3df96be3285bc20b105b3cac431161195923325d1bb279",
+    "instruction_sha256": "4e85733c941279a64e6e92c059e6cd6ba4233598d7923824fb411c376e71d711"
   },
   "skills": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "01117ffd34bd4ccbc07045da271cc243d784ad82"
+      "git_blob": "f6ffd95377259ef2602f38f212104e7285693fd3"
     },
     {
       "name": "delivery-progress",
@@ -81,7 +81,9 @@
     "PERSISTENT_PUBLIC_RISK_UNTIL_CLEARANCE",
     "FORMAL_REVIEW_RESULT_CONVERSION",
     "STALE_DELIVERY_AUTHORITY_DOWNGRADE",
-    "SIMPLIFIED_SINGLE_STEP_ENERGY"
+    "SIMPLIFIED_SINGLE_STEP_ENERGY",
+    "PRE_FIRST_REVIEW_RESULT_FEASIBILITY_COMPARISON",
+    "LOCAL_REALIZED_RESPONSE_REPLAN"
   ],
   "runtime_contract_delta": [
     "FRESH_OBSERVE_CONTROL_STATE",
@@ -144,7 +146,7 @@
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
   },
-  "design_intent": "REAL_RESULT_CONVERSION_WITH_PERSISTENT_PUBLIC_RISK_AND_RESPONSIVE_CAPITAL",
+  "design_intent": "EARLY_PUBLIC_RESULT_FEASIBILITY_WITH_LOCAL_REALIZED_RESPONSE",
   "strategy_donor": {
     "candidate_id": "candidate-v7o-execution-persistence-convergence",
     "source_commit": "b2e7ea6441da9c314d8a0ffbf29b9d5800ced10d",
@@ -204,12 +206,13 @@
     "v10g_submission_replacement": "NOT_AUTHORIZED",
     "v10h_submission_replacement": "NOT_AUTHORIZED"
   },
-  "base_evidence_sha": "72b31304936f61386b7cd9fd2ec5630cdb69cf22",
-  "parent_strategy_implementation_sha": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
-  "strategy_classification": "STRATEGY_RESET_RESULT_CONVERSION_AND_PUBLIC_RISK_PERSISTENCE",
-  "runtime_delta": "SIMPLIFIED_KERNEL_WITH_UNCHANGED_ACTION_ABI",
-  "parent_runtime_implementation_sha": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+  "base_evidence_sha": "a825c2d7463880ef15ee87f57878be66d748fd09",
+  "parent_strategy_implementation_sha": "5e9d6ef7a0f9819172764a56abb5f2b980dee4bd",
+  "strategy_classification": "EARLY_PUBLIC_RESULT_FEASIBILITY_WITH_VARIANCE_ROBUSTNESS",
+  "runtime_delta": "EARLY_FEASIBILITY_MIRROR_WITH_UNCHANGED_ACTION_ABI",
+  "parent_runtime_implementation_sha": "5e9d6ef7a0f9819172764a56abb5f2b980dee4bd",
   "header_schema_version": 3,
   "basis_annotation_schema_version": 2,
-  "information_policy_delta": "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY"
+  "information_policy_delta": "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY",
+  "secondary_strategy_delta": "LOCAL_REALIZED_RESPONSE_REPLAN"
 }
