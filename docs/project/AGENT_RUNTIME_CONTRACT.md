@@ -14,6 +14,10 @@
 
 ## 2. 架构
 
+### S10-08 branch-only topology exception
+
+S10-08 明确授权的 `candidate-v14-experience-routed-policy` 是三 Skill 静态实验：core 接管局内公开事实 capsule/交付证据/一次全菜单比较，atlas 仅路由局部 reference，guard 仅筛查当前 material constraint；Single Agent 仍唯一提交者。以下四 Skill 图及 CTRL/DL 格式描述 frozen v8a/历史候选，不要求 v14 启动读取已替换的四份正文或输出旧开发 marker。v14 使用 fresh capsule；语义约束（same-session、公开证据、合法且可负担 choice、READY→preflight→一个 action→OBSERVE_REQUIRED→fresh observe、未知副作用 BLOCKED、可见上下文恢复及整局持续）保留。guard 尚未加载且无 material danger 时不新增一次形式性 Risk 调用。只改变知识 owner/表示与暴露时机，不改 Runner、工具或 recovery 授权；后续 live 仍需 Task 明列预算。该例外不是 Main 验收或官方 fallback 替换。详见 [S10-08 review](reviews/S10-08_EXPERIENCE_ROUTED_POLICY_STATIC_REVIEW.md)。
+
 ```text
 fresh observe
   → structured-state-board

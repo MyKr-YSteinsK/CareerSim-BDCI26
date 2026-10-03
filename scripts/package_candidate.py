@@ -4,15 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
-
-
-EXPECTED_SKILLS = (
-    "structured-state-board",
-    "rolling-planning",
-    "delivery-progress",
-    "risk-review",
-)
 
 
 def build_submission(repo_root: Path, output_dir: Path) -> None:
@@ -32,30 +25,54 @@ def build_submission(repo_root: Path, output_dir: Path) -> None:
     if not str(manifest.get("instruction") or "").strip():
         raise ValueError("Canonical manifest instruction is missing")
 
-    candidate_skill_names = {entry["name"] for entry in candidate.get("skills", [])}
-    if candidate_skill_names != set(EXPECTED_SKILLS):
-        raise ValueError("Candidate metadata does not identify exactly the current four Skills")
+    entries = candidate.get("skills", [])
+    names = [entry["name"] for entry in entries]
+    architecture = candidate.get("architecture", {})
+    if (
+        not 2 <= len(names) <= 4
+        or len(set(names)) != len(names)
+        or any(not re.fullmatch(r"[a-z][a-z0-9-]*", name) for name in names)
+        or set(architecture.get("active_skills", [])) != set(names)
+        or architecture.get("skill_count") != len(names)
+        or any(entry.get("path") != f"skills/{entry['name']}/SKILL.md" for entry in entries)
+    ):
+        raise ValueError("Candidate Skill declarations are inconsistent or unsafe")
 
     source_skills_dir = repo_root / "skills"
+    if not source_skills_dir.resolve().is_relative_to(repo_root):
+        raise ValueError("Skill directory escapes repository")
     source_skill_names = {
         child.name
         for child in source_skills_dir.iterdir()
         if child.is_dir() and (child / "SKILL.md").is_file()
     }
-    if source_skill_names != set(EXPECTED_SKILLS):
-        raise ValueError("Repository Skill sources do not match the current four Skills")
+    if source_skill_names != set(names):
+        raise ValueError("Repository Skill sources do not match Candidate declarations")
 
-    skill_bytes = {
-        name: (source_skills_dir / name / "SKILL.md").read_bytes()
-        for name in EXPECTED_SKILLS
-    }
+    # Preserve normal progressive-disclosure Markdown references, without
+    # admitting arbitrary local runtime assets or following links outside sources.
+    skill_bytes = {}
+    for name in names:
+        source = source_skills_dir / name
+        if source.is_symlink() or not source.resolve().is_relative_to(source_skills_dir.resolve()):
+            raise ValueError("Linked Skill sources are not allowed")
+        for path in sorted(source.rglob("*")):
+            if path.is_symlink() or not path.resolve().is_relative_to(source.resolve()):
+                raise ValueError("Linked or escaping Skill references are not allowed")
+            if path.is_file():
+                relative = path.relative_to(source)
+                if relative != Path("SKILL.md") and not (
+                    relative.parts[0] == "references" and path.suffix == ".md"
+                ):
+                    raise ValueError(f"Unexpected Skill asset: {relative}")
+                skill_bytes[Path(name) / relative] = path.read_bytes()
     output_dir = output_dir.resolve()
     if output_dir.exists() and any(output_dir.iterdir()):
         raise FileExistsError(f"Refusing to overwrite non-empty output directory: {output_dir}")
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "manifest.json").write_bytes(manifest_bytes)
-    for name, content in skill_bytes.items():
-        destination = output_dir / "skills" / name / "SKILL.md"
+    for relative, content in skill_bytes.items():
+        destination = output_dir / "skills" / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(content)
 

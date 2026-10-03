@@ -203,3 +203,10 @@
 - S10 is bounded by time and information gain: no more than two major Candidate families before submission selection without returning to Main. Failure of a Candidate first tests the architecture hypothesis; it does not automatically justify another micro-patch.
 - Existing closed-by-default routes include endless v11 micro-patching, Energy recipe policing as a primary project, marker/certificate optimization, perfect semantic adherence, hidden-threshold search, event-title lookup, and automatic RUN21 replacement.
 - Opening S10 authorizes no Candidate implementation, live Provider/service/game action, Team/Swarm adoption, structured-memory adoption, Runner modification, or submission replacement. `NEXT_GAME=NOT_AUTHORIZED`.
+
+## AD-S10-008 — Experience-routed procedural policy experiment
+
+- Hypothesis: compact functional procedures, selective disclosure and a fresh public Decision Capsule may improve execution of survival-first promotion/compounding priorities under the fixed Flash model. Outcome and reduced cognitive burden remain unproven.
+- S10-08 explicitly authorizes one branch-only static Candidate from frozen `main@8267d420da29888d0a05403991f8980e251aaa0c`: core + atlas + survival guard, six normal Markdown references. The architecture reset replaces the four historical Skill owners and development markers in this Candidate; it preserves single submission ownership, current-session evidence firewall and one-action/fresh-observe control semantics.
+- Experiment implemented statically: contrastive distillation, 26 written-policy scenario walkthroughs and reference-preserving local Runner-compatible packaging. No Team, durable Memory, retrieval service, framework configuration or live action.
+- Task decision: `READY_FOR_EXPERIENCE_ROUTED_GAME_GATE`; Main/Stage gameplay/route acceptance pending. Frozen v8a remains unchanged on main; no historical validation transfers. `NEXT_GAME=NOT_AUTHORIZED`.

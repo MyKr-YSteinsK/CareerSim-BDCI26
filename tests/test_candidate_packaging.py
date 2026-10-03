@@ -10,10 +10,7 @@ from career_sim_runner.skill_contract import list_bundle_skill_ids, validate_sub
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_SKILLS = {
-    "structured-state-board",
-    "rolling-planning",
-    "delivery-progress",
-    "risk-review",
+    "career-policy-core", "career-policy-atlas", "career-survival-guard",
 }
 
 
@@ -47,10 +44,12 @@ def test_candidate_bundle_is_deterministic_and_matches_runner_contract(tmp_path:
     }
     assert relative_files == {
         "manifest.json",
-        *(f"skills/{name}/SKILL.md" for name in EXPECTED_SKILLS),
+        *(path.relative_to(ROOT).as_posix() for path in (ROOT / "skills").rglob("*.md")),
     }
     for relative in relative_files:
         assert (first / relative).read_bytes() == (second / relative).read_bytes()
+        source = ROOT / ("configs/runtime_manifest.json" if relative == "manifest.json" else relative)
+        assert (first / relative).read_bytes() == source.read_bytes()
 
     manifest_bytes = (ROOT / "configs/runtime_manifest.json").read_bytes()
     assert (first / "manifest.json").read_bytes() == manifest_bytes
