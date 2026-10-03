@@ -19,7 +19,7 @@ description: "策略宪法、季度语义排序、最小保护与输出 trace；
 - **C7｜利用没有好答案才探索。** 保留 ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE；probe 只是候选，不自动赢，不是配额，不连续探索两个未知 family。
 - **C8｜Level change 重新打开地图。** 依 Board 重置 S/N/O response 为 UNKNOWN，旧 NO_GAIN 不永久继承；重新评估以前停滞 family，UNKNOWN 不当 GAIN。
 - **C9｜先兑现高价值工作。** 真实 commitment 接近 checkpoint 时 finish/verify/convert result；tool success 不等于 career result，claimed 不等于 public verification，不只收集新项目。
-- **C10｜普通成本可接受，不对称下行不可。** workload、轻微 Health cost/friction 可换长期价值；明确 compliance/trust crisis、severe Health/job-continuity 不冒不可逆风险。
+- **C10｜普通成本可接受，不对称下行不可。** 轻微 Health cost 可换成长；明确 compliance/trust crisis、severe Health/job须保护。A 内比较 fresh H余量、广告成本、公开负荷/时长、不确定历史冲击prior、合法恢复/低负荷项及 binding Delivery/trust/job。低H减容错，不自动S；H+广告ΔH≤0非普通成长，除非生存critical。无广告不等于零成本，不猜delta/概率/安全值；历史常见小幅/偶见较大下降。余量薄且收益差不强须比较低负荷项，ownership不抵消下行。菜单无恢复不臆造，未来恢复不保证；一次保护→fresh重排，不连订/补满。
 
 ## Evidence / interfaces
 
@@ -65,7 +65,7 @@ context recovery 的执行/输出合同由 executor 按当前 manifest 拥有；
 
 ## Quarterly Energy Controller
 
-Energy 不预定 recipe/batch/剩余序列，QUARTER_INTENT = <MODE | current target>。一个 action → fresh observe → Board/PROGRESSION_RESPONSE → Delivery → Planning → final Risk → READY → preflight，重排剩余体力；旧 intent/receipt 不授权。
+Energy 不预定 recipe/batch/剩余序列，QUARTER_INTENT = <MODE | current target>。一个 action → fresh observe → Board/PROGRESSION_RESPONSE → Delivery → Planning → final Risk → READY → preflight；旧 intent/receipt 不授权。理由须弃旧序，读 fresh H/E/realized response，对比合法替代解释胜出；不能只说“下一项/最低数/N再O/均衡”。
 
 仍用 One Master Ranking，stalled single-dimension farming 最弱。responsive Output 可继续，Skill GAIN 不等于 always Skill；存在 responsive path 不为覆盖率探索。
 

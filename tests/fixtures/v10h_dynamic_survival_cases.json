@@ -1,0 +1,780 @@
+{
+  "scope": "TEST-ONLY human-annotated comparison discipline; no live/model/NLP semantics or survival guarantee",
+  "cases": [
+    {
+      "name": "RUN17_a22",
+      "facts": {
+        "H": 3,
+        "E": 0,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "带教/ownership，非最大强度义务",
+          "load": "每天1h、Review全部代码、全部会议、两周影响产出"
+        },
+        {
+          "choice": 2,
+          "value": "履行导师义务且保本职交付",
+          "load": "每周同步、回答主动提问"
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 3,
+          "E": 0
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "带教/ownership，非最大强度义务",
+            "downside": "每天1h、Review全部代码、全部会议、两周影响产出",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "履行导师义务且保本职交付",
+            "downside": "每周同步、回答主动提问",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "donor_H1_no_recovery",
+      "facts": {
+        "H": 1,
+        "E": 0,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "当前信任/工作结果",
+          "load": "较低"
+        },
+        {
+          "choice": 2,
+          "value": "另一职业价值",
+          "load": "较高"
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 1,
+          "E": 0
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "当前信任/工作结果",
+            "downside": "较低",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "另一职业价值",
+            "downside": "较高",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "donor_H2_no_recovery",
+      "facts": {
+        "H": 2,
+        "E": 0,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "当前信任/工作结果",
+          "load": "较低"
+        },
+        {
+          "choice": 2,
+          "value": "另一职业价值",
+          "load": "较高"
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 2,
+          "E": 0
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "当前信任/工作结果",
+            "downside": "较低",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "另一职业价值",
+            "downside": "较高",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "donor_H3_bounded_recovery",
+      "facts": {
+        "H": 3,
+        "E": 3,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "真实工作交付",
+          "load": "普通"
+        },
+        {
+          "choice": 2,
+          "value": "健康恢复",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 2,
+        "fresh_state": {
+          "H": 3,
+          "E": 3
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "真实工作交付",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "健康恢复",
+            "downside": "低",
+            "health_delta": 2
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "high_H8_ordinary",
+      "facts": {
+        "H": 8,
+        "E": 3,
+        "acute": false,
+        "thin_margin": false,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "真实工作交付",
+          "load": "普通"
+        },
+        {
+          "choice": 2,
+          "value": "健康恢复",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 8,
+          "E": 3
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "真实工作交付",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "健康恢复",
+            "downside": "低",
+            "health_delta": 2
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "high_H9_ordinary",
+      "facts": {
+        "H": 9,
+        "E": 3,
+        "acute": false,
+        "thin_margin": false,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "真实工作交付",
+          "load": "普通"
+        },
+        {
+          "choice": 2,
+          "value": "健康恢复",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 9,
+          "E": 3
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "真实工作交付",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "健康恢复",
+            "downside": "低",
+            "health_delta": 2
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "advertised_fatal_cost",
+      "facts": {
+        "H": 1,
+        "E": 3,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "成长",
+          "load": "普通",
+          "delta": -1
+        },
+        {
+          "choice": 2,
+          "value": "健康恢复",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 2,
+        "fresh_state": {
+          "H": 1,
+          "E": 3
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "成长",
+            "downside": "普通",
+            "health_delta": -1
+          },
+          {
+            "choice": 2,
+            "current_value": "健康恢复",
+            "downside": "低",
+            "health_delta": 2
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "acute_high_H",
+      "facts": {
+        "H": 8,
+        "E": 3,
+        "acute": true,
+        "thin_margin": false,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "真实工作交付",
+          "load": "普通"
+        },
+        {
+          "choice": 2,
+          "value": "健康恢复",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "S",
+        "chosen": 2,
+        "fresh_state": {
+          "H": 8,
+          "E": 3
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "真实工作交付",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "健康恢复",
+            "downside": "低",
+            "health_delta": 2
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "binding_delivery_overrides_ordinary_protection",
+      "facts": {
+        "H": 3,
+        "E": 0,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN",
+        "binding_obligation": true
+      },
+      "choices": [
+        {
+          "choice": 1,
+          "value": "公开近交付/信任义务，无可行低负荷替代",
+          "load": "高"
+        },
+        {
+          "choice": 2,
+          "value": "放弃关键义务",
+          "load": "低"
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 1,
+        "fresh_state": {
+          "H": 3,
+          "E": 0
+        },
+        "comparison": [
+          {
+            "choice": 1,
+            "current_value": "公开近交付/信任义务，无可行低负荷替代",
+            "downside": "高",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 2,
+            "current_value": "放弃关键义务",
+            "downside": "低",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "RUN17_a12_fresh",
+      "facts": {
+        "H": 5,
+        "E": 2,
+        "acute": false,
+        "thin_margin": false,
+        "energy_followup": true,
+        "realized_response": "N=NO_GAIN",
+        "previous_sequence": [
+          3,
+          7
+        ]
+      },
+      "choices": [
+        {
+          "choice": 3,
+          "value": "公开近交付依赖/独立多维价值；N局部NO_GAIN仍折价",
+          "load": "普通"
+        },
+        {
+          "choice": 7,
+          "value": "Output/真实结果包装，收益待比较",
+          "load": "普通"
+        },
+        {
+          "choice": 6,
+          "value": "恢复余量",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 7,
+        "fresh_state": {
+          "H": 5,
+          "E": 2
+        },
+        "comparison": [
+          {
+            "choice": 3,
+            "current_value": "Network广告+1，刚实现NO_GAIN",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 7,
+            "current_value": "Output/真实结果包装，收益待比较",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "N=NO_GAIN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "丢弃N→O旧序；读取fresh H/E及N实际NO_GAIN。折价N当前路径，与当前结果包装的独立价值比较后选7；不按最低数或下一项，不预订后续。"
+      }
+    },
+    {
+      "name": "RUN17_a13_fresh",
+      "facts": {
+        "H": 5,
+        "E": 1,
+        "acute": false,
+        "thin_margin": false,
+        "energy_followup": true,
+        "realized_response": "N=NO_GAIN;O=UNKNOWN",
+        "previous_sequence": [
+          7
+        ]
+      },
+      "choices": [
+        {
+          "choice": 3,
+          "value": "公开近交付依赖/独立多维价值；N局部NO_GAIN仍折价",
+          "load": "普通"
+        },
+        {
+          "choice": 7,
+          "value": "Output/真实结果包装，收益待比较",
+          "load": "普通"
+        },
+        {
+          "choice": 6,
+          "value": "恢复余量",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 7,
+        "fresh_state": {
+          "H": 5,
+          "E": 1
+        },
+        "comparison": [
+          {
+            "choice": 3,
+            "current_value": "Network广告+1，刚实现NO_GAIN",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 7,
+            "current_value": "Output/真实结果包装，收益待比较",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "N=NO_GAIN;O=UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "丢弃N→O旧序；读取fresh H/E及N实际NO_GAIN。折价N当前路径，与当前结果包装的独立价值比较后选7；不按最低数或下一项，不预订后续。"
+      }
+    },
+    {
+      "name": "no_gain_multidimensional_value",
+      "facts": {
+        "H": 5,
+        "E": 1,
+        "acute": false,
+        "thin_margin": false,
+        "energy_followup": true,
+        "realized_response": "N=NO_GAIN",
+        "independent_delivery_value": true
+      },
+      "choices": [
+        {
+          "choice": 3,
+          "value": "公开近交付依赖/独立多维价值；N局部NO_GAIN仍折价",
+          "load": "普通"
+        },
+        {
+          "choice": 7,
+          "value": "Output/真实结果包装，收益待比较",
+          "load": "普通"
+        },
+        {
+          "choice": 6,
+          "value": "恢复余量",
+          "load": "低",
+          "delta": 2,
+          "recovery": true
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 3,
+        "fresh_state": {
+          "H": 5,
+          "E": 1
+        },
+        "comparison": [
+          {
+            "choice": 3,
+            "current_value": "公开近交付依赖/独立多维价值；N局部NO_GAIN仍折价",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 7,
+            "current_value": "Output/真实结果包装，收益待比较",
+            "downside": "普通",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": false,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "N=NO_GAIN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    },
+    {
+      "name": "renumbered_thin_margin_workload",
+      "facts": {
+        "H": 3,
+        "E": 0,
+        "acute": false,
+        "thin_margin": true,
+        "energy_followup": false,
+        "realized_response": "UNKNOWN"
+      },
+      "choices": [
+        {
+          "choice": 41,
+          "value": "带教/ownership，非最大强度义务",
+          "load": "每天1h、Review全部代码、全部会议、两周影响产出"
+        },
+        {
+          "choice": 42,
+          "value": "履行导师义务且保本职交付",
+          "load": "每周同步、回答主动提问"
+        }
+      ],
+      "annotated_comparison": {
+        "mode": "A",
+        "chosen": 41,
+        "fresh_state": {
+          "H": 3,
+          "E": 0
+        },
+        "comparison": [
+          {
+            "choice": 41,
+            "current_value": "带教/ownership，非最大强度义务",
+            "downside": "每天1h、Review全部代码、全部会议、两周影响产出",
+            "health_delta": "UNKNOWN"
+          },
+          {
+            "choice": 42,
+            "current_value": "履行导师义务且保本职交付",
+            "downside": "每周同步、回答主动提问",
+            "health_delta": "UNKNOWN"
+          }
+        ],
+        "workload_penalty": true,
+        "prior": "UNCERTAIN_QUALITATIVE",
+        "future_recovery": "UNKNOWN",
+        "discarded_sequence": true,
+        "selection_basis": "CURRENT_COMPARATIVE_VALUE",
+        "local_discount": "CURRENT_PATH_ONLY",
+        "read_response": "UNKNOWN",
+        "precommitted_next": null,
+        "health_target": null,
+        "reason": "比较当前合法替代的价值、公开成本、负荷和生存余量；依据fresh状态，不沿用旧序列。"
+      }
+    }
+  ],
+  "negative_mutations": [
+    "missing_comparison",
+    "empty_value",
+    "missing_workload_penalty",
+    "unavailable_recovery",
+    "block_all_actions",
+    "numeric_S",
+    "planned_second_recovery",
+    "maximize_health",
+    "stale_values",
+    "fixed_safe_rule",
+    "unlabeled_exact_delta",
+    "unknown_cost_zero",
+    "stale_sequence",
+    "lowest_stat",
+    "balanced_recipe",
+    "no_gain_cap",
+    "missing_fresh_response"
+  ]
+}
