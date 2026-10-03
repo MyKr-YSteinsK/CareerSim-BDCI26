@@ -6,8 +6,12 @@
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
 - Branch: main
-- Current Stage: `S09-Lab｜分布式稳健性重构` ACTIVE；S08 COMPLETE
+- Current Stage: `S10-Lab｜架构重置与高分突破冲刺` ACTIVE；S09 COMPLETE
 - Parallel Research Track: `Human Play Lab｜人工游玩策略实验线` ACTIVE_FEASIBILITY. This track is isolated from Candidate evolution. Official `career-emulator` documentation exposes a participant-facing local CLI for direct play and a separate MCP entry for Agent use; local zero-provider behavior, public-only rendering, and isolated DB/log routing still require HPL-01 verification before any human game. `HUMAN_PLAY_NEXT_GAME=NOT_AUTHORIZED`.
+
+- S09 Main closeout: accepted as `COMPLETE_WITHOUT_STABLE_75_PLUS_BREAKTHROUGH`. Canonical compact evidence remains pinned to experimental branch `codex/s09-14-v9a-static@c41a1b7210a02603aa19cc2bab19922a80b6cd77`; the experimental Candidate/runtime lineage is NOT merged into main. S09 established high/low trajectory references and diminishing returns from local prompt hardening, but did not prove stable75+, stable80+, hidden-test transfer, v11/v11b superiority, or an optimal four-Skill architecture. RUN21 remains partial technical evidence only; no replacement run is authorized.
+- Main submission fallback remains frozen and unchanged: `candidate-v8a-v7o-donor-core-transplant` on main. The S09 experimental branch is an evidence source, not the submission Candidate lineage.
+- S10 opening boundary: architecture/runtime-cognition reset under a short breakthrough budget. First task is offline `Runtime Prompt Value Audit + Architecture Reset Design`; no Candidate implementation, Team/Swarm adoption, structured-memory adoption, Provider/service/game action, or frozen Runner change is authorized by opening the Stage. `NEXT_GAME=NOT_AUTHORIZED`.
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
 - S07-01: `COMPLETE / QUARANTINE_FOR_MAIN_REVIEW`; Main disposition=`SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`. S07-02 Main review=`PASS`; descendant `candidate-v6c-compliance-cleanup` was accepted as the static candidate before S07-23. W1 compliance quarantine is resolved for the identified narrow clauses; W2 Cheap Probe Feasibility and W3 Mid-70 Basin Diagnosis are now UNBLOCKED but NOT_STARTED.
