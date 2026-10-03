@@ -90,6 +90,28 @@ no added live queries or choice intervention. Future launchers must consume v3
 `live_action`/validated `stop`, not old `stop_class` or blanket parser-failure stops.
 Old held local RUN12–18 controllers are historical assets, not reusable future launchers.
 
+### Future P3 supervisor (S09-30)
+
+For an independently authorized future run, the launcher must pass its existing
+Runner `Popen` handle to `scripts.live_run_controller.supervise_runner` after
+fresh-session establishment. Supply exact events/session, a fresh run-local
+controller output directory and an atomic `*-decision.json` decision directory.
+Each decision file contains `receipts:[<v3 receipt>, ...]`. No new play, service,
+install, probe, DB query or reporting query is performed by the supervisor.
+
+Default `FULL_SCORE_EVALUATION` records S0/S1 and continues. It drains existing
+events and emits formal Review progress before processing pending decisions.
+The sole Reviewer process-stop seam revalidates v3 S2/STOP or the exact prior
+mechanism-censor authorization. It never uses legacy stop_class or a blanket
+semantic/parser exception to stop. The caller still owns stdout/stderr capture,
+user-facing reporting, authorized technical handling and service cleanup.
+
+Use its `reviewer-receipts.json` with offline `--reviewer-receipts`. Supply its
+`development-stop.json` only when actually emitted; S1 creates no stop metadata.
+`controller-state.json` retains decision/request times, actual action counts,
+terminal ordering and rejected authority. A fake-process replay proves control
+flow, not live latency or process-tree shutdown. S09-30 grants no live permission.
+
 ## One-pass offline audit
 
 `scripts/post_run_audit.py` accepts explicit `--events`, `--transcript`, `--score-report`, `--runner-result`, and `--output` paths. Optional inputs are `--llm-log`, `--run-start`, `--run-end`, `--log-utc-offset`, `--evidence-manifest`, and `--screening-metadata`. It never locates the latest run, queries a DB, imports a provider, or starts a service.

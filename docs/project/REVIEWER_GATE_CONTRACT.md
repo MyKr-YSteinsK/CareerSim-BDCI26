@@ -254,3 +254,15 @@ without v3 review envelopes preserve original output/stop interpretation.
 Future live controllers must validate v3 before START/decisions, act solely on its
 live_action, record S1 without stop/pause/approval, and retain actual S2 timing. This
 static task installs no controller, alters no frozen Runner and authorizes no run.
+
+Future launchers use `scripts.live_run_controller.supervise_runner` with their
+already-authorized Runner process, exact events and fresh session. Its
+`LiveRunController._emit_reviewer_stop` is the sole Reviewer-derived process
+termination seam and revalidates the raw v3 receipt. S1 warnings persist in the
+receipt envelope/state without pause or stop metadata. Mechanism mode captures
+the complete authorization before supervision, matches its budget to the supplied
+authorized run budget, and requires identical Plan/target/issue/reason plus the
+exact established trigger; a receipt cannot switch modes. Natural terminal and
+explicit unrecoverable technical evidence precede S2, then authorized censor,
+S1 and S0. Nonzero exit alone remains unattributed. See the S09-30 integration
+review for transport and offline verification boundaries; no run is authorized.
