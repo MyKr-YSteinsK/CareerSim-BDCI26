@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "run": "S09-RUN18",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "execution_HEAD": "f4b0b753f5b53503af3f5da3e39ac77bae07a75f",
+  "candidate": "candidate-v10h-dynamic-survival-margin",
+  "implementation": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+  "session": "705db3b2220843edba8f571fbfe27cb5",
+  "classification": "DEVELOPMENT_ABORT_CANDIDATE_VIOLATION",
+  "protected_identity": {
+    "runtime_manifest": {
+      "path": "configs/runtime_manifest.json",
+      "sha256": "0d9defac751b41a5cd50ce92d8272c87f33c27614591a7f5ebd776c1f1dda2fa",
+      "instruction_sha256": "43f92942dd94245418369b1ed263f3919f6e2529c81cbbd69a92a326339a1076"
+    },
+    "skills": [
+      {
+        "name": "structured-state-board",
+        "path": "skills/structured-state-board/SKILL.md",
+        "git_blob": "fa74b50f603bb8141f590057a58c9daff0568d2e"
+      },
+      {
+        "name": "rolling-planning",
+        "path": "skills/rolling-planning/SKILL.md",
+        "git_blob": "f60c5e0d93b9803dff79f4bda4b5a9f22489d123"
+      },
+      {
+        "name": "delivery-progress",
+        "path": "skills/delivery-progress/SKILL.md",
+        "git_blob": "64e060b1febf746a05aa07494755a7f9d6eee600"
+      },
+      {
+        "name": "risk-review",
+        "path": "skills/risk-review/SKILL.md",
+        "git_blob": "dba54e7dd94060285b0421faa6ed009b3eadeed5"
+      }
+    ],
+    "header_schema_version": 3,
+    "basis_annotation_schema_version": 2
+  },
+  "T1_T5": {
+    "T1": "PASS_EXACT_S09_28_GATE",
+    "T2": "PASS_336_TARGETED_CHECKS",
+    "T3": "PASS_EXCLUSIVE_PORTS_PATH_SINGLE_LIST",
+    "T4": "PASS_FROZEN_V2_PACKETS_AND_PROVENANCE",
+    "T5": "PASS_EXACT_NEW_RUN_PATHS_AND_RUNNER_JSON_WINDOW"
+  },
+  "reviewer": [
+    {
+      "stage": "H1",
+      "snapshot": 3,
+      "packet_utc": "2026-10-03T04:39:02.459857+00:00",
+      "actual_review_start_utc": "UNKNOWN_NOT_SEPARATELY_LOGGED",
+      "decision_utc": "2026-10-03T04:39:37.258198+00:00",
+      "controller_seen_utc": "2026-10-03T04:39:37.294027+00:00",
+      "packet_to_decision_seconds": 34.798,
+      "action_at_decision": 8,
+      "extra_actions": 5,
+      "timing_correction": "original review_start is decision-write time for H1 and packet time for H2, not actual review start; original receipts preserved"
+    },
+    {
+      "stage": "H2",
+      "snapshot": 12,
+      "packet_utc": "2026-10-03T04:40:43.338803+00:00",
+      "actual_review_start_utc": "UNKNOWN_NOT_SEPARATELY_LOGGED",
+      "decision_utc": "2026-10-03T04:41:19.029345+00:00",
+      "controller_seen_utc": "2026-10-03T04:41:19.185800+00:00",
+      "packet_to_decision_seconds": 35.691,
+      "action_at_decision": 18,
+      "extra_actions": 6,
+      "timing_correction": "original review_start is decision-write time for H1 and packet time for H2, not actual review start; original receipts preserved"
+    }
+  ],
+  "H3": "NOT_REACHED",
+  "formal_reviews": [],
+  "G3_BEHAVIOR": "NOT_EXERCISED",
+  "ENERGY_RERANK_ADHERENCE": "FAIL",
+  "SEMANTIC_PREFLIGHT_ADHERENCE": "FAIL",
+  "FAILURE_FLOOR_RESULT": "INCONCLUSIVE",
+  "REVIEWER_RELIABILITY": "PASS_WITH_LIMITATIONS",
+  "metrics": {
+    "successful_actions": 18,
+    "failed_actions": 0,
+    "observes": 19,
+    "fresh_pairs": 18,
+    "header_valid": 18,
+    "BC_valid": 18,
+    "MODE_A": 18,
+    "MODE_S": 0,
+    "H_le_3_decisions": [],
+    "min_H": 4,
+    "health_recovery_choices": 0,
+    "high_H_recovery_choices": 0,
+    "negative_H_outcomes_at_H_le_3": 0,
+    "legal_recovery_at_H_le_3": 0,
+    "lower_load_alternatives_at_H_le_3": 0,
+    "advertised_health_cost_selected": 0,
+    "energy_sequences": 1,
+    "energy_actions": 3,
+    "confirmed_remaining_recipe_violations": 1,
+    "corroborating_a13_lowest_stat_rationale": 1,
+    "explicit_lowest_stat_planning_actions": [
+      11,
+      13
+    ],
+    "selected_logs_calls": 0,
+    "unique_skill_reads": 4,
+    "skill_rereads": 0,
+    "provider_anomaly": "NONE_OBSERVED",
+    "tokens": "UNKNOWN",
+    "compressions": "UNKNOWN",
+    "play_wall_seconds": 171.611
+  },
+  "final_public_state": {
+    "session_id": "705db3b2220843edba8f571fbfe27cb5",
+    "status": {
+      "dignity": 10,
+      "duration_in_level": 5,
+      "energy": 0,
+      "health": 4,
+      "level": "L1",
+      "network": 3,
+      "output": 3,
+      "skill": 9,
+      "wealth": 2
+    },
+    "time": {
+      "current_month": 5,
+      "current_quarter": 2,
+      "current_year": 1
+    }
+  },
+  "score": "NOT_VALIDATED_CENSORED",
+  "survival_months": "NOT_VALIDATED_CENSORED",
+  "months_reached": 5,
+  "final_level_observed": "L1",
+  "promotions": [],
+  "stop_receipt": {
+    "review_object": "PLANNING_RANKING",
+    "owner": "rolling-planning",
+    "clause_id": "Energy/FRESH_ENERGY_RERANK_OPERATIONALIZATION",
+    "action_index": 12,
+    "public_evidence": {
+      "session": "705db3b2220843edba8f571fbfe27cb5",
+      "before_seq": 115,
+      "submission_seq": 117,
+      "observe_seq": 123,
+      "H": 4,
+      "E": 2,
+      "previous_realized": "a11 O0→1/E3→2",
+      "legal_alternatives": "Network, Output, Health recovery, Skill learning; full H2 official_before menus",
+      "transcript_excerpt": "Planning: 剩余2E。当前 O=1、N=2（网络仍是低缺口）。分配：人脉维护（N+1）+准备汇报材料（O+1），使 O=2、N=3，兼顾两缺口且无副作用。本步选 Network。"
+    },
+    "selected_candidate": {
+      "choice": 3,
+      "action": "人脉维护",
+      "description": "经营组织内外关系，人脉与尊严同步小幅提升。",
+      "energy_cost": 1,
+      "status_updates": {
+        "Network": 1,
+        "Dignity": 1
+      }
+    },
+    "direct_candidate_violation_link": "Energy controller forbids remaining sequence/balanced recipe and requires fresh rerank of ONE action. Actual a12 Planning reauthorizes two-action N+1/O+1 allocation to balance gaps; transcript says do 人脉维护 next then 准备汇报材料. Submitted rationale only 补Network=2缺口，无副作用. Fresh observation and current Board exist, but do not cancel explicit remaining recipe authorization.",
+    "counterexample_check": {
+      "checked": true,
+      "result": "NO_COUNTEREXAMPLE",
+      "basis": "Inspected exact H2 official context and scoped current transcript a11-a12. a11 ends with observe then decide promise; a12 acknowledges O gain/H4/E2, so not stale STATE or missing observe. Nevertheless a12 explicitly commits remaining N/O recipe for balanced gaps; changing order from earlier O/O/N is not one-action rerank and Health recovery is not compared in a12 final Planning. Official additive menu allows repeats but does not supersede Candidate no-recipe contract. No claim that selected Network is illegal or strategically dominated."
+    },
+    "verdict": "VIOLATION",
+    "confidence": "HIGH",
+    "stop_class": "CONFIRMED_CANDIDATE_VIOLATION"
+  },
+  "stop_request_utc": "2026-10-03T04:41:19.191010+00:00",
+  "stop_extra_actions": 6,
+  "run_window": {
+    "start": "2026-10-03T04:38:27.582719+00:00",
+    "end": "2026-10-03T04:41:19.193527+00:00"
+  },
+  "cleanup": {
+    "stop_exit": 0,
+    "manager_stopped": true,
+    "listeners_remaining": [],
+    "service_wrapper_exit": 1
+  },
+  "live_counts": {
+    "service": 1,
+    "play": 1,
+    "fresh_game": 1,
+    "standalone_provider_probe": 0,
+    "replacement": 0
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "reason": "Energy recipe execution drift; Stage questions and raw-dependent semantic review unresolved",
+    "owner": "S09-RUN18",
+    "release_authority": "Main/Stage",
+    "release_conditions": "Stage accepts compact conclusion; raw replay and child dependencies resolved; separate exact-path cleanup authorization",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T043834Z\\events-20261003T043834Z.jsonl",
+        "bytes": 264516,
+        "sha256": "330c61045ad159fd03322add2bca2b187aa9a8aafd4fcd82be21b65d32643244"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261003T043834Z\\transcript-20261003T043834Z.log",
+        "bytes": 82852,
+        "sha256": "26a2c3aea5bf1f103e3a2644894f9ac5a1d51c609560aae34953a0c81690d4eb"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\runner-result.json",
+        "bytes": 7108,
+        "sha256": "bea7fe03ae1cd10ba5e9aee5bb74e2f2673ab4a1588ed25f5c08cb519cc241fe"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\action-contexts.json",
+        "bytes": 145983,
+        "sha256": "8eeaade5f6b86d5fc46ca3c5d89d559ac04a58936ae9278d15578c4840a4476a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\h1-packet.json",
+        "bytes": 20175,
+        "sha256": "46de34b23ca18864d6bc1df905f56d48e83495a10d26d73fc621ad591c93798a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\h1-decision.json",
+        "bytes": 1120,
+        "sha256": "e74ee2a7422a38cea11d6c6924a5852ac1d4652c71849983870a215901d45f04"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\h2-packet.json",
+        "bytes": 99739,
+        "sha256": "ac9f6bddf53e4d1cd3dc971ebaab58fc39a8638080d01392ef2274745bffbf48"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\h2-decision.json",
+        "bytes": 2528,
+        "sha256": "e1aafadc83c0bbb4cb5a8452b141d2efa0a92aff7cc1d3797d5529c15e1e6d74"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\development-stop.json",
+        "bytes": 2497,
+        "sha256": "8bdee2fce5edecfe1e53ec2f8c48bf1b644f79229423c837c70b2d2fcbc76624"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\post_run_summary.json",
+        "bytes": 35958,
+        "sha256": "255e6f58a3a0d5198e4df5c78464b1800537fbeedc6adb9e57594561521cd7c6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\preflight.json",
+        "bytes": 3969,
+        "sha256": "b5a6aa2b1e4ce9de27d24160cf1bfc894364cd2cba8967551c48b20e1f8da1eb"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\controller.py",
+        "bytes": 11858,
+        "sha256": "5decb647db18aab361df280359749cb6586ff08765a65a9a5dd013c483a8828d"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\preflight.py",
+        "bytes": 6176,
+        "sha256": "d4dfb2de5bc45c64f737e99f1167443d524b7fdd28d008f9b17d35314770565e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\runner-stdout.log",
+        "bytes": 30776,
+        "sha256": "c9908e9b3f39360ece0c482961aa7608076e465cc292e4819ad2fc761462aa2b"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\service-stdout.log",
+        "bytes": 542756,
+        "sha256": "5af4a39c6ae9d9da98f94bc6327c19b7d11e625db207e4fffe04f8667bc26b99"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "035d2a7fe6c1f8ffadb81284686f7543c484eea13e8eddfc14980cce6e502926"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run18-v10h\\targeted-tests.log",
+        "bytes": 1414,
+        "sha256": "234abb8781f5a47bc9caa9ef2106badb52b5c6e524a6c0c4fa408161dca65198"
+      }
+    ]
+  },
+  "decision": "S09_RUN18_V10H_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE",
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "NO_REPLACEMENT_RUN_AUTHORIZED": true,
+  "MAIN_V8A_FREEZE_UNCHANGED": true
+}

@@ -1,5 +1,10 @@
 # RUN_HISTORY
 
+## S09-RUN18 v10h — controlled M5 Energy-contract abort
+
+- One authorized fresh game at `f4b0b75`; `DEVELOPMENT_ABORT_CANDIDATE_VIOLATION`, validated H2 HIGH Planning/a12 remaining N/O recipe. Alive M5/a18, H4/D10/S9/N3/O3/W2/E0/L1; no Reviews/promotions/final score/survival validation. G3 low-H NOT_EXERCISED, Failure Floor INCONCLUSIVE, Energy/semantic preflight FAIL; 18 successful/0 failed/19 deduplicated observes, fresh/header/BC18/18, A18/S0.
+- H1/H2 packet→decision34.798/35.691s, overruns5/6; Reviewer PASS_WITH_LIMITATIONS, actual review-start UNKNOWN. Play171.611s, tokens/compression UNKNOWN. Stop0/manager stopped/ports released, Runner1 controlled stop, wrapper1 tail limitation; no provider anomaly observed/patch/replacement. Raw hold ACTIVE. [Run record](runs/v10h-run18-dynamic-survival-validation.md) / [compact evidence](runs/v10h-run18-dynamic-survival-evidence.json). `IN_FLIGHT_EVIDENCE`; decision `S09_RUN18_V10H_CONFIRMED_POLICY_DRIFT_RETURN_TO_STAGE`; authorization CONSUMED, next game NOT_AUTHORIZED, main freeze unchanged.
+
 ## S09-RUN17 v10g — natural M6 elimination, confirmed Planning drift
 
 - One authorized fresh game at execution `40ad458`; **EARLY_NATURAL_TERMINAL**, 24.47 / 17.13 / 6 months / E / L2. M6 Review C promoted L1→L2; terminal H0/D10/S10/N7/O3/W2/E3 after a23. Natural terminal seq211 preceded H2 stop request; not a development-censored result. Score from fresh ending_score; score-report file absent.
