@@ -1,423 +1,135 @@
-"""Static identity and inherited strategy-contract checks for the current Candidate."""
+"""Current v13 identity, frozen shell and written policy contract checks.
 
+A-H validate static rule coverage only. They do not execute an LLM or establish
+that a runtime Candidate follows the policy in a game.
+"""
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
+import pytest
 from career_sim_runner.skill_contract import validate_skill_frontmatter
 
-
 ROOT = Path(__file__).resolve().parents[1]
-PARENT_BASE_SHA = "da5359d2d9a978475484300cf1f4a75013393329"
-TASK_ANCHOR_SHA = "451d91dbfc7d79b4e73fb6e99654cb2e01973e78"
-PARENT_CANDIDATE_ID = "candidate-v7x-fresh-binding-reauthorization"
-CURRENT_CANDIDATE_ID = "candidate-v7y-story-exposure-guard"
-SKILL_ORDER = (
-    "structured-state-board",
-    "rolling-planning",
-    "delivery-progress",
-    "risk-review",
-)
-EXPECTED_SKILLS = set(SKILL_ORDER)
+BASE = "8267d420da29888d0a05403991f8980e251aaa0c"
+CURRENT = "candidate-v13-empirical-promotion-playbook"
+PARENT = "candidate-v8a-v7o-donor-core-transplant"
+SKILLS = ("structured-state-board", "rolling-planning", "delivery-progress", "risk-review")
 
 
-def _json(path: str) -> dict:
-    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+def git_bytes(path):
+    return subprocess.check_output(["git", "show", f"{BASE}:{path}"], cwd=ROOT)
 
 
-def _skill(name: str) -> str:
-    return (ROOT / f"skills/{name}/SKILL.md").read_text(encoding="utf-8")
+def load(path):
+    return json.loads((ROOT / path).read_text(encoding="utf8"))
 
 
-def _git_bytes(revision: str, path: str) -> bytes:
-    return subprocess.check_output(["git", "show", f"{revision}:{path}"], cwd=ROOT)
+def planning():
+    return (ROOT / "skills/rolling-planning/SKILL.md").read_text(encoding="utf8")
 
 
-def _git_blob_id(path: str) -> str:
-    return subprocess.check_output(
-        ["git", "hash-object", f"--path={path}", str(ROOT / path)],
-        cwd=ROOT,
-        text=True,
-    ).strip()
+def section(rule):
+    return planning().split(f"### {rule}｜", 1)[1].split("\n### ", 1)[0].split("\n## ", 1)[0]
 
 
-def _section(text: str, start: str, end: str) -> str:
-    start_index = text.index(start)
-    end_index = text.index(end, start_index + len(start))
-    return text[start_index:end_index]
-
-
-def test_candidate_identity_hashes_parent_manifest_and_four_skill_blobs() -> None:
-    candidate = _json("configs/current_candidate.json")
-    manifest_path = ROOT / "configs/runtime_manifest.json"
-    manifest_bytes = manifest_path.read_bytes()
-    manifest = json.loads(manifest_bytes.decode("utf-8"))
-    parent = json.loads(_git_bytes(PARENT_BASE_SHA, "configs/current_candidate.json"))
-    parent_manifest_bytes = _git_bytes(PARENT_BASE_SHA, "configs/runtime_manifest.json")
-    parent_manifest = json.loads(parent_manifest_bytes.decode("utf-8"))
-    parent_skills = [
-        {
-            "name": name,
-            "git_blob": subprocess.check_output(
-                ["git", "rev-parse", f"{PARENT_BASE_SHA}:skills/{name}/SKILL.md"],
-                cwd=ROOT,
-                text=True,
-            ).strip(),
-            "path": f"skills/{name}/SKILL.md",
-        }
-        for name in SKILL_ORDER
-    ]
-
-    assert candidate["candidate_id"] == CURRENT_CANDIDATE_ID
-    assert candidate["parent_candidate_id"] == PARENT_CANDIDATE_ID
-    assert candidate["base_main_sha"] == PARENT_BASE_SHA
-    assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
-    assert candidate["decision"] == "S09_05_STATIC_STORY_EXPOSURE_GUARD"
-    assert manifest["name"] == CURRENT_CANDIDATE_ID
-    assert manifest["mode"] == "agent"
-    assert len(manifest["instruction"]) <= 5000
-    assert candidate["runtime_manifest"]["sha256"] == hashlib.sha256(manifest_bytes).hexdigest()
-    assert candidate["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(
-        manifest["instruction"].encode("utf-8")
-    ).hexdigest()
-
-    assert parent["candidate_id"] == PARENT_CANDIDATE_ID
-    assert parent_manifest["name"] == PARENT_CANDIDATE_ID
-    assert candidate["parent_identity"] == {
+def test_current_identity_parent_fallback_flags_and_source_hashes():
+    c = load("configs/current_candidate.json")
+    parent = json.loads(git_bytes("configs/current_candidate.json"))
+    manifest = load("configs/runtime_manifest.json")
+    assert c["candidate_id"] == manifest["name"] == CURRENT
+    assert c["parent_candidate_id"] == parent["candidate_id"] == PARENT
+    assert c["base_main_sha"] == BASE
+    assert c["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
+    assert c["decision"] == "S10_05_EMPIRICAL_PROMOTION_POLICY_STATIC"
+    assert c["architecture"] == parent["architecture"]
+    assert c["runtime_contract_delta"] == parent["runtime_contract_delta"]
+    assert c["runner_sha"] == parent["runner_sha"]
+    assert set(c["validation"]) == set(parent["validation"]) | {"stable_75_plus_proven"}
+    assert all(value is False for value in c["validation"].values())
+    assert c["fallback"]["candidate_id"] == PARENT
+    assert c["fallback"]["source_commit"] == BASE
+    assert c["fallback"]["status"] == parent["status"]
+    assert c["fallback"]["runtime_manifest_sha256"] == parent["runtime_manifest"]["sha256"]
+    assert c["fallback"]["skills"] == parent["skills"]
+    assert c["fallback"]["historical_gameplay_evidence_transfers_to_current_candidate"] is False
+    assert c["parent_identity"] == {
         "runtime_manifest_sha256": parent["runtime_manifest"]["sha256"],
         "instruction_sha256": parent["runtime_manifest"]["instruction_sha256"],
-        "skills": parent_skills,
+        "skills": parent["skills"],
     }
-    parent_manifest_hashes = {
-        hashlib.sha256(parent_manifest_bytes).hexdigest(),
-        hashlib.sha256(parent_manifest_bytes.replace(b"\n", b"\r\n")).hexdigest(),
-    }
-    assert candidate["parent_identity"]["runtime_manifest_sha256"] in parent_manifest_hashes
-
-    entries = candidate["skills"]
-    assert {entry["name"] for entry in entries} == EXPECTED_SKILLS
-    assert len(entries) == 4
-    assert {entry["git_blob"] for entry in entries} == {
-        _git_blob_id(entry["path"]) for entry in entries
-    }
-    assert candidate["strategy_delta"] == "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR"
-    assert candidate["design_intent"] == "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING_WITH_BOUNDED_STORY_EXPOSURE_GUARD"
-    assert candidate["runtime_contract_delta"] == parent["runtime_contract_delta"]
-    assert candidate["adopted_mechanisms"] == parent["adopted_mechanisms"] + [
-        "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
-    ]
-    assert candidate["architecture"] == parent["architecture"]
-    assert candidate["runner_sha"] == parent["runner_sha"]
-    assert candidate["validation"] == {
-        "runtime_validated": False,
-        "gameplay_validated": False,
-        "provider_validated": False,
-        "survival_improvement_proven": False,
-        "score_improvement_proven": False,
-        "long_horizon_adherence": False,
-        "stable_80_plus_proven": False,
-        "hidden_test_transfer_proven": False,
-        "next_game_authorized": False,
-    }
+    # Canonical LF metadata remains portable in a CRLF Windows checkout.
+    mb = (ROOT / c["runtime_manifest"]["path"]).read_bytes().replace(b"\r\n", b"\n")
+    assert c["runtime_manifest"]["sha256"] == hashlib.sha256(mb).hexdigest()
+    assert c["runtime_manifest"]["instruction_sha256"] == hashlib.sha256(manifest["instruction"].encode()).hexdigest()
+    assert len(c["skills"]) == 4 and {x["name"] for x in c["skills"]} == set(SKILLS)
+    for entry in c["skills"]:
+        blob = subprocess.check_output(["git", "hash-object", f"--path={entry['path']}", entry["path"]], cwd=ROOT, text=True).strip()
+        assert blob == entry["git_blob"]
+    assert c["empirical_policy"]["rules"] == [f"R{i}" for i in range(1, 10)]
+    assert c["empirical_policy"]["evidence_admission_decision"] == "EVIDENCE_DELTA_DEFERRED_TO_KEEP_POLICY_EXPERIMENT_CLEAN"
 
 
-def test_four_skills_have_valid_frontmatter_chinese_prose_and_fixed_tokens() -> None:
-    skill_dirs = {
-        child.name
-        for child in (ROOT / "skills").iterdir()
-        if child.is_dir() and (child / "SKILL.md").is_file()
-    }
-    assert skill_dirs == EXPECTED_SKILLS
-
-    for name in SKILL_ORDER:
-        path = ROOT / "skills" / name / "SKILL.md"
-        text = path.read_text(encoding="utf-8")
+def test_exact_frozen_skills_runner_dependencies_and_historical_evidence():
+    for name in SKILLS:
+        path = ROOT / f"skills/{name}/SKILL.md"
         assert validate_skill_frontmatter(path.parent) == []
-        frontmatter = text.split("---", 2)[1]
-        assert f"name: {name}" in frontmatter
-        assert "description:" in frontmatter
-        assert any("\u4e00" <= char <= "\u9fff" for char in text)
-        assert "Can Submit Action: No." in text
-
-    board = _skill("structured-state-board")
-    delivery = _skill("delivery-progress")
-    planning = _skill("rolling-planning")
-    risk = _skill("risk-review")
-    assert "PROGRESSION_RESPONSE: S=<GAIN|NO_GAIN|UNKNOWN> N=<GAIN|NO_GAIN|UNKNOWN> O=<GAIN|NO_GAIN|UNKNOWN>" in board
-    assert "MODE = <A|S>" in planning and "RECOVERY = <NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN>" in planning
-    assert "[DL i=<NONE|D#|UNKNOWN> n=<0-3>" in delivery
-    assert "RISK: PASS|ALLOW|WARN|RECONSIDER|UNKNOWN" in risk
+        assert "Can Submit Action: No." in path.read_text(encoding="utf8")
+        if name != "rolling-planning":
+            assert path.read_bytes().replace(b"\r\n", b"\n") == git_bytes(f"skills/{name}/SKILL.md")
+    protected = ["career_sim_runner", "pyproject.toml", "uv.lock", "skills/structured-state-board", "skills/delivery-progress", "skills/risk-review", "docs/project/research", "docs/project/runs", "configs/retry_policy.json"]
+    assert subprocess.check_output(["git", "diff", "--name-only", BASE, "--", *protected], cwd=ROOT).strip() == b""
 
 
-def test_review_deficits_route_to_progression_without_automatic_sticky_or_mode_s() -> None:
-    board = _skill("structured-state-board")
-    planning = _skill("rolling-planning")
-    manifest = _json("configs/runtime_manifest.json")["instruction"]
-
-    board_review = board[: board.index("## PROGRESSION_RESPONSE")]
-    for marker in ("低绩效", "`no-promotion`", "普通绩效不足", "单独不能形成 binding `STICKY`"):
-        assert marker in board_review
-    assert "只有 fresh public evidence 明确显示尚未解除的重大约束时才进入" in board_review
-
-    progression = _section(planning, "### `PROGRESSION`", "### `RESOURCE`")
-    assert "低绩效、`no-promotion`" in progression
-    assert "### `PROGRESSION`" in progression
-    assert "保持 `MODE=A`" in progression
-    mode = _section(planning, "## MODE", "## Progression Routing")
-    for marker in ("低绩效", "`no-promotion`", "weak Skill / Network / Output", "不能触发 `MODE=S`"):
-        assert marker in mode
-    assert "只有 fresh public evidence 明确显示 material survival / safety / job-continuity / trust / compliance / confidentiality / affordability / income-continuity constraint" in mode
-    assert "默认 MODE=A" in manifest
-    assert "Survival / Continuity 是 hard floor" in manifest
+def test_manifest_changes_only_name_and_critical_kernel_and_planning_is_shorter():
+    current = load("configs/runtime_manifest.json")
+    parent = json.loads(git_bytes("configs/runtime_manifest.json"))
+    assert current.keys() == parent.keys()
+    assert current["team"] == parent["team"] and current["mode"] == parent["mode"] == "agent"
+    def split(text):
+        prefix, rest = text.split("CRITICAL KERNEL\n", 1)
+        kernel, suffix = rest.split("\n\nSTARTUP AND FLOW\n", 1)
+        return prefix, kernel, suffix
+    before, after = split(parent["instruction"]), split(current["instruction"])
+    assert before[0] == after[0] and before[2] == after[2]
+    assert len(current["instruction"]) < 5000
+    old = git_bytes("skills/rolling-planning/SKILL.md").decode("utf8")
+    assert len(planning()) < len(old) * .65
+    assert len(planning().splitlines()) < len(old.splitlines())
+    for token in ["REVIEW_PLAN = <Objective | Primary Gap | Next Observable Checkpoint>", "MODE = A | S", "RECOVERY=NONE|PROGRESSION|RESOURCE|RISK|DELIVERY|UNKNOWN", "PLAN:", "CANDIDATE: choice=<one legal integer>", "ONE FRESH OBSERVE = ONE PLANNING PASS", "genuinely competitive candidates", "Risk=RECONSIDER", "RB=NONE|DONE|BLOCKED"]:
+        assert token in planning()
+    assert re.findall(r"^### (R[1-9])｜", planning(), re.M) == [f"R{i}" for i in range(1, 10)]
 
 
-def test_material_job_threat_can_bind_and_performance_repair_can_relieve_it() -> None:
-    board = _skill("structured-state-board")
-    planning = _skill("rolling-planning")
-    manifest = _json("configs/runtime_manifest.json")["instruction"]
-
-    assert "明确 dismissal / job-continuity threat" in board
-    assert "只有 fresh public evidence 明确表明" in board
-    resource = _section(planning, "### `RESOURCE`", "### `RISK`")
-    assert "重大 binding constraint" in resource
-    assert "只做解除当前约束所需的最小合理动作" in resource
-    assert "fresh public evidence 显示约束已解除或场景结束后，立即回 `MODE=A`" in resource
-    assert "job-continuity threat" in planning
-    assert "直接修复绩效、完成关键交付或恢复晋升成长" in planning
-    assert "`MODE=S` 不等于停止成长" in planning
-    assert "job-continuity threat" in planning
-    assert "直接修复绩效、完成关键交付或恢复晋升成长可作为 constraint relief" in planning
-
-
-def test_progression_response_tracks_clean_gain_no_gain_reset_and_multidimensional_value() -> None:
-    board = _skill("structured-state-board")
-    planning = _skill("rolling-planning")
-    response = _section(board, "## PROGRESSION_RESPONSE", "## EFFECTS")
-    for marker in (
-        "紧邻 fresh observe 中该维度真实增加",
-        "满足清晰归因条件，但该维度保持不变",
-        "其它维度沿用上一版同局 Board",
-        "后续 clean `GAIN` 覆盖旧 `NO_GAIN`",
-        "Level 改变时，`S/N/O` 全部重置为 `UNKNOWN`",
-        "session 改变时全部重置",
-        "不得推断 cap、threshold、formula、eligibility 或 hidden cause",
-    ):
-        assert marker in response
-    routing = _section(planning, "## Progression Routing", "## Ranking")
-    assert "一个维度 `NO_GAIN` 不抹掉其它 `GAIN/UNKNOWN` 价值" in routing
-    assert "不立即重复同一路径" in routing
-    assert "Level change 后所有 response 重新开放" in routing
-    assert "Skill 不因 terminal-score saturation 假设被降权" in routing
+# Written scenarios from the task: assert the governing rule contains both the
+# intended decision and its guard/exception. No fake deterministic policy engine.
+@pytest.mark.parametrize("case,rule,requirements", [
+    ("A_M6_deliverability", "R3", ["窗口内能完成", "明确 owner", "公开结果", "长期方案明确能及时完成", "material quality/safety/compliance cost"]),
+    ("B_clean_NO_GAIN", "R5", ["相同 Level/可比 context", "clean NO_GAIN", "折价", "responsive alternative", "独立价值", "Level/context/material condition", "一次 flat 不构成永久 cap"]),
+    ("C_one_step_Energy", "R6", ["每次只选一个 Energy action", "one action → fresh observe → re-rank", "丢弃旧 remaining-action intent", "禁止整季 recipe、multi-step sequence/批次"]),
+    ("D_conditional_key_project", "R7", ["不是 default answer", "实际可兑现 ownership", "负荷可承受", "blocked/stale", "条件不成立时比较", "不固定替代顺序"]),
+    ("E_ordinary_cost", "R8", ["普通负 Health", "workload", "不自动 S", "无数字阈值"]),
+    ("F_material_danger", "R8", ["只有当前未解除", "acute physical", "explicit trust/job/compliance/confidentiality escalation", "高 Health 不证明", "最小必要保护", "解除或场景结束即回 A"]),
+    ("G_result_hierarchy", "R4", ["promise/progress < delivered/completed < externally/publicly recognized result", "generic praise", "不等于 verified deliverable", "不是 hidden score 或 promotion requirement"]),
+    ("H_no_advance", "R9", ["no-advance 必须重排", "哪些结果未兑现", "不响应", "最可兑现", "不能继续 stale recipe", "机械追 lowest stat"]),
+])
+def test_static_scenario_rule_and_exceptions(case, rule, requirements):
+    text = section(rule)
+    for requirement in requirements:
+        assert requirement in text, (case, requirement)
+    if case.startswith("E_"):
+        assert "普通成本可为明显更强的成长/结果接受" in section("R7")
 
 
-def test_non_specific_coverage_exempts_current_level_no_gain_until_reset() -> None:
-    planning = _skill("rolling-planning")
-    routing = _section(planning, "## Progression Routing", "## Ranking")
-
-    assert "non-specific Review 下，只保护当前 `GAIN/UNKNOWN` 的 Skill / Network / Output" in routing
-    assert "当前 Level 的 `NO_GAIN` 不承担 coverage 义务" in routing
-    assert "直到 Level change 或后续 clean `GAIN` 重置/覆盖" in routing
-    scenario = {"S": "GAIN", "N": "UNKNOWN", "O": "NO_GAIN"}
-    coverage_candidates = {
-        dimension for dimension, response in scenario.items() if response in {"GAIN", "UNKNOWN"}
-    }
-    assert coverage_candidates == {"S", "N"}
-    assert "O" not in coverage_candidates
-    after_clean_gain = {**scenario, "O": "GAIN"}
-    assert "O" in {
-        dimension for dimension, response in after_clean_gain.items() if response in {"GAIN", "UNKNOWN"}
-    }
-    after_level_change = dict.fromkeys(scenario, "UNKNOWN")
-    assert set(after_level_change) == {
-        dimension
-        for dimension, response in after_level_change.items()
-        if response in {"GAIN", "UNKNOWN"}
-    }
-
-
-def test_review_window_preserves_promotion_readiness_and_checkpoint() -> None:
-    planning = _skill("rolling-planning")
-    review_window = _section(planning, "## 长期规划一致性", "## Failure Recovery Contract")
-    assert "良好绩效 + `no-promotion` 仍表示 promotion readiness 未完成" in review_window
-    assert "当前公开 horizon 内下一次真实 Formal Review 是准备 checkpoint" in review_window
-    routing = _section(planning, "## Progression Routing", "## Ranking")
-    assert "Skill 不因 terminal-score saturation 假设被降权" in routing
-    assert "Skill 不因 terminal-score saturation 假设被降权" in routing
-
-
-def test_risk_recovery_cleanup_is_bounded_and_risk_does_not_replan() -> None:
-    planning = _skill("rolling-planning")
-    risk = _skill("risk-review")
-    manifest = _json("configs/runtime_manifest.json")["instruction"]
-    cleanup = _section(planning, "### `RISK`", "### `DELIVERY`")
-    assert "fresh public warning 明确表示风险 elevated / accumulating / needs handling" in cleanup
-    assert "存在明确 reparative legal option" in cleanup
-    assert "一次 bounded cleanup" in cleanup
-    assert "完成一次 cleanup 后 fresh observe，默认回长期主线" in cleanup
-    assert "同一风险仍未解除/再次 elevated" in cleanup
-    assert "出现新的同类 warning" in cleanup
-    assert "无关证据不得重置限制" in cleanup
-    assert "同一风险仍未解除/再次 elevated" in cleanup
-    assert "出现新的同类 warning" in cleanup
-    assert "无关证据不得重置限制" in cleanup
-    assert "只有风险成为 material survival / job-continuity / trust / compliance / confidentiality crisis 才进入 `MODE=S`" in cleanup
-    assert "不重新做 candidate ranking" in risk
-    assert "一个 public warning 允许 Planning 考虑 bounded cleanup，不等于 Risk 自动 `RECONSIDER`" in risk
-
-
-def test_planning_explicitly_uses_current_participant_visible_event_semantics() -> None:
-    planning = _skill("rolling-planning")
-    evidence = _section(planning, "## 证据优先级", "## 长期规划一致性")
-    mode = _section(planning, "## MODE", "## Progression Routing")
-
-    assert "最新 fresh observe 中参与者可见的 event 描述与合法 choice 语义" in evidence
-    assert "结合 Board 与当前 participant-visible event/choice 语义" in mode
-    assert "尚未解除、当前 binding 的 material constraint" in mode
-    assert "不得只根据状态数字或旧 Review 判断" in mode
-
-
-def test_delivery_tracks_before_first_review_and_receipts_do_not_verify_results() -> None:
-    delivery = _skill("delivery-progress")
-    planning = _skill("rolling-planning")
-    pre_review = _section(delivery, "## 职责", "## Lifecycle")
-    assert "第一次正式 Review 前若尚无有效 `REVIEW_PLAN`" in pre_review
-    assert "当前公开 commitment、近期 checkpoint" in pre_review
-    assert "第一次正式 Review 后" in pre_review
-    assert "receipt 只证明工具执行，不证明 career result" in delivery
-    assert "不能单独验证交付" in delivery
-    recovery = _section(planning, "### `DELIVERY`", "## MODE")
-    assert "### `DELIVERY`" in recovery
-    assert "优先完成、验证或修复高价值近端交付" in recovery
-    assert "Planning 可以把完成或验证它作为 `RECOVERY=DELIVERY`" in delivery
-
-
-def test_manifest_preserves_whole_game_persistence_preflight_and_recovery_order() -> None:
-    manifest = _json("configs/runtime_manifest.json")["instruction"]
-    assert "structured game state 仍 active 时，在同一 assistant execution 中持续运行工具循环" in manifest
-    assert "`DECISION_CLOSED` 只关闭当前 action selection，不结束 assistant execution" in manifest
-    assert "每次 successful take_action 后立即 fresh observe 并进入下一决策" in manifest
-    assert "不得因为 action、month、quarter、Review、promotion、局部 closure" in manifest
-    assert "CONTROL_STATE=READY|OBSERVE_REQUIRED|BLOCKED" in manifest
-    assert "successful `take_action`" in manifest
-    assert "下一 gameplay call 只能同 session fresh `observe`" in manifest
-    assert "[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> RB=<NONE|DONE|BLOCKED>]" in manifest
-    assert "checkpoint=<NEAR|NOT_NEAR|UNKNOWN>" in manifest
-    assert "CONTROL_STATE=READY" in manifest and "RB in {NONE,DONE}" in manifest
-
-    recovery = manifest[manifest.index("CONTEXT RECOVERY"):]
-    ordered = (
-        "确认同一 game_session_id",
-        "fresh observe",
-        "依次重读四个 Skills",
-        "重建 Board",
-        "重建 Delivery 或 UNKNOWN",
-        "从同局公开证据恢复",
-        "RECOVERY_READY",
-    )
-    assert [recovery.index(item) for item in ordered] == sorted(recovery.index(item) for item in ordered)
-    assert "identity、observe 或 Skill reread 失败时保持 pending，不提交动作" in recovery
-
-
-def test_evidence_firewall_and_no_fixed_hidden_rules_are_explicit() -> None:
-    candidate = _json("configs/current_candidate.json")
-    runtime = _json("configs/runtime_manifest.json")["instruction"] + "\n" + "\n".join(
-        _skill(name) for name in SKILL_ORDER
-    )
-    for marker in ("HiddenRisk", "hidden counters", "internal score", "internal event id/effect", "EXCLUDE_FROM_STRATEGY"):
-        assert marker in runtime
-    for rejected in (
-        "EXACT_DEV_SCORE_WEIGHTS_IN_RUNTIME",
-        "EXACT_PROMOTION_OR_HIDDEN_RISK_THRESHOLDS",
-        "EVENT_ID_OR_TITLE_TO_CHOICE_LOOKUP",
-        "FIXED_STORY_ANSWER",
-        "HIDDEN_CAP_INFERENCE_FROM_NO_GAIN",
-    ):
-        assert rejected in candidate["rejected_mechanisms"]
+def test_no_research_dump_and_no_evidence_admission_delta():
+    runtime = planning() + load("configs/runtime_manifest.json")["instruction"]
+    for forbidden in ["1,626", "75.29", "72.65", "9/3/3/2", "3/6/16/26/38", "RUN07", "RUN08", "S10-04", "自研内核 vs", "18个月必升"]:
+        assert forbidden not in runtime
+    assert "public-status-unclear numeric status_updates" in planning()
+    assert "EXCLUDE_FROM_STRATEGY until verified public" in planning()
     assert "不得推断隐藏 threshold/cap/weight" in runtime
-    assert "固定事件答案" in runtime
-
-
-def test_board_runner_and_dependency_files_remain_frozen() -> None:
-    candidate = _json("configs/current_candidate.json")
-    for skill in ("structured-state-board", "delivery-progress", "risk-review"):
-        path = f"skills/{skill}/SKILL.md"
-        working_blob = subprocess.check_output(
-            ["git", "hash-object", f"--path={path}", str(ROOT / path)],
-            cwd=ROOT,
-            text=True,
-            encoding="utf-8",
-        ).strip()
-        anchor_blob = subprocess.check_output(
-            ["git", "rev-parse", f"{TASK_ANCHOR_SHA}:{path}"],
-            cwd=ROOT,
-            text=True,
-            encoding="utf-8",
-        ).strip()
-        assert working_blob == anchor_blob
-    for relative in ("pyproject.toml", "uv.lock", "career_sim_runner"):
-        changed = subprocess.check_output(
-            ["git", "diff", "--name-only", TASK_ANCHOR_SHA, "--", relative],
-            cwd=ROOT,
-            text=True,
-        ).strip()
-        assert changed == ""
-    assert candidate["runner_sha"] == "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d"
-
-    state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
-    assert f"Current Candidate: `{CURRENT_CANDIDATE_ID}`" in state
-    assert "NEXT_GAME = NOT_AUTHORIZED" in state
-
-
-def test_v7w_strategy_scenarios_cover_all_six_frozen_contracts() -> None:
-    planning = _skill("rolling-planning")
-    ranking = _section(planning, "## Ranking", "## Final Horizon")
-    routing = _section(planning, "## Progression Routing", "## Ranking")
-    delivery = _section(planning, "### `DELIVERY`", "## MODE")
-    mode = _section(planning, "## MODE", "## Progression Routing")
-    horizon = _section(planning, "## Final Horizon", "## Quarterly Control")
-
-    assert "普通工作负荷" in mode and "不单独触发 `S`" in mode
-    assert "minimum necessary stabilization" in mode and "立即回 `A`" in mode
-    assert ranking.index("Time-sensitive realization exception") < ranking.index("Promotion Portfolio")
-    assert "Broad compounding** 是 strong default prior" in ranking
-    assert "Primary Gap** 只有在最新 Review feedback fresh 且 specific" in ranking
-    assert "可以短期成为 dominant path" in ranking
-    assert "新 Formal Review 重建 Portfolio" in ranking
-    assert "旧 gap 不再 dominant 且不跨 Review 自动继承" in ranking
-    assert "对应路径变为 `NO_GAIN` / non-responsive" in ranking
-    assert "不得长期因此压掉其它 still-responsive promotion-relevant paths" in ranking
-    assert "Primary Gap` 是最新 Review" in planning
-    assert "positive reallocation" in routing and "低价值 Health/safety filler" in routing
-    assert "不得整体否决该 action" in routing
-    assert "普通 `IN_PROGRESS + NOT_NEAR`" in delivery and "只作背景证据" in delivery
-    assert "checkpoint=NEAR" in delivery and "active blocker" in delivery
-    assert "terminal-horizon direct realization" in horizon
-    assert "M54 / future Review" in horizon
-
-
-def test_current_manifest_changes_only_name_and_critical_strategy_kernel() -> None:
-    manifest = _json("configs/runtime_manifest.json")
-    parent = json.loads(_git_bytes(PARENT_BASE_SHA, "configs/runtime_manifest.json"))
-    instruction = manifest["instruction"]
-    parent_instruction = parent["instruction"]
-    start = "CRITICAL KERNEL\n"
-    end = "\n\nSTARTUP AND FLOW\n"
-    prefix = instruction.split(start, 1)[0]
-    suffix = instruction.split(end, 1)[1]
-    kernel = instruction.split(start, 1)[1].split(end, 1)[0]
-    parent_prefix = parent_instruction.split(start, 1)[0]
-    parent_suffix = parent_instruction.split(end, 1)[1]
-
-    assert manifest["name"] == CURRENT_CANDIDATE_ID
-    assert {key: manifest[key] for key in ("team", "mode")} == {
-        key: parent[key] for key in ("team", "mode")
-    }
-    assert len(instruction) <= 5000
-    assert prefix == parent_prefix
-    assert suffix == parent_suffix
-    assert "MODE=A：Time-sensitive realization 优先" in kernel
-    assert "Promotion Portfolio 以 broad still-responsive compounding 为 strong default prior" in kernel
-    assert "fresh、specific、responsive 且 checkpoint 前可兑现的 Review gap" in kernel
-    assert "Primary Gap 仅作 advisory，不跨 Review 继承" in kernel
-    assert "clean NO_GAIN/non-responsive path" in kernel
+    state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf8")
+    assert f"Current Candidate: `{CURRENT}`" in state
+    assert "IN_FLIGHT_EVIDENCE" in state and "NEXT_GAME=NOT_AUTHORIZED" in state
