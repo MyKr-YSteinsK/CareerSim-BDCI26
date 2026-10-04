@@ -1,0 +1,2078 @@
+{
+  "schema_version": "s10-18-compact-1",
+  "task": "S10-18",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "status": "COMPLETED_WITH_ADHERENCE_LIMITATIONS",
+  "classification": "V6D_RUN03_MID",
+  "decision": "V6D_THREE_SAMPLE_WIDE_SPREAD",
+  "branch": "codex/s10-18-v6d-replication-run03",
+  "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+  "source_commit": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+  "source_hashes": {
+    "configs/current_candidate.json": "de1c8d78921372ea6c37b5d7e7065adf8bb6182a920535559326845eb6807d18",
+    "configs/runtime_manifest.json": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+    "skills/risk-review/SKILL.md": "83e7600b0da901c18e78cd96d85a2e68a8b5eb9dfa0d7a8cf82f9266690d237d",
+    "skills/rolling-planning/SKILL.md": "8e799214a6f26e51f1d64dc64a6cc1f1edf9d37e343d6095ccee31ce533aba2d",
+    "skills/structured-state-board/SKILL.md": "e8c25306d108fedf35039bdd25a1540947c6715099ab997fc12a35c8611c3992"
+  },
+  "manifest_sha256": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+  "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074",
+  "Runner": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "versions": {
+    "career-emulator": "1.0.1",
+    "career-emulator-bdci26": "1.0.0",
+    "jiuwenswarm": "0.2.4b3",
+    "openjiuwen": "0.1.16.post2"
+  },
+  "provider_config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+  "session_id": "64e1288abbea4067bba1e25bee265c00",
+  "preflight": "PASS; exact 3 Skills; one bare --list; isolated ports; process-local PATH; balance CNY0.89 available, whole-game funding UNKNOWN",
+  "preservation": "Candidate/Skills/manifest/Runner/dependencies/provider/retry unchanged; prior holds untouched",
+  "live_budget": {
+    "install": 1,
+    "service_lifecycle": 1,
+    "Runner": 1,
+    "fresh_game": 1,
+    "replacement": 0,
+    "intervention": 0,
+    "manual_action": 0,
+    "prompt_injection": 0,
+    "patch": 0,
+    "rescue": 0,
+    "operator_completion_probe": 0
+  },
+  "lifecycle": {
+    "play_start_utc": "2026-10-04T15:53:46.466375+00:00",
+    "play_end_utc": "2026-10-04T16:14:02.545478+00:00",
+    "exit_code": 0,
+    "stop_exit_code": 0,
+    "listeners_remaining": [],
+    "manager_pid_file_absent": true,
+    "service_wrapper_exit": 1
+  },
+  "outcome": {
+    "classification": "VALID_48M_COMPLETION",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 49,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 41.77,
+      "completed": true,
+      "grade": "C",
+      "outcome": "completed",
+      "quantitative_score": 59.67,
+      "survival_months": 48
+    },
+    "terminal_public_state": {
+      "session_id": "64e1288abbea4067bba1e25bee265c00",
+      "status": {
+        "dignity": 10,
+        "duration_in_level": 14,
+        "energy": 0,
+        "health": 10,
+        "level": "L4",
+        "network": 36,
+        "output": 26,
+        "skill": 84,
+        "wealth": 24
+      },
+      "time": {
+        "current_month": 49,
+        "current_quarter": 17,
+        "current_year": 5
+      }
+    }
+  },
+  "public_components": {
+    "level": 12.0,
+    "wealth": 6.17,
+    "resilience": 15.0,
+    "skill": 10.5,
+    "risk_control": 10.0,
+    "network": 6.0
+  },
+  "promotions": [
+    18,
+    24,
+    36
+  ],
+  "reviews": [
+    {
+      "month": 6,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L1",
+      "tenure_before": 5,
+      "tenure_after": 6,
+      "promotion": false,
+      "public_state": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 2,
+        "wealth": 2,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n直属leader在周会后单独留下你：“你的产出我看了，确实不太够，不过考虑到你刚来，这次我给你打个保护分，下个季度得靠自己了”",
+      "observe_line": 183
+    },
+    {
+      "month": 12,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L1",
+      "tenure_before": 11,
+      "tenure_after": 12,
+      "promotion": false,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n组里的老大哥拍了拍你的肩膀：“别太紧张，这季度评审我替你说了几句好话，下次注意就行”",
+      "observe_line": 387
+    },
+    {
+      "month": 18,
+      "grade": "C",
+      "level_before": "L1",
+      "level_after": "L2",
+      "tenure_before": 17,
+      "tenure_after": 1,
+      "promotion": true,
+      "public_state": {
+        "health": 10,
+        "dignity": 7,
+        "skill": 9,
+        "network": 2,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 3,
+        "wealth": 5,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。\n\n收到了一次不妙的半年绩效，领导的眼神已经不太友善了！！！",
+      "observe_line": 579
+    },
+    {
+      "month": 24,
+      "grade": "B",
+      "level_before": "L2",
+      "level_after": "L3",
+      "tenure_before": 6,
+      "tenure_after": 1,
+      "promotion": true,
+      "public_state": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 20,
+        "network": 4,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 7,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.2\n\n本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。\n\n晋升通知：半年组织评审通过，您已从 L2 晋升至 L3（高级工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。",
+      "observe_line": 787
+    },
+    {
+      "month": 30,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L3",
+      "tenure_before": 6,
+      "tenure_after": 7,
+      "promotion": false,
+      "public_state": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 35,
+        "network": 19,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "observe_line": 979
+    },
+    {
+      "month": 36,
+      "grade": "B",
+      "level_before": "L3",
+      "level_after": "L4",
+      "tenure_before": 12,
+      "tenure_after": 1,
+      "promotion": true,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 42,
+        "network": 19,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 15,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。\n\n晋升通知：半年组织评审通过，您已从 L3 晋升至 L4（资深工程师）。",
+      "observe_line": 1187
+    },
+    {
+      "month": 42,
+      "grade": "B",
+      "level_before": "L4",
+      "level_after": "L4",
+      "tenure_before": 6,
+      "tenure_after": 7,
+      "promotion": false,
+      "public_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 18,
+        "wealth": 18,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "observe_line": 1387
+    },
+    {
+      "month": 48,
+      "grade": "A",
+      "level_before": "L4",
+      "level_after": "L4",
+      "tenure_before": 12,
+      "tenure_after": 13,
+      "promotion": false,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 77,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 25,
+        "wealth": 24,
+        "energy": 0
+      },
+      "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「说实话，一开始我还担心你压不住这块活。但这半年你交付稳、沟通也到位，合作方反馈不错。」Leader 顿了顿，「下个窗口我会重点推你——该准备的材料提前整理好，别临时抱佛脚。」\n\n半年绩效奖金（A）：+1.0499999999999998\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "observe_line": 1587
+    }
+  ],
+  "Energy_mix": {
+    "report": 18,
+    "Network": 8,
+    "intensive": 0,
+    "Health": 8,
+    "cleanup": 7,
+    "Skill": 0,
+    "psychological": 0,
+    "other": 0
+  },
+  "Energy_sequence": [
+    {
+      "month": 3,
+      "family": "report",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 2
+      },
+      "action_line": 105,
+      "observe_line": 111
+    },
+    {
+      "month": 3,
+      "family": "Network",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 1
+      },
+      "action_line": 113,
+      "observe_line": 119
+    },
+    {
+      "month": 3,
+      "family": "Health",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "action_line": 121,
+      "observe_line": 127
+    },
+    {
+      "month": 6,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "action_line": 209,
+      "observe_line": 215
+    },
+    {
+      "month": 6,
+      "family": "Network",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "action_line": 221,
+      "observe_line": 227
+    },
+    {
+      "month": 9,
+      "family": "report",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 2
+      },
+      "action_line": 309,
+      "observe_line": 315
+    },
+    {
+      "month": 9,
+      "family": "Network",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "action_line": 317,
+      "observe_line": 323
+    },
+    {
+      "month": 9,
+      "family": "Health",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "action_line": 325,
+      "observe_line": 331
+    },
+    {
+      "month": 12,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 2,
+        "wealth": 2,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 2,
+        "wealth": 2,
+        "energy": 1
+      },
+      "action_line": 413,
+      "observe_line": 419
+    },
+    {
+      "month": 12,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 2,
+        "wealth": 2,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 12,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "action_line": 421,
+      "observe_line": 427
+    },
+    {
+      "month": 15,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 15,
+        "output": 3,
+        "wealth": 3,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 15,
+        "output": 3,
+        "wealth": 3,
+        "energy": 1
+      },
+      "action_line": 509,
+      "observe_line": 515
+    },
+    {
+      "month": 15,
+      "family": "Health",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 15,
+        "output": 3,
+        "wealth": 3,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 15,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "action_line": 517,
+      "observe_line": 523
+    },
+    {
+      "month": 18,
+      "family": "Network",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 3,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 5,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 4,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 5,
+        "energy": 2
+      },
+      "action_line": 605,
+      "observe_line": 611
+    },
+    {
+      "month": 18,
+      "family": "Network",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 4,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 5,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 5,
+        "energy": 1
+      },
+      "action_line": 613,
+      "observe_line": 619
+    },
+    {
+      "month": 18,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 5,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 14,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 5,
+        "energy": 0
+      },
+      "action_line": 621,
+      "observe_line": 627
+    },
+    {
+      "month": 21,
+      "family": "report",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 4,
+        "wealth": 7,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 5,
+        "wealth": 7,
+        "energy": 2
+      },
+      "action_line": 709,
+      "observe_line": 715
+    },
+    {
+      "month": 21,
+      "family": "report",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 5,
+        "wealth": 7,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 7,
+        "energy": 1
+      },
+      "action_line": 717,
+      "observe_line": 723
+    },
+    {
+      "month": 21,
+      "family": "Network",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 7,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 7,
+        "energy": 0
+      },
+      "action_line": 725,
+      "observe_line": 731
+    },
+    {
+      "month": 24,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 21,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 7,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 21,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 7,
+        "energy": 1
+      },
+      "action_line": 813,
+      "observe_line": 819
+    },
+    {
+      "month": 24,
+      "family": "Network",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 21,
+        "network": 8,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 7,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 21,
+        "network": 9,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 7,
+        "energy": 0
+      },
+      "action_line": 821,
+      "observe_line": 827
+    },
+    {
+      "month": 27,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 28,
+        "network": 18,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 8,
+        "wealth": 9,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 28,
+        "network": 18,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 8,
+        "wealth": 9,
+        "energy": 1
+      },
+      "action_line": 909,
+      "observe_line": 915
+    },
+    {
+      "month": 27,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 28,
+        "network": 18,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 8,
+        "wealth": 9,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 28,
+        "network": 18,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 9,
+        "energy": 0
+      },
+      "action_line": 917,
+      "observe_line": 923
+    },
+    {
+      "month": 30,
+      "family": "Health",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 2
+      },
+      "action_line": 1005,
+      "observe_line": 1011
+    },
+    {
+      "month": 30,
+      "family": "Health",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 1
+      },
+      "action_line": 1013,
+      "observe_line": 1019
+    },
+    {
+      "month": 30,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 9,
+        "wealth": 11,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 37,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 10,
+        "wealth": 11,
+        "energy": 0
+      },
+      "action_line": 1021,
+      "observe_line": 1027
+    },
+    {
+      "month": 33,
+      "family": "Health",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 14,
+        "wealth": 12,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 14,
+        "wealth": 12,
+        "energy": 2
+      },
+      "action_line": 1109,
+      "observe_line": 1115
+    },
+    {
+      "month": 33,
+      "family": "report",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 14,
+        "wealth": 12,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 15,
+        "wealth": 12,
+        "energy": 1
+      },
+      "action_line": 1117,
+      "observe_line": 1123
+    },
+    {
+      "month": 33,
+      "family": "Network",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 15,
+        "wealth": 12,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 10,
+        "output": 15,
+        "wealth": 12,
+        "energy": 0
+      },
+      "action_line": 1125,
+      "observe_line": 1131
+    },
+    {
+      "month": 36,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 43,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 14,
+        "wealth": 16,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 43,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 14,
+        "wealth": 16,
+        "energy": 1
+      },
+      "action_line": 1213,
+      "observe_line": 1219
+    },
+    {
+      "month": 36,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 43,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 14,
+        "wealth": 16,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 43,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 16,
+        "energy": 0
+      },
+      "action_line": 1221,
+      "observe_line": 1227
+    },
+    {
+      "month": 39,
+      "family": "Health",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 13,
+        "wealth": 16,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 13,
+        "wealth": 16,
+        "energy": 2
+      },
+      "action_line": 1309,
+      "observe_line": 1315
+    },
+    {
+      "month": 39,
+      "family": "report",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 13,
+        "wealth": 16,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 14,
+        "wealth": 16,
+        "energy": 1
+      },
+      "action_line": 1317,
+      "observe_line": 1323
+    },
+    {
+      "month": 39,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 14,
+        "wealth": 16,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 53,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 15,
+        "wealth": 16,
+        "energy": 0
+      },
+      "action_line": 1325,
+      "observe_line": 1331
+    },
+    {
+      "month": 42,
+      "family": "report",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 21,
+        "wealth": 18,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 22,
+        "wealth": 18,
+        "energy": 2
+      },
+      "action_line": 1413,
+      "observe_line": 1419
+    },
+    {
+      "month": 42,
+      "family": "report",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 22,
+        "wealth": 18,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 18,
+        "energy": 1
+      },
+      "action_line": 1421,
+      "observe_line": 1427
+    },
+    {
+      "month": 42,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 18,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 60,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 24,
+        "wealth": 18,
+        "energy": 0
+      },
+      "action_line": 1429,
+      "observe_line": 1435
+    },
+    {
+      "month": 45,
+      "family": "cleanup",
+      "energy_before": 3,
+      "cost": 2,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 75,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 25,
+        "wealth": 20,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 75,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 25,
+        "wealth": 20,
+        "energy": 1
+      },
+      "action_line": 1517,
+      "observe_line": 1523
+    },
+    {
+      "month": 45,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 75,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 25,
+        "wealth": 20,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 75,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 20,
+        "energy": 0
+      },
+      "action_line": 1525,
+      "observe_line": 1531
+    },
+    {
+      "month": 48,
+      "family": "Health",
+      "energy_before": 3,
+      "cost": 1,
+      "public_before": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 24,
+        "wealth": 24,
+        "energy": 3
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 24,
+        "wealth": 24,
+        "energy": 2
+      },
+      "action_line": 1613,
+      "observe_line": 1619
+    },
+    {
+      "month": 48,
+      "family": "report",
+      "energy_before": 2,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 24,
+        "wealth": 24,
+        "energy": 2
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 25,
+        "wealth": 24,
+        "energy": 1
+      },
+      "action_line": 1621,
+      "observe_line": 1627
+    },
+    {
+      "month": 48,
+      "family": "report",
+      "energy_before": 1,
+      "cost": 1,
+      "public_before": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 25,
+        "wealth": 24,
+        "energy": 1
+      },
+      "public_after": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 83,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 24,
+        "energy": 0
+      },
+      "action_line": 1629,
+      "observe_line": 1635
+    }
+  ],
+  "Story_decisions": 144,
+  "Main_actions": {
+    "申请关键项目": 13,
+    "低调避险": 3
+  },
+  "public_warning_summary": {
+    "MILD_months": [
+      5,
+      6,
+      14,
+      15,
+      24,
+      25,
+      26,
+      28,
+      35,
+      36,
+      37,
+      38,
+      40,
+      44,
+      45,
+      47
+    ],
+    "SERIOUS_months": [
+      27
+    ],
+    "longest_warning_streak": 5,
+    "first_warning": 5,
+    "final_month_warning": "NONE",
+    "month1": "UNKNOWN/no HR text",
+    "timeline": [
+      {
+        "month": 2,
+        "severity": "NONE",
+        "observe_line": 55
+      },
+      {
+        "month": 3,
+        "severity": "NONE",
+        "observe_line": 79
+      },
+      {
+        "month": 4,
+        "severity": "NONE",
+        "observe_line": 135
+      },
+      {
+        "month": 5,
+        "severity": "MILD",
+        "observe_line": 159
+      },
+      {
+        "month": 6,
+        "severity": "MILD",
+        "observe_line": 183
+      },
+      {
+        "month": 7,
+        "severity": "NONE",
+        "observe_line": 235
+      },
+      {
+        "month": 8,
+        "severity": "NONE",
+        "observe_line": 259
+      },
+      {
+        "month": 9,
+        "severity": "NONE",
+        "observe_line": 283
+      },
+      {
+        "month": 10,
+        "severity": "NONE",
+        "observe_line": 339
+      },
+      {
+        "month": 11,
+        "severity": "NONE",
+        "observe_line": 363
+      },
+      {
+        "month": 12,
+        "severity": "NONE",
+        "observe_line": 387
+      },
+      {
+        "month": 13,
+        "severity": "NONE",
+        "observe_line": 435
+      },
+      {
+        "month": 14,
+        "severity": "MILD",
+        "observe_line": 459
+      },
+      {
+        "month": 15,
+        "severity": "MILD",
+        "observe_line": 483
+      },
+      {
+        "month": 16,
+        "severity": "NONE",
+        "observe_line": 531
+      },
+      {
+        "month": 17,
+        "severity": "NONE",
+        "observe_line": 555
+      },
+      {
+        "month": 18,
+        "severity": "NONE",
+        "observe_line": 579
+      },
+      {
+        "month": 19,
+        "severity": "NONE",
+        "observe_line": 635
+      },
+      {
+        "month": 20,
+        "severity": "NONE",
+        "observe_line": 659
+      },
+      {
+        "month": 21,
+        "severity": "NONE",
+        "observe_line": 683
+      },
+      {
+        "month": 22,
+        "severity": "NONE",
+        "observe_line": 739
+      },
+      {
+        "month": 23,
+        "severity": "NONE",
+        "observe_line": 763
+      },
+      {
+        "month": 24,
+        "severity": "MILD",
+        "observe_line": 787
+      },
+      {
+        "month": 25,
+        "severity": "MILD",
+        "observe_line": 835
+      },
+      {
+        "month": 26,
+        "severity": "MILD",
+        "observe_line": 859
+      },
+      {
+        "month": 27,
+        "severity": "SERIOUS",
+        "observe_line": 883
+      },
+      {
+        "month": 28,
+        "severity": "MILD",
+        "observe_line": 931
+      },
+      {
+        "month": 29,
+        "severity": "NONE",
+        "observe_line": 955
+      },
+      {
+        "month": 30,
+        "severity": "NONE",
+        "observe_line": 979
+      },
+      {
+        "month": 31,
+        "severity": "NONE",
+        "observe_line": 1035
+      },
+      {
+        "month": 32,
+        "severity": "NONE",
+        "observe_line": 1059
+      },
+      {
+        "month": 33,
+        "severity": "NONE",
+        "observe_line": 1083
+      },
+      {
+        "month": 34,
+        "severity": "NONE",
+        "observe_line": 1139
+      },
+      {
+        "month": 35,
+        "severity": "MILD",
+        "observe_line": 1163
+      },
+      {
+        "month": 36,
+        "severity": "MILD",
+        "observe_line": 1187
+      },
+      {
+        "month": 37,
+        "severity": "MILD",
+        "observe_line": 1235
+      },
+      {
+        "month": 38,
+        "severity": "MILD",
+        "observe_line": 1259
+      },
+      {
+        "month": 39,
+        "severity": "NONE",
+        "observe_line": 1283
+      },
+      {
+        "month": 40,
+        "severity": "MILD",
+        "observe_line": 1339
+      },
+      {
+        "month": 41,
+        "severity": "NONE",
+        "observe_line": 1363
+      },
+      {
+        "month": 42,
+        "severity": "NONE",
+        "observe_line": 1387
+      },
+      {
+        "month": 43,
+        "severity": "NONE",
+        "observe_line": 1443
+      },
+      {
+        "month": 44,
+        "severity": "MILD",
+        "observe_line": 1467
+      },
+      {
+        "month": 45,
+        "severity": "MILD",
+        "observe_line": 1491
+      },
+      {
+        "month": 46,
+        "severity": "NONE",
+        "observe_line": 1539
+      },
+      {
+        "month": 47,
+        "severity": "MILD",
+        "observe_line": 1563
+      },
+      {
+        "month": 48,
+        "severity": "NONE",
+        "observe_line": 1587
+      }
+    ],
+    "cleanup_months": [
+      6,
+      12,
+      15,
+      24,
+      27,
+      36,
+      45
+    ],
+    "interpretation": "Ordinal public text only; positive HR text does not establish relevant clearance."
+  },
+  "portfolio": {
+    "overall": "PASS_WITH_LIMITATIONS",
+    "Network": "PASS_WITH_LIMITATIONS; 8 actual investments, including first post-compression quarter",
+    "Health": "PASS_WITH_LIMITATIONS; 8 recovery actions, naturally survives",
+    "report_vs_intensive": "PASS_WITH_LIMITATIONS; report18/intensive0; not proof of every candidate comparison",
+    "Skill_farming": "PASS; zero Skill Energy",
+    "no_permanent_cap": "PASS_WITH_LIMITATIONS; M21 text speculates level cap but explicitly cautions one flat; later reconsiders after level change. This is imperfect discipline, not proven permanent-cap policy",
+    "Main_mix": {
+      "申请关键项目": 13,
+      "低调避险": 3
+    }
+  },
+  "runtime": {
+    "action_to_observe": "PASS 202/202 successful actions",
+    "integer_Energy": "PASS 41/41",
+    "Energy_affordability": "PASS 41/41",
+    "Main_affordability": "PASS; no paid/unaffordable Main submitted",
+    "session": "PASS single session",
+    "unknown_mutation": 0,
+    "rejected_tool_route": {
+      "count": 1,
+      "month": 6,
+      "call_line": 217,
+      "result_line": 219,
+      "error": "Ability not found in resource_mgr: mcp__career-emulator_take_action",
+      "verdict": "Explicit resource rejection before CareerSim dispatch; recovered with canonical route. Generic UNKNOWN_RESULT corrected from native rejection receipt."
+    },
+    "schema_errors": 0,
+    "whole_game_persistence": "PASS",
+    "DecisionClosed": "FAIL; deliberation reopening visible at transcript lines 73-75 and extensive M45 comparison; marker consistency alone is not behavioral closure",
+    "compression": {
+      "epochs": 1,
+      "month": 21,
+      "completion_id": "450d25f9-fb07-4d50-81d1-83088cbcf041",
+      "response_utc": "2026-10-04T16:04:12.936121+00:00",
+      "first_post_tool": "mcp_career-emulator_observe",
+      "first_post_tool_line": 713,
+      "fresh_observe": true,
+      "Skills_reread": 0,
+      "recovery": "FAIL",
+      "summary_error": "UNKNOWN; compact audit does not prove summary correctness",
+      "deduplication": "Generic auditor records start/end at 16:04:12 and 16:04:13 as two; one unique completion receipt proves one epoch."
+    },
+    "clock_consistency": "FAIL_WITH_LIMITATIONS; M45 and M48 reasoning speculates next-quarter/end timing; public observe clock remained monotone and full game completed",
+    "evidence_firewall": "LIMITATION: model reasoning speculates caps/hidden effects; no hidden state/counter used by this audit"
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 42962345,
+    "output_tokens": 138468,
+    "total_tokens": 43100813,
+    "requested_model": "deepseek-flash",
+    "cache_tokens": "UNKNOWN for session aggregate; isolated compressor receipt is not Runner cache usage",
+    "cache_hit_rate": "UNKNOWN",
+    "compressor_calls": 1,
+    "compressor_input_tokens": 160413,
+    "compressor_output_tokens": 5027,
+    "wall_seconds": 1216.079103,
+    "provider_reported_cost": 0.0,
+    "automatic_SDK_startup_check": "Inherited runtime receipt 200 input/1 output; zero operator completion probes"
+  },
+  "comparison": [
+    {
+      "run": "Run01",
+      "result_commit": "5eb108b55a9f252d4fd6ff4561120d353f9d124b",
+      "score": 71.67,
+      "partial": 50.17,
+      "months": 48,
+      "grade": "A",
+      "level": "L5",
+      "promotions": [
+        6,
+        12,
+        24,
+        42
+      ],
+      "S/N/O/W/H/D": [
+        114,
+        54,
+        34,
+        39,
+        8,
+        10
+      ],
+      "risk_control": 10,
+      "Energy": {
+        "report": 19,
+        "Network": 5,
+        "intensive": 0,
+        "Health": 10,
+        "cleanup": 7,
+        "Skill": 0,
+        "psychological": 0,
+        "other": 0
+      }
+    },
+    {
+      "run": "Run02",
+      "result_commit": "ce92da5cda9c5da2e2b4f2140e35880e8ea77a6a",
+      "score": 65.35,
+      "partial": 45.74,
+      "months": 48,
+      "grade": "B",
+      "level": "L5",
+      "promotions": [
+        6,
+        12,
+        18,
+        36
+      ],
+      "S/N/O/W/H/D": [
+        128,
+        54,
+        38,
+        32,
+        10,
+        9
+      ],
+      "risk_control": 4,
+      "Energy": {
+        "report": 10,
+        "Network": 6,
+        "intensive": 7,
+        "Health": 10,
+        "cleanup": 4,
+        "Skill": 0,
+        "psychological": 0,
+        "other": 0
+      }
+    },
+    {
+      "run": "Run03",
+      "score": 59.67,
+      "partial": 41.77,
+      "months": 48,
+      "grade": "C",
+      "level": "L4",
+      "promotions": [
+        18,
+        24,
+        36
+      ],
+      "S/N/O/W/H/D": [
+        84,
+        36,
+        26,
+        24,
+        10,
+        10
+      ],
+      "risk_control": 10,
+      "Energy": {
+        "report": 18,
+        "Network": 8,
+        "intensive": 0,
+        "Health": 8,
+        "cleanup": 7,
+        "Skill": 0,
+        "psychological": 0,
+        "other": 0
+      }
+    }
+  ],
+  "descriptive_statistics": {
+    "minimum": 59.67,
+    "maximum": 71.67,
+    "spread": 12.0,
+    "mean": 65.56,
+    "median": 65.35,
+    "48m_count": "3/3",
+    "75_plus_count": "0/3"
+  },
+  "interpretation": {
+    "75_plus": "Not observed for exact v6d; historical v1/v6 separate",
+    "survival": "3/3 observed completion; not true survival probability",
+    "behavior": "Report/Network portfolio retained in Run03; Run02 intensity drift prevents strong policy-stability claim",
+    "new_catastrophic_mechanism": "None identified by compact audit; early promotion/growth weakness and known control limitations",
+    "fallback": "Main accepted v6d family in S10-17; Run03 expands downside and does not establish competitive stable floor. Return full evidence for final freeze decision; no automatic fallback switch."
+  },
+  "recommendation": "MAIN: FINAL CANDIDATE FREEZE + SUBMISSION HARDENING decision; no Run04 or v6e authorized",
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "reason": "Final freeze review and exact-replication attribution; source logs remain necessary for known runtime limitations",
+    "owner": "S10-18",
+    "release_authority": "Main/Stage",
+    "release_condition": "Main accepts compact evidence and explicitly releases comparison/freeze dependencies; deletion needs separate authorization",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T155349Z\\events-20261004T155349Z.jsonl",
+        "bytes": 1939644,
+        "sha256": "b774da7cfa8e8502c3a2a94df40d3a0e4f2b5e1f980e466fdaec8e6647fec133"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T155349Z\\transcript-20261004T155349Z.log",
+        "bytes": 404868,
+        "sha256": "06b192c1fd80f8c4e973ee74d6b8319580e80822d2b440db3c262ca6a8fe0811"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T155349Z\\score_report.json",
+        "bytes": 1212,
+        "sha256": "b88ac3b69a340727ca16cbecb5b95d69a47bd87813a9c068510b4a4d8c46f842"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\llm-run-window.log",
+        "bytes": 914706,
+        "sha256": "8881332134420f7d8c8da7dc5f8b25ae3c590eaa855f3f6139da4c9a82725119"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\preflight.json",
+        "bytes": 44264,
+        "sha256": "a16e07bd2de0e06a5aba67c832dc334c7fb1ba828c877e4a3c58d06acc3c08dd"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\runner-result.json",
+        "bytes": 2120,
+        "sha256": "a1a7906b786c929fb13bbea99662d1d31c84f3ab35c2d8976fc8c020bb415a34"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\public-policy-data.json",
+        "bytes": 1277887,
+        "sha256": "33346133053fec3d1ebaf0e5555e0bdc3eef30cede8d89d6da023e554a715948"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\audit-summary.json",
+        "bytes": 196742,
+        "sha256": "75607a17f5c1d30c2a42d1f2711f83afab0da824fc4f85881ff315a7f8f767c6"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\usage-receipts.json",
+        "bytes": 640,
+        "sha256": "2be0fa7b648b31783502cf0196d65e7eedc34ec559efad00d8cfd2117a0c2083"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\task-authorization.json",
+        "bytes": 489,
+        "sha256": "b4e74087727e1a322b7ee96394b14de25df48f7001dbfe6cfaf9c8010e95f581"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\provider-budget.json",
+        "bytes": 567,
+        "sha256": "0a687cceb1980e66e60d5e456e2894d4d71f9f8eaac42ea3ab333fb90c5a701a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\install-stdout.log",
+        "bytes": 2360,
+        "sha256": "5475aeab49a7a47a7c45b43b0d80ba3938f945930b86d490912b175f748ff121"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\service-stdout.log",
+        "bytes": 2928768,
+        "sha256": "061f5a34a093f6d7690fb0e30588a8544521ceadf60744ed15b3b18abf1f1925"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\runner-stdout.log",
+        "bytes": 1471,
+        "sha256": "4069a9d24773f942c68b8eb8efd9743dff5f28c97f853975e76a038690fbe74c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "8c74bcbdafff63580a8ccac11af5eda8a13990daca2d282a39c9cecff8cfae5b"
+      }
+    ],
+    "prior_holds": "S10-12/S10-14 untouched"
+  },
+  "nonclaims": [
+    "no true score distribution",
+    "no true survival probability",
+    "no stable75 proof",
+    "no promotion formula",
+    "no hidden-test transfer",
+    "no causal architecture claim",
+    "no hidden risk reconstruction/event answer mapping"
+  ],
+  "return_value": "RETURN_FOR_FINAL_V6D_FREEZE_DECISION",
+  "next_game": "NOT_AUTHORIZED"
+}
