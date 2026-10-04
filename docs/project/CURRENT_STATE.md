@@ -47,3 +47,8 @@
 - NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
 - S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-01 Main decision: `SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`; S07-02 implemented the descendant v6c cleanup statically for Main/S07 review. No strategy redesign, Team/Swarm/Memory/fifth Skill reopening, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
+
+
+## S10-14 branch-local handoff — IN_FLIGHT_EVIDENCE
+
+Exact v6d source e7e8ab44dd85a29135eb089ef29de8fed298f4a4, Candidate/Skills/Runner/dependencies/provider unchanged. Run02 natural48m,65.35/partial45.74/B/L5, finalS/N/O/W/H/D128/54/38/32/10/9, promotionsM6/M12/M18/M36. V6D_REPLICATION_MID / V6D_HIGH_OBSERVED_SPREAD. Exact Run01 score71.67 vs65.35, observed two-sample spread6.32, both survive48m/L5, no stable75 or true-variance proof. Energy report10/Network6/intensive7/Health10/cleanup4;198 successful action→observe,2 invalid-route failures recovered; DecisionClosed and compression recovery fail. One install/service/Runner/game,zero replacement/intervention/patch; raw FORENSIC_HOLD ACTIVE. See [Run02 report](runs/v6d-run02-exact-replication.md) / [compact evidence](runs/v6d-run02-exact-replication-evidence.json). Return Main for within-policy spread/adherence review; no Candidate validation flag changes. RETURN_FOR_V6D_REPLICATION_GATE; NEXT_GAME=NOT_AUTHORIZED.

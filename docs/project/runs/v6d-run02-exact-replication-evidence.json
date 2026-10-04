@@ -1,0 +1,4425 @@
+{
+  "schema_version": "s10-14-replication-1",
+  "task": "S10-14",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "status": "COMPLETED_WITH_ADHERENCE_LIMITATIONS",
+  "classification": "V6D_REPLICATION_MID",
+  "decision": "V6D_HIGH_OBSERVED_SPREAD",
+  "branch": "codex/s10-14-v6d-replication-run02",
+  "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+  "source_commit": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+  "parent_candidate": "candidate-v6c-compliance-cleanup",
+  "parent_commit": "e5363c9b4958955e02f5f895cb1ba1c794215958",
+  "forensic_decision_commit": "16289dd2ca35f97396626fdd61461538f2efe4f0",
+  "run01_evidence_commit": "5eb108b55a9f252d4fd6ff4561120d353f9d124b",
+  "source_hashes": {
+    "configs/current_candidate.json": "de1c8d78921372ea6c37b5d7e7065adf8bb6182a920535559326845eb6807d18",
+    "configs/runtime_manifest.json": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+    "skills/risk-review/SKILL.md": "83e7600b0da901c18e78cd96d85a2e68a8b5eb9dfa0d7a8cf82f9266690d237d",
+    "skills/rolling-planning/SKILL.md": "8e799214a6f26e51f1d64dc64a6cc1f1edf9d37e343d6095ccee31ce533aba2d",
+    "skills/structured-state-board/SKILL.md": "e8c25306d108fedf35039bdd25a1540947c6715099ab997fc12a35c8611c3992"
+  },
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "provider_config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+  "versions": {
+    "career-emulator": "1.0.1",
+    "career-emulator-bdci26": "1.0.0",
+    "jiuwenswarm": "0.2.4b3",
+    "openjiuwen": "0.1.16.post2"
+  },
+  "session_id": "fffe5529ca0b41e091ea70f0a7152b78",
+  "live_budget": {
+    "installs": 1,
+    "service_starts": 1,
+    "runner_play_attempts": 1,
+    "fresh_game_count": 1,
+    "replacement": 0,
+    "manual_intervention": 0,
+    "provider_completion_probes": 0
+  },
+  "outcome": {
+    "classification": "VALID_48M_COMPLETION",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 49,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 45.74,
+      "completed": true,
+      "grade": "B",
+      "outcome": "completed",
+      "quantitative_score": 65.35,
+      "survival_months": 48
+    },
+    "terminal_public_state": {
+      "session_id": "fffe5529ca0b41e091ea70f0a7152b78",
+      "status": {
+        "dignity": 9,
+        "duration_in_level": 14,
+        "energy": 0,
+        "health": 10,
+        "level": "L5",
+        "network": 54,
+        "output": 38,
+        "skill": 128,
+        "wealth": 32
+      },
+      "time": {
+        "current_month": 49,
+        "current_quarter": 17,
+        "current_year": 5
+      }
+    }
+  },
+  "promotions": [
+    6,
+    12,
+    18,
+    36
+  ],
+  "early_chain": "3/3",
+  "reviews": [
+    {
+      "month": 6,
+      "phase": "STORY",
+      "action_line": 169,
+      "pre_observe_line": 167,
+      "post_observe_line": 175,
+      "selected_action": "只写建设性建议，不提个人恩怨",
+      "cost": null,
+      "pre": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 8,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "post": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Out&Net P=S R=PASS X=-]",
+      "public_situation": "公司年度满意度调查，说明「匿名 aggregated」，但登录门户需工号+短信验证码。你对 Leader 老周「朝令夕改、抢功、周末骚扰」积怨已久。同事说去年有人填过激，后来被穿小鞋。",
+      "clean_same_month_level": false,
+      "pre_action_month": 5,
+      "grade": "C",
+      "level_pre": "L1",
+      "level_post": "L2",
+      "tenure_pre": 5,
+      "promotion": true,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。\n\n隔壁工位工作认真的小李吃饭时跟你悄悄说：“最近工作不好干，上次的事我帮你跟领导解释了一下，哥们最多帮你这次了”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。"
+    },
+    {
+      "month": 12,
+      "phase": "STORY",
+      "action_line": 369,
+      "pre_observe_line": 367,
+      "post_observe_line": 375,
+      "selected_action": "假装刚进来接水，正常打招呼",
+      "cost": null,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 20,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 6,
+        "output": 6,
+        "wealth": 4,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 20,
+        "network": 4,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "15 楼茶水间，平台部总监李总和对口经理赵铭压低声音：「北极星项目 Q3 启动，灵犀这边让……来牵技术。」 你听清后面是你的姓。项目尚未官宣，赵铭若发现你在听，可能视为打探。",
+      "clean_same_month_level": false,
+      "pre_action_month": 11,
+      "grade": "B",
+      "level_pre": "L2",
+      "level_post": "L3",
+      "tenure_pre": 6,
+      "promotion": true,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.2\n\n本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L2 晋升至 L3（高级工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。"
+    },
+    {
+      "month": 18,
+      "phase": "STORY",
+      "action_line": 565,
+      "pre_observe_line": 563,
+      "post_observe_line": 571,
+      "selected_action": "主动承担会后向 VP 补充说明统计口径",
+      "cost": null,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 35,
+        "network": 17,
+        "level": "L3",
+        "duration_in_level": 6,
+        "output": 15,
+        "wealth": 5,
+        "energy": 0
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 37,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 6,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "Leader 脸色微变，删掉该页改为 +12%，VP 追问「怎么比上周宣传的低」。Leader 会后说：「下次提前一天核对。」",
+      "clean_same_month_level": false,
+      "pre_action_month": 17,
+      "grade": "B",
+      "level_pre": "L3",
+      "level_post": "L4",
+      "tenure_pre": 6,
+      "promotion": true,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n晋升通知：半年组织评审通过，您已从 L3 晋升至 L4（资深工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。"
+    },
+    {
+      "month": 24,
+      "phase": "STORY",
+      "action_line": 765,
+      "pre_observe_line": 763,
+      "post_observe_line": 771,
+      "selected_action": "理性回应：可有限度共担，但要求明确恢复条件与书面约定",
+      "cost": null,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 52,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 6,
+        "output": 19,
+        "wealth": 10,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 52,
+        "network": 21,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 19,
+        "wealth": 9,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "管理层号召员工『自愿』降薪共度难关，并暗示带头表态的人会被记住。你既不想当出头鸟被记仇，也不愿无条件牺牲。",
+      "clean_same_month_level": false,
+      "pre_action_month": 23,
+      "grade": "B",
+      "level_pre": "L4",
+      "level_post": "L4",
+      "tenure_pre": 6,
+      "promotion": false,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+    },
+    {
+      "month": 30,
+      "phase": "STORY",
+      "action_line": 965,
+      "pre_observe_line": 963,
+      "post_observe_line": 971,
+      "selected_action": "接受，顺便听他说说项目困境",
+      "cost": null,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 70,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 12,
+        "output": 26,
+        "wealth": 14,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 70,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 16,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "伞很小，肩膀还是淋湿了。路上小赵聊起最近被 Leader 压排期，情绪很低。到地铁站他犹豫说：「要不今晚去我家附近吃碗热面？我请。」 雨更大了。",
+      "clean_same_month_level": false,
+      "pre_action_month": 29,
+      "grade": "B",
+      "level_pre": "L4",
+      "level_post": "L4",
+      "tenure_pre": 12,
+      "promotion": false,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR神情复杂地说，你自求多福吧..."
+    },
+    {
+      "month": 36,
+      "phase": "STORY",
+      "action_line": 1157,
+      "pre_observe_line": 1155,
+      "post_observe_line": 1163,
+      "selected_action": "整理一份完整的风险评估文档，正式提交技术委员会",
+      "cost": null,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 95,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 18,
+        "output": 24,
+        "wealth": 18,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 97,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 23,
+        "wealth": 20,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "你深度参与了评审，对其中一个方案提出了核心质疑：对方组打算引入一套尚未在公司内部规模化使用的新框架，存在维护风险。对方组 owner 在会上明确不同意你的判断，态度有点强硬。会议主持者建议双方会后再继续沟通。你需要决定下一步行动。",
+      "clean_same_month_level": false,
+      "pre_action_month": 35,
+      "grade": "A",
+      "level_pre": "L4",
+      "level_post": "L5",
+      "tenure_pre": 18,
+      "promotion": true,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 合上笔记本，语气明显缓和：「这半年你扛的事我都记着——关键节点没掉链子，跨组协调也有你的份。上面问部门骨干名单时，我第一个想到你。接下来继续保持节奏，有想法直接来找我，资源上我会帮你争取。」\n\n半年绩效奖金（A）：+1.0499999999999998\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L4 晋升至 L5（技术专家 / 小组负责人）。"
+    },
+    {
+      "month": 42,
+      "phase": "STORY",
+      "action_line": 1357,
+      "pre_observe_line": 1355,
+      "post_observe_line": 1363,
+      "selected_action": "主动向领导请缨更有挑战的任务，或在重复活里做出技术提效的亮点",
+      "cost": null,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 112,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 6,
+        "output": 36,
+        "wealth": 26,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 113,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 37,
+        "wealth": 27,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "你手头长期都是些低含金量的重复活，做着稳当却毫无成长。再这样下去，能力会原地踏步。要不要主动去争取更有技术含量、能长本事的工作？",
+      "clean_same_month_level": false,
+      "pre_action_month": 41,
+      "grade": "B",
+      "level_pre": "L5",
+      "level_post": "L5",
+      "tenure_pre": 6,
+      "promotion": false,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。"
+    },
+    {
+      "month": 48,
+      "phase": "STORY",
+      "action_line": 1561,
+      "pre_observe_line": 1559,
+      "post_observe_line": 1567,
+      "selected_action": "帮小葵完成复盘并推荐其他公司",
+      "cost": null,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 126,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 12,
+        "output": 38,
+        "wealth": 29,
+        "energy": 0
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 127,
+        "network": 54,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=S R=PASS X=-]",
+      "public_situation": "老周沉默十分钟，说「下不为例」，小葵未转正。",
+      "clean_same_month_level": false,
+      "pre_action_month": 47,
+      "grade": "B",
+      "level_pre": "L5",
+      "level_post": "L5",
+      "tenure_pre": 12,
+      "promotion": false,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+    }
+  ],
+  "Energy_mix": {
+    "intensive": 7,
+    "Network": 6,
+    "Health": 10,
+    "cleanup": 4,
+    "report": 10
+  },
+  "Energy_sequence": [
+    {
+      "month": 3,
+      "phase": "ENERGY",
+      "action_line": 105,
+      "pre_observe_line": 103,
+      "post_observe_line": 111,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": -1,
+        "wealth": 1,
+        "energy": 3
+      },
+      "post": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Out&Net P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 3,
+      "phase": "ENERGY",
+      "action_line": 113,
+      "pre_observe_line": 111,
+      "post_observe_line": 119,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 1
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Out&Net P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 6,
+      "phase": "ENERGY",
+      "action_line": 201,
+      "pre_observe_line": 199,
+      "post_observe_line": 207,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 3
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Health&Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 6,
+      "phase": "ENERGY",
+      "action_line": 209,
+      "pre_observe_line": 207,
+      "post_observe_line": 215,
+      "selected_action": "处理历史埋雷",
+      "cost": 2,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 2
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Health&Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 9,
+      "phase": "ENERGY",
+      "action_line": 297,
+      "pre_observe_line": 295,
+      "post_observe_line": 303,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 5,
+        "wealth": 3,
+        "energy": 3
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 9,
+      "phase": "ENERGY",
+      "action_line": 305,
+      "pre_observe_line": 303,
+      "post_observe_line": 311,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 2
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 9,
+      "phase": "ENERGY",
+      "action_line": 313,
+      "pre_observe_line": 311,
+      "post_observe_line": 319,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 1
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 12,
+      "phase": "ENERGY",
+      "action_line": 401,
+      "pre_observe_line": 399,
+      "post_observe_line": 407,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 5,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Network P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 12,
+      "phase": "ENERGY",
+      "action_line": 409,
+      "pre_observe_line": 407,
+      "post_observe_line": 415,
+      "selected_action": "处理历史埋雷",
+      "cost": 2,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 2
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Network P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 15,
+      "phase": "ENERGY",
+      "action_line": 501,
+      "pre_observe_line": 499,
+      "post_observe_line": 507,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "post": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 4,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 15,
+      "phase": "ENERGY",
+      "action_line": 509,
+      "pre_observe_line": 507,
+      "post_observe_line": 515,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 9,
+        "wealth": 4,
+        "energy": 1
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 10,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 18,
+      "phase": "ENERGY",
+      "action_line": 597,
+      "pre_observe_line": 595,
+      "post_observe_line": 603,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 39,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 6,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 39,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 18,
+      "phase": "ENERGY",
+      "action_line": 605,
+      "pre_observe_line": 603,
+      "post_observe_line": 611,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 39,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 2
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 39,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 18,
+      "phase": "ENERGY",
+      "action_line": 613,
+      "pre_observe_line": 611,
+      "post_observe_line": 619,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 39,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 39,
+        "network": 14,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 21,
+      "phase": "ENERGY",
+      "action_line": 701,
+      "pre_observe_line": 699,
+      "post_observe_line": 707,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 13,
+        "wealth": 8,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 15,
+        "wealth": 8,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 21,
+      "phase": "ENERGY",
+      "action_line": 709,
+      "pre_observe_line": 707,
+      "post_observe_line": 715,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 15,
+        "wealth": 8,
+        "energy": 1
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 16,
+        "wealth": 8,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 24,
+      "phase": "ENERGY",
+      "action_line": 797,
+      "pre_observe_line": 795,
+      "post_observe_line": 803,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 55,
+        "network": 24,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 22,
+        "wealth": 9,
+        "energy": 3
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 24,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 22,
+        "wealth": 9,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 24,
+      "phase": "ENERGY",
+      "action_line": 805,
+      "pre_observe_line": 803,
+      "post_observe_line": 811,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 24,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 22,
+        "wealth": 9,
+        "energy": 2
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 24,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 9,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 24,
+      "phase": "ENERGY",
+      "action_line": 813,
+      "pre_observe_line": 811,
+      "post_observe_line": 819,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 24,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 9,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 25,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 9,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 27,
+      "phase": "ENERGY",
+      "action_line": 901,
+      "pre_observe_line": 899,
+      "post_observe_line": 907,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 24,
+        "wealth": 12,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 27,
+      "phase": "ENERGY",
+      "action_line": 909,
+      "pre_observe_line": 907,
+      "post_observe_line": 915,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 1
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 30,
+      "phase": "ENERGY",
+      "action_line": 997,
+      "pre_observe_line": 995,
+      "post_observe_line": 1003,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 14,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 14,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 30,
+      "phase": "ENERGY",
+      "action_line": 1005,
+      "pre_observe_line": 1003,
+      "post_observe_line": 1011,
+      "selected_action": "处理历史埋雷",
+      "cost": 2,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 14,
+        "energy": 2
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 14,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 33,
+      "phase": "ENERGY",
+      "action_line": 1093,
+      "pre_observe_line": 1091,
+      "post_observe_line": 1099,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 3
+      },
+      "post": {
+        "health": 7,
+        "dignity": 9,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 33,
+      "phase": "ENERGY",
+      "action_line": 1101,
+      "pre_observe_line": 1099,
+      "post_observe_line": 1107,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 9,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 1
+      },
+      "post": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 36,
+      "phase": "ENERGY",
+      "action_line": 1189,
+      "pre_observe_line": 1187,
+      "post_observe_line": 1195,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 99,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 25,
+        "wealth": 21,
+        "energy": 3
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 25,
+        "wealth": 21,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 36,
+      "phase": "ENERGY",
+      "action_line": 1197,
+      "pre_observe_line": 1195,
+      "post_observe_line": 1203,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 25,
+        "wealth": 21,
+        "energy": 2
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 26,
+        "wealth": 21,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 36,
+      "phase": "ENERGY",
+      "action_line": 1205,
+      "pre_observe_line": 1203,
+      "post_observe_line": 1211,
+      "selected_action": "人脉维护",
+      "cost": 1,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 26,
+        "wealth": 21,
+        "energy": 1
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 35,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 26,
+        "wealth": 21,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 39,
+      "phase": "ENERGY",
+      "action_line": 1293,
+      "pre_observe_line": 1291,
+      "post_observe_line": 1299,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 28,
+        "wealth": 24,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 30,
+        "wealth": 24,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 39,
+      "phase": "ENERGY",
+      "action_line": 1301,
+      "pre_observe_line": 1299,
+      "post_observe_line": 1307,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 30,
+        "wealth": 24,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 30,
+        "wealth": 24,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 42,
+      "phase": "ENERGY",
+      "action_line": 1389,
+      "pre_observe_line": 1387,
+      "post_observe_line": 1395,
+      "selected_action": "处理历史埋雷",
+      "cost": 2,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 36,
+        "wealth": 24,
+        "energy": 3
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 36,
+        "wealth": 24,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 42,
+      "phase": "ENERGY",
+      "action_line": 1397,
+      "pre_observe_line": 1395,
+      "post_observe_line": 1403,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 36,
+        "wealth": 24,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 37,
+        "wealth": 24,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 45,
+      "phase": "ENERGY",
+      "action_line": 1485,
+      "pre_observe_line": 1483,
+      "post_observe_line": 1491,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 2
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 45,
+      "phase": "ENERGY",
+      "action_line": 1493,
+      "pre_observe_line": 1491,
+      "post_observe_line": 1499,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 2
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 45,
+      "phase": "ENERGY",
+      "action_line": 1501,
+      "pre_observe_line": 1499,
+      "post_observe_line": 1507,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 48,
+      "phase": "ENERGY",
+      "action_line": 1593,
+      "pre_observe_line": 1591,
+      "post_observe_line": 1599,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 48,
+      "phase": "ENERGY",
+      "action_line": 1601,
+      "pre_observe_line": 1599,
+      "post_observe_line": 1607,
+      "selected_action": "健康恢复",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    }
+  ],
+  "quarterly_sequence": [
+    {
+      "month": 3,
+      "actions": [
+        {
+          "line": 105,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 113,
+          "family": "Network",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 6,
+      "actions": [
+        {
+          "line": 201,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 209,
+          "family": "cleanup",
+          "cost": 2
+        }
+      ]
+    },
+    {
+      "month": 9,
+      "actions": [
+        {
+          "line": 297,
+          "family": "report",
+          "cost": 1
+        },
+        {
+          "line": 305,
+          "family": "report",
+          "cost": 1
+        },
+        {
+          "line": 313,
+          "family": "Network",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 12,
+      "actions": [
+        {
+          "line": 401,
+          "family": "Network",
+          "cost": 1
+        },
+        {
+          "line": 409,
+          "family": "cleanup",
+          "cost": 2
+        }
+      ]
+    },
+    {
+      "month": 15,
+      "actions": [
+        {
+          "line": 501,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 509,
+          "family": "report",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 18,
+      "actions": [
+        {
+          "line": 597,
+          "family": "report",
+          "cost": 1
+        },
+        {
+          "line": 605,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 613,
+          "family": "Network",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 21,
+      "actions": [
+        {
+          "line": 701,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 709,
+          "family": "report",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 24,
+      "actions": [
+        {
+          "line": 797,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 805,
+          "family": "report",
+          "cost": 1
+        },
+        {
+          "line": 813,
+          "family": "Network",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 27,
+      "actions": [
+        {
+          "line": 901,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 909,
+          "family": "report",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 30,
+      "actions": [
+        {
+          "line": 997,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 1005,
+          "family": "cleanup",
+          "cost": 2
+        }
+      ]
+    },
+    {
+      "month": 33,
+      "actions": [
+        {
+          "line": 1093,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 1101,
+          "family": "Health",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 36,
+      "actions": [
+        {
+          "line": 1189,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 1197,
+          "family": "report",
+          "cost": 1
+        },
+        {
+          "line": 1205,
+          "family": "Network",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 39,
+      "actions": [
+        {
+          "line": 1293,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 1301,
+          "family": "Health",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 42,
+      "actions": [
+        {
+          "line": 1389,
+          "family": "cleanup",
+          "cost": 2
+        },
+        {
+          "line": 1397,
+          "family": "report",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 45,
+      "actions": [
+        {
+          "line": 1485,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 1493,
+          "family": "Health",
+          "cost": 1
+        },
+        {
+          "line": 1501,
+          "family": "report",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "month": 48,
+      "actions": [
+        {
+          "line": 1593,
+          "family": "intensive",
+          "cost": 2
+        },
+        {
+          "line": 1601,
+          "family": "Health",
+          "cost": 1
+        }
+      ]
+    }
+  ],
+  "Main_actions": [
+    {
+      "month": 3,
+      "phase": "MAIN",
+      "action_line": 121,
+      "pre_observe_line": 119,
+      "post_observe_line": 127,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 8,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 4,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Out&Net P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 6,
+      "phase": "MAIN",
+      "action_line": 217,
+      "pre_observe_line": 215,
+      "post_observe_line": 223,
+      "selected_action": "低调避险",
+      "cost": 0,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 5,
+        "wealth": 2,
+        "energy": 0
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 11,
+        "network": 5,
+        "level": "L2",
+        "duration_in_level": 2,
+        "output": 5,
+        "wealth": 2,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Health&Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 9,
+      "phase": "MAIN",
+      "action_line": 321,
+      "pre_observe_line": 319,
+      "post_observe_line": 327,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 0
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 17,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 5,
+        "output": 6,
+        "wealth": 3,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 12,
+      "phase": "MAIN",
+      "action_line": 417,
+      "pre_observe_line": 415,
+      "post_observe_line": 423,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 23,
+        "network": 6,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 7,
+        "wealth": 4,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 24,
+        "network": 7,
+        "level": "L3",
+        "duration_in_level": 2,
+        "output": 9,
+        "wealth": 5,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Network P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 15,
+      "phase": "MAIN",
+      "action_line": 517,
+      "pre_observe_line": 515,
+      "post_observe_line": 523,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 10,
+        "wealth": 4,
+        "energy": 0
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 30,
+        "network": 13,
+        "level": "L3",
+        "duration_in_level": 5,
+        "output": 12,
+        "wealth": 4,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 18,
+      "phase": "MAIN",
+      "action_line": 621,
+      "pre_observe_line": 619,
+      "post_observe_line": 627,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 39,
+        "network": 14,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 6,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 40,
+        "network": 15,
+        "level": "L4",
+        "duration_in_level": 2,
+        "output": 18,
+        "wealth": 6,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 21,
+      "phase": "MAIN",
+      "action_line": 717,
+      "pre_observe_line": 715,
+      "post_observe_line": 723,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 16,
+        "wealth": 8,
+        "energy": 0
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 49,
+        "network": 17,
+        "level": "L4",
+        "duration_in_level": 5,
+        "output": 18,
+        "wealth": 8,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 24,
+      "phase": "MAIN",
+      "action_line": 821,
+      "pre_observe_line": 819,
+      "post_observe_line": 827,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 55,
+        "network": 25,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 9,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 56,
+        "network": 26,
+        "level": "L4",
+        "duration_in_level": 8,
+        "output": 25,
+        "wealth": 10,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 27,
+      "phase": "MAIN",
+      "action_line": 917,
+      "pre_observe_line": 915,
+      "post_observe_line": 923,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 0
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 64,
+        "network": 29,
+        "level": "L4",
+        "duration_in_level": 11,
+        "output": 26,
+        "wealth": 13,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 30,
+      "phase": "MAIN",
+      "action_line": 1013,
+      "pre_observe_line": 1011,
+      "post_observe_line": 1019,
+      "selected_action": "低调避险",
+      "cost": 0,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 14,
+        "energy": 0
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 74,
+        "network": 34,
+        "level": "L4",
+        "duration_in_level": 14,
+        "output": 26,
+        "wealth": 14,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 33,
+      "phase": "MAIN",
+      "action_line": 1109,
+      "pre_observe_line": 1107,
+      "post_observe_line": 1115,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 0
+      },
+      "post": {
+        "health": 9,
+        "dignity": 9,
+        "skill": 89,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 17,
+        "output": 26,
+        "wealth": 18,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 36,
+      "phase": "MAIN",
+      "action_line": 1213,
+      "pre_observe_line": 1211,
+      "post_observe_line": 1219,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 99,
+        "network": 35,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 26,
+        "wealth": 21,
+        "energy": 0
+      },
+      "post": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 100,
+        "network": 36,
+        "level": "L5",
+        "duration_in_level": 2,
+        "output": 28,
+        "wealth": 22,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 39,
+      "phase": "MAIN",
+      "action_line": 1309,
+      "pre_observe_line": 1307,
+      "post_observe_line": 1315,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 30,
+        "wealth": 24,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 107,
+        "network": 39,
+        "level": "L5",
+        "duration_in_level": 5,
+        "output": 32,
+        "wealth": 25,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 42,
+      "phase": "MAIN",
+      "action_line": 1405,
+      "pre_observe_line": 1403,
+      "post_observe_line": 1411,
+      "selected_action": "低调避险",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 37,
+        "wealth": 24,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 115,
+        "network": 44,
+        "level": "L5",
+        "duration_in_level": 8,
+        "output": 37,
+        "wealth": 25,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 45,
+      "phase": "MAIN",
+      "action_line": 1509,
+      "pre_observe_line": 1507,
+      "post_observe_line": 1515,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 122,
+        "network": 51,
+        "level": "L5",
+        "duration_in_level": 11,
+        "output": 38,
+        "wealth": 28,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    },
+    {
+      "month": 48,
+      "phase": "MAIN",
+      "action_line": 1609,
+      "pre_observe_line": 1607,
+      "post_observe_line": 1615,
+      "selected_action": "申请关键项目",
+      "cost": 0,
+      "pre": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 9,
+        "skill": 128,
+        "network": 54,
+        "level": "L5",
+        "duration_in_level": 14,
+        "output": 38,
+        "wealth": 32,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "本季度你可以选择 1 个主行动来推进职业目标，也可以选择不行动。每个主行动都会带来即时的状态收益。请结合当前显式状态、晋升窗口与长期规划，选择最合适的一个主行动；系统会按所选行动的 status_updates 结算并更新对应的显式状态。",
+      "clean_same_month_level": false
+    }
+  ],
+  "skill_compounding": {
+    "STORY": 91,
+    "MAIN": 0,
+    "ENERGY": 0,
+    "mixed_net": 36,
+    "clean_Story_count": 112,
+    "mixed_Story_count": 32,
+    "Main_attribution": "MIXED_CROSS_MONTH_ALL_MAIN; clean 0 is not a zero-effect claim"
+  },
+  "story_comparison": {
+    "Run02_Story_decisions": 144,
+    "Run01_Story_decisions": 144,
+    "matched_Run02_situations": 96,
+    "same_selected_semantic_text": 91,
+    "different_selected_semantic_text": 5,
+    "same_Level_matched": 24,
+    "matching_boundary": "Exact public description and legal action text sets, first Run01 occurrence per Run02 decision; not matched full state, history or tenure; no title-ID answer table",
+    "historical_additional": "NOT_REQUIRED; Run01 accepted set satisfies overlap question"
+  },
+  "survival": {
+    "verdict": "PASS_WITH_LIMITATIONS",
+    "Health_declines": [
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 105,
+        "pre_observe_line": 103,
+        "post_observe_line": 111,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": -1,
+          "wealth": 1,
+          "energy": 3
+        },
+        "post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Out&Net P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 5,
+        "phase": "STORY",
+        "action_line": 161,
+        "pre_observe_line": 159,
+        "post_observe_line": 167,
+        "selected_action": "利用周末提前推进项目，争取周一上午交付",
+        "cost": null,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 2,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        },
+        "post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 8,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Out&Net P=S R=PASS X=-]",
+        "public_situation": "公司技术委员会下周六、周日开设一期厂内高级架构师认证培训（公司报销报名费、自愿参加、不计工时、不强制）。同时，你手头一个内部工具项目按计划下周二正常交付即可；如果利用本周末加点工，可以提前到周一上午交付，对接客户表示这能让他们节省一天联调时间。你周末原本的安排是和家人去近郊放松。三件事时间上完全冲突，请决定你的周末投入。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 7,
+        "phase": "STORY",
+        "action_line": 225,
+        "pre_observe_line": 223,
+        "post_observe_line": 231,
+        "selected_action": "稳稳把他架住、半哄半扶地带离现场，找人一起送他醒酒回家",
+        "cost": null,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 11,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 2,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 2,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Health&Output P=S R=PASS X=-]",
+        "public_situation": "年会酒过三巡，平时内向的同事老吴喝高了，开始大着嗓门数落部门、还差点要冲去找领导『讨个说法』，旁人劝不住。他平时人不错，只是喝多了失态。再闹下去，他明天醒来一定会后悔，场面也会很难看。你离他最近。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 11,
+        "phase": "STORY",
+        "action_line": 361,
+        "pre_observe_line": 359,
+        "post_observe_line": 367,
+        "selected_action": "私下关心她，劝她回去休息，并主动提出帮她顶一部分紧急任务",
+        "cost": null,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 19,
+          "network": 6,
+          "level": "L2",
+          "duration_in_level": 6,
+          "output": 6,
+          "wealth": 4,
+          "energy": 0
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 20,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 6,
+          "output": 6,
+          "wealth": 4,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "邻座同事阿芳重感冒，咳嗽不断、嗓子哑得说不出话，却坚持来上班，说「项目节点紧，不能掉链子」。整个开放区都能听见她此起彼伏的咳嗽，已经有两个同事开始打喷嚏。她是出于责任心，但也确实存在传染风险。你正好和她在同一个项目上。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 15,
+        "phase": "ENERGY",
+        "action_line": 501,
+        "pre_observe_line": 499,
+        "post_observe_line": 507,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 29,
+          "network": 12,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 7,
+          "wealth": 4,
+          "energy": 3
+        },
+        "post": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 29,
+          "network": 12,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 9,
+          "wealth": 4,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 21,
+        "phase": "STORY",
+        "action_line": 685,
+        "pre_observe_line": 683,
+        "post_observe_line": 691,
+        "selected_action": "制定数月的稳健备考计划,把大目标拆成每天能完成的小任务",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 44,
+          "network": 16,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 14,
+          "wealth": 8,
+          "energy": 0
+        },
+        "post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 46,
+          "network": 16,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 14,
+          "wealth": 8,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "行业里有个含金量很高的证书，对你的职业发展很有帮助，但备考周期长达数月，要持续占用下班和周末的时间。报名费也不便宜。你在犹豫要不要现在开始这场持久战。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 21,
+        "phase": "ENERGY",
+        "action_line": 701,
+        "pre_observe_line": 699,
+        "post_observe_line": 707,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 48,
+          "network": 16,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 13,
+          "wealth": 8,
+          "energy": 3
+        },
+        "post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 48,
+          "network": 16,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 15,
+          "wealth": 8,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 24,
+        "phase": "STORY",
+        "action_line": 781,
+        "pre_observe_line": 779,
+        "post_observe_line": 787,
+        "selected_action": "学习投入非正式场合，控制底线",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 53,
+          "network": 21,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 20,
+          "wealth": 9,
+          "energy": 0
+        },
+        "post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 53,
+          "network": 24,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 20,
+          "wealth": 9,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你观察三年：升得最快的是贺帆——技术一般，但 KTV、球局、帮 Leader 接孩子从未缺席。你技术评分连年第一，晋升慢半拍。老周说「也要看综合」。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 27,
+        "phase": "STORY",
+        "action_line": 885,
+        "pre_observe_line": 883,
+        "post_observe_line": 891,
+        "selected_action": "引入新框架，借这个低风险模块积累新技术经验",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 60,
+          "network": 28,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 25,
+          "wealth": 12,
+          "energy": 0
+        },
+        "post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 63,
+          "network": 28,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 24,
+          "wealth": 12,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你要为一个新模块做技术选型。团队现有的成熟技术栈你闭眼都能写、交付确定性高；行业里有一个更现代的框架，社区活跃、长期看更契合技术演进方向，但你和组里都没有生产经验，引入要踩坑、首期交付存在不确定性。好在这个模块不在关键路径上，时间相对宽裕，Leader 把决定权完全交给了你。下周的架构小结上要给出方案。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 27,
+        "phase": "ENERGY",
+        "action_line": 901,
+        "pre_observe_line": 899,
+        "post_observe_line": 907,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 63,
+          "network": 28,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 24,
+          "wealth": 12,
+          "energy": 3
+        },
+        "post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 63,
+          "network": 28,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 12,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 29,
+        "phase": "STORY",
+        "action_line": 957,
+        "pre_observe_line": 955,
+        "post_observe_line": 963,
+        "selected_action": "邀小赵共撑一把伞，步行到地铁站",
+        "cost": null,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 70,
+          "network": 34,
+          "level": "L4",
+          "duration_in_level": 12,
+          "output": 26,
+          "wealth": 14,
+          "energy": 0
+        },
+        "post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 70,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 12,
+          "output": 26,
+          "wealth": 14,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "晚上九点你终于关掉工位显示器，窗外暴雨砸在玻璃上，气象台发了橙色预警。你翻抽屉只剩一把折叠伞——还是上次出差酒店顺回来的。同组小赵也刚起身，他没带伞，住的方向和你差两站地铁，正望着大堂发呆。网约车排队 40 分钟。你需要决定怎么走。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 30,
+        "phase": "STORY",
+        "action_line": 973,
+        "pre_observe_line": 971,
+        "post_observe_line": 979,
+        "selected_action": "第一时间主动同步，带上原因分析、补救方案和新时间表",
+        "cost": null,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 70,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 16,
+          "energy": 0
+        },
+        "post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 16,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你负责的项目因为一个上游依赖出了问题，确定要延期一周，原定交付日就在三天后。客户对这个项目很看重，之前还在他们公司内部立了军令状。你需要决定怎么把延期这件事告诉客户。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 32,
+        "phase": "STORY",
+        "action_line": 1053,
+        "pre_observe_line": 1051,
+        "post_observe_line": 1059,
+        "selected_action": "趁老技术还有余温、心态也从容时，提前布局学习新方向",
+        "cost": null,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 80,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 15,
+          "output": 26,
+          "wealth": 15,
+          "energy": 0
+        },
+        "post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 82,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 15,
+          "output": 26,
+          "wealth": 15,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你赖以吃饭的老技术虽然现在还有需求，但下坡的趋势越来越明显。心里有个声音在问：现在转新方向是不是太早？再等等会不会更稳？",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 33,
+        "phase": "ENERGY",
+        "action_line": 1093,
+        "pre_observe_line": 1091,
+        "post_observe_line": 1099,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 88,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 26,
+          "wealth": 17,
+          "energy": 3
+        },
+        "post": {
+          "health": 7,
+          "dignity": 9,
+          "skill": 88,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 26,
+          "wealth": 17,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 34,
+        "phase": "STORY",
+        "action_line": 1117,
+        "pre_observe_line": 1115,
+        "post_observe_line": 1123,
+        "selected_action": "积极参与，同时和组织者协调出更高效的排练节奏、兼顾本职",
+        "cost": null,
+        "pre": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 89,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 17,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        },
+        "post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 90,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 17,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "部门要在年会上出一个集体舞台节目，组织者排了密集的晚间排练，几乎每个工作日下班后都要留一两个小时，持续两周。你本职工作正忙、个人计划也被打乱，但这是部门集体活动，大家都在参与，领导也很重视。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 35,
+        "phase": "STORY",
+        "action_line": 1141,
+        "pre_observe_line": 1139,
+        "post_observe_line": 1147,
+        "selected_action": "顶上来把彩排和上台流程统筹好，让节目顺利亮相",
+        "cost": null,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 91,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 18,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        },
+        "post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 93,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 18,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你提议把排练改成『分组练+合练』，效率高了不少，大家也不用每天耗到很晚，组织者很感激。临近年会，组织者因家里有事顶不住了，问你能不能接手把最后的彩排和上台统筹起来。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 35,
+        "phase": "STORY",
+        "action_line": 1149,
+        "pre_observe_line": 1147,
+        "post_observe_line": 1155,
+        "selected_action": "接下评审邀请，深度通读并准备意见",
+        "cost": null,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 93,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 18,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 95,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 18,
+          "output": 24,
+          "wealth": 18,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "部门技术委员会下周开一次跨组架构评审会议，主题是几个核心服务下季度的重构方案，参会代表对方案有投票权和后续追责权。你被点名邀请作为跨组评审代表参加（你在接口性能与稳定性方向上有较多实践积累）。如果接下，你需要花 3-4 天通读对方组的几份方案文档、准备意见；如果不接，对方组会自己评审，你少了一个跨组影响力的机会，但本组排期不受影响。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 37,
+        "phase": "STORY",
+        "action_line": 1221,
+        "pre_observe_line": 1219,
+        "post_observe_line": 1227,
+        "selected_action": "因为有现金缓冲，敢于接下高回报项目放手一搏",
+        "cost": null,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 100,
+          "network": 36,
+          "level": "L5",
+          "duration_in_level": 2,
+          "output": 28,
+          "wealth": 22,
+          "energy": 0
+        },
+        "post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 101,
+          "network": 36,
+          "level": "L5",
+          "duration_in_level": 2,
+          "output": 30,
+          "wealth": 22,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你买了套总价适中的房子，留出了能撑半年的应急金，月供压力在可控范围。心里踏实了不少，工作上也敢于做更长远的选择。这时公司给了你一个高风险高回报的攻坚项目机会——成了能加速晋升，砸了可能影响半年绩效。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 39,
+        "phase": "STORY",
+        "action_line": 1277,
+        "pre_observe_line": 1275,
+        "post_observe_line": 1283,
+        "selected_action": "报名主讲",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 104,
+          "network": 38,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 29,
+          "wealth": 24,
+          "energy": 0
+        },
+        "post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 106,
+          "network": 40,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 28,
+          "wealth": 24,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "组里午餐 Learn 缺下一期主讲，Topic 正好是你刚做的「回调幂等设计」。报名需准备 40 分钟 slide，本周排期已满。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 39,
+        "phase": "ENERGY",
+        "action_line": 1293,
+        "pre_observe_line": 1291,
+        "post_observe_line": 1299,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 106,
+          "network": 38,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 28,
+          "wealth": 24,
+          "energy": 3
+        },
+        "post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 106,
+          "network": 38,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 30,
+          "wealth": 24,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 43,
+        "phase": "STORY",
+        "action_line": 1421,
+        "pre_observe_line": 1419,
+        "post_observe_line": 1427,
+        "selected_action": "评估好兴趣与可迁移能力后主动申请，做好从头学的准备",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 117,
+          "network": 45,
+          "level": "L5",
+          "duration_in_level": 8,
+          "output": 38,
+          "wealth": 25,
+          "energy": 0
+        },
+        "post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 118,
+          "network": 46,
+          "level": "L5",
+          "duration_in_level": 8,
+          "output": 38,
+          "wealth": 25,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "公司开放了内部转岗，可以申请去一个更有前景的新方向团队。机会难得，但你要从零补一堆新知识，短期内还得放下熟练的优势。你怎么选？",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 45,
+        "phase": "STORY",
+        "action_line": 1461,
+        "pre_observe_line": 1459,
+        "post_observe_line": 1467,
+        "selected_action": "高质量扛起关键补位，把『顶上去』变成晋升加薪的资本",
+        "cost": null,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 120,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 10,
+          "output": 38,
+          "wealth": 27,
+          "energy": 0
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 122,
+          "network": 50,
+          "level": "L5",
+          "duration_in_level": 10,
+          "output": 38,
+          "wealth": 27,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "你把新增工作摊开和领导谈，明确哪些能扛、哪些需要资源或排期，并适时提出在挑大梁后应有的回报。领导认可你的条理和担当，给了你一些支持，也记下了你的贡献。补位成了你证明价值的机会。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 45,
+        "phase": "STORY",
+        "action_line": 1477,
+        "pre_observe_line": 1475,
+        "post_observe_line": 1483,
+        "selected_action": "立刻陪小葵找老周当面道歉",
+        "cost": null,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 121,
+          "network": 48,
+          "level": "L5",
+          "duration_in_level": 10,
+          "output": 38,
+          "wealth": 27,
+          "energy": 0
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 121,
+          "network": 50,
+          "level": "L5",
+          "duration_in_level": 10,
+          "output": 38,
+          "wealth": 27,
+          "energy": 3
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "实习生小葵误将「老周朝令夕改像过山车」邮件发给全部门 200 人，两分钟后哭着找你：「哥怎么办，撤回不了了。」 老周在邮件链里，已读。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 47,
+        "phase": "STORY",
+        "action_line": 1553,
+        "pre_observe_line": 1551,
+        "post_observe_line": 1559,
+        "selected_action": "立刻陪小葵找老周当面道歉",
+        "cost": null,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 126,
+          "network": 51,
+          "level": "L5",
+          "duration_in_level": 12,
+          "output": 38,
+          "wealth": 29,
+          "energy": 0
+        },
+        "post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 126,
+          "network": 53,
+          "level": "L5",
+          "duration_in_level": 12,
+          "output": 38,
+          "wealth": 29,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=S R=PASS X=-]",
+        "public_situation": "实习生小葵误将「老周朝令夕改像过山车」邮件发给全部门 200 人，两分钟后哭着找你：「哥怎么办，撤回不了了。」 老周在邮件链里，已读。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 48,
+        "phase": "ENERGY",
+        "action_line": 1593,
+        "pre_observe_line": 1591,
+        "post_observe_line": 1599,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 127,
+          "network": 53,
+          "level": "L5",
+          "duration_in_level": 13,
+          "output": 38,
+          "wealth": 31,
+          "energy": 3
+        },
+        "post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 127,
+          "network": 53,
+          "level": "L5",
+          "duration_in_level": 13,
+          "output": 38,
+          "wealth": 31,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      }
+    ],
+    "serious_warning_ledger": [
+      {
+        "month": 4,
+        "observe_line": 127,
+        "public_feedback": "本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR生气地说，你早干啥去了，之前埋的雷全要炸了！",
+        "public_status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 8,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        }
+      },
+      {
+        "month": 5,
+        "observe_line": 151,
+        "public_feedback": "本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 9,
+          "network": 1,
+          "level": "L1",
+          "duration_in_level": 5,
+          "output": 2,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      {
+        "month": 6,
+        "observe_line": 175,
+        "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。\n\n隔壁工位工作认真的小李吃饭时跟你悄悄说：“最近工作不好干，上次的事我帮你跟领导解释了一下，哥们最多帮你这次了”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。",
+        "public_status": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 9,
+          "network": 3,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 2,
+          "energy": 0
+        }
+      },
+      {
+        "month": 11,
+        "observe_line": 351,
+        "public_feedback": "本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 19,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 6,
+          "output": 6,
+          "wealth": 4,
+          "energy": 0
+        }
+      },
+      {
+        "month": 22,
+        "observe_line": 723,
+        "public_feedback": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 49,
+          "network": 17,
+          "level": "L4",
+          "duration_in_level": 5,
+          "output": 18,
+          "wealth": 8,
+          "energy": 0
+        }
+      },
+      {
+        "month": 23,
+        "observe_line": 747,
+        "public_feedback": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 51,
+          "network": 20,
+          "level": "L4",
+          "duration_in_level": 6,
+          "output": 19,
+          "wealth": 9,
+          "energy": 0
+        }
+      },
+      {
+        "month": 28,
+        "observe_line": 923,
+        "public_feedback": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR神情复杂地说，你自求多福吧...",
+        "public_status": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 64,
+          "network": 29,
+          "level": "L4",
+          "duration_in_level": 11,
+          "output": 26,
+          "wealth": 13,
+          "energy": 0
+        }
+      },
+      {
+        "month": 29,
+        "observe_line": 947,
+        "public_feedback": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR生气地说，你早干啥去了，之前埋的雷全要炸了！",
+        "public_status": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 68,
+          "network": 33,
+          "level": "L4",
+          "duration_in_level": 12,
+          "output": 26,
+          "wealth": 14,
+          "energy": 0
+        }
+      },
+      {
+        "month": 30,
+        "observe_line": 971,
+        "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR神情复杂地说，你自求多福吧...",
+        "public_status": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 70,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 16,
+          "energy": 0
+        }
+      },
+      {
+        "month": 40,
+        "observe_line": 1315,
+        "public_feedback": "本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 10,
+          "dignity": 9,
+          "skill": 107,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 5,
+          "output": 32,
+          "wealth": 25,
+          "energy": 0
+        }
+      },
+      {
+        "month": 41,
+        "observe_line": 1339,
+        "public_feedback": "本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 110,
+          "network": 38,
+          "level": "L5",
+          "duration_in_level": 6,
+          "output": 35,
+          "wealth": 26,
+          "energy": 0
+        }
+      },
+      {
+        "month": 42,
+        "observe_line": 1363,
+        "public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR皱着眉头跟你说，你积攒了不少风险，自己好好处理好。",
+        "public_status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 113,
+          "network": 41,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 37,
+          "wealth": 27,
+          "energy": 0
+        }
+      }
+    ],
+    "cleanup": [
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 209,
+        "pre_observe_line": 207,
+        "post_observe_line": 215,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 2
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 11,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 2,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Health&Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 409,
+        "pre_observe_line": 407,
+        "post_observe_line": 415,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 23,
+          "network": 6,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 7,
+          "wealth": 4,
+          "energy": 2
+        },
+        "post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 23,
+          "network": 6,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 7,
+          "wealth": 4,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Network P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 30,
+        "phase": "ENERGY",
+        "action_line": 1005,
+        "pre_observe_line": 1003,
+        "post_observe_line": 1011,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 74,
+          "network": 34,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 14,
+          "energy": 2
+        },
+        "post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 74,
+          "network": 34,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 14,
+          "energy": 0
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      },
+      {
+        "month": 42,
+        "phase": "ENERGY",
+        "action_line": 1389,
+        "pre_observe_line": 1387,
+        "post_observe_line": 1395,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 115,
+          "network": 44,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 36,
+          "wealth": 24,
+          "energy": 3
+        },
+        "post": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 115,
+          "network": 44,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 36,
+          "wealth": 24,
+          "energy": 1
+        },
+        "notes": "[CTRL G=Output P=A R=PASS X=-]",
+        "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+        "clean_same_month_level": true
+      }
+    ]
+  },
+  "runtime": {
+    "successful_actions": 198,
+    "observe_count": 199,
+    "successful_action_fresh_observe": "PASS",
+    "single_integer_Energy": "PASS",
+    "affordability": "PASS_WITH_LIMITATIONS",
+    "session": "PASS",
+    "unknown_mutation": "NONE_IDENTIFIED",
+    "tool_errors": [
+      {
+        "action_line": 489,
+        "month": 15,
+        "receipt": "FAIL",
+        "error": "'Ability not found in resource_mgr: mcp-career-emulator_take_action'",
+        "next_success_line": 493
+      },
+      {
+        "action_line": 1541,
+        "month": 47,
+        "receipt": "FAIL",
+        "error": "'Ability not found in resource_mgr: mcp-career-emulator_take_action'",
+        "next_success_line": 1545
+      }
+    ],
+    "generic_parser_noncanonical_routes": 2,
+    "generic_parser_unknown_results": 2,
+    "generic_parser_error_scope": "Two noncanonical resource lookup failures classified UNKNOWN by generic parser; explicit FAIL by raw result inspection",
+    "compression_generic": {
+      "count": 3,
+      "events_utc": [
+        "2026-10-04T11:29:28+00:00",
+        "2026-10-04T11:39:12+00:00",
+        "2026-10-04T11:39:13+00:00"
+      ],
+      "recovery": [
+        {
+          "at_utc": "2026-10-04T11:29:28+00:00",
+          "fresh_observe": false,
+          "overall_status": "RECOVERY_FAIL",
+          "rebuild_evidence": {
+            "board": "UNKNOWN",
+            "delivery": "UNKNOWN",
+            "recovery_ready": "UNKNOWN",
+            "review_plan": "UNKNOWN"
+          },
+          "reread_skills": [],
+          "tool_order_status": "FAIL"
+        },
+        {
+          "at_utc": "2026-10-04T11:39:12+00:00",
+          "fresh_observe": true,
+          "overall_status": "RECOVERY_FAIL",
+          "rebuild_evidence": {
+            "board": "UNKNOWN",
+            "delivery": "UNKNOWN",
+            "recovery_ready": "UNKNOWN",
+            "review_plan": "UNKNOWN"
+          },
+          "reread_skills": [],
+          "tool_order_status": "FAIL"
+        },
+        {
+          "at_utc": "2026-10-04T11:39:13+00:00",
+          "fresh_observe": true,
+          "overall_status": "RECOVERY_FAIL",
+          "rebuild_evidence": {
+            "board": "UNKNOWN",
+            "delivery": "UNKNOWN",
+            "recovery_ready": "UNKNOWN",
+            "review_plan": "UNKNOWN"
+          },
+          "reread_skills": [],
+          "tool_order_status": "FAIL"
+        }
+      ],
+      "status": "SCOPED"
+    },
+    "compression_actual_unique": [
+      {
+        "line": 147,
+        "timestamp": "2026-10-04T19:29:28.054192+08:00",
+        "input": 160937,
+        "output": 2839,
+        "cache": 159232
+      },
+      {
+        "line": 297,
+        "timestamp": "2026-10-04T19:39:12.915608+08:00",
+        "input": 160200,
+        "output": 3167,
+        "cache": 158464
+      }
+    ],
+    "DecisionClosed": "FAIL",
+    "compression_recovery": "FAIL",
+    "clock_consistency": "PASS_WITH_LIMITATIONS",
+    "compression_epochs": [
+      {
+        "timestamp_utc": "2026-10-04T11:29:28.054192+00:00",
+        "month": 17,
+        "first_next_tool": "take_action",
+        "first_next_tool_line": 565,
+        "fresh_observe_after_epoch_before_action": false,
+        "all_three_skills_reread": false,
+        "stale_snapshot_strategy_authority": "Snapshot used to resume; no fresh post-epoch observation before action"
+      },
+      {
+        "timestamp_utc": "2026-10-04T11:39:12.915608+00:00",
+        "month": 35,
+        "first_next_tool": "observe",
+        "first_next_tool_line": 1145,
+        "fresh_observe_after_epoch_before_action": true,
+        "all_three_skills_reread": false,
+        "stale_snapshot_strategy_authority": "UNKNOWN"
+      }
+    ],
+    "DecisionClosed_witnesses": [
+      {
+        "transcript_lines": "3275-3289",
+        "evidence": "Risk PASS and submit decision followed by renewed deliberation"
+      },
+      {
+        "transcript_lines": "9961-10045",
+        "evidence": "Repeated commit/FINAL then reconsider before one actual submission; no multiple successful mutation"
+      }
+    ],
+    "clock_boundary": "Canonical fresh-observe months monotone 1..49. Quarterly displayed dates largely match; Q9->Q10 heading at M27 immediately self-corrected to Q9 (T5758-5760). Review-before-Energy sequence initially mispredicted at T915-927 and corrected after actual M6 Review T975. No exhaustive proof of prose clock correctness.",
+    "affordability_boundary": "37 Energy menu energy_cost <= fresh energy. Main advertises energy_cost0 with no explicit currency cost; currency-effect affordability UNKNOWN, no known unaffordable successful action",
+    "error_boundary": "Two invalid underscore/hyphen tool route resource lookups explicitly failed before MCP dispatch at raw489/1541; correct route raw493/1545 succeeds once with unchanged latest public observation. Candidate immediately retried route without intervening observe: retry discipline limitation, not operator retry/replacement/unknown mutation."
+  },
+  "flat_responses": [
+    {
+      "month": 9,
+      "phase": "ENERGY",
+      "action_line": 305,
+      "pre_observe_line": 303,
+      "post_observe_line": 311,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 2
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 27,
+      "phase": "ENERGY",
+      "action_line": 909,
+      "pre_observe_line": 907,
+      "post_observe_line": 915,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 1
+      },
+      "post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 26,
+        "wealth": 12,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 33,
+      "phase": "ENERGY",
+      "action_line": 1093,
+      "pre_observe_line": 1091,
+      "post_observe_line": 1099,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 3
+      },
+      "post": {
+        "health": 7,
+        "dignity": 9,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 45,
+      "phase": "ENERGY",
+      "action_line": 1501,
+      "pre_observe_line": 1499,
+      "post_observe_line": 1507,
+      "selected_action": "准备汇报材料",
+      "cost": 1,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 1
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 121,
+        "network": 50,
+        "level": "L5",
+        "duration_in_level": 10,
+        "output": 38,
+        "wealth": 27,
+        "energy": 0
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    },
+    {
+      "month": 48,
+      "phase": "ENERGY",
+      "action_line": 1593,
+      "pre_observe_line": 1591,
+      "post_observe_line": 1599,
+      "selected_action": "高强度工作",
+      "cost": 2,
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 3
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 1
+      },
+      "notes": "[CTRL G=Output P=A R=PASS X=-]",
+      "public_situation": "新的一个季度开始了。你本季度共有 3 点体力（Energy），未使用的体力不会累计到下季度。请规划本季度要执行的体力行动：可以组合多个行动，但消耗的体力总和不能超过 3 点；你也可以保留部分或全部体力不使用。系统会根据你选择的行动，按下列规则结算并更新对应的显式状态。",
+      "clean_same_month_level": true
+    }
+  ],
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 39968979,
+    "output_tokens": 251133,
+    "total_tokens": 40220112,
+    "requested_model": "deepseek-flash",
+    "reported_cost": 0.0,
+    "reported_cost_is_not_actual_bill": true,
+    "wall_seconds": 1625.25208,
+    "unique_provider_receipts": 3,
+    "compressor_calls": 2,
+    "compressor_receipts": [
+      {
+        "line": 147,
+        "timestamp": "2026-10-04T19:29:28.054192+08:00",
+        "input": 160937,
+        "output": 2839,
+        "cache": 159232
+      },
+      {
+        "line": 297,
+        "timestamp": "2026-10-04T19:39:12.915608+08:00",
+        "input": 160200,
+        "output": 3167,
+        "cache": 158464
+      }
+    ],
+    "scoped_receipt_totals": {
+      "input": 321337,
+      "output": 6007,
+      "cache": 317696
+    },
+    "cache_binding": "SESSION_BOUND_RUNNER_USAGE_EVENT; compressor receipts separate and not added",
+    "cache_hit_rate_scoped": 0.988669216430103,
+    "cache_tokens": 39473792,
+    "cache_hit_rate": "98.8%",
+    "actual_model": "deepseek-flash",
+    "service_automatic_probe": "1 SDK startup image self-check receipt (200 input / 1 output); no operator-initiated completion probe; not added to Runner aggregate"
+  },
+  "comparison": {
+    "Run01_score": 71.67,
+    "Run02_score": 65.35,
+    "score_delta": -6.32,
+    "observed_two_sample_score_range": [
+      65.35,
+      71.67
+    ],
+    "observed_two_sample_spread": 6.32,
+    "Run01_final": {
+      "dignity": 10,
+      "duration_in_level": 8,
+      "energy": 0,
+      "health": 8,
+      "level": "L5",
+      "network": 54,
+      "output": 34,
+      "skill": 114,
+      "wealth": 39
+    },
+    "Run02_final": {
+      "dignity": 9,
+      "duration_in_level": 14,
+      "energy": 0,
+      "health": 10,
+      "level": "L5",
+      "network": 54,
+      "output": 38,
+      "skill": 128,
+      "wealth": 32
+    },
+    "Run01_promotions": [
+      6,
+      12,
+      24,
+      42
+    ],
+    "Run02_promotions": [
+      6,
+      12,
+      18,
+      36
+    ],
+    "Run01_Energy": {
+      "人脉维护": 5,
+      "准备汇报材料": 19,
+      "健康恢复": 10,
+      "处理历史埋雷": 7
+    },
+    "Run02_Energy": {
+      "intensive": 7,
+      "Network": 6,
+      "Health": 10,
+      "cleanup": 4,
+      "report": 10
+    }
+  },
+  "nonclaims": [
+    "Two samples do not prove stable75+",
+    "No measured true variance",
+    "No causal promotion formula",
+    "No hidden-test transfer",
+    "No event answer mapping"
+  ],
+  "recommendation": "RETURN_TO_MAIN_FOR_WITHIN_POLICY_SPREAD_AND_EXECUTION_ADHERENCE_REVIEW; NO_AUTOMATIC_PATCH_OR_THIRD_RUN",
+  "return_value": "RETURN_FOR_V6D_REPLICATION_GATE",
+  "next_game": "NOT_AUTHORIZED",
+  "opportunity_witnesses": [
+    {
+      "month": 3,
+      "action_line": 81,
+      "pre_observe_line": 79,
+      "post_observe_line": 87,
+      "public_situation": "公司新一代实时计算平台立项，Leader 指定你担任该子项目的技术选型负责人。摆在桌面上的是两条路线：自研内核（贴合业务但开发周期长、上线压力大），或者直接引入业内已开源的明星项目（短期能交差但内核黑盒、未来要看上游脸色）。架构评审会下周五就要敲定方案。",
+      "selected_action": "力主自研内核，承诺打磨长期技术资产",
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": 1,
+        "energy": 3
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 1,
+        "wealth": 1,
+        "energy": 3
+      }
+    },
+    {
+      "month": 17,
+      "action_line": 565,
+      "pre_observe_line": 563,
+      "post_observe_line": 571,
+      "public_situation": "Leader 脸色微变，删掉该页改为 +12%，VP 追问「怎么比上周宣传的低」。Leader 会后说：「下次提前一天核对。」",
+      "selected_action": "主动承担会后向 VP 补充说明统计口径",
+      "pre": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 35,
+        "network": 17,
+        "level": "L3",
+        "duration_in_level": 6,
+        "output": 15,
+        "wealth": 5,
+        "energy": 0
+      },
+      "post": {
+        "health": 8,
+        "dignity": 9,
+        "skill": 37,
+        "network": 13,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 15,
+        "wealth": 6,
+        "energy": 0
+      }
+    },
+    {
+      "month": 19,
+      "action_line": 629,
+      "pre_observe_line": 627,
+      "post_observe_line": 635,
+      "public_situation": "部门今年新招了一批实习生，Leader 把其中最有名校光环但也最自负的小李分给你带，并暗示‘带新人是今年绩效评 A 的隐性硬指标’。你了解到小李曾在另一组因独立提交未评审代码差点闯祸，老员工普遍躲他。请你决定是否接下这个 Mentor 任务。",
+      "selected_action": "主动接手并明确师徒关系",
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 40,
+        "network": 15,
+        "level": "L4",
+        "duration_in_level": 2,
+        "output": 18,
+        "wealth": 6,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 41,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 2,
+        "output": 18,
+        "wealth": 6,
+        "energy": 0
+      }
+    },
+    {
+      "month": 41,
+      "action_line": 1349,
+      "pre_observe_line": 1347,
+      "post_observe_line": 1355,
+      "public_situation": "领导让你带一个新来的实习生。这意味着要分心去教、去带，但也是你第一次体验『带人』、试水管理潜质的机会。你怎么对待这个差事？",
+      "selected_action": "认真带教、试着规划和反馈，把它当作锻炼管理能力的练兵场",
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 111,
+        "network": 40,
+        "level": "L5",
+        "duration_in_level": 6,
+        "output": 36,
+        "wealth": 26,
+        "energy": 0
+      },
+      "post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 112,
+        "network": 41,
+        "level": "L5",
+        "duration_in_level": 6,
+        "output": 36,
+        "wealth": 26,
+        "energy": 0
+      }
+    }
+  ],
+  "material_risk_witnesses": [
+    {
+      "month": 4,
+      "action_line": 145,
+      "pre_observe_line": 143,
+      "post_observe_line": 151,
+      "public_situation": "即将离职去竞对的同事范磊晚上把 8GB 网盘链接发你：「里面是三年项目脚本、客户联系人笔记，公司网盘我删了，你帮我保管，别上传公司系统。」 其中部分客户合同扫描件标注「保密级：内部」。你知道公司离职协议要求不得带走业务数据。",
+      "selected_action": "拒绝接收，建议他走合规交接",
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 4,
+        "output": 2,
+        "wealth": 1,
+        "energy": 0
+      },
+      "post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 9,
+        "network": 1,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 2,
+        "wealth": 2,
+        "energy": 0
+      }
+    },
+    {
+      "month": 9,
+      "action_line": 281,
+      "pre_observe_line": 279,
+      "post_observe_line": 287,
+      "public_situation": "一位已经离职的前同事找到你，熟络地请你『帮个小忙』：把一份公司内部的资料/数据发给他，还说『反正你手上有，又不是什么大事』。这涉及公司资产和保密边界，你怎么办？",
+      "selected_action": "守住保密底线，婉拒并说明这是公司资产、不能外传，维护好交情即可",
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 15,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 5,
+        "wealth": 3,
+        "energy": 0
+      },
+      "post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 16,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 5,
+        "wealth": 3,
+        "energy": 0
+      }
+    }
+  ],
+  "portfolio_mechanisms": {
+    "behavioral_repeatability": "PASS_WITH_LIMITATIONS: Network6/Health10, multi-family portfolio retained; report preference/efficiency does not repeat reliably; intensive0->7 is material concentration regression",
+    "report_vs_intensive": "FAIL_WITH_LIMITATIONS: M21/M27/M39 intensity justified chiefly by Output gap despite report route; no concrete independently required deliverable identified. M15 cites old report flat, M33 cites report flat; comparability/freshness limited, not all intensity forbidden",
+    "flat_rerouting": "PASS_WITH_LIMITATIONS: M9 report flat -> Network, M33 intensive flat -> Health, M48 intensive flat -> Health. Subsequent windows often reaffirm Output; cap speculation in transcript, never established permanent cap",
+    "survival": "PASS_WITH_LIMITATIONS: 48m natural completion; recovery at low Health and cleanup at serious warning; no claim all risk assessments optimal",
+    "Main": "PASS_WITH_LIMITATIONS: 16/16 key project; no explicit blocked Main witness requiring abandonment; all Main Skill attribution mixed",
+    "new_repeated_failure": "Known DecisionClosed/Skill-reread defects recur. Within-policy intensive/efficiency adherence regression observed; it is not a new replicated causal scoring mechanism or authorization to patch."
+  },
+  "intensive_audit": [
+    {
+      "month": 3,
+      "classification": "UNJUSTIFIED_INTENSITY",
+      "transcript_lines": "374-525",
+      "reason": "Output negative urgency; compared report cheaper but no independent deliverable requiring intensity"
+    },
+    {
+      "month": 15,
+      "classification": "UNKNOWN",
+      "transcript_lines": "3216-3290",
+      "reason": "Old M9 report flat invoked after M12 Level change; freshness/comparability weak"
+    },
+    {
+      "month": 21,
+      "classification": "UNJUSTIFIED_INTENSITY",
+      "transcript_lines": "4400-4520",
+      "reason": "Output recovery and larger nominal gain dominate; no concrete deliverable"
+    },
+    {
+      "month": 27,
+      "classification": "UNJUSTIFIED_INTENSITY",
+      "transcript_lines": "5770-5860",
+      "reason": "Output gap focus; report comparison lacks resource-equivalent advantage"
+    },
+    {
+      "month": 33,
+      "classification": "UNKNOWN",
+      "transcript_lines": "6680-6760",
+      "reason": "Prior report flat cited; independent technical delivery requirement not established"
+    },
+    {
+      "month": 39,
+      "classification": "UNJUSTIFIED_INTENSITY",
+      "transcript_lines": "7790-7870",
+      "reason": "Output gap focus, Health cost accepted, no independently required intensive deliverable"
+    },
+    {
+      "month": 48,
+      "classification": "UNKNOWN",
+      "transcript_lines": "9890-10045",
+      "reason": "Formal feedback asks clearer results, previous report flat, after final Review; does not establish specific delivery or promotion leverage"
+    }
+  ],
+  "preservation": {
+    "Candidate_unchanged": true,
+    "three_Skills_unchanged": true,
+    "Runner_dependencies_provider_retry_submission_fallback_unchanged": true,
+    "validation_flags_unchanged": true,
+    "Candidate_patch": 0,
+    "raw_logs_committed": false,
+    "shared_DB_read_or_modified": false,
+    "hidden_state_private_formula_read": false,
+    "previous_holds": "S10-12 and S10-13 evidence not deleted/modified; original holds remain active",
+    "service_cleanup": "One graceful stop exit0, ports free; service wrapper exit1 after stop not gameplay failure"
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S10-14",
+    "release_authority": "Main/Stage",
+    "reason": "Run01/Run02 exact-policy score/promotion divergence; intensity adherence dispute; compression and route-failure attribution",
+    "release_condition": "Main accepts independent compact comparison, resolves child/replication dependencies and explicitly releases hold; later explicit cleanup authorization required",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T111953Z\\events-20261004T111953Z.jsonl",
+        "bytes": 1880384,
+        "sha256": "81b1daa4a2c06c65087408a7596b93d533a8d862d92cdc419a662e10a5489e47"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T111953Z\\transcript-20261004T111953Z.log",
+        "bytes": 830782,
+        "sha256": "5ff11d5a2dcf609322beca11ebf6588ef3ba7db5b4172f63c6b7b7cd77cb2b87"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T111953Z\\score_report.json",
+        "bytes": 1212,
+        "sha256": "1eb4024fd937a6b5fea606bbb7c82efc0d19b2f461d1c3121ad0ca223b696c1e"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\runner-result.json",
+        "bytes": 2120,
+        "sha256": "ff5398164a94a48c241f036fb7cb35efcaf0de873c1576385cb76531720f7a78"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\preflight.json",
+        "bytes": 44264,
+        "sha256": "f352751b697ded1115ca4080e097ea84403dd33b86993a4a1899ddc32ed50f5c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\provider-budget.json",
+        "bytes": 567,
+        "sha256": "4f1a92e0b4be89e87d007212016859815e297f772feebe90a4423032e528ae72"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\llm-run-window.log",
+        "bytes": 1564026,
+        "sha256": "11ea7ad3c9da1c3349fe008bcdc3dc99ad3e3fcff55321d8c66bb82791fe732a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\public-policy-data.json",
+        "bytes": 1238322,
+        "sha256": "178ce810ac23f2e68c3e4a45545504c886856e17a48bbe62abfb58dc67666877"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\runner-stdout.log",
+        "bytes": 1471,
+        "sha256": "4160dc1f5bb0cc3279789664169080e164a4a0c4db972b94aa12f30276878f5c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\service-stdout.log",
+        "bytes": 4167316,
+        "sha256": "8761f49166dd6e2a414dabb81eb762647a43bb6acd700b8a9b6d18c482f72109"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\install-stdout.log",
+        "bytes": 2360,
+        "sha256": "15a1841804eb564a9f2e3b01c0b7c1b4b66eaacf022f3fdcb71fa9e0a842a8e2"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\stop-stdout.log",
+        "bytes": 495,
+        "sha256": "de7fd119c6e5e202ea38e025059e6a81b2c466c9c96176a35d6cadb3ef568400"
+      }
+    ]
+  }
+}
