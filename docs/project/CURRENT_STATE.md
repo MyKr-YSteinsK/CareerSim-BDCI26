@@ -5,7 +5,7 @@
 ## Project
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
-- Branch: `codex/s10-12-v6d-run01` (`IN_FLIGHT_EVIDENCE`; exact historical v6c parent)
+- Branch: `codex/s10-13-promotion-opportunity-forensics` (`IN_FLIGHT_EVIDENCE`; exact historical v6c parent)
 - Current Stage: `S10-Lab｜架构重置与高分突破冲刺` ACTIVE；本checkout继承的S06/S07条目是历史语境，不代表现代main状态。
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
@@ -15,6 +15,7 @@
 ## Current candidate
 
 - Current candidate: `candidate-v6d-promotion-portfolio-rebalance`；精确source `e7e8ab44dd85a29135eb089ef29de8fed298f4a4`，parent `candidate-v6c-compliance-cleanup` / `e5363c9b4958955e02f5f895cb1ba1c794215958`。S10-12唯一获准 fresh game 已自然完成：71.67 / partial50.17 /48m/A/L5，晋升M6/M12/M24/M42，early chain2/3；`V6D_NEAR_TARGET / V6D_NEAR_TARGET_COMPETITIVE`，尚未达75。Energy report19/Network5/intensive0/Health10/cleanup7，M18成长强于v6c但未晋升。202/202 action→fresh observe；DecisionClosed、compression reread、公开时钟一致性与flat reroute有缺陷，不能冒充完整runtime adherence PASS。冻结Candidate/Board/Risk/Planning/runtime/Runner/dependencies/provider/retry/fallback均未改，validation flags保持原值。raw本地FORENSIC_HOLD ACTIVE；无replacement/intervention/patch。`RETURN_FOR_V6D_GAME_GATE`；`NEXT_GAME=NOT_AUTHORIZED`。见 [S10-12 run report](runs/v6d-run01-promotion-portfolio-validation.md) / [compact evidence](runs/v6d-run01-promotion-portfolio-evidence.json)；历史静态依据见 [S10-11 review](reviews/S10-11_V6D_STATIC_REVIEW.md)。
+- S10-13 offline promotion-gap取证完成：v6/v6d primary，v7o/RUN07/v6c支持、v1仅Tier-B；40 Review windows /720 Story（560clean、160mixed）。v6与v6d Story Skill净增长102/84，Main/promotion效果仍mixed；79同public情境75同选，0严格完整state/tenure matched pair。未发现安全可推广的Story/Risk/recognition patch；`VARIANCE_DOMINANT_NO_SAFE_PATCH`，建议`REPLICATE_EXACT_V6D_BEFORE_PATCH`（不授权游戏）。Candidate/Skills/runtime未改，全部live/Provider/install=0，既有holds保留。见 [S10-13 forensic report](research/S10-13_PROMOTION_OPPORTUNITY_FORENSICS.md) / [window data](research/S10-13_PROMOTION_WINDOW_DATA.json)。
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Three Skills: risk-review, structured-state-board, rolling-planning
