@@ -1,0 +1,2939 @@
+{
+  "schema_version": "s10-15-adherence-1",
+  "task": "S10-15",
+  "status": "COMPLETE_WITH_CONTEXT_LIMITATIONS",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "decision": "MIXED_NO_SINGLE_SAFE_PATCH",
+  "branch": "codex/s10-15-execution-adherence-forensics",
+  "base": "ce92da5cda9c5da2e2b4f2140e35880e8ea77a6a",
+  "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+  "candidate_source": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+  "Run01_commit": "5eb108b55a9f252d4fd6ff4561120d353f9d124b",
+  "Run02_commit": "ce92da5cda9c5da2e2b4f2140e35880e8ea77a6a",
+  "identity_equal": true,
+  "identity": {
+    "source_hashes": {
+      "configs/current_candidate.json": "de1c8d78921372ea6c37b5d7e7065adf8bb6182a920535559326845eb6807d18",
+      "configs/runtime_manifest.json": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+      "skills/risk-review/SKILL.md": "83e7600b0da901c18e78cd96d85a2e68a8b5eb9dfa0d7a8cf82f9266690d237d",
+      "skills/rolling-planning/SKILL.md": "8e799214a6f26e51f1d64dc64a6cc1f1edf9d37e343d6095ccee31ce533aba2d",
+      "skills/structured-state-board/SKILL.md": "e8c25306d108fedf35039bdd25a1540947c6715099ab997fc12a35c8611c3992"
+    },
+    "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+    "versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3",
+      "openjiuwen": "0.1.16.post2"
+    }
+  },
+  "sources": {
+    "Run01": {
+      "events": {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T083214Z\\events-20261004T083214Z.jsonl",
+        "sha256": "0b123fcd441e52f18f65866fe4a05d3c24ed5f8717420a48d6c822b93fea8ef8"
+      },
+      "transcript": {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T083214Z\\transcript-20261004T083214Z.log",
+        "sha256": "a7d7ffdfec27f4d9d598a7a6a12bd9ebdd1a7c8343b9ecc7bd15b10b587a023f"
+      },
+      "llm": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-12-v6d-run01\\llm-run-window.log",
+        "sha256": "08224e10ba5f2ecda7f74a96c03c06ee4f9fe34055e01c12c1ac1c1e9b47d7ce"
+      }
+    },
+    "Run02": {
+      "events": {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T111953Z\\events-20261004T111953Z.jsonl",
+        "sha256": "81b1daa4a2c06c65087408a7596b93d533a8d862d92cdc419a662e10a5489e47"
+      },
+      "transcript": {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T111953Z\\transcript-20261004T111953Z.log",
+        "sha256": "5ff11d5a2dcf609322beca11ebf6588ef3ba7db5b4172f63c6b7b7cd77cb2b87"
+      },
+      "llm": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\llm-run-window.log",
+        "sha256": "11ea7ad3c9da1c3349fe008bcdc3dc99ad3e3fcff55321d8c66bb82791fe732a"
+      }
+    }
+  },
+  "context_verdicts": {
+    "manifest": "PRESENT_IN_4_ACTUAL_COMPRESSION_SYSTEM_INPUTS; normalization only removes literal arrow rendering; immediately_after UNKNOWN; Run01lateM47 PRESENT, Run02lateM39/M48 UNKNOWN",
+    "Planning": "PRESENT_BODY_BOTH_FIRST_INPUTS; ABSENT_BODY_BOTH_SECOND_INPUTS; PARTIAL_SUMMARIES",
+    "Risk": "PRESENT_BODY_BOTH_FIRST_INPUTS; ABSENT_BODY_BOTH_SECOND_INPUTS; material-risk/soft-cost summary PARTIAL",
+    "Board": "PRESENT_BODY_BOTH_FIRST_INPUTS; ABSENT_BODY_BOTH_SECOND_INPUTS; status facts retained with corrections required",
+    "streaming_action_input": "UNKNOWN_NOT_LOGGED; do not substitute repository/source or later compressor history for exact earlier request",
+    "first_post_compression_input": "UNKNOWN; surviving memory block directly visible later before next compression"
+  },
+  "rules": {
+    "breadth": "一个 Primary Gap 不能遮掉其它晋升资产；比较近期 Skill/Network/Output growth、formal feedback、clean response、binding survival 与可兑现 horizon",
+    "Network": "Network 一级晋升资产；明显欠发展且合法 responsive/UNKNOWN 路线必须进入比较，不是固定配额",
+    "efficiency": "价值相近、report responsive/UNKNOWN、无具体交付必须 intensive、intensive成本更高时优先report；fresh comparable report flat 或独立value可例外",
+    "flat": "fresh comparable Output flat 降低重复路径优先级，重比响应路线/欠发展资产；一次flat不是永久cap",
+    "rerank": "每次只提交当前一个 Energy动作，fresh observe后更新事实再选；不能编码fixed bundle或复用旧scan",
+    "survival": "原有 public trend、warning、exposure、Risk Budget 决定恢复/cleanup；不得被成长覆盖",
+    "Level_reset": "Level改变后旧response不直接迁移为新Level效果证据"
+  },
+  "compression_epochs": [
+    {
+      "epoch": 1,
+      "llm_log_line": 159,
+      "timestamp": "2026-10-04T16:42:08.362010+08:00",
+      "response_id": "5bf78dca-7e38-485a-ac0f-bb7f0412055f",
+      "request_message_count": 302,
+      "request_system_chars": 26083,
+      "request_system_sha256": "6a6f60df2a3a5b585078d85a86178f1bb0ed94788f674e83d29495c050fac188",
+      "manifest_in_system": true,
+      "manifest_rendering": "Literal U+2192 arrows absent in both logged system renderings; source/install bytes unchanged",
+      "loaded_skill_bodies": {
+        "rolling-planning": [
+          {
+            "message_index": 4,
+            "content_chars": 6293,
+            "rendered_content_chars": 7014,
+            "rendered_newlines": 102,
+            "literal_escaped_newlines": 0,
+            "rendering": "NUMBERED_READ_FILE_PLAINTEXT",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ],
+        "risk-review": [
+          {
+            "message_index": 5,
+            "content_chars": 2580,
+            "rendered_content_chars": 2902,
+            "rendered_newlines": 45,
+            "literal_escaped_newlines": 0,
+            "rendering": "NUMBERED_READ_FILE_PLAINTEXT",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ],
+        "structured-state-board": [
+          {
+            "message_index": 6,
+            "content_chars": 1878,
+            "rendered_content_chars": 2214,
+            "rendered_newlines": 47,
+            "literal_escaped_newlines": 0,
+            "rendering": "NUMBERED_READ_FILE_PLAINTEXT",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ]
+      },
+      "user_memory_blocks": [],
+      "run": "Run01",
+      "month_at_epoch": 18,
+      "last_observed_public_in_captured_input": {
+        "time": {
+          "current_month": 18,
+          "current_quarter": 6,
+          "current_year": 2
+        },
+        "status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 16,
+          "wealth": 8,
+          "energy": 3
+        }
+      },
+      "last_action_line_in_captured_input": 601,
+      "last_tool_call_line_in_captured_input": 601,
+      "latest_observe_by_receipt_time": {
+        "month": 18,
+        "line": 607,
+        "status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 42,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 16,
+          "wealth": 8,
+          "energy": 1
+        }
+      },
+      "summary_chars": 11062,
+      "summary_sha256": "6e3012dcdadf448033a362c7d6151882e67ef7b84efb970bfb67e8815a3b9472",
+      "policy_summary_retention": {
+        "breadth": "PARTIAL",
+        "Network": "PARTIAL",
+        "efficiency": "PARTIAL_REPORT_OVER_INTENSIVE_HEURISTIC",
+        "flat": "ABSENT_AS_RULE",
+        "rerank": "PARTIAL_OBSERVE_PLUS_CONTINUE_PLAN",
+        "survival": "PRESENT",
+        "Level_reset": "ABSENT_AS_RULE"
+      },
+      "policy_classification": "POLICY_PARTIALLY_LOST",
+      "first_post_compression_model_input": "UNKNOWN_STREAMING_MESSAGES_NOT_RETAINED",
+      "first_tool_by_receipt_time": {
+        "line": 613,
+        "name": "mcp_career-emulator_observe",
+        "timestamp": "2026-10-04T08:42:10.154146+00:00"
+      },
+      "first_action_by_receipt_time": {
+        "line": 617,
+        "name": "mcp_career-emulator_take_action",
+        "timestamp": "2026-10-04T08:42:12.002387+00:00"
+      },
+      "fresh_observe_before_action_by_receipt_time": true,
+      "all_three_skills_reread": false,
+      "Skill_reread_calls": [],
+      "first_subsequent_Energy_by_receipt_time": {
+        "month": 21,
+        "action_line": 697,
+        "selected": "处理历史埋雷"
+      },
+      "first_tool_after_captured_input": {
+        "line": 605,
+        "name": "mcp_career-emulator_observe"
+      },
+      "first_subsequent_Energy_by_input_coverage": {
+        "month": 18,
+        "action_line": 609,
+        "selected": "准备汇报材料"
+      },
+      "epoch_boundary": "Captured context prefix vs compressor receipt time; actual first post-compression streaming prompt/delivery boundary UNKNOWN",
+      "state_snapshot_distortions": [
+        "Action count estimates inaccurate; public clock/evaluation order not guaranteed; snapshot prescribes continuation bundle; no demonstrated new numeric policy formula"
+      ]
+    },
+    {
+      "epoch": 2,
+      "llm_log_line": 410,
+      "timestamp": "2026-10-04T16:52:12.779463+08:00",
+      "response_id": "ec6ba384-42a9-4be7-b2c3-3961bc8583c6",
+      "request_message_count": 497,
+      "request_system_chars": 26083,
+      "request_system_sha256": "6a6f60df2a3a5b585078d85a86178f1bb0ed94788f674e83d29495c050fac188",
+      "manifest_in_system": true,
+      "manifest_rendering": "Literal U+2192 arrows absent in both logged system renderings; source/install bytes unchanged",
+      "loaded_skill_bodies": {
+        "rolling-planning": [],
+        "risk-review": [],
+        "structured-state-board": []
+      },
+      "user_memory_blocks": [
+        {
+          "message_index": 2,
+          "chars": 10726,
+          "has_state_snapshot": true
+        }
+      ],
+      "run": "Run01",
+      "month_at_epoch": 47,
+      "last_observed_public_in_captured_input": {
+        "time": {
+          "current_month": 47,
+          "current_quarter": 16,
+          "current_year": 4
+        },
+        "status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 110,
+          "network": 54,
+          "level": "L5",
+          "duration_in_level": 6,
+          "output": 33,
+          "wealth": 37,
+          "energy": 0
+        }
+      },
+      "last_action_line_in_captured_input": 1585,
+      "last_tool_call_line_in_captured_input": 1585,
+      "latest_observe_by_receipt_time": {
+        "month": 48,
+        "line": 1591,
+        "status": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 111,
+          "network": 54,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 33,
+          "wealth": 38,
+          "energy": 0
+        }
+      },
+      "summary_chars": 7015,
+      "summary_sha256": "1d930ed22241c0ad152017b84ae3f9b885ce111ddc7846546fb4de5184854fe4",
+      "policy_summary_retention": {
+        "breadth": "PARTIAL",
+        "Network": "PRESENT",
+        "efficiency": "PARTIAL_REPORT_OVER_INTENSIVE_HEURISTIC",
+        "flat": "ABSENT_AS_RULE",
+        "rerank": "PARTIAL_OBSERVE_PLUS_BUNDLES",
+        "survival": "PRESENT",
+        "Level_reset": "ABSENT_AS_RULE"
+      },
+      "policy_classification": "POLICY_PARTIALLY_LOST",
+      "first_post_compression_model_input": "UNKNOWN_STREAMING_MESSAGES_NOT_RETAINED",
+      "first_tool_by_receipt_time": {
+        "line": 1597,
+        "name": "mcp_career-emulator_observe",
+        "timestamp": "2026-10-04T08:52:14.211539+00:00"
+      },
+      "first_action_by_receipt_time": {
+        "line": 1601,
+        "name": "mcp_career-emulator_take_action",
+        "timestamp": "2026-10-04T08:52:16.182847+00:00"
+      },
+      "fresh_observe_before_action_by_receipt_time": true,
+      "all_three_skills_reread": false,
+      "Skill_reread_calls": [],
+      "first_subsequent_Energy_by_receipt_time": {
+        "month": 48,
+        "action_line": 1617,
+        "selected": "处理历史埋雷"
+      },
+      "first_tool_after_captured_input": {
+        "line": 1589,
+        "name": "mcp_career-emulator_observe"
+      },
+      "first_subsequent_Energy_by_input_coverage": {
+        "month": 48,
+        "action_line": 1617,
+        "selected": "处理历史埋雷"
+      },
+      "epoch_boundary": "Captured context prefix vs compressor receipt time; actual first post-compression streaming prompt/delivery boundary UNKNOWN",
+      "state_snapshot_distortions": [
+        "Action count estimates inaccurate; public clock/evaluation order not guaranteed; snapshot prescribes continuation bundle; no demonstrated new numeric policy formula"
+      ]
+    },
+    {
+      "epoch": 1,
+      "llm_log_line": 147,
+      "timestamp": "2026-10-04T19:29:28.054192+08:00",
+      "response_id": "a904dade-d3bf-4749-9e89-ee43109c48d1",
+      "request_message_count": 278,
+      "request_system_chars": 26083,
+      "request_system_sha256": "a8f7c633aa7cb72f7266097b85af61f47052ae6dbafd56ea2cecca5c23873103",
+      "manifest_in_system": true,
+      "manifest_rendering": "Literal U+2192 arrows absent in both logged system renderings; source/install bytes unchanged",
+      "loaded_skill_bodies": {
+        "rolling-planning": [
+          {
+            "message_index": 5,
+            "content_chars": 6294,
+            "rendered_content_chars": 6729,
+            "rendered_newlines": 0,
+            "literal_escaped_newlines": 104,
+            "rendering": "SKILL_TOOL_PYTHON_REPR_ESCAPED_NEWLINES",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ],
+        "risk-review": [
+          {
+            "message_index": 4,
+            "content_chars": 2581,
+            "rendered_content_chars": 2949,
+            "rendered_newlines": 0,
+            "literal_escaped_newlines": 47,
+            "rendering": "SKILL_TOOL_PYTHON_REPR_ESCAPED_NEWLINES",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ],
+        "structured-state-board": [
+          {
+            "message_index": 6,
+            "content_chars": 1879,
+            "rendered_content_chars": 2271,
+            "rendered_newlines": 0,
+            "literal_escaped_newlines": 49,
+            "rendering": "SKILL_TOOL_PYTHON_REPR_ESCAPED_NEWLINES",
+            "full_source_equivalent_without_arrow": true,
+            "body_present": true
+          }
+        ]
+      },
+      "user_memory_blocks": [],
+      "run": "Run02",
+      "month_at_epoch": 17,
+      "last_observed_public_in_captured_input": {
+        "time": {
+          "current_month": 17,
+          "current_quarter": 6,
+          "current_year": 2
+        },
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 34,
+          "network": 17,
+          "level": "L3",
+          "duration_in_level": 6,
+          "output": 15,
+          "wealth": 5,
+          "energy": 0
+        }
+      },
+      "last_action_line_in_captured_input": 549,
+      "last_tool_call_line_in_captured_input": 553,
+      "latest_observe_by_receipt_time": {
+        "month": 17,
+        "line": 563,
+        "status": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 35,
+          "network": 17,
+          "level": "L3",
+          "duration_in_level": 6,
+          "output": 15,
+          "wealth": 5,
+          "energy": 0
+        }
+      },
+      "summary_chars": 10066,
+      "summary_sha256": "f996b063d5aa95d86cdcaf7fdbf006b266d42f4bdc3b6432d372e2a66bf38ac0",
+      "policy_summary_retention": {
+        "breadth": "PARTIAL",
+        "Network": "PRESENT",
+        "efficiency": "ABSENT_AS_RULE",
+        "flat": "PARTIAL_RESPONSE_ZERO_BUT_POSSIBLE_CAP",
+        "rerank": "PARTIAL_OBSERVE_WITHOUT_RERANK",
+        "survival": "PRESENT",
+        "Level_reset": "ABSENT_AS_RULE"
+      },
+      "policy_classification": "POLICY_PARTIALLY_LOST",
+      "first_post_compression_model_input": "UNKNOWN_STREAMING_MESSAGES_NOT_RETAINED",
+      "first_tool_by_receipt_time": {
+        "line": 565,
+        "name": "mcp_career-emulator_take_action",
+        "timestamp": "2026-10-04T11:29:36.584201+00:00"
+      },
+      "first_action_by_receipt_time": {
+        "line": 565,
+        "name": "mcp_career-emulator_take_action",
+        "timestamp": "2026-10-04T11:29:36.584201+00:00"
+      },
+      "fresh_observe_before_action_by_receipt_time": false,
+      "all_three_skills_reread": false,
+      "Skill_reread_calls": [],
+      "first_subsequent_Energy_by_receipt_time": {
+        "month": 18,
+        "action_line": 597,
+        "selected": "准备汇报材料"
+      },
+      "first_tool_after_captured_input": {
+        "line": 557,
+        "name": "mcp_career-emulator_take_action"
+      },
+      "first_subsequent_Energy_by_input_coverage": {
+        "month": 18,
+        "action_line": 597,
+        "selected": "准备汇报材料"
+      },
+      "epoch_boundary": "Captured context prefix vs compressor receipt time; actual first post-compression streaming prompt/delivery boundary UNKNOWN",
+      "state_snapshot_distortions": [
+        "Skill34 and named event agree with captured input, while later public receipt-time state isSkill35/current follow-up; lagged coverage is not fabrication. Summary directly prescribes take_action and omits recovery contract; not proof Energy drift caused by this difference"
+      ]
+    },
+    {
+      "epoch": 2,
+      "llm_log_line": 297,
+      "timestamp": "2026-10-04T19:39:12.915608+08:00",
+      "response_id": "58ab8497-a968-4127-a59f-5a2af7ce71fa",
+      "request_message_count": 294,
+      "request_system_chars": 26083,
+      "request_system_sha256": "a8f7c633aa7cb72f7266097b85af61f47052ae6dbafd56ea2cecca5c23873103",
+      "manifest_in_system": true,
+      "manifest_rendering": "Literal U+2192 arrows absent in both logged system renderings; source/install bytes unchanged",
+      "loaded_skill_bodies": {
+        "rolling-planning": [],
+        "risk-review": [],
+        "structured-state-board": []
+      },
+      "user_memory_blocks": [
+        {
+          "message_index": 2,
+          "chars": 9832,
+          "has_state_snapshot": true
+        }
+      ],
+      "run": "Run02",
+      "month_at_epoch": 34,
+      "last_observed_public_in_captured_input": {
+        "time": {
+          "current_month": 34,
+          "current_quarter": 12,
+          "current_year": 3
+        },
+        "status": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 90,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 17,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        }
+      },
+      "last_action_line_in_captured_input": 1133,
+      "last_tool_call_line_in_captured_input": 1133,
+      "latest_observe_by_receipt_time": {
+        "month": 35,
+        "line": 1139,
+        "status": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 91,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 18,
+          "output": 26,
+          "wealth": 18,
+          "energy": 0
+        }
+      },
+      "summary_chars": 6741,
+      "summary_sha256": "e58f2e08a2f3110e451979772b2b32ad070a8f9753bf2c6d0b57e32bd9dbcdb2",
+      "policy_summary_retention": {
+        "breadth": "PARTIAL",
+        "Network": "PRESENT",
+        "efficiency": "ABSENT_AS_RULE",
+        "flat": "ABSENT_AS_RULE",
+        "rerank": "PARTIAL_OBSERVE_WITHOUT_RERANK",
+        "survival": "PRESENT",
+        "Level_reset": "ABSENT_AS_RULE"
+      },
+      "policy_classification": "POLICY_PARTIALLY_LOST",
+      "first_post_compression_model_input": "UNKNOWN_STREAMING_MESSAGES_NOT_RETAINED",
+      "first_tool_by_receipt_time": {
+        "line": 1145,
+        "name": "mcp_career-emulator_observe",
+        "timestamp": "2026-10-04T11:39:14.692642+00:00"
+      },
+      "first_action_by_receipt_time": {
+        "line": 1149,
+        "name": "mcp_career-emulator_take_action",
+        "timestamp": "2026-10-04T11:39:19.488137+00:00"
+      },
+      "fresh_observe_before_action_by_receipt_time": true,
+      "all_three_skills_reread": false,
+      "Skill_reread_calls": [],
+      "first_subsequent_Energy_by_receipt_time": {
+        "month": 36,
+        "action_line": 1189,
+        "selected": "健康恢复"
+      },
+      "first_tool_after_captured_input": {
+        "line": 1137,
+        "name": "mcp_career-emulator_observe"
+      },
+      "first_subsequent_Energy_by_input_coverage": {
+        "month": 36,
+        "action_line": 1189,
+        "selected": "健康恢复"
+      },
+      "epoch_boundary": "Captured context prefix vs compressor receipt time; actual first post-compression streaming prompt/delivery boundary UNKNOWN",
+      "state_snapshot_distortions": [
+        "M30 Main described as low-profile avoidance but raw Main1013 selected key project; categorical intensive+2 listed as observed despite M33 clean flat; Health numeric buffer prescription is generated heuristic, not frozen policy; Year3/Q12 at M34 agrees with latest public clock"
+      ]
+    }
+  ],
+  "compression_Energy_counts": {
+    "Run01": {
+      "pre_first_compression": {
+        "Network": 2,
+        "report": 6,
+        "Health": 2,
+        "cleanup": 4
+      },
+      "post_first_compression": {
+        "cleanup": 3,
+        "report": 13,
+        "Network": 3,
+        "Health": 8
+      },
+      "between_epochs": {
+        "cleanup": 2,
+        "report": 12,
+        "Network": 3,
+        "Health": 8
+      },
+      "post_second_compression": {
+        "cleanup": 1,
+        "report": 1
+      },
+      "captured_input_pre_first": {
+        "Network": 2,
+        "report": 5,
+        "Health": 2,
+        "cleanup": 4
+      },
+      "captured_input_post_first": {
+        "report": 14,
+        "cleanup": 3,
+        "Network": 3,
+        "Health": 8
+      },
+      "count_boundary": "Default pre/post by receipt timestamp; input-prefix segmentation also disclosed. Neither is a proved summary-delivery boundary.",
+      "skill_rereads_after_startup": 0,
+      "ordinary_stream_requests_without_full_messages": 408
+    },
+    "Run02": {
+      "pre_first_compression": {
+        "intensive": 2,
+        "Network": 3,
+        "Health": 1,
+        "cleanup": 2,
+        "report": 3
+      },
+      "post_first_compression": {
+        "report": 7,
+        "Health": 9,
+        "Network": 3,
+        "intensive": 5,
+        "cleanup": 2
+      },
+      "between_epochs": {
+        "report": 4,
+        "Health": 4,
+        "Network": 2,
+        "intensive": 3,
+        "cleanup": 1
+      },
+      "post_second_compression": {
+        "Health": 5,
+        "report": 3,
+        "Network": 1,
+        "intensive": 2,
+        "cleanup": 1
+      },
+      "captured_input_pre_first": {
+        "intensive": 2,
+        "Network": 3,
+        "Health": 1,
+        "cleanup": 2,
+        "report": 3
+      },
+      "captured_input_post_first": {
+        "report": 7,
+        "Health": 9,
+        "Network": 3,
+        "intensive": 5,
+        "cleanup": 2
+      },
+      "count_boundary": "Default pre/post by receipt timestamp; input-prefix segmentation also disclosed. Neither is a proved summary-delivery boundary.",
+      "skill_rereads_after_startup": 0,
+      "ordinary_stream_requests_without_full_messages": 402
+    }
+  },
+  "Run02_intensive_cases": [
+    {
+      "month": 3,
+      "action_line": 105,
+      "public_state": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": -1,
+        "wealth": 1,
+        "energy": 3
+      },
+      "fresh_observe_line": 103,
+      "post_observe_line": 111,
+      "formal_public_feedback": "",
+      "recent_clean_response": {},
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "PRESENT_IN_FIRST_CAPTURED_INPUT_NO_INTERVENING_COMPRESSOR",
+      "compressed_layer": "NONE_BEFORE_FIRST_EPOCH",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 51,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "transcript_lines": "T374-525",
+      "deliberation_summary": "Negative Output urgency is treated as enough to pay extra resource cost; report UNKNOWN and no specifically intensity-dependent deliverable. Body retained before first epoch, first decision request not logged.",
+      "root_cause_primary": "B",
+      "root_cause_secondary": "D",
+      "confidence": "PARTIAL",
+      "prior_S10_14_label": "UNJUSTIFIED_INTENSITY",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": false,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 3,
+        "observe_line": 79,
+        "text": "本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+      }
+    },
+    {
+      "month": 15,
+      "action_line": 501,
+      "public_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "fresh_observe_line": 499,
+      "post_observe_line": 507,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.2\n\n本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L2 晋升至 L3（高级工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 3,
+          "line": 105,
+          "Level": "L1",
+          "delta": 2,
+          "comparable_Level": false,
+          "label": "GAIN"
+        },
+        "Network": {
+          "month": 12,
+          "line": 401,
+          "Level": "L3",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 9,
+          "line": 305,
+          "Level": "L2",
+          "delta": 0,
+          "comparable_Level": false,
+          "label": "FLAT"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "PRESENT_IN_FIRST_CAPTURED_INPUT_NO_INTERVENING_COMPRESSOR",
+      "compressed_layer": "NONE_BEFORE_FIRST_EPOCH",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 249,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "transcript_lines": "T3216-3290",
+      "deliberation_summary": "M9 report flat at L2 is used to discount report at L3 after M12 promotion; flat clause quoted but Level reset omitted from application.",
+      "root_cause_primary": "E",
+      "root_cause_secondary": "B",
+      "confidence": "STRONG_FOR_STALE_RESPONSE",
+      "prior_S10_14_label": "UNKNOWN",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 15,
+        "observe_line": 471,
+        "text": "本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+      }
+    },
+    {
+      "month": 21,
+      "action_line": 701,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 48,
+        "network": 16,
+        "level": "L4",
+        "duration_in_level": 4,
+        "output": 13,
+        "wealth": 8,
+        "energy": 3
+      },
+      "fresh_observe_line": 699,
+      "post_observe_line": 707,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n晋升通知：半年组织评审通过，您已从 L3 晋升至 L4（资深工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 15,
+          "line": 501,
+          "Level": "L3",
+          "delta": 2,
+          "comparable_Level": false,
+          "label": "GAIN"
+        },
+        "Network": {
+          "month": 18,
+          "line": 613,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 18,
+          "line": 597,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "ABSENT_IN_SECOND_CAPTURED_INPUT; immediate/late decision prompt UNKNOWN",
+      "compressed_layer": "PARTIAL_SUMMARY; detailed efficiency absent",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 75,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "transcript_lines": "T4400-4520",
+      "deliberation_summary": "Full Skill body absent in next captured compressor input; retained summary lacks efficiency, contains positive intensive prior. Reasoning promotes persistent AVAILABLE/Soft Cost clause into Output-max mandate.",
+      "root_cause_primary": "A",
+      "root_cause_secondary": "B",
+      "confidence": "PARTIAL_CONTEXT_LOSS_NOT_CAUSAL_PROOF",
+      "prior_S10_14_label": "UNJUSTIFIED_INTENSITY",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 21,
+        "observe_line": 675,
+        "text": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。"
+      }
+    },
+    {
+      "month": 27,
+      "action_line": 901,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 63,
+        "network": 28,
+        "level": "L4",
+        "duration_in_level": 10,
+        "output": 24,
+        "wealth": 12,
+        "energy": 3
+      },
+      "fresh_observe_line": 899,
+      "post_observe_line": 907,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 21,
+          "line": 701,
+          "Level": "L4",
+          "delta": 2,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "Network": {
+          "month": 24,
+          "line": 813,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 24,
+          "line": 805,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "ABSENT_IN_SECOND_CAPTURED_INPUT; immediate/late decision prompt UNKNOWN",
+      "compressed_layer": "PARTIAL_SUMMARY; detailed efficiency absent",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 175,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "transcript_lines": "T5770-5860",
+      "deliberation_summary": "Same partial summary context; bundle intensive+report chosen largely for Output+3. Soft Cost permission is not proof of better resource efficiency.",
+      "root_cause_primary": "A",
+      "root_cause_secondary": "C",
+      "confidence": "PARTIAL_CONTEXT_LOSS_NOT_CAUSAL_PROOF",
+      "prior_S10_14_label": "UNJUSTIFIED_INTENSITY",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 27,
+        "observe_line": 875,
+        "text": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。"
+      }
+    },
+    {
+      "month": 33,
+      "action_line": 1093,
+      "public_state": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 88,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 16,
+        "output": 26,
+        "wealth": 17,
+        "energy": 3
+      },
+      "fresh_observe_line": 1091,
+      "post_observe_line": 1099,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR神情复杂地说，你自求多福吧...",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 27,
+          "line": 901,
+          "Level": "L4",
+          "delta": 2,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "Network": {
+          "month": 24,
+          "line": 813,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 27,
+          "line": 909,
+          "Level": "L4",
+          "delta": 0,
+          "comparable_Level": true,
+          "label": "FLAT"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "ABSENT_IN_SECOND_CAPTURED_INPUT; immediate/late decision prompt UNKNOWN",
+      "compressed_layer": "PARTIAL_SUMMARY; detailed efficiency absent",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 271,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "transcript_lines": "T6680-6760",
+      "deliberation_summary": "M27 report just had clean flat at same L4; Risk AVAILABLE, Health buffer public. Different Output route is permitted by v6d. It subsequently also flats; not a permanent-cap proof.",
+      "root_cause_primary": "F",
+      "root_cause_secondary": "C",
+      "confidence": "SUPPORTED_EXCEPTION_WITH_LIMITS",
+      "prior_S10_14_label": "UNKNOWN",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 33,
+        "observe_line": 1067,
+        "text": "本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+      }
+    },
+    {
+      "month": 39,
+      "action_line": 1293,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 28,
+        "wealth": 24,
+        "energy": 3
+      },
+      "fresh_observe_line": 1291,
+      "post_observe_line": 1299,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 合上笔记本，语气明显缓和：「这半年你扛的事我都记着——关键节点没掉链子，跨组协调也有你的份。上面问部门骨干名单时，我第一个想到你。接下来继续保持节奏，有想法直接来找我，资源上我会帮你争取。」\n\n半年绩效奖金（A）：+1.0499999999999998\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L4 晋升至 L5（技术专家 / 小组负责人）。",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 33,
+          "line": 1093,
+          "Level": "L4",
+          "delta": 0,
+          "comparable_Level": false,
+          "label": "FLAT"
+        },
+        "Network": {
+          "month": 36,
+          "line": 1205,
+          "Level": "L5",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 36,
+          "line": 1197,
+          "Level": "L5",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "ABSENT_IN_SECOND_CAPTURED_INPUT; immediate/late decision prompt UNKNOWN",
+      "compressed_layer": "PARTIAL_SUMMARY; detailed efficiency absent",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "transcript_lines": "T7790-8025",
+      "deliberation_summary": "Latest captured second summary omits efficiency; fresh L5 report response M36 GAIN. Final intensity mainly justified by Output pressure; later choice truly reranks to Health. Late action request not retained.",
+      "root_cause_primary": "A",
+      "root_cause_secondary": "B",
+      "confidence": "PARTIAL_LATE_REQUEST_UNKNOWN",
+      "prior_S10_14_label": "UNJUSTIFIED_INTENSITY",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 39,
+        "observe_line": 1267,
+        "text": "本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+      }
+    },
+    {
+      "month": 48,
+      "action_line": 1593,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 127,
+        "network": 53,
+        "level": "L5",
+        "duration_in_level": 13,
+        "output": 38,
+        "wealth": 31,
+        "energy": 3
+      },
+      "fresh_observe_line": 1591,
+      "post_observe_line": 1599,
+      "formal_public_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "recent_clean_response": {
+        "intensive": {
+          "month": 39,
+          "line": 1293,
+          "Level": "L5",
+          "delta": 2,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "Network": {
+          "month": 36,
+          "line": 1205,
+          "Level": "L5",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        },
+        "report": {
+          "month": 45,
+          "line": 1501,
+          "Level": "L5",
+          "delta": 0,
+          "comparable_Level": true,
+          "label": "FLAT"
+        }
+      },
+      "legal_alternatives": [
+        {
+          "action": "高强度工作",
+          "energy_cost": 2
+        },
+        {
+          "action": "技能学习",
+          "energy_cost": 2
+        },
+        {
+          "action": "人脉维护",
+          "energy_cost": 1
+        },
+        {
+          "action": "处理历史埋雷",
+          "energy_cost": 2
+        },
+        {
+          "action": "心理修复",
+          "energy_cost": 1
+        },
+        {
+          "action": "健康恢复",
+          "energy_cost": 1
+        },
+        {
+          "action": "准备汇报材料",
+          "energy_cost": 1
+        },
+        {
+          "action": "保留体力（不行动）",
+          "energy_cost": 0
+        }
+      ],
+      "applicable_rules": [
+        "breadth",
+        "Network",
+        "efficiency",
+        "flat",
+        "rerank",
+        "survival",
+        "Level_reset"
+      ],
+      "persistent_layer": "PRESENT_AT_CAPTURED_EPOCHS; specific_action_request_UNKNOWN",
+      "loaded_layer": "ABSENT_IN_SECOND_CAPTURED_INPUT; immediate/late decision prompt UNKNOWN",
+      "compressed_layer": "PARTIAL_SUMMARY; detailed efficiency absent",
+      "rule_presence_boundary": "Source availability not used as actual prompt proof; retained-history and explicit self-quotation support only stated inferential strength",
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "transcript_lines": "T9890-10063",
+      "deliberation_summary": "M45 report fresh comparable flat at L5, Health9/positive HR/AVAILABLE supports testing different Output path. After intensive also flat, Health chosen. Review already completed; future-promotion justification has no remaining review leverage.",
+      "root_cause_primary": "F",
+      "root_cause_secondary": "D",
+      "confidence": "SUPPORTED_EXCEPTION_WITH_LIMITS",
+      "prior_S10_14_label": "UNKNOWN",
+      "refinement": "M33/M48 now VALID_EXCEPTION from same-Level fresh report flats; this is additional offline evidence, not changed Candidate",
+      "formal_feedback_available": true,
+      "current_Risk_Budget": "AVAILABLE_AS_STATED_BY_CANDIDATE_NOT_INDEPENDENT_SAFETY_PROOF",
+      "latest_HR_public": {
+        "month": 48,
+        "observe_line": 1567,
+        "text": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「你这半年不好不坏。」Leader 转着笔，「组里竞争你也看得见——有人冲得猛，有人稳。你现在还在观察名单里，下阶段拿出更清晰的成果，我才能在评审会上替你说话。」\n\n半年绩效奖金（B）：+0.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～"
+      }
+    }
+  ],
+  "Run01_control_cases": [
+    {
+      "month": 3,
+      "action_line": 105,
+      "public_state": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": 1,
+        "energy": 3
+      },
+      "selected": "人脉维护",
+      "recent_clean_response": {},
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 51,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Explicitly quotes lower-cost report clause; Health4 versus Run02Health7, so different resources and urgency",
+      "active_prompt": "specific streaming request UNKNOWN; compressor retained message evidence available",
+      "relevant_rule_presence": "Source-equivalent startup body in epoch1 for M3/M9/M15; body absent after epoch1 for M42, heuristic preserved"
+    },
+    {
+      "month": 9,
+      "action_line": 305,
+      "public_state": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 3
+      },
+      "selected": "准备汇报材料",
+      "recent_clean_response": {
+        "Network": {
+          "month": 3,
+          "line": 105,
+          "Level": "L1",
+          "delta": 0,
+          "comparable_Level": false,
+          "label": "FLAT"
+        },
+        "report": {
+          "month": 6,
+          "line": 217,
+          "Level": "L2",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        }
+      },
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 151,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Output pressure and intensive considered; persistent HR mild warning drives cautious/TIGHT interpretation; ends report",
+      "active_prompt": "specific streaming request UNKNOWN; compressor retained message evidence available",
+      "relevant_rule_presence": "Source-equivalent startup body in epoch1 for M3/M9/M15; body absent after epoch1 for M42, heuristic preserved"
+    },
+    {
+      "month": 15,
+      "action_line": 505,
+      "public_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 35,
+        "network": 10,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 11,
+        "wealth": 6,
+        "energy": 3
+      },
+      "selected": "处理历史埋雷",
+      "recent_clean_response": {
+        "Network": {
+          "month": 9,
+          "line": 313,
+          "Level": "L2",
+          "delta": 0,
+          "comparable_Level": false,
+          "label": "FLAT"
+        },
+        "report": {
+          "month": 12,
+          "line": 417,
+          "Level": "L3",
+          "delta": 1,
+          "comparable_Level": true,
+          "label": "GAIN"
+        }
+      },
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 251,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Fresh accumulated warning; cleanup+report chosen, not report/efficiency alone",
+      "active_prompt": "specific streaming request UNKNOWN; compressor retained message evidence available",
+      "relevant_rule_presence": "Source-equivalent startup body in epoch1 for M3/M9/M15; body absent after epoch1 for M42, heuristic preserved"
+    },
+    {
+      "month": 42,
+      "action_line": 1409,
+      "public_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 98,
+        "network": 36,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 27,
+        "wealth": 32,
+        "energy": 3
+      },
+      "selected": "准备汇报材料",
+      "recent_clean_response": {
+        "Network": {
+          "month": 36,
+          "line": 1217,
+          "Level": "L4",
+          "delta": 0,
+          "comparable_Level": false,
+          "label": "FLAT"
+        },
+        "report": {
+          "month": 39,
+          "line": 1321,
+          "Level": "L4",
+          "delta": 1,
+          "comparable_Level": false,
+          "label": "GAIN"
+        }
+      },
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 406,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "L5, fresh result/relationship feedback, report+report+Network; summary report-over-intensive heuristic retained",
+      "active_prompt": "specific streaming request UNKNOWN; compressor retained message evidence available",
+      "relevant_rule_presence": "Source-equivalent startup body in epoch1 for M3/M9/M15; body absent after epoch1 for M42, heuristic preserved"
+    }
+  ],
+  "bounded_pairs": [
+    {
+      "Run01_month": 3,
+      "Run02_month": 3,
+      "comparability": "MEDIUM_COMPARABILITY",
+      "Run01_state": {
+        "health": 4,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": 1,
+        "energy": 3
+      },
+      "Run02_state": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": -1,
+        "wealth": 1,
+        "energy": 3
+      },
+      "reason": "Same L1/menu/Network3, but Health4vs7 and Output2vs-1 alters urgency; not matched input"
+    },
+    {
+      "Run01_month": 9,
+      "Run02_month": 15,
+      "comparability": "LOW_COMPARABILITY",
+      "Run01_state": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 3,
+        "energy": 3
+      },
+      "Run02_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "reason": "L2vsL3, differing HR/public report history; contrasts reasoning not outcomes"
+    },
+    {
+      "Run01_month": 15,
+      "Run02_month": 15,
+      "comparability": "MEDIUM_COMPARABILITY",
+      "Run01_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 35,
+        "network": 10,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 11,
+        "wealth": 6,
+        "energy": 3
+      },
+      "Run02_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 29,
+        "network": 12,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 7,
+        "wealth": 4,
+        "energy": 3
+      },
+      "reason": "Both L3, close S/N/O and Health9vs10; HR warning vspositive changes Risk interpretation"
+    },
+    {
+      "Run01_month": 42,
+      "Run02_month": 39,
+      "comparability": "MEDIUM_COMPARABILITY",
+      "Run01_state": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 98,
+        "network": 36,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 27,
+        "wealth": 32,
+        "energy": 3
+      },
+      "Run02_state": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 106,
+        "network": 38,
+        "level": "L5",
+        "duration_in_level": 4,
+        "output": 28,
+        "wealth": 24,
+        "energy": 3
+      },
+      "reason": "Both L5, comparable Skill/Network/Output and H10vs9; different tenure, formal feedback and fresh response"
+    }
+  ],
+  "root_cause_distribution": {
+    "B": 1,
+    "E": 1,
+    "A": 3,
+    "F": 2
+  },
+  "reranking": {
+    "Run01": {
+      "full_bundle_quarters": 16,
+      "followup_count": 25,
+      "counts": {
+        "TRUE_RERANK": 0,
+        "PLAN_CONTINUE": 18,
+        "MIXED": 7,
+        "UNKNOWN": 0
+      },
+      "followups": [
+        {
+          "month": 3,
+          "action_line": 113,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 55,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 3,
+          "action_line": 121,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 59,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 6,
+          "action_line": 217,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 107,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 9,
+          "action_line": 313,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 155,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 9,
+          "action_line": 321,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 159,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 12,
+          "action_line": 417,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 207,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 15,
+          "action_line": 513,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 159,
+            "message_index": 255,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 18,
+          "action_line": 609,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 6,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 21,
+          "action_line": 705,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 54,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 24,
+          "action_line": 801,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 102,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 27,
+          "action_line": 897,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 150,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 27,
+          "action_line": 905,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 154,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 30,
+          "action_line": 1001,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 202,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 30,
+          "action_line": 1009,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 206,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 33,
+          "action_line": 1105,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 254,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 33,
+          "action_line": 1113,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 258,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 36,
+          "action_line": 1209,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 306,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 36,
+          "action_line": 1217,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 310,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 39,
+          "action_line": 1313,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 358,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 39,
+          "action_line": 1321,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 362,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 42,
+          "action_line": 1417,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 410,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 42,
+          "action_line": 1425,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 414,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 45,
+          "action_line": 1521,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 462,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 45,
+          "action_line": 1529,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 410,
+            "message_index": 466,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 48,
+          "action_line": 1625,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        }
+      ]
+    },
+    "Run02": {
+      "full_bundle_quarters": 16,
+      "followup_count": 21,
+      "counts": {
+        "TRUE_RERANK": 3,
+        "PLAN_CONTINUE": 15,
+        "MIXED": 3,
+        "UNKNOWN": 0
+      },
+      "followups": [
+        {
+          "month": 3,
+          "action_line": 113,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 55,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 6,
+          "action_line": 209,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 103,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 9,
+          "action_line": 305,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 151,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 9,
+          "action_line": 313,
+          "classification": "TRUE_RERANK",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 155,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Explicit fresh-result option comparison or changed ranking"
+        },
+        {
+          "month": 12,
+          "action_line": 409,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 203,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 15,
+          "action_line": 509,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 147,
+            "message_index": 253,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 18,
+          "action_line": 605,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 27,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 18,
+          "action_line": 613,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 31,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 21,
+          "action_line": 709,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 79,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 24,
+          "action_line": 805,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 127,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 24,
+          "action_line": 813,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 131,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 27,
+          "action_line": 909,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 179,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 30,
+          "action_line": 1005,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 227,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 33,
+          "action_line": 1101,
+          "classification": "MIXED",
+          "trace": {
+            "llm_log_line": 297,
+            "message_index": 275,
+            "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+          },
+          "evidence": "Fresh result participates but original candidate remains"
+        },
+        {
+          "month": 36,
+          "action_line": 1197,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 36,
+          "action_line": 1205,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 39,
+          "action_line": 1301,
+          "classification": "TRUE_RERANK",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Explicit fresh-result option comparison or changed ranking"
+        },
+        {
+          "month": 42,
+          "action_line": 1397,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 45,
+          "action_line": 1493,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 45,
+          "action_line": 1501,
+          "classification": "PLAN_CONTINUE",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Next planned item, no demonstrated fresh option reranking"
+        },
+        {
+          "month": 48,
+          "action_line": 1601,
+          "classification": "TRUE_RERANK",
+          "trace": {
+            "source": "Held transcript only; ordinary actual request UNKNOWN"
+          },
+          "evidence": "Explicit fresh-result option comparison or changed ranking"
+        }
+      ]
+    }
+  },
+  "quarter_bundle_witnesses": [
+    {
+      "run": "Run01",
+      "month": 3,
+      "first_action_line": 105,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 51,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 6,
+      "first_action_line": 209,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 103,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 9,
+      "first_action_line": 305,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 151,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 12,
+      "first_action_line": 409,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 203,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 15,
+      "first_action_line": 505,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 251,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 18,
+      "first_action_line": 601,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 299,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 21,
+      "first_action_line": 697,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 50,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 24,
+      "first_action_line": 793,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 98,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 27,
+      "first_action_line": 889,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 146,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 30,
+      "first_action_line": 993,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 198,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 33,
+      "first_action_line": 1097,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 250,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 36,
+      "first_action_line": 1201,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 302,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 39,
+      "first_action_line": 1305,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 354,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 42,
+      "first_action_line": 1409,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 406,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 45,
+      "first_action_line": 1513,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 410,
+        "message_index": 458,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run01",
+      "month": 48,
+      "first_action_line": 1617,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 3,
+      "first_action_line": 105,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 51,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 6,
+      "first_action_line": 201,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 99,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 9,
+      "first_action_line": 297,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 147,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 12,
+      "first_action_line": 401,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 199,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 15,
+      "first_action_line": 501,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 249,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 18,
+      "first_action_line": 597,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 23,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 21,
+      "first_action_line": 701,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 75,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 24,
+      "first_action_line": 797,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 123,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 27,
+      "first_action_line": 901,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 175,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 30,
+      "first_action_line": 997,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 223,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 33,
+      "first_action_line": 1093,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 271,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 36,
+      "first_action_line": 1189,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 39,
+      "first_action_line": 1293,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 42,
+      "first_action_line": 1389,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 45,
+      "first_action_line": 1485,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    },
+    {
+      "run": "Run02",
+      "month": 48,
+      "first_action_line": 1593,
+      "full_bundle_before_first_action": true,
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "proof_boundary": "Explicit multi-action plan in retained reasoning/content or held late transcript, not a batch submission"
+    }
+  ],
+  "flat_audit": [
+    {
+      "run": "Run01",
+      "month": 9,
+      "action_line": 305,
+      "action": "准备汇报材料",
+      "Level": "L2",
+      "output_pre": 6,
+      "output_post": 6,
+      "classification": "AMBIGUOUS",
+      "reason": "Next Network/Health were already planned; no explicit flat-discount",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run01",
+      "month": 18,
+      "action_line": 609,
+      "action": "准备汇报材料",
+      "Level": "L3",
+      "output_pre": 16,
+      "output_post": 16,
+      "classification": "NONADHERENT",
+      "reason": "Later M21 report pursuit does not discount same-Level M18 report flat",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run01",
+      "month": 21,
+      "action_line": 705,
+      "action": "准备汇报材料",
+      "Level": "L3",
+      "output_pre": 16,
+      "output_post": 16,
+      "classification": "NONADHERENT",
+      "reason": "Subsequent Output plans retain gap-driven report without flat-specific comparison",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run01",
+      "month": 33,
+      "action_line": 1113,
+      "action": "准备汇报材料",
+      "Level": "L4",
+      "output_pre": 26,
+      "output_post": 26,
+      "classification": "AMBIGUOUS",
+      "reason": "M36 new formal feedback/changed state gives potential independent visibility value; explicit discount absent",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run02",
+      "month": 9,
+      "action_line": 305,
+      "action": "准备汇报材料",
+      "Level": "L2",
+      "output_pre": 6,
+      "output_post": 6,
+      "classification": "ADHERENT",
+      "reason": "Explicit same-quarter flat discount and switch to Network at313",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run02",
+      "month": 27,
+      "action_line": 909,
+      "action": "准备汇报材料",
+      "Level": "L4",
+      "output_pre": 26,
+      "output_post": 26,
+      "classification": "ADHERENT",
+      "reason": "M30 survival legitimately binds; next growth atM33 explicitly discounts report flat, sameLevel",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run02",
+      "month": 33,
+      "action_line": 1093,
+      "action": "高强度工作",
+      "Level": "L4",
+      "output_pre": 26,
+      "output_post": 26,
+      "classification": "AMBIGUOUS",
+      "reason": "Health at1101 was preplanned; flat noticed then dismissed as odd, no clear rerank; M36 Level change resets old response",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run02",
+      "month": 45,
+      "action_line": 1501,
+      "action": "准备汇报材料",
+      "Level": "L5",
+      "output_pre": 38,
+      "output_post": 38,
+      "classification": "ADHERENT",
+      "reason": "Next growth M48 compares recent report flat and tries different Output path",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    },
+    {
+      "run": "Run02",
+      "month": 48,
+      "action_line": 1593,
+      "action": "高强度工作",
+      "Level": "L5",
+      "output_pre": 38,
+      "output_post": 38,
+      "classification": "ADHERENT",
+      "reason": "Explicit flat-triggered change from proposed report to Health1601",
+      "hallucinated_observed_GAIN": "NOT_ESTABLISHED; forecast/advertised amount is not observed gain",
+      "permanent_cap": "Not established; cap speculation in reasoning not accepted"
+    }
+  ],
+  "flat_counts": {
+    "Run01": {
+      "AMBIGUOUS": 2,
+      "NONADHERENT": 2
+    },
+    "Run02": {
+      "ADHERENT": 4,
+      "AMBIGUOUS": 1
+    }
+  },
+  "DecisionClosed_witnesses": [
+    {
+      "run": "Run01",
+      "month": 9,
+      "action_line": 305,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "准备汇报材料",
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 151,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run01",
+      "month": 12,
+      "action_line": 409,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "处理历史埋雷",
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 203,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run01",
+      "month": 15,
+      "action_line": 505,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "处理历史埋雷",
+      "trace": {
+        "llm_log_line": 159,
+        "message_index": 251,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run01",
+      "month": 48,
+      "action_line": 1617,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "处理历史埋雷",
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 3,
+      "action_line": 105,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 51,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 15,
+      "action_line": 501,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "llm_log_line": 147,
+        "message_index": 249,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 21,
+      "action_line": 701,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 75,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 27,
+      "action_line": 901,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "llm_log_line": 297,
+        "message_index": 175,
+        "source": "retained assistant message in actual compressor input; not the earlier streaming request itself"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 39,
+      "action_line": 1293,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    },
+    {
+      "run": "Run02",
+      "month": 48,
+      "action_line": 1593,
+      "classification": "VERBOSE_ONLY",
+      "final_action": "高强度工作",
+      "trace": {
+        "source": "Held transcript only; ordinary actual request UNKNOWN"
+      },
+      "reason": "Current candidate at explicit gate/commit remains final submitted action despite reopen. Bundle suffix ranking sometimes oscillates; not demonstrated post-final-gate current-action drift. Pre-gate exploratory choice changes are excluded."
+    }
+  ],
+  "DecisionClosed_counts": {
+    "VERBOSE_ONLY": 10,
+    "CHOICE_DRIFT": 0,
+    "STATE_CONFUSION": 0,
+    "UNKNOWN": 0
+  },
+  "DecisionClosed_scope": "10 important Energy witnesses, not all game actions; snapshot factual errors audited separately, not falsely attributed to reopen",
+  "hypotheses": {
+    "H1": {
+      "verdict": "PARTIAL",
+      "evidence": "Skill body directly absent at second compression; efficiency omitted in Run02 summaries. First post/late streaming inputs unavailable; drift begins before compression."
+    },
+    "H2": {
+      "verdict": "PARTIAL",
+      "evidence": "Pre-compression retained full body and explicit flat-rule quotation coexist with M3 efficiency failure and M15 stale-Level use. Persistent recovery/closure rules ignored while visible. Not every action input directly captured."
+    },
+    "H3": {
+      "verdict": "SUPPORTED",
+      "evidence": "Both16quarters preplan bundles; 18/25 Run01 and15/21 Run02 followups PLAN_CONTINUE. Establishes semantic weakness, not cause of between-run intensity mix or score."
+    },
+    "H4": {
+      "verdict": "UNSUPPORTED",
+      "evidence": "10 bounded post-gate witnesses current submitted choice unchanged; no verified CHOICE_DRIFT. Future bundle deliberation oscillates but is not enough for control-patch priority."
+    },
+    "H5": {
+      "verdict": "PARTIAL",
+      "evidence": "Health, warnings, Level and fresh-response histories differ; M33/M48 valid exceptions. No high-comparability/full-input matched pair explains all intensity."
+    },
+    "H6": {
+      "verdict": "SUPPORTED",
+      "evidence": "Body loss, stale Level response, bundle continuation, state-dependent exceptions and pre-compression rule application failure coexist."
+    }
+  },
+  "attention_budget": {
+    "manifest_instruction_chars": 1049,
+    "Board_chars": 1879,
+    "Planning_chars": 6294,
+    "Risk_chars": 2581,
+    "total_startup_strategy_chars": 11803,
+    "count_boundary": "Unicode codepoints from LF-decoded source including frontmatter and final newline; not token estimate; actual system26083chars includes framework instructions",
+    "actual_captured_system_chars": 26083,
+    "duplicated_clauses": [
+      "DECISION_CLOSED in manifest/Planning/Risk",
+      "fresh observe/recovery in persistent layer and three-role text",
+      "Primary Gap/Risk Budget/checkpoint protocol repeated in summaries"
+    ],
+    "ineffective_controls": [
+      "4/4 epochs no all-three-Skill reread despite persistent recovery text",
+      "DecisionClosed10 bounded witnesses reopen without demonstrated current-action change",
+      "6-field checkpoint and large Path Trade-off constraints often expanded into bundles"
+    ],
+    "effective_controls": [
+      "single integer Energy and session notes parse",
+      "material survival still influences recovery/cleanup; not safe to delete",
+      "Network first-class sometimes used, including Run02M9 switch"
+    ],
+    "marker_protocol_chars": 220,
+    "warning": "No measured attention-dilution causal effect; repeated source rules and long reasoning are observations, not model attention telemetry"
+  },
+  "score_components": {
+    "Run01": {
+      "terminal_observe_line": 1640,
+      "published_component_points": {
+        "level": 15.0,
+        "wealth": 9.93,
+        "resilience": 13.5,
+        "skill": 14.25,
+        "risk_control": 10.0,
+        "network": 9.0
+      }
+    },
+    "Run02": {
+      "terminal_observe_line": 1616,
+      "published_component_points": {
+        "level": 15.0,
+        "wealth": 8.1,
+        "resilience": 14.25,
+        "skill": 15.0,
+        "risk_control": 4.0,
+        "network": 9.0
+      }
+    },
+    "Run02_minus_Run01_points": {
+      "level": 0.0,
+      "wealth": -1.83,
+      "resilience": 0.75,
+      "skill": 0.75,
+      "risk_control": -6.0,
+      "network": 0.0
+    },
+    "rounded_sum_delta": -6.33,
+    "official_score_delta": -6.32,
+    "boundary": "Already published terminal component points only; do not export raw risk counter/weights or infer score formula; rounding explains -6.33 vs -6.32; no action-causality claim"
+  },
+  "recovery_contract_assessment": {
+    "A": "Semantically coherent but4/4 reread executions fail; merely restating correct contract lacks evidence",
+    "B": "Cannot safely delete fresh-state requirements based on failure alone; self-recovery dependence unreliable",
+    "C": "Candidate mitigation worth Main evaluation: stable system layer could retain efficiency, one-action rerank, Level response reset. Already-present control rules also ignored, so migration is not an established safe cure",
+    "D": "UNKNOWN for exact immediate-post action inputs; contributes to primary mixed decision"
+  },
+  "critical_invariant_candidates": [
+    "Resource-equivalent report/intensive comparison and only public justified exceptions",
+    "One current Energy action then fresh-result rerank, not bundle execution",
+    "Level reset / comparable response / no permanent cap from a single flat"
+  ],
+  "patch_contract_proposal": "NOT_SUPPORTED_AS_A_SINGLE_SAFE_PATCH; no file-edit permission granted by this report",
+  "preservation": {
+    "Candidate_Skills_manifest_Runner_dependencies_provider_unchanged": true,
+    "install": 0,
+    "service": 0,
+    "provider": 0,
+    "game": 0,
+    "new_Candidate": 0,
+    "hidden_state_counter_DB_Test_formula_reads": 0,
+    "raw_commit": 0
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE_INHERITED",
+    "owners": [
+      "S10-12",
+      "S10-14"
+    ],
+    "release_authority": "Main/Stage",
+    "reason": "This decision depends on four actual compression inputs/outputs and bounded action traces; original raw holds remain; no release or deletion",
+    "source_files": "Original12-file hold manifests at accepted Run01/Run02 commits rehashed; no duplicate raw derivative committed"
+  },
+  "nonclaims": [
+    "No gameplay improvement proof",
+    "No stable75 proof",
+    "No measured true variance",
+    "No causal promotion/scoring formula",
+    "No hidden-test transfer",
+    "No event answer mapping"
+  ],
+  "return_value": "RETURN_FOR_EXECUTION_CONTROL_DECISION",
+  "next_game": "NOT_AUTHORIZED",
+  "context_rendering_difference": {
+    "system": "Within each run, full captured system SHA remains identical across two epochs; between runs, framework AGENT.md/SOUL.md section order and independent workspace identifiers differ. Frozen participant manifest block is the same after observed arrow rendering normalization. Different complete prompts are not Candidate byte drift.",
+    "loaded_Skill": "Run01 numbered read_file plaintext with actual newlines; Run02 skill_tool Python representation with escaped newlines. Both decode to full source-equivalent bodies; format impact on adherence UNKNOWN."
+  }
+}
