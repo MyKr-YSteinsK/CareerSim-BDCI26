@@ -1,22 +1,22 @@
 {
-  "candidate_id": "candidate-v6c-compliance-cleanup",
-  "status": "STATIC_COMPLIANCE_CLEANUP_NOT_RUNTIME_VALIDATED",
-  "decision": "V6C_SURGICAL_COMPLIANCE_CLEANUP",
+  "candidate_id": "candidate-v6d-promotion-portfolio-rebalance",
+  "status": "STATIC_STRATEGY_PATCHED_NOT_RUNTIME_VALIDATED",
+  "decision": "V6D_PROMOTION_PORTFOLIO_REBALANCE",
   "design_freeze": "ACTIVE",
-  "strategy_delta": "COMPLIANCE_CLEANUP_ONLY_NO_STRATEGY_REDIRECT",
-  "parent_candidate_id": "candidate-v6b-runtime-correctness",
+  "strategy_delta": "PLANNING_ONLY_BROAD_PROMOTION_PORTFOLIO",
+  "parent_candidate_id": "candidate-v6c-compliance-cleanup",
   "base_main_sha": "7e11db68ffc73990ed10eba9dcc0614eedc98274",
   "parent_identity": {
-    "runtime_manifest_sha256": "8cbf68fa4c6ae055db9ad74942e37a649bfa13dca73b8924175467a5ee80e351",
+    "runtime_manifest_sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
     "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074",
     "skills": [
       {
         "name": "risk-review",
-        "git_blob": "f9cafecad85cad39d34bfd0266eaea9e88d882cc"
+        "git_blob": "ab20843eadad675dbf7aa8be0178fb52a3791208"
       },
       {
         "name": "rolling-planning",
-        "git_blob": "78a4b578fcb71eef04bc97ec0e3471820fecfe2f"
+        "git_blob": "c4d2bfe065ee3c658e6cff041be87ae8c8c96bdf"
       },
       {
         "name": "structured-state-board",
@@ -26,7 +26,7 @@
   },
   "runtime_manifest": {
     "path": "configs/runtime_manifest.json",
-    "sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
+    "sha256": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
     "instruction_sha256": "a891fa103f0d4f910c9bbcc5ab91ab8bbbfe4cb242b9506d63374f1cf75d8074"
   },
   "skills": [
@@ -38,7 +38,7 @@
     {
       "name": "rolling-planning",
       "path": "skills/rolling-planning/SKILL.md",
-      "git_blob": "c4d2bfe065ee3c658e6cff041be87ae8c8c96bdf"
+      "git_blob": "d86a53c5fffb75bd8d413dd0c05be9de10caa5ad"
     },
     {
       "name": "structured-state-board",
@@ -98,5 +98,6 @@
     "stable_80_plus_proven": false,
     "hidden_test_transfer_proven": false,
     "next_game_authorized": false
-  }
+  },
+  "parent_commit": "e5363c9b4958955e02f5f895cb1ba1c794215958"
 }

@@ -48,9 +48,9 @@ Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支
 实际观察到 promotion、formal review/feedback 或公开 no-advance result 后：
 
 - 刷新 Board facts；
-- 使旧 Progress comparison 失效；
+- 使旧 Progress comparison 失效；Level 改变后旧 response 不直接迁移为新 Level 的效果证据；
 - 以 fresh evidence 建立新 baseline；
-- 重新选择 / 保留 / UNKNOWN 一个 Primary Gap；
+- 重新选择 / 保留 / UNKNOWN 一个 Primary Gap；no-advance 时重查上个窗口未充分积累的 visible result / Output、Network、Skill、survival capacity 或 blocked deliverable，不自动沿用 Output；最多保留一个明显欠发展的 secondary concern；
 
 多个 full-checkpoint trigger 同时发生时合并为一次 rebuild；不得由 Agent 另行输出 checkpoint marker。只有满足下述双 checkpoint 条件才可写 STALLED。
 
@@ -67,7 +67,7 @@ Risk Budget 是候选无关的当前约束状态，只由 fresh public facts 支
     Risk Budget
     Path Trade-off
 
-Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript。季度首次 Energy checkpoint 必须 jointly compare Energy 与 Main complementarity；quarterly policy 只保留：one gap、直接相关 survival constraint、Energy/Main 互补、重复投资前检查新鲜 observed effect / saturation。
+Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript。季度首次 Energy checkpoint 联合比较 Energy 与 Main complementarity；一个 Primary Gap 不能遮掉其它晋升资产。用现有字段简短回答：Skill / Network / Output 哪项近期增长不足；formal feedback 与 recent clean response 支持哪条当前合法路线；growth value / Health、Energy cost 哪个更合理；是否有 binding survival constraint；这一步对下个 Review window 能兑现什么。比较成长趋势与实际价值，不按数值大小机械补最低项；保留最多一个明显欠发展的 secondary concern，不加字段或预定配比。
 
 在已知半年 review 前最后一个可行动窗口，检查 fresh survival facts、warning、剩余 story exposure 与可验证 recovery opportunity；不依赖 review 后的 Energy 挽救已发生的伤害。
 
@@ -82,7 +82,15 @@ Path Trade-off 最多两个合法路径，不复制 Board 快照或 transcript�
 
 ## Energy、Main 与 story
 
-Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后都要 fresh observe、Board scan、Planning quick scan，再决定下一项；不得复用旧 scan。不能编码 fixed bundle、menu catalog 或固定赢家。
+Energy 与 Main 按当前 gap 联合规划，但每个 state-changing action 后都要 fresh observe、Board scan、Planning quick scan，再决定下一项；不得复用旧 scan。只提交当前一个动作；不能编码 fixed bundle、menu catalog、配额、次数上限或固定赢家。
+
+Network 是一级晋升资产，不必等 Output 解决。若其近期积累明显落后于其它成长维度，当前合法 Network 路线有 fresh GAIN 或尚无无效证据，必须进入本次 Energy 候选比较；这不是强制选 Network，正式反馈、交付与生存约束仍决定取舍。
+
+Output / visibility 重要时，比较合法的准备汇报材料、高强度工作及其它有明确 visible-result value 的路径。价值相近时，若 report 仍响应或 response=UNKNOWN、无具体交付必须靠 intensive，且 intensive 的 Health / Energy 成本更高，优先 report / visibility；Review 更需成果被看见时也优先考虑它。任一 Output 路径出现 fresh comparable flat 后，降低该路径重复追 Output 的优先级，重比响应路线或欠发展资产；若仍有独立公开 visibility / recognition value，report 仍可选。一次 flat 不是永久 cap，也不单独构成 STALLED。
+
+高强度工作未被禁止：具体 deliverable / result need、report 刚出现可比 flat 或 intensive 有独立价值时，若 Risk Budget 不是 TIGHT 且机会足以支持额外 Health / Energy 成本，可以优先；UNKNOWN 不视为安全，仍须当前 Risk gate。不为凑成长组合覆盖 material cleanup warning 或 recovery need。Health recovery 继续只由原有公开 survival trend、workload、warning、upcoming exposure 与 Risk Budget 支持，不模仿历史次数。
+
+Main 保留 conditional key-project strong prior：申请关键项目确有当前公开成长 / 交付价值且 Risk / Planning 支持时继续优先，不因 Energy 组合调整削弱它；blocked deliverable 则比较可兑现的 broad-growth alternative。所有投资均看 remaining realizable horizon，晚期不为无法兑现的长期 Skill 收益挤掉当前价值。
 
 普通非战略 story 只对少量最相关合法候选做一次有界比较；无 fresh public evidence 不重开，除非 Risk 返回 RECONSIDER 并按其合同复核一个直接相关合法 alternative。没有事件标题答案、action lookup 或固定 primitive ranking。
 

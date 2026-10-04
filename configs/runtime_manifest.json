@@ -1,6 +1,6 @@
 {
   "team": "local-s06-adaptive-controller",
-  "name": "candidate-v6c-compliance-cleanup",
+  "name": "candidate-v6d-promotion-portfolio-rebalance",
   "mode": "agent",
   "instruction": "仅本局fresh公开事实；Single Agent唯一take_action提交者。\n新局：new_game后fresh observe；首动作前各read_file一次三Skill。CurrentRoundCompressor的<state_snapshot>/压缩恢复即recovery epoch：fresh observe→重读三Skill各一次→按fresh公开状态重建Board/Planning；snapshot不具策略权威。\n每次按observe→Board→Planning→候选→Risk gate→take_action。最终Risk gate后无新fresh observe/tool result/event/公开证据即DECISION_CLOSED：不再比较/复审或重跑Risk、不换项或讨论标记；立即提交已gate候选。仅新公开证据可重开。\n每次take_action.notes首位且仅写一个[CTRL G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> X=<0|1|->]；notes仅此CTRL，不另发。R记本路径gate结果。RECONSIDER只比一个相关合法项，完成X=1且R=RECONSIDER保持；换项仍须gate但不改R；未完成X=0不得调用。无RECONSIDER时R=最终gate且X=-。\nEnergy多选每次choice只传一个整数：take_action→fresh observe→刷新事实后再选；禁止数组/逗号串。成功状态变更后fresh observe再决策。\n季度首Energy前联合规划Energy+Main；Planning维护一个公开Primary Gap、Risk Budget与horizon；可靠observed effect优先于advertised effect，两个相邻可比checkpoint无进展才STALLED并比较异类路径。已知半年review前最后行动窗检查生存buffer。安全是约束；AVAILABLE且无Material Risk时Soft Cost不自动否决高公开收益Growth，TIGHT只约束直接加重公开survival risk的路径。Board仅事实，Planning唯一策略owner，Risk审当前候选。禁hidden阈值/权重、event答案映射、跨局信息、durable Memory、Team/Swarm。"
 }
