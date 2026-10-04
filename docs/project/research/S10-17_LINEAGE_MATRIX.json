@@ -1,0 +1,3639 @@
+{
+  "schema_version": 1,
+  "task": "S10-17",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "base": "ce95a01297424d930a64b2a63c36b7e6e215090e",
+  "branch": "codex/s10-17-candidate-family-portfolio",
+  "candidate_lineage": [
+    {
+      "candidate": "candidate-v3c-zh-aligned-policy",
+      "source_commit": "d52d5807a49b87a74f6c97cd12349bbb56fe5a5c",
+      "parent": "candidate-v3b-final-policy",
+      "strategy_delta": "NONE",
+      "control_delta": [],
+      "status_at_source": "COMPLETE_ACCEPTED_BY_MAIN",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 544,
+        "skills/risk-review/SKILL.md": 2196,
+        "skills/structured-state-board/SKILL.md": 3524,
+        "skills/rolling-planning/SKILL.md": 3563
+      },
+      "instruction_chars": 775,
+      "total_skill_chars": 9827,
+      "startup_full_body_proxy_chars": 10602,
+      "reference_file_count": 0,
+      "manifest_sha256": "5ac8e7e0c09c44e48a5bb12f93a662f77e7fc05b3141819aae0bf8b5040c4085",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "A",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v4-lean-runtime-policy",
+      "source_commit": "3e4019d092af4ac7f9ea554560927579b43d771f",
+      "parent": "candidate-v3c-zh-aligned-policy",
+      "strategy_delta": "RUNTIME_POLICY_CONSOLIDATION",
+      "control_delta": [],
+      "status_at_source": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 1170,
+        "skills/rolling-planning/SKILL.md": 2209,
+        "skills/structured-state-board/SKILL.md": 1614
+      },
+      "instruction_chars": 707,
+      "total_skill_chars": 4993,
+      "startup_full_body_proxy_chars": 5700,
+      "reference_file_count": 0,
+      "manifest_sha256": "0da190f4b49e70572614db4317387def8033d5704cb80d6df79744c198f3e1da",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "E",
+      "runs": [
+        "v4 #1"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 25.84,
+      "observed_worst": 25.84,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "Health=0"
+      ]
+    },
+    {
+      "candidate": "candidate-v5-evidence-driven-phase-policy",
+      "source_commit": "08270978f6c5f3a4a0eaadf90840d01056472a8a",
+      "parent": "candidate-v4-lean-runtime-policy",
+      "strategy_delta": "EVIDENCE_DRIVEN_SURVIVAL_PHASE_POLICY",
+      "control_delta": [],
+      "status_at_source": "COMPLETE_STATIC_PENDING_MAIN_REVIEW",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 2077,
+        "skills/rolling-planning/SKILL.md": 4466,
+        "skills/structured-state-board/SKILL.md": 2182
+      },
+      "instruction_chars": 1065,
+      "total_skill_chars": 8725,
+      "startup_full_body_proxy_chars": 9790,
+      "reference_file_count": 0,
+      "manifest_sha256": "5fccff10f90523a3947902038a30e46b8447eb1927456f8eac38b076cbc1e278",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "E",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v6-auditable-control-loop",
+      "source_commit": "1114a04b75548cf52f030d123564e527060fc061",
+      "parent": "candidate-v5-evidence-driven-phase-policy",
+      "strategy_delta": "AUDITABLE_CANDIDATE_FIRST_CONTROL_LOOP",
+      "control_delta": [],
+      "status_at_source": "COMPLETE_STATIC_MAIN_ACCEPTED",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 2825,
+        "skills/rolling-planning/SKILL.md": 4845,
+        "skills/structured-state-board/SKILL.md": 1875
+      },
+      "instruction_chars": 943,
+      "total_skill_chars": 9545,
+      "startup_full_body_proxy_chars": 10488,
+      "reference_file_count": 0,
+      "manifest_sha256": "bcf459da811f55b8a26a76d2ee6e93da10deb4b720cc732d19a3ce12d8fa2985",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "B",
+      "runs": [
+        "v6 #1"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 75.29,
+      "observed_worst": 75.29,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v6b-runtime-correctness",
+      "source_commit": "8b6696a7d17b5204817410affc71a4ac9ecc8212",
+      "parent": "candidate-v6-auditable-control-loop",
+      "strategy_delta": "RUNTIME_CORRECTNESS_ONLY_NO_STRATEGY_REDIRECT",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH"
+      ],
+      "status_at_source": "STATIC_CORRECTNESS_PATCHED",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 2959,
+        "skills/rolling-planning/SKILL.md": 4827,
+        "skills/structured-state-board/SKILL.md": 1879
+      },
+      "instruction_chars": 1049,
+      "total_skill_chars": 9665,
+      "startup_full_body_proxy_chars": 10714,
+      "reference_file_count": 0,
+      "manifest_sha256": "8cbf68fa4c6ae055db9ad74942e37a649bfa13dca73b8924175467a5ee80e351",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "B",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "source_commit": "e5363c9b4958955e02f5f895cb1ba1c794215958",
+      "parent": "candidate-v6b-runtime-correctness",
+      "strategy_delta": "COMPLIANCE_CLEANUP_ONLY_NO_STRATEGY_REDIRECT",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH"
+      ],
+      "status_at_source": "STATIC_COMPLIANCE_CLEANUP_NOT_RUNTIME_VALIDATED",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 2581,
+        "skills/rolling-planning/SKILL.md": 4879,
+        "skills/structured-state-board/SKILL.md": 1879
+      },
+      "instruction_chars": 1049,
+      "total_skill_chars": 9339,
+      "startup_full_body_proxy_chars": 10388,
+      "reference_file_count": 0,
+      "manifest_sha256": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "B",
+      "runs": [
+        "S10-10/v6c",
+        "S07-19 Luna scaffold",
+        "S07-20 scaffold",
+        "S07-21 strong host scaffold"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 64.26,
+      "observed_worst": 64.26,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7-global-trajectory-delivery",
+      "source_commit": "21b5153b86a0b7e7ce2c31278620202b6739c536",
+      "parent": "candidate-v6c-compliance-cleanup",
+      "strategy_delta": "LONG_HORIZON_PROGRESSION_AND_DELIVERY_ARCHITECTURE",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "GLOBAL_REVIEW_ACTION_HORIZONS"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2036,
+        "skills/rolling-planning/SKILL.md": 6491,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 2648,
+      "total_skill_chars": 13790,
+      "startup_full_body_proxy_chars": 16438,
+      "reference_file_count": 0,
+      "manifest_sha256": "873726a8bb83ae27c11c718091ed186e43e633392d5693a7672ab21fac8c0254",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7a-promotion-frontier",
+      "source_commit": "7b05c492bc5a5083226c4b7a64c1ce9482852941",
+      "parent": "candidate-v7-global-trajectory-delivery",
+      "strategy_delta": "PROMOTION_FRONTIER_LONG_HORIZON_OPTIMIZATION",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "GLOBAL_REVIEW_ACTION_HORIZONS",
+        "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
+        "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
+        "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
+        "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2036,
+        "skills/rolling-planning/SKILL.md": 8927,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 3552,
+      "total_skill_chars": 16226,
+      "startup_full_body_proxy_chars": 19778,
+      "reference_file_count": 0,
+      "manifest_sha256": "d2ff74e78f27f23a17bc99cf1a3f5fc8d389a02bd6aa7604ca569518ebb1b0e4",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7b-semantic-generalization",
+      "source_commit": "d10f354f5338e7950bd49efeba7b9d524e82f23a",
+      "parent": "candidate-v7a-promotion-frontier",
+      "strategy_delta": "EVENT_AGNOSTIC_STORY_SEMANTIC_PRIORS",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "GLOBAL_REVIEW_ACTION_HORIZONS",
+        "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
+        "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
+        "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
+        "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET",
+        "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2036,
+        "skills/rolling-planning/SKILL.md": 10632,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 4444,
+      "total_skill_chars": 17931,
+      "startup_full_body_proxy_chars": 22375,
+      "reference_file_count": 0,
+      "manifest_sha256": "040b4786e3e76288bff68cbe83145330086b3eb314793f726df10b05b663896a",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7c-global-decision-policy",
+      "source_commit": "40c1314cb4ebee76ea80d3ad3b00aa0c5645694d",
+      "parent": "candidate-v7b-semantic-generalization",
+      "strategy_delta": "HIERARCHICAL_DECISION_POLICY_AND_PROGRESSIVE_DISCLOSURE",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "GLOBAL_REVIEW_ACTION_HORIZONS",
+        "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
+        "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
+        "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
+        "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET",
+        "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON",
+        "PUBLIC_DURATION_CONTEXT_WITH_UNKNOWN_FALLBACK",
+        "REVIEW_SURVIVAL_AND_PROGRESSION_REALIZATION_READINESS",
+        "QUALITATIVE_TIME_TO_REALIZATION_AND_COMMITMENT_LOAD",
+        "CONDITIONAL_CLOSE_BEFORE_OPEN",
+        "LATE_HORIZON_REALIZATION_BIAS",
+        "HIERARCHICAL_GLOBAL_DECISION_ORDER",
+        "MANIFEST_KERNEL_PROGRESSIVE_DISCLOSURE"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2271,
+        "skills/rolling-planning/SKILL.md": 7299,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 1830,
+      "total_skill_chars": 14833,
+      "startup_full_body_proxy_chars": 16663,
+      "reference_file_count": 0,
+      "manifest_sha256": "f41c6417009fb957de9e2c7cfde2d9e5185ecd1f09d3d49d32bfd82c67ec7fa0",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7d-strategic-continuity",
+      "source_commit": "f2d9f584d7b7dc0ac08a26d0df35d05c4a41c8c9",
+      "parent": "candidate-v7c-global-decision-policy",
+      "strategy_delta": "ACTIVE_REVIEW_PLAN_WITH_EVIDENCE_GATED_REVISION",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "GLOBAL_REVIEW_ACTION_HORIZONS",
+        "QUALITATIVE_PROMOTION_FRONTIER_PROFILE",
+        "CROSS_DIMENSION_GLOBAL_MARGINAL_VALUE_REVIEW",
+        "EARLY_HORIZON_BIAS_UNDER_CONSTRAINTS",
+        "EXPLICIT_PUBLIC_AFFORDABILITY_RISK_BUDGET",
+        "BOUNDED_EVENT_AGNOSTIC_STORY_SEMANTIC_COMPARISON",
+        "PUBLIC_DURATION_CONTEXT_WITH_UNKNOWN_FALLBACK",
+        "REVIEW_SURVIVAL_AND_PROGRESSION_REALIZATION_READINESS",
+        "QUALITATIVE_TIME_TO_REALIZATION_AND_COMMITMENT_LOAD",
+        "CONDITIONAL_CLOSE_BEFORE_OPEN",
+        "LATE_HORIZON_REALIZATION_BIAS",
+        "HIERARCHICAL_GLOBAL_DECISION_ORDER",
+        "MANIFEST_KERNEL_PROGRESSIVE_DISCLOSURE",
+        "ACTIVE_REVIEW_PLAN_RECOVERY_CONTINUITY"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2271,
+        "skills/rolling-planning/SKILL.md": 9320,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 1996,
+      "total_skill_chars": 16854,
+      "startup_full_body_proxy_chars": 18850,
+      "reference_file_count": 0,
+      "manifest_sha256": "22e63b86b98daa009838353491f629119b45d74da94adb6c0c1ff2c7ba6cef00",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7d"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 17.02,
+      "observed_worst": 17.02,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "elimination; mechanism not confidently bound"
+      ]
+    },
+    {
+      "candidate": "candidate-v7e-lean-review-controller",
+      "source_commit": "7aed55348ce49eded8e14d79fea31ae815092fc9",
+      "parent": "candidate-v7d-strategic-continuity",
+      "strategy_delta": "FORMAL_REVIEW_ANCHORED_LEAN_REVIEW_CONTROLLER",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "FOUR_SKILL_FIRST_ACTION_AND_RECOVERY_READ",
+        "DELIVERY_UPDATE_ONLY_ON_RELEVANT_PUBLIC_TRIGGER",
+        "FRESH_OBSERVE_AFTER_STATE_CHANGING_ACTION",
+        "ACTIVE_REVIEW_PLAN_RECOVERY_CONTINUITY",
+        "FORMAL_REVIEW_ANCHORED_PLAN",
+        "ORDINARY_STORY_CANNOT_REDEFINE_PRIMARY_GAP",
+        "BINDING_AFFORDABILITY_GUARD",
+        "PUBLIC_HINT_SOFT_EVIDENCE_ONLY",
+        "NO_HIDDEN_CAP_INFERENCE_FROM_NO_GAIN",
+        "ONE_PASS_BOUNDED_STORY_DELIBERATION",
+        "QUARTER_ENERGY_INTENT_PERSISTENCE"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2271,
+        "skills/rolling-planning/SKILL.md": 6283,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 2716
+      },
+      "instruction_chars": 2041,
+      "total_skill_chars": 13817,
+      "startup_full_body_proxy_chars": 15858,
+      "reference_file_count": 0,
+      "manifest_sha256": "bef78e0fd991c589ff2b52a1c920dd6a6af4106fa404afedd6926c770437535d",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7f-promotion-first-survival-floor",
+      "source_commit": "dc5e85cdaef136c9bc573a04c13a3e691bcf7790",
+      "parent": "candidate-v7e-lean-review-controller",
+      "strategy_delta": "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
+      "control_delta": [
+        "PROMOTION_FIRST_WITH_SURVIVAL_FLOOR",
+        "FORMAL_REVIEW_ANCHORED_GAP",
+        "INCOME_RECOVERY_NOT_PASSIVE_SAFETY",
+        "STRONG_BROAD_GROWTH_MAIN_ACTION_PRIOR",
+        "TEMPORARY_STABILIZE_THEN_RETURN_TO_ADVANCE",
+        "STICKY_PUBLIC_FAILURE_DIRECTION_FACTS",
+        "BOUNDED_NON_NUMERIC_STORY_SHORTLIST",
+        "QUARTER_ENERGY_INTENT",
+        "TAKE_ACTION_ARGUMENT_PREFLIGHT"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 1592,
+        "skills/rolling-planning/SKILL.md": 5360,
+        "skills/delivery-progress/SKILL.md": 2547,
+        "skills/risk-review/SKILL.md": 1523
+      },
+      "instruction_chars": 1765,
+      "total_skill_chars": 11022,
+      "startup_full_body_proxy_chars": 12787,
+      "reference_file_count": 0,
+      "manifest_sha256": "8a1aad7cc450567e9b09cdce5e534b7e683c9865cafb0681be5beebe8f7fdf76",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7g-compact-skill-contracts",
+      "source_commit": "529f70cc0538c86933659c6186495d5defad889c",
+      "parent": "candidate-v7f-promotion-first-survival-floor",
+      "strategy_delta": "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
+      "control_delta": [
+        "PROFESSIONAL_SKILL_CONTRACT_REFACTOR",
+        "CONCISE_IMPERATIVE_WORKFLOWS",
+        "EXPLICIT_INPUT_OUTPUT_CONTRACTS",
+        "REDUCED_CROSS_SKILL_DUPLICATION",
+        "PRESERVED_PROMOTION_FIRST_SURVIVAL_FLOOR"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 2284,
+        "skills/rolling-planning/SKILL.md": 4620,
+        "skills/delivery-progress/SKILL.md": 1997,
+        "skills/risk-review/SKILL.md": 2313
+      },
+      "instruction_chars": 2269,
+      "total_skill_chars": 11214,
+      "startup_full_body_proxy_chars": 13483,
+      "reference_file_count": 0,
+      "manifest_sha256": "1633dbb9e7948131c91a075d340930c2536c76a04538d13360603631e45c47d6",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7g pregame",
+        "v7g"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 54.52,
+      "observed_worst": 54.52,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7h-evidence-recovery-hardening",
+      "source_commit": "8f140642294604dd3cd2f59cf5c27df33a1090ea",
+      "parent": "candidate-v7g-compact-skill-contracts",
+      "strategy_delta": "PRESERVE_V7G_STRATEGY",
+      "control_delta": [
+        "PUBLIC_EVIDENCE_WHITELIST_HARDENING",
+        "HIDDEN_INTERNAL_FIELD_EXCLUSION",
+        "CONTEXT_RECOVERY_HARDENING",
+        "PRESERVE_V7G_STRATEGY"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 5473,
+        "skills/delivery-progress/SKILL.md": 2407,
+        "skills/risk-review/SKILL.md": 2756
+      },
+      "instruction_chars": 3582,
+      "total_skill_chars": 13655,
+      "startup_full_body_proxy_chars": 17237,
+      "reference_file_count": 0,
+      "manifest_sha256": "1cf6901944db7943cf1e4af9a12243373c668cccfc37f15a050ea2b357913ef1",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7i-pre-review-result-realization-probe",
+      "source_commit": "89d97f6500e1873700e5129f779bdc3356989293",
+      "parent": "candidate-v7h-evidence-recovery-hardening",
+      "strategy_delta": "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+      "control_delta": [
+        "PRE_FIRST_REVIEW_RESULT_REALIZATION_PRIOR",
+        "EVIDENCE_GATED_VISIBLE_OUTCOME",
+        "NO_FIXED_REPORT_ACTION",
+        "PRESERVE_V7H_CORRECTNESS"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 6985,
+        "skills/delivery-progress/SKILL.md": 2407,
+        "skills/risk-review/SKILL.md": 2756
+      },
+      "instruction_chars": 4159,
+      "total_skill_chars": 15167,
+      "startup_full_body_proxy_chars": 19326,
+      "reference_file_count": 0,
+      "manifest_sha256": "0946e8b3c7cff62661bfb948a9e0cde39fce664847cb41bae4390587ae6c4fa3",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7i pregame",
+        "v7i replacement"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 64.0,
+      "observed_worst": 64.0,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7j-decision-closure-hardening",
+      "source_commit": "97da9104c19c87bb174fafb53f68c73ce1bbc9e5",
+      "parent": "candidate-v7i-pre-review-result-realization-probe",
+      "strategy_delta": "DECISION_CLOSURE_HARDENING_ONLY",
+      "control_delta": [
+        "ONE_OBSERVE_ONE_PLANNING_PASS",
+        "RISK_ONLY_BOUNDED_RECONSIDER",
+        "NO_NEW_PUBLIC_EVIDENCE_NO_REOPEN",
+        "PRESERVE_V7I_RESULT_REALIZATION_PRIOR",
+        "PRESERVE_RECOVERY_AND_DELIVERY_CONTRACTS"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 8138,
+        "skills/delivery-progress/SKILL.md": 2407,
+        "skills/risk-review/SKILL.md": 2756
+      },
+      "instruction_chars": 4791,
+      "total_skill_chars": 16320,
+      "startup_full_body_proxy_chars": 21111,
+      "reference_file_count": 0,
+      "manifest_sha256": "fd4c1732fdedb1502fa690bea140def522729d144efc5e4f66c4e7b62d01c28f",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7k-delivery-observability-hardening",
+      "source_commit": "3864b98c19c6425da615fcd006d0776c852f4a3c",
+      "parent": "candidate-v7j-decision-closure-hardening",
+      "strategy_delta": "OBSERVABILITY_ONLY",
+      "control_delta": [
+        "CURRENT_DELIVERY_SNAPSHOT_EACH_OBSERVE",
+        "ONE_DL_MARKER_AFTER_CTRL",
+        "PRESERVE_V7J_STRATEGY_AND_RECOVERY"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 8138,
+        "skills/delivery-progress/SKILL.md": 3591,
+        "skills/risk-review/SKILL.md": 2756
+      },
+      "instruction_chars": 5522,
+      "total_skill_chars": 17504,
+      "startup_full_body_proxy_chars": 23026,
+      "reference_file_count": 0,
+      "manifest_sha256": "54dd5a80144c80c5487fe1b8c4aaad35698be31ebd0215572734b8a54c71cbab",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7l-pre-game-contract-hardening",
+      "source_commit": "17af11d737f8d686e5d1212396234cbb064b2fcd",
+      "parent": "candidate-v7k-delivery-observability-hardening",
+      "strategy_delta": "PRE_GAME_CONTRACT_CONSISTENCY_ONLY",
+      "control_delta": [
+        "DELIVERY_CONSULT_EVERY_OBSERVE",
+        "OPTIONAL_BLOCKED_AND_EXECUTION_RECEIPT_BOUNDARY",
+        "CTRL_CLOSURE_AND_BOUNDED_UNKNOWN",
+        "ACTIVE_DELIVERY_FOCUS_ONLY",
+        "PRESERVE_V7K_STRATEGY_AND_RECOVERY"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 8287,
+        "skills/delivery-progress/SKILL.md": 4313,
+        "skills/risk-review/SKILL.md": 3573
+      },
+      "instruction_chars": 6211,
+      "total_skill_chars": 19192,
+      "startup_full_body_proxy_chars": 25403,
+      "reference_file_count": 0,
+      "manifest_sha256": "26aa3be611cb479d5322d5917e8f9feb1662981e93e566feb4a0240e0d83d360",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7m-final-r-recovery-audit-hardening",
+      "source_commit": "e0d92ab720395894ce6a109c424bc92ef393010c",
+      "parent": "candidate-v7l-pre-game-contract-hardening",
+      "strategy_delta": "FINAL_PRE_GAME_CORRECTNESS_AND_AUDIT_ONLY",
+      "control_delta": [
+        "FINAL_R_AND_INDEPENDENT_X",
+        "ONE_RECONSIDER_BRANCH_MAXIMUM",
+        "CURRENT_SURVIVAL_MODE_BEFORE_PROGRESSION_EVIDENCE_ORDER",
+        "PRESERVE_V7L_DELIVERY_AND_RECOVERY_CONTRACTS"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3019,
+        "skills/rolling-planning/SKILL.md": 8874,
+        "skills/delivery-progress/SKILL.md": 4313,
+        "skills/risk-review/SKILL.md": 3887
+      },
+      "instruction_chars": 6480,
+      "total_skill_chars": 20093,
+      "startup_full_body_proxy_chars": 26573,
+      "reference_file_count": 0,
+      "manifest_sha256": "1bb92ccae8cad01b8586aa57c8f2d49aede28f424b488e0b8d8c570c592fcef9",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7m"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7n-public-state-delivery-constraint-hardening",
+      "source_commit": "6338bce24a022aacd67843f265108e2145a0bc2b",
+      "parent": "candidate-v7m-final-r-recovery-audit-hardening",
+      "strategy_delta": "S07_47_EVIDENCE_BACKED_CORRECTNESS_PATCH_ONLY",
+      "control_delta": [
+        "PUBLIC_STATE_VERBATIM_COPY_AND_ATTRIBUTION",
+        "CURRENT_SESSION_DELIVERY_ITEM_PROOF_BINDING",
+        "EXPLICIT_BINDING_CONSTRAINT_MODE_AND_RISK_LABEL"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4303,
+        "skills/rolling-planning/SKILL.md": 9949,
+        "skills/delivery-progress/SKILL.md": 6724,
+        "skills/risk-review/SKILL.md": 4597
+      },
+      "instruction_chars": 8372,
+      "total_skill_chars": 25573,
+      "startup_full_body_proxy_chars": 33945,
+      "reference_file_count": 0,
+      "manifest_sha256": "66195dcf79ec85412ce2aea179f63ec5b2f58ac992b1136b842d7913578601a1",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7n pregame",
+        "v7n replacement"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7o-execution-persistence-convergence",
+      "source_commit": "b2e7ea6441da9c314d8a0ffbf29b9d5800ced10d",
+      "parent": "candidate-v7n-public-state-delivery-constraint-hardening",
+      "strategy_delta": "MODE_BINDING_CORRECTNESS_CLARIFICATION_ONLY",
+      "control_delta": [
+        "WHOLE_GAME_EXECUTION_PERSISTENCE",
+        "MANIFEST_SEMANTIC_DEDUPLICATION",
+        "NORMAL_FLOW_NO_SKILL_REREAD",
+        "HIDDEN_FIELD_SALIENCE_HARDENING",
+        "NUMERIC_STATE_NOT_AUTOMATIC_BINDING_CONSTRAINT"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4680,
+        "skills/rolling-planning/SKILL.md": 10350,
+        "skills/delivery-progress/SKILL.md": 6724,
+        "skills/risk-review/SKILL.md": 4597
+      },
+      "instruction_chars": 4273,
+      "total_skill_chars": 26351,
+      "startup_full_body_proxy_chars": 30624,
+      "reference_file_count": 0,
+      "manifest_sha256": "addcf3485836683f8a2ebe957a2105a0ca4a9d8d26bb35483ccc5109fb5d6cd9",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7o"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 71.83,
+      "observed_worst": 71.83,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7p-score-gap-convergence",
+      "source_commit": "4d88b8d131e7408791adeaf6962280c2a2392fc4",
+      "parent": "candidate-v7o-execution-persistence-convergence",
+      "strategy_delta": "REVIEW_GAP_DIRECTNESS_AND_COMPRESSION_RESILIENT_KERNEL",
+      "control_delta": [
+        "COMPRESSION_RESILIENT_CRITICAL_KERNEL",
+        "OBSERVABLE_RECOVERY_SIGNAL_BEST_EFFORT",
+        "REVIEW_GAP_DIRECTNESS",
+        "QUALITATIVE_NON_SKILL_DIRECT_SCORE_PRIORITY"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4680,
+        "skills/rolling-planning/SKILL.md": 11215,
+        "skills/delivery-progress/SKILL.md": 6724,
+        "skills/risk-review/SKILL.md": 4597
+      },
+      "instruction_chars": 5045,
+      "total_skill_chars": 27216,
+      "startup_full_body_proxy_chars": 32261,
+      "reference_file_count": 0,
+      "manifest_sha256": "27146632a28f436c41f65c6324b942088e1a18097f3aa3debe9f94e642fbc334",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7q-checkpoint-marginal-progression",
+      "source_commit": "0a7001e67fc4350383382039d592a2b0ceb2b964",
+      "parent": "candidate-v7p-score-gap-convergence",
+      "strategy_delta": "CHECKPOINT_AWARE_MARGINAL_PROGRESSION",
+      "control_delta": [
+        "CHECKPOINT_AWARE_PROMOTION_READINESS",
+        "OBSERVED_NO_GAIN_ROUTING",
+        "SKILL_TERMINAL_SCORE_DEMOTION_REMOVED",
+        "COMPRESSION_RESILIENT_MARGINAL_PROGRESSION_KERNEL"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4680,
+        "skills/rolling-planning/SKILL.md": 12831,
+        "skills/delivery-progress/SKILL.md": 6724,
+        "skills/risk-review/SKILL.md": 4597
+      },
+      "instruction_chars": 4980,
+      "total_skill_chars": 28832,
+      "startup_full_body_proxy_chars": 33812,
+      "reference_file_count": 0,
+      "manifest_sha256": "c42120ac426c396e9fdea5909a6188da8efd3c1939db3e688a92971637cdb298",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7q"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 26.8,
+      "observed_worst": 26.8,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "natural elimination; L1 stagnation"
+      ]
+    },
+    {
+      "candidate": "candidate-v7r-early-promotion-rescue",
+      "source_commit": "ea7a6fbf14c346418e23fe86a438c5c2c193b6f3",
+      "parent": "candidate-v7q-checkpoint-marginal-progression",
+      "strategy_delta": "EARLY_PROMOTION_ESCAPE_AND_PROGRESS_RESPONSE",
+      "control_delta": [
+        "PERFORMANCE_GAP_STAYS_ADVANCE",
+        "CURRENT_LEVEL_PROGRESSION_RESPONSE",
+        "REVIEW_WINDOW_DELIVERY_CERTAINTY",
+        "PUBLIC_WARNING_BOUNDED_CLEANUP"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 6086,
+        "skills/rolling-planning/SKILL.md": 15231,
+        "skills/delivery-progress/SKILL.md": 6724,
+        "skills/risk-review/SKILL.md": 4597
+      },
+      "instruction_chars": 5139,
+      "total_skill_chars": 32638,
+      "startup_full_body_proxy_chars": 37777,
+      "reference_file_count": 0,
+      "manifest_sha256": "62f5dbaecdf763de6315414eab7b79597e73db36c27955905031e358d391e375",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7s-zh-recovery-controller",
+      "source_commit": "3060c63142f9ad2489d08399fc750a23ff3244e8",
+      "parent": "candidate-v7r-early-promotion-rescue",
+      "strategy_delta": "ZH_ALIGNED_FAILURE_RECOVERY_AND_SKILL_COORDINATION",
+      "control_delta": [
+        "ZH_PRIMARY_RUNTIME_PROSE",
+        "EXPLICIT_FAILURE_RECOVERY_STATE",
+        "MULTI_SKILL_HANDOFF_CLARIFICATION",
+        "MULTI_DIMENSION_PROMOTION_COVERAGE"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 5333,
+        "skills/delivery-progress/SKILL.md": 3353,
+        "skills/risk-review/SKILL.md": 2467
+      },
+      "instruction_chars": 3460,
+      "total_skill_chars": 14527,
+      "startup_full_body_proxy_chars": 17987,
+      "reference_file_count": 0,
+      "manifest_sha256": "68736614b176a3847ee0da12e6f13787fedb878b768c489fc5bfa46a4eb5decf",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7t-execution-semantic-repair",
+      "source_commit": "e4ec82958ccfcac23ca8b28af14e69be1c470fa2",
+      "parent": "candidate-v7s-zh-recovery-controller",
+      "strategy_delta": "EXECUTION_CONTRACT_AMBIGUITY_REPAIR_ONLY",
+      "control_delta": [
+        "CURRENT_EVENT_SEMANTICS_EXPLICIT",
+        "NO_GAIN_COVERAGE_DISAMBIGUATION",
+        "BOUNDED_CLEANUP_RETRIGGER_HARDENING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 5742,
+        "skills/delivery-progress/SKILL.md": 3353,
+        "skills/risk-review/SKILL.md": 2467
+      },
+      "instruction_chars": 3570,
+      "total_skill_chars": 14936,
+      "startup_full_body_proxy_chars": 18506,
+      "reference_file_count": 0,
+      "manifest_sha256": "c06ac385b30476e110c36691adbec531cce8afd2d12388c1bdc1496c4d021041",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7t"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 65.71,
+      "observed_worst": 65.71,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7u-runtime-adherence-protocol",
+      "source_commit": "882d47202d4d8d8305acbf7edb451ee8d68fe1ce",
+      "parent": "candidate-v7t-execution-semantic-repair",
+      "strategy_delta": "RUNTIME_ADHERENCE_PROTOCOL_ONLY",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 6516,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5194,
+      "total_skill_chars": 16261,
+      "startup_full_body_proxy_chars": 21455,
+      "reference_file_count": 0,
+      "manifest_sha256": "dc64372ff5c70b9f07bd98e4c97bfd28b29be97e101adcdfa7d7a5cb2475c6ea",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7v-preflight-ordering-repair",
+      "source_commit": "fd30db289d4c16fbcd587bb61b40cb0117cab396",
+      "parent": "candidate-v7u-runtime-adherence-protocol",
+      "strategy_delta": "RUNTIME_GATE_ORDERING_CORRECTION_ONLY",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 6516,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5122,
+      "total_skill_chars": 16261,
+      "startup_full_body_proxy_chars": 21383,
+      "reference_file_count": 0,
+      "manifest_sha256": "38bdc9e7a9589cea844ccd8b53e6dc042ef2361006a2eb144f49f3febbd43d99",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "v7v"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 58.97,
+      "observed_worst": 58.97,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v7w-high-score-core-recovery",
+      "source_commit": "d94b178e3e7867b80673c4dfecd2e70dd66272b5",
+      "parent": "candidate-v7v-preflight-ordering-repair",
+      "strategy_delta": "STABILITY_CONSTRAINED_PROMOTION_COMPOUNDING",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 8363,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5193,
+      "total_skill_chars": 18108,
+      "startup_full_body_proxy_chars": 23301,
+      "reference_file_count": 0,
+      "manifest_sha256": "fa4eea71e4b276be18295c06fefb1ca1b99d00ec9ae94a2ab64de27906d2ae1f",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "S09 RUN01/v7w"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 30.31,
+      "observed_worst": 30.31,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "poor half-year performance"
+      ]
+    },
+    {
+      "candidate": "candidate-v7x-fresh-binding-reauthorization",
+      "source_commit": "43258d41a02ac65c9f1e5d0367ca7612a36c7da7",
+      "parent": "candidate-v7w-high-score-core-recovery",
+      "strategy_delta": "FRESH_BINDING_BASIS_REQUIRED_FOR_EACH_STABILIZATION_DECISION",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 8594,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5198,
+      "total_skill_chars": 18339,
+      "startup_full_body_proxy_chars": 23537,
+      "reference_file_count": 0,
+      "manifest_sha256": "988a6e0397117654ec82ef0a54f728f218f5863accb416c1e02eb0486e8a9b7d",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "S09 RUN02/v7x"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 19.82,
+      "observed_worst": 19.82,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "Health=0"
+      ]
+    },
+    {
+      "candidate": "candidate-v7y-story-exposure-guard",
+      "source_commit": "89f0bfb4d13af87980a41c0b2075586e33a1e597",
+      "parent": "candidate-v7x-fresh-binding-reauthorization",
+      "strategy_delta": "M5_STORY_EXPOSURE_GUARD_AS_BOUNDED_A_MODE_RANKING_PRIOR",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 8968,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4984,
+      "total_skill_chars": 18713,
+      "startup_full_body_proxy_chars": 23697,
+      "reference_file_count": 0,
+      "manifest_sha256": "0f3b44466e0f16fd21a3d3724ffe890a9f4114dcc69088d20b238bbea115489d",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "S09 RUN03/v7y",
+        "S09 RUN03R/v7y"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v7z-world-model-correction",
+      "source_commit": "b92e83417f24aca54c693787196207ff68e48808",
+      "parent": "candidate-v7y-story-exposure-guard",
+      "strategy_delta": "LOCAL_RESPONSE_DOES_NOT_IMPLY_GLOBAL_CAP",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 10495,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4988,
+      "total_skill_chars": 20240,
+      "startup_full_body_proxy_chars": 25228,
+      "reference_file_count": 0,
+      "manifest_sha256": "9ac39f3cd652387dc76bb4b77c1de7f9051e5ea002abbb643c4ddcaf19f7690a",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "S09 RUN04/v7z",
+        "S09 RUN05/v7z"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v8a-v7o-donor-core-transplant",
+      "source_commit": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+      "parent": "candidate-v7z-world-model-correction",
+      "strategy_delta": "CURRENT_RUNTIME_SHELL_PLUS_DIRECT_V7O_STRATEGY_CORE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "FINAL_FROZEN_FOR_SUBMISSION",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 8748,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4373,
+      "total_skill_chars": 18493,
+      "startup_full_body_proxy_chars": 22866,
+      "reference_file_count": 0,
+      "manifest_sha256": "beb072a63a6c6b859dc3e5dc09fbcb0d170dac15ff16c6403c99f7e9581d7c5e",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "C",
+      "runs": [
+        "S09 RUN06/v8a",
+        "S09 RUN07/v8a",
+        "S09 RUN08/v8a"
+      ],
+      "flash_natural_samples": 2,
+      "observed_best": 72.65,
+      "observed_worst": 59.0,
+      "observed_48m": 2,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v9a-adaptive-opportunity-capture",
+      "source_commit": "1cc20d7a09b8ac8e34c963ae1016f64e25d99d00",
+      "parent": "candidate-v8a-v7o-donor-core-transplant",
+      "strategy_delta": "ADAPTIVE_OPPORTUNITY_CAPTURE_WITH_BOUNDED_UNTESTED_PROBE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 9477,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4373,
+      "total_skill_chars": 19222,
+      "startup_full_body_proxy_chars": 23595,
+      "reference_file_count": 0,
+      "manifest_sha256": "9fd87ce5dc7f8a3d3255f9a4317f75ba3ef13de66ee1c141197cb3a36a955bdb",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN10/v9a"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 68.4,
+      "observed_worst": 68.4,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v10a-policy-constitution",
+      "source_commit": "0cecffd405d7dcdf55e6a1d8a60aef0a4b718318",
+      "parent": "candidate-v9a-adaptive-opportunity-capture",
+      "strategy_delta": "POLICY_CONSTITUTION_AND_SEMANTIC_QUARTERLY_CONTROL",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7498,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4373,
+      "total_skill_chars": 17243,
+      "startup_full_body_proxy_chars": 21616,
+      "reference_file_count": 0,
+      "manifest_sha256": "b39d7ea8ee6f7257bcafe902b84a32f56b01fe7d0d0177e25f7db58f8ce4f409",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10b-policy-constitution-anti-saturation",
+      "source_commit": "92fb4323c8db2e03fa3c12d0c2969ffdca6f6a4f",
+      "parent": "candidate-v10a-policy-constitution",
+      "strategy_delta": "ANTI_UNSUPPORTED_SATURATION_WORLD_MODEL_GUARD",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7928,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4373,
+      "total_skill_chars": 17673,
+      "startup_full_body_proxy_chars": 22046,
+      "reference_file_count": 0,
+      "manifest_sha256": "e3f3b6190b03380f603be5986b7f71d4d414556dbda2104d1e34e86fd7c21e17",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN11/v10b"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10c-compaction-agnostic-kernel",
+      "source_commit": "55157f53031c284e2e569944e4aff6adbf64c48f",
+      "parent": "candidate-v10b-policy-constitution-anti-saturation",
+      "strategy_delta": "NONE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7787,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4786,
+      "total_skill_chars": 17532,
+      "startup_full_body_proxy_chars": 22318,
+      "reference_file_count": 0,
+      "manifest_sha256": "1a1cf73b1c8586d71f0da4dab10a51907e1415dbde4c5bc8c849db6b15f1a4d7",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN12/v10c"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10d-anchored-five-marker-preflight",
+      "source_commit": "8e0b22ef0e555ab5cbdf47f5738952e50670a295",
+      "parent": "candidate-v10c-compaction-agnostic-kernel",
+      "strategy_delta": "NONE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7787,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5119,
+      "total_skill_chars": 17532,
+      "startup_full_body_proxy_chars": 22651,
+      "reference_file_count": 0,
+      "manifest_sha256": "ccb5f779434eca12573dfc674685c6939b0fff84a1006a4a53f3dfb0ac41db95",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN13/v10d"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10e-explicit-basis-preflight",
+      "source_commit": "758e441192e99d3b5336bd7e91a27c043dede676",
+      "parent": "candidate-v10d-anchored-five-marker-preflight",
+      "strategy_delta": "NONE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7787,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5368,
+      "total_skill_chars": 17532,
+      "startup_full_body_proxy_chars": 22900,
+      "reference_file_count": 0,
+      "manifest_sha256": "194ea7c92ea4c76e5a33029836e85f3682c80943cca0f5d9aadf841382bb5754",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN14/v10e"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10f-cap-scope-correction",
+      "source_commit": "7895515453ea4a3e5ce650dd96b84a824256bd9c",
+      "parent": "candidate-v10e-explicit-basis-preflight",
+      "strategy_delta": "NONE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+        "CAREER_GROWTH_CAP_SCOPE_AND_STRICT_DEVELOPMENT_ABORT"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 7787,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 5402,
+      "total_skill_chars": 17532,
+      "startup_full_body_proxy_chars": 22934,
+      "reference_file_count": 0,
+      "manifest_sha256": "ddb1d805e924ad39c7f9d240feecded469a55e8f5aac41f75a1c59eddcc5d614",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN15/v10f",
+        "S09 RUN16/v10f"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+      "source_commit": "c9a9d914481c4d2a3221719b1ae90871be057c8a",
+      "parent": "candidate-v10f-cap-scope-correction",
+      "strategy_delta": "NONE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+        "CAREER_GROWTH_CAP_SCOPE_AND_STRICT_DEVELOPMENT_ABORT",
+        "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3598,
+        "skills/rolling-planning/SKILL.md": 7862,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2979
+      },
+      "instruction_chars": 5500,
+      "total_skill_chars": 17969,
+      "startup_full_body_proxy_chars": 23469,
+      "reference_file_count": 0,
+      "manifest_sha256": "356d50da72e2915f5bccecc599e329e4208e996c8276e815f77af0594c587470",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN17/v10g"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 24.47,
+      "observed_worst": 24.47,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "Health=0"
+      ]
+    },
+    {
+      "candidate": "candidate-v10h-dynamic-survival-margin",
+      "source_commit": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+      "parent": "candidate-v10g-official-runtime-evidence-boundary",
+      "strategy_delta": "A_MODE_DYNAMIC_SURVIVAL_MARGIN",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+        "CAREER_GROWTH_CAP_SCOPE_AND_STRICT_DEVELOPMENT_ABORT",
+        "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY",
+        "FRESH_ENERGY_RERANK_OPERATIONALIZATION"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3598,
+        "skills/rolling-planning/SKILL.md": 8114,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2979
+      },
+      "instruction_chars": 5598,
+      "total_skill_chars": 18221,
+      "startup_full_body_proxy_chars": 23819,
+      "reference_file_count": 0,
+      "manifest_sha256": "24ad720bab2c5eb7410eb8fd8e0d6f3aa4e977a62dbbbedbb8a17540381285f6",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN18/v10h",
+        "S09 RUN19/v10h"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 38.08,
+      "observed_worst": 38.08,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "trust terminal"
+      ]
+    },
+    {
+      "candidate": "candidate-v11-result-conversion-risk-persistence",
+      "source_commit": "5e9d6ef7a0f9819172764a56abb5f2b980dee4bd",
+      "parent": "candidate-v10h-dynamic-survival-margin",
+      "strategy_delta": "RESULT_CONVERSION_AND_PUBLIC_RISK_PERSISTENCE",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+        "CAREER_GROWTH_CAP_SCOPE_AND_STRICT_DEVELOPMENT_ABORT",
+        "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY",
+        "FRESH_ENERGY_RERANK_OPERATIONALIZATION",
+        "PERSISTENT_WARNING_KERNEL_ALIGNMENT"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4026,
+        "skills/rolling-planning/SKILL.md": 4871,
+        "skills/delivery-progress/SKILL.md": 4127,
+        "skills/risk-review/SKILL.md": 3364
+      },
+      "instruction_chars": 4636,
+      "total_skill_chars": 16388,
+      "startup_full_body_proxy_chars": 21024,
+      "reference_file_count": 0,
+      "manifest_sha256": "c3c8388fd7ac2e6565261bd31f098b4629f58ced64eebf03b54e02965947fcaa",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN20/v11"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 60.6,
+      "observed_worst": 60.6,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v11b-early-result-feasibility",
+      "source_commit": "48169157eca072116221dd65e86dbd3fa5233f7a",
+      "parent": "candidate-v11-result-conversion-risk-persistence",
+      "strategy_delta": "PRE_FIRST_REVIEW_RESULT_FEASIBILITY_COMPARISON",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING",
+        "RETIRED_MANDATORY_COMPACTION_EPOCH_REREAD",
+        "SYSTEM_OWNED_POL_PROBE_SCHEMA",
+        "FINAL_BASIS_CHECK",
+        "ANCHORED_FIVE_MARKER_HEADER_AND_SCHEMA_PREFLIGHT_FIX",
+        "EXPLICIT_K2_K3_BASIS_CERTIFICATE_AND_FAIL_CLOSED_PREFLIGHT",
+        "CAREER_GROWTH_CAP_SCOPE_AND_STRICT_DEVELOPMENT_ABORT",
+        "SOURCE_BASED_TEST_ACCESS_ADMISSIBILITY",
+        "FRESH_ENERGY_RERANK_OPERATIONALIZATION",
+        "PERSISTENT_WARNING_KERNEL_ALIGNMENT"
+      ],
+      "status_at_source": "STATIC_ONLY_NOT_SUBMISSION_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 4026,
+        "skills/rolling-planning/SKILL.md": 5158,
+        "skills/delivery-progress/SKILL.md": 4127,
+        "skills/risk-review/SKILL.md": 3364
+      },
+      "instruction_chars": 4725,
+      "total_skill_chars": 16675,
+      "startup_full_body_proxy_chars": 21400,
+      "reference_file_count": 0,
+      "manifest_sha256": "4c1bd3c42f0ae9a22b787bb81942f670925e65e2e97f7d55c515e0f394ce3554",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S09 RUN21/v11b"
+      ],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "PARTIAL_OR_PRE_GAME_ONLY",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v12-lean-career-brief",
+      "source_commit": "e6ddcda68ff60dad0e0676d7ff8c70ecaae556ba",
+      "parent": "candidate-v8a-v7o-donor-core-transplant",
+      "strategy_delta": "LEAN_SINGLE_AGENT_CAREER_BRIEF_CHECKPOINT_REVIEW",
+      "control_delta": [
+        "TWO_RESPONSIBILITY_SKILLS",
+        "ONE_LOGICAL_CURRENT_CAREER_BRIEF",
+        "SAME_AGENT_CHECKPOINT_DEEP_REVIEW",
+        "OFFICIAL_VISIBLE_ADVERTISED_DELTA_ADMISSION",
+        "NO_MANDATORY_PER_ACTION_OBSERVABILITY_MARKERS"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 2,
+      "skill_chars": {
+        "skills/career-state-brief/SKILL.md": 3707,
+        "skills/career-decision/SKILL.md": 4405
+      },
+      "instruction_chars": 2038,
+      "total_skill_chars": 8112,
+      "startup_full_body_proxy_chars": 10150,
+      "reference_file_count": 0,
+      "manifest_sha256": "262c115fe3a44963969ce99d308051d87f5940778128473de09be460be8a1ddd",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 2,
+        "active_skills": [
+          "career-state-brief",
+          "career-decision"
+        ],
+        "memory": "CONVERSATION_RESIDENT_SAME_SESSION_CAREER_BRIEF",
+        "team_swarm": "NOT_IMPLEMENTED",
+        "fifth_skill": "NOT_IMPLEMENTED",
+        "family": "A",
+        "retired_skills": [
+          "structured-state-board",
+          "delivery-progress",
+          "rolling-planning",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S10-03/v12"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 23.48,
+      "observed_worst": 23.48,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "natural elimination/L1; final monitor handshake limitation"
+      ]
+    },
+    {
+      "candidate": "candidate-v13-empirical-promotion-playbook",
+      "source_commit": "eed75f580fef865f28a566a15113d8eab8a8e1d8",
+      "parent": "candidate-v8a-v7o-donor-core-transplant",
+      "strategy_delta": "COMPACT_EMPIRICAL_PROMOTION_FIRST_PLANNING_ONLY",
+      "control_delta": [
+        "FRESH_OBSERVE_CONTROL_STATE",
+        "EXPLICIT_RECONSIDER_BRANCH_ENUM",
+        "NAMED_DELIVERY_CHECKPOINT_ENUM",
+        "PER_ACTION_ENERGY_REPLAN",
+        "ACYCLIC_PREFLIGHT_ORDERING"
+      ],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/structured-state-board/SKILL.md": 3374,
+        "skills/rolling-planning/SKILL.md": 4814,
+        "skills/delivery-progress/SKILL.md": 3530,
+        "skills/risk-review/SKILL.md": 2841
+      },
+      "instruction_chars": 4549,
+      "total_skill_chars": 14559,
+      "startup_full_body_proxy_chars": 19108,
+      "reference_file_count": 0,
+      "manifest_sha256": "7378e943988bc7d28e0fd595e4baccb1d698a4b93c2784c73d39aae6e84178e1",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED",
+        "active_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S10-06/v13"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 34.01,
+      "observed_worst": 34.01,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "trust terminal"
+      ]
+    },
+    {
+      "candidate": "candidate-v14-experience-routed-policy",
+      "source_commit": "59a89513096a1e7982dc4a7e896e6d3b3cdd4bf4",
+      "parent": "candidate-v8a-v7o-donor-core-transplant",
+      "strategy_delta": "EXPERIENCE_DISTILLED_PROCEDURES_SELECTIVE_DISCLOSURE_FRESH_CAPSULE_GROUNDED_LOOKAHEAD",
+      "control_delta": [],
+      "status_at_source": "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/career-policy-core/SKILL.md": 2165,
+        "skills/career-policy-atlas/SKILL.md": 1211,
+        "skills/career-survival-guard/SKILL.md": 1327
+      },
+      "instruction_chars": 1211,
+      "total_skill_chars": 4703,
+      "startup_full_body_proxy_chars": 5914,
+      "reference_file_count": 6,
+      "manifest_sha256": "755799f24d70882b4c8054845c2a0eb94a66a63e908f0662b07640fc9a911122",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "active_skills": [
+          "career-policy-core",
+          "career-policy-atlas",
+          "career-survival-guard"
+        ],
+        "reference_count": 6,
+        "memory": "NO_DURABLE_OR_CROSS_GAME_MEMORY",
+        "team_swarm": "NOT_IMPLEMENTED",
+        "startup_body_reads": [
+          "career-policy-core"
+        ],
+        "normal_max_reference_reads_per_decision": 1,
+        "independent_material_domains_max_reference_reads": 2,
+        "retired_skills": [
+          "structured-state-board",
+          "rolling-planning",
+          "delivery-progress",
+          "risk-review"
+        ]
+      },
+      "family": "D",
+      "runs": [
+        "S10-09/v14"
+      ],
+      "flash_natural_samples": 1,
+      "observed_best": 16.1,
+      "observed_worst": 16.1,
+      "observed_48m": 0,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "Health terminal"
+      ]
+    },
+    {
+      "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+      "source_commit": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+      "parent": "candidate-v6c-compliance-cleanup",
+      "strategy_delta": "PLANNING_ONLY_BROAD_PROMOTION_PORTFOLIO",
+      "control_delta": [
+        "DECISION_CLOSED_AFTER_FINAL_RISK_GATE",
+        "ENERGY_ONE_INTEGER_CALL_WITH_FRESH_OBSERVE",
+        "CURRENT_ROUND_COMPRESSION_RECOVERY_EPOCH"
+      ],
+      "status_at_source": "STATIC_STRATEGY_PATCHED_NOT_RUNTIME_VALIDATED",
+      "skill_count": 3,
+      "skill_chars": {
+        "skills/risk-review/SKILL.md": 2581,
+        "skills/rolling-planning/SKILL.md": 6294,
+        "skills/structured-state-board/SKILL.md": 1879
+      },
+      "instruction_chars": 1049,
+      "total_skill_chars": 10754,
+      "startup_full_body_proxy_chars": 11803,
+      "reference_file_count": 0,
+      "manifest_sha256": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 3,
+        "retired_skills": {
+          "career-action-trace": "RETIRED"
+        },
+        "memory": "NOT_IMPLEMENTED",
+        "fifth_skill": "DEFERRED",
+        "team_swarm": "DEFERRED"
+      },
+      "family": "B",
+      "runs": [
+        "S10-12/v6d Run01",
+        "S10-14/v6d Run02"
+      ],
+      "flash_natural_samples": 2,
+      "observed_best": 71.67,
+      "observed_worst": 65.35,
+      "observed_48m": 2,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion"
+      ]
+    },
+    {
+      "candidate": "candidate-v1-four-skill",
+      "source_commit": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+      "parent": "pre-v1 Board/Risk/action-trace integration",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 977,
+        "skills/risk-review/SKILL.md": 4535,
+        "skills/rolling-planning/SKILL.md": 4474,
+        "skills/structured-state-board/SKILL.md": 5796
+      },
+      "total_skill_chars": 15782,
+      "instruction_chars": null,
+      "startup_full_body_proxy_chars": null,
+      "reference_file_count": 0,
+      "measurement_limit": "v1/v2 canonical manifest instruction not established at this source; UNKNOWN, not zero",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "no new durable Memory; see accepted source"
+      },
+      "strategy_delta": "ADD_BOUNDED_ROLLING_PLANNING_TO_FOUR_SKILL_INTEGRATION",
+      "control_delta": "UNKNOWN_HISTORICAL_MANIFEST_NOT_MEASURED",
+      "family": "A",
+      "runs": [
+        "v1 #1",
+        "v1 #2"
+      ],
+      "flash_natural_samples": 2,
+      "observed_best": 76.04,
+      "observed_worst": 35.31,
+      "observed_48m": 1,
+      "live_status": "NATURAL_GAMEPLAY_RECORDED",
+      "terminal_modes": [
+        "48m completion",
+        "trust crisis"
+      ]
+    },
+    {
+      "candidate": "candidate-v2-final-offline",
+      "source_commit": "c5be54ae363302967a394a159aaaa649d8910cd7",
+      "parent": "candidate-v2c-integrated-planning",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 977,
+        "skills/risk-review/SKILL.md": 4535,
+        "skills/rolling-planning/SKILL.md": 4724,
+        "skills/structured-state-board/SKILL.md": 5796
+      },
+      "total_skill_chars": 16032,
+      "instruction_chars": null,
+      "startup_full_body_proxy_chars": null,
+      "reference_file_count": 0,
+      "measurement_limit": "v1/v2 canonical manifest instruction not established at this source; UNKNOWN, not zero",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "no new durable Memory; see accepted source"
+      },
+      "strategy_delta": "CONTEXT_RECOVERY_AND_OBJECTIVE_REBUILD",
+      "control_delta": "UNKNOWN_HISTORICAL_MANIFEST_NOT_MEASURED",
+      "family": "A",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v3-adaptive-controller-static",
+      "source_commit": "3921c4893e6824f71ebb621fc0a4739ec4be6164",
+      "parent": "candidate-v2-final-offline",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 977,
+        "skills/risk-review/SKILL.md": 5180,
+        "skills/rolling-planning/SKILL.md": 6305,
+        "skills/structured-state-board/SKILL.md": 6725
+      },
+      "total_skill_chars": 19187,
+      "instruction_chars": 1570,
+      "startup_full_body_proxy_chars": 20757,
+      "reference_file_count": 0,
+      "measurement_limit": "Git LF Unicode chars; static full-body proxy, not actual request/context",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "no new durable Memory; see accepted source"
+      },
+      "strategy_delta": "ADAPTIVE_CONTROL_PUBLIC_PROGRESS_STALL_RISK",
+      "control_delta": "UNKNOWN_HISTORICAL_MANIFEST_NOT_MEASURED",
+      "family": "A",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v2c-integrated-planning",
+      "source_commit": "667696a22ee4c2d1b4e5d7596239d4b0e0939a0f",
+      "parent": "candidate-v1-four-skill (strategy ancestry; metadata parent null)",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 977,
+        "skills/risk-review/SKILL.md": 4535,
+        "skills/rolling-planning/SKILL.md": 4375,
+        "skills/structured-state-board/SKILL.md": 5796
+      },
+      "total_skill_chars": 15683,
+      "instruction_chars": null,
+      "startup_full_body_proxy_chars": null,
+      "reference_file_count": 0,
+      "measurement_limit": "intermediate historical identity; instruction not measured",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "no new durable Memory; see accepted source"
+      },
+      "strategy_delta": "MATERIAL_OUTCOME_REPRIORITIZATION_AND_LOCAL_RESPONSE_COST_COMPARISON",
+      "control_delta": "UNKNOWN_HISTORICAL_MANIFEST_NOT_MEASURED",
+      "family": "A",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    },
+    {
+      "candidate": "candidate-v3b-final-policy",
+      "source_commit": "e56dce1283b45870d8dfdfd483712fe44275975b",
+      "parent": "candidate-v3-adaptive-controller-static",
+      "skill_count": 4,
+      "skill_chars": {
+        "skills/career-action-trace/SKILL.md": 977,
+        "skills/risk-review/SKILL.md": 5180,
+        "skills/rolling-planning/SKILL.md": 7650,
+        "skills/structured-state-board/SKILL.md": 7621
+      },
+      "total_skill_chars": 21428,
+      "instruction_chars": null,
+      "startup_full_body_proxy_chars": null,
+      "reference_file_count": 0,
+      "measurement_limit": "intermediate historical identity; instruction not measured",
+      "architecture": {
+        "action_submitter": "Single Agent",
+        "skill_count": 4,
+        "memory": "no new durable Memory; see accepted source"
+      },
+      "strategy_delta": "FINAL_POLICY_TIGHTENING",
+      "control_delta": "UNKNOWN_HISTORICAL_MANIFEST_NOT_MEASURED",
+      "family": "A",
+      "runs": [],
+      "flash_natural_samples": 0,
+      "observed_best": null,
+      "observed_worst": null,
+      "observed_48m": 0,
+      "live_status": "STATIC_ONLY_NO_LIVE_RECORD_FOUND",
+      "terminal_modes": []
+    }
+  ],
+  "runs": [
+    {
+      "run": "v1 #1",
+      "candidate": "candidate-v1-four-skill",
+      "quantitative": 76.04,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v1 #2",
+      "candidate": "candidate-v1-four-skill",
+      "quantitative": 35.31,
+      "months": 25,
+      "outcome": "NATURAL",
+      "terminal_mode": "trust crisis",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S01-03",
+      "candidate": "UNKNOWN",
+      "quantitative": 26.95,
+      "months": 19,
+      "outcome": "NATURAL",
+      "terminal_mode": "elimination; exact mechanism unknown",
+      "execution_mode": "baseline no-op harness",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "SCORE-01",
+      "candidate": "UNKNOWN",
+      "quantitative": 33.06,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "unknown",
+      "execution_mode": "unbound historical reference",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S06 Run #1",
+      "candidate": "UNKNOWN",
+      "quantitative": 53.83,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "unbound historical Candidate",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v4 #1",
+      "candidate": "candidate-v4-lean-runtime-policy",
+      "quantitative": 25.84,
+      "months": 6,
+      "outcome": "NATURAL",
+      "terminal_mode": "Health=0",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "3e4019d092af4ac7f9ea554560927579b43d771f",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v6 #1",
+      "candidate": "candidate-v6-auditable-control-loop",
+      "quantitative": 75.29,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/RUN_HISTORY.md",
+      "launch_reference": "1114a04b75548cf52f030d123564e527060fc061",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7d",
+      "candidate": "candidate-v7d-strategic-continuity",
+      "quantitative": 17.02,
+      "months": 15,
+      "outcome": "NATURAL",
+      "terminal_mode": "elimination; mechanism not confidently bound",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7d-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7g pregame",
+      "candidate": "candidate-v7g-compact-skill-contracts",
+      "quantitative": null,
+      "months": null,
+      "outcome": "PRE_GAME",
+      "terminal_mode": "operational stop",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7g-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v7g",
+      "candidate": "candidate-v7g-compact-skill-contracts",
+      "quantitative": 54.52,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7g-run1-validation-r2.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7i pregame",
+      "candidate": "candidate-v7i-pre-review-result-realization-probe",
+      "quantitative": null,
+      "months": null,
+      "outcome": "PRE_GAME",
+      "terminal_mode": "provider connection; stale v7g score excluded",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7i-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v7i replacement",
+      "candidate": "candidate-v7i-pre-review-result-realization-probe",
+      "quantitative": 64.0,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7i-run1-replacement-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7m",
+      "candidate": "candidate-v7m-final-r-recovery-audit-hardening",
+      "quantitative": null,
+      "months": 20,
+      "outcome": "TECHNICAL_PARTIAL",
+      "terminal_mode": "technical interruption",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7m-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v7n pregame",
+      "candidate": "candidate-v7n-public-state-delivery-constraint-hardening",
+      "quantitative": null,
+      "months": null,
+      "outcome": "PRE_GAME",
+      "terminal_mode": "PATH lookup failure",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7n-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v7n replacement",
+      "candidate": "candidate-v7n-public-state-delivery-constraint-hardening",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "TECHNICAL_PARTIAL",
+      "terminal_mode": "max_continuations",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7n-run1-replacement-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "v7o",
+      "candidate": "candidate-v7o-execution-persistence-convergence",
+      "quantitative": 71.83,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7o-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7q",
+      "candidate": "candidate-v7q-checkpoint-marginal-progression",
+      "quantitative": 26.8,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "natural elimination; L1 stagnation",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7q-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7t",
+      "candidate": "candidate-v7t-execution-semantic-repair",
+      "quantitative": 65.71,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7t-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "v7v",
+      "candidate": "candidate-v7v-preflight-ordering-repair",
+      "quantitative": 58.97,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7v-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN01/v7w",
+      "candidate": "candidate-v7w-high-score-core-recovery",
+      "quantitative": 30.31,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "poor half-year performance",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7w-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN02/v7x",
+      "candidate": "candidate-v7x-fresh-binding-reauthorization",
+      "quantitative": 19.82,
+      "months": 8,
+      "outcome": "NATURAL",
+      "terminal_mode": "Health=0",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7x-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN03/v7y",
+      "candidate": "candidate-v7y-story-exposure-guard",
+      "quantitative": null,
+      "months": null,
+      "outcome": "PRE_GAME",
+      "terminal_mode": "readiness failure",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7y-run1-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN03R/v7y",
+      "candidate": "candidate-v7y-story-exposure-guard",
+      "quantitative": null,
+      "months": 15,
+      "outcome": "USER_CENSORED",
+      "terminal_mode": "user stop after M12 decision; actual M15",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7y-run03r-user-censored.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN04/v7z",
+      "candidate": "candidate-v7z-world-model-correction",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "M6 promotion gate",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7z-run1-screening.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN05/v7z",
+      "candidate": "candidate-v7z-world-model-correction",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "M6 promotion gate",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v7z-run2-replication.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN06/v8a",
+      "candidate": "candidate-v8a-v7o-donor-core-transplant",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "M6 donor gate",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v8a-run1-screening.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN07/v8a",
+      "candidate": "candidate-v8a-v7o-donor-core-transplant",
+      "quantitative": 72.65,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v8a-full-horizon-sample1.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN08/v8a",
+      "candidate": "candidate-v8a-v7o-donor-core-transplant",
+      "quantitative": 59.0,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v8a-full-horizon-sample2.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN10/v9a",
+      "candidate": "candidate-v9a-adaptive-opportunity-capture",
+      "quantitative": 68.4,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v9a-run10-full-horizon.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN11/v10b",
+      "candidate": "candidate-v10b-policy-constitution-anti-saturation",
+      "quantitative": null,
+      "months": 45,
+      "outcome": "TECHNICAL_PARTIAL",
+      "terminal_mode": "provider HTTP402",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10b-run11-first-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN12/v10c",
+      "candidate": "candidate-v10c-compaction-agnostic-kernel",
+      "quantitative": null,
+      "months": 1,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "header contract",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10c-run12-first-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN13/v10d",
+      "candidate": "candidate-v10d-anchored-five-marker-preflight",
+      "quantitative": null,
+      "months": 10,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "public-basis drift",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10d-run13-first-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN14/v10e",
+      "candidate": "candidate-v10e-explicit-basis-preflight",
+      "quantitative": null,
+      "months": 5,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "semantic preflight",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10e-run14-first-semantic-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN15/v10f",
+      "candidate": "candidate-v10f-cap-scope-correction",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "reviewer false positive; not Candidate failure",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10f-run15-first-semantic-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN16/v10f",
+      "candidate": "candidate-v10f-cap-scope-correction",
+      "quantitative": null,
+      "months": 6,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "historical evidence contract; premise later corrected",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10f-run16-reviewer-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN17/v10g",
+      "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+      "quantitative": 24.47,
+      "months": 6,
+      "outcome": "NATURAL",
+      "terminal_mode": "Health=0",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10g-run17-official-information-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN18/v10h",
+      "candidate": "candidate-v10h-dynamic-survival-margin",
+      "quantitative": null,
+      "months": 5,
+      "outcome": "DEVELOPMENT_CENSORED",
+      "terminal_mode": "Energy contract",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10h-run18-dynamic-survival-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S09 RUN19/v10h",
+      "candidate": "candidate-v10h-dynamic-survival-margin",
+      "quantitative": 38.08,
+      "months": 33,
+      "outcome": "NATURAL",
+      "terminal_mode": "trust terminal",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v10h-run19-full-score-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN20/v11",
+      "candidate": "candidate-v11-result-conversion-risk-persistence",
+      "quantitative": 60.6,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v11-run20-full-score-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S09 RUN21/v11b",
+      "candidate": "candidate-v11b-early-result-feasibility",
+      "quantitative": null,
+      "months": 37,
+      "outcome": "TECHNICAL_PARTIAL",
+      "terminal_mode": "operator-confirmed insufficient provider balance",
+      "execution_mode": "Flash/official Runner",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/v11b-run21-full-score-validation.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S10-03/v12",
+      "candidate": "candidate-v12-lean-career-brief",
+      "quantitative": 23.48,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "natural elimination/L1; final monitor handshake limitation",
+      "execution_mode": "Flash/official Runner",
+      "source": "673caa9e467a803500bf3e2fb3bd5df8da45956c:docs/project/runs/v12-run01-family-a-screening.md",
+      "launch_reference": "e6ddcda68ff60dad0e0676d7ff8c70ecaae556ba",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S10-06/v13",
+      "candidate": "candidate-v13-empirical-promotion-playbook",
+      "quantitative": 34.01,
+      "months": 36,
+      "outcome": "NATURAL",
+      "terminal_mode": "trust terminal",
+      "execution_mode": "Flash/official Runner",
+      "source": "7bd7c92fb43e4642077469cc6d316eaf15a7979f:docs/project/runs/v13-run01-empirical-policy-validation.md",
+      "launch_reference": "eed75f580fef865f28a566a15113d8eab8a8e1d8",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S10-09/v14",
+      "candidate": "candidate-v14-experience-routed-policy",
+      "quantitative": 16.1,
+      "months": 18,
+      "outcome": "NATURAL",
+      "terminal_mode": "Health terminal",
+      "execution_mode": "Flash/official Runner",
+      "source": "4f54967e5d8b3f6fd82c0a9ceeab94ca525e8d4a:docs/project/runs/v14-run01-experience-routed-validation.md",
+      "launch_reference": "59a89513096a1e7982dc4a7e896e6d3b3cdd4bf4",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S10-10/v6c",
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "quantitative": 64.26,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "69f26a4b0ddd0e9423c450f96690ce049af8e44e:docs/project/runs/v6c-revival-run01-validation.md",
+      "launch_reference": "e5363c9b4958955e02f5f895cb1ba1c794215958",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S10-12/v6d Run01",
+      "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+      "quantitative": 71.67,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "5eb108b55a9f252d4fd6ff4561120d353f9d124b:docs/project/runs/v6d-run01-promotion-portfolio-validation.md",
+      "launch_reference": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S10-14/v6d Run02",
+      "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+      "quantitative": 65.35,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Flash/official Runner",
+      "source": "ce92da5cda9c5da2e2b4f2140e35880e8ea77a6a:docs/project/runs/v6d-run02-exact-replication.md",
+      "launch_reference": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+      "counts_in_flash_natural_comparison": true
+    },
+    {
+      "run": "S07-13 pilot",
+      "candidate": "UNKNOWN",
+      "quantitative": null,
+      "months": 3,
+      "outcome": "PARTIAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-13-codex-public-agent-pilot.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-14 clean pilot",
+      "candidate": "UNKNOWN",
+      "quantitative": 65.16,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-14-clean-codex-public-agent-pilot.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-15 R1",
+      "candidate": "UNKNOWN",
+      "quantitative": null,
+      "months": 1,
+      "outcome": "TECHNICAL_PARTIAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-15-codex-public-agent-4run-discovery.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-15 R2",
+      "candidate": "UNKNOWN",
+      "quantitative": 54.85,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-15-codex-public-agent-4run-discovery.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-15 R3",
+      "candidate": "UNKNOWN",
+      "quantitative": 16.55,
+      "months": 12,
+      "outcome": "NATURAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-15-codex-public-agent-4run-discovery.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-15 R4",
+      "candidate": "UNKNOWN",
+      "quantitative": 57.9,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-15-codex-public-agent-4run-discovery.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-17 R1",
+      "candidate": "UNKNOWN",
+      "quantitative": 21.36,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-17-targeted-codex-3run.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-17 R2",
+      "candidate": "UNKNOWN",
+      "quantitative": 22.82,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-17-targeted-codex-3run.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-17 R3",
+      "candidate": "UNKNOWN",
+      "quantitative": 63.88,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Codex/direct MCP; public-prior discovery, no frozen Candidate evaluation",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-17-targeted-codex-3run.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-19 Luna scaffold",
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "quantitative": 28.89,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; formal v6c scaffold",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-19-luna-formal-scaffold-parity.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-20 scaffold",
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "quantitative": 16.98,
+      "months": 24,
+      "outcome": "NATURAL",
+      "terminal_mode": "see source",
+      "execution_mode": "Codex/direct MCP; formal v6c scaffold",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-20-formal-scaffold-replication.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    },
+    {
+      "run": "S07-21 strong host scaffold",
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "quantitative": 59.19,
+      "months": 48,
+      "outcome": "NATURAL",
+      "terminal_mode": "48m completion",
+      "execution_mode": "Codex/direct MCP; formal v6c scaffold",
+      "source": "c41a1b7210a02603aa19cc2bab19922a80b6cd77:docs/project/runs/s07-21-formal-scaffold-strong-host.md",
+      "launch_reference": "see canonical source identity section",
+      "counts_in_flash_natural_comparison": false
+    }
+  ],
+  "families": [
+    {
+      "family": "A",
+      "label": "Early four-Skill planning / high-ceiling ancestry",
+      "candidates": [
+        "candidate-v3c-zh-aligned-policy",
+        "candidate-v1-four-skill",
+        "candidate-v2-final-offline",
+        "candidate-v3-adaptive-controller-static",
+        "candidate-v2c-integrated-planning",
+        "candidate-v3b-final-policy"
+      ],
+      "natural_runs": 2,
+      "best": 76.04,
+      "worst": 35.31,
+      "observed_48m": 1,
+      "aggregation_limit": "heterogeneous candidates, not exact-policy probability or performance distribution"
+    },
+    {
+      "family": "E",
+      "label": "v4/v5 three-Skill consolidation bridge",
+      "candidates": [
+        "candidate-v4-lean-runtime-policy",
+        "candidate-v5-evidence-driven-phase-policy"
+      ],
+      "natural_runs": 1,
+      "best": 25.84,
+      "worst": 25.84,
+      "observed_48m": 0,
+      "aggregation_limit": "heterogeneous candidates, not exact-policy probability or performance distribution"
+    },
+    {
+      "family": "B",
+      "label": "v6 compact core and correctness/portfolio descendants",
+      "candidates": [
+        "candidate-v6-auditable-control-loop",
+        "candidate-v6b-runtime-correctness",
+        "candidate-v6c-compliance-cleanup",
+        "candidate-v6d-promotion-portfolio-rebalance"
+      ],
+      "natural_runs": 4,
+      "best": 75.29,
+      "worst": 64.26,
+      "observed_48m": 4,
+      "aggregation_limit": "heterogeneous candidates, not exact-policy probability or performance distribution"
+    },
+    {
+      "family": "C",
+      "label": "v7/v8 trajectory-delivery donor core plus execution shell",
+      "candidates": [
+        "candidate-v7-global-trajectory-delivery",
+        "candidate-v7a-promotion-frontier",
+        "candidate-v7b-semantic-generalization",
+        "candidate-v7c-global-decision-policy",
+        "candidate-v7d-strategic-continuity",
+        "candidate-v7e-lean-review-controller",
+        "candidate-v7f-promotion-first-survival-floor",
+        "candidate-v7g-compact-skill-contracts",
+        "candidate-v7h-evidence-recovery-hardening",
+        "candidate-v7i-pre-review-result-realization-probe",
+        "candidate-v7j-decision-closure-hardening",
+        "candidate-v7k-delivery-observability-hardening",
+        "candidate-v7l-pre-game-contract-hardening",
+        "candidate-v7m-final-r-recovery-audit-hardening",
+        "candidate-v7n-public-state-delivery-constraint-hardening",
+        "candidate-v7o-execution-persistence-convergence",
+        "candidate-v7p-score-gap-convergence",
+        "candidate-v7q-checkpoint-marginal-progression",
+        "candidate-v7r-early-promotion-rescue",
+        "candidate-v7s-zh-recovery-controller",
+        "candidate-v7t-execution-semantic-repair",
+        "candidate-v7u-runtime-adherence-protocol",
+        "candidate-v7v-preflight-ordering-repair",
+        "candidate-v7w-high-score-core-recovery",
+        "candidate-v7x-fresh-binding-reauthorization",
+        "candidate-v7y-story-exposure-guard",
+        "candidate-v7z-world-model-correction",
+        "candidate-v8a-v7o-donor-core-transplant"
+      ],
+      "natural_runs": 11,
+      "best": 72.65,
+      "worst": 17.02,
+      "observed_48m": 7,
+      "aggregation_limit": "heterogeneous candidates, not exact-policy probability or performance distribution"
+    },
+    {
+      "family": "D",
+      "label": "Later opportunity/constitution/Brief/rulebook/Atlas experiments",
+      "candidates": [
+        "candidate-v9a-adaptive-opportunity-capture",
+        "candidate-v10a-policy-constitution",
+        "candidate-v10b-policy-constitution-anti-saturation",
+        "candidate-v10c-compaction-agnostic-kernel",
+        "candidate-v10d-anchored-five-marker-preflight",
+        "candidate-v10e-explicit-basis-preflight",
+        "candidate-v10f-cap-scope-correction",
+        "candidate-v10g-official-runtime-evidence-boundary",
+        "candidate-v10h-dynamic-survival-margin",
+        "candidate-v11-result-conversion-risk-persistence",
+        "candidate-v11b-early-result-feasibility",
+        "candidate-v12-lean-career-brief",
+        "candidate-v13-empirical-promotion-playbook",
+        "candidate-v14-experience-routed-policy"
+      ],
+      "natural_runs": 7,
+      "best": 68.4,
+      "worst": 16.1,
+      "observed_48m": 2,
+      "aggregation_limit": "heterogeneous candidates, not exact-policy probability or performance distribution"
+    }
+  ],
+  "novelty_audit": [
+    {
+      "direction": "v1 + survival guard",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v2/v3 material-outcome reprioritization; v4 consolidation and v5/v6 public survival guard; v7f survival-floor architecture. A new name adds no mechanism."
+    },
+    {
+      "direction": "v6 + cleaner runtime",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v6b exact correctness patch and v6c compliance descendant; S10-10 64.26. No new enforcement hook specified."
+    },
+    {
+      "direction": "v6 + broad portfolio",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v6d Planning-only portfolio, two exact runs, behavioral drift already investigated."
+    },
+    {
+      "direction": "donor reconstruction / v1-v6 shared core",
+      "verdict": "PARTIALLY_OVERLAPS",
+      "evidence": "S09-10 v8a explicitly transplanted v7o donor ranking and cross-checked v6 common core; v12 carried this into a Brief; v13 mined empirical donors. Exact new reconstruction untested, but no independent new mechanism or benefit witness."
+    },
+    {
+      "direction": "control-minimal high-ceiling",
+      "verdict": "PARTIALLY_OVERLAPS",
+      "evidence": "v4 consolidated four Skills into three; v7g compact contracts; v7s Chinese compact recovery; v12 unified two Skills/checkpoint Brief; v14 capsules/selective disclosure. Literal deletion of v6d controls differs, but survival protection/non-regression is unproven. Not a justified challenger."
+    },
+    {
+      "direction": "smaller context / selective retrieval",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v12 two Skills; v14 three Skills and six reference cards; both natural negative samples."
+    },
+    {
+      "direction": "larger empirical rulebook / more Story rules",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v7b semantic priors, v13 empirical promotion playbook; no safe event-answer synthesis."
+    },
+    {
+      "direction": "opportunity / recognized-result emphasis",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "v7i pre-review realization, v7o/v8a ownership, v9a probes, v11 conversion/v11b feasibility; S10-13 no safe gap."
+    },
+    {
+      "direction": "more risk / clearance / warning-response prose",
+      "verdict": "UNSUPPORTED",
+      "evidence": "S10-16 no safe cross-event gap; v7x fresh binding, v7y exposure guard and v11 persistent risk already tested variants."
+    },
+    {
+      "direction": "persistent invariant core",
+      "verdict": "PARTIALLY_OVERLAPS",
+      "evidence": "v10c compaction-agnostic kernel through v10f certificates, v11 persistent risk. S10-15 mixed/no-single-patch does not license another rewrite."
+    },
+    {
+      "direction": "Team reviewer gate",
+      "verdict": "ALREADY_TESTED",
+      "evidence": "S10-07 non-deployable under current submission path; static feasibility, not gameplay rejection."
+    },
+    {
+      "direction": "external structural action enforcement",
+      "verdict": "UNSUPPORTED",
+      "evidence": "Potentially different from prose, but requires Runner/framework/submission change and feasibility evidence absent; outside this task and no deployable challenger contract."
+    }
+  ],
+  "decisions": {
+    "fallback": "PROMOTE_V6D_TO_PRIMARY_FALLBACK",
+    "challenger": "NO_JUSTIFIED_CHALLENGER",
+    "route": "V6D_FALLBACK + NO_MORE_ARCHITECTURE_EXPLORATION",
+    "next_action": "S10-18: third exact v6d replication, separately gated one full game",
+    "next_game": "NOT_AUTHORIZED"
+  },
+  "measurement_boundary": "Git LF Unicode chars including frontmatter/newlines; startup full-body proxy only; actual model attention/request size UNKNOWN",
+  "unbound_runs_boundary": "SCORE-01 and S06 Run #1 Candidate identity unresolved in canonical evidence. Baseline/discovery/scaffold runs never imputed to Flash Candidate distribution. Mechanical probes are interface experiments, not full policy games.",
+  "holds": "Existing S10-12/S10-14 and historical FORENSIC_HOLD remain ACTIVE; no raw moves/deletions/releases",
+  "operations": {
+    "candidate_changes": 0,
+    "skill_changes": 0,
+    "manifest_changes": 0,
+    "install": 0,
+    "service": 0,
+    "provider": 0,
+    "game": 0
+  }
+}
