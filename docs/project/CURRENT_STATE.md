@@ -5,7 +5,7 @@
 ## Project
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
-- Branch: `codex/s10-11-v6d-promotion-portfolio` (`IN_FLIGHT_EVIDENCE`; exact historical v6c parent)
+- Branch: `codex/s10-12-v6d-run01` (`IN_FLIGHT_EVIDENCE`; exact historical v6c parent)
 - Current Stage: `S10-Lab｜架构重置与高分突破冲刺` ACTIVE；本checkout继承的S06/S07条目是历史语境，不代表现代main状态。
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
@@ -14,7 +14,7 @@
 
 ## Current candidate
 
-- Current candidate: `candidate-v6d-promotion-portfolio-rebalance`；精确parent `candidate-v6c-compliance-cleanup` / `e5363c9b4958955e02f5f895cb1ba1c794215958`。S10-11仅Planning promotion portfolio策略静态修复，4879→6294 chars；17场景与6 donor /9 v6c快照完成semantic review。Board/Risk/runtime instruction不变，validation flags全false。S10-10 v6c事实64.26/48m/B/L5、M18首次掉队支持H_PORTFOLIO假设，不证明因果。无live操作，未安装v6d；既有v6c raw FORENSIC_HOLD保留，main fallback未改。`READY_FOR_V6D_GAME_GATE`；`NEXT_GAME=NOT_AUTHORIZED`。见 [S10-11 static review](reviews/S10-11_V6D_STATIC_REVIEW.md) / [donor report](research/S10-11_HIGH_SCORE_DONOR_PORTFOLIO.md)。
+- Current candidate: `candidate-v6d-promotion-portfolio-rebalance`；精确source `e7e8ab44dd85a29135eb089ef29de8fed298f4a4`，parent `candidate-v6c-compliance-cleanup` / `e5363c9b4958955e02f5f895cb1ba1c794215958`。S10-12唯一获准 fresh game 已自然完成：71.67 / partial50.17 /48m/A/L5，晋升M6/M12/M24/M42，early chain2/3；`V6D_NEAR_TARGET / V6D_NEAR_TARGET_COMPETITIVE`，尚未达75。Energy report19/Network5/intensive0/Health10/cleanup7，M18成长强于v6c但未晋升。202/202 action→fresh observe；DecisionClosed、compression reread、公开时钟一致性与flat reroute有缺陷，不能冒充完整runtime adherence PASS。冻结Candidate/Board/Risk/Planning/runtime/Runner/dependencies/provider/retry/fallback均未改，validation flags保持原值。raw本地FORENSIC_HOLD ACTIVE；无replacement/intervention/patch。`RETURN_FOR_V6D_GAME_GATE`；`NEXT_GAME=NOT_AUTHORIZED`。见 [S10-12 run report](runs/v6d-run01-promotion-portfolio-validation.md) / [compact evidence](runs/v6d-run01-promotion-portfolio-evidence.json)；历史静态依据见 [S10-11 review](reviews/S10-11_V6D_STATIC_REVIEW.md)。
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Three Skills: risk-review, structured-state-board, rolling-planning
@@ -25,7 +25,7 @@
 
 - Frozen Runner SHA and dependency/source identity: [OFFICIAL_SOURCE_LOCK](OFFICIAL_SOURCE_LOCK.md)
 - Local environment status and verification boundary: [ENVIRONMENT](ENVIRONMENT.md)
-- Root .venv is local/ignored. This snapshot does not authorize or claim a live runtime check.
+- Root .venv is local/ignored. S10-12 completed one explicitly authorized live lifecycle; this snapshot grants no further live operation.
 
 ## Runs and limitations
 
@@ -43,7 +43,7 @@
 
 ## Authorization
 
-- TARGET: STABLE_QUANTITATIVE_80_PLUS (goal only; not achieved fact)
-- NEXT_GAME: NOT_AUTHORIZED; the S06-24 one-game authorization is consumed. Any further benchmark requires a separate Main Game Gate.
+- TARGET: SURVIVE_48_MONTHS + QUANTITATIVE_75_PLUS（S10 practical goal；本局48m达成、75未达；stable75+ NOT_PROVEN）。历史80+目标不是本任务优化目标。
+- NEXT_GAME: NOT_AUTHORIZED; S10-12 one-game authorization is consumed (install/service/Runner/new_game each1; replacement/intervention0). Any further benchmark requires a separate Main Game Gate.
 - S06 Main acceptance: `PASS_WITH_KNOWN_RUNTIME_LIMITATION`; S06=`COMPLETE`. S07-01 Main decision: `SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`; S07-02 implemented the descendant v6c cleanup statically for Main/S07 review. No strategy redesign, Team/Swarm/Memory/fifth Skill reopening, provider/gameplay, or Game Gate authorization. Design Freeze remains ACTIVE; NEXT_GAME remains NOT_AUTHORIZED.
 - S03-MCP-REGISTRATION forensic hold: RELEASED_BY_MAIN. This does not imply strategy effectiveness.
