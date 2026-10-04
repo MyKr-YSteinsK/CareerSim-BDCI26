@@ -5,16 +5,16 @@
 ## Project
 
 - Repository: MyKr-YSteinsK/CareerSim-BDCI26
-- Branch: main
-- Current Stage: `S07-Lab｜合规黑盒策略探针与稳定高分搜索` ACTIVE；S06 COMPLETE
+- Branch: `codex/s10-10-v6c-revival-run01` (`IN_FLIGHT_EVIDENCE`; exact historical v6c parent)
+- Current Stage: `S10-Lab｜架构重置与高分突破冲刺` ACTIVE；下述 S06/S07 内容为本 checkout 的历史语境，不代表现代 main 状态。
 - S01–S05: COMPLETE；S05 final offline candidate: candidate-v2-final-offline；acceptance: PASS_WITH_KNOWN_LIMITATION
 - S06: COMPLETE；Main acceptance=`PASS_WITH_KNOWN_RUNTIME_LIMITATION`。S06-24 原 v6 完成一局 `75.29 / 52.70 / 48m / A` 的 `VALID_48M_COMPLETION`，但 `RUNTIME_ADHERENCE_FAIL`；S06-25 形成 `candidate-v6b-runtime-correctness`，仅修 runtime/audit correctness，v6b 为 `STATIC_CORRECTNESS_PATCHED / NOT_RUNTIME_VALIDATED`。Design Freeze=ACTIVE。
 - S07-01: `COMPLETE / QUARANTINE_FOR_MAIN_REVIEW`; Main disposition=`SURGICAL_COMPLIANCE_CLEANUP_REQUIRED`. S07-02 applied that narrow cleanup in descendant `candidate-v6c-compliance-cleanup`; W2/W3 have not started.
-- Last verified: 2026-09-26
+- Last verified: 2026-10-04
 
 ## Current candidate
 
-- Current candidate: candidate-v6c-compliance-cleanup；parent: candidate-v6b-runtime-correctness；S07-02 static compliance cleanup only, NOT_RUNTIME_VALIDATED. v6b remains the frozen parent identity in Git history. The original v6 gameplay evidence does not transfer to v6b or v6c automatically.
+- Current candidate: `candidate-v6c-compliance-cleanup`，exact source `e5363c9b4958955e02f5f895cb1ba1c794215958`；parent v6b；frozen Candidate/manifest/three Skills 未改，metadata validation flags 仍全 false。S10-10 消耗一次 install、service lifecycle、Runner play/fresh game，零replacement/介入；自然48m完成，64.26 quantitative /44.98 partial /B /L5，晋升M6/M12/M24/M42。Classification=`V6C_MID_SAMPLE`，Decision=`V6C_CORE_MID`；197/197动作后fresh observe、单整数/费用通过，但DecisionClosed与两次compression recovery失败，故runtime adherence未通过。Provider/gameplay事实只绑定本session，不转移原v6的75.29收益。服务已停止、端口释放；`FORENSIC_HOLD=ACTIVE`，pending Main/Stage review；`RETURN_FOR_V6C_REVIVAL_GATE`，`NEXT_GAME=NOT_AUTHORIZED`。见 [S10-10 report](runs/v6c-revival-run01-validation.md) / [compact evidence](runs/v6c-revival-run01-evidence.json)。现代main的v8a fallback与根v14证据分支未改；其余旧条目保留历史语境。
 - Canonical identity: [current_candidate.json](../../configs/current_candidate.json)
 - Rebuildable runtime manifest: [runtime_manifest.json](../../configs/runtime_manifest.json)
 - Three Skills: risk-review, structured-state-board, rolling-planning

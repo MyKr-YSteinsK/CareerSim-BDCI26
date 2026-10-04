@@ -1,0 +1,3282 @@
+{
+  "schema_version": 1,
+  "task": "S10-10",
+  "status": "COMPLETE",
+  "classification": "V6C_MID_SAMPLE",
+  "decision": "V6C_CORE_MID",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "branch": "codex/s10-10-v6c-revival-run01",
+  "historical_parent_sha": "e5363c9b4958955e02f5f895cb1ba1c794215958",
+  "strategy_lineage": [
+    "candidate-v6-auditable-control-loop",
+    "candidate-v6b-runtime-correctness",
+    "candidate-v6c-compliance-cleanup"
+  ],
+  "candidate": "candidate-v6c-compliance-cleanup",
+  "source_checkout": "D:\\CS\\CareerSim\\.local\\worktrees\\s10-10-v6c-revival-run01",
+  "runtime_root": "D:\\CS\\CareerSim",
+  "runner_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+  "execution_method": "Historical source checkout, identical root frozen Runner and existing shared DB/config; no setup/reroute",
+  "source_hashes": {
+    "configs/current_candidate.json": "634cdc14d1eac61193a265963b89217c2d0bea9085491880076c009bc5221941",
+    "configs/runtime_manifest.json": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
+    "skills/risk-review/SKILL.md": "83e7600b0da901c18e78cd96d85a2e68a8b5eb9dfa0d7a8cf82f9266690d237d",
+    "skills/rolling-planning/SKILL.md": "639197dc39c9e569ff7ab0de837a17874419932acde914c7b2efca00e3be83e6",
+    "skills/structured-state-board/SKILL.md": "e8c25306d108fedf35039bdd25a1540947c6715099ab997fc12a35c8611c3992"
+  },
+  "package_hashes": {
+    "manifest.json": "cf68e26f23b060372e1c75259c6eabe38b229f00788eccdb9aea71408aeeb4e1",
+    "skills/risk-review/SKILL.md": "83e7600b0da901c18e78cd96d85a2e68a8b5eb9dfa0d7a8cf82f9266690d237d",
+    "skills/rolling-planning/SKILL.md": "639197dc39c9e569ff7ab0de837a17874419932acde914c7b2efca00e3be83e6",
+    "skills/structured-state-board/SKILL.md": "e8c25306d108fedf35039bdd25a1540947c6715099ab997fc12a35c8611c3992"
+  },
+  "compatibility": {
+    "versions": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0",
+      "jiuwenswarm": "0.2.4b3",
+      "openjiuwen": "0.1.16.post2"
+    },
+    "python": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+    "dataset": "distribution career-emulator-bdci26 1.0.0 dev;194 file RECORD hashes PASS; no decode/update",
+    "dataset_aggregate_sha256": "5ee507f7d49bdcf514bbf961cedbf4476daab846f61312cd77ecc3e1439b3034",
+    "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+    "max_retries": 2,
+    "existing_MCP_db": "D:\\CS\\CareerSim-s03-02-risk-review\\.career_sim_runner\\career_emu\\career_emulator.sqlite3",
+    "PATH_LIST": "PASS_ONE_BARE_CALL",
+    "MCP_runtime": "handbook/new_game/observe/take_action actually available"
+  },
+  "live_budget": {
+    "install": 1,
+    "service_lifecycle": 1,
+    "Runner_play": 1,
+    "fresh_game": 1,
+    "replacement": 0,
+    "manual_choice": 0,
+    "intervention": 0,
+    "Candidate_patch": 0,
+    "provider_completion_probe": 0,
+    "non_generative_balance_reads": 1,
+    "provider_budget_gate": "PASS",
+    "preflight_available_CNY": "7.10",
+    "full_run_funding": "UNKNOWN"
+  },
+  "session_id": "50c5288ff1384735b4dd9509fe76ba96",
+  "outcome": {
+    "classification": "VALID_48M_COMPLETION",
+    "last_observe_alive": false,
+    "last_observe_failed": true,
+    "max_month": 49,
+    "natural_terminal_observed": true,
+    "score_report_session_field": "MATCH",
+    "score_source": "fresh_final_observe",
+    "terminal_fresh_score": {
+      "competition_partial_score": 44.98,
+      "completed": true,
+      "grade": "B",
+      "outcome": "completed",
+      "quantitative_score": 64.26,
+      "survival_months": 48
+    },
+    "terminal_public_state": {
+      "session_id": "50c5288ff1384735b4dd9509fe76ba96",
+      "status": {
+        "dignity": 9,
+        "duration_in_level": 8,
+        "energy": 0,
+        "health": 5,
+        "level": "L5",
+        "network": 50,
+        "output": 38,
+        "skill": 129,
+        "wealth": 25
+      },
+      "time": {
+        "current_month": 49,
+        "current_quarter": 17,
+        "current_year": 5
+      }
+    }
+  },
+  "final_Level": "L5",
+  "promotions": [
+    6,
+    12,
+    24,
+    42
+  ],
+  "reviews": [
+    {
+      "month": 6,
+      "phase": "STORY",
+      "action_line": 177,
+      "pre_observe_line": 175,
+      "post_observe_line": 183,
+      "choice": 3,
+      "selected_action": "提议拼车，费用 AA",
+      "cost": null,
+      "pre": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "levelup",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "C",
+      "promoted": true,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（C）：-0.3\n\n本月基本工资到账：+0.3（L1）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n直属leader在周会后单独留下你：“你的产出我看了，确实不太够，不过考虑到你刚来，这次我给你打个保护分，下个季度得靠自己了”\n\n晋升通知：半年组织评审通过，您已从 L1 晋升至 L2（工程师）。",
+      "reaction_next_action_line": 185,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "?",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 12,
+      "phase": "STORY",
+      "action_line": 385,
+      "pre_observe_line": 383,
+      "post_observe_line": 391,
+      "choice": 2,
+      "selected_action": "只聊项目不谈晋升，避免功利",
+      "cost": null,
+      "pre": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 20,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 6,
+        "output": 6,
+        "wealth": 3,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 21,
+        "network": 4,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 3,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "B",
+      "promoted": true,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.2\n\n本月基本工资到账：+0.4（L2）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n晋升通知：半年组织评审通过，您已从 L2 晋升至 L3（高级工程师）。\n\n升迁节奏过快，原有人脉圈还没消化你的新身份——协作摩擦上升，办公室侧目增多。",
+      "reaction_next_action_line": 393,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "?",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 18,
+      "phase": "STORY",
+      "action_line": 585,
+      "pre_observe_line": 583,
+      "post_observe_line": 591,
+      "choice": 1,
+      "selected_action": "仅报销明确合规的机票酒店，放弃所有模糊项",
+      "cost": null,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 33,
+        "network": 13,
+        "level": "L3",
+        "duration_in_level": 6,
+        "output": 10,
+        "wealth": 6,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 33,
+        "network": 13,
+        "level": "L3",
+        "duration_in_level": 7,
+        "output": 10,
+        "wealth": 5,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "B",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。",
+      "reaction_next_action_line": 593,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "?",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 24,
+      "phase": "STORY",
+      "action_line": 777,
+      "pre_observe_line": 775,
+      "post_observe_line": 783,
+      "choice": 1,
+      "selected_action": "平和地和他对齐交接时间点，必要时拉上排期一起明确",
+      "cost": null,
+      "pre": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 21,
+        "level": "L3",
+        "duration_in_level": 12,
+        "output": 16,
+        "wealth": 7,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 42,
+        "network": 19,
+        "level": "L4",
+        "duration_in_level": 1,
+        "output": 16,
+        "wealth": 8,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "B",
+      "promoted": true,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 照本宣科念完半年要点：「整体达标，该做的做了，亮点不算突出，也没出大乱子。继续保持，有瓶颈早点说，别闷头硬扛。」语气公事公办，听不出明显好恶。\n\n半年绩效奖金（B）：+0.25\n\n本月基本工资到账：+0.5（L3）\n\n闲聊的时候，关系好的HR偷偷跟你说，你近期有点风险，不过问题还不大。\n\n晋升通知：半年组织评审通过，您已从 L3 晋升至 L4（资深工程师）。",
+      "reaction_next_action_line": 785,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "ALLOW",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 30,
+      "phase": "STORY",
+      "action_line": 969,
+      "pre_observe_line": 967,
+      "post_observe_line": 975,
+      "choice": 1,
+      "selected_action": "理性看待期权价值，把它当加分项而非全部，决策仍以基本面为主",
+      "cost": null,
+      "pre": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 63,
+        "network": 31,
+        "level": "L4",
+        "duration_in_level": 6,
+        "output": 23,
+        "wealth": 11,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 7,
+        "dignity": 10,
+        "skill": 64,
+        "network": 31,
+        "level": "L4",
+        "duration_in_level": 7,
+        "output": 23,
+        "wealth": 12,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "B",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n反馈里夹杂着几条具体事项：进度、协作、风险意识。Leader 最后总结：「没有要批你的意思，但别让人觉得你‘只会忙、不会赢’。半年后我会用同一套标准再看你。」\n\n半年绩效奖金（B）：+0.35\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "reaction_next_action_line": 977,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 36,
+      "phase": "STORY",
+      "action_line": 1161,
+      "pre_observe_line": 1159,
+      "post_observe_line": 1167,
+      "choice": 1,
+      "selected_action": "按事实打 B，评语写清改进点",
+      "cost": null,
+      "pre": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 77,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 12,
+        "output": 26,
+        "wealth": 15,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 10,
+        "dignity": 10,
+        "skill": 78,
+        "network": 35,
+        "level": "L4",
+        "duration_in_level": 13,
+        "output": 26,
+        "wealth": 17,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "A",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\nLeader 合上笔记本，语气明显缓和：「这半年你扛的事我都记着——关键节点没掉链子，跨组协调也有你的份。上面问部门骨干名单时，我第一个想到你。接下来继续保持节奏，有想法直接来找我，资源上我会帮你争取。」\n\n半年绩效奖金（A）：+1.0499999999999998\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "reaction_next_action_line": 1169,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 42,
+      "phase": "STORY",
+      "action_line": 1353,
+      "pre_observe_line": 1351,
+      "post_observe_line": 1359,
+      "choice": 1,
+      "selected_action": "和家人分工、和团队协商弹性，固定守住几个陪伴时段",
+      "cost": null,
+      "pre": {
+        "health": 5,
+        "dignity": 10,
+        "skill": 103,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 18,
+        "output": 25,
+        "wealth": 20,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 6,
+        "dignity": 10,
+        "skill": 103,
+        "network": 34,
+        "level": "L5",
+        "duration_in_level": 1,
+        "output": 24,
+        "wealth": 22,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "health",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "A",
+      "promoted": true,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「说实话，一开始我还担心你压不住这块活。但这半年你交付稳、沟通也到位，合作方反馈不错。」Leader 顿了顿，「下个窗口我会重点推你——该准备的材料提前整理好，别临时抱佛脚。」\n\n半年绩效奖金（A）：+1.0499999999999998\n\n本月基本工资到账：+0.7（L4）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～\n\n晋升通知：半年组织评审通过，您已从 L4 晋升至 L5（技术专家 / 小组负责人）。",
+      "reaction_next_action_line": 1361,
+      "next_markers": {
+        "Primary_Gap_marker": "network",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    },
+    {
+      "month": 48,
+      "phase": "STORY",
+      "action_line": 1545,
+      "pre_observe_line": 1543,
+      "post_observe_line": 1551,
+      "choice": 1,
+      "selected_action": "坚持走完整流程，同时启动降级方案减少客户影响",
+      "cost": null,
+      "pre": {
+        "health": 3,
+        "dignity": 10,
+        "skill": 122,
+        "network": 47,
+        "level": "L5",
+        "duration_in_level": 6,
+        "output": 38,
+        "wealth": 22,
+        "energy": 0
+      },
+      "first_post": {
+        "health": 3,
+        "dignity": 10,
+        "skill": 124,
+        "network": 48,
+        "level": "L5",
+        "duration_in_level": 7,
+        "output": 37,
+        "wealth": 24,
+        "energy": 0
+      },
+      "CTRL": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "scope": "MIXED",
+      "grade": "A",
+      "promoted": false,
+      "formal_feedback": "【半年谈话】直属 Leader 约你到小会议室，就过去半年的表现做一次一对一反馈：\n\n「说实话，一开始我还担心你压不住这块活。但这半年你交付稳、沟通也到位，合作方反馈不错。」Leader 顿了顿，「下个窗口我会重点推你——该准备的材料提前整理好，别临时抱佛脚。」\n\n半年绩效奖金（A）：+1.5\n\n本月基本工资到账：+1.0（L5）\n\n闲聊的时候，关系好的HR笑着跟你说，你最近干得还不错，继续保持～",
+      "reaction_next_action_line": 1553,
+      "next_markers": {
+        "Primary_Gap_marker": "output",
+        "Progress_marker": "A",
+        "Risk_gate": "PASS",
+        "X": "-"
+      },
+      "Risk_Budget_at_review": "UNKNOWN_UNLESS_SCOPED_TRANSCRIPT_WITNESS",
+      "reset_semantics": "Fresh formal feedback acknowledged; see named transcript witness, not certified from marker alone"
+    }
+  ],
+  "runtime": {
+    "gameplay": "VALID_48M_COMPLETION",
+    "correctness": "RUNTIME_ADHERENCE_FAIL",
+    "action_observe_pairs": "197/197",
+    "success": 197,
+    "attempts": 197,
+    "observes": 198,
+    "single_integer_legal_choice": "197/197",
+    "same_session": "197/197",
+    "energy_integer": "36/36",
+    "energy_affordability": "36/36",
+    "main_affordability": "16/16",
+    "tool_schema_errors": 0,
+    "unknown_mutation_outcomes": 0,
+    "CTRL_exact_notes_linkage": "197/197",
+    "CTRL_semantic_X_closure": "197/197 under historical process-result contract",
+    "generic_CTRL_exception": "Canonical parser flags1 R=RECONSIDER X=1; historical v6c explicitly requires keeping R=RECONSIDER after completed alternative/gate. Witness T194-246/action73 supports correct process.",
+    "generic_DL_exception": "NOT_APPLICABLE; historical v6c has3 Skills and no Delivery protocol",
+    "DecisionClosed": "FAIL",
+    "DecisionClosed_basis": "Same current public state: repeated reconsideration/gate/marker debate after final gate, no new tool result; T10-34,T5039-5071.",
+    "compression": {
+      "count": 2,
+      "events_utc": [
+        "2026-10-04T04:26:57+00:00",
+        "2026-10-04T04:37:02+00:00"
+      ],
+      "recovery": [
+        {
+          "at_utc": "2026-10-04T04:26:57+00:00",
+          "fresh_observe": true,
+          "overall_status": "RECOVERY_FAIL",
+          "rebuild_evidence": {
+            "board": "UNKNOWN",
+            "delivery": "UNKNOWN",
+            "recovery_ready": "UNKNOWN",
+            "review_plan": "UNKNOWN"
+          },
+          "reread_skills": [],
+          "tool_order_status": "FAIL"
+        },
+        {
+          "at_utc": "2026-10-04T04:37:02+00:00",
+          "fresh_observe": false,
+          "overall_status": "RECOVERY_FAIL",
+          "rebuild_evidence": {
+            "board": "UNKNOWN",
+            "delivery": "UNKNOWN",
+            "recovery_ready": "UNKNOWN",
+            "review_plan": "UNKNOWN"
+          },
+          "reread_skills": [],
+          "tool_order_status": "FAIL"
+        }
+      ],
+      "status": "SCOPED"
+    },
+    "compression_contract": "fresh observe then reread ALL3 then rebuild Board/Planning",
+    "skill_reads": [
+      {
+        "call_line": 3,
+        "result_line": 11,
+        "target": "risk-review",
+        "success": true,
+        "phase": "STARTUP",
+        "returned_chars_with_line_numbers": 2902
+      },
+      {
+        "call_line": 5,
+        "result_line": 15,
+        "target": "rolling-planning",
+        "success": true,
+        "phase": "STARTUP",
+        "returned_chars_with_line_numbers": 5543
+      },
+      {
+        "call_line": 7,
+        "result_line": 13,
+        "target": "structured-state-board",
+        "success": true,
+        "phase": "STARTUP",
+        "returned_chars_with_line_numbers": 2214
+      }
+    ],
+    "post_compression_skill_rereads": 0,
+    "recovery": "FAIL_BOTH_EPOCHS",
+    "snapshot_strategy_authority": "UNKNOWN; generated snapshots not visible in flattened transcript",
+    "cleanup": {
+      "exit_code": 0,
+      "stop_exit_code": 0,
+      "listeners_remaining": [],
+      "manager_pid_file_absent": true,
+      "service_wrapper_exit": 1
+    }
+  },
+  "strategy": {
+    "survival_risk": "PASS_WITH_LIMITATIONS; valid natural completion and direct low-load/Health mitigation witnesses; serious warning clearance remains UNKNOWN",
+    "material_warning_ledger": [
+      {
+        "month": 25,
+        "domain": "TRUST_JOB_COMPLIANCE",
+        "observe_line": 831,
+        "public_warning": "HR serious escalation: 自求多福",
+        "state": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 47,
+          "network": 20,
+          "level": "L4",
+          "duration_in_level": 2,
+          "output": 23,
+          "wealth": 8,
+          "energy": 0
+        },
+        "chosen": {
+          "month": 25,
+          "phase": "STORY",
+          "action_line": 833,
+          "pre_observe_line": 831,
+          "post_observe_line": 839,
+          "choice": 1,
+          "selected_action": "立即启动应急响应，全量通知受影响用户并配合监管通报",
+          "cost": null,
+          "pre": {
+            "health": 9,
+            "dignity": 10,
+            "skill": 47,
+            "network": 20,
+            "level": "L4",
+            "duration_in_level": 2,
+            "output": 23,
+            "wealth": 8,
+            "energy": 0
+          },
+          "first_post": {
+            "health": 9,
+            "dignity": 10,
+            "skill": 47,
+            "network": 21,
+            "level": "L4",
+            "duration_in_level": 2,
+            "output": 21,
+            "wealth": 8,
+            "energy": 0
+          },
+          "CTRL": {
+            "Primary_Gap_marker": "output",
+            "Progress_marker": "A",
+            "Risk_gate": "ALLOW",
+            "X": "-"
+          },
+          "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+        },
+        "Risk_Budget": "UNKNOWN_FOR_THIS_OBSERVATION",
+        "clearance": "UNKNOWN; later softening/praise is not same-scope clearance"
+      },
+      {
+        "month": 26,
+        "domain": "TRUST_JOB_COMPLIANCE",
+        "observe_line": 855,
+        "public_warning": "HR accumulated-risk warning: 自己好好处理",
+        "state": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 49,
+          "network": 25,
+          "level": "L4",
+          "duration_in_level": 3,
+          "output": 19,
+          "wealth": 9,
+          "energy": 0
+        },
+        "chosen": {
+          "month": 26,
+          "phase": "STORY",
+          "action_line": 857,
+          "pre_observe_line": 855,
+          "post_observe_line": 863,
+          "choice": 1,
+          "selected_action": "笑着岔开话题，用轻松的方式划清边界：「这些就不聊啦，说点别的」",
+          "cost": null,
+          "pre": {
+            "health": 7,
+            "dignity": 10,
+            "skill": 49,
+            "network": 25,
+            "level": "L4",
+            "duration_in_level": 3,
+            "output": 19,
+            "wealth": 9,
+            "energy": 0
+          },
+          "first_post": {
+            "health": 7,
+            "dignity": 10,
+            "skill": 50,
+            "network": 26,
+            "level": "L4",
+            "duration_in_level": 3,
+            "output": 19,
+            "wealth": 9,
+            "energy": 0
+          },
+          "CTRL": {
+            "Primary_Gap_marker": "output",
+            "Progress_marker": "A",
+            "Risk_gate": "PASS",
+            "X": "-"
+          },
+          "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+        },
+        "Risk_Budget": "UNKNOWN_FOR_THIS_OBSERVATION",
+        "clearance": "UNKNOWN; later softening/praise is not same-scope clearance"
+      }
+    ],
+    "Health_survival_witnesses": [
+      {
+        "month": 2,
+        "action_line": 73,
+        "transcript_lines": [
+          192,
+          246
+        ],
+        "Risk_Budget": "TIGHT",
+        "candidate": "holiday consecutive on-call",
+        "Risk_gate": "RECONSIDER X=1",
+        "selected": "decline and let Leader coordinate",
+        "basis": "Public H5 to4 to3 trend recognized; alternative compared and gated; no hidden numeric threshold adopted"
+      },
+      {
+        "month": 9,
+        "action_lines": [
+          313,
+          321,
+          329
+        ],
+        "transcript_lines": [
+          1433,
+          1515
+        ],
+        "Risk_Budget": "TIGHT",
+        "basis": "Public declining Health recognized; two recovery actions before growth"
+      },
+      {
+        "month": 27,
+        "action_lines": [
+          905,
+          913,
+          921
+        ],
+        "transcript_lines": [
+          5442,
+          5497
+        ],
+        "Risk_Budget": "TIGHT",
+        "basis": "Serious prior HR warning+Health6; cleanup then Health6 to8; Main judged not directly worsening constraint; clearance UNKNOWN"
+      },
+      {
+        "month": 48,
+        "action_lines": [
+          1577,
+          1585
+        ],
+        "transcript_lines": [
+          7320,
+          7440
+        ],
+        "Risk_Budget": "TIGHT/Health binding in Story reasoning; exact Energy RB UNKNOWN",
+        "basis": "Public Health3 recognized in preceding Story; first Energy recovers4 to6, then intensive action costs1 to5; natural completion, not counterfactual safety proof"
+      }
+    ],
+    "Main_mix": {
+      "申请关键项目": 16
+    },
+    "Main_actions": [
+      {
+        "month": 3,
+        "phase": "MAIN",
+        "action_line": 129,
+        "pre_observe_line": 127,
+        "post_observe_line": 135,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 7,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 4,
+          "output": 3,
+          "wealth": 1,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "levelup",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 6,
+        "phase": "MAIN",
+        "action_line": 233,
+        "pre_observe_line": 231,
+        "post_observe_line": 239,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 13,
+          "network": 5,
+          "level": "L2",
+          "duration_in_level": 2,
+          "output": 6,
+          "wealth": 1,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 9,
+        "phase": "MAIN",
+        "action_line": 337,
+        "pre_observe_line": 335,
+        "post_observe_line": 343,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 5,
+          "output": 6,
+          "wealth": 2,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 12,
+        "phase": "MAIN",
+        "action_line": 441,
+        "pre_observe_line": 439,
+        "post_observe_line": 447,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 4,
+          "wealth": 3,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 24,
+          "network": 6,
+          "level": "L3",
+          "duration_in_level": 2,
+          "output": 6,
+          "wealth": 4,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 15,
+        "phase": "MAIN",
+        "action_line": 537,
+        "pre_observe_line": 535,
+        "post_observe_line": 543,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 32,
+          "network": 9,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 8,
+          "wealth": 5,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 33,
+          "network": 10,
+          "level": "L3",
+          "duration_in_level": 5,
+          "output": 10,
+          "wealth": 5,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 18,
+        "phase": "MAIN",
+        "action_line": 633,
+        "pre_observe_line": 631,
+        "post_observe_line": 639,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 35,
+          "network": 11,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 12,
+          "wealth": 5,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 36,
+          "network": 12,
+          "level": "L3",
+          "duration_in_level": 8,
+          "output": 14,
+          "wealth": 5,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 21,
+        "phase": "MAIN",
+        "action_line": 729,
+        "pre_observe_line": 727,
+        "post_observe_line": 735,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 40,
+          "network": 21,
+          "level": "L3",
+          "duration_in_level": 11,
+          "output": 16,
+          "wealth": 7,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 24,
+        "phase": "MAIN",
+        "action_line": 825,
+        "pre_observe_line": 823,
+        "post_observe_line": 831,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 46,
+          "network": 19,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 21,
+          "wealth": 8,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 47,
+          "network": 20,
+          "level": "L4",
+          "duration_in_level": 2,
+          "output": 23,
+          "wealth": 8,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 27,
+        "phase": "MAIN",
+        "action_line": 921,
+        "pre_observe_line": 919,
+        "post_observe_line": 927,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 54,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 10,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 55,
+          "network": 27,
+          "level": "L4",
+          "duration_in_level": 5,
+          "output": 21,
+          "wealth": 11,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 30,
+        "phase": "MAIN",
+        "action_line": 1017,
+        "pre_observe_line": 1015,
+        "post_observe_line": 1023,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 65,
+          "network": 30,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 25,
+          "wealth": 12,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 66,
+          "network": 31,
+          "level": "L4",
+          "duration_in_level": 8,
+          "output": 26,
+          "wealth": 13,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 33,
+        "phase": "MAIN",
+        "action_line": 1113,
+        "pre_observe_line": 1111,
+        "post_observe_line": 1119,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 73,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 11,
+          "output": 26,
+          "wealth": 16,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 36,
+        "phase": "MAIN",
+        "action_line": 1209,
+        "pre_observe_line": 1207,
+        "post_observe_line": 1215,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 82,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 14,
+          "output": 26,
+          "wealth": 17,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 39,
+        "phase": "MAIN",
+        "action_line": 1305,
+        "pre_observe_line": 1303,
+        "post_observe_line": 1311,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 92,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 26,
+          "wealth": 19,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 93,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 17,
+          "output": 26,
+          "wealth": 19,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 42,
+        "phase": "MAIN",
+        "action_line": 1401,
+        "pre_observe_line": 1399,
+        "post_observe_line": 1407,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 7,
+          "dignity": 9,
+          "skill": 106,
+          "network": 35,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 27,
+          "wealth": 22,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 9,
+          "skill": 107,
+          "network": 36,
+          "level": "L5",
+          "duration_in_level": 2,
+          "output": 29,
+          "wealth": 23,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 45,
+        "phase": "MAIN",
+        "action_line": 1497,
+        "pre_observe_line": 1495,
+        "post_observe_line": 1503,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 114,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 36,
+          "wealth": 20,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 115,
+          "network": 40,
+          "level": "L5",
+          "duration_in_level": 5,
+          "output": 38,
+          "wealth": 21,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      },
+      {
+        "month": 48,
+        "phase": "MAIN",
+        "action_line": 1593,
+        "pre_observe_line": 1591,
+        "post_observe_line": 1599,
+        "choice": 1,
+        "selected_action": "申请关键项目",
+        "cost": 0,
+        "pre": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 128,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 38,
+          "wealth": 24,
+          "energy": 0
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 129,
+          "network": 50,
+          "level": "L5",
+          "duration_in_level": 8,
+          "output": 38,
+          "wealth": 25,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "MIXED"
+      }
+    ],
+    "Energy_mix": {
+      "准备汇报材料": 10,
+      "人脉维护": 2,
+      "健康恢复": 12,
+      "高强度工作": 10,
+      "处理历史埋雷": 2
+    },
+    "Energy_actions": [
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 105,
+        "pre_observe_line": 103,
+        "post_observe_line": 111,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 1,
+          "wealth": 1,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "levelup",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 113,
+        "pre_observe_line": 111,
+        "post_observe_line": 119,
+        "choice": 3,
+        "selected_action": "人脉维护",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "levelup",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 121,
+        "pre_observe_line": 119,
+        "post_observe_line": 127,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "levelup",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 209,
+        "pre_observe_line": 207,
+        "post_observe_line": 215,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 5,
+          "wealth": 1,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 2
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 217,
+        "pre_observe_line": 215,
+        "post_observe_line": 223,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 225,
+        "pre_observe_line": 223,
+        "post_observe_line": 231,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 313,
+        "pre_observe_line": 311,
+        "post_observe_line": 319,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 321,
+        "pre_observe_line": 319,
+        "post_observe_line": 327,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 329,
+        "pre_observe_line": 327,
+        "post_observe_line": 335,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 417,
+        "pre_observe_line": 415,
+        "post_observe_line": 423,
+        "choice": 3,
+        "selected_action": "人脉维护",
+        "cost": 1,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 23,
+          "network": 4,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 3,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 3,
+          "energy": 2
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 425,
+        "pre_observe_line": 423,
+        "post_observe_line": 431,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 3,
+          "wealth": 3,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 4,
+          "wealth": 3,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 12,
+        "phase": "ENERGY",
+        "action_line": 433,
+        "pre_observe_line": 431,
+        "post_observe_line": 439,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 4,
+          "wealth": 3,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 23,
+          "network": 5,
+          "level": "L3",
+          "duration_in_level": 1,
+          "output": 4,
+          "wealth": 3,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 15,
+        "phase": "ENERGY",
+        "action_line": 521,
+        "pre_observe_line": 519,
+        "post_observe_line": 527,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 32,
+          "network": 9,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 5,
+          "wealth": 5,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 32,
+          "network": 9,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 7,
+          "wealth": 5,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 15,
+        "phase": "ENERGY",
+        "action_line": 529,
+        "pre_observe_line": 527,
+        "post_observe_line": 535,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 32,
+          "network": 9,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 7,
+          "wealth": 5,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 32,
+          "network": 9,
+          "level": "L3",
+          "duration_in_level": 4,
+          "output": 8,
+          "wealth": 5,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 18,
+        "phase": "ENERGY",
+        "action_line": 617,
+        "pre_observe_line": 615,
+        "post_observe_line": 623,
+        "choice": 4,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 35,
+          "network": 11,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 11,
+          "wealth": 5,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 35,
+          "network": 11,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 11,
+          "wealth": 5,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 18,
+        "phase": "ENERGY",
+        "action_line": 625,
+        "pre_observe_line": 623,
+        "post_observe_line": 631,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 35,
+          "network": 11,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 11,
+          "wealth": 5,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 35,
+          "network": 11,
+          "level": "L3",
+          "duration_in_level": 7,
+          "output": 12,
+          "wealth": 5,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 21,
+        "phase": "ENERGY",
+        "action_line": 713,
+        "pre_observe_line": 711,
+        "post_observe_line": 719,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 21,
+        "phase": "ENERGY",
+        "action_line": 721,
+        "pre_observe_line": 719,
+        "post_observe_line": 727,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 24,
+        "phase": "ENERGY",
+        "action_line": 809,
+        "pre_observe_line": 807,
+        "post_observe_line": 815,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 46,
+          "network": 19,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 18,
+          "wealth": 8,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 46,
+          "network": 19,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 20,
+          "wealth": 8,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 24,
+        "phase": "ENERGY",
+        "action_line": 817,
+        "pre_observe_line": 815,
+        "post_observe_line": 823,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 46,
+          "network": 19,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 20,
+          "wealth": 8,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 46,
+          "network": 19,
+          "level": "L4",
+          "duration_in_level": 1,
+          "output": 21,
+          "wealth": 8,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 27,
+        "phase": "ENERGY",
+        "action_line": 905,
+        "pre_observe_line": 903,
+        "post_observe_line": 911,
+        "choice": 4,
+        "selected_action": "处理历史埋雷",
+        "cost": 2,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 54,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 10,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 54,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 10,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 27,
+        "phase": "ENERGY",
+        "action_line": 913,
+        "pre_observe_line": 911,
+        "post_observe_line": 919,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 54,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 10,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 54,
+          "network": 26,
+          "level": "L4",
+          "duration_in_level": 4,
+          "output": 19,
+          "wealth": 10,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "?",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 30,
+        "phase": "ENERGY",
+        "action_line": 1001,
+        "pre_observe_line": 999,
+        "post_observe_line": 1007,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 65,
+          "network": 30,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 23,
+          "wealth": 12,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 65,
+          "network": 30,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 25,
+          "wealth": 12,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 30,
+        "phase": "ENERGY",
+        "action_line": 1009,
+        "pre_observe_line": 1007,
+        "post_observe_line": 1015,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 65,
+          "network": 30,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 25,
+          "wealth": 12,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 65,
+          "network": 30,
+          "level": "L4",
+          "duration_in_level": 7,
+          "output": 25,
+          "wealth": 12,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 33,
+        "phase": "ENERGY",
+        "action_line": 1097,
+        "pre_observe_line": 1095,
+        "post_observe_line": 1103,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 33,
+        "phase": "ENERGY",
+        "action_line": 1105,
+        "pre_observe_line": 1103,
+        "post_observe_line": 1111,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 9,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 36,
+        "phase": "ENERGY",
+        "action_line": 1193,
+        "pre_observe_line": 1191,
+        "post_observe_line": 1199,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 36,
+        "phase": "ENERGY",
+        "action_line": 1201,
+        "pre_observe_line": 1199,
+        "post_observe_line": 1207,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 39,
+        "phase": "ENERGY",
+        "action_line": 1289,
+        "pre_observe_line": 1287,
+        "post_observe_line": 1295,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 92,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 23,
+          "wealth": 19,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 92,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 25,
+          "wealth": 19,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 39,
+        "phase": "ENERGY",
+        "action_line": 1297,
+        "pre_observe_line": 1295,
+        "post_observe_line": 1303,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 92,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 25,
+          "wealth": 19,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 92,
+          "network": 35,
+          "level": "L4",
+          "duration_in_level": 16,
+          "output": 26,
+          "wealth": 19,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 42,
+        "phase": "ENERGY",
+        "action_line": 1385,
+        "pre_observe_line": 1383,
+        "post_observe_line": 1391,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 106,
+          "network": 35,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 25,
+          "wealth": 22,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 106,
+          "network": 35,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 27,
+          "wealth": 22,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 42,
+        "phase": "ENERGY",
+        "action_line": 1393,
+        "pre_observe_line": 1391,
+        "post_observe_line": 1399,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 106,
+          "network": 35,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 27,
+          "wealth": 22,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 7,
+          "dignity": 9,
+          "skill": 106,
+          "network": 35,
+          "level": "L5",
+          "duration_in_level": 1,
+          "output": 27,
+          "wealth": 22,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 45,
+        "phase": "ENERGY",
+        "action_line": 1481,
+        "pre_observe_line": 1479,
+        "post_observe_line": 1487,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 114,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 34,
+          "wealth": 20,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 9,
+          "skill": 114,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 36,
+          "wealth": 20,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 45,
+        "phase": "ENERGY",
+        "action_line": 1489,
+        "pre_observe_line": 1487,
+        "post_observe_line": 1495,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 9,
+          "skill": 114,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 36,
+          "wealth": 20,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 114,
+          "network": 39,
+          "level": "L5",
+          "duration_in_level": 4,
+          "output": 36,
+          "wealth": 20,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 48,
+        "phase": "ENERGY",
+        "action_line": 1577,
+        "pre_observe_line": 1575,
+        "post_observe_line": 1583,
+        "choice": 6,
+        "selected_action": "健康恢复",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 128,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 37,
+          "wealth": 24,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 128,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 37,
+          "wealth": 24,
+          "energy": 2
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "health",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      },
+      {
+        "month": 48,
+        "phase": "ENERGY",
+        "action_line": 1585,
+        "pre_observe_line": 1583,
+        "post_observe_line": 1591,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 6,
+          "dignity": 10,
+          "skill": 128,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 37,
+          "wealth": 24,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 9,
+          "skill": 128,
+          "network": 49,
+          "level": "L5",
+          "duration_in_level": 7,
+          "output": 38,
+          "wealth": 24,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION"
+      }
+    ],
+    "local_growth_target_flat": [
+      {
+        "month": 3,
+        "phase": "ENERGY",
+        "action_line": 113,
+        "pre_observe_line": 111,
+        "post_observe_line": 119,
+        "choice": 3,
+        "selected_action": "人脉维护",
+        "cost": 1,
+        "pre": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 4,
+          "dignity": 10,
+          "skill": 6,
+          "network": 3,
+          "level": "L1",
+          "duration_in_level": 3,
+          "output": 2,
+          "wealth": 1,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "levelup",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "network"
+      },
+      {
+        "month": 6,
+        "phase": "ENERGY",
+        "action_line": 217,
+        "pre_observe_line": 215,
+        "post_observe_line": 223,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 2
+        },
+        "first_post": {
+          "health": 5,
+          "dignity": 10,
+          "skill": 12,
+          "network": 4,
+          "level": "L2",
+          "duration_in_level": 1,
+          "output": 6,
+          "wealth": 1,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      },
+      {
+        "month": 9,
+        "phase": "ENERGY",
+        "action_line": 329,
+        "pre_observe_line": 327,
+        "post_observe_line": 335,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 8,
+          "dignity": 10,
+          "skill": 21,
+          "network": 7,
+          "level": "L2",
+          "duration_in_level": 4,
+          "output": 6,
+          "wealth": 2,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      },
+      {
+        "month": 21,
+        "phase": "ENERGY",
+        "action_line": 713,
+        "pre_observe_line": 711,
+        "post_observe_line": 719,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 39,
+          "network": 20,
+          "level": "L3",
+          "duration_in_level": 10,
+          "output": 16,
+          "wealth": 6,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      },
+      {
+        "month": 33,
+        "phase": "ENERGY",
+        "action_line": 1097,
+        "pre_observe_line": 1095,
+        "post_observe_line": 1103,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 7,
+          "dignity": 10,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 6,
+          "dignity": 9,
+          "skill": 72,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 10,
+          "output": 26,
+          "wealth": 15,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      },
+      {
+        "month": 36,
+        "phase": "ENERGY",
+        "action_line": 1193,
+        "pre_observe_line": 1191,
+        "post_observe_line": 1199,
+        "choice": 1,
+        "selected_action": "高强度工作",
+        "cost": 2,
+        "pre": {
+          "health": 10,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 3
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 1
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      },
+      {
+        "month": 36,
+        "phase": "ENERGY",
+        "action_line": 1201,
+        "pre_observe_line": 1199,
+        "post_observe_line": 1207,
+        "choice": 7,
+        "selected_action": "准备汇报材料",
+        "cost": 1,
+        "pre": {
+          "health": 9,
+          "dignity": 9,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 1
+        },
+        "first_post": {
+          "health": 9,
+          "dignity": 10,
+          "skill": 81,
+          "network": 36,
+          "level": "L4",
+          "duration_in_level": 13,
+          "output": 26,
+          "wealth": 17,
+          "energy": 0
+        },
+        "CTRL": {
+          "Primary_Gap_marker": "output",
+          "Progress_marker": "A",
+          "Risk_gate": "PASS",
+          "X": "-"
+        },
+        "scope": "LOCAL_SAME_MONTH_LEVEL_PUBLIC_ASSOCIATION",
+        "target": "output"
+      }
+    ],
+    "observed_effect_adaptation": "FAIL_WITH_POSITIVE_LOCAL_SAMPLE",
+    "observed_effect_basis": [
+      "M6 report local flat recognized; later different response sought, no permanent cap proven (T1204-1222).",
+      "M33 intensive output26 to26; T6125 falsely asserts already gained Output2. M36 intensive and report again output26 to26. Advertised gain overrides fresh response.",
+      "Strict two comparable checkpoint STALLED NOT_ESTABLISHED: formal Review resets and event pollution prevent forcing a later policy stall rule."
+    ],
+    "Primary_Gap_review_resets": "PASS_WITH_LIMITATIONS; formal feedback acknowledged and baseline narrated, but broad Output/visibility focus persists; markers alone do not prove reset/eligible promotion",
+    "review_reset_witnesses": [
+      [
+        1988,
+        2010
+      ],
+      [
+        4001,
+        4018
+      ],
+      [
+        4786,
+        4796
+      ],
+      [
+        6323,
+        6328
+      ]
+    ],
+    "Story_samples": [
+      {
+        "type": "material Health",
+        "action_line": 73,
+        "transcript_lines": [
+          192,
+          246
+        ]
+      },
+      {
+        "type": "serious compliance incident",
+        "action_line": 833,
+        "transcript_lines": [
+          5007,
+          5077
+        ]
+      },
+      {
+        "type": "high value visibility vs Health",
+        "transcript_lines": [
+          7320,
+          7440
+        ]
+      },
+      {
+        "type": "ordinary ambiguous personal-brand sharing",
+        "transcript_lines": [
+          2078,
+          2155
+        ]
+      }
+    ],
+    "evidence_firewall": "FAIL; model advertised hidden-effect arithmetic and unverified effect/eligibility assumptions, category only; numeric hidden stock excluded from audit",
+    "hidden_numeric_text_matches": {
+      "basis": "TEXT_MATCHES_NOT_SEMANTIC_VERDICT",
+      "numeric_hiddenrisk_reference": 170,
+      "numeric_internal_score_reference": 0
+    },
+    "later_policies_imposed": false
+  },
+  "usage": {
+    "actual_billed_cost": "UNKNOWN",
+    "binding": "SESSION_MATCH",
+    "input_tokens": 38946492,
+    "output_tokens": 190016,
+    "total_tokens": 39136508,
+    "cache_tokens": 38508544,
+    "cache_hit_rate_percent": 98.87551361493611,
+    "cache_source": "same-session aggregate usage event",
+    "wall_seconds": 1443.326933,
+    "play_start_utc": "2026-10-04T04:16:15.516786+00:00",
+    "play_end_utc": "2026-10-04T04:40:18.843719+00:00",
+    "requested_model": "deepseek-flash",
+    "serving_version": "PARTIALLY_VERIFIED existing mapping; no extra probe",
+    "reported_cost": 0.0,
+    "reported_cost_is_billed_cost": false,
+    "startup_usage": {
+      "input": 200,
+      "output": 1,
+      "total": 201
+    },
+    "compressor_usage_outside_gameplay_aggregate": [
+      {
+        "input": 159894,
+        "output": 4247,
+        "total": 164141,
+        "cache_tokens": 158336
+      },
+      {
+        "input": 160056,
+        "output": 5363,
+        "total": 165419,
+        "cache_tokens": 158336
+      }
+    ],
+    "usage_scope": "Runner gameplay aggregate comparable to v6 gameplay; startup/compressor overhead separate"
+  },
+  "preservation": {
+    "historical_tracked_unchanged_pre_report": 55,
+    "root_tracked_unchanged": 265,
+    "Candidate_validation_flags_unchanged_all_false": true,
+    "old_holds_unchanged": true,
+    "Runner_dependencies_provider_retry_config_unchanged": true,
+    "no_raw_committed": true
+  },
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S10-10",
+    "reason": "Contested historical CTRL parser interpretation, DecisionClosed and compression-recovery failures require exact raw review",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T041620Z\\events-20261004T041620Z.jsonl",
+        "bytes": 1860806,
+        "sha256": "ce5315ae3a6f397d625caf58011cdfaf92c58af2d1bbd733634d81e651beecee"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T041620Z\\transcript-20261004T041620Z.log",
+        "bytes": 589577,
+        "sha256": "b58604690729e3a0b2186eef837fee6fa38a2ed496462906a1746e8f6349ae63"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20261004T041620Z\\score_report.json",
+        "bytes": 1202,
+        "sha256": "0cb7af8d23a2763031ed3151d5cbc495eb34b2dea39dfc66caab294d434743ca"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-10-v6c-revival-run01\\runner-result.json",
+        "bytes": 2117,
+        "sha256": "35db6d6c2c2c2f093698dedb0d3f6de911ed24034849952d5604e69f2443aef2"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-10-v6c-revival-run01\\llm-run-window.log",
+        "bytes": 1575263,
+        "sha256": "50a28beed068d585a9947b268f69938a13640d1799f5a3309ad1d7a72e22b968"
+      }
+    ],
+    "window_utc": [
+      "2026-10-04T04:16:15.516786+00:00",
+      "2026-10-04T04:40:18.843719+00:00"
+    ],
+    "release_authority": "Main/Stage",
+    "release_conditions": "Accept independent compact audit; verify recoverability/no further raw reanalysis; close review/child dependencies; explicit hold release before separately authorized cleanup",
+    "worktree": "Retained pending review; root runtime sources remain outside checkout and must not be deleted with it",
+    "hashes_do_not_replace_sources": true
+  },
+  "execution_issues": {
+    "categories": [
+      "managed_worktree_default_location",
+      "checkout_line_ending_index_refresh",
+      "inline_python_quoting",
+      "preflight_path_assumption_and_resume_guard"
+    ],
+    "consumed_live_budget": false,
+    "resolution": "Before any live mutation; exact Git bytes and correct existing runtime identity used; no dependency/Candidate repair"
+  },
+  "nonclaims": [
+    "stable75+",
+    "80+",
+    "causal superiority",
+    "hidden-test transfer",
+    "single-run rejection of donor family",
+    "promotion threshold or counterfactual action effect"
+  ],
+  "return": "RETURN_FOR_V6C_REVIVAL_GATE",
+  "next_game": "NOT_AUTHORIZED"
+}
