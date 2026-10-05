@@ -1,0 +1,48 @@
+{
+  "status": "FINAL_FROZEN_FOR_SUBMISSION",
+  "decision": "SELECT_EXACT_V6_FOR_SINGLE_SHOT",
+  "task_authority": "S10-23R-v2",
+  "candidate_id": "candidate-v6-auditable-control-loop",
+  "source_commit": "1114a04b75548cf52f030d123564e527060fc061",
+  "parent_candidate_id": "candidate-v5-evidence-driven-phase-policy",
+  "validation": {
+    "next_game_authorized": false
+  },
+  "team": "FZU-Loss快点降",
+  "name": "FZU-Loss-final-v6",
+  "mode": "agent",
+  "archive_layout": "solution-dir",
+  "runtime_manifest": {
+    "path": "configs/runtime_manifest.json",
+    "sha256": "bcf459da811f55b8a26a76d2ee6e93da10deb4b720cc732d19a3ce12d8fa2985",
+    "instruction_sha256": "7131bbd652452c71571f1ab99451f210e6e52601e9d66144d3d665337b4eb33c"
+  },
+  "skills": [
+    {
+      "name": "risk-review",
+      "path": "skills/risk-review/SKILL.md",
+      "git_blob": "a6a09a4894caaca15f4aa5005911bad3b399b464"
+    },
+    {
+      "name": "rolling-planning",
+      "path": "skills/rolling-planning/SKILL.md",
+      "git_blob": "138a2a9ef7626e892b36b0e8e29a934a90709228"
+    },
+    {
+      "name": "structured-state-board",
+      "path": "skills/structured-state-board/SKILL.md",
+      "git_blob": "0afafcfbd2e8d87e5a9cc9944be0cd639c3b61bd"
+    }
+  ],
+  "official_contract": {
+    "access_date": "2026-10-05",
+    "repo": "https://github.com/openJiuwen-ai/CareerSim-BDCI26",
+    "main_sha": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "layout_verified": true,
+    "portal_latest_notices": "UNKNOWN: portal yielded no readable content; packaging ready does not assert upload window availability"
+  },
+  "selection_reason": "HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING",
+  "runtime_delta": "NONE",
+  "strategy_search": "CLOSED",
+  "exact_v6_replication": "CANCELLED_NOT_NEEDED_FOR_FINAL_BUILD"
+}

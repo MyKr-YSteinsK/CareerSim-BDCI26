@@ -219,3 +219,59 @@ def test_contents_only_layout_requires_explicit_builder_argument(tmp_path: Path)
     assert names == EXPECTED_MEMBERS
     assert not any(name.startswith("solution/") for name in names)
     assert result["archive_layout"] == "contents-only"
+
+
+def _exact_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """Use real immutable v6 bytes, synthetic committed docs/freeze, no runtime install."""
+    repo = _synthetic_repo(tmp_path / "repo")
+    freeze = json.loads((ROOT / "docs/project/FINAL_SUBMISSION_IDENTITY.json").read_text(encoding="utf-8"))
+    freeze.update(team="CareerSim Synthetic Team", name="synthetic-final")
+    path = repo / "docs/project/FINAL_SUBMISSION_IDENTITY.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(freeze), encoding="utf-8")
+    _git(repo, "add", ".")
+    _git(repo, "commit", "-m", "explicit historical freeze")
+    _git(repo, "update-ref", "refs/remotes/origin/main", "HEAD")
+    original = builder._source_blob
+    def read(source_repo: Path, commit: str, rel: str) -> bytes:
+        return original(ROOT if commit == builder.EXACT_V6_SOURCE else source_repo, commit, rel)
+    monkeypatch.setattr(builder, "_source_blob", read)
+    return repo
+
+
+def test_exact_v6_ignores_later_checkout_and_preserves_git_bytes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    repo = _exact_fixture(tmp_path, monkeypatch)
+    output = tmp_path / "out/final.zip"
+    result = builder.build(repo, team="CareerSim Synthetic Team", submission_name="synthetic-final",
+                           output=output, archive_layout="solution-dir", exact_v6=True)
+    with zipfile.ZipFile(output) as archive:
+        assert set(archive.namelist()) == {f"solution/{p}" for p in builder._expected_relpaths(tuple(builder.EXACT_V6_BLOBS))}
+        manifest = json.loads(archive.read("solution/manifest.json"))
+        source = json.loads(builder._source_blob(repo, builder.EXACT_V6_SOURCE, "configs/runtime_manifest.json"))
+        assert {k for k in source if source[k] != manifest[k]} == {"team", "name"}
+        for skill, blob in builder.EXACT_V6_BLOBS.items():
+            assert _git_blob(archive.read(f"solution/skills/{skill}/SKILL.md")) == blob
+    assert result["runtime_source_commit"] == builder.EXACT_V6_SOURCE
+    before = output.read_bytes()
+    with pytest.raises(RuntimeError, match="do not overwrite/rebuild"):
+        builder.build(repo, team="CareerSim Synthetic Team", submission_name="synthetic-final",
+                      output=output, archive_layout="solution-dir", exact_v6=True)
+    assert output.read_bytes() == before
+
+
+def test_exact_v6_rejects_uncommitted_freeze_and_wrong_identity(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    repo = _exact_fixture(tmp_path, monkeypatch)
+    kwargs = dict(team="Wrong Team", submission_name="synthetic-final", output=tmp_path / "out/final.zip",
+                  archive_layout="solution-dir", exact_v6=True)
+    with pytest.raises(RuntimeError, match="freeze identity mismatch"):
+        builder.build(repo, **kwargs)
+    (repo / "docs/project/FINAL_SUBMISSION_IDENTITY.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(RuntimeError, match="working tree is not clean"):
+        builder.build(repo, **kwargs)
+
+
+def test_final_builder_requires_main(tmp_path: Path) -> None:
+    repo = _synthetic_repo(tmp_path / "repo")
+    _git(repo, "checkout", "-b", "codex/unfrozen")
+    with pytest.raises(RuntimeError, match="requires main"):
+        _build(repo, tmp_path / "out/final.zip")

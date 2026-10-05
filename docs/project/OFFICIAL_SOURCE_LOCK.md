@@ -2,6 +2,12 @@
 
 状态：当前官方事实与运行合同入口。更新日期：2026-09-22（北京时间）。
 
+### 2026-10-05 最终打包复核
+
+S10-23R-v2 读取当前 [官方仓库 README](https://github.com/openJiuwen-ai/CareerSim-BDCI26)，并以 `git ls-remote` 确认 main 仍为 `f61c738c72e51b77298cc1c14c7c6ebf4b6c527d`。提交目录仍为 `solution/`，manifest 包含 team/name/mode/instruction，模式 agent，Skill 使用 SKILL.md frontmatter，并附 README 与两份 design 文档。官方 CLI validator 还会检查本机环境；本任务零服务/DB 边界下仅执行其 `validate_submission` 离线材料检查函数。
+
+赛事门户未返回可读正文，readthedocs 未能访问；最新通知、截止日期及上传窗口 UNKNOWN。下文 2026-09-22 的时间/限额为历史核验，不据此声称今天开放提交。用户决定最终仅提交一次，不等同于平台已经受理。没有发现与当前打包格式冲突的新官方证据。
+
 本文件取代 v1.0。区分官方声明、源码/元数据事实、项目执行约定和实际运行证据；出现冲突时重新核验来源，不以文档版本号代替官方证据。S01 本地环境与最小 baseline 技术闭环已有执行证据，见 [ENVIRONMENT](ENVIRONMENT.md) 与 [S01-03 run record](RUN_HISTORY.md#s01-03-baseline)；当前验收状态见 [CURRENT_STATE](CURRENT_STATE.md)，不由 Source Lock 代管。
 
 ## 1. Competition Identity and Repository

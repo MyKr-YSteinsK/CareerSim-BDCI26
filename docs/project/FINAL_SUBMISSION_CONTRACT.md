@@ -1,5 +1,11 @@
 # Final Submission Contract｜最终比赛提交合同
 
+## S10-23R-v2 显式最终来源（2026-10-05）
+
+本次用户任务选择历史 exact v6，不替换 main 上的 v8a runtime。此任务的冻结依据为已提交的 `FINAL_SUBMISSION_IDENTITY.json`，运行字节从 `1114a04b75548cf52f030d123564e527060fc061` 的 Git object 恢复；文档从 clean main 的构建 commit 读取。使用官方 builder 的 `--exact-v6` 模式，仍要求 main、HEAD=origin/main、工作区干净、完整身份及解压校验。仅 team/name 元数据改变，恰好三个 Skill、七个文件；下文四 Skill/current_candidate 冻结约定保留为旧默认路线，不适用于这次明确授权的历史来源。此例外不授权新的 Candidate 或 runtime 修改。
+
+官方仓库提交结构已重新核对；门户没有返回可读最新通知，因此上传窗口状态 UNKNOWN。包就绪不等于实际上传、门户受理或云端验证。
+
 ## 0. 优先级
 
 这是项目结束阶段的最高优先级交付合同。
