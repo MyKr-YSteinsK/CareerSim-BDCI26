@@ -1,0 +1,658 @@
+{
+  "task_tools": [
+    "todo_create",
+    "todo_get",
+    "todo_list",
+    "todo_modify"
+  ],
+  "sysop_tools": [
+    "bash",
+    "edit_file",
+    "glob",
+    "grep",
+    "list_files",
+    "powershell",
+    "read_file",
+    "write_file"
+  ],
+  "progress_repeat": false,
+  "scope": "real rails, real AbilityManager and LOCAL SysOperation; no shared agent/service/model",
+  "captures": [
+    {
+      "label": "next-call",
+      "marker_present": false,
+      "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+      "chars": 1527
+    },
+    {
+      "label": "round-2",
+      "marker_present": false,
+      "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+      "chars": 1527
+    },
+    {
+      "label": "round-3",
+      "marker_present": false,
+      "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+      "chars": 1527
+    },
+    {
+      "label": "post-compression",
+      "marker_present": false,
+      "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+      "chars": 1527
+    }
+  ],
+  "todo_storage": "D:\\CS\\CareerSim\\.local\\scratch\\s10-19r3\\fixture\\agent\\workspace\\todo\\./r3_public_fixture/todo.json",
+  "modify": true,
+  "complete": true,
+  "compression": "real on_add_messages replacement callback; multi_compress mocked; no LLM",
+  "delete": true,
+  "script_copied": true,
+  "helper_write_output": {
+    "success": true,
+    "data": {
+      "content": "{\"state\": {\"public_marker\": \"R3_PUBLIC_STATE_MARKER\"}, \"transform\": \"WRITE\"}"
+    },
+    "error": null
+  },
+  "helper_next_output": {
+    "success": true,
+    "data": {
+      "content": "{\"state\": {\"public_marker\": \"R3_PUBLIC_STATE_MARKER\"}, \"transform\": \"READ\"}"
+    },
+    "error": null
+  },
+  "same_run_persistence": true,
+  "helper_post_compression_output": {
+    "success": true,
+    "data": {
+      "content": "{\"state\": {\"public_marker\": \"R3_PUBLIC_STATE_MARKER\"}, \"transform\": \"READ\"}"
+    },
+    "error": null
+  },
+  "helper_post_compression": true,
+  "todo_reset": true,
+  "helper_reset": true,
+  "post_reset_output": {
+    "success": true,
+    "data": {
+      "content": "{\"state\": {}, \"transform\": \"READ\"}"
+    },
+    "error": null
+  },
+  "helper_marker_absent_after_install": true,
+  "fixture_install_lifecycles": 2,
+  "provider_calls": 0,
+  "service": 0,
+  "game": 0,
+  "task": "S10-19-R3",
+  "status": "COMPLETE_FEASIBILITY_AUDIT",
+  "decision": "DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED",
+  "branch": "main",
+  "base": "ff393ab88b8a42121c089cd777f9f77242c1fc29",
+  "runtime_versions": {
+    "jiuwenswarm": "0.2.4b3",
+    "openjiuwen": "0.1.16.post2",
+    "career-emulator": "1.0.1",
+    "career-emulator-bdci26": "1.0.0"
+  },
+  "sources": [
+    {
+      "path": "openjiuwen/harness/rails/task_planning_rail.py",
+      "sha256": "f1cb35be226936a77e5d337439ccd8803d6ec16b995b384cba1f93a4577fb5ff",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/tools/todo.py",
+      "sha256": "bd19540d054c13a8cef43a559d1d46831456e138b42755e996ceaf687146b005",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/rails/sys_operation_rail.py",
+      "sha256": "990974c19843e1f6823bca63ca6bb51bf458b325d26758353af9e12938453a76",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/tools/shell/powershell/_tool.py",
+      "sha256": "108fa99270fbfa98a9f6a9323a6d1cc15caa21c4ae0bc7b806ddf53a22a8bab9",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/factory.py",
+      "sha256": "9c7318879fae3321cb6cb39b5a9636eeaacf5eeccb492f001f81fd28ae8c7147",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/rails/agent_mode_rail.py",
+      "sha256": "81cd40d002f2665decc18a881ec2faec42b4de5eb5c89e85a22be8ec1c5d2d37",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/core/sys_operation/config.py",
+      "sha256": "9b60caf34d035956d88ff2ad72709d0365f6de9bc685a9673409a506b6f2881e",
+      "RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/core/foundation/llm/schema/config.py",
+      "sha256": "8a433ea393369e300d1613294224e15bf7a58c25b67142ce8d830730d2fd8ae8",
+      "RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/common/reasoning_injector.py",
+      "sha256": "b6cc284101d0eb3e535b5038cd4ff6e5db2037b30b1c9bc83ab5918b784835c6",
+      "RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+      "sha256": "3d5517c9bcf4536745a09e22cf86ef5d493ded8636a212cd6226cc45f53198f5",
+      "RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/agents/harness/common/rails/interrupt/interrupt_helpers.py",
+      "sha256": "3fe760dbcca92c6276b03ec599cd39f24d0387d1bf77850c20a07ed1bd4e3341",
+      "RECORD_match": true
+    }
+  ],
+  "model_configuration": [
+    {
+      "model_name": "deepseek-flash",
+      "temperature": 0.95,
+      "top_p": 0.1,
+      "reasoning_effort": null,
+      "reasoning_level": null,
+      "thinking": null
+    }
+  ],
+  "sampling_boundary": "Offline request config assembly using frozen config and env resolution; no actual provider request captured. Shared process overrides unknown.",
+  "permissions_enabled": false,
+  "model_ownership": "platform configuration; arbitrary manifest temperature is retained in metadata but not passed into model construction/request envelope",
+  "temperature_verdict": "TEMPERATURE_NOT_SUBMISSION_PORTABLE",
+  "cloud_sampling_portability": "UNKNOWN => CLOSED",
+  "todo_verdict": "TODO_NOT_USEFUL_AS_ANCHOR",
+  "TODO_STATE_AFTER_COMPRESSION": "ABSENT",
+  "CROSS_RUN_TODO_LEAK": "NONE_IN_FIXTURE",
+  "script_verdict": "PASS_LOCAL_FROZEN_TOOL_LEVEL",
+  "script_main_only_boundary": "Fixture source imports only json/sys/pathlib, fixed Skill-relative state path; no MCP/DB/network/provider/game calls. General shell tool is not globally sandboxed against arbitrary malicious code.",
+  "script_cloud_portability": "Recursive copy and generic bash shell supported in frozen source; Windows PowerShell executed here; cloud Python executable/permissions not remotely measured. Future gate must verify cloud-equivalent interpreter availability.",
+  "novelty_scan": [
+    {
+      "candidate": "candidate-v6d-promotion-portfolio-rebalance",
+      "source": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v14-experience-routed-policy",
+      "source": "59a89513096a1e7982dc4a7e896e6d3b3cdd4bf4",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v13-empirical-promotion-playbook",
+      "source": "eed75f580fef865f28a566a15113d8eab8a8e1d8",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v12-lean-career-brief",
+      "source": "e6ddcda68ff60dad0e0676d7ff8c70ecaae556ba",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v11b-early-result-feasibility",
+      "source": "48169157eca072116221dd65e86dbd3fa5233f7a",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v11-result-conversion-risk-persistence",
+      "source": "5e9d6ef7a0f9819172764a56abb5f2b980dee4bd",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10h-dynamic-survival-margin",
+      "source": "f4b29b3014fb7ac2b240062e645562cfd71576d9",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10g-official-runtime-evidence-boundary",
+      "source": "c9a9d914481c4d2a3221719b1ae90871be057c8a",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10f-cap-scope-correction",
+      "source": "7895515453ea4a3e5ce650dd96b84a824256bd9c",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10e-explicit-basis-preflight",
+      "source": "758e441192e99d3b5336bd7e91a27c043dede676",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10d-anchored-five-marker-preflight",
+      "source": "8e0b22ef0e555ab5cbdf47f5738952e50670a295",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10c-compaction-agnostic-kernel",
+      "source": "55157f53031c284e2e569944e4aff6adbf64c48f",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10b-policy-constitution-anti-saturation",
+      "source": "92fb4323c8db2e03fa3c12d0c2969ffdca6f6a4f",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v10a-policy-constitution",
+      "source": "0cecffd405d7dcdf55e6a1d8a60aef0a4b718318",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v9a-adaptive-opportunity-capture",
+      "source": "1cc20d7a09b8ac8e34c963ae1016f64e25d99d00",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v8a-v7o-donor-core-transplant",
+      "source": "6a4037fdf2b75c105cfe0b40b93ea68d3dd0a6f3",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7z-world-model-correction",
+      "source": "b92e83417f24aca54c693787196207ff68e48808",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7y-story-exposure-guard",
+      "source": "89f0bfb4d13af87980a41c0b2075586e33a1e597",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7x-fresh-binding-reauthorization",
+      "source": "aa3844c85c982e42a859a18cfc60820df32600a0",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7w-high-score-core-recovery",
+      "source": "5bc07edc49bb352a686d13940fb36f78d01ca827",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7v-preflight-ordering-repair",
+      "source": "86e90406d9f465215c61619898e71f7acdf1e2a9",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7u-runtime-adherence-protocol",
+      "source": "882d47202d4d8d8305acbf7edb451ee8d68fe1ce",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7t-execution-semantic-repair",
+      "source": "594cf755d489d0693b958f04c40e7e3d5d85c337",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7s-zh-recovery-controller",
+      "source": "3060c63142f9ad2489d08399fc750a23ff3244e8",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7r-early-promotion-rescue",
+      "source": "ea7a6fbf14c346418e23fe86a438c5c2c193b6f3",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7q-checkpoint-marginal-progression",
+      "source": "31c0501249ab4be6a82c3346039290b291fc80ef",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7p-score-gap-convergence",
+      "source": "4d88b8d131e7408791adeaf6962280c2a2392fc4",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7o-execution-persistence-convergence",
+      "source": "3fd64bead5600c2f0bab677e7b832fe3678bdf12",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7n-public-state-delivery-constraint-hardening",
+      "source": "6338bce24a022aacd67843f265108e2145a0bc2b",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7m-final-r-recovery-audit-hardening",
+      "source": "e0d92ab720395894ce6a109c424bc92ef393010c",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7l-pre-game-contract-hardening",
+      "source": "17af11d737f8d686e5d1212396234cbb064b2fcd",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7k-delivery-observability-hardening",
+      "source": "3864b98c19c6425da615fcd006d0776c852f4a3c",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7j-decision-closure-hardening",
+      "source": "97da9104c19c87bb174fafb53f68c73ce1bbc9e5",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7i-pre-review-result-realization-probe",
+      "source": "d51053d6912c90e1e10daebe8e963a2cf315af55",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7h-evidence-recovery-hardening",
+      "source": "8f140642294604dd3cd2f59cf5c27df33a1090ea",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7g-compact-skill-contracts",
+      "source": "7247eed44aad385e705e35254a9253719a6740ef",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7f-promotion-first-survival-floor",
+      "source": "dc5e85cdaef136c9bc573a04c13a3e691bcf7790",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7e-lean-review-controller",
+      "source": "7aed55348ce49eded8e14d79fea31ae815092fc9",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7d-strategic-continuity",
+      "source": "786db94f6683fd0c11aa6eae85ca11a95a1e032a",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7c-global-decision-policy",
+      "source": "40c1314cb4ebee76ea80d3ad3b00aa0c5645694d",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7b-semantic-generalization",
+      "source": "d10f354f5338e7950bd49efeba7b9d524e82f23a",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7a-promotion-frontier",
+      "source": "7b05c492bc5a5083226c4b7a64c1ce9482852941",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v7-global-trajectory-delivery",
+      "source": "21b5153b86a0b7e7ce2c31278620202b6739c536",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v6c-compliance-cleanup",
+      "source": "e5363c9b4958955e02f5f895cb1ba1c794215958",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v6b-runtime-correctness",
+      "source": "8b6696a7d17b5204817410affc71a4ac9ecc8212",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v6-auditable-control-loop",
+      "source": "40589e35564e6c3822851586c7192b7089183722",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v5-evidence-driven-phase-policy",
+      "source": "08270978f6c5f3a4a0eaadf90840d01056472a8a",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v4-lean-runtime-policy",
+      "source": "3e4019d092af4ac7f9ea554560927579b43d771f",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    },
+    {
+      "candidate": "candidate-v3c-zh-aligned-policy",
+      "source": "d52d5807a49b87a74f6c97cd12349bbb56fe5a5c",
+      "script_files": [],
+      "native_surface_mentions": [],
+      "sampling_manifest_fields": []
+    }
+  ],
+  "novelty_count": 49,
+  "novelty_limit": "One most-recent metadata-changing snapshot per candidate identity across all local Git refs; absence is bounded source evidence, not proof about every unretained runtime action. Standalone developer eval scripts excluded.",
+  "runner_tree": "a2245c49d0b102b80b9891b6d750c671b3c3710f",
+  "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+  "hold": {
+    "status": "FORENSIC_HOLD",
+    "owner": "S10-19-R3",
+    "release_authority": "Main/Stage",
+    "condition": "Accepted deployment decision and no child reanalysis dependency",
+    "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-19r3-native-control",
+    "files": [
+      {
+        "name": "audit.py",
+        "sha256": "e738e3cf626f09e22564e2fc5bb04019d2fffc382be31171759f06ec4dc134d1",
+        "bytes": 8663
+      },
+      {
+        "name": "next-call-system.txt",
+        "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+        "bytes": 3595
+      },
+      {
+        "name": "output.txt",
+        "sha256": "bd147dcfca44e6f98e72ae286c6e694e899a6d3961b7ae2449af9daa89bb033f",
+        "bytes": 58318
+      },
+      {
+        "name": "post-compression-system.txt",
+        "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+        "bytes": 3595
+      },
+      {
+        "name": "probe-result.json",
+        "sha256": "1b0567a9f893c8d1ef105956c4e4b568224489586983cd8b2e5d1456cc969dc3",
+        "bytes": 2487
+      },
+      {
+        "name": "probe.py",
+        "sha256": "c906048fe6cc08f62330993984d39d924929e0d7f4f781eaf6e2b5a417e750e4",
+        "bytes": 8250
+      },
+      {
+        "name": "round-2-system.txt",
+        "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+        "bytes": 3595
+      },
+      {
+        "name": "round-3-system.txt",
+        "sha256": "4846df12f88d5ba29f869d36af97c9b49a62c01d672b94b3bc6bcd2b5db7fbe0",
+        "bytes": 3595
+      },
+      {
+        "name": "discovery.json",
+        "sha256": "d0f2e309816d28f102e694b39c7fdfb172070f1887ab2a29777de57edde66f24",
+        "bytes": 118
+      }
+    ]
+  },
+  "budget": {
+    "provider": 0,
+    "service": 0,
+    "shared_install": 0,
+    "game": 0,
+    "new_game": 0,
+    "take_action": 0,
+    "DB_mutation": 0,
+    "fixture_completed_installs": 3,
+    "fixture_shell_invokes": 5,
+    "successful_shell_invokes": 4,
+    "denied_shell_invokes": 1,
+    "final_retained_fixture_installs": 2,
+    "offline_compression_simulations": 3,
+    "discovery_tool_invokes": 1
+  },
+  "tooling_errors": [
+    "Initial skeleton missing card attribute; before todo/install/shell operations",
+    "Absolute PowerShell call operator rejected by unmodified shell allowlist; no helper mutation. Allowed python prefix with process-local root .venv PATH succeeded. workdir corrected to actual tool schema."
+  ],
+  "rank": [
+    {
+      "surface": "Skill deterministic helper",
+      "rank": 1,
+      "deployability": "SUPPORTED_IN_FROZEN_LOCAL_PATH",
+      "novelty": "NOVEL_WITH_BOUNDED_SCAN",
+      "leverage": "Structured bookkeeping continuity; adherence benefit untested",
+      "complexity": "Moderate; one existing Skill helper plus bounded state",
+      "hidden_cloud": "Packaging supported; execution environment unmeasured",
+      "main_only": "Compatible for audited advisory helper",
+      "evidence": "Actual registry/tool execution/reset; no LLM"
+    },
+    {
+      "surface": "Todo",
+      "rank": "CLOSED",
+      "novelty": "NOVEL_WITH_BOUNDED_SCAN",
+      "deployability": "CRUD/reset work; automatic anchor fails",
+      "leverage": "None as automatic anchor",
+      "complexity": "Low but config required for reminders",
+      "hidden_cloud": "No portable reminder override established",
+      "main_only": "Compatible",
+      "evidence": "Actual CRUD and four negative captures"
+    },
+    {
+      "surface": "Sampling",
+      "rank": "CLOSED",
+      "novelty": "PARTIALLY_OVERLAPS; standalone lower-temperature evals exist",
+      "deployability": "No contestant sampling hook",
+      "leverage": "Unknown",
+      "complexity": "Platform change outside scope",
+      "hidden_cloud": "UNKNOWN => CLOSED",
+      "main_only": "Compatible but irrelevant",
+      "evidence": "Config assembly + exact Runner field propagation"
+    }
+  ],
+  "return": "RETURN_FOR_NATIVE_CONTROL_BREAKTHROUGH_GATE",
+  "next_game": "NOT_AUTHORIZED",
+  "script_path_discovery": "PASS: actual registered list_files tool class returns probe.py at installed Skill-relative scripts directory; no model inference",
+  "novelty_all_ref_history": {
+    "scope": "All retained local Git refs, all Skill path history, native identifiers and sampling fields in manifest/Skills",
+    "tracked_script_paths": [],
+    "native_identifier_diff_matches": [],
+    "early_v1_source": "7a055dea76580117ca74cddb49bb04efcf605eb1",
+    "v2_v3_boundary": "Covered by all-ref skills history even before current_candidate.json metadata exists",
+    "unretained_actions": "UNKNOWN"
+  },
+  "sampling_novelty": "No formal Candidate temperature field found; standalone S07-50 evals used temperature0, not submission-portable runtime changes",
+  "todo_outer_loop_boundary": "TaskLoopEventExecutor uses already created task-plan descriptions as later task query; this does not imply reloading current todo JSON every model call. No guarantee for inside-round compression recovery; reminder false in frozen builder.",
+  "verification": {
+    "evidence_consistency": "PASS",
+    "protected_file_scope": "PASS",
+    "installed_RECORD": "PASS",
+    "retained_source_hashes": "PASS",
+    "targeted_secret_scan": "PASS",
+    "relative_links": "PASS",
+    "no_provider_or_game": "PASS"
+  }
+}
