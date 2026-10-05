@@ -1,0 +1,3185 @@
+{
+  "schema_version": "S10-21-signals-1",
+  "decision": "STRATEGY_SIGNAL_WEAK",
+  "workstream_A": {
+    "RESULT_GAP": {
+      "windows": 41,
+      "distinct_runs": 12,
+      "promoted": 21,
+      "non_promoted": 20,
+      "run_strata": {
+        "RUN07": {
+          "windows": 4,
+          "promoted": 2
+        },
+        "RUN08": {
+          "windows": 4,
+          "promoted": 3
+        },
+        "RUN10": {
+          "windows": 4,
+          "promoted": 3
+        },
+        "RUN19": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN20": {
+          "windows": 3,
+          "promoted": 0
+        },
+        "RUN21": {
+          "windows": 3,
+          "promoted": 2
+        },
+        "v12RUN01": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6c": {
+          "windows": 3,
+          "promoted": 1
+        },
+        "v6d01": {
+          "windows": 3,
+          "promoted": 1
+        },
+        "v6d02": {
+          "windows": 5,
+          "promoted": 3
+        },
+        "v6d03": {
+          "windows": 6,
+          "promoted": 3
+        },
+        "v7o": {
+          "windows": 3,
+          "promoted": 2
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 2.142857142857143,
+          "non_promoted_mean": 2.35,
+          "promoted_minus_non": -0.2071428571428573,
+          "LORO": {
+            "RUN07": -0.23099415204678353,
+            "RUN08": -0.3099415204678362,
+            "RUN10": -0.040935672514619714,
+            "RUN19": -0.11578947368421044,
+            "RUN20": -0.21008403361344552,
+            "RUN21": -0.368421052631579,
+            "v12RUN01": -0.27819548872180455,
+            "v6c": -0.3999999999999999,
+            "v6d01": -0.18333333333333357,
+            "v6d02": -0.05555555555555536,
+            "v6d03": -0.12745098039215685,
+            "v7o": -0.1578947368421053
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d02:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN07:30-36","RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","RUN20:36-42","RUN21:30-36","v12RUN01:6-12","v6c:12-18","v6d01:12-18","v6d01:30-36","v6d02:24-30","v6d02:42-48","v6d03:36-42","v6d03:42-48","v6d03:6-12","v7o:18-24"]
+        },
+        "network": {
+          "promoted_mean": 0.7619047619047619,
+          "non_promoted_mean": 0.65,
+          "promoted_minus_non": 0.11190476190476184,
+          "LORO": {
+            "RUN07": 0.1257309941520467,
+            "RUN08": 0.2543859649122807,
+            "RUN10": 0.20175438596491235,
+            "RUN19": 0.06578947368421051,
+            "RUN20": 0.11484593837535007,
+            "RUN21": 0.1578947368421052,
+            "v12RUN01": 0.07769423558897237,
+            "v6c": 0.13333333333333341,
+            "v6d01": 0.02777777777777779,
+            "v6d02": 0.11111111111111116,
+            "v6d03": 0.019607843137254832,
+            "v7o": 0.05263157894736836
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN10:6-12","RUN21:12-18","v6c:6-12","v6d02:30-36","v6d03:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN07:30-36","RUN08:18-24","RUN10:12-18","RUN20:18-24","RUN20:36-42","RUN21:30-36","v6c:12-18","v6d02:24-30","v6d03:6-12"]
+        },
+        "intensive": {
+          "promoted_mean": 0.19047619047619047,
+          "non_promoted_mean": 0.3,
+          "promoted_minus_non": -0.10952380952380952,
+          "LORO": {
+            "RUN07": -0.12280701754385964,
+            "RUN08": -0.14912280701754385,
+            "RUN10": -0.14912280701754385,
+            "RUN19": -0.06315789473684208,
+            "RUN20": -0.1624649859943978,
+            "RUN21": -0.10526315789473684,
+            "v12RUN01": -0.07268170426065163,
+            "v6c": 0.033333333333333354,
+            "v6d01": -0.1333333333333333,
+            "v6d02": -0.16666666666666669,
+            "v6d03": -0.13071895424836605,
+            "v7o": -0.10526315789473684
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN07:6-12","RUN08:12-18","RUN08:30-36","RUN10:36-42","RUN10:6-12","RUN19:6-12","RUN21:12-18","RUN21:24-30","v6c:6-12","v6d01:6-12","v6d02:6-12","v6d03:12-18","v6d03:18-24","v6d03:30-36","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN19:18-24","v12RUN01:6-12","v6c:12-18","v6c:30-36","v6d02:24-30"]
+        },
+        "health": {
+          "promoted_mean": 1.4761904761904763,
+          "non_promoted_mean": 1.3,
+          "promoted_minus_non": 0.17619047619047623,
+          "LORO": {
+            "RUN07": 0.19298245614035103,
+            "RUN08": 0.07309941520467822,
+            "RUN10": -0.03801169590643294,
+            "RUN19": 0.23421052631578942,
+            "RUN20": 0.35854341736694684,
+            "RUN21": 0.3157894736842104,
+            "v12RUN01": 0.16040100250626566,
+            "v6c": 0.12222222222222223,
+            "v6d01": 0.22222222222222232,
+            "v6d02": 0.2777777777777779,
+            "v6d03": 0.08823529411764697,
+            "v7o": 0.10526315789473673
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN19:6-12","RUN21:12-18","RUN21:24-30","v6d02:12-18","v6d03:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","RUN20:36-42","RUN21:30-36","v12RUN01:6-12","v6c:12-18","v6c:30-36","v6d01:30-36","v6d02:24-30","v6d02:42-48","v6d03:36-42","v6d03:6-12","v7o:18-24"]
+        },
+        "cleanup": {
+          "promoted_mean": 0.6190476190476191,
+          "non_promoted_mean": 0.55,
+          "promoted_minus_non": 0.06904761904761902,
+          "LORO": {
+            "RUN07": 0.07894736842105265,
+            "RUN08": 0.14035087719298245,
+            "RUN10": 0.08771929824561397,
+            "RUN19": -0.02894736842105261,
+            "RUN20": 0.03081232492997199,
+            "RUN21": 0.05263157894736836,
+            "v12RUN01": 0.09273182957393489,
+            "v6c": 0.03888888888888886,
+            "v6d01": 0.09999999999999998,
+            "v6d02": 0.0,
+            "v6d03": 0.14052287581699352,
+            "v7o": 0.10526315789473684
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN08:12-18","RUN08:6-12","RUN10:36-42","RUN10:6-12","RUN21:24-30","v6c:6-12","v6d03:18-24","v6d03:30-36","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN07:30-36","RUN08:18-24","RUN20:24-30","v12RUN01:6-12","v6d01:12-18","v6d02:42-48","v6d03:36-42","v6d03:42-48","v6d03:6-12"]
+        },
+        "recognized": {
+          "promoted_mean": 0.38095238095238093,
+          "non_promoted_mean": 0.2,
+          "promoted_minus_non": 0.18095238095238092,
+          "LORO": {
+            "RUN07": 0.19883040935672514,
+            "RUN08": 0.17836257309941522,
+            "RUN10": 0.23391812865497075,
+            "RUN19": 0.18947368421052635,
+            "RUN20": 0.1456582633053221,
+            "RUN21": 0.15789473684210525,
+            "v12RUN01": 0.17042606516290726,
+            "v6c": 0.1777777777777778,
+            "v6d01": 0.2888888888888889,
+            "v6d02": 0.16666666666666666,
+            "v6d03": 0.04248366013071897,
+            "v7o": 0.21052631578947367
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN07:6-12","RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN10:36-42","RUN10:6-12","RUN19:6-12","RUN21:24-30","v6c:6-12","v6d01:6-12","v6d02:12-18","v6d02:6-12","v6d03:12-18","v6d03:18-24","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["v6d01:12-18","v6d02:42-48","v7o:18-24"]
+        },
+        "completed": {
+          "promoted_mean": 0.14285714285714285,
+          "non_promoted_mean": 0.05,
+          "promoted_minus_non": 0.09285714285714285,
+          "LORO": {
+            "RUN07": 0.049707602339181284,
+            "RUN08": 0.11403508771929824,
+            "RUN10": 0.16666666666666666,
+            "RUN19": 0.09736842105263158,
+            "RUN20": 0.08403361344537814,
+            "RUN21": 0.05263157894736842,
+            "v12RUN01": 0.09022556390977443,
+            "v6c": 0.09444444444444444,
+            "v6d01": 0.09444444444444444,
+            "v6d02": 0.1111111111111111,
+            "v6d03": 0.0522875816993464,
+            "v7o": 0.10526315789473684
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN08:12-18","RUN08:30-36","RUN08:6-12","RUN10:18-24","RUN10:36-42","RUN10:6-12","RUN19:6-12","RUN21:24-30","v6c:6-12","v6d01:6-12","v6d02:12-18","v6d02:30-36","v6d02:6-12","v6d03:12-18","v6d03:18-24","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18"]
+        },
+        "flat_reroute": {
+          "promoted_mean": 0.47619047619047616,
+          "non_promoted_mean": 0.3,
+          "promoted_minus_non": 0.17619047619047618,
+          "LORO": {
+            "RUN07": 0.19590643274853797,
+            "RUN08": 0.07309941520467839,
+            "RUN10": 0.1842105263157895,
+            "RUN19": 0.1842105263157895,
+            "RUN20": 0.1232492997198879,
+            "RUN21": 0.2631578947368421,
+            "v12RUN01": 0.21303258145363407,
+            "v6c": 0.17222222222222222,
+            "v6d01": 0.06666666666666671,
+            "v6d02": 0.1111111111111111,
+            "v6d03": 0.32026143790849676,
+            "v7o": 0.21052631578947367
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN10:6-12","RUN19:6-12","RUN21:12-18","RUN21:24-30","v6d02:12-18","v6d03:12-18","v6d03:18-24","v6d03:30-36","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN21:30-36","v12RUN01:6-12","v6c:30-36","v6d03:6-12"]
+        },
+        "start_tenure": {
+          "promoted_mean": 4.904761904761905,
+          "non_promoted_mean": 3.9,
+          "promoted_minus_non": 1.0047619047619052,
+          "LORO": {
+            "RUN07": 1.1111111111111112,
+            "RUN08": 0.5584795321637426,
+            "RUN10": 0.5029239766081872,
+            "RUN19": 1.3631578947368417,
+            "RUN20": 0.8459383753501406,
+            "RUN21": 0.6315789473684212,
+            "v12RUN01": 1.115288220551379,
+            "v6c": 1.2111111111111108,
+            "v6d01": 1.2111111111111108,
+            "v6d02": 1.333333333333334,
+            "v6d03": 0.8464052287581696,
+            "v7o": 1.2631578947368425
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN07:30-36","RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","RUN20:36-42","RUN21:30-36","v12RUN01:6-12","v6c:12-18","v6c:30-36","v6d01:12-18","v6d01:30-36","v6d02:24-30","v6d02:42-48","v6d03:36-42","v6d03:42-48","v6d03:6-12","v7o:18-24"]
+        }
+      },
+      "level_strata": {
+        "L1": {
+          "windows": 4,
+          "distinct_runs": 3,
+          "promoted": 2,
+          "non_promoted": 2,
+          "metrics": {
+            "report": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN08": 0,
+                "v12RUN01": 0,
+                "v6d03": 0
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:6-12","v6d03:6-12"]
+            },
+            "health": {
+              "promoted_mean": 1.5,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 0.5,
+              "LORO": {
+                "RUN08": 0,
+                "v12RUN01": 0.5,
+                "v6d03": 1
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:6-12","v6d03:6-12"]
+            },
+            "recognized": {
+              "promoted_mean": 0.5,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0.5,
+              "LORO": {
+                "RUN08": 0,
+                "v12RUN01": 0.5,
+                "v6d03": 1
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6d03:12-18"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 9,
+              "non_promoted_mean": 6,
+              "promoted_minus_non": 3,
+              "LORO": {
+                "RUN08": 6,
+                "v12RUN01": 3,
+                "v6d03": 0
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:6-12","v6d03:6-12"]
+            }
+          }
+        },
+        "L2": {
+          "windows": 10,
+          "distinct_runs": 10,
+          "promoted": 10,
+          "non_promoted": 0,
+          "metrics": {
+            "report": {
+              "promoted_mean": 2.8,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": null,
+                "RUN10": null,
+                "RUN19": null,
+                "RUN21": null,
+                "v6c": null,
+                "v6d01": null,
+                "v6d02": null,
+                "v6d03": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            },
+            "health": {
+              "promoted_mean": 1.5,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": null,
+                "RUN10": null,
+                "RUN19": null,
+                "RUN21": null,
+                "v6c": null,
+                "v6d01": null,
+                "v6d02": null,
+                "v6d03": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN19:6-12","RUN21:12-18","v6d03:18-24"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "recognized": {
+              "promoted_mean": 0.1,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": null,
+                "RUN10": null,
+                "RUN19": null,
+                "RUN21": null,
+                "v6c": null,
+                "v6d01": null,
+                "v6d02": null,
+                "v6d03": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN07:6-12","RUN08:12-18","RUN10:6-12","RUN19:6-12","v6c:6-12","v6d01:6-12","v6d02:6-12","v6d03:18-24","v7o:6-12"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 1.6,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": null,
+                "RUN10": null,
+                "RUN19": null,
+                "RUN21": null,
+                "v6c": null,
+                "v6d01": null,
+                "v6d02": null,
+                "v6d03": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            }
+          }
+        },
+        "L3": {
+          "windows": 15,
+          "distinct_runs": 11,
+          "promoted": 7,
+          "non_promoted": 8,
+          "metrics": {
+            "report": {
+              "promoted_mean": 1.8571428571428572,
+              "non_promoted_mean": 2.5,
+              "promoted_minus_non": -0.6428571428571428,
+              "LORO": {
+                "RUN07": -0.4285714285714284,
+                "RUN08": -0.8809523809523812,
+                "RUN10": -0.2857142857142856,
+                "RUN19": -0.5714285714285712,
+                "RUN20": -0.6428571428571428,
+                "RUN21": -1.0,
+                "v6c": -0.7142857142857144,
+                "v6d01": -0.7142857142857144,
+                "v6d02": -0.5,
+                "v6d03": -0.6666666666666667,
+                "v7o": -0.6666666666666667
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","v6c:12-18","v6d01:12-18"]
+            },
+            "health": {
+              "promoted_mean": 1.1428571428571428,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 0.1428571428571428,
+              "LORO": {
+                "RUN07": 0.19047619047619047,
+                "RUN08": 0,
+                "RUN10": 0.16666666666666674,
+                "RUN19": 0.1428571428571428,
+                "RUN20": 0.47619047619047616,
+                "RUN21": 0.33333333333333326,
+                "v6c": 0.1428571428571428,
+                "v6d01": 0.0,
+                "v6d02": 0.33333333333333326,
+                "v6d03": -0.16666666666666663,
+                "v7o": 0
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN07:18-24","RUN21:24-30","v6d02:12-18"],
+              "counterexample_nonpromoted_positive": ["RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","v6c:12-18"]
+            },
+            "recognized": {
+              "promoted_mean": 0.5714285714285714,
+              "non_promoted_mean": 0.25,
+              "promoted_minus_non": 0.3214285714285714,
+              "LORO": {
+                "RUN07": 0.38095238095238093,
+                "RUN08": 0.38095238095238093,
+                "RUN10": 0.38095238095238093,
+                "RUN19": 0.2857142857142857,
+                "RUN20": 0.23809523809523808,
+                "RUN21": 0.41666666666666663,
+                "v6c": 0.2857142857142857,
+                "v6d01": 0.5714285714285714,
+                "v6d02": 0.41666666666666663,
+                "v6d03": -0.08333333333333334,
+                "v7o": 0.25
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN07:18-24","RUN08:30-36","RUN10:18-24","RUN21:24-30","v6d02:12-18"],
+              "counterexample_nonpromoted_positive": ["v6d01:12-18"]
+            },
+            "start_tenure": {
+              "promoted_mean": 6.142857142857143,
+              "non_promoted_mean": 2.5,
+              "promoted_minus_non": 3.6428571428571432,
+              "LORO": {
+                "RUN07": 3.2857142857142856,
+                "RUN08": 2.2857142857142856,
+                "RUN10": 3.2857142857142856,
+                "RUN19": 4.2857142857142865,
+                "RUN20": 4.142857142857143,
+                "RUN21": 3.5,
+                "v6c": 3.428571428571429,
+                "v6d01": 3.428571428571429,
+                "v6d02": 4.5,
+                "v6d03": 3.5,
+                "v7o": 4.5
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:12-18","RUN08:18-24","RUN10:12-18","RUN19:18-24","RUN20:18-24","RUN20:24-30","v6c:12-18","v6d01:12-18"]
+            }
+          }
+        },
+        "L4": {
+          "windows": 11,
+          "distinct_runs": 9,
+          "promoted": 2,
+          "non_promoted": 9,
+          "metrics": {
+            "report": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 2.5555555555555554,
+              "promoted_minus_non": -1.5555555555555554,
+              "LORO": {
+                "RUN07": -1.75,
+                "RUN10": -2.5555555555555554,
+                "RUN20": -1.625,
+                "RUN21": -1.5,
+                "v6c": -1.875,
+                "v6d01": -1.5,
+                "v6d02": -0.625,
+                "v6d03": -1.2857142857142856,
+                "v7o": -1.25
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": ["v6d02:30-36"],
+              "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN20:36-42","RUN21:30-36","v6d01:30-36","v6d02:24-30","v6d03:36-42","v6d03:42-48","v7o:18-24"]
+            },
+            "health": {
+              "promoted_mean": 2.5,
+              "non_promoted_mean": 1.5555555555555556,
+              "promoted_minus_non": 0.9444444444444444,
+              "LORO": {
+                "RUN07": 1.0,
+                "RUN10": 0.4444444444444444,
+                "RUN20": 1.125,
+                "RUN21": 0.875,
+                "v6c": 1.0,
+                "v6d01": 1.125,
+                "v6d02": 1.375,
+                "v6d03": 0.6428571428571428,
+                "v7o": 0.875
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN20:36-42","RUN21:30-36","v6c:30-36","v6d01:30-36","v6d02:24-30","v6d03:36-42","v7o:18-24"]
+            },
+            "recognized": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 0.1111111111111111,
+              "promoted_minus_non": 0.8888888888888888,
+              "LORO": {
+                "RUN07": 0.875,
+                "RUN10": 1.8888888888888888,
+                "RUN20": 0.875,
+                "RUN21": 0.875,
+                "v6c": 0.875,
+                "v6d01": 0.875,
+                "v6d02": -0.125,
+                "v6d03": 0.8571428571428572,
+                "v7o": 1
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN10:36-42"],
+              "counterexample_nonpromoted_positive": ["v7o:18-24"]
+            },
+            "start_tenure": {
+              "promoted_mean": 13,
+              "non_promoted_mean": 4.333333333333333,
+              "promoted_minus_non": 8.666666666666668,
+              "LORO": {
+                "RUN07": 9,
+                "RUN10": 8.666666666666668,
+                "RUN20": 8.25,
+                "RUN21": 8.25,
+                "v6c": 9,
+                "v6d01": 9,
+                "v6d02": 9,
+                "v6d03": 8.571428571428571,
+                "v7o": 8.25
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN20:36-42","RUN21:30-36","v6c:30-36","v6d01:30-36","v6d02:24-30","v6d03:36-42","v6d03:42-48","v7o:18-24"]
+            }
+          }
+        },
+        "L5": {
+          "windows": 1,
+          "distinct_runs": 1,
+          "promoted": 0,
+          "non_promoted": 1,
+          "metrics": {
+            "report": {
+              "promoted_mean": null,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v6d02:42-48"]
+            },
+            "health": {
+              "promoted_mean": null,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v6d02:42-48"]
+            },
+            "recognized": {
+              "promoted_mean": null,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v6d02:42-48"]
+            },
+            "start_tenure": {
+              "promoted_mean": null,
+              "non_promoted_mean": 7,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v6d02:42-48"]
+            }
+          }
+        }
+      }
+    },
+    "VISIBILITY_GAP": {
+      "windows": 25,
+      "distinct_runs": 13,
+      "promoted": 9,
+      "non_promoted": 16,
+      "run_strata": {
+        "RUN07": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN08": {
+          "windows": 2,
+          "promoted": 0
+        },
+        "RUN10": {
+          "windows": 2,
+          "promoted": 0
+        },
+        "RUN19": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN20": {
+          "windows": 3,
+          "promoted": 3
+        },
+        "RUN21": {
+          "windows": 2,
+          "promoted": 0
+        },
+        "v12RUN01": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6": {
+          "windows": 4,
+          "promoted": 2
+        },
+        "v6c": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "v6d01": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "v6d02": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6d03": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v7o": {
+          "windows": 1,
+          "promoted": 0
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 1.3333333333333333,
+          "non_promoted_mean": 2.125,
+          "promoted_minus_non": -0.7916666666666667,
+          "LORO": {
+            "RUN07": -0.3666666666666667,
+            "RUN08": -0.5952380952380953,
+            "RUN10": -0.9523809523809523,
+            "RUN19": -0.8166666666666669,
+            "RUN20": -0.9583333333333333,
+            "RUN21": -0.7380952380952384,
+            "v12RUN01": -0.8666666666666669,
+            "v6": -0.7142857142857142,
+            "v6c": -0.8250000000000002,
+            "v6d01": -0.9500000000000002,
+            "v6d02": -0.8,
+            "v6d03": -0.8666666666666669,
+            "v7o": -0.8666666666666669
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN20:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN08:24-30","RUN08:36-42","RUN10:24-30","RUN10:30-36","RUN19:12-18","RUN21:18-24","RUN21:6-12","v12RUN01:12-18","v6:18-24","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v6d03:24-30","v7o:24-30"]
+        },
+        "network": {
+          "promoted_mean": 0.5555555555555556,
+          "non_promoted_mean": 0.8125,
+          "promoted_minus_non": -0.2569444444444444,
+          "LORO": {
+            "RUN07": -0.2416666666666667,
+            "RUN08": -0.23015873015873012,
+            "RUN10": -0.373015873015873,
+            "RUN19": -0.10833333333333328,
+            "RUN20": -0.4791666666666667,
+            "RUN21": -0.23015873015873012,
+            "v12RUN01": -0.24444444444444446,
+            "v6": -0.42857142857142855,
+            "v6c": -0.2416666666666667,
+            "v6d01": -0.17500000000000004,
+            "v6d02": -0.24444444444444446,
+            "v6d03": -0.24444444444444446,
+            "v7o": -0.1777777777777777
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN19:24-30","RUN20:12-18","v6c:18-24","v6d01:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN08:24-30","RUN08:36-42","RUN19:12-18","RUN21:6-12","v12RUN01:12-18","v6:24-30","v6d01:24-30","v6d02:18-24","v6d03:24-30","v7o:24-30"]
+        },
+        "intensive": {
+          "promoted_mean": 0.5555555555555556,
+          "non_promoted_mean": 0.5625,
+          "promoted_minus_non": -0.00694444444444442,
+          "LORO": {
+            "RUN07": 0.025000000000000022,
+            "RUN08": -0.08730158730158732,
+            "RUN10": 0.12698412698412703,
+            "RUN19": -0.09999999999999998,
+            "RUN20": -0.0625,
+            "RUN21": -0.08730158730158732,
+            "v12RUN01": 0.022222222222222254,
+            "v6": 0.14285714285714285,
+            "v6c": -0.033333333333333326,
+            "v6d01": 0.025000000000000022,
+            "v6d02": 0.022222222222222254,
+            "v6d03": -0.0444444444444444,
+            "v7o": -0.0444444444444444
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN20:30-36","v6:6-12","v6d01:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN10:24-30","RUN10:30-36","v12RUN01:12-18","v6:18-24","v6:24-30","v6c:24-30","v6d02:18-24"]
+        },
+        "health": {
+          "promoted_mean": 1.1111111111111112,
+          "non_promoted_mean": 1.1875,
+          "promoted_minus_non": -0.07638888888888884,
+          "LORO": {
+            "RUN07": -0.2666666666666666,
+            "RUN08": -0.03174603174603163,
+            "RUN10": -0.10317460317460303,
+            "RUN19": 0.050000000000000044,
+            "RUN20": -0.1875,
+            "RUN21": 0.11111111111111116,
+            "v12RUN01": -0.022222222222222143,
+            "v6": -0.2857142857142858,
+            "v6c": -0.07499999999999996,
+            "v6d01": 0.1166666666666667,
+            "v6d02": -0.0888888888888888,
+            "v6d03": -0.15555555555555545,
+            "v7o": -0.0888888888888888
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN19:24-30","RUN20:6-12","v6d01:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN08:24-30","RUN08:36-42","RUN10:24-30","RUN10:30-36","RUN19:12-18","RUN21:18-24","RUN21:6-12","v12RUN01:12-18","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v7o:24-30"]
+        },
+        "cleanup": {
+          "promoted_mean": 0.7777777777777778,
+          "non_promoted_mean": 0.3125,
+          "promoted_minus_non": 0.4652777777777778,
+          "LORO": {
+            "RUN07": 0.4166666666666667,
+            "RUN08": 0.42063492063492064,
+            "RUN10": 0.4920634920634921,
+            "RUN19": 0.4166666666666667,
+            "RUN20": 0.6875,
+            "RUN21": 0.42063492063492064,
+            "v12RUN01": 0.4444444444444445,
+            "v6": 0.49999999999999994,
+            "v6c": 0.48333333333333334,
+            "v6d01": 0.35833333333333334,
+            "v6d02": 0.4444444444444445,
+            "v6d03": 0.5777777777777777,
+            "v7o": 0.4444444444444445
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN20:12-18","RUN20:30-36","v6:12-18"],
+          "counterexample_nonpromoted_positive": ["RUN10:24-30","v6c:24-30","v6d01:24-30","v6d03:24-30"]
+        },
+        "recognized": {
+          "promoted_mean": 0.2222222222222222,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.2222222222222222,
+          "LORO": {
+            "RUN07": 0.25,
+            "RUN08": 0.2222222222222222,
+            "RUN10": 0.2222222222222222,
+            "RUN19": 0.125,
+            "RUN20": 0.16666666666666666,
+            "RUN21": 0.2222222222222222,
+            "v12RUN01": 0.2222222222222222,
+            "v6": 0.2857142857142857,
+            "v6c": 0.25,
+            "v6d01": 0.25,
+            "v6d02": 0.2222222222222222,
+            "v6d03": 0.2222222222222222,
+            "v7o": 0.2222222222222222
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN20:30-36","RUN20:6-12","v6:12-18","v6:6-12","v6c:18-24","v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0.0625,
+          "promoted_minus_non": -0.0625,
+          "LORO": {
+            "RUN07": -0.06666666666666667,
+            "RUN08": -0.07142857142857142,
+            "RUN10": -0.07142857142857142,
+            "RUN19": 0,
+            "RUN20": -0.0625,
+            "RUN21": -0.07142857142857142,
+            "v12RUN01": -0.06666666666666667,
+            "v6": -0.07142857142857142,
+            "v6c": -0.06666666666666667,
+            "v6d01": -0.06666666666666667,
+            "v6d02": -0.06666666666666667,
+            "v6d03": -0.06666666666666667,
+            "v7o": -0.06666666666666667
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN19:24-30","RUN20:12-18","RUN20:30-36","RUN20:6-12","v6:12-18","v6:6-12","v6c:18-24","v6d01:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN19:12-18"]
+        },
+        "flat_reroute": {
+          "promoted_mean": 0.7777777777777778,
+          "non_promoted_mean": 0.375,
+          "promoted_minus_non": 0.4027777777777778,
+          "LORO": {
+            "RUN07": 0.475,
+            "RUN08": 0.42063492063492064,
+            "RUN10": 0.42063492063492064,
+            "RUN19": 0.475,
+            "RUN20": -0.041666666666666685,
+            "RUN21": 0.42063492063492064,
+            "v12RUN01": 0.4444444444444445,
+            "v6": 0.6428571428571428,
+            "v6c": 0.35,
+            "v6d01": 0.35,
+            "v6d02": 0.37777777777777777,
+            "v6d03": 0.37777777777777777,
+            "v7o": 0.4444444444444445
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN19:24-30","RUN20:12-18","v6:12-18","v6:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN08:36-42","RUN10:30-36","RUN21:6-12","v12RUN01:12-18","v6:24-30","v7o:24-30"]
+        },
+        "start_tenure": {
+          "promoted_mean": 6.888888888888889,
+          "non_promoted_mean": 3.1875,
+          "promoted_minus_non": 3.7013888888888893,
+          "LORO": {
+            "RUN07": 2.7916666666666665,
+            "RUN08": 3.8174603174603177,
+            "RUN10": 3.8174603174603177,
+            "RUN19": 2.7916666666666665,
+            "RUN20": 3.8125,
+            "RUN21": 3.3888888888888893,
+            "v12RUN01": 4.28888888888889,
+            "v6": 5.5,
+            "v6c": 3.5416666666666665,
+            "v6d01": 3.5416666666666665,
+            "v6d02": 3.555555555555556,
+            "v6d03": 3.555555555555556,
+            "v7o": 3.955555555555556
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN08:24-30","RUN08:36-42","RUN10:24-30","RUN10:30-36","RUN19:12-18","RUN21:18-24","RUN21:6-12","v12RUN01:12-18","v6:18-24","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v6d03:24-30","v7o:24-30"]
+        }
+      },
+      "level_strata": {
+        "L1": {
+          "windows": 2,
+          "distinct_runs": 2,
+          "promoted": 1,
+          "non_promoted": 1,
+          "metrics": {
+            "report": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": -1,
+              "LORO": {
+                "RUN20": null,
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN20:6-12"],
+              "counterexample_nonpromoted_positive": ["v12RUN01:12-18"]
+            },
+            "health": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": -2,
+              "LORO": {
+                "RUN20": null,
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN20:6-12"],
+              "counterexample_nonpromoted_positive": ["v12RUN01:12-18"]
+            },
+            "recognized": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN20": null,
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN20:6-12"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 6,
+              "non_promoted_mean": 12,
+              "promoted_minus_non": -6,
+              "LORO": {
+                "RUN20": null,
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:12-18"]
+            }
+          }
+        },
+        "L2": {
+          "windows": 3,
+          "distinct_runs": 3,
+          "promoted": 2,
+          "non_promoted": 1,
+          "metrics": {
+            "report": {
+              "promoted_mean": 1.5,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": -0.5,
+              "LORO": {
+                "RUN20": -1,
+                "RUN21": null,
+                "v6": 0
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN21:6-12"]
+            },
+            "health": {
+              "promoted_mean": 2,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN20": 0,
+                "RUN21": null,
+                "v6": 0
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN21:6-12"]
+            },
+            "recognized": {
+              "promoted_mean": 0.5,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0.5,
+              "LORO": {
+                "RUN20": 0,
+                "RUN21": null,
+                "v6": 1
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6:6-12"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN20": 0,
+                "RUN21": null,
+                "v6": 0
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN21:6-12"]
+            }
+          }
+        },
+        "L3": {
+          "windows": 9,
+          "distinct_runs": 8,
+          "promoted": 5,
+          "non_promoted": 4,
+          "metrics": {
+            "report": {
+              "promoted_mean": 1.8,
+              "non_promoted_mean": 2.75,
+              "promoted_minus_non": -0.95,
+              "LORO": {
+                "RUN08": -0.5333333333333334,
+                "RUN19": -0.9166666666666665,
+                "RUN20": -1.25,
+                "RUN21": -0.8666666666666665,
+                "v6": -0.75,
+                "v6c": -0.75,
+                "v6d01": -1.0,
+                "v6d03": -1.5333333333333334
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN08:24-30","RUN19:12-18","RUN21:18-24","v6d03:24-30"]
+            },
+            "health": {
+              "promoted_mean": 0.8,
+              "non_promoted_mean": 1.25,
+              "promoted_minus_non": -0.44999999999999996,
+              "LORO": {
+                "RUN08": -0.5333333333333332,
+                "RUN19": -0.33333333333333326,
+                "RUN20": -0.75,
+                "RUN21": 0.13333333333333341,
+                "v6": -0.5,
+                "v6c": -0.5,
+                "v6d01": -0.25,
+                "v6d03": -0.8666666666666667
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN19:24-30","v6d01:18-24"],
+              "counterexample_nonpromoted_positive": ["RUN08:24-30","RUN19:12-18","RUN21:18-24"]
+            },
+            "recognized": {
+              "promoted_mean": 0.2,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0.2,
+              "LORO": {
+                "RUN08": 0.2,
+                "RUN19": 0,
+                "RUN20": 0.25,
+                "RUN21": 0.2,
+                "v6": 0.25,
+                "v6c": 0.25,
+                "v6d01": 0.25,
+                "v6d03": 0.2
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["RUN20:30-36","v6:12-18","v6c:18-24","v6d01:18-24"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 8.2,
+              "non_promoted_mean": 2.5,
+              "promoted_minus_non": 5.699999999999999,
+              "LORO": {
+                "RUN08": 7.199999999999999,
+                "RUN19": 4,
+                "RUN20": 4.5,
+                "RUN21": 5.199999999999999,
+                "v6": 7.5,
+                "v6c": 6.0,
+                "v6d01": 6.0,
+                "v6d03": 5.199999999999999
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN08:24-30","RUN19:12-18","RUN21:18-24","v6d03:24-30"]
+            }
+          }
+        },
+        "L4": {
+          "windows": 11,
+          "distinct_runs": 8,
+          "promoted": 1,
+          "non_promoted": 10,
+          "metrics": {
+            "report": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": -2,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": -1.8888888888888888,
+                "RUN10": -2.25,
+                "v6": -2,
+                "v6c": -2.111111111111111,
+                "v6d01": -2.111111111111111,
+                "v6d02": -2,
+                "v7o": -2.111111111111111
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": ["RUN07:36-42"],
+              "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN08:36-42","RUN10:24-30","RUN10:30-36","v6:18-24","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v7o:24-30"]
+            },
+            "health": {
+              "promoted_mean": 2,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 1,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": 1.1111111111111112,
+                "RUN10": 1,
+                "v6": 0.875,
+                "v6c": 1,
+                "v6d01": 1.1111111111111112,
+                "v6d02": 1,
+                "v7o": 1
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN08:36-42","RUN10:24-30","RUN10:30-36","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v7o:24-30"]
+            },
+            "recognized": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": 0,
+                "RUN10": 0,
+                "v6": 0,
+                "v6c": 0,
+                "v6d01": 0,
+                "v6d02": 0,
+                "v7o": 0
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": ["RUN07:36-42"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 13,
+              "non_promoted_mean": 2.8,
+              "promoted_minus_non": 10.2,
+              "LORO": {
+                "RUN07": null,
+                "RUN08": 10,
+                "RUN10": 10.5,
+                "v6": 10.5,
+                "v6c": 10,
+                "v6d01": 10,
+                "v6d02": 10,
+                "v7o": 10.666666666666666
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN08:36-42","RUN10:24-30","RUN10:30-36","v6:18-24","v6:24-30","v6c:24-30","v6d01:24-30","v6d02:18-24","v7o:24-30"]
+            }
+          }
+        }
+      }
+    },
+    "COLLABORATION_GAP": {
+      "windows": 0,
+      "distinct_runs": 0,
+      "promoted": 0,
+      "non_promoted": 0,
+      "run_strata": {
+
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "network": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "intensive": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "health": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "cleanup": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "recognized": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "start_tenure": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        }
+      },
+      "level_strata": {
+
+      }
+    },
+    "CAPABILITY_GAP": {
+      "windows": 0,
+      "distinct_runs": 0,
+      "promoted": 0,
+      "non_promoted": 0,
+      "run_strata": {
+
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "network": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "intensive": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "health": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "cleanup": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "recognized": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "start_tenure": {
+          "promoted_mean": null,
+          "non_promoted_mean": null,
+          "promoted_minus_non": null,
+          "LORO": {
+
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        }
+      },
+      "level_strata": {
+
+      }
+    },
+    "RISK_OR_COMPLIANCE": {
+      "windows": 3,
+      "distinct_runs": 3,
+      "promoted": 2,
+      "non_promoted": 1,
+      "run_strata": {
+        "RUN07": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6d01": {
+          "windows": 1,
+          "promoted": 1
+        },
+        "v6d02": {
+          "windows": 1,
+          "promoted": 1
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 3,
+          "promoted_minus_non": -2,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": -3,
+            "v6d02": -1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d02:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "network": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": -1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": -1,
+            "v6d02": -1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:18-24","v6d02:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "intensive": {
+          "promoted_mean": 0.5,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.5,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 1,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "health": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 2,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "cleanup": {
+          "promoted_mean": 1.5,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": 0.5,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 0,
+            "v6d02": 1
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "recognized": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 2,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 0,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:18-24","v6d02:30-36"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 1,
+            "v6d02": 1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "start_tenure": {
+          "promoted_mean": 10,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": 9,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 12,
+            "v6d02": 6
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        }
+      },
+      "level_strata": {
+        "L3": {
+          "windows": 2,
+          "distinct_runs": 2,
+          "promoted": 1,
+          "non_promoted": 1,
+          "metrics": {
+            "report": {
+              "promoted_mean": 2,
+              "non_promoted_mean": 3,
+              "promoted_minus_non": -1,
+              "LORO": {
+                "RUN07": null,
+                "v6d01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+            },
+            "health": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN07": null,
+                "v6d01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6d01:18-24"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "recognized": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN07": null,
+                "v6d01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6d01:18-24"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 7,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 6,
+              "LORO": {
+                "RUN07": null,
+                "v6d01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+            }
+          }
+        },
+        "L4": {
+          "windows": 1,
+          "distinct_runs": 1,
+          "promoted": 1,
+          "non_promoted": 0,
+          "metrics": {
+            "report": {
+              "promoted_mean": 0,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6d02:30-36"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "health": {
+              "promoted_mean": 2,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            },
+            "recognized": {
+              "promoted_mean": 2,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 13,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d02": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            }
+          }
+        }
+      }
+    },
+    "POSITIVE_MOMENTUM": {
+      "windows": 9,
+      "distinct_runs": 7,
+      "promoted": 3,
+      "non_promoted": 6,
+      "run_strata": {
+        "RUN08": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "RUN10": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "RUN20": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6": {
+          "windows": 2,
+          "promoted": 2
+        },
+        "v6c": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "v6d02": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v7o": {
+          "windows": 1,
+          "promoted": 0
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 2,
+          "non_promoted_mean": 2.1666666666666665,
+          "promoted_minus_non": -0.16666666666666652,
+          "LORO": {
+            "RUN08": 0.19999999999999996,
+            "RUN10": 0.19999999999999996,
+            "RUN20": -0.3999999999999999,
+            "v6": -0.16666666666666652,
+            "v6c": -0.6000000000000001,
+            "v6d02": -0.3999999999999999,
+            "v7o": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN10:42-48","RUN20:42-48","v6d02:36-42","v7o:36-42"]
+        },
+        "network": {
+          "promoted_mean": 0.6666666666666666,
+          "non_promoted_mean": 0.5,
+          "promoted_minus_non": 0.16666666666666663,
+          "LORO": {
+            "RUN08": 0.2666666666666666,
+            "RUN10": 0.2666666666666666,
+            "RUN20": 0.06666666666666665,
+            "v6": -0.5,
+            "v6c": 0.4,
+            "v6d02": 0.2666666666666666,
+            "v7o": 0.06666666666666665
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6:42-48","v6c:36-42"],
+          "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN10:42-48","v6d02:36-42"]
+        },
+        "intensive": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0.5,
+          "promoted_minus_non": 0.5,
+          "LORO": {
+            "RUN08": 0.4,
+            "RUN10": 0.4,
+            "RUN20": 0.4,
+            "v6": 1.5,
+            "v6c": 0.3,
+            "v6d02": 0.6,
+            "v7o": 0.4
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6:30-36"],
+          "counterexample_nonpromoted_positive": ["v6c:42-48","v6d02:36-42"]
+        },
+        "health": {
+          "promoted_mean": 0.6666666666666666,
+          "non_promoted_mean": 2,
+          "promoted_minus_non": -1.3333333333333335,
+          "LORO": {
+            "RUN08": -1.5333333333333337,
+            "RUN10": -1.5333333333333337,
+            "RUN20": -1.1333333333333333,
+            "v6": -2,
+            "v6c": -1,
+            "v6d02": -1.3333333333333335,
+            "v7o": -1.1333333333333333
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6:42-48","v6c:36-42"],
+          "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN10:42-48","RUN20:42-48","v6c:42-48","v6d02:36-42","v7o:36-42"]
+        },
+        "cleanup": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0.16666666666666666,
+          "promoted_minus_non": 0.16666666666666666,
+          "LORO": {
+            "RUN08": 0.1333333333333333,
+            "RUN10": 0.1333333333333333,
+            "RUN20": 0.3333333333333333,
+            "v6": -0.16666666666666666,
+            "v6c": 0.3,
+            "v6d02": 0.1333333333333333,
+            "v7o": 0.1333333333333333
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6:30-36","v6c:36-42"],
+          "counterexample_nonpromoted_positive": ["RUN20:42-48"]
+        },
+        "recognized": {
+          "promoted_mean": 0.6666666666666666,
+          "non_promoted_mean": 0.3333333333333333,
+          "promoted_minus_non": 0.3333333333333333,
+          "LORO": {
+            "RUN08": 0.2666666666666666,
+            "RUN10": 0.4666666666666666,
+            "RUN20": 0.2666666666666666,
+            "v6": -0.3333333333333333,
+            "v6c": 0.8,
+            "v6d02": 0.2666666666666666,
+            "v7o": 0.2666666666666666
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6c:36-42"],
+          "counterexample_nonpromoted_positive": ["RUN10:42-48","v6c:42-48"]
+        },
+        "completed": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0,
+          "LORO": {
+            "RUN08": 0,
+            "RUN10": 0,
+            "RUN20": 0,
+            "v6": 0,
+            "v6c": 0,
+            "v6d02": 0,
+            "v7o": 0
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6:30-36","v6:42-48","v6c:36-42"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 1.3333333333333333,
+          "non_promoted_mean": 0.5,
+          "promoted_minus_non": 0.8333333333333333,
+          "LORO": {
+            "RUN08": 0.9333333333333332,
+            "RUN10": 0.9333333333333332,
+            "RUN20": 0.9333333333333332,
+            "v6": 1.5,
+            "v6c": 0.4,
+            "v6d02": 0.7333333333333333,
+            "v7o": 0.7333333333333333
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6:42-48"],
+          "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN10:42-48","RUN20:42-48"]
+        },
+        "start_tenure": {
+          "promoted_mean": 11,
+          "non_promoted_mean": 3,
+          "promoted_minus_non": 8,
+          "LORO": {
+            "RUN08": 8.8,
+            "RUN10": 7.6,
+            "RUN20": 8.8,
+            "v6": 10,
+            "v6c": 6.6,
+            "v6d02": 7.6,
+            "v7o": 7.6
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN10:42-48","RUN20:42-48","v6c:42-48","v6d02:36-42","v7o:36-42"]
+        }
+      },
+      "level_strata": {
+        "L4": {
+          "windows": 4,
+          "distinct_runs": 4,
+          "promoted": 2,
+          "non_promoted": 2,
+          "metrics": {
+            "report": {
+              "promoted_mean": 2,
+              "non_promoted_mean": 2.5,
+              "promoted_minus_non": -0.5,
+              "LORO": {
+                "RUN08": 1,
+                "RUN20": -2,
+                "v6": -0.5,
+                "v6c": -0.5
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN20:42-48"]
+            },
+            "health": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": -1,
+              "LORO": {
+                "RUN08": -2,
+                "RUN20": 0,
+                "v6": -2,
+                "v6c": 0
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6c:36-42"],
+              "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN20:42-48"]
+            },
+            "recognized": {
+              "promoted_mean": 0.5,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": 0.5,
+              "LORO": {
+                "RUN08": 0.5,
+                "RUN20": 0.5,
+                "v6": 0,
+                "v6c": 1
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6c:36-42"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 13,
+              "non_promoted_mean": 7,
+              "promoted_minus_non": 6,
+              "LORO": {
+                "RUN08": 6,
+                "RUN20": 6,
+                "v6": 6,
+                "v6c": 6
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN08:42-48","RUN20:42-48"]
+            }
+          }
+        },
+        "L5": {
+          "windows": 5,
+          "distinct_runs": 5,
+          "promoted": 1,
+          "non_promoted": 4,
+          "metrics": {
+            "report": {
+              "promoted_mean": 2,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": 0,
+              "LORO": {
+                "RUN10": 0.6666666666666667,
+                "v6": null,
+                "v6c": -0.6666666666666665,
+                "v6d02": -0.3333333333333335,
+                "v7o": 0.33333333333333326
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN10:42-48","v6d02:36-42","v7o:36-42"]
+            },
+            "health": {
+              "promoted_mean": 0,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": -2,
+              "LORO": {
+                "RUN10": -2.3333333333333335,
+                "v6": null,
+                "v6c": -2,
+                "v6d02": -2,
+                "v7o": -1.6666666666666667
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": ["v6:42-48"],
+              "counterexample_nonpromoted_positive": ["RUN10:42-48","v6c:42-48","v6d02:36-42","v7o:36-42"]
+            },
+            "recognized": {
+              "promoted_mean": 1,
+              "non_promoted_mean": 0.5,
+              "promoted_minus_non": 0.5,
+              "LORO": {
+                "RUN10": 0.6666666666666667,
+                "v6": null,
+                "v6c": 0.6666666666666667,
+                "v6d02": 0.33333333333333337,
+                "v7o": 0.33333333333333337
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN10:42-48","v6c:42-48"]
+            },
+            "start_tenure": {
+              "promoted_mean": 7,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": 6,
+              "LORO": {
+                "RUN10": 6,
+                "v6": null,
+                "v6c": 6,
+                "v6d02": 6,
+                "v7o": 6
+              },
+              "LORO_sign_preserved": true,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN10:42-48","v6c:42-48","v6d02:36-42","v7o:36-42"]
+            }
+          }
+        }
+      }
+    },
+    "GENERIC_OR_UNKNOWN": {
+      "windows": 7,
+      "distinct_runs": 5,
+      "promoted": 2,
+      "non_promoted": 5,
+      "run_strata": {
+        "RUN07": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v12RUN01": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6d01": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "v7o": {
+          "windows": 2,
+          "promoted": 1
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 2,
+          "non_promoted_mean": 2.8,
+          "promoted_minus_non": -0.7999999999999998,
+          "LORO": {
+            "RUN07": -0.75,
+            "v12RUN01": -1,
+            "v6": -1,
+            "v6d01": -2.75,
+            "v7o": 1.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:42-48","v12RUN01:18-24","v6:36-42","v6d01:42-48","v7o:42-48"]
+        },
+        "network": {
+          "promoted_mean": 1.5,
+          "non_promoted_mean": 1.2,
+          "promoted_minus_non": 0.30000000000000004,
+          "LORO": {
+            "RUN07": 0.5,
+            "v12RUN01": 0.0,
+            "v6": 0.5,
+            "v6d01": 0.75,
+            "v7o": -0.25
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:42-48","v6:36-42","v6d01:42-48","v7o:42-48"]
+        },
+        "intensive": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0.2,
+          "promoted_minus_non": -0.2,
+          "LORO": {
+            "RUN07": -0.25,
+            "v12RUN01": 0,
+            "v6": -0.25,
+            "v6d01": -0.25,
+            "v7o": -0.25
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:36-42","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+        },
+        "health": {
+          "promoted_mean": 0.5,
+          "non_promoted_mean": 1.6,
+          "promoted_minus_non": -1.1,
+          "LORO": {
+            "RUN07": -1.25,
+            "v12RUN01": -1.0,
+            "v6": -1.0,
+            "v6d01": -1.5,
+            "v7o": -0.75
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:42-48","v12RUN01:18-24","v6:36-42","v6d01:42-48","v7o:42-48"]
+        },
+        "cleanup": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0,
+          "LORO": {
+            "RUN07": 0,
+            "v12RUN01": 0,
+            "v6": 0,
+            "v6d01": 0,
+            "v7o": 0
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:36-42","v7o:30-36"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "recognized": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0.2,
+          "promoted_minus_non": -0.2,
+          "LORO": {
+            "RUN07": -0.25,
+            "v12RUN01": 0,
+            "v6": -0.25,
+            "v6d01": -0.25,
+            "v7o": -0.25
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:36-42","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+        },
+        "completed": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0,
+          "LORO": {
+            "RUN07": 0,
+            "v12RUN01": 0,
+            "v6": 0,
+            "v6d01": 0,
+            "v7o": 0
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:36-42","v7o:30-36"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0.6,
+          "promoted_minus_non": 0.4,
+          "LORO": {
+            "RUN07": 0.25,
+            "v12RUN01": 0.75,
+            "v6": 0.25,
+            "v6d01": 0.25,
+            "v7o": 0.5
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["v12RUN01:18-24","v7o:42-48"]
+        },
+        "start_tenure": {
+          "promoted_mean": 13,
+          "non_promoted_mean": 5.6,
+          "promoted_minus_non": 7.4,
+          "LORO": {
+            "RUN07": 6.25,
+            "v12RUN01": 10.5,
+            "v6": 6.25,
+            "v6d01": 6.25,
+            "v7o": 7.75
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:42-48","v12RUN01:18-24","v6:36-42","v6d01:42-48","v7o:42-48"]
+        }
+      },
+      "level_strata": {
+        "L1": {
+          "windows": 1,
+          "distinct_runs": 1,
+          "promoted": 0,
+          "non_promoted": 1,
+          "metrics": {
+            "report": {
+              "promoted_mean": null,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+            },
+            "health": {
+              "promoted_mean": null,
+              "non_promoted_mean": 2,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+            },
+            "recognized": {
+              "promoted_mean": null,
+              "non_promoted_mean": 1,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+            },
+            "start_tenure": {
+              "promoted_mean": null,
+              "non_promoted_mean": 18,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v12RUN01": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["v12RUN01:18-24"]
+            }
+          }
+        },
+        "L4": {
+          "windows": 2,
+          "distinct_runs": 2,
+          "promoted": 2,
+          "non_promoted": 0,
+          "metrics": {
+            "report": {
+              "promoted_mean": 2,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v7o:30-36"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "health": {
+              "promoted_mean": 0.5,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v7o:30-36"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "recognized": {
+              "promoted_mean": 0,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": ["v6d01:36-42","v7o:30-36"],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": 13,
+              "non_promoted_mean": null,
+              "promoted_minus_non": null,
+              "LORO": {
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            }
+          }
+        },
+        "L5": {
+          "windows": 4,
+          "distinct_runs": 4,
+          "promoted": 0,
+          "non_promoted": 4,
+          "metrics": {
+            "report": {
+              "promoted_mean": null,
+              "non_promoted_mean": 3,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "v6": null,
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:42-48","v6:36-42","v6d01:42-48","v7o:42-48"]
+            },
+            "health": {
+              "promoted_mean": null,
+              "non_promoted_mean": 1.5,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "v6": null,
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:42-48","v6:36-42","v6d01:42-48","v7o:42-48"]
+            },
+            "recognized": {
+              "promoted_mean": null,
+              "non_promoted_mean": 0,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "v6": null,
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": []
+            },
+            "start_tenure": {
+              "promoted_mean": null,
+              "non_promoted_mean": 2.5,
+              "promoted_minus_non": null,
+              "LORO": {
+                "RUN07": null,
+                "v6": null,
+                "v6d01": null,
+                "v7o": null
+              },
+              "LORO_sign_preserved": false,
+              "counterexample_promoted_low": [],
+              "counterexample_nonpromoted_positive": ["RUN07:42-48","v6:36-42","v6d01:42-48","v7o:42-48"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "workstream_B_summary": {
+    "report": {
+      "NEGATIVE": 6,
+      "EQUAL": 3,
+      "POSITIVE": 2
+    },
+    "network": {
+      "POSITIVE": 4,
+      "NEGATIVE": 5,
+      "EQUAL": 2
+    },
+    "intensive": {
+      "EQUAL": 7,
+      "POSITIVE": 4
+    },
+    "health": {
+      "EQUAL": 4,
+      "POSITIVE": 3,
+      "NEGATIVE": 4
+    },
+    "cleanup": {
+      "EQUAL": 5,
+      "NEGATIVE": 3,
+      "POSITIVE": 3
+    },
+    "recognition": {
+      "POSITIVE": 4,
+      "EQUAL": 7
+    },
+    "equal_tenure_discordant_pairs": 6
+  },
+  "workstream_C": {
+    "MOMENTUM": {
+      "windows": 24,
+      "distinct_runs": 9,
+      "promoted": 12,
+      "non_promoted": 12,
+      "run_strata": {
+        "RUN07": {
+          "windows": 1,
+          "promoted": 1
+        },
+        "RUN10": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN19": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN20": {
+          "windows": 4,
+          "promoted": 1
+        },
+        "RUN21": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6": {
+          "windows": 6,
+          "promoted": 4
+        },
+        "v6c": {
+          "windows": 3,
+          "promoted": 1
+        },
+        "v6d03": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "v7o": {
+          "windows": 3,
+          "promoted": 2
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 2.1666666666666665,
+          "non_promoted_mean": 2.3333333333333335,
+          "promoted_minus_non": -0.16666666666666696,
+          "LORO": {
+            "RUN07": -0.24242424242424265,
+            "RUN10": 0.0,
+            "RUN19": 0.0,
+            "RUN20": -0.262626262626263,
+            "RUN21": -0.19696969696969724,
+            "v6": 0.10000000000000009,
+            "v6c": -0.40909090909090917,
+            "v6d03": -0.36363636363636376,
+            "v7o": -0.09090909090909083
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18","RUN19:12-18","RUN20:18-24","RUN20:36-42","RUN20:42-48","RUN21:6-12","v6:18-24","v6:36-42","v6c:12-18","v6c:24-30","v6d03:24-30","v7o:18-24"]
+        },
+        "network": {
+          "promoted_mean": 0.9166666666666666,
+          "non_promoted_mean": 0.9166666666666666,
+          "promoted_minus_non": 0.0,
+          "LORO": {
+            "RUN07": -0.007575757575757569,
+            "RUN10": 0.09090909090909094,
+            "RUN19": 0.09090909090909083,
+            "RUN20": 0,
+            "RUN21": 0.0984848484848484,
+            "v6": -0.025000000000000022,
+            "v6c": 0,
+            "v6d03": -0.18181818181818177,
+            "v7o": -0.09999999999999998
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN10:6-12","RUN20:12-18","v6:42-48","v6c:6-12","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18","RUN19:12-18","RUN20:18-24","RUN20:36-42","RUN21:6-12","v6:36-42","v6c:12-18","v6d03:24-30"]
+        },
+        "intensive": {
+          "promoted_mean": 0.25,
+          "non_promoted_mean": 0.3333333333333333,
+          "promoted_minus_non": -0.08333333333333331,
+          "LORO": {
+            "RUN07": -0.06060606060606061,
+            "RUN10": -0.09090909090909094,
+            "RUN19": -0.09090909090909094,
+            "RUN20": -0.2626262626262626,
+            "RUN21": -0.11363636363636365,
+            "v6": -0.07500000000000001,
+            "v6c": 0.0727272727272727,
+            "v6d03": -0.09090909090909094,
+            "v7o": -0.06363636363636366
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN10:6-12","RUN19:6-12","v6:30-36","v6:6-12","v6c:6-12","v6d03:18-24","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["v6:18-24","v6c:12-18","v6c:24-30"]
+        },
+        "health": {
+          "promoted_mean": 1.6666666666666667,
+          "non_promoted_mean": 1.4166666666666667,
+          "promoted_minus_non": 0.25,
+          "LORO": {
+            "RUN07": 0.21969696969696972,
+            "RUN10": 0.0,
+            "RUN19": 0.36363636363636354,
+            "RUN20": 0.6363636363636365,
+            "RUN21": 0.3030303030303032,
+            "v6": 0.375,
+            "v6c": 0.045454545454545414,
+            "v6d03": 0.2727272727272727,
+            "v7o": 0.1454545454545455
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN19:6-12","v6:42-48","v6d03:18-24"],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18","RUN19:12-18","RUN20:18-24","RUN20:36-42","RUN20:42-48","RUN21:6-12","v6:36-42","v6c:12-18","v6c:24-30","v7o:18-24"]
+        },
+        "cleanup": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0.3333333333333333,
+          "promoted_minus_non": 0.0,
+          "LORO": {
+            "RUN07": 0.03030303030303033,
+            "RUN10": 0.0,
+            "RUN19": -0.18181818181818182,
+            "RUN20": 0.03030303030303033,
+            "RUN21": -0.03030303030303033,
+            "v6": -0.15000000000000002,
+            "v6c": 0.06363636363636366,
+            "v6d03": 0.18181818181818182,
+            "v7o": 0.036363636363636376
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN10:6-12","RUN20:12-18","v6:12-18","v6:30-36","v6c:6-12","v6d03:18-24","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN20:42-48","v6c:24-30","v6d03:24-30"]
+        },
+        "recognized": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0.08333333333333333,
+          "promoted_minus_non": 0.25,
+          "LORO": {
+            "RUN07": 0.28030303030303033,
+            "RUN10": 0.2727272727272727,
+            "RUN19": 0.2727272727272727,
+            "RUN20": 0.1616161616161616,
+            "RUN21": 0.2424242424242424,
+            "v6": 0.15,
+            "v6c": 0.26363636363636367,
+            "v6d03": 0.2727272727272727,
+            "v7o": 0.3
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN10:6-12","RUN19:6-12","v6:12-18","v6:6-12","v6c:6-12","v6d03:18-24","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["v7o:18-24"]
+        },
+        "completed": {
+          "promoted_mean": 0.08333333333333333,
+          "non_promoted_mean": 0.16666666666666666,
+          "promoted_minus_non": -0.08333333333333333,
+          "LORO": {
+            "RUN07": -0.16666666666666666,
+            "RUN10": 0.0,
+            "RUN19": 0.0,
+            "RUN20": -0.1313131313131313,
+            "RUN21": -0.0984848484848485,
+            "v6": -0.07500000000000001,
+            "v6c": -0.1090909090909091,
+            "v6d03": -0.09090909090909091,
+            "v7o": -0.08181818181818182
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN10:6-12","RUN19:6-12","RUN20:12-18","v6:12-18","v6:30-36","v6:42-48","v6:6-12","v6c:6-12","v6d03:18-24","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18","RUN19:12-18"]
+        },
+        "flat_reroute": {
+          "promoted_mean": 0.25,
+          "non_promoted_mean": 0.16666666666666666,
+          "promoted_minus_non": 0.08333333333333334,
+          "LORO": {
+            "RUN07": 0.10606060606060605,
+            "RUN10": 0.09090909090909088,
+            "RUN19": 0.09090909090909088,
+            "RUN20": 0.1616161616161616,
+            "RUN21": 0.1590909090909091,
+            "v6": -0.07500000000000001,
+            "v6c": -0.018181818181818188,
+            "v6d03": 0.09090909090909088,
+            "v7o": 0.11818181818181817
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:6-12","RUN10:6-12","RUN19:6-12","RUN20:12-18","v6:12-18","v6:42-48","v6:6-12","v6d03:18-24","v7o:12-18","v7o:6-12"],
+          "counterexample_nonpromoted_positive": ["RUN20:42-48","RUN21:6-12"]
+        },
+        "start_tenure": {
+          "promoted_mean": 2.5,
+          "non_promoted_mean": 1.5,
+          "promoted_minus_non": 1.0,
+          "LORO": {
+            "RUN07": 1.1363636363636362,
+            "RUN10": 1.0909090909090908,
+            "RUN19": 1.0909090909090908,
+            "RUN20": 1.6363636363636362,
+            "RUN21": 0.9545454545454546,
+            "v6": -0.6000000000000001,
+            "v6c": 1.0363636363636362,
+            "v6d03": 1.0909090909090908,
+            "v7o": 1.2545454545454544
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN10:12-18","RUN19:12-18","RUN20:18-24","RUN20:36-42","RUN20:42-48","RUN21:6-12","v6:18-24","v6:36-42","v6c:12-18","v6c:24-30","v6d03:24-30","v7o:18-24"]
+        }
+      },
+      "level_strata": {
+
+      },
+      "transitions": {
+        "MOMENTUM": 12,
+        "MIXED_OR_UNKNOWN": 8,
+        "END_OBSERVED_WINDOWS": 2,
+        "RISK_CONSTRAINED": 1,
+        "STALLED": 1
+      },
+      "families": ["DONOR_SHELL","LATER_EXPERIMENTS","V6_CORE_DESCENDANTS"],
+      "policy_verdict": "REGIME_DESCRIPTIVE_ONLY"
+    },
+    "STALLED": {
+      "windows": 6,
+      "distinct_runs": 4,
+      "promoted": 3,
+      "non_promoted": 3,
+      "run_strata": {
+        "RUN20": {
+          "windows": 1,
+          "promoted": 1
+        },
+        "RUN21": {
+          "windows": 1,
+          "promoted": 1
+        },
+        "v12RUN01": {
+          "windows": 2,
+          "promoted": 0
+        },
+        "v6d03": {
+          "windows": 2,
+          "promoted": 1
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 1.6666666666666667,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": 0.6666666666666667,
+          "LORO": {
+            "RUN20": 1.5,
+            "RUN21": -0.5,
+            "v12RUN01": 0.6666666666666667,
+            "v6d03": 1
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN20:6-12"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v12RUN01:6-12","v6d03:6-12"]
+        },
+        "network": {
+          "promoted_mean": 0.6666666666666666,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": -0.33333333333333337,
+          "LORO": {
+            "RUN20": -1,
+            "RUN21": 0,
+            "v12RUN01": -1.3333333333333335,
+            "v6d03": 0.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN21:12-18","v6d03:12-18"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v6d03:6-12"]
+        },
+        "intensive": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0.6666666666666666,
+          "promoted_minus_non": -0.3333333333333333,
+          "LORO": {
+            "RUN20": -0.6666666666666666,
+            "RUN21": -0.16666666666666663,
+            "v12RUN01": 0.3333333333333333,
+            "v6d03": -0.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN21:12-18","v6d03:12-18"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v12RUN01:6-12"]
+        },
+        "health": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 1.3333333333333333,
+          "promoted_minus_non": -1.0,
+          "LORO": {
+            "RUN20": -0.8333333333333333,
+            "RUN21": -0.8333333333333333,
+            "v12RUN01": -0.6666666666666667,
+            "v6d03": -1.5
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN20:6-12","RUN21:12-18"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v12RUN01:6-12","v6d03:6-12"]
+        },
+        "cleanup": {
+          "promoted_mean": 1.3333333333333333,
+          "non_promoted_mean": 0.6666666666666666,
+          "promoted_minus_non": 0.6666666666666666,
+          "LORO": {
+            "RUN20": 0.8333333333333334,
+            "RUN21": 0.8333333333333334,
+            "v12RUN01": 0.33333333333333326,
+            "v6d03": 0.5
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["v12RUN01:6-12","v6d03:6-12"]
+        },
+        "recognized": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.3333333333333333,
+          "LORO": {
+            "RUN20": 0.5,
+            "RUN21": 0,
+            "v12RUN01": 0.3333333333333333,
+            "v6d03": 0.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN20:6-12","v6d03:12-18"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": 0.3333333333333333,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.3333333333333333,
+          "LORO": {
+            "RUN20": 0.5,
+            "RUN21": 0,
+            "v12RUN01": 0.3333333333333333,
+            "v6d03": 0.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN20:6-12","v6d03:12-18"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 0.6666666666666666,
+          "non_promoted_mean": 1.3333333333333333,
+          "promoted_minus_non": -0.6666666666666666,
+          "LORO": {
+            "RUN20": -1.3333333333333333,
+            "RUN21": -0.33333333333333326,
+            "v12RUN01": -1.3333333333333335,
+            "v6d03": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN21:12-18","v6d03:12-18"],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v12RUN01:6-12","v6d03:6-12"]
+        },
+        "start_tenure": {
+          "promoted_mean": 8.333333333333334,
+          "non_promoted_mean": 8,
+          "promoted_minus_non": 0.3333333333333339,
+          "LORO": {
+            "RUN20": 1.5,
+            "RUN21": 1,
+            "v12RUN01": 2.333333333333334,
+            "v6d03": -2.5
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["v12RUN01:12-18","v12RUN01:6-12","v6d03:6-12"]
+        }
+      },
+      "level_strata": {
+
+      },
+      "transitions": {
+        "MOMENTUM": 2,
+        "MIXED_OR_UNKNOWN": 2,
+        "STALLED": 2
+      },
+      "families": ["LATER_EXPERIMENTS","V6_CORE_DESCENDANTS"],
+      "policy_verdict": "REGIME_DESCRIPTIVE_ONLY"
+    },
+    "RISK_CONSTRAINED": {
+      "windows": 3,
+      "distinct_runs": 3,
+      "promoted": 2,
+      "non_promoted": 1,
+      "run_strata": {
+        "RUN07": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6d01": {
+          "windows": 1,
+          "promoted": 1
+        },
+        "v6d02": {
+          "windows": 1,
+          "promoted": 1
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 3,
+          "promoted_minus_non": -2,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": -3,
+            "v6d02": -1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d02:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "network": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": -1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": -1,
+            "v6d02": -1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:18-24","v6d02:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "intensive": {
+          "promoted_mean": 0.5,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.5,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 1,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "health": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 2,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "cleanup": {
+          "promoted_mean": 1.5,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": 0.5,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 0,
+            "v6d02": 1
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        },
+        "recognized": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 2,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["v6d01:18-24"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "completed": {
+          "promoted_mean": 0,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 0,
+            "v6d02": 0
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["v6d01:18-24","v6d02:30-36"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 1,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 1,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 1,
+            "v6d02": 1
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": []
+        },
+        "start_tenure": {
+          "promoted_mean": 10,
+          "non_promoted_mean": 1,
+          "promoted_minus_non": 9,
+          "LORO": {
+            "RUN07": null,
+            "v6d01": 12,
+            "v6d02": 6
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:12-18"]
+        }
+      },
+      "level_strata": {
+
+      },
+      "transitions": {
+        "MIXED_OR_UNKNOWN": 3
+      },
+      "families": ["DONOR_SHELL","V6_CORE_DESCENDANTS"],
+      "policy_verdict": "REGIME_DESCRIPTIVE_ONLY"
+    },
+    "MIXED_OR_UNKNOWN": {
+      "windows": 49,
+      "distinct_runs": 13,
+      "promoted": 18,
+      "non_promoted": 31,
+      "run_strata": {
+        "RUN07": {
+          "windows": 5,
+          "promoted": 2
+        },
+        "RUN08": {
+          "windows": 7,
+          "promoted": 3
+        },
+        "RUN10": {
+          "windows": 5,
+          "promoted": 2
+        },
+        "RUN19": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN20": {
+          "windows": 2,
+          "promoted": 1
+        },
+        "RUN21": {
+          "windows": 3,
+          "promoted": 1
+        },
+        "v12RUN01": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6": {
+          "windows": 1,
+          "promoted": 0
+        },
+        "v6c": {
+          "windows": 4,
+          "promoted": 2
+        },
+        "v6d01": {
+          "windows": 6,
+          "promoted": 2
+        },
+        "v6d02": {
+          "windows": 6,
+          "promoted": 2
+        },
+        "v6d03": {
+          "windows": 3,
+          "promoted": 1
+        },
+        "v7o": {
+          "windows": 4,
+          "promoted": 1
+        }
+      },
+      "metrics": {
+        "report": {
+          "promoted_mean": 1.8888888888888888,
+          "non_promoted_mean": 2.3870967741935485,
+          "promoted_minus_non": -0.49820788530465965,
+          "LORO": {
+            "RUN07": -0.2232142857142856,
+            "RUN08": -0.49629629629629624,
+            "RUN10": -0.4910714285714284,
+            "RUN19": -0.48431372549019613,
+            "RUN20": -0.5764705882352941,
+            "RUN21": -0.5801217038539552,
+            "v12RUN01": -0.5111111111111111,
+            "v6": -0.5111111111111111,
+            "v6c": -0.6142241379310347,
+            "v6d01": -0.6574074074074074,
+            "v6d02": -0.5439814814814814,
+            "v6d03": -0.4279918864097363,
+            "v7o": -0.3571428571428572
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN07:30-36","RUN07:42-48","RUN08:18-24","RUN08:24-30","RUN08:36-42","RUN08:42-48","RUN10:24-30","RUN10:30-36","RUN10:42-48","RUN19:18-24","RUN20:24-30","RUN21:18-24","RUN21:30-36","v12RUN01:18-24","v6:24-30","v6d01:12-18","v6d01:24-30","v6d01:30-36","v6d01:42-48","v6d02:18-24","v6d02:24-30","v6d02:36-42","v6d02:42-48","v6d03:36-42","v6d03:42-48","v7o:24-30","v7o:36-42","v7o:42-48"]
+        },
+        "network": {
+          "promoted_mean": 0.7222222222222222,
+          "non_promoted_mean": 0.6451612903225806,
+          "promoted_minus_non": 0.07706093189964158,
+          "LORO": {
+            "RUN07": 0.1428571428571429,
+            "RUN08": 0.24444444444444446,
+            "RUN10": 0.0714285714285714,
+            "RUN19": 0.0980392156862745,
+            "RUN20": 0.03921568627450989,
+            "RUN21": 0.026369168356997985,
+            "v12RUN01": 0.05555555555555558,
+            "v6": 0.0888888888888889,
+            "v6c": 0.12284482758620685,
+            "v6d01": 0.02083333333333337,
+            "v6d02": 0.05787037037037035,
+            "v6d03": 0.016227180527383367,
+            "v7o": 0.0399159663865547
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN19:24-30","v6c:18-24","v6c:36-42"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN07:42-48","RUN08:18-24","RUN08:24-30","RUN08:36-42","RUN08:42-48","RUN10:42-48","RUN21:30-36","v6:24-30","v6d01:24-30","v6d01:42-48","v6d02:18-24","v6d02:24-30","v6d02:36-42","v7o:24-30","v7o:42-48"]
+        },
+        "intensive": {
+          "promoted_mean": 0.3888888888888889,
+          "non_promoted_mean": 0.41935483870967744,
+          "promoted_minus_non": -0.03046594982078854,
+          "LORO": {
+            "RUN07": -0.0267857142857143,
+            "RUN08": -0.08148148148148143,
+            "RUN10": 0.01785714285714285,
+            "RUN19": -0.047058823529411764,
+            "RUN20": -0.021568627450980427,
+            "RUN21": -0.0365111561866126,
+            "v12RUN01": -0.011111111111111127,
+            "v6": -0.011111111111111127,
+            "v6c": -0.060344827586206906,
+            "v6d01": -0.043981481481481455,
+            "v6d02": 0.00462962962962965,
+            "v6d03": -0.0365111561866126,
+            "v7o": -0.05252100840336138
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN07:36-42","RUN08:12-18","RUN08:30-36","RUN10:36-42","RUN20:30-36","RUN21:24-30","v6d01:36-42","v6d01:6-12","v6d02:6-12","v6d03:30-36","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN10:24-30","RUN10:30-36","RUN19:18-24","v12RUN01:18-24","v6:24-30","v6c:30-36","v6c:42-48","v6d02:18-24","v6d02:24-30","v6d02:36-42"]
+        },
+        "health": {
+          "promoted_mean": 1.1666666666666667,
+          "non_promoted_mean": 1.4193548387096775,
+          "promoted_minus_non": -0.25268817204301075,
+          "LORO": {
+            "RUN07": -0.2767857142857142,
+            "RUN08": -0.4444444444444444,
+            "RUN10": -0.4017857142857142,
+            "RUN19": -0.19803921568627447,
+            "RUN20": -0.2823529411764705,
+            "RUN21": -0.14401622718052742,
+            "v12RUN01": -0.23333333333333317,
+            "v6": -0.2666666666666666,
+            "v6c": -0.1293103448275863,
+            "v6d01": -0.18287037037037046,
+            "v6d02": -0.15740740740740744,
+            "v6d03": -0.42393509127789053,
+            "v7o": -0.15756302521008392
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN19:24-30","RUN21:24-30","v6c:36-42","v6d02:12-18","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN07:42-48","RUN08:18-24","RUN08:24-30","RUN08:36-42","RUN08:42-48","RUN10:24-30","RUN10:30-36","RUN10:42-48","RUN19:18-24","RUN20:24-30","RUN21:18-24","RUN21:30-36","v12RUN01:18-24","v6:24-30","v6c:30-36","v6c:42-48","v6d01:24-30","v6d01:30-36","v6d01:42-48","v6d02:18-24","v6d02:24-30","v6d02:36-42","v6d02:42-48","v6d03:36-42","v7o:24-30","v7o:36-42","v7o:42-48"]
+        },
+        "cleanup": {
+          "promoted_mean": 0.5555555555555556,
+          "non_promoted_mean": 0.3225806451612903,
+          "promoted_minus_non": 0.23297491039426527,
+          "LORO": {
+            "RUN07": 0.11607142857142855,
+            "RUN08": 0.26666666666666666,
+            "RUN10": 0.24107142857142855,
+            "RUN19": 0.19607843137254904,
+            "RUN20": 0.2882352941176471,
+            "RUN21": 0.2434077079107505,
+            "v12RUN01": 0.22222222222222227,
+            "v6": 0.22222222222222227,
+            "v6c": 0.21767241379310343,
+            "v6d01": 0.30324074074074076,
+            "v6d02": 0.16666666666666669,
+            "v6d03": 0.31237322515212984,
+            "v7o": 0.23109243697478993
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN08:12-18","RUN08:6-12","RUN10:36-42","RUN20:30-36","RUN21:24-30","v6c:36-42","v6d01:36-42","v6d03:30-36","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN08:18-24","RUN10:24-30","RUN20:24-30","v6d01:12-18","v6d01:24-30","v6d02:42-48","v6d03:36-42","v6d03:42-48"]
+        },
+        "recognized": {
+          "promoted_mean": 0.2777777777777778,
+          "non_promoted_mean": 0.1935483870967742,
+          "promoted_minus_non": 0.0842293906810036,
+          "LORO": {
+            "RUN07": 0.09821428571428573,
+            "RUN08": 0.04444444444444445,
+            "RUN10": 0.13392857142857142,
+            "RUN19": 0.03529411764705881,
+            "RUN20": 0.09411764705882353,
+            "RUN21": 0.08722109533468561,
+            "v12RUN01": 0.11111111111111113,
+            "v6": 0.07777777777777778,
+            "v6c": 0.1400862068965517,
+            "v6d01": 0.16435185185185186,
+            "v6d02": 0.12731481481481483,
+            "v6d03": -0.08924949290060852,
+            "v7o": 0.07983193277310927
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN07:36-42","RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN10:36-42","RUN20:30-36","RUN21:24-30","v6c:18-24","v6c:36-42","v6d01:36-42","v6d01:6-12","v6d02:12-18","v6d02:6-12","v7o:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN10:42-48","v12RUN01:18-24","v6c:42-48","v6d01:12-18","v6d02:42-48"]
+        },
+        "completed": {
+          "promoted_mean": 0.05555555555555555,
+          "non_promoted_mean": 0,
+          "promoted_minus_non": 0.05555555555555555,
+          "LORO": {
+            "RUN07": 0.0625,
+            "RUN08": 0.06666666666666667,
+            "RUN10": 0.0625,
+            "RUN19": 0.058823529411764705,
+            "RUN20": 0.058823529411764705,
+            "RUN21": 0.058823529411764705,
+            "v12RUN01": 0.05555555555555555,
+            "v6": 0.05555555555555555,
+            "v6c": 0.0625,
+            "v6d01": 0.0625,
+            "v6d02": 0.0625,
+            "v6d03": 0,
+            "v7o": 0.058823529411764705
+          },
+          "LORO_sign_preserved": false,
+          "counterexample_promoted_low": ["RUN07:18-24","RUN07:36-42","RUN08:12-18","RUN08:30-36","RUN08:6-12","RUN10:18-24","RUN10:36-42","RUN19:24-30","RUN20:30-36","RUN21:24-30","v6c:18-24","v6c:36-42","v6d01:36-42","v6d01:6-12","v6d02:12-18","v6d02:6-12","v7o:30-36"],
+          "counterexample_nonpromoted_positive": []
+        },
+        "flat_reroute": {
+          "promoted_mean": 0.8888888888888888,
+          "non_promoted_mean": 0.3870967741935484,
+          "promoted_minus_non": 0.5017921146953405,
+          "LORO": {
+            "RUN07": 0.5446428571428572,
+            "RUN08": 0.49629629629629635,
+            "RUN10": 0.5803571428571428,
+            "RUN19": 0.5411764705882353,
+            "RUN20": 0.3647058823529411,
+            "RUN21": 0.5618661257606491,
+            "v12RUN01": 0.5555555555555556,
+            "v6": 0.5222222222222221,
+            "v6c": 0.4331896551724138,
+            "v6d01": 0.3680555555555556,
+            "v6d02": 0.4930555555555556,
+            "v6d03": 0.5273833671399595,
+            "v7o": 0.5252100840336134
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": ["RUN07:36-42","RUN08:12-18","RUN08:30-36","RUN10:18-24","RUN19:24-30","RUN21:24-30","v6d02:12-18","v6d03:30-36"],
+          "counterexample_nonpromoted_positive": ["RUN07:30-36","RUN08:36-42","RUN08:42-48","RUN10:30-36","RUN10:42-48","RUN21:30-36","v12RUN01:18-24","v6:24-30","v6c:30-36","v7o:24-30","v7o:42-48"]
+        },
+        "start_tenure": {
+          "promoted_mean": 8.277777777777779,
+          "non_promoted_mean": 4.258064516129032,
+          "promoted_minus_non": 4.0197132616487465,
+          "LORO": {
+            "RUN07": 3.6696428571428568,
+            "RUN08": 4.303703703703703,
+            "RUN10": 3.6696428571428568,
+            "RUN19": 3.833333333333333,
+            "RUN20": 3.833333333333333,
+            "RUN21": 3.870182555780934,
+            "v12RUN01": 4.477777777777779,
+            "v6": 4.111111111111112,
+            "v6c": 3.786637931034483,
+            "v6d01": 3.918981481481482,
+            "v6d02": 4.891203703703703,
+            "v6d03": 4.077079107505072,
+            "v7o": 3.821428571428571
+          },
+          "LORO_sign_preserved": true,
+          "counterexample_promoted_low": [],
+          "counterexample_nonpromoted_positive": ["RUN07:24-30","RUN07:30-36","RUN07:42-48","RUN08:18-24","RUN08:24-30","RUN08:36-42","RUN08:42-48","RUN10:24-30","RUN10:30-36","RUN10:42-48","RUN19:18-24","RUN20:24-30","RUN21:18-24","RUN21:30-36","v12RUN01:18-24","v6:24-30","v6c:30-36","v6c:42-48","v6d01:12-18","v6d01:24-30","v6d01:30-36","v6d01:42-48","v6d02:18-24","v6d02:24-30","v6d02:36-42","v6d02:42-48","v6d03:36-42","v6d03:42-48","v7o:24-30","v7o:36-42","v7o:42-48"]
+        }
+      },
+      "level_strata": {
+
+      },
+      "transitions": {
+        "MOMENTUM": 3,
+        "MIXED_OR_UNKNOWN": 33,
+        "END_OBSERVED_WINDOWS": 11,
+        "RISK_CONSTRAINED": 2
+      },
+      "families": ["DONOR_SHELL","LATER_EXPERIMENTS","V6_CORE_DESCENDANTS"],
+      "policy_verdict": "REGIME_DESCRIPTIVE_ONLY"
+    }
+  },
+  "primitives": [
+    {"id":"P1","name":"Review result gap → prioritize realizable/recognized work over generic reporting","trigger":"Already-received explicit RESULT_GAP; current legal opportunity has identifiable result object and feasible realization","action_bias":"Compare completion/verification/recognition route with generic report; never assume outcome or recognition","cross_run_evidence":{"recognized_gap_windows":8,"runs":6,"promoted":5,"non_promoted":3,"gap_windows_without_recognition":33,"gap_promotions_without_recognition":16,"paired_recognition_contrast":{"POSITIVE":4,"EQUAL":7}},"counterexamples":["v7o:18-24","v6d01:12-18","v6d02:42-48","v7o:6-12","RUN07:6-12","RUN07:18-24","RUN08:12-18","RUN08:30-36","RUN10:6-12","RUN10:18-24","RUN10:36-42"],"LORO":{"RUN07":0.19883040935672514,"RUN08":0.17836257309941522,"RUN10":0.23391812865497075,"RUN19":0.18947368421052635,"RUN20":0.1456582633053221,"RUN21":0.15789473684210525,"v12RUN01":0.17042606516290726,"v6c":0.1777777777777778,"v6d01":0.2888888888888889,"v6d02":0.16666666666666666,"v6d03":0.04248366013071897,"v7o":0.21052631578947367},"LORO_verdict":"Positive pooled descriptive recognition contrast survives all exclusions; not policy identification","donor_preservation":"v6 recognized windows30-36/42-48 coexist with promotion; v1 only Tier-B aggregate, not a window counterfactual","survival_audit":"RUN21 completion/recognition includes explicit CVE concern; public realized result never cancels security review. RUN19 later trust terminal; no repair weakening allowed.","hidden_info_audit":"PASS; public text/timing only","novelty":"PARTIALLY_OVERLAPS existing Playbook P03/P04 and v6d realizable-horizon/Review reset; no new demonstrated action-selection lever","confidence":"DESCRIPTIVE_SIGNAL_ONLY","gate":"NOT_SUPPORTED_FOR_NEW_DELTA","reason":"Recognition texts are public window exposures; next-event text cannot be attributed to the immediately preceding action. No repeated matched predecision choice contrast establishes controllable capture improvement."},
+    {"id":"P2","name":"Momentum/risk-de-escalation → promptly preserve responsive compounding","trigger":"Current positive Review/promotion with no material warning; relevant de-escalation must be public, praise alone is insufficient","action_bias":"Compare responsive growth without automatic defensive reset; binding repair unchanged","cross_run_evidence":{"momentum_windows":24,"runs":9,"families":["DONOR_SHELL","LATER_EXPERIMENTS","V6_CORE_DESCENDANTS"],"promoted":12,"health_contrast":0.25,"risk_windows":3,"deescalation_windows":["RUN07:12-18","v6d01:18-24","v6d02:30-36"]},"counterexamples":["v6:6-12","v6:12-18","v6:30-36","v7o:6-12","v7o:12-18","RUN07:6-12","RUN10:6-12","RUN20:12-18"],"LORO":{"RUN07":0.21969696969696972,"RUN10":0.0,"RUN19":0.36363636363636354,"RUN20":0.6363636363636365,"RUN21":0.3030303030303032,"v6":0.375,"v6c":0.045454545454545414,"v6d03":0.2727272727272727,"v7o":0.1454545454545455},"LORO_verdict":"Health contrast sign reverses; alternate regime definitions change eligible composition. Three material-warning starts are too sparse for clearance policy identification.","donor_preservation":"v6 Health10 with five no-recent-decline selections; cannot deem recovery wrong simply from current stable facts","survival_audit":"RUN17 promoted atM6 then naturally eliminated the same month: promotion is not a safety certificate. Less severe HR text is not explicit risk clearance.","hidden_info_audit":"PASS; no Health/month thresholds","novelty":"Regime organization is different, but evidence does not identify stable different action biases; generic protect-then-grow already Playbook P08/P09","confidence":"REGIME_DESCRIPTIVE_ONLY","gate":"NOT_SUPPORTED_FOR_NEW_DELTA","reason":"Cross-run presence exists but consistent strategy implication/clearance timing does not."},
+    {"id":"P3","name":"Mature-safe + local flat → rebalance toward responsive capital instead of low-information repetition","trigger":"Current public stable trajectory, no material/unresolved risk or binding delivery; repeated same-Level response already observed","action_bias":"Compare another responsive lane and actual useful result; avoid recovery solely to top up a number","cross_run_evidence":{"eligible_actions":96,"eligible_runs":13,"eligible_window_count":31,"mature_health_without_recent_decline":22,"flat_reroutes":41,"flat_sequences":45,"skill_gain_samples":{"GAIN":6},"same_month_report_repeat_windows":["v7o:42-48","RUN08:42-48"]},"counterexamples":["v6 donor uses Health10, including2 mature-eligible actions","Network has26 local NO_GAIN selections versus51 GAIN, so cannot impose Network superiority","v7o42-48 repeated report flat still remains a completed competitive run; no counterfactual score loss established","RUN17 same-month Health decline-to-terminal prevents interpreting absence of an acute keyword as safety"],"LORO":{"RESULT_GAP_flat_reroute":{"RUN07":0.19590643274853797,"RUN08":0.07309941520467839,"RUN10":0.1842105263157895,"RUN19":0.1842105263157895,"RUN20":0.1232492997198879,"RUN21":0.2631578947368421,"v12RUN01":0.21303258145363407,"v6c":0.17222222222222222,"v6d01":0.06666666666666671,"v6d02":0.1111111111111111,"v6d03":0.32026143790849676,"v7o":0.21052631578947367},"STALLED_flat_reroute":{"RUN20":-1.3333333333333333,"RUN21":-0.33333333333333326,"v12RUN01":-1.3333333333333335,"v6d03":0}},"LORO_verdict":"RESULT_GAP reroute association keeps sign, but STALLED association reverses under run omission and promoted STALLED windows reroute less on average. Six Skill-learning gains have no mature-eligible samples.","donor_preservation":"No safe public criterion establishes that donor Health/intensive decisions should be rejected","survival_audit":"Absence of acute medical words omits workload/upcoming exposure; eligibility is conservative proxy, not certification. All partial terminal controls retained.","hidden_info_audit":"PASS; no quotas/hidden scores","novelty":"ALREADY_COVERED by v6d response-aware breadth/Health boundary and Playbook P02/P07/P09; changing report or Network shares would reopen prohibited v6d micro-patch","confidence":"EXISTING_PRINCIPLE_WITH_LIMITED_NEW_SIGNAL","gate":"NOT_SUPPORTED_FOR_NEW_DELTA","reason":"No novel safe allocation rule; observed rerouting already occurs41/45 opportunities."}
+  ],
+  "recommendation": "FINAL_V6D_V6_COMPARATIVE_FREEZE",
+  "recommendation_boundary": "Offline accepted-evidence comparison/final route decision; exact-v6 replication remains PAUSED, no game permission",
+  "nonclaims": ["no causal promotion policy","no expected score estimate","no runtime weights","no stable75 proof","no hidden-test transfer","no new Candidate or prose micro-patch"]
+}
