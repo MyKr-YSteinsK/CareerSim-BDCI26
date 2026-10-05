@@ -1,0 +1,373 @@
+{
+  "schema_version": "s10-20-controller-1",
+  "task": "S10-20",
+  "status": "COMPLETE_WITH_WEAK_SIGNAL",
+  "evidence_status": "IN_FLIGHT_EVIDENCE",
+  "decision": "CONTROLLER_LOGIC_SIGNAL_WEAK",
+  "branch": "main",
+  "base": "62f33f39aff7af3d1692c53191f76f521734511f",
+  "fallback": "candidate-v6d-promotion-portfolio-rebalance",
+  "fallback_source": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+  "candidate_created": false,
+  "controller": {
+    "input": "whitelisted stored observe envelope + bounded public semantic annotations; no Board copying",
+    "output": "advisory single next action and lexicographic alternatives; INVALID never writes state",
+    "helper_LOC": 158,
+    "helper_unicode_chars": 12157,
+    "state_serialized_max_observed_chars": 1546,
+    "state_serialized_bound_chars": 6000,
+    "one_delivery_item": true,
+    "helper_sha256": "7b8231a90123a054bd827a4676004d1fbe599effc0ba4f698525cee0521cf7a7",
+    "fixed_input": "Skill/public_input.json",
+    "fixed_state": "Skill/controller_state.json",
+    "no_model_runtime_context_test": true
+  },
+  "deterministic_tests": {
+    "count": 24,
+    "passed": 24,
+    "failed": 0,
+    "scenarios": [
+      {"name":"initial","pass":true},
+      {"name":"reject nonformal month-zero Review","pass":true},
+      {"name":"formal review window reset","pass":true},
+      {"name":"promotion Level update","pass":true},
+      {"name":"old flat invalidated","pass":true},
+      {"name":"same-Level flat reroute","pass":true},
+      {"name":"material warning repair","pass":true},
+      {"name":"unrelated praise not clearance","pass":true},
+      {"name":"relevant clearance","pass":true},
+      {"name":"fresh conflict replaces","pass":true},
+      {"name":"delivery REALIZED","pass":true},
+      {"name":"delivery RECOGNIZED","pass":true},
+      {"name":"stale delivery retirement","pass":true},
+      {"name":"corrupted state","pass":true},
+      {"name":"missing required field","pass":true},
+      {"name":"reset independent fresh state","pass":true},
+      {"name":"identical input/output","pass":true},
+      {"name":"no automatic Health topping","pass":true},
+      {"name":"reject stale response","pass":true},
+      {"name":"existing result verification outranks unrelated start","pass":true},
+      {"name":"no synthetic completion","pass":true},
+      {"name":"weak velocity from unchanged dimensions and flat","pass":true},
+      {"name":"new window not labeled weak","pass":true},
+      {"name":"unaffordable intensive excluded","pass":true}
+    ],
+    "actual_reinstall_reset": true
+  },
+  "input_seam": {
+    "parse_checks": 41,
+    "current_snapshot_cases": 24,
+    "pass": true,
+    "checks": [
+      {"case":"D01","month":15,"level":"L3","kind":"ENERGY","pass":true},
+      {"case":"D02","month":21,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D03","month":33,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D04","month":33,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D05","month":18,"level":"L2","kind":"ENERGY","pass":true},
+      {"case":"D06","month":27,"level":"L3","kind":"ENERGY","pass":true},
+      {"case":"D07","month":24,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D08","month":24,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D09","month":18,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"D10","month":36,"level":"L5","kind":"ENERGY","pass":true},
+      {"case":"D11","month":3,"level":"L1","kind":"STORY","pass":true},
+      {"case":"D12","month":6,"level":"L2","kind":"STORY","pass":true},
+      {"case":"H01","month":42,"level":"L5","kind":"ENERGY","pass":true},
+      {"case":"H02","month":48,"level":"L6","kind":"ENERGY","pass":true},
+      {"case":"H03","month":33,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"H04","month":15,"level":"L3","kind":"ENERGY","pass":true},
+      {"case":"H05","month":9,"level":"L2","kind":"ENERGY","pass":true},
+      {"case":"H06","month":48,"level":"L5","kind":"ENERGY","pass":true},
+      {"case":"H07","month":39,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"H08","month":45,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"H09","month":36,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"H10","month":33,"level":"L4","kind":"ENERGY","pass":true},
+      {"case":"H11","month":18,"level":"L3","kind":"STORY","pass":true},
+      {"case":"H12","month":3,"level":"L1","kind":"STORY","pass":true},
+      {"case":"D01","month":6,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D01","month":6,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D01","month":12,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D01","month":12,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D07","month":6,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D07","month":6,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D07","month":12,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D07","month":12,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D07","month":18,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D07","month":24,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D07","month":24,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D09","month":6,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D09","month":6,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D09","month":12,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D09","month":12,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true},
+      {"case":"D09","month":18,"kind":"LEVEL_CHANGE","pass":true},
+      {"case":"D09","month":18,"kind":"PUBLIC_REVIEW_OBSERVATION","pass":true}
+    ],
+    "ambiguity": "missing public fields, malformed IDs, contradictory fresh clock, invalid response Level return INVALID; semantic truth remains an input limitation"
+  },
+  "replay": {
+    "total": 24,
+    "dev": 12,
+    "holdout": 12,
+    "family_composition": {
+      "Run02": 6,
+      "Run01": 5,
+      "Run03": 5,
+      "v6": 4,
+      "v11b": 4
+    },
+    "freeze": {
+      "frozen_at": "2026-10-05T05:15:21.067758+00:00",
+      "selection": "2 SHA256-smallest unused Energy inputs per family + 2 SHA256-smallest public functional-risk Story inputs",
+      "blind_sha256": "e4d77bcb74a3d166fb2696db6f80d7184587c79892890ab68f691ddfbdf333e3",
+      "mapping_sha256": "1e0b335527995f725beeade054cb2de80b55b2384381982c5d492f0d765bb4a9",
+      "dev": 12,
+      "holdout": 12,
+      "tuning_started": false
+    },
+    "output_freeze": {
+      "frozen_at": "2026-10-05T05:19:53.605747+00:00",
+      "controller_sha256": "7b8231a90123a054bd827a4676004d1fbe599effc0ba4f698525cee0521cf7a7",
+      "output_sha256": "750a1b08d9515dbc540f00a32b35eea2239d68b7794ead5800f6d6f57fc32757",
+      "tests": 19,
+      "passed": 19,
+      "failed": [],
+      "runtime_seam_only_revision": "Fixed public input path and ASCII JSON stdout escaping; ranking/update unchanged after unblinding"
+    },
+    "counts": {
+      "KNOWN_ERROR_CORRECTED": 1,
+      "PLAUSIBLE_ALTERNATIVE": 7,
+      "UNKNOWN": 8,
+      "NO_MEANINGFUL_CHANGE": 1,
+      "DONOR_GOOD_DECISION_PRESERVED": 7
+    },
+    "holdout_counts": {
+      "PLAUSIBLE_ALTERNATIVE": 3,
+      "DONOR_GOOD_DECISION_PRESERVED": 5,
+      "UNKNOWN": 4
+    },
+    "cases": [
+      {"id":"D01","split":"dev","family":"Run02","source_line":501,"month":15,"level":"L3","phase":"ENERGY","historical_choice":1,"controller_choice":4,"verdict":"KNOWN_ERROR_CORRECTED","confidence":"HIGH","basis":"STATE_ONLY: L2 report FLAT excluded at fresh L3; cleanup ranking itself is not established improvement.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["intensive","health","report"],"growth_weak":false,"months_to_next_review":3,"state_chars":1184},
+      {"id":"D02","split":"dev","family":"Run02","source_line":701,"month":21,"level":"L4","phase":"ENERGY","historical_choice":1,"controller_choice":4,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Old unresolved public serious warning favors cleanup; no proof it beats current growth.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["intensive"],"growth_weak":false,"months_to_next_review":3,"state_chars":1450},
+      {"id":"D03","split":"dev","family":"Run02","source_line":1101,"month":33,"level":"L4","phase":"ENERGY","historical_choice":6,"controller_choice":3,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Network is GAIN while Output lanes are FLAT; historical Health also has ordinary cost rationale.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R2:FORMAL_GAP:DISCOUNTED_FLAT","R4:DURABLE_WITHIN_WINDOW","R5:SAME_LEVEL_FLAT_DISCOUNT","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":5,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":6,"rules":["R0:LEGAL","R6:WINDOW_CAPITAL_GROWTH_WEAK","R7:PUBLIC_NEED"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":8,"rules":["R0:LEGAL","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R4:DURABLE_WITHIN_WINDOW","R5:SAME_LEVEL_FLAT_DISCOUNT","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:UNAFFORDABLE","R6:WINDOW_CAPITAL_GROWTH_WEAK"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":[],"growth_weak":true,"months_to_next_review":3,"state_chars":1516},
+      {"id":"D04","split":"dev","family":"Run01","source_line":1105,"month":33,"level":"L4","phase":"ENERGY","historical_choice":6,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Persistent old warning favors cleanup over Health; relevant current danger versus successful prior repair is not resolved.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":3,"state_chars":1545},
+      {"id":"D05","split":"dev","family":"Run03","source_line":613,"month":18,"level":"L2","phase":"ENERGY","historical_choice":3,"controller_choice":7,"verdict":"NO_MEANINGFUL_CHANGE","confidence":"LIMITED","basis":"Report versus Network: both useful current growth lanes; no independently demonstrated decision error.","rules":["R0:LEGAL","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":3,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":3,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":3,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":3,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":3,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL"],"first_differing_ordinal":3,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:LEGAL"],"first_differing_ordinal":3,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":["report","health"],"growth_weak":false,"months_to_next_review":6,"state_chars":1126},
+      {"id":"D06","split":"dev","family":"Run03","source_line":917,"month":27,"level":"L3","phase":"ENERGY","historical_choice":7,"controller_choice":3,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Remaining one Energy cannot afford cleanup; responsive Network compares with report.","rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":6,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":4,"rules":["R0:UNAFFORDABLE","R1:REPAIR"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["report","health"],"growth_weak":false,"months_to_next_review":3,"state_chars":1175},
+      {"id":"D07","split":"dev","family":"Run01","source_line":793,"month":24,"level":"L4","phase":"ENERGY","historical_choice":4,"controller_choice":4,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"LIMITED","basis":"Same cleanup choice with unresolved public serious warning; preservation only, not risk-score claim.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["network","report","health"],"growth_weak":false,"months_to_next_review":6,"state_chars":1182},
+      {"id":"D08","split":"dev","family":"Run02","source_line":797,"month":24,"level":"L4","phase":"ENERGY","historical_choice":6,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Cleanup over Health could be reasonable, but persistence alone does not establish a currently binding threat.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":6,"state_chars":1536},
+      {"id":"D09","split":"dev","family":"v6","source_line":625,"month":18,"level":"L4","phase":"ENERGY","historical_choice":1,"controller_choice":3,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Network instead of intensive at new Level; no evidence-intensive always bad or Network optimal.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":11,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":9,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":["report","health","network","intensive"],"growth_weak":false,"months_to_next_review":6,"state_chars":997},
+      {"id":"D10","split":"dev","family":"v6","source_line":1229,"month":36,"level":"L5","phase":"ENERGY","historical_choice":6,"controller_choice":3,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Donor Health recovery versus Network: workload/exposure annotation insufficient to judge this change.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":11,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":9,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":["report","health","network","intensive"],"growth_weak":false,"months_to_next_review":6,"state_chars":999},
+      {"id":"D11","split":"dev","family":"v11b","source_line":101,"month":3,"level":"L1","phase":"STORY","historical_choice":1,"controller_choice":2,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"CI ownership opportunity traded for ongoing delivery: delay/workload makes alternatives materially different, not an established improvement.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"维持手动 Review，新人按既有方式跟进 ","alternatives":[{"choice":1,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":9,"evidence":"投入 2 周完整搭建 CI 自动化体系 "}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":3,"state_chars":699},
+      {"id":"D12","split":"dev","family":"v11b","source_line":197,"month":6,"level":"L2","phase":"STORY","historical_choice":2,"controller_choice":2,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"HIGH","basis":"Limited remote assistance preserves existing delivery and useful contribution without new week-long on-call.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"在群里表示可远程答疑两小时，不现场驻场 ","alternatives":[{"choice":3,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":11,"evidence":"沉默，专注自有项目 "},{"choice":1,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":9,"evidence":"主动请缨加入救火小组 "}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":6,"state_chars":988},
+      {"id":"H01","split":"holdout","family":"v6","source_line":1445,"month":42,"level":"L5","phase":"ENERGY","historical_choice":7,"controller_choice":3,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Both report and Network have clean GAIN; tie mechanics do not demonstrate an improved choice.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":11,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":6,"rules":["R0:LEGAL","R7:PUBLIC_NEED"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":6,"state_chars":1540},
+      {"id":"H02","split":"holdout","family":"v6","source_line":1645,"month":48,"level":"L6","phase":"ENERGY","historical_choice":3,"controller_choice":7,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"New-Level report versus Network, remaining one Energy; neither public alternative is demonstrably better.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":6,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":["network","intensive"],"growth_weak":false,"months_to_next_review":0,"state_chars":1259},
+      {"id":"H03","split":"holdout","family":"Run01","source_line":1113,"month":33,"level":"L4","phase":"ENERGY","historical_choice":7,"controller_choice":7,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"LIMITED","basis":"Same responsive report; unaffordable cleanup excluded.","rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":3,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":3,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":3,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":3,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":4,"rules":["R0:UNAFFORDABLE","R1:REPAIR"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":3,"state_chars":1546},
+      {"id":"H04","split":"holdout","family":"Run01","source_line":513,"month":15,"level":"L3","phase":"ENERGY","historical_choice":7,"controller_choice":7,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"LIMITED","basis":"Same responsive report with one Energy remaining.","rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":6,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":4,"rules":["R0:UNAFFORDABLE","R1:REPAIR"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["network","health"],"growth_weak":false,"months_to_next_review":3,"state_chars":1174},
+      {"id":"H05","split":"holdout","family":"Run02","source_line":305,"month":9,"level":"L2","phase":"ENERGY","historical_choice":7,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Cleanup beats responsive report only because old serious warning remains; current bindingness is ambiguous.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["intensive","network"],"growth_weak":false,"months_to_next_review":3,"state_chars":1302},
+      {"id":"H06","split":"holdout","family":"Run02","source_line":1601,"month":48,"level":"L5","phase":"ENERGY","historical_choice":6,"controller_choice":3,"verdict":"PLAUSIBLE_ALTERNATIVE","confidence":"LIMITED","basis":"Flat Output lanes discounted and Network GAIN compared; Health recovery is not independently shown wrong.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW","R5:SAME_LEVEL_FLAT_DISCOUNT"],"first_differing_ordinal":5,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":6,"rules":["R0:LEGAL","R7:PUBLIC_NEED"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":8,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R4:DURABLE_WITHIN_WINDOW","R5:SAME_LEVEL_FLAT_DISCOUNT"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"},{"choice":4,"rules":["R0:UNAFFORDABLE"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":0,"state_chars":1521},
+      {"id":"H07","split":"holdout","family":"Run03","source_line":1309,"month":39,"level":"L4","phase":"ENERGY","historical_choice":6,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Cleanup versus Health; cannot establish improved handling without current threat and repair-state semantics.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["network","health"],"growth_weak":false,"months_to_next_review":3,"state_chars":1175},
+      {"id":"H08","split":"holdout","family":"Run03","source_line":1525,"month":45,"level":"L4","phase":"ENERGY","historical_choice":7,"controller_choice":7,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"LIMITED","basis":"Same responsive report, cleanup unaffordable.","rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":6,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":5,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":5,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":4,"rules":["R0:UNAFFORDABLE","R1:REPAIR"],"first_differing_ordinal":0,"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。"},{"choice":1,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":0,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":2,"rules":["R0:UNAFFORDABLE","R1:NOT_REPAIR"],"first_differing_ordinal":0,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":["network"],"growth_weak":false,"months_to_next_review":3,"state_chars":1263},
+      {"id":"H09","split":"holdout","family":"v11b","source_line":1273,"month":36,"level":"L4","phase":"ENERGY","historical_choice":7,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Old serious warning dominates report; incomplete retained delivery/repair evidence prevents strong superiority verdict.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":6,"state_chars":1036},
+      {"id":"H10","split":"holdout","family":"v11b","source_line":1177,"month":33,"level":"L4","phase":"ENERGY","historical_choice":7,"controller_choice":4,"verdict":"UNKNOWN","confidence":"LIMITED","basis":"Same limitation: warning persistence crowds out visibility; no safe claim of improvement.","rules":["R0:LEGAL","R1:REPAIR"],"evidence":"处理历史埋雷 主动清理过往遗留隐患，降低潜在风险值。","alternatives":[{"choice":7,"rules":["R0:LEGAL","R1:NOT_REPAIR","R2:FORMAL_GAP","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"准备汇报材料 提前整理可见成果材料，绩效资本与尊严小幅提升。"},{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"人脉维护 经营组织内外关系，人脉与尊严同步小幅提升。"},{"choice":1,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"高强度工作 投入大量精力赶产出，绩效资本上升，但要付出健康、尊严的代价，并累积潜在风险。"},{"choice":8,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"保留体力（不行动） 本季度保留剩余体力不行动；未使用的体力不会累计到下季度。"},{"choice":5,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"心理修复 进行心理调整与自我修复，明显回补尊严。"},{"choice":6,"rules":["R0:LEGAL","R1:NOT_REPAIR","R7:NO_TOPUP_PRIORITY"],"first_differing_ordinal":1,"evidence":"健康恢复 休整作息、恢复体力，明显回补健康。"},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"技能学习 花时间打磨专业能力，长期资本增厚，短期消耗精力。"}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":3,"state_chars":1043},
+      {"id":"H11","split":"holdout","family":"Run01","source_line":577,"month":18,"level":"L3","phase":"STORY","historical_choice":1,"controller_choice":1,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"HIGH","basis":"Transparent result/risk communication kept; clearly unsafe concealment rejected.","rules":["R0:LEGAL","R1:REPAIR","R4:DURABLE_WITHIN_WINDOW"],"evidence":"结论先行，先讲达成的关键成果，再坦诚点出隐患和应对计划 ","alternatives":[{"choice":3,"rules":["R0:LEGAL","R1:NOT_REPAIR"],"first_differing_ordinal":1,"evidence":"事无巨细地从头讲过程，十分钟没讲到重点 "},{"choice":2,"rules":["R0:LEGAL","R1:NOT_REPAIR","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":1,"evidence":"只报喜不报忧，把隐患藏起来，全程讲亮点 "}],"old_level_response_families_excluded":["network","health"],"growth_weak":false,"months_to_next_review":6,"state_chars":1267},
+      {"id":"H12","split":"holdout","family":"Run03","source_line":89,"month":3,"level":"L1","phase":"STORY","historical_choice":1,"controller_choice":1,"verdict":"DONOR_GOOD_DECISION_PRESERVED","confidence":"HIGH","basis":"Transparent concise report kept; hidden risk concealment not favored.","rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"evidence":"结论先行，先讲达成的关键成果，再坦诚点出隐患和应对计划 ","alternatives":[{"choice":3,"rules":["R0:LEGAL"],"first_differing_ordinal":5,"evidence":"事无巨细地从头讲过程，十分钟没讲到重点 "},{"choice":2,"rules":["R0:LEGAL","R4:DURABLE_WITHIN_WINDOW"],"first_differing_ordinal":2,"evidence":"只报喜不报忧，把隐患藏起来，全程讲亮点 "}],"old_level_response_families_excluded":[],"growth_weak":false,"months_to_next_review":3,"state_chars":699}
+    ],
+    "gate": "NOT_PROMISING",
+    "gate_reason": "Only one STATE_ONLY known-error correction; no demonstrated multiple decision-error corrections. Warning bindingness and result-realization annotations unresolved; donor control improvements not established. Zero demonstrated new material-risk failures is not sufficient for support.",
+    "ranking_tuned_after_unblinding": false,
+    "weak_growth_cases": ["D03"],
+    "blinding_limit": "Current choices/future outcomes/final scores/run names/session IDs excluded from ranking inputs. Same executor familiar with historical evidence; not an independently blinded reviewer. Prior completed actions retained only to establish already-visible local responses."
+  },
+  "fixture": {
+    "fixture_installs": 2,
+    "shared_installs": 0,
+    "script_copied_exact": true,
+    "actual_frozen_SysOperation_invocations": 3,
+    "json_returned_to_parent_tool": true,
+    "first_next_action": 4,
+    "state_existed": true,
+    "state_chars": 1184,
+    "simulated_compression_persistence": true,
+    "compression_boundary": "real processor callback; multi_compress mocked, no LLM",
+    "reinstall_reset": true,
+    "provider_requests": 0,
+    "service_lifecycles": 0,
+    "new_game": 0,
+    "take_action": 0,
+    "DB_access": 0,
+    "paths_guarded": true,
+    "helper_sha256": "7b8231a90123a054bd827a4676004d1fbe599effc0ba4f698525cee0521cf7a7",
+    "total_fixture_installs_including_transport_recheck": 4,
+    "total_actual_shell_invocations": 6,
+    "initial_transport_issue": "JSON parsed but Chinese evidence mojibake under frozen PowerShell decoding; fixed ASCII JSON stdout escaping, exact public evidence roundtrip then verified",
+    "formal_install": 0
+  },
+  "model_probe": {
+    "status": "SKIPPED_AT_REPLAY_GATE",
+    "requests": 0,
+    "helper_invocation_rate": "NOT_EXERCISED",
+    "FULL_ADHERENCE": "NOT_EXERCISED",
+    "USEFUL_WITH_LIMITATION": "NOT_EXERCISED",
+    "HELPER_IGNORED": "NOT_EXERCISED",
+    "BAD_INPUT_TO_HELPER": "NOT_EXERCISED",
+    "UNJUSTIFIED_OVERRIDE": "NOT_EXERCISED",
+    "PUBLIC_EVIDENCE_VIOLATION": "NOT_EXERCISED",
+    "technical_failures": "NOT_EXERCISED",
+    "input_tokens": "NOT_EXERCISED",
+    "output_tokens": "NOT_EXERCISED",
+    "actual_cost": "UNKNOWN"
+  },
+  "portability": {
+    "current_contract_checked_utc_date": "2026-10-05",
+    "official_readme": "https://github.com/openJiuwen-ai/CareerSim-BDCI26/blob/main/README.md",
+    "competition_page": "https://www.xir.cn/competition/1165",
+    "contract_verdict": "No explicit Skill-script/shell prohibition found in accessible official README; silence is not cloud permission guarantee",
+    "competition_page_limit": "No readable rule body returned",
+    "documentation_limit": "Documentation endpoint read failed",
+    "local": "LOCAL_OFFICIAL_RUNNER_COMPATIBLE",
+    "cloud": "CLOUD_UNKNOWN",
+    "local_interpreter": "process-local root .venv Scripts PATH; unmodified frozen PowerShell tool; no system/user PATH changes"
+  },
+  "hypotheses": {
+    "H1": "PARTIAL",
+    "H2": "PARTIAL",
+    "H3": "UNKNOWN",
+    "H4": "PARTIAL"
+  },
+  "operations": {
+    "service_lifecycle": 0,
+    "provider_requests": 0,
+    "new_game": 0,
+    "take_action": 0,
+    "DB_read": 0,
+    "DB_mutation": 0,
+    "formal_Candidate_modification": 0,
+    "formal_Skill_modification": 0,
+    "shared_install": 0
+  },
+  "preservation": {
+    "configs/runtime_manifest.json": {
+      "base_blob": "9cee078beff2c3efdb7605b8a56aee78293e5866",
+      "unchanged": true,
+      "sha256": "2528be9886d6314efad3f238d91095217c0d426ae731a524517e2de93b8b8536"
+    },
+    "configs/current_candidate.json": {
+      "base_blob": "91d533ca5a128e509798a2972fc6bcd5d2129a3f",
+      "unchanged": true,
+      "sha256": "dab5746aba1441b8bf9e9eb2ee589f671c66f7758126d4d8be261178c7bcd4ae"
+    },
+    "skills/rolling-planning/SKILL.md": {
+      "base_blob": "cd2520ae2e3b927e0d7df67a7e0f1032d9283d86",
+      "unchanged": true,
+      "sha256": "2a2f2c639289aec479be4ca92bba13cc98f4b90d3d62e95de0cda21c4d35c64f"
+    },
+    "skills/risk-review/SKILL.md": {
+      "base_blob": "e602fe1a3343a28b472259ae46cfca780e780e48",
+      "unchanged": true,
+      "sha256": "6da910fa60b07dfdccfc78a840ebc4777fc39e3188358e69ee483c89606874fd"
+    },
+    "skills/structured-state-board/SKILL.md": {
+      "base_blob": "611e75d97234131acd5f321b5c7b75f50c1960ef",
+      "unchanged": true,
+      "sha256": "da76071dd035fcbb9073d69173db9a629f2404189709d39ea950dfd78bcd1cae"
+    },
+    "uv.lock": {
+      "base_blob": "1970860329f3b2b97708b87806d8572a051803fd",
+      "unchanged": true,
+      "sha256": "18466056430f7c49c3a23705d312625b40b1a5119c41f0ec62571cda208e4c0c"
+    },
+    "pyproject.toml": {
+      "base_blob": "1e2a0226728b180c53b8e6bcdb3f0258f3765d5b",
+      "unchanged": true,
+      "sha256": "b399225f2c00b415f3c8a3317f8cdecf72114ae7a41111b4410f201466e40f73"
+    },
+    "Runner": {
+      "base_tree": "a2245c49d0b102b80b9891b6d750c671b3c3710f",
+      "current_tree": "a2245c49d0b102b80b9891b6d750c671b3c3710f",
+      "unchanged": true
+    },
+    "dependencies": {
+      "jiuwenswarm": "0.2.4b3",
+      "openjiuwen": "0.1.16.post2",
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0"
+    },
+    "provider_config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+    "provider_unchanged_vs_R3": true
+  },
+  "HUMAN_PLAY_LAB": "CLOSED_BY_USER",
+  "FORENSIC_HOLD": {
+    "status": "ACTIVE",
+    "owner": "S10-20",
+    "release_authority": "Main/Stage",
+    "reason": "Negative architecture gate depends on frozen blind inputs, pre-unblinding outputs and isolated execution/reset proof",
+    "sources": {
+      "v6": {
+        "path": "D:\\CS\\CareerSim\\.career_sim_runner\\career_emu\\outputs\\local-s06-adaptive-controller\\20260925T094419Z\\events-20260925T094419Z.jsonl",
+        "sha256": "2cce87eb6afd8aea5a9651f75621ae7c2b303e8c00c7f2ac417dc65c030371d8"
+      },
+      "Run01": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-12-v6d-run01\\public-policy-data.json",
+        "sha256": "4315f35bce5405e76494487dc5038b74870a17ecf42d7d7953786a6ede9a15d3"
+      },
+      "Run02": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-14-v6d-run02\\public-policy-data.json",
+        "sha256": "178ce810ac23f2e68c3e4a45545504c886856e17a48bbe62abfb58dc67666877"
+      },
+      "Run03": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-18-v6d-run03\\public-policy-data.json",
+        "sha256": "33346133053fec3d1ebaf0e5555e0bdc3eef30cede8d89d6da023e554a715948"
+      },
+      "v11b": {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s09-run21-v11b\\complete-action-contexts.json",
+        "sha256": "eb213a974e001e4b8a4d918262c8dc87bef0d1539d5c42270205af925713c7b9"
+      }
+    },
+    "retained_local_files": [
+      {"path":".local/runtime/s10-20-controller/actual-tool-json.json","bytes":6385,"sha256":"9be0cef5a2d2c89cc32b46ac96104cb9d645c6b60f317f1a680290d8dd536c86"},
+      {"path":".local/runtime/s10-20-controller/blind-cases.json","bytes":10895120,"sha256":"e4d77bcb74a3d166fb2696db6f80d7184587c79892890ab68f691ddfbdf333e3"},
+      {"path":".local/runtime/s10-20-controller/evaluation-sealed.json","bytes":4855,"sha256":"1e0b335527995f725beeade054cb2de80b55b2384381982c5d492f0d765bb4a9"},
+      {"path":".local/runtime/s10-20-controller/evaluation.json","bytes":72070,"sha256":"0535eff838751b4d6bd10f4766120920d31b7c9847c23db0313d1330526352ca"},
+      {"path":".local/runtime/s10-20-controller/fixture-probe-initial.json","bytes":638,"sha256":"269ba032255572b40d0f4947a59194510f83129374e18196347033965a1fc11b"},
+      {"path":".local/runtime/s10-20-controller/fixture-probe-output.txt","bytes":29289,"sha256":"527033a0d47c1ec916baa66d0b49a5cf652dd69ef0e42637401bc40a08b3e8a9"},
+      {"path":".local/runtime/s10-20-controller/fixture-probe.json","bytes":638,"sha256":"e1ac4b6674747dc488ad0ba5c88e0fe3a58d9ac56aea0c3ad09c865b3671e46f"},
+      {"path":".local/runtime/s10-20-controller/holdout-freeze.json","bytes":416,"sha256":"bb21e305c9a3e6f0a796f6a1278a58cb46805073f1990d39b51509168e1ca16d"},
+      {"path":".local/runtime/s10-20-controller/output-freeze.json","bytes":419,"sha256":"f2255e322126265b18f8890d3682bd6ddd35aed20a240c34cf561aaab8907f78"},
+      {"path":".local/runtime/s10-20-controller/prepared-blind.json","bytes":211973,"sha256":"83e862cc9bc6af02cb53f732b0f90344cd699c90f47718b13977344e13b15355"},
+      {"path":".local/runtime/s10-20-controller/preservation.json","bytes":1931,"sha256":"029c68ec5aa9f1e5ab4adb5780e74d9e2e62ba2e88d6ca9e5f057215e46e1414"},
+      {"path":".local/runtime/s10-20-controller/replay-output-frozen.json","bytes":169596,"sha256":"750a1b08d9515dbc540f00a32b35eea2239d68b7794ead5800f6d6f57fc32757"},
+      {"path":".local/runtime/s10-20-controller/sources.json","bytes":1044,"sha256":"914730c1cab705c466995bdb9701fbdfcce5fd863a67c73a679c6bb61b858e8b"},
+      {"path":".local/runtime/s10-20-controller/start.json","bytes":150,"sha256":"6b27decdc52194791741d71d862b702460e72964e751ac27d0a97f77cbc23698"},
+      {"path":".local/runtime/s10-20-controller/tests.json","bytes":1712,"sha256":"42e8222b7f7d9002964ef7416d5919997b40eaa0a72a2f54808e0f9868ac0d3c"},
+      {"path":".local/scratch/s10-20/build_dataset.py","bytes":6954,"sha256":"011ccecdac17ef4e24e45ba5a63ee29ee6e7901f39639b1daabdac30cb609a3e"},
+      {"path":".local/scratch/s10-20/controller.py","bytes":12315,"sha256":"7b8231a90123a054bd827a4676004d1fbe599effc0ba4f698525cee0521cf7a7"},
+      {"path":".local/scratch/s10-20/evaluate.py","bytes":7024,"sha256":"bfb5925edca2c92ea4a4af0df5086f6f8ce6b8bea4bf37eb66b6ae2d849c9203"},
+      {"path":".local/scratch/s10-20/fixture_probe.py","bytes":6036,"sha256":"f04f219cd179244b415ed81f0010844b14c4a4981918ab181c495bc2d6f55c1c"},
+      {"path":".local/scratch/s10-20/replay.py","bytes":11284,"sha256":"94edf16b5ecd993cbf88ea1bccf59ab1bb21c03993745a7b7752d5694dec4021"},
+      {"path":".local/scratch/s10-20/write_reports.py","bytes":24932,"sha256":"a4be4f34b3cd5f12345cc47b672241691a8de90826e4710f21ba8c1c36c47839"}
+    ],
+    "release_condition": "Main accepts independent reviewable negative gate and confirms no child/replay dependency; only separate cleanup authorization permits deletion",
+    "existing_holds": "Untouched"
+  },
+  "execution_metrics": {
+    "Model_Used": "UNKNOWN",
+    "Reasoning_Effort": "UNKNOWN",
+    "Started_At": "2026-10-05T05:14:41.940189+00:00",
+    "Finished_At": "2026-10-05T05:29:23.340697+00:00",
+    "Actual_Wall_clock_seconds": 881.4,
+    "boundary": "Measured prototype-to-report execution; earlier read-only inspection and final Git delivery outside this interval"
+  },
+  "nonclaims": ["No gameplay improvement proof","No promotion formula","No stable75 proof","No cloud guarantee","Retrospective input blindness is not an independent reviewer blind trial"],
+  "return": "RETURN_FOR_V15_BUILD_GATE",
+  "NEXT_GAME": "NOT_AUTHORIZED",
+  "delivery_validation": {
+    "replay_reproduced": 24,
+    "blind_input_firewall": "PASS",
+    "source_and_hold_hashes": "PASS",
+    "JSON": "PASS",
+    "local_links": "PASS",
+    "secret_scan": "PASS",
+    "HPL_closed": "PASS",
+    "protected_runtime": "PASS",
+    "tooling_note": "Initial string scan mistook a public menu description mentioning status_updates for private data. Recursive key inspection confirms no effect maps in replay inputs. No input/ranking change.",
+    "written_files": ["docs\\project\\CURRENT_STATE.md","docs\\project\\research\\S10-20_PROMOTION_WINDOW_CONTROLLER.md","docs\\project\\research\\S10-20_REPLAY_EVIDENCE.json","docs\\project\\reviews\\S10-20_CONTROLLER_GATE.md"]
+  }
+}
