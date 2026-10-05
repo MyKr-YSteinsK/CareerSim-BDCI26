@@ -1,0 +1,1431 @@
+{
+  "task": "S10-22",
+  "status": "Complete",
+  "decision": "SIMULATOR_POLICY_SEARCH_NOT_FEASIBLE",
+  "base": "fd7572f8695191b96781fe1f7f75e38843899d0f",
+  "branch": "main",
+  "identity": {
+    "packages": {
+      "career-emulator": "1.0.1",
+      "career-emulator-bdci26": "1.0.0"
+    },
+    "dataset": "D:\\CS\\CareerSim\\.venv\\Lib\\site-packages\\career_emulator_bdci26\\dev\\dataset",
+    "dataset_files": 194,
+    "dataset_sha256": "34d976e264f905b8685cc2ea4df0dacb29ef92e02733010371170f8f538eca90",
+    "engine_code_sha256": "ad32fedd7893055edd9d2bf9e1bd9211ece2615ba7af2d7e5b8bbdfecf09a055",
+    "rng": "SHA256(S10-22:seed) UUID; global random.seed(seed); PYTHONHASHSEED=0",
+    "python": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+    "network": "socket.connect and connect_ex denied",
+    "storage": "opaque deepcopy memory; no DB/log persistence"
+  },
+  "freeze": {
+    "frozen_at": "2026-10-05T07:21:07.406439+00:00",
+    "code": {
+      "harness.py": "587631a26ef0a94f61e39e0f222eab9c827123c9554dafb287bb17ed3cb06fc5",
+      "policy.py": "7620f19f38cb40a1d03b9d4b7d29f157edfc52f7101885ef57579842bb11ce34",
+      "search.py": "bbc2eb16054fb0ff275ae39572ecdb58add8c707bbf0ca5ca7d2f8bcca30904e",
+      "test_boundary.py": "71e7a9c44c1c786c1afd4820270a7d469c66dc306fe2f17a86ba4ff15499a48e"
+    },
+    "policies": {
+      "B0_balanced": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "B1_v6_like": {
+        "health": "trend",
+        "flat": 2,
+        "repair": "once",
+        "main": "aggressive",
+        "momentum": "preserve",
+        "reset": "result",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "B2_v6d_like": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "explicit",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "B3_survival": {
+        "health": "buffer",
+        "flat": 1,
+        "repair": "explicit",
+        "main": "risk",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "P4_momentum": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "current",
+        "main": "aggressive",
+        "momentum": "preserve",
+        "reset": "stay",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "P5_network": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "explicit",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "network",
+        "skill": "disabled"
+      },
+      "P6_report": {
+        "health": "trend",
+        "flat": 2,
+        "repair": "explicit",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "result",
+        "lane": "report",
+        "skill": "disabled"
+      },
+      "P7_skill_responsive": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "explicit",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "responsive"
+      },
+      "P8_skill_lagging": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "explicit",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "lagging"
+      },
+      "P9_acute_only": {
+        "health": "acute",
+        "flat": 1,
+        "repair": "current",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "P10_stay_no_discount": {
+        "health": "trend",
+        "flat": 0,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "stay",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "P11_current_warning": {
+        "health": "buffer",
+        "flat": 1,
+        "repair": "current",
+        "main": "conditional",
+        "momentum": "preserve",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      }
+    },
+    "seeds": {
+      "sanity": [
+        220000,
+        220001,
+        220002,
+        220003,
+        220004,
+        220005,
+        220006,
+        220007,
+        220008,
+        220009,
+        220010,
+        220011,
+        220012,
+        220013,
+        220014,
+        220015
+      ],
+      "screen": [
+        221000,
+        221001,
+        221002,
+        221003,
+        221004,
+        221005,
+        221006,
+        221007,
+        221008,
+        221009,
+        221010,
+        221011,
+        221012,
+        221013,
+        221014,
+        221015,
+        221016,
+        221017,
+        221018,
+        221019,
+        221020,
+        221021,
+        221022,
+        221023,
+        221024,
+        221025,
+        221026,
+        221027,
+        221028,
+        221029,
+        221030,
+        221031
+      ],
+      "confirm": [
+        222000,
+        222001,
+        222002,
+        222003,
+        222004,
+        222005,
+        222006,
+        222007,
+        222008,
+        222009,
+        222010,
+        222011,
+        222012,
+        222013,
+        222014,
+        222015,
+        222016,
+        222017,
+        222018,
+        222019,
+        222020,
+        222021,
+        222022,
+        222023,
+        222024,
+        222025,
+        222026,
+        222027,
+        222028,
+        222029,
+        222030,
+        222031,
+        222032,
+        222033,
+        222034,
+        222035,
+        222036,
+        222037,
+        222038,
+        222039,
+        222040,
+        222041,
+        222042,
+        222043,
+        222044,
+        222045,
+        222046,
+        222047,
+        222048,
+        222049,
+        222050,
+        222051,
+        222052,
+        222053,
+        222054,
+        222055,
+        222056,
+        222057,
+        222058,
+        222059,
+        222060,
+        222061,
+        222062,
+        222063,
+        222064,
+        222065,
+        222066,
+        222067,
+        222068,
+        222069,
+        222070,
+        222071,
+        222072,
+        222073,
+        222074,
+        222075,
+        222076,
+        222077,
+        222078,
+        222079,
+        222080,
+        222081,
+        222082,
+        222083,
+        222084,
+        222085,
+        222086,
+        222087,
+        222088,
+        222089,
+        222090,
+        222091,
+        222092,
+        222093,
+        222094,
+        222095
+      ],
+      "holdout": [
+        223000,
+        223001,
+        223002,
+        223003,
+        223004,
+        223005,
+        223006,
+        223007,
+        223008,
+        223009,
+        223010,
+        223011,
+        223012,
+        223013,
+        223014,
+        223015,
+        223016,
+        223017,
+        223018,
+        223019,
+        223020,
+        223021,
+        223022,
+        223023,
+        223024,
+        223025,
+        223026,
+        223027,
+        223028,
+        223029,
+        223030,
+        223031,
+        223032,
+        223033,
+        223034,
+        223035,
+        223036,
+        223037,
+        223038,
+        223039,
+        223040,
+        223041,
+        223042,
+        223043,
+        223044,
+        223045,
+        223046,
+        223047,
+        223048,
+        223049,
+        223050,
+        223051,
+        223052,
+        223053,
+        223054,
+        223055,
+        223056,
+        223057,
+        223058,
+        223059,
+        223060,
+        223061,
+        223062,
+        223063,
+        223064,
+        223065,
+        223066,
+        223067,
+        223068,
+        223069,
+        223070,
+        223071,
+        223072,
+        223073,
+        223074,
+        223075,
+        223076,
+        223077,
+        223078,
+        223079,
+        223080,
+        223081,
+        223082,
+        223083,
+        223084,
+        223085,
+        223086,
+        223087,
+        223088,
+        223089,
+        223090,
+        223091,
+        223092,
+        223093,
+        223094,
+        223095,
+        223096,
+        223097,
+        223098,
+        223099,
+        223100,
+        223101,
+        223102,
+        223103,
+        223104,
+        223105,
+        223106,
+        223107,
+        223108,
+        223109,
+        223110,
+        223111,
+        223112,
+        223113,
+        223114,
+        223115,
+        223116,
+        223117,
+        223118,
+        223119,
+        223120,
+        223121,
+        223122,
+        223123,
+        223124,
+        223125,
+        223126,
+        223127
+      ]
+    },
+    "seed_hashes": {
+      "sanity": "182b71e8b4eccee493209cdaea200854831d9068b7502b7ea05c325e2aaab88c",
+      "screen": "1a1a7f681766ab31f098d34b81b28a234d651e4e0cdb5408a4ece88c47837f07",
+      "confirm": "059bee8992765d68afd23a3d6e3970394299ab9f5698b90f7c19c9e42489111f",
+      "holdout": "25fa54b702a777f158036fc86c8e6ac0725173c0b87896fba8dd8c4f03e48d9a"
+    },
+    "identity": {
+      "packages": {
+        "career-emulator": "1.0.1",
+        "career-emulator-bdci26": "1.0.0"
+      },
+      "dataset": "D:\\CS\\CareerSim\\.venv\\Lib\\site-packages\\career_emulator_bdci26\\dev\\dataset",
+      "dataset_files": 194,
+      "dataset_sha256": "34d976e264f905b8685cc2ea4df0dacb29ef92e02733010371170f8f538eca90",
+      "engine_code_sha256": "ad32fedd7893055edd9d2bf9e1bd9211ece2615ba7af2d7e5b8bbdfecf09a055",
+      "rng": "SHA256(S10-22:seed) UUID; global random.seed(seed); PYTHONHASHSEED=0",
+      "python": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+      "network": "socket.connect and connect_ex denied",
+      "storage": "opaque deepcopy memory; no DB/log persistence"
+    },
+    "selection": "screen top two non-baselines by >=75 rate then q90 among floor no more than 2 extra terminals vs B2; always retain B0-B3. Confirm finalists unchanged; final holdout once, no retuning.",
+    "floor_gate": "at least 8/16 sanity episodes complete, multiple Energy/Main decisions; otherwise no macro search",
+    "story": "fixed functional verb scoring; tie lowest legal choice; no event/title answer keys; no reward tuning",
+    "feasibility_interface_probes": {
+      "partial_episodes": 2,
+      "full_episodes": 0,
+      "score_opened": false,
+      "note": "initialization/menu checks only; one stopped at 30 actions, one at natural terminal without score display"
+    },
+    "adapter_refrozen_at": "2026-10-05T07:25:48.735609+00:00",
+    "adapter_changes": [
+      "ASCII escaped JSON fixes isolated Windows decoding; policy bytes unchanged",
+      "one retained public-play warmup before paired seeds stabilizes lazy process globals; no state/value inspection or mechanics patch"
+    ],
+    "story_sha_unchanged": true,
+    "post_feasibility_adapter_change": {
+      "at": "2026-10-05T07:30:12.580838+00:00",
+      "reason": "mechanical refusal of later stages when frozen feasibility gate failed; no policy change or new episodes"
+    },
+    "final_boundary_hardening": {
+      "at": "2026-10-05T07:33:43.912050+00:00",
+      "changes": [
+        "reject nested/noninteger month before policy",
+        "close subprocess pipes after wait"
+      ],
+      "no_new_episodes": true,
+      "policy_decision_ast_unchanged": true,
+      "decision_ast_sha256": "36f06431f7c32ad3c048fb9e6d90c552e789849f492cbbb165088a147fd48135"
+    },
+    "initial_receipt_accounting_correction": "Initial interface receipt called two probes partial; final actual accounting treats both as naturally ended without displaying reward. Initial receipt is retained verbatim."
+  },
+  "feasibility": {
+    "stage": "sanity",
+    "policies": {
+      "B0_balanced": {
+        "n": 16,
+        "valid_n": 16,
+        "technical_failures": 0,
+        "complete": 2,
+        "rate48": 0.125,
+        "early_terminal_rate": 0.875,
+        "terminal_reasons": {
+          "喝西北风end —— 连续好几个月口袋比脸还干净，这工怎么还越打越穷了哇！": 2,
+          "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！": 10,
+          "炒鱿鱼end —— 两次半年绩效考核不佳，PPT写得再好也保不住你了，领导约了你「喝茶」——这杯茶喝完，人就不用回工位了": 1,
+          "信任危机end —— 第二次爆雷！组织表示「信任额度已用尽」，还请您将天赋带到下家公司": 1
+        },
+        "levels": {
+          "L2": 3,
+          "L1": 9,
+          "L4": 2,
+          "L3": 2
+        },
+        "L5_rate": 0.0,
+        "L6_rate": 0.0,
+        "mean": 25.98375,
+        "median": 21.665,
+        "q10": 17.54,
+        "q25": 19.357499999999998,
+        "q75": 25.875,
+        "q90": 40.455,
+        "max": 60.0,
+        "p70": 0.0,
+        "p75": 0.0,
+        "promotion_counts": {
+          "1": 3,
+          "0": 9,
+          "3": 2,
+          "2": 2
+        },
+        "promotion_months": {
+          "6": 7,
+          "12": 2,
+          "30": 2,
+          "18": 2
+        }
+      }
+    },
+    "seconds": 0.8105419999992591,
+    "episodes": 16,
+    "finished_at": "2026-10-05T07:25:51.390827+00:00",
+    "processes": 2,
+    "engine_processes": 1
+  },
+  "episodes": [
+    {
+      "seed": 220000,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 26.04,
+      "partial": 18.23,
+      "completed": false,
+      "survival_months": 14,
+      "terminal_observe_month": 14,
+      "grade": "E",
+      "terminal_reason": "喝西北风end —— 连续好几个月口袋比脸还干净，这工怎么还越打越穷了哇！",
+      "final_public": {
+        "health": 6,
+        "dignity": 9,
+        "skill": 21,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 9,
+        "output": 6,
+        "wealth": 0,
+        "energy": 0
+      },
+      "promotions": [
+        6
+      ],
+      "review_count": 2,
+      "energy_mix": {
+        "report": 4,
+        "network": 3,
+        "health": 3,
+        "cleanup": 1
+      },
+      "action_count": 55,
+      "seconds": 0.03378840000004857
+    },
+    {
+      "seed": 220001,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 17.43,
+      "partial": 12.2,
+      "completed": false,
+      "survival_months": 6,
+      "terminal_observe_month": 6,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 7,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 0,
+        "wealth": 2,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 1,
+      "energy_mix": {
+        "report": 3
+      },
+      "action_count": 20,
+      "seconds": 0.012277999998332234
+    },
+    {
+      "seed": 220002,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 21.9,
+      "partial": 15.33,
+      "completed": false,
+      "survival_months": 3,
+      "terminal_observe_month": 3,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 10,
+        "skill": 4,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": 1,
+        "energy": 3
+      },
+      "promotions": [],
+      "review_count": 0,
+      "energy_mix": {},
+      "action_count": 9,
+      "seconds": 0.0053454000008059666
+    },
+    {
+      "seed": 220003,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 20.9,
+      "partial": 14.63,
+      "completed": false,
+      "survival_months": 3,
+      "terminal_observe_month": 3,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 9,
+        "skill": 2,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 3,
+        "wealth": 1,
+        "energy": 3
+      },
+      "promotions": [],
+      "review_count": 0,
+      "energy_mix": {},
+      "action_count": 7,
+      "seconds": 0.0046881999987817835
+    },
+    {
+      "seed": 220004,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 24.29,
+      "partial": 17.0,
+      "completed": false,
+      "survival_months": 8,
+      "terminal_observe_month": 8,
+      "grade": "E",
+      "terminal_reason": "喝西北风end —— 连续好几个月口袋比脸还干净，这工怎么还越打越穷了哇！",
+      "final_public": {
+        "health": 5,
+        "dignity": 9,
+        "skill": 13,
+        "network": 7,
+        "level": "L2",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": 0,
+        "energy": 0
+      },
+      "promotions": [
+        6
+      ],
+      "review_count": 1,
+      "energy_mix": {
+        "report": 3,
+        "health": 1,
+        "cleanup": 1
+      },
+      "action_count": 29,
+      "seconds": 0.017435999998269835
+    },
+    {
+      "seed": 220005,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 21.38,
+      "partial": 14.96,
+      "completed": false,
+      "survival_months": 3,
+      "terminal_observe_month": 3,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 9,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 3,
+        "output": 2,
+        "wealth": -1,
+        "energy": 3
+      },
+      "promotions": [],
+      "review_count": 0,
+      "energy_mix": {},
+      "action_count": 9,
+      "seconds": 0.005203400000027614
+    },
+    {
+      "seed": 220006,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 17.65,
+      "partial": 12.35,
+      "completed": false,
+      "survival_months": 9,
+      "terminal_observe_month": 9,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 1,
+        "wealth": 2,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 1,
+      "energy_mix": {
+        "health": 2,
+        "cleanup": 1,
+        "network": 1,
+        "report": 1
+      },
+      "action_count": 33,
+      "seconds": 0.019956400003138697
+    },
+    {
+      "seed": 220007,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 18.48,
+      "partial": 12.94,
+      "completed": false,
+      "survival_months": 24,
+      "terminal_observe_month": 24,
+      "grade": "E",
+      "terminal_reason": "炒鱿鱼end —— 两次半年绩效考核不佳，PPT写得再好也保不住你了，领导约了你「喝茶」——这杯茶喝完，人就不用回工位了",
+      "final_public": {
+        "health": 9,
+        "dignity": 5,
+        "skill": 9,
+        "network": 2,
+        "level": "L1",
+        "duration_in_level": 24,
+        "output": 3,
+        "wealth": 6,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 4,
+      "energy_mix": {
+        "health": 12,
+        "report": 3,
+        "cleanup": 1,
+        "network": 4
+      },
+      "action_count": 97,
+      "seconds": 0.059343799999624025
+    },
+    {
+      "seed": 220008,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 23.68,
+      "partial": 16.57,
+      "completed": false,
+      "survival_months": 6,
+      "terminal_observe_month": 6,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L2",
+        "duration_in_level": 1,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "promotions": [
+        6
+      ],
+      "review_count": 1,
+      "energy_mix": {
+        "health": 1,
+        "report": 1,
+        "network": 1
+      },
+      "action_count": 21,
+      "seconds": 0.012727500001346925
+    },
+    {
+      "seed": 220009,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 60.0,
+      "partial": 42.0,
+      "completed": true,
+      "survival_months": 48,
+      "terminal_observe_month": 48,
+      "grade": "B",
+      "terminal_reason": "Completed the 48-month simulation.",
+      "final_public": {
+        "health": 9,
+        "dignity": 10,
+        "skill": 93,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 20,
+        "output": 26,
+        "wealth": 28,
+        "energy": 0
+      },
+      "promotions": [
+        6,
+        12,
+        30
+      ],
+      "review_count": 8,
+      "energy_mix": {
+        "report": 14,
+        "health": 13,
+        "network": 13,
+        "cleanup": 4
+      },
+      "action_count": 205,
+      "seconds": 0.1481880999999703
+    },
+    {
+      "seed": 220010,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 52.67,
+      "partial": 36.87,
+      "completed": true,
+      "survival_months": 48,
+      "terminal_observe_month": 48,
+      "grade": "C",
+      "terminal_reason": "Completed the 48-month simulation.",
+      "final_public": {
+        "health": 8,
+        "dignity": 10,
+        "skill": 86,
+        "network": 36,
+        "level": "L4",
+        "duration_in_level": 20,
+        "output": 26,
+        "wealth": 21,
+        "energy": 0
+      },
+      "promotions": [
+        6,
+        18,
+        30
+      ],
+      "review_count": 8,
+      "energy_mix": {
+        "health": 12,
+        "cleanup": 6,
+        "report": 15,
+        "network": 9
+      },
+      "action_count": 203,
+      "seconds": 0.14238720000139438
+    },
+    {
+      "seed": 220011,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 25.82,
+      "partial": 18.08,
+      "completed": false,
+      "survival_months": 21,
+      "terminal_observe_month": 21,
+      "grade": "E",
+      "terminal_reason": "信任危机end —— 第二次爆雷！组织表示「信任额度已用尽」，还请您将天赋带到下家公司",
+      "final_public": {
+        "health": 5,
+        "dignity": 8,
+        "skill": 28,
+        "network": 15,
+        "level": "L3",
+        "duration_in_level": 4,
+        "output": 6,
+        "wealth": 4,
+        "energy": 3
+      },
+      "promotions": [
+        6,
+        18
+      ],
+      "review_count": 3,
+      "energy_mix": {
+        "health": 5,
+        "report": 8,
+        "cleanup": 2,
+        "network": 1
+      },
+      "action_count": 86,
+      "seconds": 0.051618400000734255
+    },
+    {
+      "seed": 220012,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 19.65,
+      "partial": 13.75,
+      "completed": false,
+      "survival_months": 9,
+      "terminal_observe_month": 9,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 7,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 9,
+        "output": 3,
+        "wealth": 3,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 1,
+      "energy_mix": {
+        "report": 2,
+        "network": 1,
+        "health": 1,
+        "cleanup": 1
+      },
+      "action_count": 32,
+      "seconds": 0.01905120000083116
+    },
+    {
+      "seed": 220013,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 16.18,
+      "partial": 11.32,
+      "completed": false,
+      "survival_months": 6,
+      "terminal_observe_month": 6,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 7,
+        "skill": 7,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 6,
+        "output": 3,
+        "wealth": 2,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 1,
+      "energy_mix": {
+        "report": 3
+      },
+      "action_count": 20,
+      "seconds": 0.010917899999185465
+    },
+    {
+      "seed": 220014,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 21.43,
+      "partial": 15.0,
+      "completed": false,
+      "survival_months": 5,
+      "terminal_observe_month": 5,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 10,
+        "skill": 9,
+        "network": 3,
+        "level": "L1",
+        "duration_in_level": 5,
+        "output": 3,
+        "wealth": 1,
+        "energy": 0
+      },
+      "promotions": [],
+      "review_count": 0,
+      "energy_mix": {
+        "health": 1,
+        "report": 2
+      },
+      "action_count": 19,
+      "seconds": 0.009877500000584405
+    },
+    {
+      "seed": 220015,
+      "policy_id": "B0_balanced",
+      "config": {
+        "health": "trend",
+        "flat": 1,
+        "repair": "once",
+        "main": "conditional",
+        "momentum": "balanced",
+        "reset": "broad",
+        "lane": "responsive",
+        "skill": "disabled"
+      },
+      "quantitative": 28.24,
+      "partial": 19.77,
+      "completed": false,
+      "survival_months": 12,
+      "terminal_observe_month": 12,
+      "grade": "E",
+      "terminal_reason": "眼前一黑end —— 血条归零！你眼前一黑，打工人的身体比KPI先倒下了，职场生存游戏强制结束... 下一次要劳逸结合啊！",
+      "final_public": {
+        "health": 0,
+        "dignity": 9,
+        "skill": 21,
+        "network": 4,
+        "level": "L3",
+        "duration_in_level": 1,
+        "output": 6,
+        "wealth": 4,
+        "energy": 0
+      },
+      "promotions": [
+        6,
+        12
+      ],
+      "review_count": 2,
+      "energy_mix": {
+        "health": 2,
+        "cleanup": 1,
+        "report": 5
+      },
+      "action_count": 45,
+      "seconds": 0.026508899998589186
+    }
+  ],
+  "story_diagnostics": {
+    "story_decisions_including_initialization": 655,
+    "nontrivial_story_decisions": 639,
+    "selected_choice_positions": {
+      "1": 557,
+      "2": 59,
+      "3": 23
+    },
+    "first_choice_rate": 0.8716744913928013,
+    "top_score_ties": 376,
+    "no_scoring_difference": 333,
+    "energy_mix": {
+      "report": 64,
+      "network": 33,
+      "health": 53,
+      "cleanup": 18
+    },
+    "main_decisions": 67,
+    "selected_negative_semantic_score_count": 0
+  },
+  "search": {
+    "archetypes_defined": 12,
+    "archetypes_evaluated": 1,
+    "macro_screen_episodes": 0,
+    "confirm_episodes": 0,
+    "holdout_episodes": 0,
+    "holdout_seeds_frozen": 128,
+    "holdout_untouched": true,
+    "paired_macro_comparison": "NOT_EXERCISED",
+    "reason": "2/16 complete < frozen 8/16 feasibility gate; 87.5% early terminal and first-choice/tie concentration"
+  },
+  "reproducibility": {
+    "seed": 219999,
+    "episodes": 3,
+    "pass": true,
+    "cold_vs_warm_equal": false,
+    "trajectory_hash": "7f6192352bd7923109c7a4b3d7fd5f9f98e767c17605cc47f6830d1c1af4850d",
+    "actions": 19,
+    "score_schema": [
+      "outcome",
+      "survival_months",
+      "completed",
+      "quantitative_score",
+      "competition_partial_score",
+      "grade",
+      "grade_meaning",
+      "dimensions"
+    ]
+  },
+  "operations": {
+    "provider_calls": 0,
+    "jiuwen_service": 0,
+    "official_runner_play": 0,
+    "formal_candidate_modification": 0,
+    "shared_db_access": 0,
+    "dev_episode_starts": 28,
+    "scored_feasibility_batch": 16,
+    "diagnostic_episode_starts": 12,
+    "natural_completed_or_terminal_episodes": 26,
+    "debug_aborted_episodes": 2,
+    "diagnostic_accounting": [
+      "two initial interface episodes naturally ended; reward not displayed",
+      "one failed encoding-validation episode aborted at rejected action",
+      "one menu-only probe stopped at first Energy menu",
+      "two repeated-seed trials of two episodes each failed cold/warm equality",
+      "three-episode cold/warm/warm reproducibility check passed",
+      "one retained cold warmup before sixteen sanity seeds"
+    ],
+    "technical_action_rejection": 1,
+    "technical_failures_in_sanity_batch": 0,
+    "diagnostic_limits": "Full traces of six early diagnostic natural episodes not retained; count supported by tool outputs, not episode-level trajectory replay."
+  },
+  "verification": {
+    "firewall_unit_groups": 6,
+    "private_injection_variants": 22,
+    "pass": true,
+    "official_filter_plus_allowlist": true,
+    "unchanged_decision_ast": true,
+    "macro_gate_mechanically_blocked": true,
+    "seed_reproducibility": "PASS_WITH_LIMITATIONS: one seed, warm-repeat and independent cold process; broader cross-policy path-order invariance untested",
+    "delivery_validation": {
+      "counts": "PASS",
+      "raw_hold_hashes": "PASS",
+      "frozen_seeds_configs": "PASS",
+      "code_sha_parse": "PASS",
+      "holdout_untouched": "PASS",
+      "links": "PASS",
+      "secret_scan": "PASS",
+      "protected_files_provider": "PASS",
+      "unit_groups": 6,
+      "base": "fd7572f8695191b96781fe1f7f75e38843899d0f"
+    }
+  },
+  "portfolio": [
+    {
+      "role": "HIGH_CEILING",
+      "candidate": "exact v6",
+      "real_scores": [
+        75.29
+      ],
+      "survived48": "1/1 observed",
+      "limitation": "one sample; runtime adherence failed"
+    },
+    {
+      "role": "BALANCED",
+      "candidate": "v8a",
+      "real_scores": [
+        72.65,
+        59.0
+      ],
+      "survived48": "2/2 observed",
+      "limitation": "role label only; no proven expected-score advantage"
+    },
+    {
+      "role": "SAFE_FALLBACK",
+      "candidate": "exact v6d",
+      "real_scores": [
+        71.67,
+        65.35,
+        59.67
+      ],
+      "survived48": "3/3 observed",
+      "limitation": "no >=75 sample; repeated execution drift; no true survival probability"
+    },
+    {
+      "role": "UNSUPPORTED",
+      "candidate": "simulator-derived challenger",
+      "real_scores": [],
+      "limitation": "no macro comparison or winner"
+    },
+    {
+      "role": "UNSUPPORTED_FOR_AUTOMATIC_FALLBACK",
+      "candidate": "v1",
+      "real_scores": [
+        76.04,
+        35.31
+      ],
+      "survived48": "1/2 observed",
+      "limitation": "highest listed individual ceiling but trust terminal/25m in second sample"
+    }
+  ],
+  "historical_compatibility": {
+    "new_primitives": 0,
+    "verdict": "NOT_EXERCISED: none distilled; all donor/survival rules unchanged",
+    "references": "S10-22 supplied accepted real-run facts; v6 validation report; current S10-21 state"
+  },
+  "skill_evolution": {
+    "portable_unattended_trigger": "NOT_ESTABLISHED",
+    "approval_free": "NOT_ESTABLISHED",
+    "manifest_controllable": "NOT_ESTABLISHED",
+    "verdict": "SKILL_EVOLUTION_NOT_SUBMISSION_PORTABLE",
+    "boundary": "small static check only: installed approval module exists; install.py instruction path has no evolution config installation; task-provided frozen rail facts reused, no runtime probe"
+  },
+  "next_recommendation": "FINAL_EXISTING_CANDIDATE_PORTFOLIO_ZIP_FREEZE",
+  "forensic_hold": {
+    "status": "ACTIVE",
+    "owner": "S10-22",
+    "release_by": "Main/Stage",
+    "reason": "feasibility failure and cold/warm/encoding limitations; sources required for independent negative-gate review",
+    "release_condition": "Main accepts gate, dependent reviews resolved, separate explicit cleanup authorization",
+    "files": [
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\freeze-initial.json",
+        "bytes": 9261,
+        "sha256": "b4cdfafec7ed25b744454cc9e336b2400daa2afb9b1c91aaf6dc1e009be5334c"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\freeze.json",
+        "bytes": 10292,
+        "sha256": "c1ee8761644ab689e795b31c675b509b23c39f448284fae766f7594fe70765cc"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\freeze-before-stop-guard.json",
+        "bytes": 9605,
+        "sha256": "c1b918a591060d8b1e29380bb5c0ecb76d5d9415f46c0af6c2a458543f14c1f7"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\freeze-before-final-boundary.json",
+        "bytes": 9820,
+        "sha256": "2ff1a152cc985f55ea04c9e82f71bc3658cc2471ced0c3057ee27d65df83ec03"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\policy-original-frozen.py",
+        "bytes": 10331,
+        "sha256": "e2b16b9b9fa7deec61e0734534e2395a93f23e899a8d1acb98a16a891543df38"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\sanity.jsonl",
+        "bytes": 1174033,
+        "sha256": "8925009d71513f4876d54ad27fe0212facedf14ca2d20626da9c01420df722ff"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\sanity-summary.json",
+        "bytes": 1597,
+        "sha256": "f66eda123d609c1f77dd2f87b9640b86aa683b27ef4831013e060a7d8cca138a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\sanity-warmup.json",
+        "bytes": 35152,
+        "sha256": "52efe3301f9409f28bfb90beebd86ccf594dc0190784685d5a6ba4fcb8623d3a"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\reproducibility-attempt.json",
+        "bytes": 117796,
+        "sha256": "bdab0c9ab442c966e6d53ec507bb740f4a920127a57414f6e543a2b38989f2c5"
+      },
+      {
+        "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-22-policy-search\\reproducibility.json",
+        "bytes": 399,
+        "sha256": "c019d63e10214aabe04b726152d4a643d047af87a98e3c8b57e0b4e51a8de155"
+      }
+    ]
+  },
+  "metrics": {
+    "model_used": "UNKNOWN",
+    "reasoning_effort": "UNKNOWN",
+    "started_at": "2026-10-05T07:17:38.933068+00:00",
+    "analysis_finished_at": "2026-10-05T07:35:26.269852+00:00",
+    "measured_wall_seconds": 1067.34,
+    "sanity_batch_seconds": 0.8105419999992591,
+    "processes": "one serial engine + one policy child; no workers/parallel engines",
+    "cpu_seconds": "UNKNOWN",
+    "measurement_boundary": "harness creation to analysis result; earlier read-only static inspection and final report/Git delivery excluded"
+  },
+  "return": "RETURN_FOR_FINAL_OPPORTUNITY_GATE",
+  "next_game": "NOT_AUTHORIZED"
+}
