@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "registered_team_name": "FZU-Loss快点降",
+  "authority": "Direct user-supplied S10-19-R1 task, section 4",
+  "source_document": "S10-19-R1-75分突破路线重开-只读ReviewerSubagent可部署性与盲审验证.md",
+  "source_sha256": "eb8701239ef5a0db8ccf703023c92f330035e8149b1114d01e46fa4de6ebbf51",
+  "recorded_at": "2026-10-05T10:03:41.438567+08:00",
+  "scope": "Competition team identity only; no Candidate/runtime manifest modification."
+}

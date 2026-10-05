@@ -1,0 +1,286 @@
+{
+  "schema_version": "s10-19r1-feasibility-1",
+  "task": "S10-19-R1",
+  "generated_at": "2026-10-05T10:03:41.438567+08:00",
+  "status": "COMPLETE_AS_NEGATIVE_FEASIBILITY",
+  "decision": "REVIEWER_NOT_SAFELY_DEPLOYABLE",
+  "branch": "main",
+  "base": "8267d420da29888d0a05403991f8980e251aaa0c",
+  "scope": "Offline Phase A only; Phase B/C stopped by task sections 5/21",
+  "plan_sha256": "eb8701239ef5a0db8ccf703023c92f330035e8149b1114d01e46fa4de6ebbf51",
+  "team_identity": "docs/project/COMPETITION_IDENTITY.json",
+  "runtime_evidence": {
+    "versions": {
+      "jiuwenswarm": "0.2.4b3",
+      "openjiuwen": "0.1.16.post2"
+    },
+    "installed_source_commit": "UNKNOWN; wheel has no direct_url/source commit metadata",
+    "requested_release_tag": "release_0.2.4.beta3; not treated as verified source equality",
+    "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+    "static_checks": [
+      {
+        "id": "GENERAL_INHERITANCE",
+        "result": "PASS",
+        "observed": "general-purpose copies parent tool cards, MCP specs, system prompt and skills; no reviewer-only capability boundary."
+      },
+      {
+        "id": "VERIFICATION_RAIL_BOUNDARY",
+        "result": "PASS",
+        "observed": "mcp__ mutation-shaped names and bash pass; single-underscore name blocked. No actual tool registered/dispatched."
+      },
+      {
+        "id": "AGENT_REGISTRATION",
+        "result": "PASS",
+        "observed": "Frozen config enables general-purpose; adapter has no builtin verification registration. Browser branch stubbed off, so actual browser runtime status NOT measured."
+      },
+      {
+        "id": "SESSION_ID_SEMANTICS",
+        "result": "PASS",
+        "observed": "verification_agent uses sticky child conversation id; general-purpose generates unique id. No LLM/session created. Sticky does not prove fresh context across repeated calls."
+      },
+      {
+        "id": "SUBMISSION_PORTABILITY",
+        "result": "PASS",
+        "observed": "Installer copies Skill directories and identity; no top-level custom agent definition/config registration installation."
+      }
+    ],
+    "source_files": [
+      {
+        "installed_relative_path": "jiuwenswarm/server/runtime/agent_adapter/agent_adapters.py",
+        "sha256": "29a05224ef26c3fb8afb0314552a90eeb52c2f96e9b22464c2aa312b6814e451",
+        "bytes": 5343
+      },
+      {
+        "installed_relative_path": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+        "sha256": "3d5517c9bcf4536745a09e22cf86ef5d493ded8636a212cd6226cc45f53198f5",
+        "bytes": 509539
+      },
+      {
+        "installed_relative_path": "jiuwenswarm/server/runtime/agent_config_service.py",
+        "sha256": "eb9c16bad9d1beae248f1b1153ee045ef2070744a4282584d0473dc5c171d50d",
+        "bytes": 20073
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/factory.py",
+        "sha256": "9c7318879fae3321cb6cb39b5a9636eeaacf5eeccb492f001f81fd28ae8c7147",
+        "bytes": 23263
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/deep_agent.py",
+        "sha256": "dcefaf5e4978bab243db9a70e252dd4db6beb38c6390bd35499a38f738ed03e3",
+        "bytes": 136862
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/tools/subagent/task_tool.py",
+        "sha256": "3605150f91ef017a25963a8e503c8617df1679738378d5915415f493cd82561d",
+        "bytes": 9598
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/rails/subagent/subagent_rail.py",
+        "sha256": "a04683285d5fc100f5a7855b196dc2043e10e23dc77d9c700ac9f3da0ef457bc",
+        "bytes": 10933
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/rails/subagent/verification_rail.py",
+        "sha256": "7389c758f45b59bef315dc45636a7dc38197399a29a0ad5d6ad4409b5b230f31",
+        "bytes": 10739
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/subagents/verification_agent.py",
+        "sha256": "d265c7c780b98a3179105b78597e1fe3b89c8d2a9ef2ec327ec5d27f53075092",
+        "bytes": 15759
+      },
+      {
+        "installed_relative_path": "openjiuwen/harness/rails/memory/memory_rail.py",
+        "sha256": "7fd4e7ba9cf52c9c058bdb7f68687e87169b09d9452d7e2b25048817caae7096",
+        "bytes": 11393
+      }
+    ],
+    "runner_install_sha256": "fa4447c8060a64dff3e8ac42d3a97397a4d06d264ec634c894197a6df5a00468",
+    "executed": "AST-extracted installed functions with inert sentinels only; no package runtime bootstrap, tool dispatch, provider/service/MCP/game/DB access"
+  },
+  "installed_RECORD_checks": [
+    {
+      "file": "jiuwenswarm/server/runtime/agent_adapter/agent_adapters.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "jiuwenswarm/server/runtime/agent_config_service.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/factory.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/deep_agent.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/tools/subagent/task_tool.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/rails/subagent/subagent_rail.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/rails/subagent/verification_rail.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/subagents/verification_agent.py",
+      "matches_installed_RECORD": true
+    },
+    {
+      "file": "openjiuwen/harness/rails/memory/memory_rail.py",
+      "matches_installed_RECORD": true
+    }
+  ],
+  "witnesses": [
+    {
+      "file": "jiuwenswarm/server/runtime/agent_adapter/agent_adapters.py",
+      "lines": [
+        97,
+        153
+      ],
+      "fact": "mode=agent selects harness DeepAdapter by default"
+    },
+    {
+      "file": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+      "lines": [
+        2205,
+        2295
+      ],
+      "fact": "builtin general/research/browser and explicitly enabled custom agents; no builtin verification registration"
+    },
+    {
+      "file": "openjiuwen/harness/factory.py",
+      "lines": [
+        95,
+        135
+      ],
+      "fact": "general-purpose receives parent tools, MCP specs, prompt, skills and non-Subagent rails"
+    },
+    {
+      "file": "openjiuwen/harness/rails/subagent/verification_rail.py",
+      "lines": [
+        33,
+        47,
+        178,
+        185
+      ],
+      "fact": "allows bash/tool_search; mcp__ prefix passes unconditionally, independent of narrowed allowed_tools"
+    },
+    {
+      "file": "openjiuwen/harness/subagents/verification_agent.py",
+      "lines": [
+        274,
+        315
+      ],
+      "fact": "config factory exists; default rails SysOperationRail + VerificationRail"
+    },
+    {
+      "file": "openjiuwen/harness/tools/subagent/task_tool.py",
+      "lines": [
+        82,
+        88,
+        177,
+        188
+      ],
+      "fact": "isolated conversation query; verification id sticky, general id unique"
+    },
+    {
+      "file": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+      "lines": [
+        11459,
+        11500
+      ],
+      "fact": "custom agents require explicit react.subagents.<name>.enabled=true"
+    },
+    {
+      "file": "career_sim_runner/install.py",
+      "lines": [
+        30,
+        85,
+        136,
+        159
+      ],
+      "fact": "official installer copies Skill directories and IDENTITY, not custom agent registration/config"
+    }
+  ],
+  "verdicts": {
+    "task_tool": "STATIC_REGISTRATION_SUPPORTED; SubagentRail registers sync task_tool when subagents configured; actual service visibility NOT_PROBED",
+    "general_agent": "enabled true; runtime invocation name general-purpose",
+    "verification_agent": "FACTORY_PRESENT_BUT_NOT_REGISTERED_BY_FROZEN_AGENT_ADAPTER",
+    "browser_agent": "configured enabled; actual browser runtime activation UNKNOWN/unneeded",
+    "reviewer_isolation": "FAIL_DEPLOYABILITY: no authorized portable mechanically isolated reviewer path identified",
+    "Main_only_successful_submitter": "NOT_ESTABLISHED; absence of reviewer mutation cannot be guaranteed. Actual successful child CareerSim action UNKNOWN, not attempted.",
+    "fresh_context": "General child gets separate conversation but parent prompt/tools/rails inherited; verification child id sticky. Independent reviewer policy/context not demonstrated.",
+    "capability_limit": "AST sentinel tests establish assembly/guard behavior, not actual resource-manager dispatch or live registry inventory."
+  },
+  "probe": {
+    "status": "NOT_RUN_PHASE_A_FAILED",
+    "service_lifecycle": 0,
+    "provider_requests": 0,
+    "reviewer_invocations": 0,
+    "CareerSim_new_game": 0,
+    "CareerSim_take_action": 0,
+    "CareerSim_DB_mutation": 0,
+    "latency_seconds": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "trace": "No runtime trace exists because safety gate failed before service/provider/tool dispatch."
+  },
+  "blinded_review": {
+    "status": "NOT_RUN_PHASE_A_FAILED",
+    "cases": 0,
+    "planned_minimum": 12,
+    "case_families": [
+      "Run02 M3/M15/M21/M27/M39 Energy",
+      "Run03 first quarter/M6 aftermath/M9-M12",
+      "Run01 at least three controls"
+    ],
+    "result_counts": null,
+    "reason": "Phase C is conditional on runtime reviewer success; historical snapshots were not assembled or disclosed, and no recommendations generated."
+  },
+  "mechanism": {
+    "known_violation_catches": "NOT_MEASURED",
+    "recommendation_diversity": "NOT_MEASURED",
+    "new_policy_violations": "NOT_MEASURED",
+    "projected_24_call_overhead": "UNKNOWN; no timing/token extrapolation without runtime evidence",
+    "portable_restriction": "Custom tools-none config/factory is SDK-level possible but requires registry/config or different submission loader. No such implementation authorized. A Skill telling the reviewer not to mutate is not mechanical isolation.",
+    "versus_Team": "Subagent mechanism distinct from Team, but safety/deployment gate fails; Team mode remains closed",
+    "versus_v6d_prompt_patch": "No policy wording changed; external reviewer not tested",
+    "versus_v14": "No retrieval/Atlas or historical answer lookup created"
+  },
+  "memory_secondary": {
+    "mode_config_enabled": true,
+    "MemoryRail": "Installed openjiuwen/harness/rails/memory/memory_rail.py; before_model_call refreshes memory prompt section/daily context",
+    "workspace_memory": "Workspace declares MEMORY.md; ContextAssembleRail refreshes workspace context before model calls",
+    "persistence_verdict": "STATIC_INJECTION_PATH_PRESENT; actual model input across compressor UNKNOWN in this task",
+    "writes": "Agent tool writes / memory manager processing remain behavior-dependent; no memory write performed",
+    "install_reset": "Frozen Runner install.py clears memory .md and rewrites MEMORY.md",
+    "deferred": "Review Memory challenger feasibility only in a separately authorized task; no Memory Candidate now"
+  },
+  "preservation": {
+    "Candidate_and_Skills": "UNCHANGED",
+    "Runner_dependencies_provider": "UNCHANGED",
+    "FORENSIC_HOLD": "UNTOUCHED",
+    "no_candidate_created": true
+  },
+  "recommendation": "Return to Main for separately scoped Memory challenger feasibility; do not implement v15 or start game/probe on this unsafe path",
+  "nonclaims": [
+    "no blinded quality result",
+    "no live deployability proof",
+    "no 75+ benefit",
+    "no hidden risk/threshold/formula",
+    "no general claim that all subagents are unsafe; verdict scoped to exact frozen submission path"
+  ],
+  "return_value": "RETURN_FOR_75PLUS_BREAKTHROUGH_GATE",
+  "next_game": "NOT_AUTHORIZED"
+}
