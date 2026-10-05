@@ -203,3 +203,18 @@
 - S10 is bounded by time and information gain: no more than two major Candidate families before submission selection without returning to Main. Failure of a Candidate first tests the architecture hypothesis; it does not automatically justify another micro-patch.
 - Existing closed-by-default routes include endless v11 micro-patching, Energy recipe policing as a primary project, marker/certificate optimization, perfect semantic adherence, hidden-threshold search, event-title lookup, and automatic RUN21 replacement.
 - Opening S10 authorizes no Candidate implementation, live Provider/service/game action, Team/Swarm adoption, structured-memory adoption, Runner modification, or submission replacement. `NEXT_GAME=NOT_AUTHORIZED`.
+
+
+## AD-S11-001 — Final consolidation and retrospective boundary
+
+- Main closes S10 as `COMPLETE_FINAL_SUBMISSION_FROZEN`. Final competition Candidate is exact historical `candidate-v6-auditable-control-loop` from source commit `1114a04b75548cf52f030d123564e527060fc061`. Strategy search, new Candidate development, new competition experiments and exact-v6 replication are closed.
+- S11 is `S11｜Final Consolidation & Project Retrospective（最终整理与项目复盘）`. It is a repository-consolidation and retrospective stage, not a gameplay or Candidate-development stage.
+- Final-package identity is immutable unless Main explicitly reopens submission work. S11 must not rebuild, rezip, patch or reinterpret the frozen S10-23R-v2 package as a new submission artifact.
+- S11 creates a presentation-layer Display ID system without rewriting Git history or replacing legacy Stage/Candidate/Run identifiers. Every Display ID must map back to legacy identity and provenance.
+- Canonicalization principle: preserve facts and representative evidence; compress repeated process artifacts; let Git history preserve superseded workflow detail. Deletion requires a prior retention/provenance audit showing that unique evidence has been absorbed or remains recoverable.
+- Representative retained runs should converge to one compact canonical run record plus exact Candidate/Skill/manifest provenance and only the minimum structured evidence needed for independent review. Large raw logs remain outside the main repository unless uniquely necessary and explicitly retained.
+- Final repository information architecture must optimize first-time readability: project purpose, final solution, key experiments, valid evidence, architecture/strategy decisions, negative results, final package provenance.
+- Retrospective writing follows `Decision → Evidence → Trade-off`; distinguish FACT, evidence-supported conclusion and hypothesis; do not turn single-run outcomes into causal claims.
+- S11 uses multi-round convergence: Inventory → Retention Design → Display-ID Design → Canonical Evidence Migration → Cleanup → Retrospective Modules → Cross-Review → Final Repository Freeze. Each destructive step must be reversible through Git and must not precede its audit gate.
+- Stage opening authorizes only the first read-only task: `Repository Inventory + Retention/Deletion Design + Display-ID Scheme Proposal`. No bulk deletion, mass rename, history rewrite, Candidate/Skill/runtime change, Provider/service/game activity or new experiment is authorized.
+- Main retains final acceptance authority. S11 may produce `FINAL_PROJECT_CLOSEOUT_READY_FOR_MAIN`, but must not declare the project complete on its own.
