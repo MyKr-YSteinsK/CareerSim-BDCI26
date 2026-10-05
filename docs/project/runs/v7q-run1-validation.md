@@ -92,7 +92,7 @@ Decision: `NO_GAIN_ROUTING_NOT_SUPPORTED`. Some choices rerouted to a dimension 
 
 - Plan: `D:\CS\temp\CareerSim\S08-RUN02-v7q-L6与边际成长正式验证.md`; SHA-256 above.
 - Exact Runner output directory: `.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20260929T140828Z/`.
-- Local evidence: `.local/runtime/s08-run02/`. Archived core evidence: [artifacts/dev-runs/s08-run02-v7q](../../artifacts/dev-runs/s08-run02-v7q/). Archive secret scan and session-consistency scan passed.
+- Local evidence: `.local/runtime/s08-run02/`. Archived core evidence: [artifacts/dev-runs/s08-run02-v7q](../../../artifacts/dev-runs/s08-run02-v7q/). Archive secret scan and session-consistency scan passed.
 
 | Archived artifact | Bytes | SHA-256 |
 |---|---:|---|

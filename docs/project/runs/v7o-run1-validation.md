@@ -53,7 +53,7 @@
 ## Evidence
 
 - Exact Runner output directory: `.career_sim_runner/career_emu/outputs/local-s06-adaptive-controller/20260929T115441Z/`.
-- Archived evidence: [artifacts/dev-runs/s08-run01-v7o](../../artifacts/dev-runs/s08-run01-v7o/). Existing archive tooling's secret scan and core session-consistency check passed. Raw local files remain under `.local/runtime/s08-run01/`; the original run outputs were not deleted.
+- Archived evidence: [artifacts/dev-runs/s08-run01-v7o](../../../artifacts/dev-runs/s08-run01-v7o/). Existing archive tooling's secret scan and core session-consistency check passed. Raw local files remain under `.local/runtime/s08-run01/`; the original run outputs were not deleted.
 - Events: 2,067,779 bytes; SHA-256 `b6eb500f9e8ad3966e595e65a5d558c2c8b50097bf908fd8b93a1b5f14567df4`.
 - Transcript: 391,194 bytes; SHA-256 `a15555f91ae738859844cd0ffc2768ea00ab79c5f2adf10bc7144d7e3742b0e7`.
 - Score report: 1,205 bytes; SHA-256 `f5916ad029f9ed0b162885d7c939c4d3d0889c82fba5f79e14b1fd3c6f05080d`.
