@@ -65,7 +65,7 @@ The audit uses only current public state and participant-visible rationale. It d
 ## Score Ceiling and Planning
 
 - Public early trajectory changed from M1 S1/N1/O0 to M6 S9/N3/O3, yet the first review was C with no promotion. These public deltas alone do not reveal hidden promotion thresholds.
-- The G marker sequence was `?` for the first ten actions, `SURVIVAL` for the two M3 S actions, `OUTPUT` for seven actions, then `NETWORK` for the final two. Marker values do not independently establish planning quality.
+- G markers were `?×10 → SURVIVAL×2 → ?×8 → OUTPUT×7 → NETWORK×2` (four value changes); the summary's G semantic justification is `NOT_INFERRED`, and marker values do not independently establish planning quality.
 - Quarterly Main choices were recorded at M3 and M6. Two M3 Energy recovery choices were observed. The complete Main/Energy/story mix and exact rank/utility rationale are unavailable from the safe audit summary.
 - No auditable clean per-action S/N/O progression pair table was produced. `PROGRESSION_RESPONSE` reset behavior and NO_GAIN routing are therefore `UNKNOWN / NOT_EXERCISED`, not supported or failed.
 - The M6 Output Primary Gap and next-window direction were recorded; complete REVIEW_PLAN continuity and a later reset were not established before terminal.
@@ -80,6 +80,7 @@ The audit uses only current public state and participant-visible rationale. It d
 - **Risk:** R=PASS 29/29; no ALLOW/WARN/RECONSIDER marker was emitted. The M7 public warning was handled in Planning without a cleanup; reconsideration behavior was not exercised.
 - **Compression/recovery:** UNKNOWN; the exact run-window llm.log slice was not safely available. No compression or recovery count is asserted.
 - **Evidence firewall:** events audit recorded zero numeric HiddenRisk/internal-score text matches. Transcript lexical scanning found six HiddenRisk text matches, but this is only a text-match count, not a semantic verdict. Firewall correctness remains UNKNOWN and raw evidence stays held.
+- **Additional structured-summary limits:** the offline summary's generic `outcome.classification` remains `UNKNOWN`, while its separate fields record `natural_terminal_observed=true`, a fresh-final-observe score, and a matching score-report session. The run classification above is based on the Runner receipt and public terminal observation, not on that generic parser field.
 
 ## Efficiency, Cleanup, and Evidence
 
@@ -91,6 +92,12 @@ The audit uses only current public state and participant-visible rationale. It d
   - `artifacts/dev-runs/s09-run02-v7x/runner-result.json` — 626 bytes; SHA-256 `fa537c917b2b85d008c53a016dd7365e7796157cc6deb2c24f766a76ac8e7021` (derived receipt; Runner emitted no standalone result file)
   - `artifacts/dev-runs/s09-run02-v7x/post_run_summary.json` — 52,755 bytes; SHA-256 `e20c3e376571c13dea42631dfb013d88703301b10693a9006cfac03d58d2d46a`
   - `artifacts/dev-runs/s09-run02-v7x/evidence-manifest.json` — 758 bytes; SHA-256 `006442341d25e3b5540c4398333a345638770bdd96d597090f37bd1893dd67f3`; records the exact archive byte counts, hashes, and UTC run window.
+
+### Archive Coverage and Retention Boundary
+
+- The canonical sections above retain the archive's durable groups: run/session identity and window, outcome and public terminal state, action/observation and CTRL/Risk/Recovery counts, Delivery coverage and its adherence limit, evidence-discipline counts, usage, and UNKNOWN limitations. The G sequence and parser classification nuance are recorded above. Per-action arrays and parser scaffolding are not copied; the public resource timeline is summarized in [S09-04](../reviews/S09-04_RESOURCE_TRAJECTORY_INTERVENTION_FORENSICS.md), and any further raw reanalysis is bound to the sources identified in the active hold below, not to these derived arrays.
+- These four tracked files are selected sanitized/derived run support, not formal `FORENSIC_HOLD` sources. The active hold below applies to the exact raw events JSONL and transcript LOG only. S09-04's v7x source entry binds those raw files by hash and points to this canonical run record; it does not consume the four-file archive. Removing the tracked archive in a separately authorized cleanup would neither release nor complete the raw hold.
+- The selected archive was introduced by commit `aa3844c85c982e42a859a18cfc60820df32600a`, an ancestor of the current `main`; the committed bytes remain recoverable from Git history. The archive hashes above remain provenance facts.
 
 ### FORENSIC_HOLD=ACTIVE
 
