@@ -1,0 +1,362 @@
+{
+  "versions": {
+    "jiuwenswarm": "0.2.4b3",
+    "openjiuwen": "0.1.16.post2"
+  },
+  "base": "511fe3a5731bda6e91dd6ac2d19159be09ccdd81",
+  "config_sha256": "5ae22dedc828177df114e500aacf280a17217b45d3d19d9df67b583b7bd08b72",
+  "agent_memory_config": {
+    "enabled": true
+  },
+  "embed_fields_present": {
+    "embed_model": true,
+    "embed_base_url": true,
+    "embed_api_key": true
+  },
+  "actual_memory_path": "C:\\Users\\Yukis\\.jiuwenswarm-instances\\career_emu\\agent\\workspace\\memory\\MEMORY.md",
+  "boundary": "Real frozen rails and registry; fixture filesystem adapter; manager init/search/model inference not invoked.",
+  "registered_tools": [
+    "edit_memory",
+    "memory_get",
+    "memory_search",
+    "read_memory",
+    "write_memory"
+  ],
+  "explicit_read": {
+    "success": true,
+    "latest_marker": true,
+    "calls": 1,
+    "boundary": "Real tool invoke, local fixture filesystem; not shared service dispatch"
+  },
+  "compression": {
+    "method": "Actual CurrentRoundCompressor.on_add_messages; multi_compress mocked; no model construction/invoke",
+    "event_type": "CurrentRoundCompressor",
+    "replacement_verified": true,
+    "provider_calls": 0
+  },
+  "captures": [
+    {
+      "label": "startup",
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-19r2-memory-feasibility\\startup-system.txt",
+      "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+      "chars": 2383,
+      "initial_marker": false,
+      "latest_marker": false,
+      "identity_control": true
+    },
+    {
+      "label": "updated",
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-19r2-memory-feasibility\\updated-system.txt",
+      "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+      "chars": 2383,
+      "initial_marker": false,
+      "latest_marker": false,
+      "identity_control": true
+    },
+    {
+      "label": "post-compression",
+      "path": "D:\\CS\\CareerSim\\.local\\runtime\\s10-19r2-memory-feasibility\\post-compression-system.txt",
+      "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+      "chars": 2383,
+      "initial_marker": false,
+      "latest_marker": false,
+      "identity_control": true
+    }
+  ],
+  "MEMORY_SYSTEM_PERSISTENCE": "FAIL",
+  "daily_differential_injected": true,
+  "isolation": {
+    "fixture_install_lifecycles": 2,
+    "shared_installs": 0,
+    "default_reestablished": true,
+    "long_term_marker_absent": true,
+    "daily_file_survives": true,
+    "daily_marker_survives": true,
+    "scope": "Root *.md reset; nested daily_memory not removed",
+    "retained_daily_injected_after_install": true
+  },
+  "CROSS_RUN_CONTAMINATION": "NONE_FOR_MEMORY_MD; NESTED_DAILY_MEMORY_SURVIVES",
+  "config_unchanged": true,
+  "duration_seconds": 0.524,
+  "decision": "MEMORY_NOT_DEPLOYABLE",
+  "schema_version": "s10-19r2-feasibility-1",
+  "task": "S10-19-R2",
+  "generated_at": "2026-10-05T10:29:31.289460+08:00",
+  "status": "COMPLETE_AS_NEGATIVE_FEASIBILITY",
+  "branch": "main",
+  "remote": "https://github.com/MyKr-YSteinsK/CareerSim-BDCI26.git",
+  "plan_sha256": "9c38b08adc94224ef5817a47996787eb78766a06286bb79e398e3b9d6a4c432f",
+  "exact_source": [
+    {
+      "path": "openjiuwen/harness/rails/memory/memory_rail.py",
+      "sha256": "7fd4e7ba9cf52c9c058bdb7f68687e87169b09d9452d7e2b25048817caae7096",
+      "bytes": 11393,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/rails/context_engineer/context_assemble_rail.py",
+      "sha256": "e13d901d3b1daed38f1caa4f9753ad213385c848f9aba2201bd207972c2528f4",
+      "bytes": 6214,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/prompts/sections/context.py",
+      "sha256": "712cab2048af0513308c71b035105d132e24f8acc57f7ca2fb9424fa02513ff1",
+      "bytes": 24105,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/prompts/sections/memory.py",
+      "sha256": "291d172675ffc4b0e32f8969b8469ed09d92038cc94061be0accefa9355bbc62",
+      "bytes": 12124,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/prompts/workspace_content/workspace_header.py",
+      "sha256": "7b9b3de3605aaf88dcaee557ccdb03cf641d4d04edae4e338aaad1b49a1f6999",
+      "bytes": 5740,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/prompts/builder.py",
+      "sha256": "5c6765be17d76cb03203052bb8de95a6382e837d00f47739604059f2f1456d67",
+      "bytes": 2360,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/harness/tools/memory.py",
+      "sha256": "63b5379531e76d80b285c13567f59d848cb71845075ff358ad53c9439ac3dd30",
+      "bytes": 6771,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/core/memory/lite/memory_tool_ops.py",
+      "sha256": "b6669eadb82823631182349fd28ee86d60c843e9e57cebf4a8375ced07bf2023",
+      "bytes": 11129,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/core/context_engine/processor/compressor/current_round_compressor.py",
+      "sha256": "a5ece526c67ae36a7c8452d2473ce8d57bdf42a0064ad4dd2f77545564314e60",
+      "bytes": 38509,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "openjiuwen/core/single_agent/ability_manager.py",
+      "sha256": "12112e092f9e7e6254ff105bca4f36922d4cf3454b9f96b746a7e48da0f41050",
+      "bytes": 56584,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/server/runtime/agent_adapter/interface_deep.py",
+      "sha256": "3d5517c9bcf4536745a09e22cf86ef5d493ded8636a212cd6226cc45f53198f5",
+      "bytes": 509539,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/agents/harness/common/memory/config.py",
+      "sha256": "7e3c9e34274e15a1e7cb3ef6edd37ad675dabd32e5f92e91c1aaeedfde62e9bd",
+      "bytes": 11918,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/agents/harness/common/memory/external_memory_config.py",
+      "sha256": "95c11f5d9b23efd69425088ba6614f6c633dada39e75e9f88424421c2aa1b805",
+      "bytes": 9913,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/agents/harness/common/rails/memory_forbidden_rail.py",
+      "sha256": "ca10b41d54aa41d540f1ade245a290f9cd1ac3c9f7c1301e48d623a9717ed898",
+      "bytes": 7871,
+      "installed_RECORD_match": true
+    },
+    {
+      "path": "jiuwenswarm/common/config.py",
+      "sha256": "cd90c8298ffeed2328bec203eaefd68308130f9686ccbb78c2e3a83df7d908be",
+      "bytes": 100548,
+      "installed_RECORD_match": true
+    }
+  ],
+  "installed_source_commit": "UNKNOWN; installed wheel RECORD verified, no source commit inferred",
+  "runner": {
+    "official_commit": "f61c738c72e51b77298cc1c14c7c6ebf4b6c527d",
+    "fetch_verified": true,
+    "official_tree": "a2245c49d0b102b80b9891b6d750c671b3c3710f",
+    "local_tree": "a2245c49d0b102b80b9891b6d750c671b3c3710f",
+    "equality": "PASS"
+  },
+  "candidate_source": "e7e8ab44dd85a29135eb089ef29de8fed298f4a4",
+  "candidate_manifest_sha256": "4a92d56f41b63863a01793f5a38de99bd86ce3f1792542b9f92742c1d99c04b2",
+  "mount_verdict": {
+    "fixture": "MOUNTED; actual MemoryRail.init registered five tools in real AbilityManager",
+    "shared_agent": "UNKNOWN; no service or active shared agent instantiated",
+    "config": "Agent memory enabled; fixture-resolved mode=local, engine=builtin; shared process environment unknown"
+  },
+  "tool_permission_verdict": {
+    "registry": "PASS_IN_ISOLATED_HARNESS",
+    "names": [
+      "edit_memory",
+      "memory_get",
+      "memory_search",
+      "read_memory",
+      "write_memory"
+    ],
+    "read": "PASS; actual read_memory.invoke returns updated fixture marker",
+    "write_edit": "Registered schemas and source path constraints verified; actual write/edit dispatch NOT_RUN",
+    "search": "Registered; indexing/embedding/search not invoked",
+    "public_facts": "Source guard forbids sensitive memory writes; ordinary public anchor is not inherently read-only",
+    "shared_service_permissions": "UNKNOWN"
+  },
+  "injection": {
+    "startup": "ABSENT",
+    "updated": "ABSENT",
+    "post_compression": "ABSENT",
+    "frequency": "MemoryRail refreshes guidance and recent daily files before_model_call; ContextAssembleRail refreshes fixed context files. Neither loads MEMORY.md body.",
+    "explicit_read": "Returns content as tool result; does not create permanent system section",
+    "compression_limit": "Actual replacement callback with mocked multi_compress, not full model summarization. MEMORY body already absent before compression."
+  },
+  "gate": {
+    "phase_A": "CAPABILITIES_PARTIAL; auto system-body injection unsupported",
+    "phase_B": "FAIL_PERSISTENCE",
+    "MEMORY_MD_install_isolation": "PASS",
+    "nested_daily_isolation": "FAIL_IN_FIXTURE",
+    "overall_cross_run_contamination": "PRESENT_IN_NESTED_DAILY_FIXTURE_ONLY",
+    "phase_C": "NOT_RUN; task sections 8/13/30 require persistence PASS",
+    "phase_D": "NOT_RUN; same prerequisite",
+    "ledger": "NOT_DESIGNED; section8 says only A/B PASS. Section29 prototype requirement is conditionalized by explicit gate."
+  },
+  "paired_review": {
+    "total_cases": 0,
+    "stale_state_cases": 0,
+    "controls": 0,
+    "MEMORY_CLEARLY_HELPED": 0,
+    "MEMORY_PLAUSIBLY_HELPED": 0,
+    "NO_MEANINGFUL_DIFFERENCE": 0,
+    "MEMORY_HURT": 0,
+    "UNKNOWN": 0,
+    "interpretation": "NOT_RUN, no zero-effect claim"
+  },
+  "write_adherence": {
+    "expected_updates": null,
+    "successful_model_intents": null,
+    "forgot_writes": null,
+    "stale_anchors": null,
+    "overwrite_errors": null,
+    "hallucinated_facts": null,
+    "fresh_observe_conflict": "NOT_TESTED; no model sequence authorized after failed gate"
+  },
+  "failure_modes": {
+    "F1_FORGOT_TO_WRITE": "UNKNOWN; no model simulation",
+    "F2_STALE_ANCHOR": "UNKNOWN; body never injected, no model stale-anchor test",
+    "F3_OVERWRITE_ERROR": "UNKNOWN behavior; source write_memory passes append=True even when append argument false; edit_memory uses replacement write. Not instrumented with real SysOperation.",
+    "F4_HALLUCINATED_FACT": "UNKNOWN",
+    "F5_ANCHOR_FIXATION": "UNKNOWN",
+    "F6_CONTEXT_BLOAT": "No anchor body injected; guidance contributes capture chars, no candidate ledger measured",
+    "F7_CROSS_RUN_LEAK": "MEMORY.md reset PASS; nested daily marker survives and is injected after reinstall in fixture"
+  },
+  "hypotheses": {
+    "M1": "UNSUPPORTED",
+    "M2": "UNKNOWN",
+    "M3": "UNKNOWN",
+    "M4": "UNKNOWN"
+  },
+  "budget": {
+    "provider_calls": 0,
+    "provider_input_tokens": 0,
+    "provider_output_tokens": 0,
+    "service_start": 0,
+    "shared_install": 0,
+    "fixture_install_lifecycles": 4,
+    "new_game": 0,
+    "take_action": 0,
+    "fresh_session": 0,
+    "db_mutation": 0,
+    "local_memory_tool_invokes": 1,
+    "memory_write_tool_invokes": 0,
+    "memory_edit_tool_invokes": 0,
+    "memory_search_tool_invokes": 0,
+    "fixture_contract_rejections_before_cleanup": 2,
+    "offline_compression_simulations": 3,
+    "final_retained_test_fixture_lifecycles": 2
+  },
+  "overhead": {
+    "fixture_operation_seconds": 0.524,
+    "note": "Excludes imports; not live latency estimate",
+    "capture_chars": 2383,
+    "ledger_chars": null,
+    "model_write_bytes": 0,
+    "direct_fixture_marker_bytes": 62,
+    "model_write_latency": null
+  },
+  "preservation": {
+    "candidate_skills_manifest": "UNCHANGED",
+    "runner_dependencies_lock": "UNCHANGED",
+    "provider_config": "UNCHANGED; verified hash",
+    "competition_identity": "UNCHANGED; FZU-Loss快点降",
+    "existing_holds": "UNTOUCHED"
+  },
+  "tooling_error": "Fixture package initially lacked top-level manifest.json; contract rejected before installer cleanup. Corrected using byte-identical accepted runtime_manifest.json. This was isolated tooling, no shared install/retry. Two rejected fixture invocations preceded two successful probe passes (four completed fixture lifecycles total); final retained pass contains two lifecycles.",
+  "hold": {
+    "state": "FORENSIC_HOLD",
+    "reason": "Negative deployment decision depends on exact captured system sections and cross-install fixture; retain probe and outputs for Main review",
+    "owner": "S10-19-R2",
+    "release_authority": "Main/Stage",
+    "release_condition": "Main accepts negative feasibility and no further raw reanalysis dependency",
+    "directory": "D:\\CS\\CareerSim\\.local\\runtime\\s10-19r2-memory-feasibility",
+    "files": [
+      {
+        "name": "post-compression-system.txt",
+        "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+        "bytes": 4743
+      },
+      {
+        "name": "probe-output.txt",
+        "sha256": "583c0569c0f623ab829fed924429dbe2bba15544278c7cca3f6ae58722cadef9",
+        "bytes": 9179
+      },
+      {
+        "name": "probe-result.json",
+        "sha256": "98b6a828ae39e4dcf9cf4e5c2b480de94bcaa80962f90ccd228ffd3154545e7d",
+        "bytes": 7581
+      },
+      {
+        "name": "probe.py",
+        "sha256": "93a614b510ff08723fe4172ffe1b9f3c8e64883832026d4dcf7996d6503352ad",
+        "bytes": 10305
+      },
+      {
+        "name": "startup-system.txt",
+        "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+        "bytes": 4743
+      },
+      {
+        "name": "updated-system.txt",
+        "sha256": "c5f9cbdfc9859135cc3335b810049a1cd66af5ce69e83478247d4d192fac6ab6",
+        "bytes": 4743
+      }
+    ]
+  },
+  "return": "RETURN_FOR_MEMORY_BREAKTHROUGH_GATE",
+  "next_game": "NOT_AUTHORIZED",
+  "non_claims": [
+    "no score improvement proof",
+    "no stable75 proof",
+    "no hidden-test transfer",
+    "no causal promotion claim",
+    "no true runtime distribution",
+    "no claim all forms of builtin memory are unavailable"
+  ],
+  "resolved_config_probe": {
+    "resolver": "Exact resolve_env_vars AST, frozen config + .env then process-env precedence; no environment mutation; no crypto provider decryption",
+    "memory_mode": "local",
+    "memory_engine": "builtin",
+    "resolved_embed_fields_present": {
+      "embed_model": false,
+      "embed_base_url": false,
+      "embed_api_key": false
+    },
+    "shared_service_environment": "UNKNOWN; process may differ"
+  },
+  "embed_fields_present_boundary": "Raw YAML nonempty fields, possibly interpolation; resolved availability is separately recorded"
+}

@@ -4,6 +4,8 @@
 
 ## Project
 
+- S10-19-R2 complete: `MEMORY_NOT_DEPLOYABLE` for automatically available MEMORY.md anchor in the frozen submission path. Real-rail startup/update/post-simulated-compression captures omit its body; explicit read works. Isolated installs reset root MEMORY.md but retain/reinject nested daily memory. Provider paired review/sequence simulation skipped at failed persistence gate; Provider/service/shared install/game0. New local FORENSIC_HOLD retains probe/captures; existing holds untouched. No Candidate/Skill/manifest/config change or v15; v6d remains SAFE FALLBACK, NOT FINAL OPTIMUM. See [Memory gate](reviews/S10-19R2_MEMORY_BREAKTHROUGH_GATE.md); `NEXT_GAME=NOT_AUTHORIZED`.
+
 - S10-19-R1 complete: `REVIEWER_NOT_SAFELY_DEPLOYABLE`; frozen agent-mode adapter does not register verification_agent, and no portable mechanically read-only reviewer path is established. Phase B/C skipped at Phase A safety gate; five inert static checks PASS; Provider/service/game0. See [gate](reviews/S10-19R1_BREAKTHROUGH_GATE.md). No Candidate/config/Skill changed, no v15 created. Main may separately review Memory challenger feasibility; `NEXT_GAME=NOT_AUTHORIZED`.
 - Competition registered team: **FZU-Loss快点降**, authoritative [identity record](COMPETITION_IDENTITY.json), sourced from direct user task section4; separate from Candidate/submission name.
 
