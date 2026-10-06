@@ -79,3 +79,34 @@ NO_REPLACEMENT_RUN_AUTHORIZED
 ```
 
 Next decision: `S08_RUN_ACCEPTED_RETURN_FOR_SCORE_AND_STRATEGY_REVIEW`.
+
+## S11-08｜FORENSIC_HOLD / S11 Retention Boundary
+
+S09-11 explicitly reaffirmed that the original v7o raw `FORENSIC_HOLD` remained retained; S09-12 later recorded both runs' exact raw and original holds as active. The original hold-creation record was not recovered. The S08-RUN01 archive-introduction commit `3fd64bead5600c2f0bab677e7b832fe3678bdf12` establishes when the tracked run report/archive entered Git, not when or why a hold was created.
+
+| Historical field | Reconstructed value | Evidence status | Source |
+|---|---|---|---|
+| Hold identity / legacy task | S08-RUN01 / v7o raw hold; no separate formal hold ID recovered. | `LATER_REAFFIRMED` | [S08-RUN01 record](v7o-run1-validation.md); [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md) |
+| Hold existence | Original v7o raw hold was retained at S09-11 and later recorded active at S09-12. | `LATER_REAFFIRMED` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md); [S09-12 review](../reviews/S09-12_V8A_TWO_SAMPLE_TRAJECTORY_DIVERGENCE_REVIEW.md) |
+| Exact paths | Original hold membership for each archive member is `UNKNOWN`. | `UNKNOWN` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md) does not enumerate the original hold roster. |
+| Hold owner | `UNKNOWN`. | `UNKNOWN` | No original hold record found in tracked history or inspected local metadata. |
+| Original reason | `UNKNOWN`. | `UNKNOWN` | The run result and later fidelity review do not state the original hold reason. |
+| Original creation point | `UNKNOWN`; commit `3fd64bead5600c2f0bab677e7b832fe3678bdf12` introduced the report/archive, not a hold-creation record. | `UNKNOWN` | Run record and archive-introduction commit `3fd64bead5600c2f0bab677e7b832fe3678bdf12`. |
+| Later reaffirmation | S09-11 states both original raw holds were retained; S09-12 states both exact raw holds remained active. | `LATER_REAFFIRMED` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md); [S09-12 review](../reviews/S09-12_V8A_TWO_SAMPLE_TRAJECTORY_DIVERGENCE_REVIEW.md) |
+| Release condition | `UNKNOWN`; no tracked source supplies or records satisfaction of the original condition. | `UNKNOWN` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md) records no release or cleanup authorization. |
+| Current disposition | `UNKNOWN_REVIEW_REQUIRED`; S11 Main retains the core raw pair and protects the other six members under unknown scope. `HOLD_RELEASE_COUNT=0`. | `MAIN_CURRENT_DECISION` | [S11 final evidence ledger](../FINAL_EVIDENCE_REVIEW.md#forensic_hold-ledger); S11-08 Main retention decision. |
+
+All eight tracked archive members have `UNKNOWN` original hold membership. The current roles below are S11 retention decisions, not reconstructed historical scope.
+
+| File | Original Hold Membership | Current Retention Role | Evidence Basis |
+|---|---|---|---|
+| `events.jsonl` | `UNKNOWN` | `KEEP_CANONICAL_RAW` | S09-11 used events through the first M6 review (seq187); S11 Main now keeps this representative full-run raw. Bounded use does not prove the original hold roster. |
+| `transcript.log` | `UNKNOWN` | `KEEP_CANONICAL_RAW` | S09-11 used transcript lines 1–561; S11 Main now keeps this representative full-run raw. Bounded use does not prove the original hold roster. |
+| `score_report.json` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+| `runner-result.json` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+| `post_run_summary.json` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+| `llm-run.log` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+| `service-run.log` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+| `evidence-manifest.json` | `UNKNOWN` | `HOLD_PROTECTED_UNKNOWN_SCOPE` | Tracked archive member; no source confirms original hold membership. |
+
+No hold is released and no cleanup is authorized by S11-08. The `KEEP_CANONICAL_RAW` decision for events/transcript is a current S11 Main retention policy, not historical hold metadata; all six other members remain protected until a later explicit Main disposition.
