@@ -40,11 +40,11 @@ Single Agent 是唯一 `take_action` 提交者；Skills 提供整理、规划和
 
 | Route | 实际证据 | 结论边界 |
 |---|---|---|
-| Durable Memory | 冻结 rail 的自动 `MEMORY.md` anchor 在启动、更新和模拟压缩后均缺正文；显式 read 可用。 | `MEMORY_NOT_DEPLOYABLE` 针对被测提交路径；没有证明 Memory 普遍无效，也没有测出策略收益。[S10-19-R2](reviews/S10-19R2_MEMORY_BREAKTHROUGH_GATE.md) |
-| Reviewer / subagent | 冻结 adapter 未注册 `verification_agent`，也没有已证的机械只读部署路径；质量阶段未运行。 | `REVIEWER_NOT_SAFELY_DEPLOYABLE` 是该 rail 的部署边界，不是对独立审查价值的否定。[S10-19-R1](reviews/S10-19R1_BREAKTHROUGH_GATE.md) |
+| Durable Memory | 冻结 rail 的自动 `MEMORY.md` anchor 在启动、更新和模拟压缩后均缺正文；显式 read 可用。 | `MEMORY_NOT_DEPLOYABLE` 针对被测提交路径；没有证明 Memory 普遍无效，也没有测出策略收益。[S10-19-R2 feasibility](research/S10-19R2_MEMORY_FEASIBILITY.md) |
+| Reviewer / subagent | 冻结 adapter 未注册 `verification_agent`，也没有已证的机械只读部署路径；质量阶段未运行。 | `REVIEWER_NOT_SAFELY_DEPLOYABLE` 是该 rail 的部署边界，不是对独立审查价值的否定。[S10-19-R1 feasibility](research/S10-19R1_SUBAGENT_FEASIBILITY.md) |
 | Team / Swarm | 没有完成可行性实验。 | `DEFERRED / NOT_TESTED`，不能写成实验否定。[Architecture decisions](ARCHITECTURE_DECISIONS.md) |
-| Deterministic helper | 临时 Skill 脚本在隔离冻结 tool rail 中读写有界公开状态并跨模拟压缩保留；真实 install/reset 后清除。 | 工具层 challenger 获支持；云端权限、模型是否调用与遵循未测，不是最终架构。[S10-19-R3](reviews/S10-19R3_BREAKTHROUGH_GATE.md) |
-| Replay controller | 24 个案例中有 1 个状态级修正，仍有 8 个 `UNKNOWN`；主要决策错误未证明被修正。 | `CONTROLLER_LOGIC_SIGNAL_WEAK`；没有形成 Candidate 或部署依据。[S10-20](reviews/S10-20_CONTROLLER_GATE.md) |
+| Deterministic helper | 临时 Skill 脚本在隔离冻结 tool rail 中读写有界公开状态并跨模拟压缩保留；真实 install/reset 后清除。 | 工具层 challenger 获支持；云端权限、模型是否调用与遵循未测，不是最终架构。[S10-19-R3 control audit](research/S10-19R3_NATIVE_CONTROL_SURFACE_AUDIT.md) |
+| Replay controller | 24 个案例中有 1 个状态级修正，仍有 8 个 `UNKNOWN`；主要决策错误未证明被修正。 | `CONTROLLER_LOGIC_SIGNAL_WEAK`；没有形成 Candidate 或部署依据。[S10-20 controller research](research/S10-20_PROMOTION_WINDOW_CONTROLLER.md) |
 
 这些路径解决的是不同层次的问题。单个局部可行性结果不自动升级成正式 Skill，也不与 exact v6 同义。
 

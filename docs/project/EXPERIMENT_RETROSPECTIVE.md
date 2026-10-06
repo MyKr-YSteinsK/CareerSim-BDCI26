@@ -32,12 +32,12 @@
 
 | Question | Evidence → decision | What it does not prove |
 |---|---|---|
-| 增加 prompt/policy 条款能否稳定突破？ | S09 关闭增量 prompt-hardening 环；S10-21 得到 `STRATEGY_SIGNAL_WEAK`，没有安全 Candidate delta。 | 不证明 prompt 或策略规则普遍无效；只说明这些材料未支撑下一次改动。[S10-21](reviews/S10-21_STRATEGY_BREAKTHROUGH_GATE.md) |
-| 冻结 rail 能否部署 advisory Reviewer？ | S10-19-R1 未找到已注册且机械只读的 reviewer path，Phase B/C 未运行；`REVIEWER_NOT_SAFELY_DEPLOYABLE`。 | 不证明独立审查没有价值，也没有评估盲审质量。[Gate](reviews/S10-19R1_BREAKTHROUGH_GATE.md) |
-| Memory anchor 能否自动进入上下文？ | S10-19-R2 的冻结轨道捕获中，自动 `MEMORY.md` 正文未出现；显式 read 可用；`MEMORY_NOT_DEPLOYABLE`。 | 不证明 Memory 普遍无效，没有测量模型行为或分数收益。[Gate](reviews/S10-19R2_MEMORY_BREAKTHROUGH_GATE.md) |
-| 独立 deterministic helper 是否可行？ | 临时 Skill 脚本在隔离 tool rail 对固定公开状态读写成功；`DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED`。 | 云端解释器、权限、模型是否调用和遵循均未测，不是 Candidate 级效果。[Gate](reviews/S10-19R3_BREAKTHROUGH_GATE.md) |
-| replay controller 能否修复重要决策？ | 24 个案例中 1 个状态级修正，8 个 `UNKNOWN`；主要已知决策错误未证明被纠正；`CONTROLLER_LOGIC_SIGNAL_WEAK`。 | 不证明所有控制器都无效，也未得到部署或收益证据。[Gate](reviews/S10-20_CONTROLLER_GATE.md) |
-| 宏策略是否有收益？ | 安全的 public-input harness 通过边界检查，但冻结故事基线仅 2/16 完成；12 个宏定义中只跑 baseline，search/holdout 为 0；`SIMULATOR_POLICY_SEARCH_NOT_FEASIBLE`。 | 没有比较宏策略，因此不支持“simulator search 已证明策略无效”。[Gate](reviews/S10-22_FINAL_OPPORTUNITY_GATE.md) |
+| 增加 prompt/policy 条款能否稳定突破？ | S09 关闭增量 prompt-hardening 环；S10-21 得到 `STRATEGY_SIGNAL_WEAK`，没有安全 Candidate delta。 | 不证明 prompt 或策略规则普遍无效；只说明这些材料未支撑下一次改动。[S10-21 strategy research](research/S10-21_REVIEW_WINDOW_STRATEGY_MINING.md) |
+| 冻结 rail 能否部署 advisory Reviewer？ | S10-19-R1 未找到已注册且机械只读的 reviewer path，Phase B/C 未运行；`REVIEWER_NOT_SAFELY_DEPLOYABLE`。 | 不证明独立审查没有价值，也没有评估盲审质量。[Reviewer feasibility](research/S10-19R1_SUBAGENT_FEASIBILITY.md) |
+| Memory anchor 能否自动进入上下文？ | S10-19-R2 的冻结轨道捕获中，自动 `MEMORY.md` 正文未出现；显式 read 可用；`MEMORY_NOT_DEPLOYABLE`。 | 不证明 Memory 普遍无效，没有测量模型行为或分数收益。[Memory feasibility](research/S10-19R2_MEMORY_FEASIBILITY.md) |
+| 独立 deterministic helper 是否可行？ | 临时 Skill 脚本在隔离 tool rail 对固定公开状态读写成功；`DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED`。 | 云端解释器、权限、模型是否调用和遵循均未测，不是 Candidate 级效果。[Native control audit](research/S10-19R3_NATIVE_CONTROL_SURFACE_AUDIT.md) |
+| replay controller 能否修复重要决策？ | 24 个案例中 1 个状态级修正，8 个 `UNKNOWN`；主要已知决策错误未证明被纠正；`CONTROLLER_LOGIC_SIGNAL_WEAK`。 | 不证明所有控制器都无效，也未得到部署或收益证据。[Controller research](research/S10-20_PROMOTION_WINDOW_CONTROLLER.md) |
+| 宏策略是否有收益？ | 安全的 public-input harness 通过边界检查，但冻结故事基线仅 2/16 完成；12 个宏定义中只跑 baseline，search/holdout 为 0；`SIMULATOR_POLICY_SEARCH_NOT_FEASIBLE`。 | 没有比较宏策略，因此不支持“simulator search 已证明策略无效”。[Simulator policy research](research/S10-22_SIMULATOR_POLICY_SEARCH.md) |
 | Team/Swarm 是否改善结果？ | 该路线没有完成实验。 | `DEFERRED / NOT_TESTED`，不是负向实验结论。[Architecture decisions](ARCHITECTURE_DECISIONS.md) |
 
 ## 5. 反过拟合与合规
