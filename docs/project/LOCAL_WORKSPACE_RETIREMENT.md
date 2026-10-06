@@ -73,4 +73,6 @@ All 20 files below were under `.career_sim_runner\career_emu\emulator_logs`; tot
 
 - Evidence migrations and hashes: verified; config dependency remediated; documented run sources remain outside the target; existing S10 holds unchanged; no secret migrated.
 - Pre-delete destination path: `.local/runtime/retired-s03-02-risk-review/session-payloads` (ignored local runtime evidence).
-- Target deletion and post-delete filesystem/worktree/config checks: pending the pre-delete main commit/push.
+- Pre-delete commit `aecf2b1ec751eb2b0799f8dcc66bc8c4857477c8` was pushed to `origin/main`; the main worktree was clean and synchronized.
+- The exact-path PowerShell recursive deletion call was rejected by automatic tool policy with `blocked by policy`; it did not execute. A post-attempt read-only check found the target still present with 21 files / 4,985,199 bytes. No alternate deletion route was used.
+- Final decision: `S11_11_S03_WORKSPACE_RETIREMENT_BLOCKED_RETURN_TO_MAIN`. Migration and active-config remediation are complete; workspace deletion and post-delete absence checks remain blocked.

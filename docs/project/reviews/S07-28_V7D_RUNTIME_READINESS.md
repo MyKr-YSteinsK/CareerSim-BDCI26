@@ -19,7 +19,7 @@ Scope: packaging and isolated install readiness only; provider/runtime/gameplay 
 
 ## Shared-state check
 
-The pre-install non-DB baseline from `.local/runtime/s07-28-readiness/shared_before.json` was reused. Post-check found the shared Skill workspace, `skills_state.json`, `IDENTITY.md`, and active-install metadata unchanged. For the configured shared DB, only path/existence/size/mtime were compared; metadata was unchanged. The configured MCP DB existed at `D:\CS\CareerSim-s03-02-risk-review\.career_sim_runner\career_emu\career_emulator.sqlite3` (278,528 bytes) at that historical check; the current checkout's default Runner DB path was absent then. No shared write was issued by this task. S11-11 later remediated the active MCP config and retired that workspace; see [the retirement record](../LOCAL_WORKSPACE_RETIREMENT.md).
+The pre-install non-DB baseline from `.local/runtime/s07-28-readiness/shared_before.json` was reused. Post-check found the shared Skill workspace, `skills_state.json`, `IDENTITY.md`, and active-install metadata unchanged. For the configured shared DB, only path/existence/size/mtime were compared; metadata was unchanged. The configured MCP DB existed at `D:\CS\CareerSim-s03-02-risk-review\.career_sim_runner\career_emu\career_emulator.sqlite3` (278,528 bytes) at that historical check; the current checkout's default Runner DB path was absent then. No shared write was issued by this task. S11-11 later remediated the active MCP config; deletion of that workspace was blocked by tool policy, so it remains pending retirement. See [the retirement record](../LOCAL_WORKSPACE_RETIREMENT.md).
 
 ## Environment and deferred items
 
