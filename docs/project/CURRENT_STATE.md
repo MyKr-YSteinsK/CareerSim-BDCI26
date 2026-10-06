@@ -31,7 +31,8 @@
 
 ## 5. 当前 S11 状态
 
-- 人读报告 `docs/final-report/00–10` 已完成。
+- 人读报告 `docs/final-report/00–10` 和 S11-20 工程事实层／人读层交叉审查已完成；审查结果为全部 PASS、`DEFENSE_READY=YES`、`PORTFOLIO_SAFE=YES`。
+- [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 冻结候选已准备，当前等待 Main 验收。S11 仍为 `ACTIVE`，尚未宣布 `S11 COMPLETE`。
 - S03 兄弟工作区已在 S11-12 退役；导出的 20 份 session payload 仍按[工作区退役记录](LOCAL_WORKSPACE_RETIREMENT.md)所述保留并受 hold 约束。
 - S10 已吸收的 Gate review 和 S07-27 review 已从当前树移除。仓库收口仍在进行，尚未宣布最终冻结。
 
