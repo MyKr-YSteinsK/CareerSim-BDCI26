@@ -87,17 +87,19 @@ The audit uses only current public state and participant-visible rationale. It d
 - Usage bound to the session: 4,286,674 input / 29,445 output / 4,316,119 total tokens. Actual billed cost: UNKNOWN. Skill rereads, exact continuation sends, and compression count: UNKNOWN.
 - One interactive Runner process was used. No standalone provider probe, gameplay intervention, retry, restart, or replacement run occurred.
 - Service readiness passed despite a Windows GBK console logging error. One graceful stop exited 0; manager stopped and listeners 19092, 20000, 20001, and 6173 were released. The foreground launcher later exited 1 after stop; retained as a runtime limitation and not a gameplay invalidation.
-- The canonical archive secret scan passed. Committed selected archive:
-  - `artifacts/dev-runs/s09-run02-v7x/score_report.json` — 2,722 bytes; SHA-256 `dcaf6f5ed6acbeec811077ad23bf27200b3c14f19d83fbb03333278078617fd3`
-  - `artifacts/dev-runs/s09-run02-v7x/runner-result.json` — 626 bytes; SHA-256 `fa537c917b2b85d008c53a016dd7365e7796157cc6deb2c24f766a76ac8e7021` (derived receipt; Runner emitted no standalone result file)
-  - `artifacts/dev-runs/s09-run02-v7x/post_run_summary.json` — 52,755 bytes; SHA-256 `e20c3e376571c13dea42631dfb013d88703301b10693a9006cfac03d58d2d46a`
-  - `artifacts/dev-runs/s09-run02-v7x/evidence-manifest.json` — 758 bytes; SHA-256 `006442341d25e3b5540c4398333a345638770bdd96d597090f37bd1893dd67f3`; records the exact archive byte counts, hashes, and UTC run window.
+- The canonical archive secret scan passed at archive creation. The sanitized/derived archive was removed from the current tree by authorized S11-06 cleanup. Its four historical files are recoverable with `git show <commit>:<path>` from introduction commit `aa3844c85c982e42a859a18cfc60820df32600a`. The paths below name Git objects at that commit, not files currently present in the working tree. Total historical archive size: 56,861 bytes.
 
-### Archive Coverage and Retention Boundary
+| Historical Git object path | Bytes | SHA-256 |
+|---|---:|---|
+| `aa3844c85c982e42a859a18cfc60820df32600a:artifacts/dev-runs/s09-run02-v7x/score_report.json` | 2,722 | `dcaf6f5ed6acbeec811077ad23bf27200b3c14f19d83fbb03333278078617fd3` |
+| `aa3844c85c982e42a859a18cfc60820df32600a:artifacts/dev-runs/s09-run02-v7x/runner-result.json` | 626 | `fa537c917b2b85d008c53a016dd7365e7796157cc6deb2c24f766a76ac8e7021` (derived receipt; Runner emitted no standalone result file) |
+| `aa3844c85c982e42a859a18cfc60820df32600a:artifacts/dev-runs/s09-run02-v7x/post_run_summary.json` | 52,755 | `e20c3e376571c13dea42631dfb013d88703301b10693a9006cfac03d58d2d46a` |
+| `aa3844c85c982e42a859a18cfc60820df32600a:artifacts/dev-runs/s09-run02-v7x/evidence-manifest.json` | 758 | `006442341d25e3b5540c4398333a345638770bdd96d597090f37bd1893dd67f3` |
 
-- The canonical sections above retain the archive's durable groups: run/session identity and window, outcome and public terminal state, action/observation and CTRL/Risk/Recovery counts, Delivery coverage and its adherence limit, evidence-discipline counts, usage, and UNKNOWN limitations. The G sequence and parser classification nuance are recorded above. Per-action arrays and parser scaffolding are not copied; the public resource timeline is summarized in [S09-04](../reviews/S09-04_RESOURCE_TRAJECTORY_INTERVENTION_FORENSICS.md), and any further raw reanalysis is bound to the sources identified in the active hold below, not to these derived arrays.
-- These four tracked files are selected sanitized/derived run support, not formal `FORENSIC_HOLD` sources. The active hold below applies to the exact raw events JSONL and transcript LOG only. S09-04's v7x source entry binds those raw files by hash and points to this canonical run record; it does not consume the four-file archive. Removing the tracked archive in a separately authorized cleanup would neither release nor complete the raw hold.
-- The selected archive was introduced by commit `aa3844c85c982e42a859a18cfc60820df32600a`, an ancestor of the current `main`; the committed bytes remain recoverable from Git history. The archive hashes above remain provenance facts.
+### Archive Coverage and Hold Boundary
+
+- The canonical sections above retain the archive's durable facts: exact run/session identity and window, score and public terminal state, action/observe and CTRL/Risk/Recovery counts, Delivery coverage and its adherence limit, evidence-discipline counts, usage, G sequence, parser classification nuance, and UNKNOWN limitations. Per-action arrays and parser scaffolding were not copied; the public resource timeline is summarized in [S09-04](../reviews/S09-04_RESOURCE_TRAJECTORY_INTERVENTION_FORENSICS.md), and further raw reanalysis is bound to the sources identified in the active hold below.
+- The four historical files were sanitized/derived run support, not formal `FORENSIC_HOLD` sources. The active hold below covers only the exact raw events JSONL and transcript LOG. S09-04 binds those raw files by hash and canonical run-record path; its analysis has no four-file archive input. Their removal did not release or complete the raw hold.
 
 ### FORENSIC_HOLD=ACTIVE
 
