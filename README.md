@@ -14,6 +14,11 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 
 - [CURRENT_STATE](docs/project/CURRENT_STATE.md)：当前阶段、接受状态与授权边界
 - [FINAL_ID_MAP](docs/project/FINAL_ID_MAP.md)：代表性 Candidate、Run、实验与提交包的 Display-ID 及 provenance 索引
+- [Project Retrospective](docs/project/PROJECT_RETROSPECTIVE.md)：项目目标、成果和整体边界
+- [Final Solution Review](docs/project/FINAL_SOLUTION_REVIEW.md)：冻结 exact-v6 身份、运行证据和限制
+- [Architecture Retrospective](docs/project/ARCHITECTURE_RETROSPECTIVE.md)：最终架构的职责边界与取舍
+- [Experiment Retrospective](docs/project/EXPERIMENT_RETROSPECTIVE.md)：代表性证据、负结果和实验纪律
+- [FINAL_EVIDENCE_REVIEW](docs/project/FINAL_EVIDENCE_REVIEW.md)：代表性结果与 hold 台账
 - [ARCHITECTURE_DECISIONS](docs/project/ARCHITECTURE_DECISIONS.md)：架构决策
 - [OFFICIAL_SOURCE_LOCK](docs/project/OFFICIAL_SOURCE_LOCK.md)：官方来源与冻结合同
 - [AGENTS.md](AGENTS.md)：仓库边界与开发规则
