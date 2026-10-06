@@ -15,7 +15,7 @@
 
 ## 1. Evidence Coverage｜证据覆盖
 
-只使用仓库可追溯的压缩结果、已提交轨迹/矩阵与现有专题审查： [RUN_HISTORY](../RUN_HISTORY.md)、[STRATEGY_EVIDENCE](../STRATEGY_EVIDENCE.md)、[S06-11](S06-11_SURVIVAL_REVIEW.md)、[S06-12](S06-12_PROMOTION_PERFORMANCE_REVIEW.md)、[S06-13](S06-13_QUARTERLY_ACTION_REVIEW.md)、[S06-14](S06-14_EVENT_PATTERN_REVIEW.md)、[v4 forensic](../runs/v4-run1-health-forensic.md)。S04 原始 transcript/events 与 S06 Run #1 本机 raw 不在仓库可恢复范围；没有重建 raw，也没有重跑。SCORE-01 月度轨迹虽在 Git 历史中，但本审查沿用已审核的轨迹结构与 S06-13 提取结果。所有分数和终局是观察值，不是动作效果估计。
+只使用仓库可追溯的压缩结果、已提交轨迹/矩阵与现有专题审查： [RUN_HISTORY](../RUN_HISTORY.md)、[STRATEGY_EVIDENCE](../research/STRATEGY_EVIDENCE.md)、[S06-11](S06-11_SURVIVAL_REVIEW.md)、[S06-12](S06-12_PROMOTION_PERFORMANCE_REVIEW.md)、[S06-13](S06-13_QUARTERLY_ACTION_REVIEW.md)、[S06-14](S06-14_EVENT_PATTERN_REVIEW.md)、[v4 forensic](../runs/v4-run1-health-forensic.md)。S04 原始 transcript/events 与 S06 Run #1 本机 raw 不在仓库可恢复范围；没有重建 raw，也没有重跑。SCORE-01 月度轨迹虽在 Git 历史中，但本审查沿用已审核的轨迹结构与 S06-13 提取结果。所有分数和终局是观察值，不是动作效果估计。
 
 | Run | 身份 / 可追溯来源 | 观察结果 | 覆盖与限制 |
 |---|---|---|---|

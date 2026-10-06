@@ -5,8 +5,8 @@
 ## 1. Source identity 与证据边界
 
 - 本次基线：`main@2d33eb90212b6037e283238358c33604d3120149`；执行时 `main == origin/main`，工作区干净。
-- 当前候选：`candidate-v4-lean-runtime-policy`，配置见 [`configs/current_candidate.json`](../../configs/current_candidate.json)，运行指令见 [`configs/runtime_manifest.json`](../../configs/runtime_manifest.json)。三个 Skill blob：`rolling-planning=fcd443d547920e04fcfa2dd948686136afb76d47`、`structured-state-board=06ecdc3a598ee42d1e785d6e14af8f1a669eca85`、`risk-review=50ac3c515d3e75ab060bb16e5afe51e79e4db3ab`。
-- 冻结直接依赖：`career-emulator==1.0.1`、`career-emulator-bdci26==1.0.0`；Runner=`f61c738c72e51b77298cc1c14c7c6ebf4b6c527d`，见 [`OFFICIAL_SOURCE_LOCK.md`](OFFICIAL_SOURCE_LOCK.md)。
+- 当前候选：`candidate-v4-lean-runtime-policy`，配置见 [`configs/current_candidate.json`](../../../configs/current_candidate.json)，运行指令见 [`configs/runtime_manifest.json`](../../../configs/runtime_manifest.json)。三个 Skill blob：`rolling-planning=fcd443d547920e04fcfa2dd948686136afb76d47`、`structured-state-board=06ecdc3a598ee42d1e785d6e14af8f1a669eca85`、`risk-review=50ac3c515d3e75ab060bb16e5afe51e79e4db3ab`。
+- 冻结直接依赖：`career-emulator==1.0.1`、`career-emulator-bdci26==1.0.0`；Runner=`f61c738c72e51b77298cc1c14c7c6ebf4b6c527d`，见 [`OFFICIAL_SOURCE_LOCK.md`](../OFFICIAL_SOURCE_LOCK.md)。
 - Dev 分发来源：PyPI 1.0.0 provenance 指向 `Flash-Tomato/CareerEmuData-Dev@e42324a8f904a7af60442989f986eae7390c94ee`（tag `v1.0.0`）。该 commit 的公开 [`convert.py`](https://github.com/Flash-Tomato/CareerEmuData-Dev/blob/e42324a8f904a7af60442989f986eae7390c94ee/convert.py) 将 `.data` 解码定义为 1 字节 split marker + raw DEFLATE（`wbits=-15`）+ msgpack；对应 [PyPI 发行与 provenance](https://pypi.org/project/career-emulator-bdci26/1.0.0/)。
 - 本地只读源：根 `.venv/Lib/site-packages/career_emulator_bdci26/dev/dataset/` 与模拟器中 materialized 的 `career_emulator/data/dataset/`。两处 192 个 `.data` 相对路径和逐文件内容一致；全部成功解码。公开 Dev 目录共 194 个文件（192 `.data` + 两个 `.gitkeep`）；S01 锁定的整目录摘要为 194 files / `ecadbb6df2335e55b1e898de94102c9a2b2cdb23e8e7790912b8c2fb228d2fe4`。本次另对 192 `.data` 做排序后以相对路径、NUL、文件字节串接的 SHA-256：`493efab9d0dbae6fe4c94a1cae13e12c30e98e239a1afc5990d1803cdaa0dac4`。
 - 192 个 `.data` 中：事件模板 171（短链 118、长链 53）；机制数据 21（事件池外配置：failure 7、promotion 3、salary 3、talk 2、initialization/regular 4、performance 1、ending score 1）。事件图包含 1,133 nodes、974 choice options、721 terminal nodes。没有读取 test/private 数据。
@@ -192,7 +192,7 @@ Local letter grades are S≥90, A≥70, B≥60, C≥50, D≥30, E≥0; they are 
 
 ## 6. Historical run cross-analysis
 
-来源是当前 [`RUN_HISTORY.md`](RUN_HISTORY.md)、v4 的 [S06-08 read-only forensic](runs/v4-run1-health-forensic.md)，以及 Git 历史中的 S04 RESULT / compact trajectories。S06 Run #1 原始本机 transcript/events 当前不可用；本节不重建 raw，也不把运行摘要升级成因果事实。
+来源是当前 [`RUN_HISTORY.md`](../RUN_HISTORY.md)、v4 的 [S06-08 read-only forensic](../runs/v4-run1-health-forensic.md)，以及 Git 历史中的 S04 RESULT / compact trajectories。S06 Run #1 原始本机 transcript/events 当前不可用；本节不重建 raw，也不把运行摘要升级成因果事实。
 
 | Run | Result | Survival / promotion | 行为与证据边界 |
 | --- | --- | --- | --- |
@@ -291,7 +291,7 @@ SAFE / WATCH / TIGHT / CRITICAL 是候选 policy bands，不是游戏内阈值�
 
 ## 12. Sources
 
-- 项目事实：[`CURRENT_STATE.md`](CURRENT_STATE.md)、[`RUN_HISTORY.md`](RUN_HISTORY.md)、[`OFFICIAL_SOURCE_LOCK.md`](OFFICIAL_SOURCE_LOCK.md)、[`v4-run1-health-forensic.md`](runs/v4-run1-health-forensic.md)。
+- 项目事实：[`CURRENT_STATE.md`](../CURRENT_STATE.md)、[`RUN_HISTORY.md`](../RUN_HISTORY.md)、[`OFFICIAL_SOURCE_LOCK.md`](../OFFICIAL_SOURCE_LOCK.md)、[`v4-run1-health-forensic.md`](../runs/v4-run1-health-forensic.md)。
 - Frozen package metadata：root `.venv/Lib/site-packages/career_emulator-1.0.1.dist-info/METADATA`、`career_emulator_bdci26-1.0.0.dist-info/METADATA`；数据 `career_emulator_bdci26/dev/dataset/**/*.data`。
 - Simulator source：`career_emulator/failure_conditions.py`、`promotion_conditions.py`、`talk_mechanism.py`、`salary_conditions.py`、`ending_score.py`、`game.py`、`events.py`、`server/models.py`。
 - Public decoder/provenance：[pinned `convert.py`](https://github.com/Flash-Tomato/CareerEmuData-Dev/blob/e42324a8f904a7af60442989f986eae7390c94ee/convert.py), [PyPI 1.0.0](https://pypi.org/project/career-emulator-bdci26/1.0.0/).

@@ -78,11 +78,11 @@ def test_current_candidate_is_distinct_from_final_submission_and_builder_whiteli
 def test_current_state_and_review_record_static_scope_and_no_live_authority() -> None:
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     review = (ROOT / "docs/project/reviews/S08-08_V7S_ZH_EXECUTION_CONTRACT_CONVERGENCE.md").read_text(encoding="utf-8")
-    current_section = state.split("## 4. Current Checkout Caveat\n", 1)[1].split("\n## ", 1)[0]
-    authorization_section = state.split("## 7. Authorization Boundary\n", 1)[1].split("\n## ", 1)[0]
+    current_section = state.split("## 4. 当前 Checkout 说明\n", 1)[1].split("\n## ", 1)[0]
+    authorization_section = state.split("## 7. 当前授权边界\n", 1)[1].split("\n## ", 1)[0]
 
     assert "candidate-v8a-v7o-donor-core-transplant" in current_section
-    assert "not the final exact-v6 ZIP identity" in current_section
+    assert "并非最终 exact-v6 ZIP 身份" in current_section
     assert "delivery-progress" in current_section
     assert "NEW_GAME = NOT_AUTHORIZED" in authorization_section
     assert "TAKE_ACTION = NOT_AUTHORIZED" in authorization_section

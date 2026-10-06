@@ -1,5 +1,7 @@
 # CareerSim live-run workflow
 
+> 当前状态：比赛对局与 Candidate 搜索已经关闭。本文件保留为工程复现、证据处理及未来“明确授权后”运行流程的长期合同；它本身不授予 game、Provider、MCP、安装或 service lifecycle 权限。S11 当前不授权任何 live operation。
+
 > WF-01 repository contract. A live Plan must explicitly authorize each side effect. This document defines execution and evidence handling; it does not grant a game, provider call, install, or service lifecycle.
 
 ## Execution modes

@@ -17,7 +17,7 @@
 | Candidate v1 #1/#2 | 两份 identity-bearing compact trajectories、comparison、RESULT：`66ec4af1e9a2a28da57c6cb8d409a6a38f87ae01` | 本机两局原始 events/transcript 均不存在；按 committed artifact SHA 清单检查后未读取任何 raw |
 | S06 Run #1 | Main-reviewed compact facts；S06-01/S06-02 历史记录位于 `c4dbe0ebc4e27aafc22c94050c69547113cdc8eb` | 本机原始 transcript/events 不可用；身份、Health、Dignity、详细 promotion 月份未知 |
 | Candidate v4 #1 | [RUN_HISTORY](../RUN_HISTORY.md) 与 [S06-08 Health forensic](../runs/v4-run1-health-forensic.md)；run `20260924T160806Z` / game session `fdcaa70a85f44662a6a329513c175676` | 本任务复用已提交的 hash-bound forensic；未重新打开本机 raw |
-| Frozen simulator / Dev | Root `.venv` metadata: `career-emulator==1.0.1`, `career-emulator-bdci26==1.0.0`；代码 `failure_conditions.py`, `game.py`, `promotion_conditions.py`, `talk_mechanism.py`；既有 [STRATEGY_EVIDENCE](../STRATEGY_EVIDENCE.md) 记录公开 Dev 文件 identity / 解码摘要 | 只用于解释本地冻结公开 Dev，不表示 Agent 能看见隐藏计数、内部状态或 Dev 选择后的 effect |
+| Frozen simulator / Dev | Root `.venv` metadata: `career-emulator==1.0.1`, `career-emulator-bdci26==1.0.0`；代码 `failure_conditions.py`, `game.py`, `promotion_conditions.py`, `talk_mechanism.py`；既有 [STRATEGY_EVIDENCE](../research/STRATEGY_EVIDENCE.md) 记录公开 Dev 文件 identity / 解码摘要 | 只用于解释本地冻结公开 Dev，不表示 Agent 能看见隐藏计数、内部状态或 Dev 选择后的 effect |
 
 源码核对重点：`FailureConditionEvaluator.update_derived_stats/evaluate`；`GameEngine.take_action/_on_month_advanced/_start_quarter_fixed_events/_take_energy_action/_take_main_action/_normalize_time`；半年 talk 与 promotion applicator。月度状态/连续计数、talk、salary、promotion、季度选择的相对次序由此确认。M48 后 trajectory 中的 M49 terminal row 是 `_normalize_time` 对“48 个月完成”的结束哨兵，不是额外淘汰；S04-03 RESULT 的 48 个月完成记录保持有效。
 
@@ -27,7 +27,7 @@ Raw-integrity boundary：本机 S04-03 / S04-04 两局原始 events/transcript �
 
 ### 1. 生存是多通道约束，不是 Health 单指标
 
-`DEV_CONFIRMED`：冻结 Dev 存在 Health 即时终止，以及 Dignity、Network、Wealth、HiddenRisk、半年 performance、Skill 等多条失败路径。部分路径会额外损伤其它公开维度，例如 Health、Dignity、Network、Output、Wealth，形成跨通道放大；内部连续计数、失败余量和 HiddenRisk 不属于 Agent 可见状态。完整机制边界见 [STRATEGY_EVIDENCE §2–3](../STRATEGY_EVIDENCE.md)。
+`DEV_CONFIRMED`：冻结 Dev 存在 Health 即时终止，以及 Dignity、Network、Wealth、HiddenRisk、半年 performance、Skill 等多条失败路径。部分路径会额外损伤其它公开维度，例如 Health、Dignity、Network、Output、Wealth，形成跨通道放大；内部连续计数、失败余量和 HiddenRisk 不属于 Agent 可见状态。完整机制边界见 [STRATEGY_EVIDENCE §2–3](../research/STRATEGY_EVIDENCE.md)。
 
 `RUN_OBSERVED`：现有终止样本呈现不同通道：v4 #1 为 Health 累积耗尽；Candidate v1 #2 记录为第二次 trust-crisis blowup，终局 Health=10；SCORE-01 的 transcript terminal text 为“炒鱿鱼”，但结构化 termination reason 为空；S01 通道未知。不能把不同通道归因到一个统一策略错误。
 

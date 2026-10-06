@@ -26,7 +26,7 @@
 |---|---|
 | 模拟器 | 根 `.venv` distribution `career-emulator==1.0.1`；源码位于 `.venv/Lib/site-packages/career_emulator/` |
 | 公共 Dev | `career-emulator-bdci26==1.0.0`；Dev 配置位于 `.venv/Lib/site-packages/career_emulator_bdci26/dev/dataset/` |
-| 全 Dev 目录身份 | 复用 [`STRATEGY_EVIDENCE.md`](../STRATEGY_EVIDENCE.md) §1 已记录的 192 个 `.data` 摘要 `493efab9d0dbae6fe4c94a1cae13e12c30e98e239a1afc5990d1803cdaa0dac4`（194 个目录文件摘要 `ecadbb6df2335e55b1e898de94102c9a2b2cdb23e8e7790912b8c2fb228d2fe4`）；本任务未重扫事件模板。 |
+| 全 Dev 目录身份 | 复用 [`STRATEGY_EVIDENCE.md`](../research/STRATEGY_EVIDENCE.md) §1 已记录的 192 个 `.data` 摘要 `493efab9d0dbae6fe4c94a1cae13e12c30e98e239a1afc5990d1803cdaa0dac4`（194 个目录文件摘要 `ecadbb6df2335e55b1e898de94102c9a2b2cdb23e8e7790912b8c2fb228d2fe4`）；本任务未重扫事件模板。 |
 | 配置复核 | performance、promotion、salary、talk 这 7 个目标配置在 Dev package 与模拟器 materialized data 两份路径逐文件相同；SHA256 见 §11。 |
 | 历史轨迹 | v1 #1/#2：Git commit `66ec4af1e9a2a28da57c6cb8d409a6a38f87ae01` 的 compact trajectories；SCORE-01：`7a055dea76580117ca74cddb49bb04efcf605eb1` 的 `score01_trajectory.json`；S06 #1：`c4dbe0ebc4e27aafc22c94050c69547113cdc8eb` 的 Main-reviewed S06-01 RESULT 及当前 [`RUN_HISTORY.md`](../RUN_HISTORY.md)；v4 #1：当前 RUN_HISTORY 与 [`v4-run1-health-forensic.md`](../runs/v4-run1-health-forensic.md)。 |
 | Raw 边界 | S04 原始 events/transcript 当前不可用；S06 #1 原始文件未用于本 review。只用已提交且可核验的 compact evidence，不重跑对局。 |

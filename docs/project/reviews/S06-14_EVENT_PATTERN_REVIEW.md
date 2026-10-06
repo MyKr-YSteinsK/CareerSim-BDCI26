@@ -15,7 +15,7 @@
 ### 读取边界
 
 - 只读 root `.venv` 中 `career-emulator==1.0.1`、`career-emulator-bdci26==1.0.0` 的公开 `dev/dataset/action_pool/short_chain/*.data` 与 `long_chain/*.data`；没有读取 `test`、private split、hidden database 或本机 ignored raw。
-- 只读项目已有 [STRATEGY_EVIDENCE](../STRATEGY_EVIDENCE.md)、[RUN_HISTORY](../RUN_HISTORY.md)、[S06-11](S06-11_SURVIVAL_REVIEW.md)、[S06-12](S06-12_PROMOTION_PERFORMANCE_REVIEW.md)、[S06-13](S06-13_QUARTERLY_ACTION_REVIEW.md)、当前三个 Skills 与已提交的历史轨迹/forensic。
+- 只读项目已有 [STRATEGY_EVIDENCE](../research/STRATEGY_EVIDENCE.md)、[RUN_HISTORY](../RUN_HISTORY.md)、[S06-11](S06-11_SURVIVAL_REVIEW.md)、[S06-12](S06-12_PROMOTION_PERFORMANCE_REVIEW.md)、[S06-13](S06-13_QUARTERLY_ACTION_REVIEW.md)、当前三个 Skills 与已提交的历史轨迹/forensic。
 - `.data` 使用冻结公开转换格式：首字节后的 raw-DEFLATE payload 解压后按 MessagePack 读取。分析为一次性内存扫描；未提交脚本、CSV、完整事件文本或 choice lookup。
 
 ### 可见性与解释边界
