@@ -1,6 +1,6 @@
 # 最终提交身份与构建记录
 
-`IN_FLIGHT_EVIDENCE` → 本交付 commit 中的最终打包事实；待 Main 接受，不宣布 Stage COMPLETE。
+历史交付时点（本文件所在交付 commit）：状态为 `IN_FLIGHT_EVIDENCE`，最终打包事实已记录但尚待 Main 接受；该记录不表示当时 Stage 已 COMPLETE。Main 后续已关闭 S10，见 [AD-S11-001](ARCHITECTURE_DECISIONS.md)；当前阶段见 [CURRENT_STATE](CURRENT_STATE.md)。
 
 - Decision: `FINAL_SINGLE_SHOT_V6_READY` / `SELECT_EXACT_V6_FOR_SINGLE_SHOT`。
 - Candidate: `candidate-v6-auditable-control-loop`；parent `candidate-v5-evidence-driven-phase-policy`。
