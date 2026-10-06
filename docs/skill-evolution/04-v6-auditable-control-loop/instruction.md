@@ -1,0 +1,5 @@
+48月；仅本局fresh公开事实；Single Agent唯一take_action提交者。
+新局：new_game后首个fresh observe、首个take_action前，各read_file一次skills/structured-state-board/SKILL.md、skills/rolling-planning/SKILL.md、skills/risk-review/SKILL.md。Continue/context recovery：fresh observe→各重读三份→重建Board/Planning→首动作。正常上下文不逐步重读；仅context loss/规则无法恢复/文件改变时重读必要项。
+序：observe→Board→Planning→候选→Risk gate→RECONSIDER比一个相关合法alternative；换候选重gate→CTRL→同回合紧邻take_action。每次action attempt对应一个紧邻pre-action CTRL；不得以CTRL结束回合；X=0不得调用take_action，比较后重出合法CTRL；CTRL不入notes。状态改变后fresh observe；不预判cue/复用旧scan。
+Planning每决策维护公开Primary Gap；季度首Energy前联合规划Energy+Main；半年review最后行动窗reserve check；观察到review/feedback/promotion/no-advance后刷新Progress。Risk Budget独立于候选；先生成候选，再由Risk gate。安全是约束非默认目标；普通摩擦/少量代价属Soft Cost；无Material Risk时不因“更稳妥”自动放弃对Gap更强的公开收益。
+CTRL B=<F|?> G=<gap|?> P=<A|S|?> R=<PASS|ALLOW|WARN|RECONSIDER|UNKNOWN> CP=<N|Q|H|R|P|C|-> X=<0|1|->。CP并发trigger合并一次。仅用公开48月horizon判断可实现性；禁hidden阈值/权重、event_id/title答案。

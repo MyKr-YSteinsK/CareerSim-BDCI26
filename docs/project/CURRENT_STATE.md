@@ -7,7 +7,7 @@
 - 仓库：`MyKr-YSteinsK/CareerSim-BDCI26`；分支：`main`。
 - 参赛队伍：`FZU-Loss快点降`；见[比赛身份](COMPETITION_IDENTITY.json)。
 - 阶段：`S11 ACTIVE`；`S10=CLOSED`；Human Play Lab=`CLOSED_BY_USER`。
-- S11 当前范围是报告、证据整理和仓库收口；尚未宣布最终仓库冻结。
+- S11 当前范围是仓库减量、Skill/Instruction 历史资产整理，以及后续教程和报告收口；尚未宣布最终仓库冻结。
 
 ## 2. 最终提交身份
 
@@ -32,7 +32,7 @@
 ## 5. 当前 S11 状态
 
 - 人读报告 `docs/final-report/00–10` 和 S11-20 工程事实层／人读层交叉审查已完成；审查结果为全部 PASS、`DEFENSE_READY=YES`、`PORTFOLIO_SAFE=YES`。
-- [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 冻结候选已准备，当前等待 Main 验收。S11 仍为 `ACTIVE`，尚未宣布 `S11 COMPLETE`。
+- [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 中的 debf5e02e302a720697c95c7286326671e28c8c3 仅保留为历史冻结候选；已被 S11 重构取代，未被接受为最终仓库状态，也不再等待 Main 验收。S11 仍为 ACTIVE，尚未宣布 S11 COMPLETE。
 - S03 兄弟工作区已在 S11-12 退役；导出的 20 份 session payload 仍按[工作区退役记录](LOCAL_WORKSPACE_RETIREMENT.md)所述保留并受 hold 约束。
 - S10 已吸收的 Gate review 和 S07-27 review 已从当前树移除。仓库收口仍在进行，尚未宣布最终冻结。
 
@@ -45,6 +45,8 @@
 ## 7. 当前授权边界
 
 `NEW_GAME = NOT_AUTHORIZED`；`TAKE_ACTION = NOT_AUTHORIZED`；`PROVIDER_GAMEPLAY = CLOSED`；`NEW_CANDIDATE_SEARCH = CLOSED`；`TEAM_SWARM_EXPERIMENT = CLOSED_FOR_COMPETITION`；`FINAL_ZIP_REBUILD = NOT_AUTHORIZED`。
+
+比赛实验仍为 CLOSED；最终比赛 ZIP 的 Candidate、source commit、文件数、字节数和 SHA-256 保持不变。
 
 S11 允许仓库清理、证据整理、文档、答辩/作品集工作和最终仓库审查。Team/Swarm 的结论只针对比赛工作范围，不代表已证明它在一般情境下不可行。
 

@@ -1,0 +1,8 @@
+控制提示（详细规则仍以四个 Skills 为准）：新局首次有效观察后详细读取 `rolling-planning`。
+每季度首次 `Energy` 决策前，用新鲜公开状态建立或刷新 `Planning checkpoint`；同季主行动复用，除非公开状态或反馈有重大变化。半年反馈、严重公开警告/后果、继续运行时上下文丢失、checkpoint 过期/含糊或流程无法还原时，重读并重建。
+每次只设一个公开 `Primary Gap`；普通合法选项依次比较重大风险门槛、对 `Primary Gap` 的贡献、次级公开收益、`Soft Cost`/机会成本，最后标明 `UNKNOWN`。
+`Risk Budget = TIGHT / AVAILABLE / UNKNOWN`；安全是约束，不是默认目标。只有预算 `AVAILABLE`、没有新鲜 `Material Risk`、某合法路径对 `Primary Gap` 的公开收益明显更强，且新增代价主要是 `Soft Cost` 时，才优先该高收益路径。
+表扬等局部正向信号不能单独记为 `ADVANCING`。重复动作比较时优先可靠 `observed effect`，而非菜单 `advertised effect`；同一 `action` 针对同一 `Primary Gap`，在两个相邻可比 checkpoint 均无进展才标为 `STALLED`，并比较不同类型合法替代项，不强制改选。
+只使用公开当前月份和 `48-month horizon`；目标停滞且剩余时间减少时偏向可观察进展。
+普通非战略事件最多比较两个最强合法候选一次；只有新鲜公开证据或 `risk-review=RECONSIDER` 才重开。
+`Single Agent` 是唯一动作提交者，Skills 不提交动作。

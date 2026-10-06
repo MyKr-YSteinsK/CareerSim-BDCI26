@@ -2,9 +2,13 @@
 
 ## 1. Status
 
-- `FINAL_REPOSITORY_FREEZE_PREPARED`
-- `PENDING_MAIN_ACCEPTANCE`
-- S11 remains `ACTIVE` until Main accepts this candidate. This record does not declare `S11 COMPLETE` or `FINAL_REPOSITORY_FREEZE_ACCEPTED`.
+- HISTORICAL_FREEZE_CANDIDATE
+- SUPERSEDED_BY_S11_RESTRUCTURE
+- NOT_ACCEPTED_AS_FINAL_REPOSITORY_STATE
+- Candidate commit debf5e02e302a720697c95c7286326671e28c8c3 is retained as a historical audit record only.
+- The user requested continued repository cleanup and learning-asset restructuring; this candidate is no longer awaiting Main acceptance.
+- The final competition ZIP identity below is unchanged.
+- S11 remains ACTIVE; this record does not declare S11 COMPLETE or FINAL_REPOSITORY_FREEZE_ACCEPTED.
 
 ## 2. Repository Identity
 
@@ -54,4 +58,4 @@ S11-20 交叉审查结论：`docs/final-report/00–10` 全部 `PASS`；`DEFENSE
 
 ## 10. Main Acceptance Boundary
 
-本记录是待验收候选。Main 审阅本记录与 TASK_RESULT 后决定是否接受并关闭 S11；在此之前 repository pending Main acceptance，S11 维持 `ACTIVE`。
+This document records the former freeze candidate at debf5e02e302a720697c95c7286326671e28c8c3. Continued S11 repository restructuring superseded that candidate; it was not accepted as the final repository state and is no longer pending Main acceptance. The competition package identity in Section 3 is unaffected. S11 remains ACTIVE.
