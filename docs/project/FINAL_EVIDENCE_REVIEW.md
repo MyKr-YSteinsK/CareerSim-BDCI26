@@ -83,6 +83,11 @@ There are **20 individually traceable active/pending holds** below: 18 `KEEP_ACT
 | Legacy original run holds aggregate / owner original task and Main | A promotion-frontier report says all original run holds were retained and release was `NONE`, but does not enumerate the complete roster or count. It may overlap named rows above. | [S10 promotion-frontier report](research/S10_PROMOTION_FRONTIER_REPORT.md). | PARTIAL — aggregate retention statement only. | Exact membership, owner, source set, and release state for any unnamed member are `UNKNOWN`; reconcile against source tasks before cleanup. | `UNKNOWN_REVIEW_REQUIRED` |
 | `RUN-0001` raw-retention status / owner UNKNOWN | Supporting v6 raw is local/uncommitted; the current canonical docs do not state a formal raw `FORENSIC_HOLD` or release condition. This is not counted as a confirmed hold. | [CURRENT_STATE](CURRENT_STATE.md); [v6 validation](runs/v6-run1-validation.md). | YES — compact run facts absorbed; raw-hold status remains unknown. | `UNKNOWN`; do not infer a formal hold or its release from the compact record. | `UNKNOWN_REVIEW_REQUIRED` |
 
+
+### Earlier resolved hold disposition
+
+A prior Main disposition recorded the distinct `S03-MCP-REGISTRATION` forensic hold as `RELEASED_BY_MAIN`. This preserves that historical status only; it does not imply strategy effectiveness or alter any current hold.
+
 ## Evidence gaps and cleanup boundary
 
 - The 20 named active/pending holds remain unreleased. The S08-RUN01 original owner, reason, exact hold membership, creation point, and release condition remain `UNKNOWN`; its row may overlap the unnamed legacy aggregate. The S08-RUN04 record does not define a complete acceptance/dependency condition, and the v6 raw hold status is not stated. These uncertainties prevent a complete unique roster or cleanup scope.

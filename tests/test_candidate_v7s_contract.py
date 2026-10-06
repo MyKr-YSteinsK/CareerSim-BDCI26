@@ -48,11 +48,16 @@ def test_repository_governance_files_reference_contracts_without_copying_them() 
             assert content not in agents
 
 
-def test_current_candidate_is_not_frozen_for_submission_and_builder_whitelist_is_exact() -> None:
+def test_current_candidate_is_distinct_from_final_submission_and_builder_whitelist_is_exact() -> None:
     candidate = json.loads((ROOT / "configs/current_candidate.json").read_text(encoding="utf-8"))
+    final_identity = json.loads((ROOT / "docs/project/FINAL_SUBMISSION_IDENTITY.json").read_text(encoding="utf-8"))
     builder = (ROOT / "scripts/build_final_solution.py").read_text(encoding="utf-8")
-    assert candidate["candidate_id"] == "candidate-v7y-story-exposure-guard"
-    assert candidate["status"] == "STATIC_IMPLEMENTED_NOT_RUNTIME_VALIDATED"
+    assert candidate["candidate_id"] == "candidate-v8a-v7o-donor-core-transplant"
+    assert candidate["status"] == "FINAL_FROZEN_FOR_SUBMISSION"
+    assert candidate["candidate_id"] != final_identity["candidate_id"]
+    assert candidate["validation"]["runtime_validated"] is False
+    assert candidate["validation"]["gameplay_validated"] is True
+    assert candidate["validation"]["provider_validated"] is True
     assert candidate["validation"]["next_game_authorized"] is False
     assert "FINAL_FROZEN_FOR_SUBMISSION" in builder
     assert '"README.md"' in builder
@@ -73,11 +78,14 @@ def test_current_candidate_is_not_frozen_for_submission_and_builder_whitelist_is
 def test_current_state_and_review_record_static_scope_and_no_live_authority() -> None:
     state = (ROOT / "docs/project/CURRENT_STATE.md").read_text(encoding="utf-8")
     review = (ROOT / "docs/project/reviews/S08-08_V7S_ZH_EXECUTION_CONTRACT_CONVERGENCE.md").read_text(encoding="utf-8")
-    current_section = state.split("## Current candidate\n", 1)[1].split("\n## ", 1)[0]
+    current_section = state.split("## 4. Current Checkout Caveat\n", 1)[1].split("\n## ", 1)[0]
+    authorization_section = state.split("## 7. Authorization Boundary\n", 1)[1].split("\n## ", 1)[0]
 
-    assert "candidate-v7y-story-exposure-guard" in current_section
-    assert "All v7y validation flags are false" in current_section
-    assert "NEXT_GAME = NOT_AUTHORIZED" in current_section
+    assert "candidate-v8a-v7o-donor-core-transplant" in current_section
+    assert "not the final exact-v6 ZIP identity" in current_section
+    assert "delivery-progress" in current_section
+    assert "NEW_GAME = NOT_AUTHORIZED" in authorization_section
+    assert "TAKE_ACTION = NOT_AUTHORIZED" in authorization_section
     assert "V7S_READY_FOR_GAME_GATE" in review
     assert "no provider call" in review.casefold()
     assert "Planner" in review
