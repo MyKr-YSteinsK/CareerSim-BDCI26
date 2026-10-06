@@ -74,5 +74,32 @@ All 20 files below were under `.career_sim_runner\career_emu\emulator_logs`; tot
 - Evidence migrations and hashes: verified; config dependency remediated; documented run sources remain outside the target; existing S10 holds unchanged; no secret migrated.
 - Pre-delete destination path: `.local/runtime/retired-s03-02-risk-review/session-payloads` (ignored local runtime evidence).
 - Pre-delete commit `aecf2b1ec751eb2b0799f8dcc66bc8c4857477c8` was pushed to `origin/main`; the main worktree was clean and synchronized.
-- The exact-path PowerShell recursive deletion call was rejected by automatic tool policy with `blocked by policy`; it did not execute. A post-attempt read-only check found the target still present with 21 files / 4,985,199 bytes. No alternate deletion route was used.
-- Final decision: `S11_11_S03_WORKSPACE_RETIREMENT_BLOCKED_RETURN_TO_MAIN`. Migration and active-config remediation are complete; workspace deletion and post-delete absence checks remain blocked.
+- The exact-path PowerShell recursive deletion call was rejected by automatic tool policy with `blocked by policy`; it did not execute. The S11-11 post-attempt read-only check found the target present with 21 files / 4,985,199 bytes. No alternate deletion route was used. This records the state at S11-11 closeout; S11-12 below records the later user deletion and post-delete checks.
+- S11-11 decision at that time: `S11_11_S03_WORKSPACE_RETIREMENT_BLOCKED_RETURN_TO_MAIN`. Migration and active-config remediation were complete; deletion and post-delete checks were still pending at that task boundary.
+
+## S11-12｜S03 manual deletion and retirement closeout
+
+### Manual deletion and post-delete verification
+
+- On 2026-10-06, the user reported manually deleting exactly `D:\CS\CareerSim-s03-02-risk-review`. Codex issued no deletion command or alternate deletion route.
+- Post-delete check at 2026-10-06 13:56 +08:00: `Test-Path -LiteralPath 'D:\CS\CareerSim-s03-02-risk-review'` returned `False`; an exact-name enumeration of `D:\CS` found no `CareerSim-s03-02-risk-review` entry. `D:\CS` and `D:\CS\CareerSim` both exist.
+- Before documentation edits, the main checkout was clean at `main` and matched `origin/main` at `c8a7998685e1936e974b2881bf247cfc1bde99a5`. The registered worktree list contains no entry for the retired target.
+- The S11-11 policy rejection and its then-current “target present” observation remain historical facts. The legacy path is retained in this record and the run-history documents as provenance only.
+
+### Retained evidence and holds
+
+- `.local/runtime/retired-s03-02-risk-review/session-payloads/` remains present and ignored by Git. `manifest.json` is present; its SHA-256 is `90e597360009c9df2b0f298122595ccce88dc5adefd9a8abef7dece4c0d7f5c5`.
+- All 20 exported payload files match their manifest sizes and SHA-256 values: 244,154 payload bytes total, with no missing or mismatched rows.
+- The S11 local `FORENSIC_HOLD` remains `ACTIVE`. No S09/S10 hold was changed or released, and no migrated evidence was removed.
+
+### Active dependency and process check
+
+- Active Jiuwen config: `C:\Users\Yukis\.jiuwenswarm-instances\career_emu\config\config.yaml`. `CAREER_EMULATOR_DB` points to `D:\CS\CareerSim\.career_sim_runner\career_emu\career_emulator.sqlite3`; `CAREER_EMULATOR_LOG_DIR` points to `D:\CS\CareerSim\.career_sim_runner\career_emu\emulator_logs`. Neither points to the retired workspace.
+- The process, user, and machine `CAREER_EMULATOR_DB` environment variables are unset; the main-repository `.env` is absent. The process reference scan found no remaining process referencing the retired path. No service was started.
+- Gameplay, provider, MCP, service, and submission operations: `0`.
+
+### Canonical closeout
+
+- S07-28 and the v7g validation report now state that the workspace was retired in S11-12 after user manual deletion; their original absolute path and point-in-time runtime facts remain intact. `RUN_HISTORY.md` retains only historical run-time provenance and had no pending-retirement wording to correct.
+- Decision: `S11_12_S03_LEGACY_WORKSPACE_RETIREMENT_CLOSED`.
+- Next recommendation: return to S11 human-readable report construction. No next Plan is generated here.
