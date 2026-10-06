@@ -4,7 +4,7 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 
 ## 人读报告
 
-面向第一次接触项目的中文阅读入口，按赛题、架构、实验、研发演进、方案选择和工程实现逐步了解；工程事实仍以 `docs/project/` 中的权威工程记录为准。
+面向第一次接触项目的中文阅读入口，覆盖赛题、架构、实验、研发演进、方案选择、答辩、职业材料和证据核验；工程事实仍以 `docs/project/` 中的权威工程记录为准。
 
 - [00｜阅读导航](docs/final-report/00-阅读导航.md)
 - [01｜赛题与项目总览](docs/final-report/01-赛题与项目总览.md)
@@ -14,6 +14,9 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 - [05｜失败路线与负结果复盘](docs/final-report/05-失败路线与负结果复盘.md)
 - [06｜最终方案与候选选择](docs/final-report/06-最终方案与候选选择.md)
 - [07｜工程实现与冻结交付](docs/final-report/07-工程实现与冻结交付.md)
+- [08｜答辩要点与常见问题](docs/final-report/08-答辩要点与常见问题.md)
+- [09｜简历与作品集素材](docs/final-report/09-简历与作品集素材.md)
+- [10｜证据索引与事实边界](docs/final-report/10-证据索引与事实边界.md)
 
 ## 最终提交方案
 
