@@ -18,7 +18,7 @@
 - Skill Git blobs: Board `ec751e0b03c49d13641513eaa2f7c8bb00faa11`; Planning `11c2b09a684bd9ac9d3b676dd690ea56337c5fcb`; Delivery `c40a4f8487d99b76154894d859d6d81a6fcd8dd4`; Risk `d2c6e14c8e6ae3d3ebce12c43815f3a45cbfae6a`.
 - The intended provider remained DeepSeek `deepseek-flash` at `api.deepseek.com`; credential presence was checked without displaying its value. The Dev dataset and frozen root `.venv` Python were present. S07-32's 11 targeted static checks and package/frontmatter checks were reused; Candidate bytes and dependencies had not drifted, so the static suite was not rerun.
 - Canonical helper built `.local/runtime/s07-33r-v7g-run1/submission`. Runner submission validation passed: manifest identity matched the Candidate, `mode=agent`, exactly four Skills, and bundled bytes matched repository files. No separate install was performed; install/reload occurred through the successful Runner play path.
-- The active instance configuration supplied DB path `D:\CS\CareerSim-s03-02-risk-review\.career_sim_runner\career_emu\career_emulator.sqlite3`, rather than the root Runner default. That configured path was used. The DB was not opened, queried, parsed, or hashed; no DB or runtime configuration was changed.
+- At S07-33R run time, the active instance configuration supplied DB path `D:\CS\CareerSim-s03-02-risk-review\.career_sim_runner\career_emu\career_emulator.sqlite3`, rather than the root Runner default. That configured path was used for the run. S07-33R did not open, query, parse, or hash the DB and made no runtime configuration change. S11-11 later remediated the active configuration and retired the legacy workspace; see [the retirement record](../LOCAL_WORKSPACE_RETIREMENT.md).
 
 ## Readiness and corrected launch
 
