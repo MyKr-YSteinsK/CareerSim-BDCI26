@@ -94,7 +94,7 @@ S09-11 explicitly reaffirmed that the original v7o raw `FORENSIC_HOLD` remained 
 | Original creation point | `UNKNOWN`; commit `3fd64bead5600c2f0bab677e7b832fe3678bdf12` introduced the report/archive, not a hold-creation record. | `UNKNOWN` | Run record and archive-introduction commit `3fd64bead5600c2f0bab677e7b832fe3678bdf12`. |
 | Later reaffirmation | S09-11 states both original raw holds were retained; S09-12 states both exact raw holds remained active. | `LATER_REAFFIRMED` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md); [S09-12 review](../reviews/S09-12_V8A_TWO_SAMPLE_TRAJECTORY_DIVERGENCE_REVIEW.md) |
 | Release condition | `UNKNOWN`; no tracked source supplies or records satisfaction of the original condition. | `UNKNOWN` | [S09-11 review](../reviews/S09-11_V8A_V7O_TRANSPLANT_FIDELITY_REVIEW.md) records no release or cleanup authorization. |
-| Current disposition | `UNKNOWN_REVIEW_REQUIRED`; S11 Main retains the core raw pair and protects the other six members under unknown scope. `HOLD_RELEASE_COUNT=0`. | `MAIN_CURRENT_DECISION` | [S11 final evidence ledger](../FINAL_EVIDENCE_REVIEW.md#forensic_hold-ledger); S11-08 Main retention decision. |
+| Current disposition | `UNKNOWN_REVIEW_REQUIRED`; S11 Main retains the core raw pair and protects the other six members under unknown scope. `HOLD_RELEASE_COUNT=0`. | `MAIN_CURRENT_DECISION` | [S11 final evidence ledger](../FINAL_EVIDENCE_REVIEW.md#forensic_hold-台账); S11-08 Main retention decision. |
 
 All eight tracked archive members have `UNKNOWN` original hold membership. The current roles below are S11 retention decisions, not reconstructed historical scope.
 
