@@ -23,6 +23,7 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 
 ## 阅读入口
 
+- [教程统一入口与术语](docs/tutorial/00-从这里开始.md)：按 Agent 入门、运行、仓库或研究问题选择阅读路线。
 - [CURRENT_STATE](docs/project/CURRENT_STATE.md)：当前阶段、接受状态与授权边界
 - [Skill / Instruction 历史演化索引](docs/skill-evolution/00-版本索引.md)：代表性历史快照及精确来源
 - [FINAL_REPOSITORY_FREEZE](docs/project/FINAL_REPOSITORY_FREEZE.md)：最终仓库终审与冻结候选记录（状态见记录；最终接受权属于 Main）

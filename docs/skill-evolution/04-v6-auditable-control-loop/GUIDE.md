@@ -1,6 +1,6 @@
 # exact-v6｜版本讲解
 
-> **FACT｜事实** 依据[Instruction](instruction.md)、三个 Skill、[SOURCE](SOURCE.md)、[DELTA](DELTA.md)、[v6 运行验证](../../project/runs/v6-run1-validation.md)和[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)。教学分析标为 **INTERPRETATION｜解释**；无法确认的事实为 **UNKNOWN｜未知**。先读 [v5 GUIDE](../03-v5-evidence-driven-phase-policy/GUIDE.md) 理解上一版，再看本版差异；入门概念见 [v3c GUIDE](../01-v3c-zh-aligned-policy/GUIDE.md)，基础职责与闭环详细教学见 [Track A](../../tutorial/track-a-skill/00-学习地图.md)。
+> **FACT｜事实** 依据[Instruction](instruction.md)、三个 Skill、[SOURCE](SOURCE.md)、[DELTA](DELTA.md)、[v6 运行验证](../../project/runs/v6-run1-validation.md)和[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)。教学分析标为 **INTERPRETATION｜解释**；无法确认的事实为 **UNKNOWN｜未知**。先读 [v5 GUIDE](../03-v5-evidence-driven-phase-policy/GUIDE.md) 理解上一版，再看本版差异；入门概念见 [v3c GUIDE](../01-v3c-zh-aligned-policy/GUIDE.md)，基础职责与闭环详细教学见 [Track A](../../tutorial/track-a-skill/01-从零理解Agent、Instruction与Skill.md)。
 
 ## 1. 这个版本处在什么位置
 
@@ -12,7 +12,7 @@
 
 **FACT｜版本定位**：仍是 Board、Planning、Risk 三个 Skill，数量不变但正文均改变；[DELTA](DELTA.md) 记录 Instruction 由上一版十行调整为本版五行。改动集中在 candidate-first（先产生候选）的风险顺序、公开反馈 reset、动作前 CTRL 和改变状态后的新观察。
 
-**INTERPRETATION｜解释**：成熟之处是把职责接口与可审计记录连在一起，形成明确控制合同；它没有实现机械强制执行。完整闭环图读 [A06](../../tutorial/track-a-skill/06-三Skill协同与一次Action闭环.md)，运行路径读 [Track B](../../tutorial/track-b-system-runtime/00-学习地图.md)，本 GUIDE 只解释这一历史版本的变化。
+**INTERPRETATION｜解释**：成熟之处是把职责接口与可审计记录连在一起，形成明确控制合同；它没有实现机械强制执行。完整闭环图读 [A06](../../tutorial/track-a-skill/06-三Skill协同与一次Action闭环.md)，运行路径读 [Track B](../../tutorial/track-b-system-runtime/01-比赛官方到底提供了什么.md)，本 GUIDE 只解释这一历史版本的变化。
 
 ## 3. Instruction 怎么约束 Agent
 
@@ -77,7 +77,7 @@
 
 **FACT**：只有一个接受的完整样本；配对、重读、reserve trigger 和有界比较仍有缺口。本机 score_report 后来改了 session 字段/时间，原因 UNKNOWN；独立事件绑定 session，raw 未重写。正式 raw FORENSIC_HOLD 状态为 UNKNOWN，不能当无保留要求。
 
-**INTERPRETATION**：设计合同、真实遵循和完整结果分开评价；75.29 与 RUNTIME_ADHERENCE_FAIL 同时保留。调查方法读 [D08](../../tutorial/track-d-project-method/08-Forensics为什么成为项目的重要部分.md)，不能因高分遮盖失败或反过来否定完整运行。
+**INTERPRETATION**：设计合同、真实遵循和完整结果分开评价；75.29 与 RUNTIME_ADHERENCE_FAIL 同时保留。调查方法读 [D08](../../tutorial/track-d-project-method/08-Forensics、失败实验与负证据.md)，不能因高分遮盖失败或反过来否定完整运行。
 
 ## 9. 为什么它值得保留在版本演化里
 

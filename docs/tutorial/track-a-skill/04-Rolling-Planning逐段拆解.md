@@ -1,6 +1,7 @@
 # 04｜Rolling Planning 逐段拆解
 
-[学习地图](00-学习地图.md) · [上一章：Board](03-Structured-State-Board逐段拆解.md) · [下一章：Risk](05-Risk-Review逐段拆解.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-从零理解Agent、Instruction与Skill.md)
+
 
 本章对应[历史 Rolling Planning](../../skill-evolution/04-v6-auditable-control-loop/skills/rolling-planning/SKILL.md)的标题与七个二级 section，编号 P00–P07 仅供教材覆盖检查。**FACT** 来自原文；解释目的与取舍的内容标 **INTERPRETATION**；数值与月份示例标 **TEACHING EXAMPLE**，不能当真实策略阈值或事件答案。
 

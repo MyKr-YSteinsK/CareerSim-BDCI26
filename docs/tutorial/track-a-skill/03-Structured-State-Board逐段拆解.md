@@ -1,6 +1,7 @@
 # 03｜Structured State Board 逐段拆解
 
-[学习地图](00-学习地图.md) · [上一章](02-exact-v6-Instruction逐句拆解.md) · [下一章：Planning](04-Rolling-Planning逐段拆解.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-从零理解Agent、Instruction与Skill.md)
+
 
 本章按[historical SKILL.md](../../skill-evolution/04-v6-auditable-control-loop/skills/structured-state-board/SKILL.md)的实际结构阅读。B00–B05 是教材覆盖编号：标题加五个二级 section（章节），全部对应原文；metadata（元数据）另在 B00 解释。它们不是新增运行字段。
 

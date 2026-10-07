@@ -45,7 +45,7 @@ career-emulator：接受合法动作并改变环境状态
 回执与 fresh public observe → 下一次模型判断
 ~~~
 
-图示是高层系统关系，不枚举每个内部方法。模型生成文本、框架发出工具调用、模拟器执行动作和观察到状态变化分别属于不同环节。系统运行细节与源码导航见 [Track B](../tutorial/track-b-system-runtime/00-学习地图.md)。
+图示是高层系统关系，不枚举每个内部方法。模型生成文本、框架发出工具调用、模拟器执行动作和观察到状态变化分别属于不同环节。系统运行细节与源码导航见 [Track B](../tutorial/track-b-system-runtime/01-比赛官方到底提供了什么.md)。
 
 ## 2. 三个 Skill 的责任划分
 
@@ -96,7 +96,7 @@ CTRL 是动作前的审计标记，用于留下与控制判断有关的线索。
 
 最终 historical v6 使用的自由文本审计表面存在配对歧义。后续版本曾修改记录方式，但不能把后续合同或补丁描述成冻结包已经具备的修复。架构报告只说明标记角色，完整运行缺陷由 [04](04-最终方案、候选选择与工程交付.md) 集中维护。
 
-详细指令与各版 Skill 条款见 [Track A](../tutorial/track-a-skill/00-学习地图.md)；历史原件的版本关系见 [Skill 版本索引](../skill-evolution/00-版本索引.md)。报告不将提示中的要求改写为运行保证。
+详细指令与各版 Skill 条款见 [Track A](../tutorial/track-a-skill/01-从零理解Agent、Instruction与Skill.md)；历史原件的版本关系见 [Skill 版本索引](../skill-evolution/00-版本索引.md)。报告不将提示中的要求改写为运行保证。
 
 ## 4. 状态改变与新鲜观察
 
@@ -114,7 +114,7 @@ Context Compression（上下文压缩）会改变模型下一轮能看到的材�
 
 最终运行发现了压缩后的恢复缺陷，说明“存在恢复规则”和“执行了恢复规则”必须分开判断。它也不能被解释为已经建立 Durable Memory（持久记忆）：同局的压缩上下文与跨调用、跨安装的记忆机制具有不同边界。
 
-后来的 Memory 可行性研究不属于最终架构；其具体自动 anchor 路径未通过部署门。负路线事实集中在 [03](03-研发演进、实验与失败复盘.md)，更完整的验证方法见 [Track D](../tutorial/track-d-project-method/00-学习地图.md)。
+后来的 Memory 可行性研究不属于最终架构；其具体自动 anchor 路径未通过部署门。负路线事实集中在 [03](03-研发演进、实验与失败复盘.md)，更完整的验证方法见 [Track D](../tutorial/track-d-project-method/01-为什么这个比赛不能靠反复改Prompt试分.md)。
 
 ## 6. 为什么保留 Single Agent
 
@@ -140,7 +140,7 @@ Context Compression（上下文压缩）会改变模型下一轮能看到的材�
 | adherence audit | 哪些执行要求通过、失败或无法认证？ | 不估计策略因果收益 |
 | package manifest | 冻结交付包含哪些内容？ | 不证明官方已接受或运行 |
 
-这条关系让项目可以发现错误归因，而不是在看到一个分数后才临时补来源。派生摘要用于阅读，原始证据用于必要复核；哈希提供身份校验，不能替代缺失内容。证据生命周期和本地保留方式见 [Track C](../tutorial/track-c-repository-tooling/00-学习地图.md)。
+这条关系让项目可以发现错误归因，而不是在看到一个分数后才临时补来源。派生摘要用于阅读，原始证据用于必要复核；哈希提供身份校验，不能替代缺失内容。证据生命周期和本地保留方式见 [Track C](../tutorial/track-c-repository-tooling/01-仓库总览与核心工程文件.md)。
 
 ## 8. 当前工程状态与最终包
 
@@ -166,4 +166,4 @@ Context Compression（上下文压缩）会改变模型下一轮能看到的材�
 
 本篇主要依据 [架构复盘](../project/ARCHITECTURE_RETROSPECTIVE.md)、[最终方案审阅](../project/FINAL_SOLUTION_REVIEW.md)、[最终提交身份](../project/FINAL_SUBMISSION_IDENTITY.json) 与 [S06 收口](../project/S06_CLOSEOUT.md)。上述图是来源支持的高层结构表达，图中箭头不新增执行组件或已验证承诺。
 
-Skill 机制读 [Track A](../tutorial/track-a-skill/00-学习地图.md)；框架与工具链读 [Track B](../tutorial/track-b-system-runtime/00-学习地图.md)；源码、脚本与证据目录读 [Track C](../tutorial/track-c-repository-tooling/00-学习地图.md)。返回 [阅读导航](00-阅读导航.md)。
+Skill 机制读 [Track A](../tutorial/track-a-skill/01-从零理解Agent、Instruction与Skill.md)；框架与工具链读 [Track B](../tutorial/track-b-system-runtime/01-比赛官方到底提供了什么.md)；源码、脚本与证据目录读 [Track C](../tutorial/track-c-repository-tooling/01-仓库总览与核心工程文件.md)。返回 [阅读导航](00-阅读导航.md)。

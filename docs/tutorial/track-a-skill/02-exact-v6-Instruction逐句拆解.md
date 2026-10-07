@@ -1,6 +1,7 @@
 # 02｜exact-v6 Instruction 逐句拆解
 
-[学习地图](00-学习地图.md) · [上一章](01-从零理解Agent、Instruction与Skill.md) · [下一章：Board](03-Structured-State-Board逐段拆解.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-从零理解Agent、Instruction与Skill.md)
+
 
 本章覆盖[历史 Instruction](../../skill-evolution/04-v6-auditable-control-loop/instruction.md)的全部五行。为使检查可重复，按分号、句号和换行划成 **28 个条款单元 I01–I28**；编号只属于教材，不是新增运行标记。一个单元可能有多个逻辑动作，都会在解释中展开，不能用“28/28”替代实际语义审阅。
 

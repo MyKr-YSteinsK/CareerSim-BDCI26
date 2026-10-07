@@ -1,0 +1,197 @@
+# 项目历史与多 Skill 架构演化
+
+[四条学习路线与术语](../00-从这里开始.md) · [本 Track 入口](01-为什么这个比赛不能靠反复改Prompt试分.md)
+
+这段研发史可以沿两条线阅读：阶段史记录当时要回答什么问题，架构史记录职责怎样重新分配。先看 S01–S11 的问题变化，再看七个代表版本；时间顺序能帮助定位，不能单独证明某次架构变化造成了分数提升。
+
+## 按问题跳读
+
+- [阶段里实际发生了什么](#阶段里实际发生了什么)
+- [职责边界为什么随版本改变](#职责边界为什么随版本改变)
+
+## 阶段里实际发生了什么
+
+Stage（阶段）把研发组织成有限的问题，而不是无限增加版本号。理解阶段史，应先问“当时最重要的不确定性是什么”，再看工作和结论。
+
+**事实：** 当前项目复盘、架构决策与阶段 closeout 提供了下面的主线；S02、S05 的完整独立 Stage 定义无法从当前 canonical source 恢复。它们保留 UNKNOWN，不用相邻工作的内容替造阶段标题。[项目复盘](../../project/PROJECT_RETROSPECTIVE.md) · [架构决策](../../project/ARCHITECTURE_DECISIONS.md)
+
+~~~text
+S01 基线
+→ S02 独立边界 UNKNOWN / 早期 Skill 工作
+→ S03 风险与执行链相关工作
+→ S04 早期策略样本与审视
+→ S05 独立边界 UNKNOWN / 相邻架构演化
+→ S06 成熟三 Skill 与运行限制
+→ S07 公开接口、Candidate 与持续执行
+→ S08 全局持续性、运行语义与策略交接
+→ S09 高分冲刺及无稳定突破收口
+→ S10 替代路线门禁、选择与冻结
+→ S11 知识整理、证据与仓库收敛（当前仍 ACTIVE）
+~~~
+
+图表达有证据的主题迁移，不表示每项工作只出现在一个阶段，也不表示阶段之间已经构成因果解释。
+
+### S01：先让官方路径留下真实基线
+
+**事实：** S01 有最小 no-op baseline（无操作基线），记录 26.95 / 18.86 / 19m / E / L3。工程首先需要核对官方来源、环境与 Runner（运行驱动器），而不是把一个未跑通的系统直接当作可优化策略。[项目复盘](../../project/PROJECT_RETROSPECTIVE.md) · [运行历史](../../project/RUN_HISTORY.md)
+
+**解释：** 基线的价值在于给后续讨论一个真实起点：工具和结果能被记录。它不代表“最弱策略的准确期望”，也不能与后期 v6 的差值一起证明某个 Skill 的收益。
+
+### S02：保留最小 Skill 闭环的线索与定义缺口
+
+**UNKNOWN｜当前证据不足：** 当前 canonical source 无法恢复完整独立 Stage 定义。source pack 的任务概述指向早期最小 Skill 闭环，版本索引保留早期 Skill-only（仅技能原件）来源的缺口，但不能据此宣布 S02 的完整合同或验收结论。
+
+**事实：** 早期自定义 Skill / 首个 Risk Skill 来源并未形成可恢复的精确配置 Candidate/Instruction 身份；历史迁移没有为它们制造伪快照。[历史版本索引](../../skill-evolution/00-版本索引.md)
+
+**解释：** 可以学习“文件、安装、加载、应用需要分开举证”，但不能补写“该阶段已经证明 Skill 提分”。承认缺失比叙事完整更重要。
+
+### S03：风险与运行链进入问题范围
+
+早期工作涉及 action-trace（动作轨迹）和 Risk（风险）相关 Skill，并关注运行链。风险控制需要知道 Agent 看见什么、选择什么、动作是否成功，因而策略和工程验证逐渐靠近。
+
+**事实：** 当前历史索引对早期 Skill-only 来源和精确 Candidate 身份作了区分；这类早期 smoke（小范围连通检查）不能自动等同于完整 gameplay 或分数收益。[版本索引](../../skill-evolution/00-版本索引.md) · [架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md)
+
+**解释：** “加入风险模块”与“风险模块减少死亡”是不同问题。前者可以检查代码和合同，后者要检查实际应用、比较条件和结果。
+
+### S04：早期方案已经暴露单局比较的限制
+
+**事实：** v1 的 S04-03 / S04-04 历史样本分别为 76.04 /48m/A/L6 与 35.31 /25m/D/L4。它们属于 same-source pair（同来源配对摘要），原始材料不可得，完整 Instruction 身份不完整。[最终证据审查](../../project/FINAL_EVIDENCE_REVIEW.md) · [运行历史](../../project/RUN_HISTORY.md)
+
+这个阶段的资料为后续 red-team（反向审视）提供了现实理由：只抓住高分，很容易忽略同方案的低端表现。但不能据历史 pair 推导风险模块或任一规则的因果效应。
+
+### S05：讲已确认演化，保持阶段定义 UNKNOWN
+
+**UNKNOWN｜当前证据不足：** 当前 canonical source 无法恢复完整独立 Stage 定义。可以确认代表版本 v3c、v4、v5 的文件与职责变化，不能把这些变化任意分配成 S05 的正式目标和验收。
+
+**事实：** v3c 有四 Skill；v4 移除 career-action-trace 并整合为三 Skill；v5 延续三 Skill、修改 evidence-driven phase policy（证据驱动阶段策略）。这些是配置演化事实，不是逐个版本提分事实。[版本索引](../../skill-evolution/00-版本索引.md) · [v4 差异](../../skill-evolution/02-v4-lean-runtime-policy/DELTA.md) · [v5 差异](../../skill-evolution/03-v5-evidence-driven-phase-policy/DELTA.md)
+
+### S06：三 Skill 成熟，但完成和遵循分开
+
+**事实：** v6 的 Board / Planning / Risk（事实板 / 规划 / 风险）职责形成可审计控制循环。完整样本为 75.29 /52.70/48m/A/L6；有效完成但运行遵循失败。v6b 进行了静态执行合同修复，未把旧成绩转移为新运行验证。[S06 收口](../../project/S06_CLOSEOUT.md)
+
+Main 以 PASS_WITH_KNOWN_RUNTIME_LIMITATION 接受 S06。这说明工程阶段可以完成有限目标，同时明确遗留运行问题。不是全部协议已正确，也不是下一轮无限重试许可。
+
+**解释：** 研发关注点从“有没有模块”转向“模块是否按职责持续执行”。这个变化让后续审计更重要。
+
+### S07：公开接口与持续执行的问题
+
+**事实：** S07 包括 public black-box probes（公开黑箱探测）、Candidate 加固和执行持续性研究；v7 系列新增 delivery-progress（交付进度）。阶段收口为 PASS_WITH_KNOWN_RUNTIME_PERSISTENCE_LIMITATION，稳定 80+ 和 hidden transfer 未证明。[架构决策](../../project/ARCHITECTURE_DECISIONS.md) · [实验复盘](../../project/EXPERIMENT_RETROSPECTIVE.md)
+
+v7i stale score、provider 故障和 v7m M20 技术部分局，说明当时需要先区分运行基础问题和策略问题。不是每一条失败都能进入最终分数排名。
+
+### S08：从运行语义修复向策略交接
+
+**事实：** S08 关注整局持续性、轮次效率和运行合同取证。S08-09 查明动作回执不含新状态、缺观察是真违规，并指出 runtime 与 auditor（审计器）均有修正依据。阶段收口为 PASS_WITH_KNOWN_STRATEGY_LIMITATION，运行条件足以支持后续策略研究，但不是所有问题消失。[运行合同取证](../../project/reviews/S08-09_RUNTIME_CONTRACT_ADHERENCE_FORENSICS.md) · [架构决策](../../project/ARCHITECTURE_DECISIONS.md)
+
+**解释：** 交接意味着主要研究问题转换：不能永久只修流程，也不能在流程尚不可解释时把低分全怪策略。判断需要当时证据，而不是事后按最终结果倒排。
+
+### S09：高分冲刺没有转化为稳定突破
+
+**事实：** S09 在 survival floor（生存底线）约束下研究高分和 donor（供体）核心。v8a 从 v7z shell（外壳）与 v7o 核心移植形成，两个完整样本得到 72.65、59.00。阶段结论 COMPLETE_WITHOUT_STABLE_75_PLUS_BREAKTHROUGH。[架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md) · [实验复盘](../../project/EXPERIMENT_RETROSPECTIVE.md)
+
+这个结论限定后续无限 Prompt 加固。没有稳定突破，不等于每个版本没有工程价值，也不意味着所有策略方向被穷尽。
+
+### S10：研究替代路径，再做有限选择
+
+**事实：** S10 重新检查 Reviewer、Memory、deterministic helper（确定性辅助工具）、Controller（控制器）、strategy mining 与 Simulator search。各路线止于不同门禁，没有成为最终部署架构。Main 最后选择 exact-v6 并冻结原始 runtime source；阶段状态为 COMPLETE_FINAL_SUBMISSION_FROZEN。[实验复盘](../../project/EXPERIMENT_RETROSPECTIVE.md) · [最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md)
+
+选择不是“把所有新东西接起来”。对证据弱、权限边界不成立或比较基础不足的路线，STOP 能避免把研发复杂度带入单次交付。
+
+### S11：把结果转成可复核的知识
+
+**事实：** S11 进入复盘、canonical 文档、来源链、hold、仓库结构和教程整理。当前仍 ACTIVE；本教材完成不等于 S11 完成。[当前状态](../../project/CURRENT_STATE.md)
+
+**解释：** 这一步把“做过很多东西”变成“别人能理解证据与边界”。仓库精简也需要先迁移知识、检查依赖与 hold；写教材不授权清理。
+
+### 为什么阶段史不能写成成功递增的版本表
+
+**解释：** 后来的任务可能修复审计，而不是改变策略；一个低分自然终局可能比一个高分缺身份的输出更适合归因；一个 STOP 可能比新建 Candidate 更接近阶段目标。因此“版本更晚→得分更高→能力更强”的排列不能解释这段历史。
+
+S06 的成熟结构与 S07/S08 的持续性研究可以同时成立。前者有明确职责和完整样本，后者继续检查执行链能否在更长程、更复杂条件中保持规则。若把“成熟”理解成“所有问题已解决”，会误以为后续研究没有必要。
+
+S09 的无稳定突破也没有抹去早期成果。它改变的是“继续局部加固是否值得”的判断，而非否认官方环境、审计和交付身份已得到工程建设。
+
+### 以什么单位读一段研发史
+
+对每段工作，读者可以保留四行笔记：
+
+1. 当时必须回答的问题。
+2. 新增了哪种证据，而不是新增了多少文件。
+3. 哪个判断因此改变，哪些判断未改变。
+4. 进入下一阶段所需的接受或授权。
+
+**教学示例：** 对 S10-22，可以写“寻找前瞻式比较；得到冻结基线 2/16 完成；当前装置不支持宏比较，宏优劣未判断；转向现有组合与冻结”。这比“做了模拟器，失败了”保留更多研究信息。
+
+同样，对 S11 写“整理证据与教程，当前 ACTIVE”，比“项目最终结束”准确。文档完成和阶段验收不是同一个事实。
+
+### 从整条历史学到什么
+
+问题的主线逐渐改变：先确认官方链可运行，再确认 Skill 身份与职责，随后关注长程策略排序；实际运行暴露持续性、恢复、来源归因与遵循问题；后期转向有界替代路线，证据不足时停止复杂度扩张，最后冻结成熟历史身份。
+
+**解释：** 这不是一次顺利规划后的直线执行。阶段调整正是因为新证据改变了“当前最值得解决的问题”。把这些变化讲清楚，比背下几十个 Candidate 名称更有价值。
+
+阶段史把问题放回时间背景。接下来沿具体文本版本观察职责变化，解释拆分、精简和新增模块各自要承担什么；解释仍不能代替运行效果证据。
+
+## 职责边界为什么随版本改变
+
+Skill（技能）拆分既能明确责任，也会增加上下文、协调和审计负担。模块数不是能力分数；每一次增减，都应该对应一个已经发现的问题。
+
+本章从研发决策看架构变化。先修概念见 [D02](02-Candidate、Run、Experiment到底有什么区别.md)；职责设计演化读 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)，版本细节查各 GUIDE。这里关注为什么组织职责，以及组织变化到底获得了什么证据。
+
+### 先分清“设计职责”和“运行事实”
+
+**事实：** 最终设计采用 Single Agent（单智能体）作为唯一提交者。Board 整理当前局事实，Planning 独占策略生成，Risk 审查已有候选。这个职责定义不表示每个实际窗口都符合设计。[架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md) · [运行合同](../../project/AGENT_RUNTIME_CONTRACT.md)
+
+**解释：** 多 Skill 是同一个执行者使用不同职责模块，并非天然有多个独立 Agent。若两个 Skill 都能重写事实，或都能产生新方案，Agent 要解决额外冲突，审计也难判断是谁改变了决策。
+
+### 七个代表节点
+
+| 节点 | 确认的架构变化 | 研究意义 | 证据边界 |
+|---|---|---|---|
+| v3c | career-action-trace / Board / Planning / Risk 四 Skill | 保存较早的职责配置 | 精确配置可恢复，未识别对应运行 |
+| v4 | 移除 career-action-trace，三 Skill 整合 | 检查轨迹职责是否能合并 | 不只是删文件，其余 Skill 内容也变 |
+| v5 | 三 Skill，证据驱动阶段策略 | 让决策依据当前反馈与阶段 | 无对应精确完整运行证据 |
+| exact-v6 | 三 Skill 可审计控制循环 | 明确事实、策略、风险与提交顺序 | 一个完整样本，遵循失败 |
+| v7 | 增加 delivery-progress，四 Skill | 关注长期交付与成长轨迹 | parent 是 v6c；不是直接仅加一文件 |
+| v7c | 四 Skill，全局决策策略 | 改 Board 与 Planning 的决策组织 | 精确配置未识别完整运行 |
+| v8a | v7z 外壳 + v7o donor core，四 Skill | 把较早核心与后期工程结构结合 | 两完整样本，非 v6 复验 |
+
+**事实：** 表中配置、parent（父版本）与差异来自 [历史索引](../../skill-evolution/00-版本索引.md) 以及 [v4 DELTA](../../skill-evolution/02-v4-lean-runtime-policy/DELTA.md)、[v7 DELTA](../../skill-evolution/05-v7-global-trajectory-delivery/DELTA.md)、[v8a DELTA](../../skill-evolution/07-v8a-v7o-donor-core-transplant/DELTA.md)。
+
+“前一个代表版本”是教学抽样顺序，未必是直接 parent。v7 的 parent 为 v6c，v7c 的 parent 为 v7b，v8a 的 parent 为 v7z。不能把索引相邻关系改成实际演化链。
+
+### 为什么会从四个减少为三个
+
+**事实**：[v4 DELTA](../../skill-evolution/02-v4-lean-runtime-policy/DELTA.md) 同时涉及 Trace 移除、三 Skill 与 Instruction 改动。因此观察到的结果不能隔离为“删掉一个 Skill”的效果；代表节点相邻也未必直接 parent。
+
+**解释**：合并轨迹与事实维护可减少重复责任，这是设计理由；是否提高分数需要另外举证。职责交叉怎样形成旧值风险，详见 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)。
+
+### 为什么 Planning 和 Risk 仍然分开
+
+**事实**：[S06 收口](../../project/S06_CLOSEOUT.md) 记录 exact-v6 的单一规划权、风险审查与唯一提交者，并观察到一次 Risk RECONSIDER；整体仍有遵循缺陷。
+
+**解释**：模块界面便于把事实、策略、门禁和执行分别审查，却不提供 Risk 的平均收益估计。具体规则读 [A04 Planning](../track-a-skill/04-Rolling-Planning逐段拆解.md) 与 [A05 Risk](../track-a-skill/05-Risk-Review逐段拆解.md)。本章关注“哪些命题已验证”，不再次拆解规则。
+
+### 为什么后来增加 Delivery
+
+**事实**：v7 的 parent 是 v6c，新增 Delivery 的同时改了其余 Skill 和 Instruction，[DELTA](../../skill-evolution/05-v7-global-trajectory-delivery/DELTA.md) 与 [架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md) 提供身份依据。[v7m 取证](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md) 又区分短 item identity、实际交付和赞许沟通。
+
+**解释**：长程交付问题推动新的证据职责，但多处干预、不同轨迹和运行条件是 Confounder（混杂因素）。它们阻止我们把任何分差单独归给第四 Skill。增加模块的上下文、协调、恢复和审计成本也没有被独立测量，不能写成已证明性能损失；职责细节回 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)。
+
+### v8a 为什么不等于最终 v6 的升级版
+
+**事实：** v8a 保留四 Skill，从 v7o 供体核心移植到 v7z 外壳；两个完整样本为 72.65、59.00。当前 checkout 的历史 v8a 与最终 exact-v6 ZIP 是不同身份。[v8a 来源](../../skill-evolution/07-v8a-v7o-donor-core-transplant/SOURCE.md) · [最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md)
+
+**解释：** “后来”表示研发时间更晚，不自动表示所有性能更好。修改同时涉及内容、职责和执行审计，两个分数不能隔离 Delivery 的贡献。
+
+### 最终为什么回到三 Skill
+
+**事实：** Main 的选择是 HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING，冻结 exact historical v6 的原始身份，没有把后期修复或第四 Skill 混入最终包。[最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md)
+
+**解释：** 选择的完整理由见 [D11](11-为什么最终选择exact-v6而不是v1或v8a.md)。成熟身份、观测证据与复杂度控制共同提供解释语言；其中“选这个固定历史对象”是事实，“多一层模块增加协调成本”是设计解释。不要把解释升级为已测量的性能损失。
+
+### 判断一个新模块值不值得增加
+
+**教学示例：** 假设要新增长期记忆模块，先问：现有流程在哪个窗口丢失了必要事实？模块怎样取得公开新鲜数据？谁能写入？压缩后怎样读回？是否改变规划权？如何检查实际应用？如果这些问题未回答，新增文件只证明架构变复杂。
+
+**解释：** 在真实工程中，模块边界应跟随可辨认的问题，而不是跟随功能名的吸引力。CareerSim 支持这种职责和证据思路，但没有证明三 Skill 对所有 Agent 都最优。

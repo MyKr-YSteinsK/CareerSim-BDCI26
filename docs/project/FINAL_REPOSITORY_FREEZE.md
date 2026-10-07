@@ -71,7 +71,7 @@ exact-v6 已记录的执行缺陷继续公开保留：Energy 多选 schema rejec
 ## 6. Human-readable / Teaching Layer
 
 - 正式 [Final Report 阅读导航](../final-report/00-阅读导航.md)：`docs/final-report/00–05`，恰好六篇。S11-34 已完成 11 → 6、正式提升、引用迁移和旧层退役；`docs/final-report-v2/` 不存在。
-- 教程四条入口均存在，导航链接可解析：[Track A](../tutorial/track-a-skill/00-学习地图.md) 9 篇、[Track B](../tutorial/track-b-system-runtime/00-学习地图.md) 11 篇、[Track C](../tutorial/track-c-repository-tooling/00-学习地图.md) 13 篇、[Track D](../tutorial/track-d-project-method/00-学习地图.md) 15 篇，共 48 篇。
+- 教程四条入口均存在，导航链接可解析：[Track A](../tutorial/track-a-skill/01-从零理解Agent、Instruction与Skill.md) 9 篇、[Track B](../tutorial/track-b-system-runtime/01-比赛官方到底提供了什么.md) 11 篇、[Track C](../tutorial/track-c-repository-tooling/01-仓库总览与核心工程文件.md) 13 篇、[Track D](../tutorial/track-d-project-method/01-为什么这个比赛不能靠反复改Prompt试分.md) 15 篇，共 48 篇。
 - [Skill Evolution 版本索引](../skill-evolution/00-版本索引.md)：七组代表原件与 GUIDE，包含 v3c、v4、v5、exact-v6、v7、v7c、v8a，共 54 个 Markdown 文件；SOURCE/DELTA/GUIDE 均存在。
 - baseline/v1 完整原文身份及其他 Known Gaps 原样保留；没有重新考古恢复或补造。报告解释不覆盖 canonical engineering evidence，教程不增加独立样本数。
 

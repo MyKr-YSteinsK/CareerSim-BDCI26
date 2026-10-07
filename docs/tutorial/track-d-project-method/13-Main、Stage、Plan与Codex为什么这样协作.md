@@ -1,5 +1,7 @@
 # 13｜Main、Stage、Plan 与 Codex 为什么这样协作
 
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-为什么这个比赛不能靠反复改Prompt试分.md)
+
 Track C 已解释任务怎样落成 Git。这里关注 governance（治理）为什么影响实验可信度：如果目标、身份、停止条件可以在看到结果后随意修改，那么记录很完整，也可能没有清楚回答原问题。
 
 ## 各角色保留不同的判断
@@ -71,8 +73,4 @@ Stop Condition（停止条件）在开始前说明哪些结果使后续动作无
 
 **TEACHING EXAMPLE｜教学示例：** 对“增加记忆并跑到高分”为止的 Plan，补问：指定哪种记忆路径？自动可用证据是什么？哪些参数冻结？技术失败是否重试？何时停止？谁决定正式采用？如果这些问题未明确，工作流再规范也不保证实验可解释。
 
-具体 branch/worktree/commit（分支/工作树/提交）操作见 [Track C 开发任务](../track-c-repository-tooling/11-一次开发任务从Plan到Git是怎样落地的.md)。本章提供其研究治理理由；文档写作不授权新的运行、清理或提交比赛。
-
----
-
-[学习地图](00-学习地图.md) | [上一章](12-Anti-overfit、Hidden-Test与不确定性.md) | [下一章](14-从CareerSim迁移到真实Agent工程的方法论.md)
+具体 branch/worktree/commit（分支/工作树/提交）操作见 [Track C 开发任务](../track-c-repository-tooling/11-开发工作流与文件生命周期.md)。本章提供其研究治理理由；文档写作不授权新的运行、清理或提交比赛。

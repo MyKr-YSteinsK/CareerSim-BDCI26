@@ -1,6 +1,7 @@
 # 06｜experiments 与 research 是怎样工作的
 
-[学习地图](00-学习地图.md) · [上一章](05-tests为什么这么多以及它们证明什么.md) · [下一章：证据链](07-artifacts、Raw-Evidence与证据链.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-仓库总览与核心工程文件.md)
+
 
 ## 实验目录为什么存在
 
@@ -20,7 +21,7 @@ Experiment（实验）不是“再跑一次碰碰运气”，而是给一个问�
 
 ## 一、当前13个tracked experiment files
 
-**FACT｜事实：**S11-28记录两组，共13文件、66,626 bytes。如下全量索引只描述路径与角色，不打开provider result里的可能原始文本。每一对Skill是历史实验输入，正文教学去[Track A](../track-a-skill/00-学习地图.md)。
+**FACT｜事实：**S11-28记录两组，共13文件、66,626 bytes。如下全量索引只描述路径与角色，不打开provider result里的可能原始文本。每一对Skill是历史实验输入，正文教学去[Track A](../track-a-skill/01-从零理解Agent、Instruction与Skill.md)。
 
 | 文件 | 类别与角色 |
 |---|---|

@@ -1,6 +1,7 @@
 # 05｜Risk Review 逐段拆解
 
-[学习地图](00-学习地图.md) · [上一章：Planning](04-Rolling-Planning逐段拆解.md) · [下一章：一次闭环](06-三Skill协同与一次Action闭环.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-从零理解Agent、Instruction与Skill.md)
+
 
 本章按[exact-v6 Risk 原文](../../skill-evolution/04-v6-auditable-control-loop/skills/risk-review/SKILL.md)的标题和五个二级 section 阅读，覆盖编号 R00–R05 只用于教材。**FACT** 描述规则与运行记录；**INTERPRETATION** 分析判断边界；**TEACHING EXAMPLE** 是构造场景，绝不补成历史 Run 原始记录。
 

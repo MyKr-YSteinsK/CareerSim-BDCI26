@@ -1,6 +1,7 @@
 # 05｜JiuwenSwarm、AgentServer 与 MCP 分别是什么
 
-[学习地图](00-学习地图.md) · [上一章：安装](04-Skill是怎样真正安装进JiuwenSwarm的.md) · [下一章：Runner](06-Runner如何启动并驱动一局CareerSim.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-比赛官方到底提供了什么.md)
+
 
 依据 [setup.py](../../../career_sim_runner/setup.py)、[mcp_config.py](../../../career_sim_runner/mcp_config.py)、[ws_client.py](../../../career_sim_runner/ws_client.py)与历史注册证据。本章不启动服务，不进行 MCP initialize/list_tools 或 provider probe。
 
@@ -56,7 +57,7 @@ S03-06 后来只改 active config 的 command scalar，再通过真实服务注�
 
 **INTERPRETATION**：cwd（工作目录）指定进程运行位置，PATH 指定裸 executable 的查找环境，absolute path（绝对路径）直接指定文件。把 cwd 指到 Scripts 并不保证 Windows resolver 就能找到裸命令。launcher 存在、配置字符串存在和 spawn／握手成功分别证明不同层。
 
-精确历史来源和统一故障结构见[第九章](09-为什么我们做了那么多工程验证与排障.md)。这些探针是当时有界授权动作，不是本章邀你再次运行。
+精确历史来源和统一故障结构见[第九章](09-工程排障与完整运行链复现.md)。这些探针是当时有界授权动作，不是本章邀你再次运行。
 
 ## 6. 服务启动为何可能已经调用模型
 

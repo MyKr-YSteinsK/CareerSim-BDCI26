@@ -1,6 +1,7 @@
 # 06｜三 Skill 协同与一次 Action 闭环
 
-[学习地图](00-学习地图.md) · [上一章：Risk](05-Risk-Review逐段拆解.md) · [下一章：真实案例](07-真实案例、反例与失败模式.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-从零理解Agent、Instruction与Skill.md)
+
 
 前面分别学了事实、规划和风险。本章把它们接成一次具体 Action（动作）。**FACT** 的规则来自[exact-v6 Instruction](../../skill-evolution/04-v6-auditable-control-loop/instruction.md)和三个历史 Skill；真实 M13 事实来自[运行验证](../../project/runs/v6-run1-validation.md)。**INTERPRETATION** 用于解释交接，完整构造流程标为 **TEACHING EXAMPLE**。
 
@@ -115,7 +116,7 @@ CTRL B=F G=O P=? R=ALLOW CP=- X=1
 
 在同一构造材料下，另一条正确路径是 Planning 已应用 TIGHT 约束而直接提名 2，再由 Risk 完整审查为 ALLOW，CTRL 的 X=- 表示没有发生 RECONSIDER 重比。随后仍须紧邻提交、读取回执和 fresh observe。不是每次动作都要先选错一项来练习重比；有界重比是必要时的分支。
 
-**INTERPRETATION**：完整例子的核心不是选 2，而是每个结论都在其 owner、证据与时点上成立。换成一个新公开情境，最佳候选可以不同，但不能省略交接。
+**INTERPRETATION**：完整例子的每个结论都需要落在相应职责、证据与时点上。换成一个新公开情境，最佳候选可以不同，但不能省略交接。
 
 ## 5. 为什么 success receipt 不是 fresh state
 

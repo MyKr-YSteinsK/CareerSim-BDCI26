@@ -1,6 +1,7 @@
 # 03｜career_sim_runner 源码目录导航
 
-[学习地图](00-学习地图.md) · [上一章](02-根目录与核心工程文件.md) · [下一章：scripts](04-scripts为什么这么多以及分别做什么.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-仓库总览与核心工程文件.md)
+
 
 ## 先看职责，再看文件
 
@@ -58,11 +59,11 @@ WebSocket（双向长连接）是Runner与AgentServer交换驱动消息的通道
 | [install.py](../../../career_sim_runner/install.py) | 按提交目录安装Skills与状态，保存InstallRecord，提供读取active install能力 | CLI或headless play；装错身份影响实际模型上下文 |
 | [validate.py](../../../career_sim_runner/validate.py) | 分开验证提交结构与环境，组合ValidationReport | CLI；字段PASS与后端PASS属于不同问题 |
 
-Manifest（清单）告诉系统包叫什么、模式是什么、Instruction是什么；Skill文件提供行为规则。不同检查器的范围要分别看：冻结 Runner 的 `validate_manifest` 只检查 team / mode，不检查 Instruction 正文是否为空；提交结构与 Skill frontmatter 检查负责各自的文件和格式要求。项目打包器的额外检查不能归给 frozen validator。检查通过仍不能判定策略好坏或证明模型读过，具体范围见[Track B 提交校验](../track-b-system-runtime/03-Submission、Manifest与Skill校验.md)。
+Manifest（清单）告诉系统包叫什么、模式是什么、Instruction是什么；Skill文件提供行为规则。不同检查器的范围要分别看：冻结 Runner 的 `validate_manifest` 只检查 team / mode，不检查 Instruction 正文是否为空；提交结构与 Skill frontmatter 检查负责各自的文件和格式要求。项目打包器的额外检查不能归给 frozen validator。检查通过仍不能判定策略好坏或证明模型读过，具体范围见[Track B 提交校验](../track-b-system-runtime/03-Submission校验与Skill安装.md)。
 
 一个重要源码细节：`validate_submission`主要检查提交结构，`validate_environment`会创建必要目录、初始化/overlay实例、在DB父目录写入并删除探针，还调用后端可达检查。因而“validate听起来像检查”不等于全部验证无副作用。不能在本任务中为了确认教材而执行它。
 
-安装也不是普通复制教程文件。它作用于运行工作区，可能清理或重置已安装Skill状态。这是为什么[Track B 安装章](../track-b-system-runtime/04-Skill是怎样真正安装进JiuwenSwarm的.md)把安装身份与读取身份分别举证，工程任务不会默默调用install。
+安装也不是普通复制教程文件。它作用于运行工作区，可能清理或重置已安装Skill状态。这是为什么[Track B 安装章](../track-b-system-runtime/03-Submission校验与Skill安装.md)把安装身份与读取身份分别举证，工程任务不会默默调用install。
 
 ## 四、驱动与流式记录：让一次任务有始有终
 

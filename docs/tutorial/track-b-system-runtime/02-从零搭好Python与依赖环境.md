@@ -1,6 +1,7 @@
 # 02｜从零搭好 Python 与依赖环境
 
-[学习地图](00-学习地图.md) · [上一章：官方组件](01-比赛官方到底提供了什么.md) · [下一章：提交校验](03-Submission、Manifest与Skill校验.md)
+[统一入口与术语](../00-从这里开始.md) · [本 Track 阅读路线](01-比赛官方到底提供了什么.md)
+
 
 主要事实来自[ENVIRONMENT](../../project/ENVIRONMENT.md)、[pyproject](../../../pyproject.toml)、[uv.lock](../../../uv.lock)与[来源锁](../../project/OFFICIAL_SOURCE_LOCK.md)。本章解释 S01 的实际安装记录和后续运行约定；**不是本轮已经重装环境或验证当前服务**。
 
