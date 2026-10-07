@@ -4,6 +4,8 @@
 
 **INTERPRETATION｜解释：** 取证的价值是缩小可支持的结论范围。它既可以确认问题，也可以证明某个常见解释没有足够证据。UNKNOWN 不是取证失败的同义词。
 
+先读 [D04 多层验证](04-Static、Runtime、Gameplay与Adherence多层验证.md) 与 [D07 样本边界](07-为什么一次高分几乎什么都证明不了.md)。下面完整展开 stale score、session provenance、CTRL 配对三案；其余案例用“证据 / 替代解释 / 判断边界”矩阵查询。证据怎样生成查 B08，怎样保留查 C07。
+
 本章只使用 canonical summaries（权威摘要）与已去敏研究记录，不展开 raw payload（原始载荷），也不重新进行 live 诊断。
 
 ## 1. Stale score：文件里有分数，不代表属于这次运行
@@ -20,15 +22,11 @@
 
 ## 2. Provider failure：今天可连接，不解释昨天为什么失败
 
-**表面现象：** 模型流连接错误，Runner 无法继续。
+| 要核对的证据 | 替代解释与实际发现 | 结论边界 |
+|---|---|---|
+| 当时异常链、HTTP 响应、诊断时间窗 | DNS/TLS/代理/服务端等均可能；**FACT**：历史连接异常发生在 HTTP 响应前，没有状态码；后续 DNS/TCP/TLS 和一次 metadata request 通过 | 只确认后续窗口可达，不能认定历史唯一根因，也不自动授权替代局 |
 
-**可能解释：** DNS、TLS、代理、服务端或更低层连接问题。异常名字未必区分它们。
-
-**需要证据：** 当时异常链、是否收到 HTTP response（HTTP 响应）、时间窗和后续诊断的时点。
-
-**FACT｜实际查到：** 历史链为连接异常，在 HTTP 响应之前失败，没有状态码或可定根因的低层信息。后续 DNS/TCP/TLS 与一次 metadata request（元数据请求）通过，只证明那次诊断时当前路径可达。[S07-39 取证](../../project/reviews/S07-39_PROVIDER_CONNECTIVITY_FORENSICS.md)
-
-**可下结论：** 当前连通性具备另行审查替代运行的条件。**仍不能下结论：** 历史故障一定由 DNS 或代理造成；诊断通过自动授权新局。本轮没有重做任何网络或 Provider 检查。
+来源：[S07-39 取证](../../project/reviews/S07-39_PROVIDER_CONNECTIVITY_FORENSICS.md)。方法要点是把事故证据与事后诊断分开；当前没有重新做网络检查。
 
 ## 3. Session provenance：缺字段不等于身份完全不可恢复
 
@@ -44,39 +42,27 @@
 
 ## 4. v7m：时间相邻不等于因果机制
 
-**表面现象：** 运行在 M20 技术退出，用户曾进行进度查询。
+| 要核对的证据 | 替代解释与实际发现 | 结论边界 |
+|---|---|---|
+| fresh observe、动作回执、client/server 时间线、查询调用路径 | 查询影响连接、共同底层原因或未记录异常；**FACT**：84/84 动作成功、85 unique observes，查询后仍推进到 M20 存活；只读 stdout 查询无直接写入/调用机制 | `PARTIAL_GAMEPLAY_TECHNICAL_FAILURE`；查询导致终止不获支持，根因 `INSUFFICIENT_EVIDENCE`，不能预测最终分数 |
 
-**可能解释：** 查询影响连接；模型流与本地连接受共同原因影响；某个未记录组件异常。
-
-**需要证据：** 最后 fresh observe、动作回执、客户端与服务日志时间线，以及查询是否有写入或调用路径。
-
-**FACT｜实际查到：** 84/84 动作成功，85 次 unique observes（唯一观察），最后 fresh M20 仍 alive（存活）。客户端接收异常先可见，后续有模型流中断；只读 stdout 查询没有直接写入/调用机制，且查询之后运行仍推进到 M20。根因分类 INSUFFICIENT_EVIDENCE（证据不足）。[v7m 取证](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md)
-
-**可下结论：** 有价值的 PARTIAL_GAMEPLAY_TECHNICAL_FAILURE（对局技术部分失败），查询导致终止的因果判断不获支持。**仍不能下结论：** 确认某网络根因、预测最终成绩，或把 M20 partial 写成完整月末。
+来源：[v7m 取证](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md)。时间相邻可以提出假设，不能独立提供因果机制。
 
 ## 5. Fresh state：成功回执不等于状态观察
 
-**表面现象：** 审计发现一些连续动作之间缺少 observe，但动作都成功。
+| 要核对的证据 | 替代解释与实际发现 | 结论边界 |
+|---|---|---|
+| tool result 字段、动作/observe 序列 | 回执已含新状态或审计漏读；**FACT**：S08-RUN03 回执仅 success/error，不含 state/event/choices，18 个缺 observe 边界是真实违规 | 不能以 success 代替 fresh state，也不能从缺观察数推算分数损失 |
 
-**可能解释：** take_action 已返回新状态；Agent 使用旧状态；审计遗漏了观察。
-
-**需要证据：** 实际 tool result（工具结果）字段、接口模型和动作/观察序列。
-
-**FACT｜实际查到：** S08-RUN03 的 action 回执只有 success/error，不含 public state、event 或 choices。18 个缺 observe 边界是真实违规，不是回执等价观察。[S08-09 取证](../../project/reviews/S08-09_RUNTIME_CONTRACT_ADHERENCE_FORENSICS.md)
-
-**可下结论：** 执行链没有遵守每次成功动作后的 fresh observe 合同，runtime 与 auditor 均有修正依据。**仍不能下结论：** 哪一个缺观察导致了多少分数损失。
+来源：[S08-09 取证](../../project/reviews/S08-09_RUNTIME_CONTRACT_ADHERENCE_FORENSICS.md)。接口闭环本身见 [B07](../track-b-system-runtime/07-从模型决定到Tool调用再到新状态.md)。
 
 ## 6. Compression：恢复文字不是来源重读
 
-**表面现象：** 压缩后仍能看到状态和规则摘要。
+| 要核对的证据 | 替代解释与实际发现 | 结论边界 |
+|---|---|---|
+| compressor epoch、read_file、新观察与合同定义时间关系 | 完整来源恢复或仅摘要留存；**FACT**：v6 两次压缩后均没有 Skill reread，原报告采用 S06-25 recovery definition，v6b 后续合同更明确 | reinjected state text 不证明已重读；不能认定所有后续错误由压缩造成 |
 
-**可能解释：** 完整合同已恢复；只保留压缩摘要；事实恢复与 Skill 来源读取是两种不同事件。
-
-**需要证据：** compressor epoch（压缩时期）与 read_file（读文件）序列、新观察、原合同和后续 recovery 定义的时间关系。
-
-**FACT｜实际查到：** v6 有两次压缩时期，没有在任一之后重读 Skill。运行记录以 S06-25 恢复定义解释这个缺口；后续 v6b 合同更明确要求恢复重读。[v6 记录](../../project/runs/v6-run1-validation.md) · [S06 收口](../../project/S06_CLOSEOUT.md)
-
-**可下结论：** 重读事件没有发生，不能把 reinjected state text（重新注入的状态文字）当成已重读来源。**仍不能下结论：** 所有后续错误都是压缩造成，或再次增加提示一定解决恢复。
+来源：[v6 记录](../../project/runs/v6-run1-validation.md)、[S06 收口](../../project/S06_CLOSEOUT.md)。恢复条款查 [A02](../track-a-skill/02-exact-v6-Instruction逐句拆解.md)，取证须保留后续定义与历史合同的时间关系。
 
 ## 7. CTRL/action：文字数量不能充当唯一动作映射
 
@@ -92,15 +78,11 @@
 
 ## 8. Hidden evidence：分析者能看见，不代表玩家能使用
 
-**表面现象：** raw 或运行文本包含内部 HiddenRisk 数值引用。
+| 要核对的证据 | 替代解释与实际发现 | 结论边界 |
+|---|---|---|
+| participant-visible 输入定义、引用位置与用途 | 分析字段或内部信息进入策略输出；**FACT**：v8a 两个样本均保留 HiddenRisk 数值引用限制 | 内部数值不能成为可部署规则；引用限制不证明两局分差由它造成 |
 
-**可能解释：** 内部信息混入公开策略输出；审计记录包含分析用字段；参赛者输入边界被误认。
-
-**需要证据：** participant-visible（参赛者可见）输入定义、引用发生的位置、来源与审计限定。
-
-**FACT｜实际查到：** v8a 两个样本分别保留 HiddenRisk 数值引用限制，不能把内部数值作为可部署策略知识；这些限制也不能直接解释两局分差。[样本一](../../project/runs/v8a-full-horizon-sample1.md) · [样本二](../../project/runs/v8a-full-horizon-sample2.md)
-
-**可下结论：** 公开/隐藏信息边界需要审查。**仍不能下结论：** 把隐藏阈值写入教材规则，或声称内部引用带来了确定分数收益。
+来源：[样本一](../../project/runs/v8a-full-horizon-sample1.md)、[样本二](../../project/runs/v8a-full-horizon-sample2.md)。这里区分保存技术来源与准许玩家使用信息，抗过拟合边界另见 D12。
 
 ## 同一 parser 的 FAIL，怎样区分工具问题与行为问题
 

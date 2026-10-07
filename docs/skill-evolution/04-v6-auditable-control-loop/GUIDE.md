@@ -1,6 +1,6 @@
 # exact-v6｜版本讲解
 
-> **FACT｜事实** 依据[Instruction](instruction.md)、三个 Skill、[SOURCE](SOURCE.md)、[DELTA](DELTA.md)、[v6 运行验证](../../project/runs/v6-run1-validation.md)和[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)。教学分析标为 **INTERPRETATION｜解释**；无法确认的事实为 **UNKNOWN｜未知**。基本概念见 [v3c GUIDE](../01-v3c-zh-aligned-policy/GUIDE.md)。
+> **FACT｜事实** 依据[Instruction](instruction.md)、三个 Skill、[SOURCE](SOURCE.md)、[DELTA](DELTA.md)、[v6 运行验证](../../project/runs/v6-run1-validation.md)和[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)。教学分析标为 **INTERPRETATION｜解释**；无法确认的事实为 **UNKNOWN｜未知**。先读 [v5 GUIDE](../03-v5-evidence-driven-phase-policy/GUIDE.md) 理解上一版，再看本版差异；入门概念见 [v3c GUIDE](../01-v3c-zh-aligned-policy/GUIDE.md)，基础职责与闭环详细教学见 [Track A](../../tutorial/track-a-skill/00-学习地图.md)。
 
 ## 1. 这个版本处在什么位置
 
@@ -10,77 +10,35 @@
 
 ## 2. 这一版的核心结构
 
-```text
-Agent fresh observe
-  → Board 扫公开事实
-  → Planning 更新目标、进展、预算 → 生成合法候选
-  → Risk gate；必要时比一个相关替代，换候选再 gate
-  → Agent 输出紧邻动作的 CTRL → 同回合 take_action
-  → fresh observe → 下一决策
-```
+**FACT｜版本定位**：仍是 Board、Planning、Risk 三个 Skill，数量不变但正文均改变；[DELTA](DELTA.md) 记录 Instruction 由上一版十行调整为本版五行。改动集中在 candidate-first（先产生候选）的风险顺序、公开反馈 reset、动作前 CTRL 和改变状态后的新观察。
 
-箭头表示职责顺序／信息关系，不代表 Skill 之间直接 Python function call（函数调用）。Instruction 是 persistent kernel（常驻控制规则）：它管读取、编排和标记。三个 Skill 都不调用动作工具；Single Agent 把规则应用到一次具体决定。
-
-**INTERPRETATION**：闭环的关键是每次改变状态后重新观察。季度 Energy 与 Main 可以共同规划，但计划不能授权在旧状态上连发后续动作。
+**INTERPRETATION｜解释**：成熟之处是把职责接口与可审计记录连在一起，形成明确控制合同；它没有实现机械强制执行。完整闭环图读 [A06](../../tutorial/track-a-skill/06-三Skill协同与一次Action闭环.md)，运行路径读 [Track B](../../tutorial/track-b-system-runtime/00-学习地图.md)，本 GUIDE 只解释这一历史版本的变化。
 
 ## 3. Instruction 怎么约束 Agent
 
-五行很短，但压缩了五类合同：
+**FACT｜版本差异**：v5 的四行 CONTROL_SCAN 收拢成风险门之后、动作之前的 CTRL，**独立文本且不进入 notes**。本版 `P=A/S/?` 指 ADVANCING / STALLED / UNKNOWN（进展/停滞/未知），不能套成后续 Advance/Stabilize 模式；`X=0` 禁止动作，无 RECONSIDER 时用 `-`。
 
-| 条款块 | FACT｜要求 | INTERPRETATION｜忽略后的问题 |
-|---|---|---|
-| 48 月与公开事实 | 仅本局 fresh public facts（新鲜公开事实），唯一动作提交者 | 跨局经验或局后知识可能被误当当时可用证据 |
-| 启动／恢复读取 | 新局首动作前各读三份 Skill；Continue/context recovery 后观察、重读、重建再行动；正常上下文不逐步重读 | 已加载不意味着压缩后还记得规则；每步重读又可能重复消耗上下文 |
-| 决策顺序 | Board→Planning→候选→Risk→有界重比→CTRL→同回合动作；状态改变后 fresh observe | 提前判断 cue 或复用旧 scan 会错配候选与状态 |
-| 规划节奏与风险分工 | 每决策一个 Gap；季度首 Energy 联合规划 Energy+Main；半年 review 前最后窗口 reserve check；实际反馈后更新 Progress；Risk Budget 独立于候选 | 战略约束与具体候选风险是不同问题；不能由 Risk 接管目标 |
-| CTRL 与禁止项 | 固定字段、合并并发 checkpoint；公开 horizon；禁隐藏阈值、权重和事件答案 | 有记录便于审查，但标记自身不能保证规则被执行 |
-
-CTRL（控制标记）在本版是独立的动作前文本，**不进入 notes**，不能只输出它就结束回合。逐字段读法是：
-
-- `B=F/?`：此次事实扫描是否确认新鲜；不明就 `?`。
-- `G`：唯一 Primary Gap（主要差距）的短 key，缺证据用 `?`。
-- `P=A/S/?`：**ADVANCING / STALLED / UNKNOWN（进展／停滞／未知）**，不是后续版本的 Advance/Stabilize 模式。
-- `R=PASS/ALLOW/WARN/RECONSIDER/UNKNOWN`：候选风险门禁结果；PASS 是快速门禁无相关重大线索，ALLOW 是完整审查后可接受。
-- `CP=N/Q/H/R/P/C/-`：新局、季度、半年 review 前、反馈后 reset、严格停滞诊断、上下文恢复、无完整 checkpoint。并发只合并一次，如 QH；字段 CP 的 R 与字段 R 的风险结果不同。
-- `X=0/1/-`：替代比较未完成／已完成／无需比较。X=0 禁止动作；没有 RECONSIDER 用 `-`。
-
-**FACT｜版本差异**：本版允许有证据地保留原候选，并记录 `R=RECONSIDER, X=1`；换候选则须重新 gate。不能套用 v8a 的“最终 R 必须非 RECONSIDER、RB 分支关闭”格式来改写历史规则。
+有证据可保留原候选并记录 `R=RECONSIDER, X=1`；换候选必须重新 gate。v8a 的最终 R 非 RECONSIDER / RB 关闭格式不能倒写本版。完整字段、checkpoint 与恢复条款读 [A02](../../tutorial/track-a-skill/02-exact-v6-Instruction逐句拆解.md)，精确历史内容仍以 [Instruction 原件](instruction.md) 为准。
 
 ## 4. 每个 Skill 分别负责什么
 
 ### structured-state-board｜公开事实层
 
-[原文](skills/structured-state-board/SKILL.md)读取同局新观察、七项公开字段、正式反馈、警告与可比结果，提供 changed / relevant / unknown（变化／相关／未知）事实及有界快照。它不拥有 Gap、Progress、Risk Budget、review reset 或候选；Planning、Risk 消费事实作各自判断。它不提交、不创建持久 Memory（记忆），也不生成 CTRL。关键规则是：
+[本版原件](skills/structured-state-board/SKILL.md) 保留 QUICK_SCAN 与有界快照，明确 changed / relevant / unknown，并让 recent_effects 受可比性和混杂限制。它仍不拥有 Gap、Progress、预算或候选。
 
-- 每次 fresh public state 做 QUICK_SCAN，稳定信息不反复复述；B=F 只描述已完成的新鲜事实扫描。
-- 新局、季度、实际 review／晋升、重大变化或恢复才替换完整快照，并发合并。
-- recent_effects 最多两条；有故事、其他动作或来源混杂就 UNKNOWN，不将时间相邻等同因果。
-- 恢复先确认相同游戏 session 和新状态，必要时最多五条公开日志恢复两条效果。
-
-**反例**：Board 把一次没有 Output 增长直接标成 STALLED，或依据晋升旧基线算新职级的持续进展。这些判断属于 Planning，且需满足可比条件。
+**INTERPRETATION｜解释**：对 v5→v6 的控制整合，Board 的接口价值是交付事实，避免在风险 cue 或候选讨论里反复制造新 scan。扫描与快照的完整机制见 [A03](../../tutorial/track-a-skill/03-Structured-State-Board逐段拆解.md)。
 
 ### rolling-planning｜目标与候选无关约束
 
-[原文](skills/rolling-planning/SKILL.md)读取 Board、公开 Handbook、反馈、剩余时间与真实可达窗口；每决策维护一个 Gap、Progress、Risk Budget 和 Horizon（时间范围），完整 checkpoint 最多六字段，并给最多两条路径建议。它是唯一 strategy owner（战略负责人），不做具体候选 Risk gate，不调用工具、不猜分数公式。关键规则是：
+[本版原件](skills/rolling-planning/SKILL.md) 仍独占策略，维护一个 Gap、Progress、Risk Budget 与 Horizon；相较旧阶段分类，强化实际 review/晋升反馈后 reset 和候选无关的生存预算。季度 Energy+Main 是联合规划，改变状态后仍需重扫，不能变成固定连发序列。
 
-- Risk Budget 为 AVAILABLE / TIGHT / UNKNOWN，由公开生存趋势决定，不靠隐藏阈值；TIGHT 只约束直接加重相应风险的候选。
-- 季度首 Energy 联合比较 Energy 与 Main 的互补，每个状态改变后仍重扫；不编码固定组合。
-- review／晋升／no-advance（未晋升）实际出现后废弃旧 Progress 比较，建立新 baseline（基线），不能从沉默推断结果。
-- 同动作、同 Gap、两个相邻可比 checkpoint 都无目标进展才 STALLED；随后比较一个不同类型替代，不强制换。
-- review 前最后窗口检查生存储备，不把 review 后的恢复当成当前保护；普通事件最多两候选一次。
-
-**反例**：一次汇报未增 Output 就宣布整条成长路线失效，或把联合规划当成未来连续 Energy 的固定执行序列。
+**INTERPRETATION｜解释**：重点是减少重复分类，让反馈真正改变比较基线。Progress/STALLED 的可比条件、季度与半年窗口详解读 [A04](../../tutorial/track-a-skill/04-Rolling-Planning逐段拆解.md)。
 
 ### risk-review｜先候选、后门禁
 
-[原文](skills/risk-review/SKILL.md)读取已生成候选、公开后果、相关高信号线索与 Planning 的生存预算。它输出快速 PASS，或完整审查的 ALLOW/WARN/RECONSIDER/UNKNOWN 加一句理由；只影响候选是否需再比较，不拥有 Gap、阶段或预算，不提交。关键规则是：
+[本版原件](skills/risk-review/SKILL.md) 消费已经生成的候选、公开后果、相关重大线索和生存预算；快速 PASS 与完整 gate 分开。RECONSIDER 只比较一个相关合法替代，换候选再 gate，不接管 Planning 的目标。
 
-- 每个 story、Energy、Main 动作前都 gate；日常负荷、普通摩擦或日常 CI 不单独触发完整审查。
-- 线索收拢为保密授权、具有重大后果的隐瞒、关联新状态的健康负荷、重大可靠性事故；类别只促成检查，不提供答案。
-- 已公开收紧的生存趋势下，不能把下一笔小损失孤立当软成本；有直接缓解项时不提交明显加重可避免终局风险的非必要候选。
-- RECONSIDER 只比较一个相关合法替代；换候选重 gate；UNKNOWN 最多一次刷新，否则有界合法决策，避免死循环。
-
-**反例**：因为别人更礼貌就否决成长候选，或看到 Risk Budget=TIGHT 便无差别禁止所有成长。应检查候选是否直接加重那个公开约束。
+**INTERPRETATION｜解释**：candidate-first 顺序回应了旧合同中风险 cue 循环的问题；TIGHT 仍是直接相关风险约束，不能无差别否决成长。完整风险语义与反例见 [A05](../../tutorial/track-a-skill/05-Risk-Review逐段拆解.md)。
 
 ## 5. 相比上一代表版本改了什么
 
@@ -92,11 +50,9 @@ CTRL（控制标记）在本版是独立的动作前文本，**不进入 notes**
 
 ## 6. 一个具体决策流程怎么走
 
-**真实情境来源**：[v6 验证记录](../../project/runs/v6-run1-validation.md)的 M13 健康风险选择。报告确认发生一次真实 RECONSIDER，比较并选了较低负荷的合法替代，再对所选候选 gate；没有给出完整菜单、原候选编号或全部 Board 字段。
+**FACT｜事实**：[v6 验证](../../project/runs/v6-run1-validation.md) 的 M13 健康情境确认一次 RECONSIDER、选择较低负荷合法替代并重新 gate；没有完整菜单、原编号或全部 Board 字段。重复 transcript 标记不足以认证唯一紧邻配对。
 
-**INTERPRETATION｜按合同走查**：Board 提供当时公开健康信息；Planning 根据当前约束与 Gap 提名候选；Risk 检查它是否加重明确风险。满足三条件后只比一个相关替代；选择变化后重 gate，Agent 记录合法 CTRL 并提交；随后新观察才能更新效果。
-
-**FACT｜审计边界**：该次标记在 transcript（文字轨迹）里重复。报告可确认重比和重新 gate 的行为，但不能据此认证每个 CTRL 与动作同回合、紧邻且唯一。未记录的 Gap、CP、X 精确值为 UNKNOWN；本走查不补造当时完整控制行，也不声称低负荷选择带来确定收益。
+**UNKNOWN｜当前来源不足**：当时 Gap、CP、X 的精确值及收益因果。完整合同走查见 [A06](../../tutorial/track-a-skill/06-三Skill协同与一次Action闭环.md)，本版案例只用于理解候选→风险→替代→再 gate，不补造整条 CTRL。
 
 ## 7. 真实运行证据
 
@@ -119,15 +75,15 @@ CTRL（控制标记）在本版是独立的动作前文本，**不进入 notes**
 
 ## 8. 这个版本暴露出的限制
 
-**FACT**：只有一个已接受的完整样本。CTRL 原文本表面不足以独立认证动作关联，重读／reserve trigger／有界比较也有实际失败。运行报告的本机 score_report 后来改变了 session 字段与时间，原因 UNKNOWN；事件和 Runner 输出独立绑定 session，未重写 raw（原始证据）。正式 raw FORENSIC_HOLD（取证保留）状态仍 UNKNOWN，不可解读为“无保留要求”。
+**FACT**：只有一个接受的完整样本；配对、重读、reserve trigger 和有界比较仍有缺口。本机 score_report 后来改了 session 字段/时间，原因 UNKNOWN；独立事件绑定 session，raw 未重写。正式 raw FORENSIC_HOLD 状态为 UNKNOWN，不能当无保留要求。
 
-**INTERPRETATION**：文字合同能规定闭环，却未形成机械强制执行。表现、遵循和审计完整性需要分别评价；不能用高分补掉遵循失败，也不能用遵循失败否认这局确实完成。
+**INTERPRETATION**：设计合同、真实遵循和完整结果分开评价；75.29 与 RUNTIME_ADHERENCE_FAIL 同时保留。调查方法读 [D08](../../tutorial/track-d-project-method/08-Forensics为什么成为项目的重要部分.md)，不能因高分遮盖失败或反过来否定完整运行。
 
 ## 9. 为什么它值得保留在版本演化里
 
-distinct design delta（独特设计变化）是 candidate-first 风险、公开反馈 reset、动作前 CTRL 与每步新观察组成的三 Skill 闭环。它同时是最终选择与真实遵循失败的双重案例。
+本版把 candidate-first 风险、公开反馈 reset、动作前 CTRL 与每步新观察组合成成熟三 Skill 控制合同，同时保留真实遵循失败。它值得保留为“设计身份与执行事实分别可审”的版本案例。
 
-**FACT｜最终选择边界**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)记录选择依据为 `HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING`（已观察成熟三 Skill 的最高位参考）。这不等于全部历史最高分：Candidate v1 有 76.04 的摘要反例，但 raw 不可用、完整指令身份有缺口；不能把它作为受控对照。冻结未再增加一次复验，官方上传与平台评测未执行。当前 v8a 文件不能代替最终 ZIP 身份，也未证明 exact-v6 全局最优、统计更优或隐藏测试迁移。
+**FACT｜最终选择边界**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 记录 `HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING`。这不是全部历史最高分或统计最优；选择理由及 v1/v8a 对照集中在 [D11](../../tutorial/track-d-project-method/11-为什么最终选择exact-v6而不是v1或v8a.md)，精确交付字段集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。官方上传与平台评测未执行，hidden-test transfer 未证明。
 
 ## 10. 下一版要看什么
 

@@ -64,11 +64,9 @@ FINAL_EVIDENCE_REVIEW
 
 ## 三、一个真实部分运行：有用事实与未证明事项同时存在
 
-[v7m运行记录](../../project/runs/v7m-run1-validation.md)与[S07-47调查](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md)保留部分运行。权威审阅记录：最后fresh observation为M20/L3，角色仍存活，84/84动作成功；驱动技术失败，没有最终分数、最终评级或自然终局。
+**FACT｜事实**：[v7m 运行记录](../../project/runs/v7m-run1-validation.md) 与 [S07-47 调查](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md) 保存 M20/L3 存活、84/84 成功行动，同时保留技术失败、无最终分数/评级/自然终局以及 `INSUFFICIENT_EVIDENCE`。归档保存可复核片段，没有把部分运行补成完整样本。
 
-这说明“技术失败”不等于“所有局中事实没有价值”。可以保存成功动作与观测checkpoint，供调查恢复纪律；不能把M20状态当48m完成，也不能用旧分数填缺失终局。classification为INSUFFICIENT_EVIDENCE，运输故障根因尚未确定。
-
-**INTERPRETATION｜解释：**证据整理的目标不是让每次运行看起来成功，而是让事实、限制和决定彼此一致。部分证据照样可以说明某个工程接口的边界；它不提供策略性能的完整样本。
+本章用它说明 raw、摘要和结论怎样分工；为何技术失败不能等同策略失败，读 [D09](../track-d-project-method/09-失败实验与负结果为什么值得保留.md)，调查怎样处理替代解释，读 [D08](../track-d-project-method/08-Forensics为什么成为项目的重要部分.md)。
 
 ## 四、为什么raw很大
 
@@ -134,26 +132,16 @@ v7o events/transcript已被S11-08 Main保留为KEEP_CANONICAL_RAW，其余六项
 自查：为什么“canonical结论已吸收”不能直接作为删除勾选？因为它只回答知识整理完成，未回答唯一raw、下游复验和release授权。证据生命周期的终点是责任闭合，不是报告写满。
 ## 深入练习：有分数时怎样防止错误归属
 
-**FACT｜事实：**最终证据审阅中，v7i在首次fresh observation前发生Provider失败，输出的分数属于更早v7g Session，已被排除。它展示一个实际问题：报告程序能拿到数值，不保证数值属于当前被评估对象。
-
-**TEACHING EXAMPLE｜教学示例：**设想报告有一个score字段，但game session为空，事件也没有本局new_game成功回执。此时不应使用“文件最近生成”填补身份；生成时间是报告时间，不一定是游戏时间。也不能从另一个完整Run复制session，让表格看起来齐全。正确表达是当前归属未建立，分数不能作为该Run的结果。
-
-另一方面，某个score report的session字段空，但events明确绑定唯一fresh session和终局observe，audit可能仍能提取该observe分数，同时保留报告字段缺陷。不同情形需要不同结论：空字段不自动让全部证据无效，能读取数值也不自动让归属有效。要沿真正来源判断。
+**FACT｜事实**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 排除了 v7i 首次失败窗口中归属于旧 v7g session 的分数。文件里有值不等于目标 Run 有成绩；空 session 字段也不自动否定一致 fresh final observe。完整重建步骤集中在 [D08](../track-d-project-method/08-Forensics为什么成为项目的重要部分.md)，评分生产机制在 [B08](../track-b-system-runtime/08-日志、Session、Score与证据是怎么产生的.md)。
 
 ### 一条证据链中的四种“一致”
 
-身份一致检查哪版Candidate、哪个Session、哪个窗口；结构一致检查JSON/schema是否满足格式；内容一致检查摘要是否按输入规则提取；解释一致检查结论是否超过样本和方法边界。它们可以分别失败。
-
-例如两个同Candidate完整样本72.65和59.00的描述均值是65.825，这是数值计算；只有两局，不能由均值宣称稳定收益，更不能推断特定Skill导致差异。canonical审阅明确将这些限定为描述统计。若教材丢掉样本数，数学计算虽然正确，解释也会失真。
+身份一致核 Candidate/Session/窗口，结构一致核格式，内容一致核提取，解释一致核结论边界。四者分别记录；合法 JSON 不能替代身份审查。小样本如何限制解释，读 [D07](../track-d-project-method/07-为什么一次高分几乎什么都证明不了.md)。
 
 ### 原件、选定副本与紧凑结论如何互相核对
 
-选定副本应有范围与hash，说明它来自哪一段；派生摘要应记录输入身份与limitations；紧凑结论应链接摘要/记录并保留未决问题。若原件未归档的片段仍被另一个任务依赖，选定副本不能代替全部原件。
-
-**TEACHING EXAMPLE｜教学示例：**Run A与B共用累计服务日志，你只归档A的窗口。A的archive PASS不关闭B的来源，也不授予删除整份累计log。只看A文件已存在会遗漏B；来源级生命周期才看得见这种共享依赖。
+副本记录范围/hash，摘要记录输入/限制，结论指回可复核来源。**TEACHING EXAMPLE**：A/B 共用累计日志，只归档 A 的窗口，不能据此关闭 B 的依赖或删除整份 log；选定副本不自动覆盖原件全部责任。
 
 ### 去敏与完整性如何共同保留
 
-Secret scan排除敏感值，public projection限制策略事实；两者处理不同问题。允许公开字段中仍可能出现不合范围文本，日志也可能有无关session；有限扫描无法替代明确选择与人审。保留一段raw用于技术取证，不等于允许将其隐藏字段用于策略研究。
-
-因此，证据记录需要同时说明“保留了什么”“哪些不能作为策略事实”“哪些没有记录”“怎样复验”。UNKNOWN不是空白装饰，而是防止后续人把没有观察的事项误当零或不存在。
+Secret scan 控敏感值，public projection 控策略可用字段；有限扫描仍需显式选择和人审。保留 raw 用于技术取证，不授予将其内部字段作为玩家知识。记录所留范围、不可用信息、缺失与复验限制，UNKNOWN 不写成零。

@@ -4,6 +4,8 @@
 
 本章把 S10 路线当作 Research Portfolio（研究组合）理解。路线的名字不决定结果类型，各自到达的证据层次才决定如何表述。
 
+读 [D03](03-从Evidence到Decision的完整实验方法.md) 的循环、[D09](09-失败实验与负结果为什么值得保留.md) 的分类后，可按路线跳读。本章是八条替代路线的详细结论入口；每条查问题、测试范围、结果、非结论与停止/延后状态。
+
 ## Reviewer：独立意见之前，先有权限边界
 
 **HYPOTHESIS｜假设：** 独立 Reviewer（审查者）可能指出主 Agent 遗漏的选择或风险。要采用这种机制，先要保证它只给建议，不拥有游戏修改权。
@@ -26,7 +28,7 @@
 
 ## Deterministic Helper：工具层支持，不是 Candidate 收益
 
-**FACT｜事实：** S10-19R3 检查了 Todo（待办）、模型设置组装和固定 helper 执行边界。隔离真实工具调用能够处理公开输入与本地状态；结果 **DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED**。这是 isolated tool-level support，没有正式 Candidate 部署、模型调用或长程遵循证明。[Helper 审计](../../project/research/S10-19R3_NATIVE_CONTROL_SURFACE_AUDIT.md)
+**FACT｜事实：** S10-19R3 检查了 Todo（待办）、模型设置组装和固定 helper 执行边界。隔离真实工具调用能够处理公开输入与本地状态；结果 **DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED**。这是 isolated tool-level support，没有正式 Candidate 部署、模型调用或长程遵循证明。支持信号没有自动扩大到这些后续阶段。[Helper 审计](../../project/research/S10-19R3_NATIVE_CONTROL_SURFACE_AUDIT.md)
 
 同一报告也发现默认 Todo callback（回调）不会自动注入当前待办正文。工具 CRUD（创建、读取、更新、删除）工作，不能推出它是可靠自动锚点。
 
@@ -54,11 +56,9 @@
 
 ## Simulator Policy Search：前提失败，比较没有开始
 
-**FACT｜事实：** S10-22 构建 public-only deterministic Dev evaluator（仅公开信息的确定性开发评估器）。12 个宏配置被冻结，实际只测 B0 基线；基础 Story 门禁至少 8/16 完成，实际 2/16。结论 **SIMULATOR_POLICY_SEARCH_NOT_FEASIBLE**。[Simulator 研究](../../project/research/S10-22_SIMULATOR_POLICY_SEARCH.md)
+**FACT｜事实**：[S10-22](../../project/research/S10-22_SIMULATOR_POLICY_SEARCH.md) 冻结 12 个宏配置，实际只测 B0 基线。Story 胜任门禁为至少 8/16 完成，实际 2/16，结论 `SIMULATOR_POLICY_SEARCH_NOT_FEASIBLE`；screening、confirmation 与 128-seed holdout 未执行。
 
-Screening、confirmation、128-seed holdout 没有运行。技术接口可用、计算速度足够，但基础语义控制不胜任。**Feasibility failure（可行性失败）不等于 macro policy proven bad（宏策略被证明差）。**
-
-**INTERPRETATION｜解释：** 一个比较装置必须能让待比较因素有效发挥作用。基础控制频繁早终局时，结果主要受基础缺陷影响。此时更快地跑更多宏配置，可能更快得到无意义排名。
+技术接口可用、速度足够不等于基础语义胜任。这里停止后续宏比较，保留 **feasibility failure（可行性失败）**，不能说宏策略已被证明差。实验从假设到 STOP 的完整过程见 [D03](03-从Evidence到Decision的完整实验方法.md)。
 
 ## Team / Swarm：没有测试，就保持没有测试
 
@@ -68,21 +68,15 @@ Screening、confirmation、128-seed holdout 没有运行。技术接口可用、
 
 ## Human Play Lab：独立人类研究路线
 
-**FACT｜事实：** HPL（Human Play Lab，人工对局实验室）属于独立 research branch（研究分支）research/human-play-lab。人工选择可见 action，客户端直接使用 CareerSim simulator/GameEngine，绕过正式 Runner/MCP/JiuwenSwarm 控制路径。[HPL 实现教学](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md) · [架构决策](../../project/ARCHITECTURE_DECISIONS.md)
+**FACT｜事实**：Human Play Lab（人工对局实验室）位于 `research/human-play-lab`，人工选择公开菜单，客户端直接调用 simulator/GameEngine，绕过正式 Runner/MCP/JiuwenSwarm。它提供人类研究轨迹与假设，没有正式模型的加载、压缩和遵循链，不能充当 Candidate 对照。[架构决策](../../project/ARCHITECTURE_DECISIONS.md)
 
-实现核对限定在历史提交 **860941575bfc8a8c282e69b0af20d343dd87c027** 的 **hpl_client/game_adapter.py** 与 **hpl_client/controller.py**：前者的 act 接收合法整数、调用 engine.take_action 后取得新 observe；后者的 choose 检查当前 revision/run_id 再提交人工选择。这里没有重开 HPL，也没有扩大读取该分支其他历史。
+**FACT｜事实**：当前 `CLOSED_BY_USER`；**UNKNOWN｜当前证据不足**：关闭原因未被 canonical source 记录，不能推为效果差或没有价值。[CURRENT_STATE](../../project/CURRENT_STATE.md)
 
-它可以提供公开选择、状态轨迹和研究假设，不能作为正式 Agent Candidate 的 adherence 对照；人工玩家没有经历相同模型控制与恢复链。当前 **CLOSED_BY_USER**；**UNKNOWN｜当前证据不足：** canonical source 未记录具体关闭原因。[当前状态](../../project/CURRENT_STATE.md)
-
-不能写成用户认为它没价值、太慢或表现差。关闭状态不替你提供关闭原因。
+历史实现身份、revision/run_id 检查、choice 提交与输出材料集中在 [C10](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md)，这里仅说明它在研究组合中的独立位置。
 
 ## 这些门禁之间不是一条“功能失败排行榜”
 
-**INTERPRETATION｜解释：** Reviewer 问权限是否允许安全存在，Memory 问正文是否进入指定上下文，Helper 问工具是否能可靠读写，Controller 问这种机制能否修正决策。它们的输入、成功标准和实际测试深度不同。
-
-如果把 Memory 的自动注入失败和 Controller 的逻辑信号弱都写成“记忆不好”，下一次研究会失去定位：需要修上下文组装，还是修语义解释？如果把 Helper 支持当成 Controller 已成功，又会忽略工具层到决策层的接缝。
-
-这也是为什么路线名字不应成为结论。一个同名机制可以换加载路径、输入接缝或控制权，形成另一个研究对象。原结论仍然保留，但不能不经新检查就转移。
+各路线测的是权限隔离、上下文组装、工具读写或语义排序；输入、成功标准和执行阶段不同。不能用“用了/没用”给机制排优劣，也不能把隔离工具支持移写为正式 Candidate 已成功。门禁顺序的完整教学见 [D03](03-从Evidence到Decision的完整实验方法.md)，分类见 [D09](09-失败实验与负结果为什么值得保留.md)。
 
 ## 输入语义为什么是确定性工具的难点
 
@@ -94,11 +88,7 @@ Screening、confirmation、128-seed holdout 没有运行。技术接口可用、
 
 ## HPL 能给研究什么，不能给什么
 
-人工路线可以让研究者看到自己如何理解菜单，提出公开机制假设，或者检查界面与状态的展示。它不包含正式模型的加载、压缩、工具格式与持续性约束。
-
-**INTERPRETATION｜解释：** 比较人类与 Agent 时，需要承认控制路径和决策成本不同。一个人类在某状态下做出另一选择，可以成为讨论案例，不能直接成为 Agent 策略收益的受控证据。
-
-**FACT｜事实：** HPL 的公开 journal/frames、run metadata 与 exports，以及本地 DB/log/staging，随阶段有所不同；本书不把其中任一研究输出当成正式 Candidate Run。实现细节见 [Track C HPL](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md)，后来的主线状态仍为 CLOSED_BY_USER，原因 UNKNOWN。
+HPL 的 journal/frames、metadata/exports 和本地 DB/log/staging 因阶段不同而异，具体机制见 [C10](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md)。这些材料可供提出公开机制问题，不能转换为正式模型 runtime adherence 证据；`CLOSED_BY_USER` 的原因仍 UNKNOWN。
 
 ## 把所有路线放回证据层次
 

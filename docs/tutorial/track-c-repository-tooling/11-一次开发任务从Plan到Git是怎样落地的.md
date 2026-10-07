@@ -36,19 +36,13 @@ Main review：接受 / 部分 / 冲突 / 新证据请求
 
 ## 二、Main为什么不直接承包全部coding
 
-Main要比较跨任务状态、冻结身份、预算、hold和验收，不适合把每个局部实现细节都当成全局事实。Codex接近实际文件，能发现Plan猜错了接口或路径、检查diff并形成可复核改动。
+落实到文件操作：Main 给出全局接受标准，Codex 核当前源码和 diff，TASK_RESULT 把实际交付返回 review。角色可以由同一人或不同对话承担，不能混入比赛 Agent 的动作链。
 
-**INTERPRETATION｜解释：**将全局选择和局部执行分开，可以让Main依据交付证据决定接受，而不是仅凭实现者一句“应该可以”。它减少角色混淆，不表示Main永远不能参与技术判断。
-
-如果执行者自行改路线、扩大live次数并宣布阶段完成，全局预算和证据链就会绕过责任边界。项目因此规定超范围冲突返Main/Stage，Codex不能凭本任务完成宣布S11 COMPLETE。
+这种分工怎样降低实验误判，集中读 [D13 治理设计](../track-d-project-method/13-Main、Stage、Plan与Codex为什么这样协作.md)；这里继续看任务交接时各对象如何进入 Git。
 
 ## 三、Stage为什么要有边界
 
-Stage把项目的一段目标限定下来，例如S11是最终整理与复盘。阶段可以存在多个任务：先机械迁移来源，再高质量教学；先审查删除资格，再实施指定清理。每个任务的写入权限和live预算不同。
-
-“继续S11”不是“继续比赛游戏”。当前比赛对局与Candidate搜索已关闭；某次教学任务需要代码解释，也不能据此启动服务验证。阶段连续性帮助保存上下文，任务权限仍需明确。
-
-没有阶段边界，完成一次局部目标后容易无休止加功能；边界让项目知道哪些问题已关闭、哪些未知仍待决策。Main决定是否重开，需要新的material evidence（实质证据），不是执行者想继续试。
+Stage 组织任务顺序，每个 Task 另列基线、写入集合、权限和验收。例如先准备 ignored source pack，再由下一 Task 写正式教程；“继续 S11”本身不增加 gameplay 或 cleanup 预算。核对实际 Task 合同后才编辑。阶段边界的理由见 [D13](../track-d-project-method/13-Main、Stage、Plan与Codex为什么这样协作.md)。
 
 ## 四、Plan不是固定每行实现的脚本
 
@@ -110,7 +104,7 @@ S11-28冻结base `85217072f64d2463e57b224d9c7e85b078f747be`，允许唯一tracke
 
 ### 4. 可直接核验的Git evidence
 
-**FACT｜事实：**当前父提交 `1c6231de36c98e4cdae38bba95c070d8750bcf65` 的message为 `docs: repair final evidence hold anchor`，仅一个tracked文件一行替换。其[v7o记录](../../project/runs/v7o-run1-validation.md)现链接到[中文台账](../../project/FINAL_EVIDENCE_REVIEW.md#forensic_hold-台账)。提交diff没有改score或hold语义。
+**FACT｜事实：**该历史修复提交 `1c6231de36c98e4cdae38bba95c070d8750bcf65` 的message为 `docs: repair final evidence hold anchor`，仅一个tracked文件一行替换。其[v7o记录](../../project/runs/v7o-run1-validation.md)现链接到[中文台账](../../project/FINAL_EVIDENCE_REVIEW.md#forensic_hold-台账)。提交diff没有改score或hold语义。
 
 source pack未进入该commit，所以只看Git stat会看见一处修复，不会看见七份scratch的工作量。S11-29opening gate还要求七份文件存在并完整读取，补上本机handoff（交接）依赖。这说明Git交付和本机机械交接可以是不同对象，但两者都要记录身份与消费条件。
 
@@ -138,17 +132,7 @@ TASK_RESULT（任务执行结果）应能让Main回答：基于哪版做了什�
 
 ## 九、开发链与实验链怎样相交
 
-开发链交付文件增量；实验链检验假设。它们相交于Candidate身份、static验证、运行证据和Main决定，但不要求每次文件修改都启动实验。
-
-```text
-Hypothesis → Candidate → static → runtime gate → game → score
-                                                    ↓
-                                              adherence audit
-                                                    ↓
-                                           evidence + decision
-```
-
-某实验失败可能产出很好的报告和工具修复；某代码提交通过也可能没有运行授权。因此“任务工程交付完成”和“策略收益已证明”应分别记录。
+开发交付的 commit 与实验检验的 Candidate/Run 可以相交，但分别验收。一次文档修改只需对应文档证据，不要求新实验；有运行证据也不能补足文件交付缺口。实验链的完整解释见 [D03](../track-d-project-method/03-从Evidence到Decision的完整实验方法.md)。
 
 ## 保留与自查
 
@@ -157,24 +141,16 @@ Plan、TASK_RESULT和review的独有知识应迁移到canonical状态/合同/教
 自查：S11-28提交只改一条链接，是否因此工作不完整？不能按diff大小判断。Plan要求的另一个交付是ignored机械source pack；其存在、完整性和下一任务消费是独立验收对象。反过来，写了很多scratch也不能掩盖tracked修复未完成。完成以合同为准，事实以证据为准。
 ## 深入练习：Main怎样审阅一个小而完整的交付
 
-**TEACHING EXAMPLE｜教学示例：**某文档Task冻结13个新文件，Codex返回“共新增14个，其中额外README方便导航”。即使额外README很合理，也突破写入集合；交付应先在允许文件里满足导航，再对照准确路径核验。功能便利不能替范围批准。
-
-若返回“13文件完成，链接检查通过”，Main还要问是哪份base、提交身份是什么、有没有修改protected paths、有没有把历史分支证据说成main事实。文件数量与检查输出帮助审阅，但不能代替内容事实纪律。
+**TEACHING EXAMPLE｜教学示例：**合同只许新增 13 篇，额外 README 仍越界。核对 base、准确路径、diff、验证输出，再看对应 TASK_RESULT；便利性不能替范围批准。S11-28 的一行 Git 修复与七份 ignored source pack 则都在合同内，需要分别核验交付。
 
 ### Review的三种结论如何不同
 
-接受表示任务合同和证据满足对应目标；Partial（部分完成）表示可用部分已经交付但仍有实质缺口；Conflict（冲突）表示冻结前提或范围无法满足，需要返回上层。三者不是对努力程度的评价，而是对交付/证据关系的判断。
-
-S11-27因受保护范围不能修旧docs/project锚点而返回Partial，就是保留范围纪律的例子。后续S11-28给出准确权限修复，避免同一任务一边承诺禁止改、一边为了全仓绿色偷偷改。这种分工让Main看见真正缺口。
+Accept、Partial、Conflict 分别报告目标已满足、尚有可交付部分与实质缺口、冻结前提冲突。S11-27 的受保护旧锚点由下一授权任务 S11-28 修复，例子已在 walkthrough 中展开；结果分类不是工作量评价。
 
 ### 一个小TASK_RESULT该怎样写未知
 
-如果模型/effort可靠信息不可读取，写UNKNOWN；如果只做static links，写“未运行game/Provider/MCP”；如果某raw范围未知，写对应来源缺口。UNKNOWN要指向具体事项，不是用一句“可能有问题”遮掩全部。
-
-结果里也应区分“我已push”和“Main已接受”。前者可以通过远程HEAD确认，后者需要review决定。当前教程的Git交付可以完成，S11阶段仍由Main决定，不因为作者自称完成而变成阶段结论。
+把未知绑定到具体对象：无法读取的 model/effort、未执行的 runtime 验证或缺失的 raw 范围。push 是 Git 交付事实，Main 接受是 review 决定，不能互相代替。
 
 ### 为什么交付身份比聊天中的“最新版”可靠
 
-“最新版”随下一次修改改变；commit指向具体树和父链，使review能比较准确增量。Task保留base/commit/HEAD，下一任务再设opening gate，形成可接续的身份链。ignored source pack则需要路径和存在/消费检查补足，因为Git提交不保存它。
-
-这些规则不要求所有Task产生庞大仪表盘或实验矩阵。能说明准确增量、验证边界和必要来源，就足以支撑有意义的review。更深入的项目方法将由Track D组织，本章只建立文件与交付关系。
+commit 与 base 固定可比较增量；ignored source pack 则靠准确路径及 opening gate 补足消费检查。下一 Task 据此接续，不依赖随时变化的“最新版”。返回学习地图，或进入 C12 判断过程资产何时可以退役；治理理由另见 [D13](../track-d-project-method/13-Main、Stage、Plan与Codex为什么这样协作.md)。

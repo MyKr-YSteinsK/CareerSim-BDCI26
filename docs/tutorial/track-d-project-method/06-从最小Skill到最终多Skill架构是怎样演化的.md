@@ -2,7 +2,7 @@
 
 Skill（技能）拆分既能明确责任，也会增加上下文、协调和审计负担。模块数不是能力分数；每一次增减，都应该对应一个已经发现的问题。
 
-本章从研发决策看架构变化。规则逐句拆解请读 [Track A](../track-a-skill/00-学习地图.md)，这里关注为什么组织职责，以及组织变化到底获得了什么证据。
+本章从研发决策看架构变化。先修概念见 [D02](02-Candidate、Run、Experiment到底有什么区别.md)；职责设计演化读 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)，版本细节查各 GUIDE。这里关注为什么组织职责，以及组织变化到底获得了什么证据。
 
 ## 先分清“设计职责”和“运行事实”
 
@@ -28,29 +28,21 @@ Skill（技能）拆分既能明确责任，也会增加上下文、协调和审
 
 ## 为什么会从四个减少为三个
 
-**FACT｜事实：** v4 移除了 career-action-trace，同时更改 Board、Planning、Risk 和 Instruction。它是多处合同整合，不是一个可以孤立估计的“删 Skill 实验”。[v4 差异](../../skill-evolution/02-v4-lean-runtime-policy/DELTA.md)
+**FACT｜事实**：[v4 DELTA](../../skill-evolution/02-v4-lean-runtime-policy/DELTA.md) 同时涉及 Trace 移除、三 Skill 与 Instruction 改动。因此观察到的结果不能隔离为“删掉一个 Skill”的效果；代表节点相邻也未必直接 parent。
 
-**INTERPRETATION｜解释：** 当动作记录和事实更新交叉时，合并职责可以让事实来源更集中。读者应该关注是否减少重复维护、是否保留必要轨迹，而不是推断“少一个 Skill 必然更好”。
-
-如果没有职责整合，一个事实可能在 action-trace、Board 与计划里出现多个版本。模型可能使用旧值，审计需要重建哪份文本当时被当成权威。职责压缩的价值需要落到这些 failure mode（失败模式），不能只以文件数说明。
+**INTERPRETATION｜解释**：合并轨迹与事实维护可减少重复责任，这是设计理由；是否提高分数需要另外举证。职责交叉怎样形成旧值风险，详见 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)。
 
 ## 为什么 Planning 和 Risk 仍然分开
 
-规划解决“在机会和资源约束下，当前应追求什么”；风险门解决“已产生的候选是否存在直接相关的重大风险”。如果风险模块持续重开战略选择，决策可能在同一公开事实下反复循环。
+**FACT｜事实**：[S06 收口](../../project/S06_CLOSEOUT.md) 记录 exact-v6 的单一规划权、风险审查与唯一提交者，并观察到一次 Risk RECONSIDER；整体仍有遵循缺陷。
 
-**FACT｜事实：** exact-v6 的职责强调 Planning 独占策略、Risk 只检查既有候选，Single Agent 唯一提交动作。实际样本观察到一次 Risk RECONSIDER 机制，但整体仍有合同偏离。[S06 收口](../../project/S06_CLOSEOUT.md)
-
-**INTERPRETATION｜解释：** 这种分开帮助确定错误发生在哪层：事实错、候选错、风险门错，或者执行错。它不保证每层判断正确，也不能从一次触发推导 Risk 的平均收益。
+**INTERPRETATION｜解释**：模块界面便于把事实、策略、门禁和执行分别审查，却不提供 Risk 的平均收益估计。具体规则读 [A04 Planning](../track-a-skill/04-Rolling-Planning逐段拆解.md) 与 [A05 Risk](../track-a-skill/05-Risk-Review逐段拆解.md)。本章关注“哪些命题已验证”，不再次拆解规则。
 
 ## 为什么后来增加 Delivery
 
-**FACT｜事实：** v7 新增 delivery-progress，架构关注全局轨迹与交付进展；相邻代表差异也包含其余三个 Skill 和 Instruction 的变化。[v7 差异](../../skill-evolution/05-v7-global-trajectory-delivery/DELTA.md) · [架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md)
+**FACT｜事实**：v7 的 parent 是 v6c，新增 Delivery 的同时改了其余 Skill 和 Instruction，[DELTA](../../skill-evolution/05-v7-global-trajectory-delivery/DELTA.md) 与 [架构复盘](../../project/ARCHITECTURE_RETROSPECTIVE.md) 提供身份依据。[v7m 取证](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md) 又区分短 item identity、实际交付和赞许沟通。
 
-**INTERPRETATION｜解释：** 长程成长不能只看资源数字。工作有没有完成、反馈是否验证交付、同一 item（事项）是否在推进，都是规划可能需要的语义。单独模块可以把这类证据显式化。
-
-但新的模块也需要新的输入、记忆、标记和职责冲突规则。若 Delivery 把客户赞许误记为实际交付，形式上多了追踪，事实却没有更可靠。
-
-**FACT｜事实：** v7m 取证建议 Delivery 保留短 item identity 与实际结果证据，不能把赞许沟通当成交付验证。这是局部输出合同的改进依据，没有证明增加提示文字就能解决压缩恢复或网络问题。[v7m 取证](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md)
+**INTERPRETATION｜解释**：长程交付问题推动新的证据职责，但多处干预、不同轨迹和运行条件是 Confounder（混杂因素）。它们阻止我们把任何分差单独归给第四 Skill。增加模块的上下文、协调、恢复和审计成本也没有被独立测量，不能写成已证明性能损失；职责细节回 [A08](../track-a-skill/08-从版本演化理解Skill设计.md)。
 
 ## v8a 为什么不等于最终 v6 的升级版
 
@@ -62,7 +54,7 @@ Skill（技能）拆分既能明确责任，也会增加上下文、协调和审
 
 **FACT｜事实：** Main 的选择是 HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING，冻结 exact historical v6 的原始身份，没有把后期修复或第四 Skill 混入最终包。[最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md)
 
-**INTERPRETATION｜解释：** 成熟身份、观测证据与复杂度控制共同提供选择语言；其中“选这个固定历史对象”是事实，“多一层模块增加协调成本”是设计解释。不要把解释升级为已测量的性能损失。
+**INTERPRETATION｜解释：** 选择的完整理由见 [D11](11-为什么最终选择exact-v6而不是v1或v8a.md)。成熟身份、观测证据与复杂度控制共同提供解释语言；其中“选这个固定历史对象”是事实，“多一层模块增加协调成本”是设计解释。不要把解释升级为已测量的性能损失。
 
 ## 判断一个新模块值不值得增加
 

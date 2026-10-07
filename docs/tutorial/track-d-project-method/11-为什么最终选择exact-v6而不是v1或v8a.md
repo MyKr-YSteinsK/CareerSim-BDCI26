@@ -2,6 +2,8 @@
 
 最终选择必须回答“交付哪一个确定对象”，而不只是“哪个文件里有最大数字”。本项目选择 exact historical v6（精确历史 v6），同时保留它不是历史最高单局、只有一个完整样本且运行遵循失败的事实。
 
+先读 [D07](07-为什么一次高分几乎什么都证明不了.md) 的小样本限制。本章负责选择理由与保留的运行缺陷；精确包字段及交付合同集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。
+
 ## 先把比较对象摆齐
 
 **FACT｜事实：** 以下对照保留 canonical review（权威审阅）与 Run 原口径。[最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md) · [最终证据审查](../../project/FINAL_EVIDENCE_REVIEW.md)
@@ -31,27 +33,15 @@ Main 选择：固定历史 exact-v6 身份
 
 ## 为什么不能只选 v1 的 76.04
 
-**FACT｜事实：** v1 两条历史记录必须一起出现：76.04 /48m/A/L6 与 35.31 /25m/D/L4。来源为 same-source pair（同来源配对摘要），Tier-B summary（B 级历史摘要），raw unavailable（原始材料不可得）；完整 Instruction/config 身份不充分。[最终证据审查](../../project/FINAL_EVIDENCE_REVIEW.md)
+**FACT｜事实**：上表的 v1 pair 来自 same-source Tier-B summary，raw unavailable，完整 Instruction/config 身份不足。[最终证据审查](../../project/FINAL_EVIDENCE_REVIEW.md)
 
-**INTERPRETATION｜解释：** 高样本提供真实历史上界记录，但不能替代低端结果，也不能提供一份完全可恢复、可审计的部署身份。要冻结提交，必须知道实际交付字节与方案职责，而不只是复述历史高分。
-
-这不证明 v1 一定较差，更不证明 exact-v6 稳定性较好。v6 的重复样本缺口仍然存在。最终选择是在证据不足的现实中选择可交付身份，而非给历史所有方案做总体能力排序。
+**INTERPRETATION｜解释**：只展示 76.04 会删掉 35.31 这一低端结果，也未提供足够的可恢复交付身份。最终选择必须回答交付字节与职责，不能只选峰值；这仍不证明 v1 更差或 v6 更稳定。小样本推理集中在 [D07](07-为什么一次高分几乎什么都证明不了.md)。
 
 ## exact-v6：选择的具体对象
 
-**FACT｜事实：**
+**FACT｜事实**：`candidate-v6-auditable-control-loop`，runtime source `1114a04b75548cf52f030d123564e527060fc061`，三 Skill 为 Board/Planning/Risk。上表的唯一完整样本晋升在 M6/M12/M18/M36/M48，分类同时为 **VALID_48M_COMPLETION** 与 **RUNTIME_ADHERENCE_FAIL**。
 
-- Candidate：**candidate-v6-auditable-control-loop**。
-- Runtime source：**1114a04b75548cf52f030d123564e527060fc061**。
-- 三 Skill：structured-state-board、rolling-planning、risk-review。
-- 完整样本：**75.29 / 52.70 / 48m / A / L6**。
-- Promotions（晋升）：**M6 / M12 / M18 / M36 / M48**。
-- Gameplay：**VALID_48M_COMPLETION**。
-- Adherence：**RUNTIME_ADHERENCE_FAIL**。
-
-来源是 [最终身份](../../project/FINAL_SUBMISSION_IDENTITY.json)、[v6 运行记录](../../project/runs/v6-run1-validation.md) 与 [S06 收口](../../project/S06_CLOSEOUT.md)。
-
-“exact”意味着不把后来更明确的执行文本、v6d fallback（回退方案）或第四 Skill 混进去。后期已知的修复不能倒填进历史 source，让原样本看起来验证了新版。
+来源：[最终身份](../../project/FINAL_SUBMISSION_IDENTITY.json)、[v6 记录](../../project/runs/v6-run1-validation.md)、[S06 收口](../../project/S06_CLOSEOUT.md)。exact 表示保留该历史身份，不混入后期补丁、fallback 或第四 Skill；后来的修复不能继承原样本验证。
 
 ## 必须正面保留的运行缺陷
 
@@ -67,11 +57,9 @@ Main 选择：固定历史 exact-v6 身份
 
 ## 为什么不是后期 v8a
 
-**FACT｜事实：** v8a 为四 Skill Candidate，从 v7o donor core 移植到 v7z shell；两个完整样本保持相同冻结行为身份，分别得到 72.65 /50.86/48m/A/L5 与 59.00 /41.30/48m/C/L4。[v8a 来源](../../skill-evolution/07-v8a-v7o-donor-core-transplant/SOURCE.md) · [样本一](../../project/runs/v8a-full-horizon-sample1.md) · [样本二](../../project/runs/v8a-full-horizon-sample2.md)
+**FACT｜事实**：v8a 为 v7o donor core + v7z shell 的四 Skill 身份；[RUN-0004](../../project/runs/v8a-full-horizon-sample1.md) 与 [RUN-0002](../../project/runs/v8a-full-horizon-sample2.md) 两个完整样本保持相同冻结行为，数据见上表。[SOURCE](../../skill-evolution/07-v8a-v7o-donor-core-transplant/SOURCE.md)
 
-**INTERPRETATION｜解释：** 两样本提供比一条轨迹更丰富的描述，但仍不足以估计稳定分布。它们也没有超过 v6 的已记录高位观测；更关键的是，这不是 exact-v6 replication（精确复验），不能用来填补 v6 的重复性缺口。
-
-样本一 CTRL-DL 文本邻接格式未被当前 parser 接受，样本二有空格而可被接受。格式差异没有对应 Candidate 身份变化。不能把解析率当成 Delivery 全程语义应用率，更不能把两个分数的差完全归给格式。[样本记录](../../project/runs/v8a-full-horizon-sample1.md)
+**INTERPRETATION｜解释**：两轨迹增加描述信息，却未超过 v6 的已记录高位，也没有提供稳定优劣或 exact-v6 replication。CTRL-DL 邻接/空格格式造成不同 parser 接受情况，不代表身份变化、Delivery 语义应用率或分差因果。样本边界见 D07，解析/行为区别见 [D08](08-Forensics为什么成为项目的重要部分.md)。
 
 ## 选择链：哪些是事实，哪些是解释
 
@@ -85,52 +73,29 @@ Main 选择：固定历史 exact-v6 身份
 
 ## Auditability 和 adherence 为什么不能混用
 
-**Auditability（可审计性）** 是能够把声明回溯到身份、事件、输入与结果；**Adherence（运行遵循）** 是这些实际事件是否符合合同。一个缺陷被可靠查出，本身说明某部分证据可审计，却同时说明对应合同没有被遵循。
-
-**INTERPRETATION｜解释：** 因此，“v6 可复核”可以与“v6 adherence FAIL”同时成立。若选择理由包含审计价值，不应把它改写成“运行完全正确”。本项目保留原样本缺陷，正好提供了这个区别。
-
-同样，parser 接受一个 CTRL-DL 组合，说明格式被读懂；要判断 Delivery 是否基于真实交付证据，还需要语义材料。工程选择时可以关心记录是否可解释，但不能用格式齐全代替策略正确。
+**Auditability（可审计性）** 让声明回到身份与事件；**Adherence（运行遵循）** 检查事件是否符合合同。因此可复核的缺陷同时支持“证据可审”和“行为 FAIL”，不能把选择中的审计价值写成完全遵循。parser 读懂格式也不证明交付语义，取证过程见 D08。
 
 ## 历史 fallback 在选择中是什么位置
 
-**FACT｜事实：** exact-v6d 的三个历史值为 71.67 /65.35/59.67，是 fallback 比较信息，非最终包；这些样本也不是稳定分布证明。[冻结审计](../../project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)
+**FACT｜事实**：exact-v6d 是历史 fallback，非最终包，[冻结审计](../../project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md) 保留比较证据。具体对照查 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。
 
-**INTERPRETATION｜解释：** Fallback（回退方案）提供另一个已有对象，不等于当前研究已经证明它风险最低。其“安全”角色是项目语境中的选择定位，不能改成未来必然存活。
-
-最终选 exact-v6 是一次明确身份决策。选用该对象后，不能偷偷替换成 v6d 修复文本再继续沿用 v6 的高分；否则交付的方案与解释成绩的方案不一致。
+**INTERPRETATION｜解释**：回退定位不证明风险最低或未来必然存活。不能把其修复文本混入 exact-v6 后，继续归属原 v6 的成绩；选择与交付必须对应同一行为身份。
 
 ## 选择之后还有哪些未知
 
-一份完整决策记录应该同时允许两句话成立：交付对象已经明确；性能外推仍不明确。冻结结束的是本轮方案搜索和打包身份，不是把所有研究未知转成事实。
-
-**UNKNOWN｜当前证据不足：** exact-v6 的稳定分布、因果策略贡献、长期遵循和 hidden Test 迁移。选择不是新增样本，包散列也不是性能测量。
-
-**TEACHING EXAMPLE｜教学示例：** 如果有人要求答辩只留“75.29、三 Skill、最终方案”，应补回“单样本、adherence FAIL、无官方评测”。这不是削弱工程工作，而是防止观众误解它已经完成哪些验证。
+**UNKNOWN｜当前证据不足**：exact-v6 的稳定分布、因果贡献、长程遵循和 hidden Test 迁移。选择和 hash 都不增加样本；任何简述都要连同单样本、adherence FAIL 和无官方评测一起表达。
 
 ## 最终包与上传边界
 
-**FACT｜事实：** 唯一冻结包为：
+**FACT｜事实**：冻结包为 `FZU-Loss-final-v6.zip`；完整 bytes、members、SHA-256、source/build 身份与合同统一查 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)，权威来源是 [最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md) 与 [冻结审计](../../project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)。
 
-| 字段 | 固定身份 |
-|---|---|
-| ZIP | FZU-Loss-final-v6.zip |
-| Bytes | 18,082 |
-| Members | 7 files |
-| SHA256 | 31e836b591703dfe520916828da033a57de260bb451d97047bbaee9daaa11b9b |
-| Runtime source | 1114a04b75548cf52f030d123564e527060fc061 |
-| Official upload | NOT PERFORMED / NOT PROVEN |
-| Platform score | UNKNOWN |
-| Hidden-test transfer | UNKNOWN |
-
-来源：[最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md) · [冻结审计](../../project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)。
-
-包构建提交与 runtime source 是不同对象，current checkout 又是另一个对象。当前仓库有四 Skill，不意味着最终 ZIP 有四 Skill；离线校验包成员与散列通过，不意味着比赛平台已接收。
+**Official upload = NOT PERFORMED / NOT PROVEN；platform score = UNKNOWN；hidden-test transfer = UNKNOWN。** 当前四 Skill checkout、三 Skill final ZIP 和构建提交是不同对象；离线包校验不能代替平台回执。这里保留外推边界，避免在多篇教材维护完整身份表。
 
 ## 如果以后有新证据怎么办
 
-**INTERPRETATION｜解释：** 新证据可以支持新的决策，但不能静默覆盖历史冻结记录。需要明确是否重开路线、是否产生新身份、是否获得运行/提交授权。否则“改进最终包”会破坏原样本与交付对象的一致性。
+**INTERPRETATION｜解释**：新证据可支持新决定，不能静默覆盖历史冻结。须明确重开范围、新身份和运行/提交授权。
 
-**TEACHING EXAMPLE｜教学示例：** 复核者问“为什么没有修完所有问题再交付？”准确回答应提到冻结的历史身份和未知收益：修复已知缺陷会产生新行为身份，需要相应证据；本次选择保留成熟历史对象及其限制。不能回答“原版本已经没有问题”。
+**TEACHING EXAMPLE｜教学示例**：答辩问为何未修完缺陷再交付，应说明修改会形成新的行为身份、需要对应证据；本次选定成熟历史对象及其限制，不能回答“原版已经无问题”。
 
 ---
 

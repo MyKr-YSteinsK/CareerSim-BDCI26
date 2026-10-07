@@ -58,7 +58,7 @@ WebSocket（双向长连接）是Runner与AgentServer交换驱动消息的通道
 | [install.py](../../../career_sim_runner/install.py) | 按提交目录安装Skills与状态，保存InstallRecord，提供读取active install能力 | CLI或headless play；装错身份影响实际模型上下文 |
 | [validate.py](../../../career_sim_runner/validate.py) | 分开验证提交结构与环境，组合ValidationReport | CLI；字段PASS与后端PASS属于不同问题 |
 
-Manifest（清单）告诉系统包叫什么、模式是什么、Instruction是什么；Skill文件提供行为规则。合同验证可以发现缺文件、空Instruction或不合格式的文件头，却不能判定规则是否好，也不能证明模型读过。
+Manifest（清单）告诉系统包叫什么、模式是什么、Instruction是什么；Skill文件提供行为规则。不同检查器的范围要分别看：冻结 Runner 的 `validate_manifest` 只检查 team / mode，不检查 Instruction 正文是否为空；提交结构与 Skill frontmatter 检查负责各自的文件和格式要求。项目打包器的额外检查不能归给 frozen validator。检查通过仍不能判定策略好坏或证明模型读过，具体范围见[Track B 提交校验](../track-b-system-runtime/03-Submission、Manifest与Skill校验.md)。
 
 一个重要源码细节：`validate_submission`主要检查提交结构，`validate_environment`会创建必要目录、初始化/overlay实例、在DB父目录写入并删除探针，还调用后端可达检查。因而“validate听起来像检查”不等于全部验证无副作用。不能在本任务中为了确认教材而执行它。
 

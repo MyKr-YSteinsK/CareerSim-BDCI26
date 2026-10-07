@@ -2,6 +2,8 @@
 
 一个实验的价值，不只在于最后有没有高分，还在于它是否消除了一个重要的不确定性。CareerSim 的研发逐渐形成了“先有证据，再提出有边界的假设”的顺序。
 
+先读 [D02 的 Candidate / Run / Experiment](02-Candidate、Run、Experiment到底有什么区别.md)。本章详细讲证据到决策的循环；验证层级接 D04，替代路线结论查 D10。
+
 ## 循环中每一步在做什么
 
 **Evidence（证据）** 是可核对的观测或来源；**Hypothesis（假设）** 是对问题和潜在改进的待验证判断；**Experiment（实验）** 用明确方法检验判断；**Decision（决策）** 决定采用、继续、修改、停止或返回审查；**Implementation（实现）** 把已授权的决策落实成代码或合同。
@@ -101,11 +103,9 @@ STOP 不要求先创建一个新的正式 Candidate。
 
 ## 第三个接缝：Reviewer 为什么先查可部署性
 
-**FACT｜事实：** Reviewer 研究并没有先找模型评审历史决策，再讨论怎样部署。它先查冻结路径的构造、注册、工具继承和权限限制；只读隔离没有成立，因此质量阶段没有开始。[Reviewer 可行性](../../project/research/S10-19R1_SUBAGENT_FEASIBILITY.md)
+**FACT｜事实**：[Reviewer 研究](../../project/research/S10-19R1_SUBAGENT_FEASIBILITY.md) 先检查冻结路径的注册与权限，机械只读隔离未成立，质量阶段未运行。它在这里说明 experiment dependency（实验依赖）：后续收益检查依赖先前安全门禁，不能因好建议的吸引力跳过部署前提。
 
-**INTERPRETATION｜解释：** 这是 experiment dependency（实验依赖）设计。若审查者在正式路径下不能安全存在，隔离实验中即使给出好建议，也不能直接支持该路径部署。先查前提可以节省后续成本，还能避免对无法落地机制产生过强信心。
-
-假如反过来，先盲评得到许多好建议，团队容易为了保住已有成果而放松权限标准。门禁顺序本身能减少这种事后取舍压力，但并不保证后续研究一定正确。
+完整测试范围、`REVIEWER_NOT_SAFELY_DEPLOYABLE` 和非结论集中在 [D10](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)。上面的 Simulator walkthrough 则展示同一依赖设计怎样产生 STOP 和未运行阶段。
 
 ## 把假设写成可反驳的句子
 
@@ -121,7 +121,7 @@ STOP 不要求先创建一个新的正式 Candidate。
 
 **FACT｜事实：** Simulator 先修复 ASCII transport（传输编码）与冷/热初始化差异，再保留政策冻结和 adapter refreeze（适配层再冻结）；最终 16 次有效基线检查没有技术失败，但完成率门禁仍失败。[Simulator 研究](../../project/research/S10-22_SIMULATOR_POLICY_SEARCH.md)
 
-这条时间线很有教学价值：修复装置不应悄悄重写政策来适应 reward。区分 transport repair（传输修复）与 policy change（策略修改），使“门禁失败”仍对应原冻结假设。
+区分 transport repair（传输修复）与 policy change（策略修改），才能使门禁仍回答原冻结假设。路线最终落点集中在 [D10](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
 
 ## 实验结束时怎样写结论
 

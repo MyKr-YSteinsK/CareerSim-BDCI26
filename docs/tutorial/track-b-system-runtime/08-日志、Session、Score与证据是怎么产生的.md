@@ -68,9 +68,7 @@ JSONL（逐行 JSON）便于逐项处理；JSON 报告是一个汇总对象。�
 
 **INTERPRETATION｜解释**：这不是重新运行游戏得到的新成功退出码。新旧 active install、最后 drive、旧 output 和最新 DB 行如果并不属于同一 Run，就可能拼成一份有格式却归属错误的报告。
 
-历史 v4 的报告无分，是共享实例实际 DB 路径与根 Runner 默认路径不一致；v7i 的 score report game ID 为空，但正确 fresh final observe（最后新鲜观察）与 transcript 支持该局的 64.0 / 44.8。不能把报告字段缺陷等同于游戏没有成绩，也不能任意拿另一个 DB 成绩修补它。参见 [v4 取证](../../project/runs/v4-run1-health-forensic.md) 和 [v7i 替代运行](../../project/runs/v7i-run1-replacement-validation.md)。
-
-v6 历史记录还注明 score report 内容曾变化，具体覆盖原因为 `UNKNOWN`；本轮不从源码可能路径直接倒推出唯一历史原因。
+历史 [v4](../../project/runs/v4-run1-health-forensic.md) 的 DB 路由错配与 [v7i](../../project/runs/v7i-run1-replacement-validation.md) 的报告字段缺陷说明，空分和空 ID 都要沿独立来源判断；完整调查步骤见 [D08](../track-d-project-method/08-Forensics为什么成为项目的重要部分.md)。v6 报告后来改变的具体覆盖原因仍 UNKNOWN，不能从当前可能代码路径倒推出唯一历史原因。
 
 ## 5. 分数回答的问题比“系统正确”窄
 
@@ -98,9 +96,9 @@ Audit（审计）是在已有证据上检查身份、过程和结论边界。项
 
 ## 8. 原始证据保留到什么时候
 
-FORENSIC_HOLD（取证保留）表示仍存在复核依赖、未决故障或唯一来源。任务写了 COMPLETE、摘要生成完、hash 已记录，都不会自动解除 hold。[旧工作区退役记录](../../project/LOCAL_WORKSPACE_RETIREMENT.md) 说明用户删除旧目录前已迁移 20 个精确 DB payload；迁移后的本地 hold 仍为 ACTIVE。
+FORENSIC_HOLD（取证保留）表示材料仍有复核依赖或未决问题。COMPLETE、摘要和 hash 均不自动解除 hold；[旧工作区退役记录](../../project/LOCAL_WORKSPACE_RETIREMENT.md) 中，迁移后的来源仍受保留约束。
 
-只按授权处理指定材料，责任方接受结论并解除依赖后，再由 Main/Stage 记录 hold 解除；清理还需要明确范围。治理与全仓工具生命周期留给 Track C，本章只解释它为什么影响历史证据是否仍能复核。
+本章负责解释证据怎样生成。Raw 与派生材料怎样分层、谁接受解除条件，接着读 [C07：证据链与 hold 生命周期](../track-c-repository-tooling/07-artifacts、Raw-Evidence与证据链.md)；出现归属冲突时读 [D08：取证方法](../track-d-project-method/08-Forensics为什么成为项目的重要部分.md)。本轮不改变任何 hold 状态。
 
 ## 9. 阅读练习
 
