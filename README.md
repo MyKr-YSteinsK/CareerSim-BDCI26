@@ -25,7 +25,7 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 
 - [CURRENT_STATE](docs/project/CURRENT_STATE.md)：当前阶段、接受状态与授权边界
 - [Skill / Instruction 历史演化索引](docs/skill-evolution/00-版本索引.md)：代表性历史快照及精确来源
-- [FINAL_REPOSITORY_FREEZE](docs/project/FINAL_REPOSITORY_FREEZE.md)：历史冻结候选记录（已被后续 S11 重构取代）
+- [FINAL_REPOSITORY_FREEZE](docs/project/FINAL_REPOSITORY_FREEZE.md)：最终仓库终审与冻结候选记录（状态见记录；最终接受权属于 Main）
 - [FINAL_ID_MAP](docs/project/FINAL_ID_MAP.md)：代表性 Candidate、Run、实验与提交包的 Display-ID 及 provenance 索引
 - [Project Retrospective](docs/project/PROJECT_RETROSPECTIVE.md)：项目目标、成果和整体边界
 - [Final Solution Review](docs/project/FINAL_SOLUTION_REVIEW.md)：冻结 exact-v6 身份、运行证据和限制
