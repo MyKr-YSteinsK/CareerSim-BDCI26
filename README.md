@@ -7,16 +7,11 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 面向第一次接触项目的中文阅读入口，覆盖赛题、架构、实验、研发演进、方案选择、答辩、职业材料和证据核验；工程事实仍以 `docs/project/` 中的权威工程记录为准。
 
 - [00｜阅读导航](docs/final-report/00-阅读导航.md)
-- [01｜赛题与项目总览](docs/final-report/01-赛题与项目总览.md)
+- [01｜项目总览与最终成果](docs/final-report/01-项目总览与最终成果.md)
 - [02｜Agent 技术方案与系统架构](docs/final-report/02-Agent技术方案与系统架构.md)
-- [03｜完整研发流程与方案演进](docs/final-report/03-完整研发流程与方案演进.md)
-- [04｜实验设计与证据评估](docs/final-report/04-实验设计与证据评估.md)
-- [05｜失败路线与负结果复盘](docs/final-report/05-失败路线与负结果复盘.md)
-- [06｜最终方案与候选选择](docs/final-report/06-最终方案与候选选择.md)
-- [07｜工程实现与冻结交付](docs/final-report/07-工程实现与冻结交付.md)
-- [08｜答辩要点与常见问题](docs/final-report/08-答辩要点与常见问题.md)
-- [09｜简历与作品集素材](docs/final-report/09-简历与作品集素材.md)
-- [10｜证据索引与事实边界](docs/final-report/10-证据索引与事实边界.md)
+- [03｜研发演进、实验与失败复盘](docs/final-report/03-研发演进、实验与失败复盘.md)
+- [04｜最终方案、候选选择与工程交付](docs/final-report/04-最终方案、候选选择与工程交付.md)
+- [05｜答辩、作品集与证据边界](docs/final-report/05-答辩、作品集与证据边界.md)
 
 ## 最终提交方案
 

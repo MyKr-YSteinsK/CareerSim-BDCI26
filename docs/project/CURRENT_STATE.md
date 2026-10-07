@@ -52,7 +52,7 @@ S11 允许仓库清理、证据整理、文档、答辩/作品集工作和最终
 
 ## 8. 权威资料导航
 
-- [仓库 README](../../README.md) · [人读报告导航](../final-report/00-阅读导航.md)
+- [仓库 README](../../README.md) · [00｜阅读导航](../final-report/00-阅读导航.md)
 - [官方来源锁](OFFICIAL_SOURCE_LOCK.md) · [运行历史](RUN_HISTORY.md) · [环境记录](ENVIRONMENT.md)
 - [最终证据审阅](FINAL_EVIDENCE_REVIEW.md) · [最终方案审阅](FINAL_SOLUTION_REVIEW.md) · [最终编号索引](FINAL_ID_MAP.md)
 - [提交身份](FINAL_SUBMISSION_IDENTITY.json) · [manifest](FINAL_SUBMISSION_MANIFEST.md) · [提交合同](FINAL_SUBMISSION_CONTRACT.md)
