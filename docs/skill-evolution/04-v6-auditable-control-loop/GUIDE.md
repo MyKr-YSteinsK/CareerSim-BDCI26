@@ -77,13 +77,13 @@
 
 **FACT**：只有一个接受的完整样本；配对、重读、reserve trigger 和有界比较仍有缺口。本机 score_report 后来改了 session 字段/时间，原因 UNKNOWN；独立事件绑定 session，raw 未重写。正式 raw FORENSIC_HOLD 状态为 UNKNOWN，不能当无保留要求。
 
-**INTERPRETATION**：设计合同、真实遵循和完整结果分开评价；75.29 与 RUNTIME_ADHERENCE_FAIL 同时保留。调查方法读 [D08](../../tutorial/track-d-project-method/08-Forensics、失败实验与负证据.md)，不能因高分遮盖失败或反过来否定完整运行。
+**INTERPRETATION**：设计合同、真实遵循和完整结果分开评价；75.29 与 RUNTIME_ADHERENCE_FAIL 同时保留。调查方法读 [D06](../../tutorial/track-d-project-method/06-Forensics、失败实验与负证据.md)，不能因高分遮盖失败或反过来否定完整运行。
 
 ## 9. 为什么它值得保留在版本演化里
 
 本版把 candidate-first 风险、公开反馈 reset、动作前 CTRL 与每步新观察组合成成熟三 Skill 控制合同，同时保留真实遵循失败。它值得保留为“设计身份与执行事实分别可审”的版本案例。
 
-**FACT｜最终选择边界**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 记录 `HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING`。这不是全部历史最高分或统计最优；选择理由及 v1/v8a 对照集中在 [D11](../../tutorial/track-d-project-method/11-为什么最终选择exact-v6而不是v1或v8a.md)，精确交付字段集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。官方上传与平台评测未执行，hidden-test transfer 未证明。
+**FACT｜最终选择边界**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 记录 `HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING`。这不是全部历史最高分或统计最优；选择理由及 v1/v8a 对照集中在 [D08](../../tutorial/track-d-project-method/08-为什么最终选择exact-v6而不是v1或v8a.md)，精确交付字段集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。官方上传与平台评测未执行，hidden-test transfer 未证明。
 
 ## 10. 下一版要看什么
 

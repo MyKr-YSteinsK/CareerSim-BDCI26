@@ -6,7 +6,7 @@
 
 本章把 S10 路线当作 Research Portfolio（研究组合）理解。路线的名字不决定结果类型，各自到达的证据层次才决定如何表述。
 
-读 [D03](03-实验方法与多层验证.md) 的循环、[负结果分类](08-Forensics、失败实验与负证据.md#给结果分类并保留停止理由) 的分类后，可按路线跳读。本章是八条替代路线的详细结论入口；每条查问题、测试范围、结果、非结论与停止/延后状态。
+读 [D03](03-实验方法与多层验证.md) 的循环、[负结果分类](06-Forensics、失败实验与负证据.md#给结果分类并保留停止理由) 的分类后，可按路线跳读。本章是八条替代路线的详细结论入口；每条查问题、测试范围、结果、非结论与停止/延后状态。
 
 ## Reviewer：独立意见之前，先有权限边界
 
@@ -74,11 +74,11 @@
 
 **FACT｜事实**：当前 `CLOSED_BY_USER`；**UNKNOWN｜当前证据不足**：关闭原因未被 canonical source 记录，不能推为效果差或没有价值。[CURRENT_STATE](../../project/CURRENT_STATE.md)
 
-历史实现身份、revision/run_id 检查、choice 提交与输出材料集中在 [C10](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md)，这里仅说明它在研究组合中的独立位置。
+历史实现身份、revision/run_id 检查、choice 提交与输出材料集中在 [C08](../track-c-repository-tooling/08-Human-Play-Lab是怎么实现的.md)，这里仅说明它在研究组合中的独立位置。
 
 ## 这些门禁之间不是一条“功能失败排行榜”
 
-各路线测的是权限隔离、上下文组装、工具读写或语义排序；输入、成功标准和执行阶段不同。不能用“用了/没用”给机制排优劣，也不能把隔离工具支持移写为正式 Candidate 已成功。门禁顺序的完整教学见 [D03](03-实验方法与多层验证.md)，分类见 [负结果分类](08-Forensics、失败实验与负证据.md#给结果分类并保留停止理由)。
+各路线测的是权限隔离、上下文组装、工具读写或语义排序；输入、成功标准和执行阶段不同。不能用“用了/没用”给机制排优劣，也不能把隔离工具支持移写为正式 Candidate 已成功。门禁顺序的完整教学见 [D03](03-实验方法与多层验证.md)，分类见 [负结果分类](06-Forensics、失败实验与负证据.md#给结果分类并保留停止理由)。
 
 ## 输入语义为什么是确定性工具的难点
 
@@ -90,7 +90,7 @@
 
 ## HPL 能给研究什么，不能给什么
 
-HPL 的 journal/frames、metadata/exports 和本地 DB/log/staging 因阶段不同而异，具体机制见 [C10](../track-c-repository-tooling/10-Human-Play-Lab是怎么实现的.md)。这些材料可供提出公开机制问题，不能转换为正式模型 runtime adherence 证据；`CLOSED_BY_USER` 的原因仍 UNKNOWN。
+HPL 的 journal/frames、metadata/exports 和本地 DB/log/staging 因阶段不同而异，具体机制见 [C08](../track-c-repository-tooling/08-Human-Play-Lab是怎么实现的.md)。这些材料可供提出公开机制问题，不能转换为正式模型 runtime adherence 证据；`CLOSED_BY_USER` 的原因仍 UNKNOWN。
 
 ## 把所有路线放回证据层次
 

@@ -50,7 +50,7 @@ Script（脚本）通常围绕一个工程问题编排输入和输出。Runner�
 正式模型选择 → JiuwenSwarm/MCP → GameEngine：正式运行路径
 ```
 
-同一模拟器可以被不同控制路径调用。性能和遵循结论只能绑定实际使用的路径，不能看见take_action就当成完整正式runtime验证。详见[HPL章](10-Human-Play-Lab是怎么实现的.md)和[Track B 工具调用章](../track-b-system-runtime/06-Runner、Tool调用与状态更新.md)。
+同一模拟器可以被不同控制路径调用。性能和遵循结论只能绑定实际使用的路径，不能看见take_action就当成完整正式runtime验证。详见[HPL章](08-Human-Play-Lab是怎么实现的.md)和[Track B 工具调用章](../track-b-system-runtime/05-Runner、Tool调用与状态更新.md)。
 
 这些脚本目前有历史复现和理解接口的价值。若未来只保留最终正式路线，它们可以进入退役审查；但尚有tests、结果或教学引用时，不能把“不是最终路线”直接翻译成“现在可删”。
 
@@ -66,7 +66,7 @@ Script（脚本）通常围绕一个工程问题编排输入和输出。Runner�
 
 **INTERPRETATION｜解释：**一次性取证脚本把“当时怎么算的”留下来；它对修复错误归属、复核表格和说明未知很有价值。一旦结果知识被canonical文档吸收，输入可恢复且下游/hold依赖关闭，它可能退出当前树。一次性描述的是用途集中，不是价值低；长期保留也不是默认永久承诺。
 
-若只保留结果不保留提取方法，某些结论可能难以重新算出。若所有一次性脚本永久挤在主工具入口，未来维护者又难分清谁还在用。正确处置要同时看复验需求和知识迁移，见[保留章](11-开发工作流与文件生命周期.md)。
+若只保留结果不保留提取方法，某些结论可能难以重新算出。若所有一次性脚本永久挤在主工具入口，未来维护者又难分清谁还在用。正确处置要同时看复验需求和知识迁移，见[保留章](09-开发工作流与文件生命周期.md)。
 
 ## 五、研究工具：数据准备、模型评估和引擎评估各有边界
 
@@ -78,7 +78,7 @@ Script（脚本）通常围绕一个工程问题编排输入和输出。Runner�
 
 特别要纠正一个导航材料的简写：`test_boundary.py`的普通测试组主要是投影、策略和子进程检查，但文件的 `__main__` 在测试通过后还调用 `reproducibility()`，创建引擎并运行三个episode（对局过程）。所以直接执行它不能被描述为纯静态单元检查；S11-29没有执行。
 
-历史S10-22实际只评估baseline，未完成宏搜索；文件名search不能作为“已经搜过全部策略”的证据。[下一章实验](06-experiments与research是怎样工作的.md)讲结果边界。
+历史S10-22实际只评估baseline，未完成宏搜索；文件名search不能作为“已经搜过全部策略”的证据。[下一章实验](05-experiments与research是怎样工作的.md)讲结果边界。
 
 ## 六、17/17完整索引
 
@@ -110,7 +110,7 @@ Script（脚本）通常围绕一个工程问题编排输入和输出。Runner�
 
 ## 深入练习：同一个输出名字，为什么输入合同决定结论
 
-**TEACHING EXAMPLE｜教学示例**：同名 `result.json` 来自 audit、fake Provider 或 public MCP batch，分别是派生、替身、真实动作路径材料。再核输入配对：Run A events 与 Run B transcript 都能解析，仍可能错局；latest 也可能选中旧 Task。完整归属方法见 [D08](../track-d-project-method/08-Forensics、失败实验与负证据.md)。
+**TEACHING EXAMPLE｜教学示例**：同名 `result.json` 来自 audit、fake Provider 或 public MCP batch，分别是派生、替身、真实动作路径材料。再核输入配对：Run A events 与 Run B transcript 都能解析，仍可能错局；latest 也可能选中旧 Task。完整归属方法见 [D06](../track-d-project-method/06-Forensics、失败实验与负证据.md)。
 
 ### 三个互不替代的核验问题
 
@@ -124,6 +124,6 @@ Script（脚本）通常围绕一个工程问题编排输入和输出。Runner�
 
 ### 输出文件为什么不能覆盖来源
 
-派生报告应写到独立输出；写回原 events 会破坏复验基础。遇到非空目录拒绝，先确认是否获准重建，不能强制覆盖。来源与 hold 的生命周期见 [C07](07-artifacts、Raw-Evidence与证据链.md)。
+派生报告应写到独立输出；写回原 events 会破坏复验基础。遇到非空目录拒绝，先确认是否获准重建，不能强制覆盖。来源与 hold 的生命周期见 [C06](06-artifacts、Raw-Evidence与证据链.md)。
 
 用一句话自查：谁生成、吃了什么、改变了什么、证明了什么？完整索引供查询，下一章用真实断言解释测试怎样保护这些工具。

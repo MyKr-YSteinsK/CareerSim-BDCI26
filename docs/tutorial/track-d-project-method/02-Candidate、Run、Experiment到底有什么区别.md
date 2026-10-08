@@ -86,4 +86,4 @@ Experiment：一个明确问题 + 假设 + 固定边界 + 判断规则
 
 **UNKNOWN｜当前证据不足：** v1 完整 Instruction/raw 身份未恢复，不能为了统一表格把它补成与后期 Candidate 同等精度的身份。
 
-需要了解一次 Run 实际怎样启动、生成 session 和结果，继续阅读 [Track B 的证据链](../track-b-system-runtime/08-日志、Session、Score与证据是怎么产生的.md)。本章的重点是判断这些对象在实验里各自承担什么角色。
+需要了解一次 Run 实际怎样启动、生成 session 和结果，继续阅读 [Track B 的证据链](../track-b-system-runtime/06-日志、Session、Score与证据是怎么产生的.md)。本章的重点是判断这些对象在实验里各自承担什么角色。

@@ -15,7 +15,7 @@
 
 **解释：** 取证的价值是缩小可支持的结论范围。它既可以确认问题，也可以证明某个常见解释没有足够证据。UNKNOWN 不是取证失败的同义词。
 
-先读 [多层验证 多层验证](03-实验方法与多层验证.md#实验结果通过了哪一层验证) 与 [D07 样本边界](07-分数、不确定性与反过拟合.md)。下面完整展开 stale score、session provenance、CTRL 配对三案；其余案例也保留需要核对的证据、替代解释和判断边界，可以按小标题查询。证据怎样生成查 B08，怎样保留查 C07。
+先读 [多层验证 多层验证](03-实验方法与多层验证.md#实验结果通过了哪一层验证) 与 [D05 样本边界](05-分数、不确定性与反过拟合.md)。下面完整展开 stale score、session provenance、CTRL 配对三案；其余案例也保留需要核对的证据、替代解释和判断边界，可以按小标题查询。证据怎样生成查 B08，怎样保留查 C07。
 
 这里引用 canonical summaries（权威摘要）与已去敏研究记录，不展开 raw payload（原始载荷），也不重新进行 live 诊断。
 
@@ -59,7 +59,7 @@
 
 先检查 tool result 字段和动作/observe 序列，才能区分“回执已经包含状态”与“审计漏读”。**事实：**S08-RUN03 回执仅有 success/error，不含 state/event/choices，18 个缺 observe 边界是真实违规。因此不能以 success 代替 fresh state，也不能从缺观察数推算分数损失。
 
-来源：[S08-09 取证](../../project/reviews/S08-09_RUNTIME_CONTRACT_ADHERENCE_FORENSICS.md)。接口闭环本身见 [请求与回执](../track-b-system-runtime/06-Runner、Tool调用与状态更新.md#一次选择怎样成为外部动作)。
+来源：[S08-09 取证](../../project/reviews/S08-09_RUNTIME_CONTRACT_ADHERENCE_FORENSICS.md)。接口闭环本身见 [请求与回执](../track-b-system-runtime/05-Runner、Tool调用与状态更新.md#一次选择怎样成为外部动作)。
 
 ### Compression：恢复文字不是来源重读
 
@@ -83,7 +83,7 @@
 
 判断分析字段或内部信息是否进入策略输出，应核对 participant-visible（参与者可见）输入定义、引用位置与用途。**事实：**v8a 两个样本均保留 HiddenRisk 数值引用限制。内部数值不能成为可部署规则；引用限制也不证明两局分差由它造成。
 
-来源：[样本一](../../project/runs/v8a-full-horizon-sample1.md)、[样本二](../../project/runs/v8a-full-horizon-sample2.md)。这里区分保存技术来源与准许玩家使用信息，抗过拟合边界见[分数与不确定性](07-分数、不确定性与反过拟合.md)。
+来源：[样本一](../../project/runs/v8a-full-horizon-sample1.md)、[样本二](../../project/runs/v8a-full-horizon-sample2.md)。这里区分保存技术来源与准许玩家使用信息，抗过拟合边界见[分数与不确定性](05-分数、不确定性与反过拟合.md)。
 
 ### 同一 parser 的 FAIL，怎样区分工具问题与行为问题
 
@@ -111,7 +111,7 @@
 
 **解释：** 取证还原不了的部分，保留未知与最小必要来源，比选一个听起来合理的根因更有价值。它影响后续实验是否值得做、能否复核以及什么时候能清理。
 
-证据文件和生命周期的工程实现，见 [Track C 证据链](../track-c-repository-tooling/07-artifacts、Raw-Evidence与证据链.md)。
+证据文件和生命周期的工程实现，见 [Track C 证据链](../track-c-repository-tooling/06-artifacts、Raw-Evidence与证据链.md)。
 
 取证缩小了可支持的结论，接下来要把结论写成准确的结果类型。技术失败、弱信号、未测试和可行性失败需要不同后续行动；一个笼统的“失败”会丢掉这些区别。
 
@@ -121,7 +121,7 @@
 
 **解释：** “失败”若没有对象，会把未测量、技术故障、低分和可行性门禁混为一谈。下一位开发者可能因此重复无信息工作，或者错误关闭有价值方向。
 
-前面的案例用来重建事实；这里继续区分结果类型。每条替代路线的测试深度与部署结论查 [D10](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
+前面的案例用来重建事实；这里继续区分结果类型。每条替代路线的测试深度与部署结论查 [D07](07-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
 
 ### 六种标签有不同含义
 
@@ -150,7 +150,7 @@ MCP（模型上下文协议）注册失败也需要相同思路。注册/发现�
 
 **事实**：[v6 运行记录](../../project/runs/v6-run1-validation.md) 中一次 Energy 格式拒绝发生在状态改变前，另外 202 次成功动作有新观察。这里归为执行缺陷，不记成成功动作，也不直接评价某个 Skill 的策略收益。
 
-参数形状与回执细节查 [B03](../track-b-system-runtime/03-Submission校验与Skill安装.md) / [请求与回执](../track-b-system-runtime/06-Runner、Tool调用与状态更新.md#一次选择怎样成为外部动作)。同一低分可能涉及多种原因，分类要绑定实际发生的边界。
+参数形状与回执细节查 [B03](../track-b-system-runtime/03-Submission校验与Skill安装.md) / [请求与回执](../track-b-system-runtime/05-Runner、Tool调用与状态更新.md#一次选择怎样成为外部动作)。同一低分可能涉及多种原因，分类要绑定实际发生的边界。
 
 ### 自然低分不能自动变成技术失败
 
@@ -162,13 +162,13 @@ MCP（模型上下文协议）注册失败也需要相同思路。注册/发现�
 
 **事实**：[Controller 报告](../../project/research/S10-20_PROMOTION_WINDOW_CONTROLLER.md) 的工具状态持续性工作，24 个 replay cases 中仅一个 state-level correction、8 个 UNKNOWN，信号不足，未创建 v15。
 
-**解释**：保存“状态机制可用、决策信号弱”比一个笼统 FAIL 更有定位价值；下次问题应针对语义缺口。完整协议与停止边界集中在 [D10](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
+**解释**：保存“状态机制可用、决策信号弱”比一个笼统 FAIL 更有定位价值；下次问题应针对语义缺口。完整协议与停止边界集中在 [D07](07-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
 
 ### No deployment 不等于 idea worthless
 
 **事实**：Helper 的 `DETERMINISTIC_HELPER_CHALLENGER_SUPPORTED` 仅支持 isolated tool-level，尚无正式 Candidate 部署；Reviewer/Memory 在各自冻结前提停止。三者不能都改写成“想法无价值”。[Helper](../../project/research/S10-19R3_NATIVE_CONTROL_SURFACE_AUDIT.md) · [Reviewer](../../project/research/S10-19R1_SUBAGENT_FEASIBILITY.md) · [Memory](../../project/research/S10-19R2_MEMORY_FEASIBILITY.md)
 
-这里的分类区分“有限支持但未部署”和“当前路径前提失败”；各路线详见 [D10](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
+这里的分类区分“有限支持但未部署”和“当前路径前提失败”；各路线详见 [D07](07-Reviewer、Memory、Helper、Controller与Simulator路线.md)。
 
 ### 失败记录应保存什么
 
@@ -190,4 +190,4 @@ MCP（模型上下文协议）注册失败也需要相同思路。注册/发现�
 
 **教学示例：** 对 Memory，要同时保留指定自动锚点未过门禁与 explicit read 成功。完整原因和范围查 D10；结果标签不能省略测试对象。
 
-项目保存失败，是为了让决策可复核。保存失败知识与永远保留全部过程文件仍是两件事；后续精简需遵循 [Track C 保留原则](../track-c-repository-tooling/11-开发工作流与文件生命周期.md#交付之后材料怎样保留或退役)，本轮不执行清理。
+项目保存失败，是为了让决策可复核。保存失败知识与永远保留全部过程文件仍是两件事；后续精简需遵循 [Track C 保留原则](../track-c-repository-tooling/09-开发工作流与文件生命周期.md#交付之后材料怎样保留或退役)，本轮不执行清理。

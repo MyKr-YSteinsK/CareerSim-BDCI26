@@ -69,7 +69,7 @@ JSONL（逐行 JSON）便于逐项处理；JSON 报告是一个汇总对象。�
 
 **INTERPRETATION｜解释**：这不是重新运行游戏得到的新成功退出码。新旧 active install、最后 drive、旧 output 和最新 DB 行如果并不属于同一 Run，就可能拼成一份有格式却归属错误的报告。
 
-历史 [v4](../../project/runs/v4-run1-health-forensic.md) 的 DB 路由错配与 [v7i](../../project/runs/v7i-run1-replacement-validation.md) 的报告字段缺陷说明，空分和空 ID 都要沿独立来源判断；完整调查步骤见 [D08](../track-d-project-method/08-Forensics、失败实验与负证据.md)。v6 报告后来改变的具体覆盖原因仍 UNKNOWN，不能从当前可能代码路径倒推出唯一历史原因。
+历史 [v4](../../project/runs/v4-run1-health-forensic.md) 的 DB 路由错配与 [v7i](../../project/runs/v7i-run1-replacement-validation.md) 的报告字段缺陷说明，空分和空 ID 都要沿独立来源判断；完整调查步骤见 [D06](../track-d-project-method/06-Forensics、失败实验与负证据.md)。v6 报告后来改变的具体覆盖原因仍 UNKNOWN，不能从当前可能代码路径倒推出唯一历史原因。
 
 ## 5. 分数回答的问题比“系统正确”窄
 
@@ -83,7 +83,7 @@ Quantitative score（量化评分）是本地游戏公开终局指标；Competit
 
 Usage（用量）指输入/输出 token 等被报告的值；Token（模型计量单位）不同于中文字符数。[models.py](../../../career_sim_runner/models.py) 的默认字段和 Collector 汇总允许数值为 0，但其来源完整性须另外检查。
 
-**FACT｜事实**：S02-01 没有 WS `usage_summary` 帧，Runner 汇总为 0；历史独立 provider 日志却记录了 117 个已完成请求和 7,142,956 total tokens。它证明“Runner 未采集到 usage”不能写成“没有调用模型”。历史来源入口在[第 09 章](09-工程排障与完整运行链复现.md)。
+**FACT｜事实**：S02-01 没有 WS `usage_summary` 帧，Runner 汇总为 0；历史独立 provider 日志却记录了 117 个已完成请求和 7,142,956 total tokens。它证明“Runner 未采集到 usage”不能写成“没有调用模型”。历史来源入口在[第 07 章](07-工程排障与完整运行链复现.md)。
 
 没有账单证据时，实际 billed cost（计费成本）为 `UNKNOWN`，不是免费。补充 provider 用量也要绑定生命周期和会话，不能拿累计数字替换目标 Run 数值。
 
@@ -99,7 +99,7 @@ Audit（审计）是在已有证据上检查身份、过程和结论边界。项
 
 FORENSIC_HOLD（取证保留）表示材料仍有复核依赖或未决问题。COMPLETE、摘要和 hash 均不自动解除 hold；[旧工作区退役记录](../../project/LOCAL_WORKSPACE_RETIREMENT.md) 中，迁移后的来源仍受保留约束。
 
-本章负责解释证据怎样生成。Raw 与派生材料怎样分层、谁接受解除条件，接着读 [C07：证据链与 hold 生命周期](../track-c-repository-tooling/07-artifacts、Raw-Evidence与证据链.md)；出现归属冲突时读 [D08：取证方法](../track-d-project-method/08-Forensics、失败实验与负证据.md)。本轮不改变任何 hold 状态。
+本章负责解释证据怎样生成。Raw 与派生材料怎样分层、谁接受解除条件，接着读 [C06：证据链与 hold 生命周期](../track-c-repository-tooling/06-artifacts、Raw-Evidence与证据链.md)；出现归属冲突时读 [D06：取证方法](../track-d-project-method/06-Forensics、失败实验与负证据.md)。本轮不改变任何 hold 状态。
 
 ## 9. 阅读练习
 

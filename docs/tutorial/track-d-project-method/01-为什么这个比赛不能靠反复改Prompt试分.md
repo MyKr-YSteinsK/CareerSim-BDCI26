@@ -4,11 +4,11 @@
 
 这条路线讨论怎样评价改动。先分清候选身份、运行样本与实验，再看验证层次、分数局限和取证分类；最后回到 exact-v6 的选择。历史与架构篇适合需要时间背景时查阅。
 
-主线：[为什么这个比赛不能靠反复改 Prompt 试分](01-为什么这个比赛不能靠反复改Prompt试分.md) → [Candidate、Run、Experiment 到底有什么区别](02-Candidate、Run、Experiment到底有什么区别.md) → [实验方法与多层验证](03-实验方法与多层验证.md#实验结果通过了哪一层验证) → [分数、不确定性与反过拟合](07-分数、不确定性与反过拟合.md) → [Forensics、失败实验与负证据](08-Forensics、失败实验与负证据.md) → [为什么最终选择 exact-v6，而不是 v1 或 v8a](11-为什么最终选择exact-v6而不是v1或v8a.md)。
+主线：[为什么这个比赛不能靠反复改 Prompt 试分](01-为什么这个比赛不能靠反复改Prompt试分.md) → [Candidate、Run、Experiment 到底有什么区别](02-Candidate、Run、Experiment到底有什么区别.md) → [实验方法与多层验证](03-实验方法与多层验证.md#实验结果通过了哪一层验证) → [分数、不确定性与反过拟合](05-分数、不确定性与反过拟合.md) → [Forensics、失败实验与负证据](06-Forensics、失败实验与负证据.md) → [为什么最终选择 exact-v6，而不是 v1 或 v8a](08-为什么最终选择exact-v6而不是v1或v8a.md)。
 
-想继续深入：[Reviewer、Memory、Helper、Controller 与 Simulator 路线](10-Reviewer、Memory、Helper、Controller与Simulator路线.md)、[Main、Stage、Plan 与 Codex 为什么这样协作](13-Main、Stage、Plan与Codex为什么这样协作.md)、[从 CareerSim 迁移到真实 Agent 工程的方法论](14-从CareerSim迁移到真实Agent工程的方法论.md)。
+想继续深入：[Reviewer、Memory、Helper、Controller 与 Simulator 路线](07-Reviewer、Memory、Helper、Controller与Simulator路线.md)、[Main、Stage、Plan 与 Codex 为什么这样协作](09-Main、Stage、Plan与Codex为什么这样协作.md)、[从 CareerSim 迁移到真实 Agent 工程的方法论](10-从CareerSim迁移到真实Agent工程的方法论.md)。
 
-按需查询：[项目历史与多 Skill 架构演化](05-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)。
+按需查询：[项目历史与多 Skill 架构演化](04-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)。
 
 四条路线与统一术语见[从这里开始](../00-从这里开始.md)。
 

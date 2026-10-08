@@ -73,4 +73,4 @@ Stop Condition（停止条件）在开始前说明哪些结果使后续动作无
 
 **TEACHING EXAMPLE｜教学示例：** 对“增加记忆并跑到高分”为止的 Plan，补问：指定哪种记忆路径？自动可用证据是什么？哪些参数冻结？技术失败是否重试？何时停止？谁决定正式采用？如果这些问题未明确，工作流再规范也不保证实验可解释。
 
-具体 branch/worktree/commit（分支/工作树/提交）操作见 [Track C 开发任务](../track-c-repository-tooling/11-开发工作流与文件生命周期.md)。本章提供其研究治理理由；文档写作不授权新的运行、清理或提交比赛。
+具体 branch/worktree/commit（分支/工作树/提交）操作见 [Track C 开发任务](../track-c-repository-tooling/09-开发工作流与文件生命周期.md)。本章提供其研究治理理由；文档写作不授权新的运行、清理或提交比赛。

@@ -4,7 +4,7 @@
 
 最终选择必须回答“交付哪一个确定对象”，而不只是“哪个文件里有最大数字”。本项目选择 exact historical v6（精确历史 v6），同时保留它不是历史最高单局、只有一个完整样本且运行遵循失败的事实。
 
-先读 [D07](07-分数、不确定性与反过拟合.md) 的小样本限制。本章负责选择理由与保留的运行缺陷；精确包字段及交付合同集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。
+先读 [D05](05-分数、不确定性与反过拟合.md) 的小样本限制。本章负责选择理由与保留的运行缺陷；精确包字段及交付合同集中在 [最终报告 04](../../final-report/04-最终方案、候选选择与工程交付.md)。
 
 ## 先把比较对象摆齐
 
@@ -37,7 +37,7 @@ Main 选择：固定历史 exact-v6 身份
 
 **FACT｜事实**：上表的 v1 pair 来自 same-source Tier-B summary，raw unavailable，完整 Instruction/config 身份不足。[最终证据审查](../../project/FINAL_EVIDENCE_REVIEW.md)
 
-**INTERPRETATION｜解释**：只展示 76.04 会删掉 35.31 这一低端结果，也未提供足够的可恢复交付身份。最终选择必须回答交付字节与职责，不能只选峰值；这仍不证明 v1 更差或 v6 更稳定。小样本推理集中在 [D07](07-分数、不确定性与反过拟合.md)。
+**INTERPRETATION｜解释**：只展示 76.04 会删掉 35.31 这一低端结果，也未提供足够的可恢复交付身份。最终选择必须回答交付字节与职责，不能只选峰值；这仍不证明 v1 更差或 v6 更稳定。小样本推理集中在 [D05](05-分数、不确定性与反过拟合.md)。
 
 ## exact-v6：选择的具体对象
 
@@ -61,7 +61,7 @@ Main 选择：固定历史 exact-v6 身份
 
 **FACT｜事实**：v8a 为 v7o donor core + v7z shell 的四 Skill 身份；[RUN-0004](../../project/runs/v8a-full-horizon-sample1.md) 与 [RUN-0002](../../project/runs/v8a-full-horizon-sample2.md) 两个完整样本保持相同冻结行为，数据见上表。[SOURCE](../../skill-evolution/07-v8a-v7o-donor-core-transplant/SOURCE.md)
 
-**INTERPRETATION｜解释**：两轨迹增加描述信息，却未超过 v6 的已记录高位，也没有提供稳定优劣或 exact-v6 replication。CTRL-DL 邻接/空格格式造成不同 parser 接受情况，不代表身份变化、Delivery 语义应用率或分差因果。样本边界见 D07，解析/行为区别见 [D08](08-Forensics、失败实验与负证据.md)。
+**INTERPRETATION｜解释**：两轨迹增加描述信息，却未超过 v6 的已记录高位，也没有提供稳定优劣或 exact-v6 replication。CTRL-DL 邻接/空格格式造成不同 parser 接受情况，不代表身份变化、Delivery 语义应用率或分差因果。样本边界见 D07，解析/行为区别见 [D06](06-Forensics、失败实验与负证据.md)。
 
 ## 选择链：哪些是事实，哪些是解释
 

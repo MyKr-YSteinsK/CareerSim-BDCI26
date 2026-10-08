@@ -15,7 +15,7 @@
 
 **事实**：官方冻结 Runner 的 [CLI（命令行入口）](../../../career_sim_runner/cli.py) 接收命令，调用 [play_headless（无界面运行编排）](../../../career_sim_runner/headless_play.py)，后者通过 WebSocket（双向消息连接）向已经运行的 AgentServer（代理服务）发送请求。`play_headless()` 本身不启动 JiuwenSwarm 服务。
 
-服务启动见[第 05 章](05-JiuwenSwarm、AgentServer与MCP分别是什么.md)。Runner 发起的是“请 Agent 按提示完成游戏”的模型任务；真正创建 CareerSim 对局的是后续 MCP `new_game` 工具调用。
+服务启动见[第 04 章](04-JiuwenSwarm、AgentServer与MCP分别是什么.md)。Runner 发起的是“请 Agent 按提示完成游戏”的模型任务；真正创建 CareerSim 对局的是后续 MCP `new_game` 工具调用。
 
 | CLI 子命令 | 官方源码中的作用 | 不能据此推导 |
 |---|---|---|
@@ -47,7 +47,7 @@ flowchart TD
   I --> J["write_score_report：写 score_report.json"]
 ```
 
-**事实**：[源码](../../../career_sim_runner/headless_play.py) 在材料校验之前保存 drive ID。因此一个 drive 指针文件存在，不证明已经调用 `new_game`。中途失败时，最后输出指针还可能指向旧 Run（一次运行）；S07-51 正是必须排除旧输出归属的历史例子，见[第 09 章](09-工程排障与完整运行链复现.md)。
+**事实**：[源码](../../../career_sim_runner/headless_play.py) 在材料校验之前保存 drive ID。因此一个 drive 指针文件存在，不证明已经调用 `new_game`。中途失败时，最后输出指针还可能指向旧 Run（一次运行）；S07-51 正是必须排除旧输出归属的历史例子，见[第 07 章](07-工程排障与完整运行链复现.md)。
 
 环境校验的源码报告包含多项检查，但 `play_headless()` 只从失败项中挑选名为 `backend-reachable` 的项来阻断。这是冻结实现事实，不代表项目任务可以忽略自己的必要前置条件。项目另有 [LIVE_RUN_WORKFLOW](../../project/LIVE_RUN_WORKFLOW.md)，不应把项目门禁倒写成 Runner 原生实现。
 
@@ -161,7 +161,7 @@ Frame（消息帧）是一次 WS 接收单位。一个帧可能嵌套多个事�
 
 这时只出现了模型文本。随后还必须有针对正确游戏与当前事件的合法 `take_action` 请求；工具回执要成功；需要新状态时还要取得该游戏后续的 `observe`。不能从这句话反推出参数、行动成功、健康变化或月份推进。
 
-这里不展示一份猜测的完整 `take_action` schema（参数合同）。真实参数须以当时工具合同和当前事件为准，不能把 Skill 里的自然语言选项名称当作可提交枚举。历史 exact-v6 已有 Energy choice 6、7、3 被拒绝的案例，见[第 09 章](09-工程排障与完整运行链复现.md)。
+这里不展示一份猜测的完整 `take_action` schema（参数合同）。真实参数须以当时工具合同和当前事件为准，不能把 Skill 里的自然语言选项名称当作可提交枚举。历史 exact-v6 已有 Energy choice 6、7、3 被拒绝的案例，见[第 07 章](07-工程排障与完整运行链复现.md)。
 
 #### 读取 Collector 事件时要保留外层与内层
 
@@ -215,10 +215,10 @@ Fresh 是时间关系，不是文件名。一个 `observe` 即使结构正确，
 - 能找到 Skill 名称，不等于正文被读入；要分别证明发现、加载和应用。
 - 标记字符串的出现次数，不等于逐行动遵循；需逐项关联证据。
 
-**事实**：S08-09 取证发现旧审计把大量带换行的合法候选内容标成 parser false negative（解析器误判为缺失/不合法）；同时确实存在不合法的 checkpoint 枚举。审计工具也会出错，不能拿它的汇总标签替代原始调用/回执。案例与来源见[第 09 章](09-工程排障与完整运行链复现.md)。
+**事实**：S08-09 取证发现旧审计把大量带换行的合法候选内容标成 parser false negative（解析器误判为缺失/不合法）；同时确实存在不合法的 checkpoint 枚举。审计工具也会出错，不能拿它的汇总标签替代原始调用/回执。案例与来源见[第 07 章](07-工程排障与完整运行链复现.md)。
 
 ### 一个读者自检
 
 **教学示例（非历史运行记录）：** 你有一份写着“已成功晋升”的 transcript，却没有对应工具结果，也不知道 game session。合适结论是“模型文本声称晋升，环境结果未被证实”。下一步应寻找已获准保留的正确事件和观察，不能为了补这份历史证据另开一局。
 
-这些事件还需共同绑定 Candidate、drive、game 与输出目录，具体见[日志与评分来源](08-日志、Session、Score与证据是怎么产生的.md)。
+这些事件还需共同绑定 Candidate、drive、game 与输出目录，具体见[日志与评分来源](06-日志、Session、Score与证据是怎么产生的.md)。

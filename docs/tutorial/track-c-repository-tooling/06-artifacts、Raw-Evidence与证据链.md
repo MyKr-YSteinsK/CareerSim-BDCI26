@@ -39,7 +39,7 @@ FINAL_EVIDENCE_REVIEW
 原件hold是否解除：另行审查，不由旁路自动决定
 ```
 
-这张图展示当前证据管线的组成，不声称每个历史Run都具有全套相同产物。早期Run的格式、留存和工具不同，必须按原记录解释。[LIVE_RUN_WORKFLOW](../../project/LIVE_RUN_WORKFLOW.md)规范当前离线摘要与选定归档；[Track B日志章](../track-b-system-runtime/08-日志、Session、Score与证据是怎么产生的.md)解释记录如何产生。
+这张图展示当前证据管线的组成，不声称每个历史Run都具有全套相同产物。早期Run的格式、留存和工具不同，必须按原记录解释。[LIVE_RUN_WORKFLOW](../../project/LIVE_RUN_WORKFLOW.md)规范当前离线摘要与选定归档；[Track B日志章](../track-b-system-runtime/06-日志、Session、Score与证据是怎么产生的.md)解释记录如何产生。
 
 如果只有raw没有summary，审阅成本大；如果只有summary没有必要raw，身份或解析争议就可能无法复核。canonical层让人能快速理解，但它应说明哪些问题仍依赖下层来源。
 
@@ -67,7 +67,7 @@ FINAL_EVIDENCE_REVIEW
 
 **FACT｜事实**：[v7m 运行记录](../../project/runs/v7m-run1-validation.md) 与 [S07-47 调查](../../project/reviews/S07-47_V7M_M20_PARTIAL_RUN_FORENSIC_REVIEW.md) 保存 M20/L3 存活、84/84 成功行动，同时保留技术失败、无最终分数/评级/自然终局以及 `INSUFFICIENT_EVIDENCE`。归档保存可复核片段，没有把部分运行补成完整样本。
 
-本章用它说明 raw、摘要和结论怎样分工；为何技术失败不能等同策略失败，读 [负结果分类](../track-d-project-method/08-Forensics、失败实验与负证据.md#给结果分类并保留停止理由)，调查怎样处理替代解释，读 [D08](../track-d-project-method/08-Forensics、失败实验与负证据.md)。
+本章用它说明 raw、摘要和结论怎样分工；为何技术失败不能等同策略失败，读 [负结果分类](../track-d-project-method/06-Forensics、失败实验与负证据.md#给结果分类并保留停止理由)，调查怎样处理替代解释，读 [D06](../track-d-project-method/06-Forensics、失败实验与负证据.md)。
 
 ## 四、为什么raw很大
 
@@ -133,11 +133,11 @@ v7o events/transcript已被S11-08 Main保留为KEEP_CANONICAL_RAW，其余六项
 自查：为什么“canonical结论已吸收”不能直接作为删除勾选？因为它只回答知识整理完成，未回答唯一raw、下游复验和release授权。证据生命周期的终点是责任闭合，不是报告写满。
 ## 深入练习：有分数时怎样防止错误归属
 
-**FACT｜事实**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 排除了 v7i 首次失败窗口中归属于旧 v7g session 的分数。文件里有值不等于目标 Run 有成绩；空 session 字段也不自动否定一致 fresh final observe。完整重建步骤集中在 [D08](../track-d-project-method/08-Forensics、失败实验与负证据.md)，评分生产机制在 [B08](../track-b-system-runtime/08-日志、Session、Score与证据是怎么产生的.md)。
+**FACT｜事实**：[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md) 排除了 v7i 首次失败窗口中归属于旧 v7g session 的分数。文件里有值不等于目标 Run 有成绩；空 session 字段也不自动否定一致 fresh final observe。完整重建步骤集中在 [D06](../track-d-project-method/06-Forensics、失败实验与负证据.md)，评分生产机制在 [B06](../track-b-system-runtime/06-日志、Session、Score与证据是怎么产生的.md)。
 
 ### 一条证据链中的四种“一致”
 
-身份一致核 Candidate/Session/窗口，结构一致核格式，内容一致核提取，解释一致核结论边界。四者分别记录；合法 JSON 不能替代身份审查。小样本如何限制解释，读 [D07](../track-d-project-method/07-分数、不确定性与反过拟合.md)。
+身份一致核 Candidate/Session/窗口，结构一致核格式，内容一致核提取，解释一致核结论边界。四者分别记录；合法 JSON 不能替代身份审查。小样本如何限制解释，读 [D05](../track-d-project-method/05-分数、不确定性与反过拟合.md)。
 
 ### 原件、选定副本与紧凑结论如何互相核对
 

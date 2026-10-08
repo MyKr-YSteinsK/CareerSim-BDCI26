@@ -49,7 +49,7 @@ CLI（命令行接口）的价值是统一操作入口。它把字符串参数�
 
 **FACT｜事实：**默认命名实例是 `career_emu`，用户目录实例在 `.jiuwenswarm-instances/career_emu`，Runner本机数据根在repo内`.career_sim_runner/career_emu`。`paths.py`也处理 `JIUWENSWARM_DATA_DIR` 覆盖。路径契约比“我开了另一个工作树”更直接地决定状态是否共享。
 
-WebSocket（双向长连接）是Runner与AgentServer交换驱动消息的通道。这里不展开协议；[Track B 第05章](../track-b-system-runtime/05-JiuwenSwarm、AgentServer与MCP分别是什么.md)有系统分工。配置文件出现MCP名字只是一项静态提示，端点、工具schema及实际回执仍有独立证明责任。
+WebSocket（双向长连接）是Runner与AgentServer交换驱动消息的通道。这里不展开协议；[Track B 第04章](../track-b-system-runtime/04-JiuwenSwarm、AgentServer与MCP分别是什么.md)有系统分工。配置文件出现MCP名字只是一项静态提示，端点、工具schema及实际回执仍有独立证明责任。
 
 ## 三、安装与合同：源文本如何成为运行输入
 
@@ -76,7 +76,7 @@ Manifest（清单）告诉系统包叫什么、模式是什么、Instruction是�
 
 `headless_play`负责“安装（如提供）→驱动→计分/写报告”的编排。`ws_client`负责连接、消息和结束状态。`transcript`负责将流式消息留下。把这三层分开，能同时回答“动作是否执行”“连接是否中断”“记录是否足以证明”。
 
-drive session（驱动会话）与game session（游戏会话）有不同职责。前者标识Agent驱动过程，后者绑定模拟器世界。名字都叫session不能说明它们可互换。[Track B日志章](../track-b-system-runtime/08-日志、Session、Score与证据是怎么产生的.md)进一步解释。
+drive session（驱动会话）与game session（游戏会话）有不同职责。前者标识Agent驱动过程，后者绑定模拟器世界。名字都叫session不能说明它们可互换。[Track B日志章](../track-b-system-runtime/06-日志、Session、Score与证据是怎么产生的.md)进一步解释。
 
 **TEACHING EXAMPLE｜教学示例：**连接在一个动作提交后断开。仅凭没有后续文本，无法判断动作没执行；仅凭记录文件存在，也无法判断动作成功。应核对授权内的fresh observation（新鲜观察）及身份，不能盲重发。这里说明失败定位，没有启动连接。
 

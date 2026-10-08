@@ -39,7 +39,7 @@ exact-v6 Board 仍保留近期公开效果和有限恢复材料，说明退出 T
 
 ### 运行结果不能给精简做因果证明
 
-**FACT**：[v4 取证](../../project/runs/v4-run1-health-forensic.md) 记录 `25.84 / 18.09 / 6m / E / L2` 的健康耗尽自然终局。多项合同同时改变，没有证明“删 Trace 导致失败”；架构干预的混杂解释见 [架构演化](../track-d-project-method/05-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)。
+**FACT**：[v4 取证](../../project/runs/v4-run1-health-forensic.md) 记录 `25.84 / 18.09 / 6m / E / L2` 的健康耗尽自然终局。多项合同同时改变，没有证明“删 Trace 导致失败”；架构干预的混杂解释见 [架构演化](../track-d-project-method/04-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)。
 
 ## 3. 为什么三 Skill 成为最终 v6？
 
@@ -57,7 +57,7 @@ exact-v6 Board 仍保留近期公开效果和有限恢复材料，说明退出 T
 
 **FACT**：[最终方案审阅](../../project/FINAL_SOLUTION_REVIEW.md)与[最终证据审阅](../../project/FINAL_EVIDENCE_REVIEW.md)将冻结身份绑定 exact-v6；唯一完整样本为 `75.29 / 52.70 / 48m / A / L6`，同时 `RUNTIME_ADHERENCE_FAIL`。选择标签 `HIGHEST_OBSERVED_MATURE_THREE_SKILL_CEILING` 不等于全部历史最高分。
 
-**INTERPRETATION**：三职责在这项工程选择中被采用，没有证明三 Skill 是最优数量。本章继续讨论职责边界；有限证据下为何选择它见[D11](../track-d-project-method/11-为什么最终选择exact-v6而不是v1或v8a.md)，精确工件与上传边界见[最终交付报告](../../final-report/04-最终方案、候选选择与工程交付.md)。
+**INTERPRETATION**：三职责在这项工程选择中被采用，没有证明三 Skill 是最优数量。本章继续讨论职责边界；有限证据下为何选择它见[D08](../track-d-project-method/08-为什么最终选择exact-v6而不是v1或v8a.md)，精确工件与上传边界见[最终交付报告](../../final-report/04-最终方案、候选选择与工程交付.md)。
 
 ## 4. 为什么后继版本又加入 delivery-progress？
 
@@ -87,7 +87,7 @@ exact-v6 Board 仍保留近期公开效果和有限恢复材料，说明退出 T
 | Adherence burden（遵循负担） | 读过模块却忘记恢复重读，或只输出标记 | 核查从读取到实际动作的执行链，而非只数文件 |
 | Auditability（可审计性） | 有大量字段文字，却缺当次动作配对 | 让记录与候选、状态、尝试建立可核查关系 |
 
-**FACT**：v6 三模块仍有恢复重读失败与普通比较重开，v8a 四模块仍有隐藏信息违规。它们支持“数量不足以保证遵循”，不支持“增加模块通常会失败”的频率判断。具体反例见[07](07-真实案例、反例与失败模式.md)，标记配对的调查过程见[D08](../track-d-project-method/08-Forensics、失败实验与负证据.md)。
+**FACT**：v6 三模块仍有恢复重读失败与普通比较重开，v8a 四模块仍有隐藏信息违规。它们支持“数量不足以保证遵循”，不支持“增加模块通常会失败”的频率判断。具体反例见[07](07-真实案例、反例与失败模式.md)，标记配对的调查过程见[D06](../track-d-project-method/06-Forensics、失败实验与负证据.md)。
 
 **TEACHING EXAMPLE｜教学示例，不是历史 Run 原始记录。** 若准备增加一个“晋升检查 Skill”，先问它是否只是重复 Planning 的正式反馈后 reset。若是，应先修清原有职责；若它维护独立的公开申请生命周期，则可能值得新增，但必须定义输入、状态、输出与最终决策者。错误理由是“为了全面，先加一个”，随后再让 Agent 自己协调冲突。
 
@@ -101,7 +101,7 @@ exact-v6 Board 仍保留近期公开效果和有限恢复材料，说明退出 T
 
 **FACT**：同一冻结 v8a 行为身份的[RUN07](../../project/runs/v8a-full-horizon-sample1.md)与[RUN08](../../project/runs/v8a-full-horizon-sample2.md)量化分为 72.65 / 59.00；两局均有证据纪律限制，不能只留下高局。它们不是 v6 的复验，也不能因四模块比分较低就认定第四个模块是原因。
 
-**INTERPRETATION**：设计比较要绑定版本语义；效果比较还要处理样本与混杂。完整样本推理见[D07](../track-d-project-method/07-分数、不确定性与反过拟合.md)，架构变化作为多变量干预见[架构演化](../track-d-project-method/05-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)，最终选择理由见[D11](../track-d-project-method/11-为什么最终选择exact-v6而不是v1或v8a.md)。本章不据这两局重选提交包。
+**INTERPRETATION**：设计比较要绑定版本语义；效果比较还要处理样本与混杂。完整样本推理见[D05](../track-d-project-method/05-分数、不确定性与反过拟合.md)，架构变化作为多变量干预见[架构演化](../track-d-project-method/04-项目历史与多Skill架构演化.md#职责边界为什么随版本改变)，最终选择理由见[D08](../track-d-project-method/08-为什么最终选择exact-v6而不是v1或v8a.md)。本章不据这两局重选提交包。
 
 ## 7. 从项目事实到可迁移方法，中间要加一道推理
 
