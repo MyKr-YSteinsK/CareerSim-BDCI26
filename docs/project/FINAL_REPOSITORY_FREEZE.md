@@ -1,12 +1,13 @@
-# Final Repository Freeze｜最终仓库冻结候选记录
+# Final Repository Freeze｜最终仓库冻结记录
 
 ## 1. Status
 
-- `FINAL_REPOSITORY_FREEZE_CANDIDATE`
-- `READY_FOR_MAIN_ACCEPTANCE`
-- `S11_NOT_YET_DECLARED_COMPLETE`
-- 本记录为 S11-45 经增量审计生成的新冻结候选，等待 Main 接受。S11-42 的历史结论为 `REPAIR_REQUIRED`；S11-43 完成编号与任务时态修复，S11-44 因两处显示标签错误返回 `BLOCKED`，并非 PASS。本轮修正这两处标签、重新核对当前树并关闭旧冻结库存统计 P1：`P1_FREEZE_COUNTS = CLOSED`。
-- 比赛实验保持 CLOSED；本记录不声明最终冻结已接受，也不宣布 S11 COMPLETE。
+- `FINAL_REPOSITORY_FREEZE_ACCEPTED`
+- `ACCEPTED_BY_MAIN`
+- `S11_COMPLETE`
+- Main 接受的 S11-45 冻结候选 SHA：`5b05e9f2c471bc31465a3ac09435a8f908d049ee`。本 S11-46 提交用于落盘 Main 接受决定，不是被审阅候选 SHA。
+- 历史过程：S11-42 的结论为 `REPAIR_REQUIRED`；S11-43 完成编号与任务时态修复，S11-44 因两处显示标签错误返回 `BLOCKED`；S11-45 修复标签并复核当前树，关闭旧冻结库存统计 P1：`P1_FREEZE_COUNTS = CLOSED`。这些历史状态不因本次接受而改写。
+- 比赛实验保持 CLOSED；本次接受不代表官方上传、平台评测、重新打包或新实验已执行。
 
 ## 2. Repository Identity
 
@@ -139,6 +140,6 @@ Audit base 未修改时的 tracked worktree bytes：24,965,774；本轮两处标
 
 ## 11. Main Acceptance Boundary
 
-本 Task 的交付为 `FINAL_REPOSITORY_FREEZE_CANDIDATE = READY_FOR_MAIN_ACCEPTANCE`；`S11_COMPLETE = NOT_DECLARED`。Main 对最终仓库状态的接受权独立于本 Task 的文档修正及静态 PASS；本记录不授予清理、运行、上传或改包权限。
+Main 已接受 S11-45 冻结候选（SHA：`5b05e9f2c471bc31465a3ac09435a8f908d049ee`），并决定 `S11_COMPLETE`。本 S11-46 提交只将这一 Main 决定写入权威状态记录；它不改变被接受候选身份，也不授予清理、运行、上传或改包权限。
 
-终审范围、静态检查、known unknowns 与 local residue 已披露。只有 Main 可以接受此候选并决定 S11 closeout；Codex 不自行宣布 `FINAL_REPOSITORY_FREEZE_ACCEPTED` 或 S11 COMPLETE。
+终审范围、静态检查、known unknowns 与 local residue 仍按本记录披露。接受与 S11 收口不改变比赛包、运行证据、hold 状态或既有未决边界。

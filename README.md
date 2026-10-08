@@ -1,6 +1,6 @@
 # CareerSim BDCI26
 
-CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project Retrospective**。S10 closeout 已接受为 `COMPLETE_FINAL_SUBMISSION_FROZEN`；当前最终选择是 exact historical v6：`candidate-v6-auditable-control-loop`，runtime source `1114a04b75548cf52f030d123564e527060fc061`，Single Agent + 3 Skills。
+CareerSim BDCI26 工程仓库，**S11 Final Consolidation & Project Retrospective 已完成**。S10 closeout 已接受为 `COMPLETE_FINAL_SUBMISSION_FROZEN`；当前最终选择是 exact historical v6：`candidate-v6-auditable-control-loop`，runtime source `1114a04b75548cf52f030d123564e527060fc061`，Single Agent + 3 Skills。
 
 ## 人读报告
 
@@ -26,7 +26,7 @@ CareerSim BDCI26 工程仓库，当前处于 **S11 Final Consolidation & Project
 - [教程统一入口与术语](docs/tutorial/00-从这里开始.md)：按 Agent 入门、运行、仓库或研究问题选择阅读路线。
 - [CURRENT_STATE](docs/project/CURRENT_STATE.md)：当前阶段、接受状态与授权边界
 - [Skill / Instruction 历史演化索引](docs/skill-evolution/00-版本索引.md)：代表性历史快照及精确来源
-- [FINAL_REPOSITORY_FREEZE](docs/project/FINAL_REPOSITORY_FREEZE.md)：最终仓库终审与冻结候选记录（状态见记录；最终接受权属于 Main）
+- [FINAL_REPOSITORY_FREEZE](docs/project/FINAL_REPOSITORY_FREEZE.md)：最终仓库冻结与 S11 收口记录（Main 已接受）
 - [FINAL_ID_MAP](docs/project/FINAL_ID_MAP.md)：代表性 Candidate、Run、实验与提交包的 Display-ID 及 provenance 索引
 - [Project Retrospective](docs/project/PROJECT_RETROSPECTIVE.md)：项目目标、成果和整体边界
 - [Final Solution Review](docs/project/FINAL_SOLUTION_REVIEW.md)：冻结 exact-v6 身份、运行证据和限制
