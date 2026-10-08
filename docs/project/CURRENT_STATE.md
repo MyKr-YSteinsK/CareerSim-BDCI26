@@ -7,7 +7,7 @@
 - 仓库：`MyKr-YSteinsK/CareerSim-BDCI26`；分支：`main`。
 - 参赛队伍：`FZU-Loss快点降`；见[比赛身份](COMPETITION_IDENTITY.json)。
 - 阶段：`S11 ACTIVE`；`S10=CLOSED`；Human Play Lab=`CLOSED_BY_USER`。
-- S11 最终仓库终审已完成；tracked 清理解锁审查已结束，冻结候选已准备，等待 Main 最终验收。
+- S11-45 已完成重构后的增量仓库终审；tracked 清理解锁审查已结束，新冻结候选为 `READY_FOR_MAIN_ACCEPTANCE`，等待 Main 最终验收。
 
 ## 2. 最终提交身份
 
@@ -31,8 +31,9 @@
 
 ## 5. 当前 S11 状态
 
-- 人读层为 `docs/final-report/00–05` 的六篇合并报告；S11-34 已完成正式提升、引用迁移和旧十一篇报告层退役。四条教程 Track A/B/C/D 与七组 Skill/Instruction 代表版本资产均已建设。
-- S11-38 已完成最终仓库终审并形成 [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 候选：`READY_FOR_MAIN_ACCEPTANCE`。最终包身份、代表运行与 hold 边界保持不变；S11 仍为 ACTIVE，未宣布关闭，最终接受权属于 Main。
+- 人读层为 `docs/final-report/00–05` 的六篇合并报告；S11-34 已完成正式提升、引用迁移和旧十一篇报告层退役。S11-40/41 优化并合并教程，当前为[统一入口](../tutorial/00-从这里开始.md) 1 篇 + Track A8/B7/C9/D10，共 35 篇；四轨编号连续。七组 Skill/Instruction 代表版本资产包含版本索引、7 GUIDE、32 份历史原件与14份 SOURCE/DELTA。
+- S11-38 的旧冻结候选已被后续文档重构取代。S11-42 曾发现旧冻结库存统计 P1，历史 `REPAIR_REQUIRED` 不改写为全面 PASS；S11-43 修复了编号与任务时态，但遗漏两处显示标签，S11-44 因此 `BLOCKED`。S11-45 修复这两处标签并通过当前树增量复核，以准确结构统计关闭 `P1_FREEZE_COUNTS`。
+- 新 [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 候选的审计基线为 `d611eebbc2365a136382b6c353e51843a91ecf54`，状态为 `READY_FOR_MAIN_ACCEPTANCE`。最终包身份、代表运行与 hold 边界保持不变；S11 仍为 ACTIVE，未宣布关闭，最终接受权属于 Main。
 - S03 兄弟工作区已在 S11-12 退役；导出的 20 份 session payload 仍按[工作区退役记录](LOCAL_WORKSPACE_RETIREMENT.md)所述保留并受 hold 约束。
 - S10 已吸收的 Gate review 和 S07-27 review 已从当前树移除。S11-35 与 S11-37 的审查未解锁安全删除项；其中 S11-37 仅审查 17 个候选路径，不代表全仓理论最小。当前证据不授权继续 tracked 清理。
 - S11-36 被执行工具阻塞、未执行的 ignored cache/source-pack 清理留有 `NON_BLOCKING_LOCAL_RESIDUE`；它不属于 tracked 仓库冻结身份，本轮不重试删除。
