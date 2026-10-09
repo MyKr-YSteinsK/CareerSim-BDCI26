@@ -15,7 +15,7 @@ CareerSim BDCI26 工程仓库，**S11 Final Consolidation & Project Retrospectiv
 
 ## 最终提交方案
 
-唯一冻结包为 `FZU-Loss-final-v6.zip`，SHA-256：`31e836b591703dfe520916828da033a57de260bb451d97047bbaee9daaa11b9b`。权威身份见 [FINAL_SUBMISSION_IDENTITY](docs/project/FINAL_SUBMISSION_IDENTITY.json)、[manifest](docs/project/FINAL_SUBMISSION_MANIFEST.md) 与 [S10-23R freeze audit](docs/project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)。包已冻结；官方上传未执行，也没有平台评测证据。
+唯一冻结包为 `FZU-Loss-final-v6.zip`，SHA-256：`31e836b591703dfe520916828da033a57de260bb451d97047bbaee9daaa11b9b`。权威身份见 [FINAL_SUBMISSION_IDENTITY](docs/project/FINAL_SUBMISSION_IDENTITY.json)、[manifest](docs/project/FINAL_SUBMISSION_MANIFEST.md) 与 [S10-23R freeze audit](docs/project/reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)。S11 冻结审计时，该 18,082-byte 工件的官方上传状态为 `NOT PERFORMED / NOT PROVEN`；赛后用户报告的三份上传 ZIP 官网综合评分见[报告 04](docs/final-report/04-最终方案、候选选择与工程交付.md)，其中 v6 上传 ZIP 与此冻结工件的字节身份不同。
 
 ## 当前仓库状态说明
 
@@ -39,4 +39,4 @@ CareerSim BDCI26 工程仓库，**S11 Final Consolidation & Project Retrospectiv
 
 ## 证据边界
 
-75.29 是 S06-24 单次 48 个月样本，且记录为 `RUNTIME_ADHERENCE_FAIL`；它不证明稳定表现、因果收益、理论最优或 hidden-test transfer。最终选择理由也不代表这些结论。当前没有证据声称最终包已被比赛平台接收或评测。
+75.29 是 S06-24 单次 48 个月样本，且记录为 `RUNTIME_ADHERENCE_FAIL`；它不证明稳定表现、因果收益、理论最优或 hidden-test transfer。最终选择理由也不代表这些结论。当前没有证据证明上述 18,082-byte exact-v6 冻结包已被比赛平台接收或评测；赛后用户报告的评分及其各自包身份见报告 04。

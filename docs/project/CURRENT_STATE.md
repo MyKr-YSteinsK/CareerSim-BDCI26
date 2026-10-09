@@ -15,7 +15,7 @@
 - 构建及提交材料来源 commit：`113052a9a8943efc7fb2d7d1140f126e62e92040`。
 - 冻结 ZIP：`FZU-Loss-final-v6.zip`；18,082 bytes；7 个文件；SHA-256：`31e836b591703dfe520916828da033a57de260bb451d97047bbaee9daaa11b9b`。
 - 最终 Skill（技能模块）：`structured-state-board`、`rolling-planning`、`risk-review`。
-- 官方上传：`NOT PERFORMED / NOT PROVEN`；本地冻结不证明门户已收到。
+- 官方上传：S11 冻结审计时，exact-v6 冻结 ZIP 为 `NOT PERFORMED / NOT PROVEN`。赛后用户报告的三份上传 ZIP 及官网综合评分见[最终方案与交付报告](../final-report/04-最终方案、候选选择与工程交付.md)；上传包身份不自动等同于本地冻结 ZIP。
 - 权威记录：[提交身份](FINAL_SUBMISSION_IDENTITY.json)、[manifest](FINAL_SUBMISSION_MANIFEST.md)、[冻结审计](reviews/S10-23R_FINAL_SINGLE_SHOT_FREEZE.md)。
 
 ## 3. 最终证据边界
@@ -34,6 +34,7 @@
 - 人读层为 `docs/final-report/00–05` 的六篇合并报告；S11-34 已完成正式提升、引用迁移和旧十一篇报告层退役。S11-40/41 优化并合并教程，当前为[统一入口](../tutorial/00-从这里开始.md) 1 篇 + Track A8/B7/C9/D10，共 35 篇；四轨编号连续。七组 Skill/Instruction 代表版本资产包含版本索引、7 GUIDE、32 份历史原件与14份 SOURCE/DELTA。
 - S11-38 的旧冻结候选已被后续文档重构取代。S11-42 曾发现旧冻结库存统计 P1，历史 `REPAIR_REQUIRED` 不改写为全面 PASS；S11-43 修复了编号与任务时态，但遗漏两处显示标签，S11-44 因此 `BLOCKED`。S11-45 修复这两处标签并通过当前树增量复核，以准确结构统计关闭 `P1_FREEZE_COUNTS`。
 - [Final Repository Freeze](FINAL_REPOSITORY_FREEZE.md) 的审计基线为 `d611eebbc2365a136382b6c353e51843a91ecf54`，Main 已接受的 S11-45 候选 SHA 为 `5b05e9f2c471bc31465a3ac09435a8f908d049ee`。接受只确认仓库冻结候选与 S11 收口；最终包身份、代表运行和 hold 边界保持不变。
+- 赛后补记：用户报告三份已上传 ZIP 的官网综合评分为 v7o `56.81`、manifest 为 `FZU-Loss-final-v6` 的上传包 `57.98`、v7s 近似路线 `40.89`；归档身份、第三包的本地参考与验证边界见[最终方案与交付报告](../final-report/04-最终方案、候选选择与工程交付.md)。门户回执与平台评分细节未独立核验；v6 上传 ZIP 与冻结工件字节身份不同。
 - S03 兄弟工作区已在 S11-12 退役；导出的 20 份 session payload 仍按[工作区退役记录](LOCAL_WORKSPACE_RETIREMENT.md)所述保留并受 hold 约束。
 - S10 已吸收的 Gate review 和 S07-27 review 已从当前树移除。S11-35 与 S11-37 的审查未解锁安全删除项；其中 S11-37 仅审查 17 个候选路径，不代表全仓理论最小。当前证据不授权继续 tracked 清理。
 - S11-36 被执行工具阻塞、未执行的 ignored cache/source-pack 清理留有 `NON_BLOCKING_LOCAL_RESIDUE`；它不属于 tracked 仓库冻结身份，本轮不重试删除。
